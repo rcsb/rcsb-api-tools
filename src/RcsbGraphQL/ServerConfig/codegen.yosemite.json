@@ -1,0 +1,20 @@
+{
+  "overwrite": true,
+  "schema": "http://132.249.213.110/graphql",
+  "documents": "src/RcsbGraphQL/Queries/Yosemite/*.graphql",
+  "config":{
+    "declarationKind":"interface"
+  },
+  "generates": {
+    "./src/RcsbGraphQL/Types/Yosemite/GqlTypes.ts": {
+      "plugins": [
+        "typescript"
+      ]
+    },
+    "src/RcsbGraphQL/Types/Yosemite/CoreConstants.ts": {
+      "plugins": [
+        "src/RcsbGraphQL/Plugins/enumerate_schema_keys.js"
+      ]
+    }
+  }
+}

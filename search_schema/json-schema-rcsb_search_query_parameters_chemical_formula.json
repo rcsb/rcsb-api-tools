@@ -1,0 +1,28 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_chemical_formula.json",
+  "title": "Chemical Query Formula Parameters",
+  "type": "object",
+  "required": [
+    "type",
+    "value"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "formula"
+      ],
+      "description": "Type of chemical search."
+    },
+    "value": {
+      "type": "string",
+      "example": "C8H9NO2",
+      "description": "Molecular formula."
+    },
+    "match_subset": {
+      "type": "boolean",
+      "description": "Find formulas satisfying only a subset of the query conditions."
+    }
+  },
+  "additionalProperties": false
+}

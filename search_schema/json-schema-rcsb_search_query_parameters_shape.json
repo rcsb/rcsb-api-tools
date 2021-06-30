@@ -1,0 +1,38 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_shape.json",
+  "title": "Structure Query Parameters",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "object",
+      "properties": {
+        "entry_id": {
+          "type": "string"
+        },
+        "asym_id": {
+          "type": "string"
+        },
+        "assembly_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "entry_id"
+      ],
+      "additionalProperties": false,
+      "description": "Compound structure identifier that includes PDB code and either assembly or chain identifier."
+    },
+    "operator": {
+      "type": "string",
+      "enum": [
+        "strict_shape_match",
+        "relaxed_shape_match"
+      ],
+      "description": "The operator allows specifying the evaluation expression."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_suggest_basic.json",
+  "title": "Basic Suggest Query",
+  "type": "object",
+  "required": [
+    "text"
+  ],
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Suggestion term(s)."
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Suggestion field(s)."
+    },
+    "size": {
+      "type": "integer",
+      "default": 10,
+      "description": "Configure the maximum number of suggestions to be returned."
+    }
+  },
+  "additionalProperties": false
+}

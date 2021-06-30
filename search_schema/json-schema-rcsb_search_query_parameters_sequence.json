@@ -1,0 +1,35 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_sequence.json",
+  "title": "Sequence Query Parameters",
+  "type": "object",
+  "required": [
+    "value",
+    "target"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "Protein sequence."
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "pdb_protein_sequence",
+        "pdb_rna_sequence",
+        "pdb_dna_sequence"
+      ],
+      "description": "Identifies a specific search scope."
+    },
+    "identity_cutoff": {
+      "type": "number",
+      "default": 0,
+      "description": "Hits with sequence identity below this cutoff value are filtered out (range 0-1)"
+    },
+    "evalue_cutoff": {
+      "type": "number",
+      "default": 1000000,
+      "description": "Hits with e-value above this cutoff value are filtered out"
+    }
+  },
+  "additionalProperties": false
+}

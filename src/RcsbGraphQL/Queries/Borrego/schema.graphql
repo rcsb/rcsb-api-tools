@@ -1,0 +1,278 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type AdditionalProperty {
+    """
+
+    The additional property name.
+
+    Examples:
+    PARENT_COMP_ID, CATH_NAME, PARTNER_BOND_DISTANCE
+    """
+    property_name: PropertyName
+    property_value: [ObjectScalar]
+}
+
+type AlignedRegion {
+    "List of genomic indexes that are needed to complete the last nucleotide triad of a genome-protein sequence alignment"
+    exon_shift: [Int]
+    "Query sequence start position"
+    query_begin: Int!
+    "Query sequence end position"
+    query_end: Int!
+    "Target sequence start position"
+    target_begin: Int!
+    "Target sequence start position"
+    target_end: Int!
+}
+
+type AlignmentResponse {
+    "Full sequence of the query"
+    query_sequence: String
+    "JSON schema that describes the different alignments between the query sequence and targets"
+    target_alignment: [TargetAlignment]
+}
+
+type AnnotationFeatures {
+    "List of positional features"
+    features: [Feature]
+    "Enumerated value that identifies the provenance type of the positional features"
+    source: Source
+    "Database source entry identifier associated to the positional features"
+    target_id: String
+}
+
+type Coverage {
+    "Percentage of the query sequence covered byt the alignment"
+    query_coverage: Int
+    "Length of the full query sequence"
+    query_length: Int
+    "Percentage of the target sequence covered byt the alignment"
+    target_coverage: Int
+    "Length of the full target sequence"
+    target_length: Int
+}
+
+type Feature {
+    additional_properties: [AdditionalProperty]
+    "Free-form text describing the feature"
+    description: String
+    "Identifier of the feature"
+    feature_id: String
+    " List of documents that describes the location of the feature"
+    feature_positions: [FeaturePosition]
+    "Name associated to the feature"
+    name: String
+    "Original database or software name used to obtain the feature"
+    provenance_source: String
+    """
+
+    The connection type.
+
+    Examples:
+    mutation, artifact, CATH, SCOP
+    """
+    type: Type
+    "Numerical value associated with the feature"
+    value: Float
+}
+
+type FeaturePosition {
+    "Index at which this segment of the feature begins on the original provenance_source. When reference and source point to the same reference system this file will be null"
+    beg_ori_id: Int
+    "Index at which this segment of the feature begins"
+    beg_seq_id: Int
+    "Index at which this segment of the feature ends on the original provenance_source. If the positional feature maps to a single residue this field will be null. When reference and source point to the same reference system this file will be null"
+    end_ori_id: Int
+    "Index at which this segment of the feature ends. If the positional feature maps to a single residue this field will be null"
+    end_seq_id: Int
+    "Flag that indicates the feature begins before the feature index begin"
+    open_begin: Boolean
+    "Flag that indicates the feature end after the feature index end"
+    open_end: Boolean
+    "Fragment identifier that groups a set of ranges resulting from gaps"
+    range_id: String
+    "The value for the feature at this region"
+    value: Float
+}
+
+"Query root"
+type Query {
+    "Get sequence alignments"
+    alignment(
+        "Query sequence database"
+        from: SequenceReference,
+        "Database sequence identifier"
+        queryId: String!,
+        "Optional integer list (2-tuple) to filter the alignment to a particular region"
+        range: [Int],
+        "Target Sequence database"
+        to: SequenceReference
+    ): AlignmentResponse
+    "Get positional features"
+    annotations(
+        "Optional list of filters that can be used to select what annotations will be retrieved"
+        filters: [FilterInput],
+        "Database entry for whom the annotations will be requested"
+        queryId: String!,
+        "Optional integer list (2-tuple) to filter annotations that fall in a particular region"
+        range: [Int],
+        "Query database"
+        reference: SequenceReference,
+        "List defining the annotation collections to be requested"
+        sources: [Source]
+    ): [AnnotationFeatures]
+}
+
+type TargetAlignment {
+    "Aligned region"
+    aligned_regions: [AlignedRegion]
+    "Alignment scores"
+    coverage: Coverage
+    "integer that identifies the DNA strand of genome alignments (1 positive strand / -1 negative strand)"
+    orientation: Int
+    "Database identifier of the target"
+    target_id: String
+    "Full sequence of the target"
+    target_sequence: String
+}
+
+enum PropertyName {
+    CATH_DOMAIN_ID
+    CATH_NAME
+    CLINICAL_SIGNIFICANCE
+    CONSEQUENCE_TYPE
+    DISEASE_TYPE
+    EVIDENCE
+    LINK
+    MODIFICATION_TYPE
+    MUTATED_TYPE
+    OMEGA_ANGLE
+    PARENT_COMP_ID
+    PARTNER_ASYM_ID
+    PARTNER_BOND_DISTANCE
+    PARTNER_COMP_ID
+    PREDICTED_IMPACT
+    SCOP_DOMAIN_ID
+    SCOP_NAME
+    SCOP_SUN_ID
+    SHEET_SENSE
+    STRAIN_ID
+    WILD_TYPE
+}
+
+enum SequenceReference {
+    NCBI_GENOME
+    NCBI_PROTEIN
+    PDB_ENTITY
+    PDB_INSTANCE
+    UNIPROT
+}
+
+enum Source {
+    PDB_ENTITY
+    PDB_INSTANCE
+    UNIPROT
+}
+
+enum Type {
+    ACTIVE_SITE
+    ANGLE_OUTLIER
+    ARTIFACT
+    BINDING_SITE
+    BOND_OUTLIER
+    CALCIUM_BINDING_REGION
+    CATH
+    CHAIN
+    CIS_PEPTIDE
+    COMPOSITIONALLY_BIASED_REGION
+    COVALENT_BOND
+    COVALENT_MODIFICATION_OF_A_NUCLEOTIDE_BASE
+    COVALENT_MODIFICATION_OF_A_NUCLEOTIDE_PHOSPHATE
+    COVALENT_MODIFICATION_OF_A_NUCLEOTIDE_SUGAR
+    COVALENT_RESIDUE_MODIFICATION
+    CROSS_LINK
+    C_MANNOSYLATION_SITE
+    DISULFIDE_BRIDGE
+    DNA_BINDING_REGION
+    DOMAIN
+    GLYCOSYLATION_SITE
+    HELIX_P
+    HYDROGEN_BOND
+    INITIATOR_METHIONINE
+    INTRAMEMBRANE_REGION
+    IONIC_INTERACTION
+    LIPID_MOIETY_BINDING_REGION
+    MEMBRANE_SEGMENT
+    METAL_COORDINATION
+    METAL_ION_BINDING_SITE
+    MISMATCHED_BASE_PAIRS
+    MODIFIED_MONOMER
+    MODIFIED_RESIDUE
+    MOGUL_ANGLE_OUTLIER
+    MOGUL_BOND_OUTLIER
+    MUTAGENESIS_SITE
+    MUTATION
+    NON_CONSECUTIVE_RESIDUES
+    NON_STANDARD_AMINO_ACID
+    NON_TERMINAL_RESIDUE
+    NUCLEOTIDE_PHOSPHATE_BINDING_REGION
+    N_GLYCOSYLATION_SITE
+    O_GLYCOSYLATION_SITE
+    PEPTIDE
+    PFAM
+    PROPEPTIDE
+    RAMACHANDRAN_OUTLIER
+    REGION_OF_INTEREST
+    REPEAT
+    ROTAMER_OUTLIER
+    RSCC_OUTLIER
+    RSRZ_OUTLIER
+    SCOP
+    SEQUENCE_CONFLICT
+    SEQUENCE_VARIANT
+    SHEET
+    SHORT_SEQUENCE_MOTIF
+    SIGNAL_PEPTIDE
+    SITE
+    SPLICE_VARIANT
+    STEREO_OUTLIER
+    S_GLYCOSYLATION_SITE
+    TOPOLOGICAL_DOMAIN
+    TRANSIT_PEPTIDE
+    TRANSMEMBRANE_REGION
+    UNASSIGNED_SEC_STRUCT
+    UNOBSERVED_ATOM_XYZ
+    UNOBSERVED_RESIDUE_XYZ
+    UNSURE_RESIDUE
+    ZERO_OCCUPANCY_ATOM_XYZ
+    ZERO_OCCUPANCY_RESIDUE_XYZ
+    ZINC_FINGER_REGION
+}
+
+enum fieldName {
+    target_id
+    type
+}
+
+enum operationType {
+    contains
+    equals
+}
+
+input FilterInput {
+    field: fieldName
+    operation: operationType
+    source: Source
+    values: [String]
+}
+
+
+"Built-in scalar for dynamic values"
+scalar ObjectScalar
+
+"Use SPQR's SchemaPrinter to remove this from SDL"
+scalar UNREPRESENTABLE

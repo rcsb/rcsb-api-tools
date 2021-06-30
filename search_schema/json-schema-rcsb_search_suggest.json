@@ -1,0 +1,73 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_suggest.json",
+  "title": "Suggest Query",
+  "type": "object",
+  "required": [
+    "type",
+    "suggest"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "basic",
+        "term"
+      ]
+    },
+    "suggest": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_suggest_basic.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_suggest_term.json"
+        }
+      ]
+    },
+    "highlight": {
+      "type": "object",
+      "properties": {
+        "boundary_scanner_type": {
+          "type": "string",
+          "enum": [
+            "chars",
+            "sentence",
+            "word"
+          ],
+          "default": "chars",
+          "description": "Specifies how to break the highlighted fragments."
+        },
+        "num_of_fragments": {
+          "type": "integer",
+          "default": 1,
+          "description": "The maximum number of fragments to return."
+        },
+        "fragment_size": {
+          "type": "integer",
+          "default": 60,
+          "description": "The size of the highlighted fragment in characters."
+        },
+        "fragment_offset": {
+          "type": "integer",
+          "default": 20,
+          "description": "Controls the margin from which you want to start highlighting."
+        },
+        "pre_tag": {
+          "type": "string",
+          "default": "<em>",
+          "description": "HTML tag to use for the highlighted text. Use in conjunction with <b>post_tag</b>."
+        },
+        "post_tag": {
+          "type": "string",
+          "default": "</em>",
+          "description": "HTML tag to use for the highlighted text. Use in conjunction with <b>pre_tag</b>."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

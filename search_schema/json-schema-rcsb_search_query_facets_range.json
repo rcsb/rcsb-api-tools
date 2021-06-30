@@ -1,0 +1,54 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_facets_range.json",
+  "title": "Range Facet",
+  "type": "object",
+  "required": [
+    "aggregation_type",
+    "attribute",
+    "ranges"
+  ],
+  "properties": {
+    "aggregation_type": {
+      "type": "string",
+      "enum": [
+        "range"
+      ],
+      "description": "Specifies the type of aggregating data for analysis."
+    },
+    "attribute": {
+      "type": "string"
+    },
+    "ranges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "$ref": "json-schema-rcsb_search_query_value_range.json#/properties/from"
+          },
+          "to": {
+            "$ref": "json-schema-rcsb_search_query_value_range.json#/properties/to"
+          }
+        },
+        "minProperties": 1
+      },
+      "minItems": 1,
+      "description": "A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range."
+    },
+    "min_interval_population": {
+      "type": "integer",
+      "description": "The minimum number of items in the bin required for the bin to be returned."
+    },
+    "max_num_intervals": {
+      "type": "integer",
+      "description": "Maximum number of intervals to return for a given facet."
+    },
+    "filter": {
+      "$ref": "json-schema-rcsb_search_query_parameters_text.json"
+    },
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    }
+  },
+  "additionalProperties": false
+}

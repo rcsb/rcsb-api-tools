@@ -1,0 +1,29 @@
+query QueryAlignment($queryId: String!, $from: SequenceReference, $to:SequenceReference, $range:[Int]){
+    alignment(
+        queryId:$queryId
+        from:$from
+        to:$to
+        range:$range
+    ){
+        query_sequence
+        target_alignment {
+            target_id
+            orientation
+            target_sequence
+            coverage {
+                query_coverage
+                query_length
+                target_coverage
+                target_length
+            }
+            aligned_regions {
+                query_begin
+                query_end
+                target_begin
+                target_end
+                exon_shift
+            }
+        }
+
+    }
+}

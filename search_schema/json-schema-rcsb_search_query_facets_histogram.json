@@ -1,0 +1,48 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_facets_histogram.json",
+  "title": "Histogram Facet",
+  "type": "object",
+  "required": [
+    "aggregation_type",
+    "attribute",
+    "interval"
+  ],
+  "properties": {
+    "aggregation_type": {
+      "type": "string",
+      "enum": [
+        "histogram"
+      ],
+      "description": "Specifies the type of aggregating data for analysis."
+    },
+    "attribute": {
+      "type": "string"
+    },
+    "interval": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "description": "The bin size."
+    },
+    "min_interval_population": {
+      "type": "integer",
+      "description": "The minimum number of items in the bin required for the bin to be returned."
+    },
+    "max_num_intervals": {
+      "type": "integer",
+      "description": "Maximum number of intervals to return for a given facet."
+    },
+    "filter": {
+      "$ref": "json-schema-rcsb_search_query_parameters_text.json"
+    },
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_facets_cardinality.json",
+  "title": "Cardinality Facet",
+  "type": "object",
+  "required": [
+    "aggregation_type",
+    "attribute"
+  ],
+  "properties": {
+    "aggregation_type": {
+      "type": "string",
+      "enum": [
+        "cardinality"
+      ],
+      "description": "Specifies the type of aggregating data for analysis."
+    },
+    "attribute": {
+      "type": "string"
+    },
+    "filter": {
+      "$ref": "json-schema-rcsb_search_query_parameters_text.json"
+    },
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    }
+  },
+  "additionalProperties": false
+}

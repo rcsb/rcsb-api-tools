@@ -1,0 +1,121 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_strucmotif.json",
+  "title": "Strucmotif Query Parameters",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "Provides the information from which will defined the query motif. Must either be: 1) the entry identifier or 2) CIF structure data."
+        },
+        "residue_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "json-schema-rcsb_search_residue_identifier.json"
+          },
+          "description": "Provides the set of residue identifiers that define the query. Can be empty iff an extracted motif is submitted via the data property."
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "backbone_distance_tolerance": {
+      "type": "integer",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Allowed backbone distance tolerance in Angstrom."
+    },
+    "side_chain_distance_tolerance": {
+      "type": "integer",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Allowed side-chain distance tolerance in Angstrom."
+    },
+    "angle_tolerance": {
+      "type": "integer",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Allowed angle tolerance in multiples of 20 degrees."
+    },
+    "score_cutoff": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Threshold above which hits will be filtered."
+    },
+    "rmsd_cutoff": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Threshold above which hits will be filtered by RMSD."
+    },
+    "exchanges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "residue_id": {
+            "$ref": "json-schema-rcsb_search_residue_identifier.json"
+          },
+          "allowed": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Allowed exchanges at this position as three-letter-codes.",
+              "enum": ["ALA", "CYS", "ASP", "GLU", "PHE", "GLY", "HIS", "ILE", "LYS", "LEU", "MET", "ASN", "PRO", "GLN", "ARG", "SER", "THR", "VAL", "TRP", "TYR",
+                "A", "C", "DA", "DC", "DG", "G", "T", "U",
+                "UNK", "N", "?"]
+            }
+          }
+        }
+      }
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Optionally: Stop after accepting this many hits."
+    },
+    "scoring_strategy": {
+      "type": "string",
+      "description": "How to score hits. The default 'DESCRIPTOR' will use data from geometric descriptors to score hits. This is fast but less accurate. The 'ALIGNMENT' option will load structure data of all potential hits and align each candidate to the query motif. The resulting RMSD values are more descriptive, especially when a suitable 'atom_pairing_strategy' is specified. As a trade-off, the 'ALIGNMENT' option is 2-3 times slower.",
+      "default": "DESCRIPTOR",
+      "enum": ["DESCRIPTOR", "ALIGNMENT"]
+    },
+    "atom_pairing_strategy": {
+      "type": "string",
+      "description": "If scoring strategy is based on alignment: Which atoms to pair.",
+      "default": "SIDE_CHAIN",
+      "enum": ["ALL", "BACKBONE", "SIDE_CHAIN", "PSEUDO_ATOMS"]
+    },
+    "motif_pruning_strategy": {
+      "type": "string",
+      "description": "Specifies how query motifs are pruned (i.e. simplified). The default option 'KRUSKAL' determines the minimum spanning tree of residue pairs in the query. This leads to less stringent queries and faster results.",
+      "default": "KRUSKAL",
+      "enum": ["NONE", "KRUSKAL"]
+    },
+    "whitelist": {
+      "type": "array",
+      "description": "When set: Consider only structures in the specified set.",
+      "items": {
+        "type": "string",
+        "description": "Entry identifier that is enabled in the search space."
+      }
+    },
+    "blacklist": {
+      "type": "array",
+      "description": "Specified entry identifiers will not be evaluated.",
+      "items": {
+        "type": "string",
+        "description": "Entry identifier that will be explicitly ignored."
+      }
+    }
+  },
+  "additionalProperties": false
+}

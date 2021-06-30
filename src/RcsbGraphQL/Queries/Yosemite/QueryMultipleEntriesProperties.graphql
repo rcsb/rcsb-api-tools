@@ -1,0 +1,9 @@
+query multiple_entries_properties($entryIds: [String!]!){
+    entries(entry_ids:$entryIds){
+        rcsb_id
+        rcsb_entry_info{
+            experimental_method
+            resolution_combined
+        }
+    }
+}

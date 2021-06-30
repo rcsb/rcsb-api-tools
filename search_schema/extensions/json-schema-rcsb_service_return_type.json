@@ -1,0 +1,24 @@
+{
+  "$id": "/schema/extensions/json-schema-rcsb_service_return_type.json",
+  "title": "Return Type Extension",
+  "type": "object",
+  "properties": {
+    "return_type": {
+      "allOf": [
+        {
+          "$ref": "../json-schema-rcsb_search_query.json#/properties/return_type"
+        },
+        {
+          "$ref": "../json-schema-rcsb_search_unreleased_entry_query.json#/properties/return_type"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "chem_comp"
+          ]
+        }
+      ]
+    }
+  },
+  "description": "Specifies the type of the identifiers returned by the integrated services."
+}

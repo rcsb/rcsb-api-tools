@@ -1,0 +1,46 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_group.json",
+  "title": "Group Node",
+  "type": "object",
+  "required": [
+    "type",
+    "logical_operator",
+    "nodes"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "group"
+      ],
+      "description": "The type of the node."
+    },
+    "logical_operator": {
+      "type": "string",
+      "enum": [
+        "or",
+        "and"
+      ],
+      "description": "Boolean operator connects and defines the relationship between the child nodes."
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "json-schema-rcsb_search_query_terminal.json"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "label": {
+      "type": "string",
+      "description": "A textual description of what the node represents."
+    }
+  },
+  "additionalProperties": false
+}

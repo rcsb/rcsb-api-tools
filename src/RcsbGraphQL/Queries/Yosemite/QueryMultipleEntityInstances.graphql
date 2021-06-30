@@ -1,0 +1,27 @@
+query QueryMultipleEntityInstances($entityIds: [String!]!){
+    polymer_entities(
+        entity_ids:$entityIds
+    ){
+        polymer_entity_instances{
+            rcsb_id
+            polymer_entity{
+                rcsb_polymer_entity{
+                    pdbx_description
+                }
+                entity_poly{
+                    rcsb_entity_polymer_type
+                }
+                rcsb_entity_source_organism {
+                    ncbi_scientific_name
+                }
+            }
+            rcsb_polymer_entity_instance_container_identifiers{
+                asym_id
+                auth_asym_id
+                entry_id
+                entity_id
+                auth_to_entity_poly_seq_mapping
+            }
+        }
+    }
+}

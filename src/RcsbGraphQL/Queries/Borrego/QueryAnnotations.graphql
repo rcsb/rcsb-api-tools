@@ -1,0 +1,29 @@
+query QueryAnnotations($queryId: String!, $reference: SequenceReference, $sources:[Source], $range:[Int], $filters: [FilterInput]){
+    annotations(
+        queryId:$queryId
+        reference:$reference
+        sources:$sources
+        range:$range
+        filters:$filters
+    ){
+        source
+        target_id
+        features {
+            type
+            provenance_source
+            description
+            feature_id
+            name
+            feature_positions {
+                beg_seq_id
+                end_seq_id
+                beg_ori_id
+                end_ori_id
+                range_id
+                open_begin
+                open_end
+                value
+            }
+        }
+    }
+}

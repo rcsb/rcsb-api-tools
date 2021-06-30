@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "noImplicitAny": true,
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": [ "dom", "es2017" ],
+    "declaration": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src"
+  },
+  "include": [ "src/*", "src/**/*", "src/**/**/*", "src/**/**/**/*" ],
+  "exclude": [
+    "node_modules"
+  ]
+}

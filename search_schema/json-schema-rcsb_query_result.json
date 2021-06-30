@@ -1,0 +1,78 @@
+{
+  "$id": "/schema/json-schema-rcsb_query_result.json",
+  "title": "Query Result",
+  "type": "object",
+  "required": [
+    "query_id",
+    "result_type",
+    "total_count",
+    "explain_meta_data"
+  ],
+  "properties": {
+    "query_id": {
+      "type": "string",
+      "description": "The query ID of the result set."
+    },
+    "result_type": {
+      "$ref": "json-schema-rcsb_search_query.json#/properties/return_type"
+    },
+    "total_count": {
+      "type": "integer",
+      "description": "The total number of identifiers in the result set."
+    },
+    "explain_meta_data": {
+      "type": "object",
+      "required": [
+        "total_timing",
+        "terminal_node_timings"
+      ],
+      "properties": {
+        "total_timing": {
+          "type": "integer",
+          "description": "The total time taken in milliseconds to produce the query result."
+        },
+        "facet_timing": {
+          "type": "integer",
+          "description": "The time taken in milliseconds to produce the drilldowns."
+        },
+        "sort_timing": {
+          "type": "integer",
+          "description": "The time taken in milliseconds in sorting the result identifiers."
+        },
+        "terminal_node_timings": {
+          "existingJavaType": "java.util.Map<Integer,Integer>",
+          "type": "object",
+          "minItems": 1,
+          "description": "The time taken in milliseconds in retrieving the result identifiers from each service type query node. Multiple text service nodes are bundled to a single text service query."
+        }
+      },
+      "javaType" : "org.rcsb.arches.auto.model.ExplainMetaData",
+      "description": "Explains the query execution time."
+    },
+    "result_set": {
+      "type": "array",
+      "items": {
+        "$ref": "json-schema-rcsb_query_result_identifier.json"
+      },
+      "minItems": 1,
+      "description": "A list of search result identifiers including each identifier's score and the service query where the identifier was rendered from."
+    },
+    "drilldown": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "json-schema-rcsb_query_result_drilldown_group.json"
+          },
+          {
+            "$ref": "json-schema-rcsb_query_result_drilldown_cardinality.json"
+          }
+        ]
+      },
+      "minItems": 1,
+      "description": "Provides summaries of the search result by aggregating the result data on different attributes."
+    }
+  },
+  "description": "Provides a generic interface to represent the RCSB search query result.",
+  "additionalProperties": false
+}

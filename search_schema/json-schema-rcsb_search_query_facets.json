@@ -1,0 +1,33 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_facets.json",
+  "title": "Request Options Facets",
+  "type": "array",
+  "items": {
+    "anyOf": [
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_terms.json"
+      },
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_histogram.json"
+      },
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_date_histogram.json"
+      },
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_range.json"
+      },
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_date_range.json"
+      },
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_cardinality.json"
+      },
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_filter.json"
+      }
+    ]
+  },
+  "minItems": 1,
+  "description": "Allows obtaining the aggregations relevant to the search query. When absent, aggregations are not returned. Multi-dimensional aggregations are allowed.",
+  "additionalProperties": false
+}
