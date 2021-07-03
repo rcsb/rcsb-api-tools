@@ -1,13 +1,21 @@
 {
-  "name": "rcsb-saguaro-api",
+  "name": "@rcsb/rcsb-saguaro-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "files": [
+    "build/*ts",
+    "build/**/*ts",
+    "build/**/**/*ts",
+    "build/**/**/**/*ts"
+  ],
   "scripts": {
-    "buildSearchInterface": "ts-node src/RcsbSearch/Plugins/GenrateInterfaces.ts",
-    "generateBorrego": "graphql-codegen --config src/RcsbGraphQL/ServerConfig/codegen.borrego.json",
-    "generateYosemite": "graphql-codegen --config src/RcsbGraphQL/ServerConfig/codegen.yosemite.json",
+    "buildSearchInterface": "ts-node src/RcsbSearch/Generator/GenerateInterfaces.ts",
+    "buildGraphQLInterfaces": "ts-node src/RcsbGraphQL/Generator/GenerateInterfaces.ts",
+    "buildSources": "npm run buildSearchInterface && npm run buildGraphQLInterfaces",
     "build": "webpack --config webpack.config.js",
+    "tsc": "tsc",
+    "buildApp": "npm run buildSources && npm run tsc && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

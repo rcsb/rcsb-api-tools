@@ -1,37 +1,26 @@
-const { _ } = require('lodash');
-const { printSchema, parse, visit } = require('graphql');
 
-function camelCase(value){
-    const val =  _.camelCase(value).replace(/^(\d+)/,"");
-    return val.charAt(0).toUpperCase() + val.slice(1)
-}
+const { printSchema, parse, visit  } = require('graphql');
 
-const visited = new Set();
+
 module.exports = {
     plugin: (schema, documents, config, info) => {
+        const fields = new Set();
         const printedSchema = printSchema(schema); // Returns a string representation of the schema
         const astNode = parse(printedSchema); // Transforms the string into ASTNode
         const visitor = {
-            FieldDefinition: node => {
-                // Transform the field AST node into a string, containing only the name of the field
-                return node.name.value;
-            },
-            ObjectTypeDefinition: node => {
-                // "node.fields" is an array of strings, because we transformed it using "FieldDefinition".
-                return node.fields.filter(f=>{
-                    if(visited.has(f)){
-                        return false
-                    }else if(typeof f === "string"){
-                        visited.add(f);
-                        return true;
-                    }
-                }).map(field => `\t${camelCase(field)} = "${field}",`).join('\n');
-            },
+            FieldDefinition: (node) => {
+                fields.add(node.name.value)
+                return node;
+            }
         };
-
-        const result = visit(astNode, { leave: visitor });
-
-        const str = result.definitions.filter(d=> typeof d === "string" && d.length > 0).join('\n');
-        return "export enum CoreConstants{\n"+str.substring(0, str.length - 1)+"\n}\n";
+        visit(astNode, { leave: visitor });
+        const out = ["export class CoreConstants{"];
+        fields.forEach((value)=>{
+            if(value.length > 1){
+                out.push(`\tpublic static readonly ${value.toUpperCase()} = "${value}";`);
+            }
+        });
+        out.push("}");
+        return out.join("\n");
     },
 };

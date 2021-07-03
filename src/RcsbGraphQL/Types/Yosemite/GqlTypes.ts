@@ -3,7 +3,7 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
-export interface Scalars {
+export type Scalars = {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -15,9 +15,9 @@ export interface Scalars {
   ObjectScalar: any;
   /** Use SPQR's SchemaPrinter to remove this from SDL */
   UNREPRESENTABLE: any;
-}
+};
 
-export interface AuditAuthor {
+export type AuditAuthor = {
   __typename?: 'AuditAuthor';
   /**
    * The Open Researcher and Contributor ID (ORCID).
@@ -41,9 +41,9 @@ export interface AuditAuthor {
    *  list of audit authors.
    */
   pdbx_ordinal: Scalars['Int'];
-}
+};
 
-export interface Cell {
+export type Cell = {
   __typename?: 'Cell';
   /**
    * The number of the polymeric chains in a unit cell. In the case
@@ -100,9 +100,9 @@ export interface Cell {
    *  gamma = _cell.angle_gamma
    */
   volume?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface ChemComp {
+export type ChemComp = {
   __typename?: 'ChemComp';
   /**
    * The formula for the chemical component. Formulae are written
@@ -257,9 +257,9 @@ export interface ChemComp {
    * D-beta-peptide, C-gamma linking, D-gamma-peptide, C-delta linking, D-peptide COOH carboxy terminus, D-peptide NH3 amino terminus, D-peptide linking, D-saccharide, D-saccharide, alpha linking, D-saccharide, beta linking, DNA OH 3 prime terminus, DNA OH 5 prime terminus, DNA linking, L-DNA linking, L-RNA linking, L-beta-peptide, C-gamma linking, L-gamma-peptide, C-delta linking, L-peptide COOH carboxy terminus, L-peptide NH3 amino terminus, L-peptide linking, L-saccharide, L-saccharide, alpha linking, L-saccharide, beta linking, RNA OH 3 prime terminus, RNA OH 5 prime terminus, RNA linking, non-polymer, other, peptide linking, peptide-like, saccharide
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface Citation {
+export type Citation = {
   __typename?: 'Citation';
   /**
    * The International Standard Book Number (ISBN) code assigned to
@@ -437,17 +437,17 @@ export interface Citation {
    *  and book chapters.
    */
   year?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface ClustersMembers {
+export type ClustersMembers = {
   __typename?: 'ClustersMembers';
   /** Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit. */
   asym_id: Scalars['String'];
   /** Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed. */
   pdbx_struct_oper_list_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface CoreAssembly {
+export type CoreAssembly = {
   __typename?: 'CoreAssembly';
   /** Get PDB entry that includes this assembly. */
   entry?: Maybe<CoreEntry>;
@@ -471,9 +471,9 @@ export interface CoreAssembly {
   rcsb_struct_symmetry_lineage?: Maybe<Array<Maybe<RcsbStructSymmetryLineage>>>;
   /** The title and version of software package used for symmetry calculations. */
   rcsb_struct_symmetry_provenance_code?: Maybe<Scalars['String']>;
-}
+};
 
-export interface CoreBranchedEntity {
+export type CoreBranchedEntity = {
   __typename?: 'CoreBranchedEntity';
   /** Get all unique branched instances (chains) for this molecular entity. */
   branched_entity_instances?: Maybe<Array<Maybe<CoreBranchedEntityInstance>>>;
@@ -502,9 +502,9 @@ export interface CoreBranchedEntity {
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
-}
+};
 
-export interface CoreBranchedEntityInstance {
+export type CoreBranchedEntityInstance = {
   __typename?: 'CoreBranchedEntityInstance';
   /** Get branched entity for this branched entity instance. */
   branched_entity?: Maybe<CoreBranchedEntity>;
@@ -524,9 +524,9 @@ export interface CoreBranchedEntityInstance {
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
   rcsb_ligand_neighbors?: Maybe<Array<Maybe<RcsbLigandNeighbors>>>;
-}
+};
 
-export interface CoreChemComp {
+export type CoreChemComp = {
   __typename?: 'CoreChemComp';
   chem_comp?: Maybe<ChemComp>;
   /** Get DrubBank entry associated with this chemical component. */
@@ -567,16 +567,16 @@ export interface CoreChemComp {
    */
   rcsb_id: Scalars['String'];
   rcsb_schema_container_identifiers?: Maybe<Array<Maybe<RcsbSchemaContainerIdentifiers>>>;
-}
+};
 
-export interface CoreDrugbank {
+export type CoreDrugbank = {
   __typename?: 'CoreDrugbank';
   drugbank_container_identifiers?: Maybe<DrugbankContainerIdentifiers>;
   drugbank_info?: Maybe<DrugbankInfo>;
   drugbank_target?: Maybe<Array<Maybe<DrugbankTarget>>>;
-}
+};
 
-export interface CoreEntityAlignmentsAlignedRegions {
+export type CoreEntityAlignmentsAlignedRegions = {
   __typename?: 'CoreEntityAlignmentsAlignedRegions';
   /** Aligned region length */
   length: Scalars['Int'];
@@ -584,23 +584,23 @@ export interface CoreEntityAlignmentsAlignedRegions {
   query_begin: Scalars['Int'];
   /** NCBI sequence start position */
   target_begin: Scalars['Int'];
-}
+};
 
-export interface CoreEntityAlignmentsCoreEntityIdentifiers {
+export type CoreEntityAlignmentsCoreEntityIdentifiers = {
   __typename?: 'CoreEntityAlignmentsCoreEntityIdentifiers';
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
-export interface CoreEntityAlignmentsScores {
+export type CoreEntityAlignmentsScores = {
   __typename?: 'CoreEntityAlignmentsScores';
   query_coverage: Scalars['Int'];
   query_length: Scalars['Int'];
   target_coverage: Scalars['Int'];
   target_length: Scalars['Int'];
-}
+};
 
-export interface CoreEntry {
+export type CoreEntry = {
   __typename?: 'CoreEntry';
   /** Get all assemblies for this PDB entry. */
   assemblies?: Maybe<Array<Maybe<CoreAssembly>>>;
@@ -699,9 +699,9 @@ export interface CoreEntry {
   struct?: Maybe<Struct>;
   struct_keywords?: Maybe<StructKeywords>;
   symmetry?: Maybe<Symmetry>;
-}
+};
 
-export interface CoreGroup {
+export type CoreGroup = {
   __typename?: 'CoreGroup';
   rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
   rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
@@ -712,9 +712,9 @@ export interface CoreGroup {
   rcsb_group_statistics?: Maybe<RcsbGroupStatistics>;
   /** A unique textual identifier for a group */
   rcsb_id: Scalars['String'];
-}
+};
 
-export interface CoreNonpolymerEntity {
+export type CoreNonpolymerEntity = {
   __typename?: 'CoreNonpolymerEntity';
   /** Get PDB entry that contains this non-polymer entity. */
   entry?: Maybe<CoreEntry>;
@@ -741,9 +741,9 @@ export interface CoreNonpolymerEntity {
   rcsb_nonpolymer_entity_feature_summary?: Maybe<Array<Maybe<RcsbNonpolymerEntityFeatureSummary>>>;
   rcsb_nonpolymer_entity_keywords?: Maybe<RcsbNonpolymerEntityKeywords>;
   rcsb_nonpolymer_entity_name_com?: Maybe<Array<Maybe<RcsbNonpolymerEntityNameCom>>>;
-}
+};
 
-export interface CoreNonpolymerEntityInstance {
+export type CoreNonpolymerEntityInstance = {
   __typename?: 'CoreNonpolymerEntityInstance';
   /** Get non-polymer entity for this non-polymer entity instance. */
   nonpolymer_entity?: Maybe<CoreNonpolymerEntity>;
@@ -764,9 +764,9 @@ export interface CoreNonpolymerEntityInstance {
   rcsb_nonpolymer_instance_validation_score?: Maybe<Array<Maybe<RcsbNonpolymerInstanceValidationScore>>>;
   rcsb_nonpolymer_struct_conn?: Maybe<Array<Maybe<RcsbNonpolymerStructConn>>>;
   rcsb_target_neighbors?: Maybe<Array<Maybe<RcsbTargetNeighbors>>>;
-}
+};
 
-export interface CorePfam {
+export type CorePfam = {
   __typename?: 'CorePfam';
   /** Accession number of Pfam entry. */
   rcsb_id: Scalars['String'];
@@ -810,9 +810,9 @@ export interface CorePfam {
    * Family, Domain, Repeat, Motif, Disordered, Coiled-coil
    */
   rcsb_pfam_seed_source?: Maybe<Scalars['String']>;
-}
+};
 
-export interface CorePolymerEntity {
+export type CorePolymerEntity = {
   __typename?: 'CorePolymerEntity';
   /** Get all unique monomers described in this molecular entity. */
   chem_comp_monomers?: Maybe<Array<Maybe<CoreChemComp>>>;
@@ -865,9 +865,9 @@ export interface CorePolymerEntity {
   rcsb_polymer_entity_name_sys?: Maybe<Array<Maybe<RcsbPolymerEntityNameSys>>>;
   /** Get all unique UniProt KB annotations associated with this molecular entity. */
   uniprots?: Maybe<Array<Maybe<CoreUniprot>>>;
-}
+};
 
-export interface CorePolymerEntityInstance {
+export type CorePolymerEntityInstance = {
   __typename?: 'CorePolymerEntityInstance';
   pdbx_struct_special_symmetry?: Maybe<Array<Maybe<PdbxStructSpecialSymmetry>>>;
   /** Get polymer entity for this polymer entity instance. */
@@ -887,9 +887,9 @@ export interface CorePolymerEntityInstance {
   rcsb_polymer_instance_feature?: Maybe<Array<Maybe<RcsbPolymerInstanceFeature>>>;
   rcsb_polymer_instance_feature_summary?: Maybe<Array<Maybe<RcsbPolymerInstanceFeatureSummary>>>;
   rcsb_polymer_struct_conn?: Maybe<Array<Maybe<RcsbPolymerStructConn>>>;
-}
+};
 
-export interface CorePubmed {
+export type CorePubmed = {
   __typename?: 'CorePubmed';
   /** Unique integer value assigned to each PubMed record. */
   rcsb_id?: Maybe<Scalars['String']>;
@@ -906,9 +906,9 @@ export interface CorePubmed {
   rcsb_pubmed_mesh_descriptors?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Members of the MeSH classification lineage. */
   rcsb_pubmed_mesh_descriptors_lineage?: Maybe<Array<Maybe<RcsbPubmedMeshDescriptorsLineage>>>;
-}
+};
 
-export interface CoreUniprot {
+export type CoreUniprot = {
   __typename?: 'CoreUniprot';
   /** Primary accession number of a given UniProtKB entry. */
   rcsb_id?: Maybe<Scalars['String']>;
@@ -925,9 +925,9 @@ export interface CoreUniprot {
   /** Keywords constitute a controlled vocabulary that summarises the content of a UniProtKB entry. */
   rcsb_uniprot_keyword?: Maybe<Array<Maybe<RcsbUniprotKeyword>>>;
   rcsb_uniprot_protein?: Maybe<RcsbUniprotProtein>;
-}
+};
 
-export interface CurrentEntry {
+export type CurrentEntry = {
   __typename?: 'CurrentEntry';
   /**
    * The RCSB entry identifier.
@@ -938,10 +938,10 @@ export interface CurrentEntry {
   rcsb_id: Scalars['String'];
   rcsb_repository_holdings_current?: Maybe<RcsbRepositoryHoldingsCurrent>;
   rcsb_repository_holdings_current_entry_container_identifiers?: Maybe<RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers>;
-}
+};
 
 
-export interface Diffrn {
+export type Diffrn = {
   __typename?: 'Diffrn';
   /**
    * The mean hydrostatic pressure in kilopascals at which the
@@ -989,9 +989,9 @@ export interface Diffrn {
    * Y, N
    */
   pdbx_serial_crystal_experiment?: Maybe<Scalars['String']>;
-}
+};
 
-export interface DiffrnDetector {
+export type DiffrnDetector = {
   __typename?: 'DiffrnDetector';
   /** A description of special aspects of the radiation detector. */
   details?: Maybe<Scalars['String']>;
@@ -1023,9 +1023,9 @@ export interface DiffrnDetector {
    * DECTRIS PILATUS 12M, RAYONIX MX-325
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface DiffrnRadiation {
+export type DiffrnRadiation = {
   __typename?: 'DiffrnRadiation';
   /**
    * The collimation or focusing applied to the radiation.
@@ -1086,9 +1086,9 @@ export interface DiffrnRadiation {
    *  in the DIFFRN_RADIATION_WAVELENGTH category.
    */
   wavelength_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface DiffrnSource {
+export type DiffrnSource = {
   __typename?: 'DiffrnSource';
   /** A description of special aspects of the radiation source used. */
   details?: Maybe<Scalars['String']>;
@@ -1134,15 +1134,15 @@ export interface DiffrnSource {
    * NSLS beamline X8C, Rigaku RU200
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface DrugbankContainerIdentifiers {
+export type DrugbankContainerIdentifiers = {
   __typename?: 'DrugbankContainerIdentifiers';
   /** The DrugBank accession code */
   drugbank_id: Scalars['String'];
-}
+};
 
-export interface DrugbankInfo {
+export type DrugbankInfo = {
   __typename?: 'DrugbankInfo';
   /** The DrugBank drug affected organisms. */
   affected_organisms?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -1190,9 +1190,9 @@ export interface DrugbankInfo {
   pharmacology?: Maybe<Scalars['String']>;
   /** DrugBank drug name synonyms. */
   synonyms?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface DrugbankTarget {
+export type DrugbankTarget = {
   __typename?: 'DrugbankTarget';
   /** The type of target interaction. */
   interaction_type?: Maybe<Scalars['String']>;
@@ -1228,9 +1228,9 @@ export interface DrugbankTarget {
   seq_one_letter_code?: Maybe<Scalars['String']>;
   /** The actions of the target interaction. */
   target_actions?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface Em2dCrystalEntity {
+export type Em2dCrystalEntity = {
   __typename?: 'Em2dCrystalEntity';
   /** Unit-cell angle gamma in degrees. */
   angle_gamma?: Maybe<Scalars['Float']>;
@@ -1259,9 +1259,9 @@ export interface Em2dCrystalEntity {
    * C 1 2, C 2 2 2, P 1, P 1 2, P 1 21, P 2, P 2 2 2, P 2 2 21, P 2 21 21, P 3, P 3 1 2, P 3 2 1, P 4, P 4 2 2, P 4 21 2, P 6, P 6 2 2
    */
   space_group_name_H_M?: Maybe<Scalars['String']>;
-}
+};
 
-export interface Em3dCrystalEntity {
+export type Em3dCrystalEntity = {
   __typename?: 'Em3dCrystalEntity';
   /** Unit-cell angle alpha in degrees. */
   angle_alpha?: Maybe<Scalars['Float']>;
@@ -1288,9 +1288,9 @@ export interface Em3dCrystalEntity {
   space_group_name?: Maybe<Scalars['String']>;
   /** Space group number. */
   space_group_num?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface Em3dFitting {
+export type Em3dFitting = {
   __typename?: 'Em3dFitting';
   /**
    * Any additional details regarding fitting of atomic coordinates into
@@ -1337,9 +1337,9 @@ export interface Em3dFitting {
    * Cross-correlation coefficient
    */
   target_criteria?: Maybe<Scalars['String']>;
-}
+};
 
-export interface Em3dFittingList {
+export type Em3dFittingList = {
   __typename?: 'Em3dFittingList';
   /**
    * The value of _em_3d_fitting_list.3d_fitting_id is a pointer
@@ -1365,9 +1365,9 @@ export interface Em3dFittingList {
    * PDB entry 1EHZ
    */
   pdb_entry_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface Em3dReconstruction {
+export type Em3dReconstruction = {
   __typename?: 'Em3dReconstruction';
   /**
    * The actual pixel size of projection set of images.
@@ -1454,9 +1454,9 @@ export interface Em3dReconstruction {
    * 2D CRYSTAL, 3D CRYSTAL, HELICAL, POINT
    */
   symmetry_type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmCtfCorrection {
+export type EmCtfCorrection = {
   __typename?: 'EmCtfCorrection';
   /**
    * Any additional details about CTF correction
@@ -1471,9 +1471,9 @@ export interface EmCtfCorrection {
   id: Scalars['String'];
   /** Type of CTF correction applied */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmDiffraction {
+export type EmDiffraction = {
   __typename?: 'EmDiffraction';
   /** TODO */
   camera_length?: Maybe<Scalars['Float']>;
@@ -1488,9 +1488,9 @@ export interface EmDiffraction {
    * 20,40,50,55
    */
   tilt_angle_list?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmDiffractionShell {
+export type EmDiffractionShell = {
   __typename?: 'EmDiffractionShell';
   /** Pointer to EM CRYSTALLOGRAPHY STATS */
   em_diffraction_stats_id?: Maybe<Scalars['String']>;
@@ -1533,9 +1533,9 @@ export interface EmDiffractionShell {
    * null
    */
   phase_residual?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface EmDiffractionStats {
+export type EmDiffractionStats = {
   __typename?: 'EmDiffractionStats';
   /**
    * Any addition details about the structure factor measurements
@@ -1602,9 +1602,9 @@ export interface EmDiffractionStats {
    * null
    */
   r_sym?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface EmEmbedding {
+export type EmEmbedding = {
   __typename?: 'EmEmbedding';
   /**
    * Staining procedure used in the specimen preparation.
@@ -1627,9 +1627,9 @@ export interface EmEmbedding {
   material?: Maybe<Scalars['String']>;
   /** Foreign key relationship to the EMD SPECIMEN category */
   specimen_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmEntityAssembly {
+export type EmEntityAssembly = {
   __typename?: 'EmEntityAssembly';
   /**
    * Additional details about the component.
@@ -1682,9 +1682,9 @@ export interface EmEntityAssembly {
    *  assembly of the biological structure.
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmExperiment {
+export type EmExperiment = {
   __typename?: 'EmExperiment';
   /**
    * The aggregation/assembly state of the imaged specimen.
@@ -1704,9 +1704,9 @@ export interface EmExperiment {
    * CRYSTALLOGRAPHY, HELICAL, SINGLE PARTICLE, SUBTOMOGRAM AVERAGING, TOMOGRAPHY
    */
   reconstruction_method?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmHelicalEntity {
+export type EmHelicalEntity = {
   __typename?: 'EmHelicalEntity';
   /**
    * The angular rotation per helical subunit in degrees.
@@ -1747,9 +1747,9 @@ export interface EmHelicalEntity {
    *  This data item is a pointer to _em_image_processing.id.
    */
   image_processing_id: Scalars['String'];
-}
+};
 
-export interface EmImageRecording {
+export type EmImageRecording = {
   __typename?: 'EmImageRecording';
   /**
    * The average exposure time for each image.
@@ -1797,9 +1797,9 @@ export interface EmImageRecording {
   num_grids_imaged?: Maybe<Scalars['Int']>;
   /** The number of micrograph images collected. */
   num_real_images?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface EmImaging {
+export type EmImaging = {
   __typename?: 'EmImaging';
   /** A value of accelerating voltage (in kV) used for imaging. */
   accelerating_voltage?: Maybe<Scalars['Int']>;
@@ -1955,9 +1955,9 @@ export interface EmImaging {
    *  recorded images.
    */
   tilt_angle_min?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface EmParticleSelection {
+export type EmParticleSelection = {
   __typename?: 'EmParticleSelection';
   /**
    * Any additional details used for selecting particles
@@ -1975,9 +1975,9 @@ export interface EmParticleSelection {
   image_processing_id: Scalars['String'];
   /** The number of particles selected from the projection set of images. */
   num_particles_selected?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface EmSingleParticleEntity {
+export type EmSingleParticleEntity = {
   __typename?: 'EmSingleParticleEntity';
   /** Unique category label. */
   id: Scalars['Int'];
@@ -1990,9 +1990,9 @@ export interface EmSingleParticleEntity {
    * C1, C5, C4
    */
   point_symmetry?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmSoftware {
+export type EmSoftware = {
   __typename?: 'EmSoftware';
   /**
    * The purpose of the software.
@@ -2031,9 +2031,9 @@ export interface EmSoftware {
    * 9.03, 2.1
    */
   version?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmSpecimen {
+export type EmSpecimen = {
   __typename?: 'EmSpecimen';
   /**
    * The concentration (in milligrams per milliliter, mg/ml)
@@ -2085,9 +2085,9 @@ export interface EmSpecimen {
    * NO, YES
    */
   vitrification_applied?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmStaining {
+export type EmStaining = {
   __typename?: 'EmStaining';
   /**
    * Staining procedure used in the specimen preparation.
@@ -2115,9 +2115,9 @@ export interface EmStaining {
    * NEGATIVE, NONE, POSITIVE
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EmVitrification {
+export type EmVitrification = {
   __typename?: 'EmVitrification';
   /** The temperature (in degrees Kelvin) of the sample just prior to vitrification. */
   chamber_temperature?: Maybe<Scalars['Float']>;
@@ -2171,9 +2171,9 @@ export interface EmVitrification {
    * plunge 30 msec after spraying with effector
    */
   time_resolved_state?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EntityPoly {
+export type EntityPoly = {
   __typename?: 'EntityPoly';
   /**
    * A flag to indicate whether the polymer contains at least
@@ -2309,9 +2309,9 @@ export interface EntityPoly {
    * cyclic-pseudo-peptide, other, peptide nucleic acid, polydeoxyribonucleotide, polydeoxyribonucleotide/polyribonucleotide hybrid, polypeptide(D), polypeptide(L), polyribonucleotide
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EntitySrcGen {
+export type EntitySrcGen = {
   __typename?: 'EntitySrcGen';
   /**
    * A unique identifier for the expression system. This
@@ -2679,9 +2679,9 @@ export interface EntitySrcGen {
    * pET3C, pT123sab
    */
   plasmid_name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface EntitySrcNat {
+export type EntitySrcNat = {
   __typename?: 'EntitySrcNat';
   /**
    * The common name of the organism from which the entity
@@ -2839,9 +2839,9 @@ export interface EntitySrcNat {
    * mitochondria, nucleus, membrane
    */
   tissue_fraction?: Maybe<Scalars['String']>;
-}
+};
 
-export interface Entry {
+export type Entry = {
   __typename?: 'Entry';
   /**
    * The value of _entry.id identifies the data block.
@@ -2850,9 +2850,9 @@ export interface Entry {
    *  identifier.
    */
   id: Scalars['String'];
-}
+};
 
-export interface Exptl {
+export type Exptl = {
   __typename?: 'Exptl';
   /**
    * The total number of crystals used in the  measurement of
@@ -2878,9 +2878,9 @@ export interface Exptl {
    * 29 structures, minimized average structure
    */
   method_details?: Maybe<Scalars['String']>;
-}
+};
 
-export interface ExptlCrystal {
+export type ExptlCrystal = {
   __typename?: 'ExptlCrystal';
   /**
    * The colour of the crystal.
@@ -2958,9 +2958,9 @@ export interface ExptlCrystal {
    * mounted in an argon-filled quartz capillary
    */
   preparation?: Maybe<Scalars['String']>;
-}
+};
 
-export interface ExptlCrystalGrow {
+export type ExptlCrystalGrow = {
   __typename?: 'ExptlCrystalGrow';
   /**
    * This data item is a pointer to _exptl_crystal.id in the
@@ -3031,16 +3031,16 @@ export interface ExptlCrystalGrow {
    *  crystal growth.
    */
   temp_details?: Maybe<Scalars['String']>;
-}
+};
 
-export interface GeneName {
+export type GeneName = {
   __typename?: 'GeneName';
   /** Allowable values: PRIMARY, SYNONYM, ORDERED_LOCUS, ORF. */
   type?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
-}
+};
 
-export interface GroupMembersAlignmentAlignedRegions {
+export type GroupMembersAlignmentAlignedRegions = {
   __typename?: 'GroupMembersAlignmentAlignedRegions';
   /** An identifier for the monomer in the entity sequence at which this segment of the alignment begins */
   entity_beg_seq_id: Scalars['Int'];
@@ -3048,10 +3048,10 @@ export interface GroupMembersAlignmentAlignedRegions {
   length: Scalars['Int'];
   /** An identifier for the monomer in the reference sequence at which this segment of the alignment begins */
   ref_beg_seq_id: Scalars['Int'];
-}
+};
 
 
-export interface PdbxAuditRevisionCategory {
+export type PdbxAuditRevisionCategory = {
   __typename?: 'PdbxAuditRevisionCategory';
   /**
    * The category updated in the pdbx_audit_revision_category record.
@@ -3071,9 +3071,9 @@ export interface PdbxAuditRevisionCategory {
   ordinal: Scalars['Int'];
   /** A pointer to  _pdbx_audit_revision_history.ordinal */
   revision_ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxAuditRevisionDetails {
+export type PdbxAuditRevisionDetails = {
   __typename?: 'PdbxAuditRevisionDetails';
   /**
    * The type of file that the pdbx_audit_revision_history record refers to.
@@ -3104,9 +3104,9 @@ export interface PdbxAuditRevisionDetails {
    * Coordinate replacement, Initial release, Obsolete, Remediation
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxAuditRevisionGroup {
+export type PdbxAuditRevisionGroup = {
   __typename?: 'PdbxAuditRevisionGroup';
   /**
    * The type of file that the pdbx_audit_revision_history record refers to.
@@ -3126,9 +3126,9 @@ export interface PdbxAuditRevisionGroup {
   ordinal: Scalars['Int'];
   /** A pointer to  _pdbx_audit_revision_history.ordinal */
   revision_ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxAuditRevisionHistory {
+export type PdbxAuditRevisionHistory = {
   __typename?: 'PdbxAuditRevisionHistory';
   /**
    * The type of file that the pdbx_audit_revision_history record refers to.
@@ -3150,9 +3150,9 @@ export interface PdbxAuditRevisionHistory {
    * 2017-03-08
    */
   revision_date?: Maybe<Scalars['Date']>;
-}
+};
 
-export interface PdbxAuditRevisionItem {
+export type PdbxAuditRevisionItem = {
   __typename?: 'PdbxAuditRevisionItem';
   /**
    * The type of file that the pdbx_audit_revision_history record refers to.
@@ -3172,9 +3172,9 @@ export interface PdbxAuditRevisionItem {
   ordinal: Scalars['Int'];
   /** A pointer to  _pdbx_audit_revision_history.ordinal */
   revision_ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxAuditSupport {
+export type PdbxAuditSupport = {
   __typename?: 'PdbxAuditSupport';
   /**
    * The country/region providing the funding support for the entry.
@@ -3194,9 +3194,9 @@ export interface PdbxAuditSupport {
   grant_number?: Maybe<Scalars['String']>;
   /** A unique sequential integer identifier for each source of support for this entry. */
   ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxChemCompAudit {
+export type PdbxChemCompAudit = {
   __typename?: 'PdbxChemCompAudit';
   /**
    * The action associated with this audit record.
@@ -3224,9 +3224,9 @@ export interface PdbxChemCompAudit {
    *  PDBX_CHEM_COMP_AUDIT category.
    */
   ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxChemCompDescriptor {
+export type PdbxChemCompDescriptor = {
   __typename?: 'PdbxChemCompDescriptor';
   /**
    * This data item is a pointer to _chem_comp.id in the CHEM_COMP
@@ -3258,9 +3258,9 @@ export interface PdbxChemCompDescriptor {
    * InChI, InChIKey, InChI_CHARGE, InChI_FIXEDH, InChI_ISOTOPE, InChI_MAIN, InChI_MAIN_CONNECT, InChI_MAIN_FORMULA, InChI_MAIN_HATOM, InChI_RECONNECT, InChI_STEREO, SMILES, SMILES_CANNONICAL, SMILES_CANONICAL
    */
   type: Scalars['String'];
-}
+};
 
-export interface PdbxChemCompFeature {
+export type PdbxChemCompFeature = {
   __typename?: 'PdbxChemCompFeature';
   /**
    * The component identifier for this feature.
@@ -3285,9 +3285,9 @@ export interface PdbxChemCompFeature {
   type: Scalars['String'];
   /** The component feature value. */
   value: Scalars['String'];
-}
+};
 
-export interface PdbxChemCompIdentifier {
+export type PdbxChemCompIdentifier = {
   __typename?: 'PdbxChemCompIdentifier';
   /**
    * This data item is a pointer to _chem_comp.id in the CHEM_COMP
@@ -3319,9 +3319,9 @@ export interface PdbxChemCompIdentifier {
    * CAS REGISTRY NUMBER, COMMON NAME, CONDENSED IUPAC CARB SYMBOL, CONDENSED IUPAC CARBOHYDRATE SYMBOL, IUPAC CARB SYMBOL, IUPAC CARBOHYDRATE SYMBOL, MDL Identifier, PUBCHEM Identifier, SNFG CARB SYMBOL, SNFG CARBOHYDRATE SYMBOL, SYNONYM, SYSTEMATIC NAME
    */
   type: Scalars['String'];
-}
+};
 
-export interface PdbxDatabasePdbObsSpr {
+export type PdbxDatabasePdbObsSpr = {
   __typename?: 'PdbxDatabasePDBObsSpr';
   /**
    * The date of replacement.
@@ -3353,9 +3353,9 @@ export interface PdbxDatabasePdbObsSpr {
    * 3ABC
    */
   replace_pdb_id: Scalars['String'];
-}
+};
 
-export interface PdbxDatabaseRelated {
+export type PdbxDatabaseRelated = {
   __typename?: 'PdbxDatabaseRelated';
   /**
    * The identifying content type of the related entry.
@@ -3391,9 +3391,9 @@ export interface PdbxDatabaseRelated {
    * 1ABC contains the same protein complexed with Netropsin.
    */
   details?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxDatabaseStatus {
+export type PdbxDatabaseStatus = {
   __typename?: 'PdbxDatabaseStatus';
   /**
    * This code indicates whether the entry belongs to
@@ -3471,9 +3471,9 @@ export interface PdbxDatabaseStatus {
    * AUTH, HOLD, HPUB, OBS, POLC, PROC, REL, REPL, RMVD, WAIT, WDRN
    */
   status_code_sf?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxDepositGroup {
+export type PdbxDepositGroup = {
   __typename?: 'PdbxDepositGroup';
   /** A description of the contents of entries in the collection. */
   group_description?: Maybe<Scalars['String']>;
@@ -3493,9 +3493,9 @@ export interface PdbxDepositGroup {
    * changed state, ground state, undefined
    */
   group_type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxEntityBranch {
+export type PdbxEntityBranch = {
   __typename?: 'PdbxEntityBranch';
   /** Number of constituent chemical components in the branched entity. */
   rcsb_branched_component_count?: Maybe<Scalars['Int']>;
@@ -3506,9 +3506,9 @@ export interface PdbxEntityBranch {
    * oligosaccharide
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxEntityBranchDescriptor {
+export type PdbxEntityBranchDescriptor = {
   __typename?: 'PdbxEntityBranchDescriptor';
   /**
    * This data item contains the descriptor value for this
@@ -3535,9 +3535,9 @@ export interface PdbxEntityBranchDescriptor {
    * Glycam Condensed Core Sequence, Glycam Condensed Sequence, LINUCS, WURCS
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxEntityNonpoly {
+export type PdbxEntityNonpoly = {
   __typename?: 'PdbxEntityNonpoly';
   /** This data item is a pointer to _chem_comp.id in the CHEM_COMP category. */
   comp_id?: Maybe<Scalars['String']>;
@@ -3547,9 +3547,9 @@ export interface PdbxEntityNonpoly {
   name?: Maybe<Scalars['String']>;
   /** For non-polymer BIRD molecules the BIRD identifier for the entity. */
   rcsb_prd_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxEntitySrcSyn {
+export type PdbxEntitySrcSyn = {
   __typename?: 'PdbxEntitySrcSyn';
   /**
    * A description of special aspects of the source for the
@@ -3614,9 +3614,9 @@ export interface PdbxEntitySrcSyn {
   pdbx_end_seq_num?: Maybe<Scalars['Int']>;
   /** This data item is an ordinal identifier for pdbx_entity_src_syn data records. */
   pdbx_src_id: Scalars['Int'];
-}
+};
 
-export interface PdbxFamilyPrdAudit {
+export type PdbxFamilyPrdAudit = {
   __typename?: 'PdbxFamilyPrdAudit';
   /**
    * The action associated with this audit record.
@@ -3653,9 +3653,9 @@ export interface PdbxFamilyPrdAudit {
    * RCSB, PDBE, PDBJ, BMRB, PDBC
    */
   processing_site?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxMoleculeFeatures {
+export type PdbxMoleculeFeatures = {
   __typename?: 'PdbxMoleculeFeatures';
   /**
    * Broadly defines the function of the molecule.
@@ -3685,9 +3685,9 @@ export interface PdbxMoleculeFeatures {
    * Amino acid, Aminoglycoside, Ansamycin, Anthracycline, Anthraquinone, Chalkophore, Chalkophore, Polypeptide, Chromophore, Cyclic depsipeptide, Cyclic lipopeptide, Cyclic peptide, Glycopeptide, Heterocyclic, Imino sugar, Keto acid, Lipoglycopeptide, Lipopeptide, Macrolide, Non-polymer, Nucleoside, Oligopeptide, Oligosaccharide, Peptaibol, Peptide-like, Polycyclic, Polypeptide, Polysaccharide, Quinolone, Siderophore, Thiolactone, Thiopeptide, Unknown
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrDetails {
+export type PdbxNmrDetails = {
   __typename?: 'PdbxNmrDetails';
   /**
    * Additional details describing the NMR experiment.
@@ -3696,9 +3696,9 @@ export interface PdbxNmrDetails {
    * This structure was determined using standard 2D homonuclear techniques., The structure was determined using triple-resonance NMR spectroscopy.
    */
   text?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrEnsemble {
+export type PdbxNmrEnsemble = {
   __typename?: 'PdbxNmrEnsemble';
   /**
    * The average number of constraint violations on a per residue basis for
@@ -3785,9 +3785,9 @@ export interface PdbxNmrEnsemble {
    * Statistics were calculated over all the torsion angle constraints., Statistics were calculated for torsion angle constraints violations only.
    */
   torsion_angle_constraint_violation_method?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrExptl {
+export type PdbxNmrExptl = {
   __typename?: 'PdbxNmrExptl';
   /**
    * The number to identify the set of sample conditions.
@@ -3830,9 +3830,9 @@ export interface PdbxNmrExptl {
    * 2D NOESY, 3D_15N-separated_NOESY, 3D_13C-separated_NOESY, 4D_13C-separated_NOESY, 4D_13C/15N-separated_NOESY, 3D_15N-separated_ROESY, 3D_13C-separated_ROESY, HNCA-J, HNHA, DQF-COSY, P-COSY, PE-COSY, E-COSY
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrExptlSampleConditions {
+export type PdbxNmrExptlSampleConditions = {
   __typename?: 'PdbxNmrExptlSampleConditions';
   /**
    * The condition number as defined above.
@@ -3936,9 +3936,9 @@ export interface PdbxNmrExptlSampleConditions {
    * C, K, Not defined
    */
   temperature_units?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrRefine {
+export type PdbxNmrRefine = {
   __typename?: 'PdbxNmrRefine';
   /**
    * Additional details about the NMR refinement.
@@ -3963,9 +3963,9 @@ export interface PdbxNmrRefine {
   method?: Maybe<Scalars['String']>;
   /** Pointer to _software.ordinal */
   software_ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxNmrRepresentative {
+export type PdbxNmrRepresentative = {
   __typename?: 'PdbxNmrRepresentative';
   /**
    * If a member of the ensemble has been selected as a representative
@@ -3987,9 +3987,9 @@ export interface PdbxNmrRepresentative {
    * A minimized average structure was calculated.
    */
   selection_criteria?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrSampleDetails {
+export type PdbxNmrSampleDetails = {
   __typename?: 'PdbxNmrSampleDetails';
   /**
    * A complete description of each NMR sample. Include the concentration
@@ -4047,9 +4047,9 @@ export interface PdbxNmrSampleDetails {
    * bicelle, emulsion, fiber, fibrous protein, filamentous virus, gel solid, gel solution, liposome, lyophilized powder, membrane, micelle, oriented membrane film, polycrystalline powder, reverse micelle, single crystal, solid, solution
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrSoftware {
+export type PdbxNmrSoftware = {
   __typename?: 'PdbxNmrSoftware';
   /**
    * The name of the authors of the software used in this
@@ -4082,9 +4082,9 @@ export interface PdbxNmrSoftware {
    * 940501.3, 2.1
    */
   version?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxNmrSpectrometer {
+export type PdbxNmrSpectrometer = {
   __typename?: 'PdbxNmrSpectrometer';
   /** A text description of the NMR spectrometer. */
   details?: Maybe<Scalars['String']>;
@@ -4119,9 +4119,9 @@ export interface PdbxNmrSpectrometer {
    * Bruker WH, Bruker WM, Bruker AM, Bruker AMX, Bruker DMX, Bruker DRX, Bruker MSL, Bruker AVANCE, GE Omega, GE Omega PSG, JEOL GX, JEOL GSX, JEOL A, JEOL AL, JEOL EC, JEOL EX, JEOL LA, JEOL ECP, Varian VXRS, Varian UNITY, Varian UNITYplus, Varian INOVA, other
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxPrdAudit {
+export type PdbxPrdAudit = {
   __typename?: 'PdbxPrdAudit';
   /**
    * The action associated with this audit record.
@@ -4158,9 +4158,9 @@ export interface PdbxPrdAudit {
    * BMRB, PDBC, PDBJ, PDBe, RCSB
    */
   processing_site?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceEntityList {
+export type PdbxReferenceEntityList = {
   __typename?: 'PdbxReferenceEntityList';
   /** The component number of this entity within the molecule. */
   component_id: Scalars['Int'];
@@ -4183,9 +4183,9 @@ export interface PdbxReferenceEntityList {
    * branched, non-polymer, polymer, polymer-like
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceEntityPoly {
+export type PdbxReferenceEntityPoly = {
   __typename?: 'PdbxReferenceEntityPoly';
   /** The database code for this source information */
   db_code?: Maybe<Scalars['String']>;
@@ -4208,9 +4208,9 @@ export interface PdbxReferenceEntityPoly {
    * nucleic-acid-like, oligosaccharide, peptide-like, polysaccharide-like
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceEntityPolyLink {
+export type PdbxReferenceEntityPolyLink = {
   __typename?: 'PdbxReferenceEntityPolyLink';
   /**
    * The atom identifier/name in the first of the two components making
@@ -4280,9 +4280,9 @@ export interface PdbxReferenceEntityPolyLink {
    * arom, delo, doub, pi, poly, quad, sing, trip
    */
   value_order?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceEntityPolySeq {
+export type PdbxReferenceEntityPolySeq = {
   __typename?: 'PdbxReferenceEntityPolySeq';
   /**
    * A flag to indicate that sequence heterogeneity at this monomer position.
@@ -4320,9 +4320,9 @@ export interface PdbxReferenceEntityPolySeq {
    *  to _pdbx_reference_entity_poly.ref_entity_id in PDBX_REFERENCE_ENTITY_POLY category.
    */
   ref_entity_id: Scalars['String'];
-}
+};
 
-export interface PdbxReferenceEntitySequence {
+export type PdbxReferenceEntitySequence = {
   __typename?: 'PdbxReferenceEntitySequence';
   /**
    * A flag to indicate a non-ribosomal entity.
@@ -4350,9 +4350,9 @@ export interface PdbxReferenceEntitySequence {
    * peptide-like, saccharide
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceEntitySrcNat {
+export type PdbxReferenceEntitySrcNat = {
   __typename?: 'PdbxReferenceEntitySrcNat';
   /** The Americal Tissue Culture Collection code for organism from which the entity was isolated. */
   atcc?: Maybe<Scalars['String']>;
@@ -4388,9 +4388,9 @@ export interface PdbxReferenceEntitySrcNat {
   source_id?: Maybe<Scalars['String']>;
   /** The NCBI TaxId of the organism from which the entity was isolated. */
   taxid?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceMolecule {
+export type PdbxReferenceMolecule = {
   __typename?: 'PdbxReferenceMolecule';
   /**
    * For entities represented as single molecules, the identifier
@@ -4491,9 +4491,9 @@ export interface PdbxReferenceMolecule {
   type?: Maybe<Scalars['String']>;
   /** Evidence for the assignment of _pdbx_reference_molecule.type */
   type_evidence_code?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceMoleculeAnnotation {
+export type PdbxReferenceMoleculeAnnotation = {
   __typename?: 'PdbxReferenceMoleculeAnnotation';
   /**
    * The value of _pdbx_reference_molecule_annotation.family_prd_id is a reference to
@@ -4528,9 +4528,9 @@ export interface PdbxReferenceMoleculeAnnotation {
    * Function, Use, Pharmacology, Mechanism_of_Action, Biological_Activity, Inhibitor_Class, Therapeutic_Category, Research_Use, Other_annotation
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceMoleculeDetails {
+export type PdbxReferenceMoleculeDetails = {
   __typename?: 'PdbxReferenceMoleculeDetails';
   /**
    * The value of _pdbx_reference_molecule_details.family_prd_id is a reference to
@@ -4548,9 +4548,9 @@ export interface PdbxReferenceMoleculeDetails {
   source_id?: Maybe<Scalars['String']>;
   /** The text of the description of special aspects of the entity. */
   text?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceMoleculeFamily {
+export type PdbxReferenceMoleculeFamily = {
   __typename?: 'PdbxReferenceMoleculeFamily';
   /**
    * The value of _pdbx_reference_entity.family_prd_id must uniquely identify a record in the
@@ -4583,9 +4583,9 @@ export interface PdbxReferenceMoleculeFamily {
    *  Multiple family identifier codes should be separated by commas.
    */
   replaces?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceMoleculeFeatures {
+export type PdbxReferenceMoleculeFeatures = {
   __typename?: 'PdbxReferenceMoleculeFeatures';
   /**
    * The value of _pdbx_reference_molecule_features.family_prd_id is a reference to
@@ -4623,9 +4623,9 @@ export interface PdbxReferenceMoleculeFeatures {
   type?: Maybe<Scalars['String']>;
   /** The entity feature value. */
   value?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxReferenceMoleculeList {
+export type PdbxReferenceMoleculeList = {
   __typename?: 'PdbxReferenceMoleculeList';
   /**
    * The value of _pdbx_reference_molecule_list.family_prd_id is a reference to
@@ -4642,9 +4642,9 @@ export interface PdbxReferenceMoleculeList {
    *  The ID has the template form PRD_dddddd (e.g. PRD_000001)
    */
   prd_id: Scalars['String'];
-}
+};
 
-export interface PdbxReferenceMoleculeRelatedStructures {
+export type PdbxReferenceMoleculeRelatedStructures = {
   __typename?: 'PdbxReferenceMoleculeRelatedStructures';
   /** A link to related reference information in the citation category. */
   citation_id?: Maybe<Scalars['String']>;
@@ -4709,9 +4709,9 @@ export interface PdbxReferenceMoleculeRelatedStructures {
    *  related structural data for each entity.
    */
   ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxReferenceMoleculeSynonyms {
+export type PdbxReferenceMoleculeSynonyms = {
   __typename?: 'PdbxReferenceMoleculeSynonyms';
   /**
    * The value of _pdbx_reference_molecule_synonyms.family_prd_id is a reference to
@@ -4742,9 +4742,9 @@ export interface PdbxReferenceMoleculeSynonyms {
    * CAS
    */
   source?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxRelatedExpDataSet {
+export type PdbxRelatedExpDataSet = {
   __typename?: 'PdbxRelatedExpDataSet';
   /**
    * A DOI reference to the related data set.
@@ -4772,9 +4772,9 @@ export interface PdbxRelatedExpDataSet {
    * 10.000/10002/image_data/txt
    */
   metadata_reference?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxSgProject {
+export type PdbxSgProject = {
   __typename?: 'PdbxSGProject';
   /**
    * The value identifies the full name of center.
@@ -4804,9 +4804,9 @@ export interface PdbxSgProject {
    * Enzyme Function Initiative, NIAID, National Institute of Allergy and Infectious Diseases, NPPSFA, National Project on Protein Structural and Functional Analyses, PSI, Protein Structure Initiative, PSI:Biology
    */
   project_name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxSerialCrystallographyDataReduction {
+export type PdbxSerialCrystallographyDataReduction = {
   __typename?: 'PdbxSerialCrystallographyDataReduction';
   /**
    * For experiments in which samples are provided in a
@@ -4864,9 +4864,9 @@ export interface PdbxSerialCrystallographyDataReduction {
    *                were used in producing this dataset.
    */
   xfel_run_numbers?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxSerialCrystallographyMeasurement {
+export type PdbxSerialCrystallographyMeasurement = {
   __typename?: 'PdbxSerialCrystallographyMeasurement';
   /**
    * The total number of hours required to measure this data set.
@@ -4912,9 +4912,9 @@ export interface PdbxSerialCrystallographyMeasurement {
   source_size?: Maybe<Scalars['Float']>;
   /** For FEL experiments, the pulse repetition rate measured in cycles per seconds. */
   xfel_pulse_repetition_rate?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface PdbxSerialCrystallographySampleDelivery {
+export type PdbxSerialCrystallographySampleDelivery = {
   __typename?: 'PdbxSerialCrystallographySampleDelivery';
   /**
    * The description of the mechanism by which the specimen in placed in the path
@@ -4940,9 +4940,9 @@ export interface PdbxSerialCrystallographySampleDelivery {
    * fixed target, injection
    */
   method?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxSerialCrystallographySampleDeliveryFixedTarget {
+export type PdbxSerialCrystallographySampleDeliveryFixedTarget = {
   __typename?: 'PdbxSerialCrystallographySampleDeliveryFixedTarget';
   /** The number of crystals per dropplet or pore in fixed target */
   crystals_per_unit?: Maybe<Scalars['Int']>;
@@ -4997,9 +4997,9 @@ export interface PdbxSerialCrystallographySampleDeliveryFixedTarget {
   velocity_horizontal?: Maybe<Scalars['Float']>;
   /** Velocity of sample vertically relative to a perpendicular beam in millimetres/second */
   velocity_vertical?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface PdbxSerialCrystallographySampleDeliveryInjection {
+export type PdbxSerialCrystallographySampleDeliveryInjection = {
   __typename?: 'PdbxSerialCrystallographySampleDeliveryInjection';
   /**
    * For continuous sample flow experiments, the carrier buffer used
@@ -5079,9 +5079,9 @@ export interface PdbxSerialCrystallographySampleDeliveryInjection {
    * Crystals transfered to carrier solvent at room temperature
    */
   preparation?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxSolnScatter {
+export type PdbxSolnScatter = {
   __typename?: 'PdbxSolnScatter';
   /**
    * The name of the buffer used for the sample in the solution scattering
@@ -5401,9 +5401,9 @@ export interface PdbxSolnScatter {
    * modelling, neutron, x-ray
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxSolnScatterModel {
+export type PdbxSolnScatterModel = {
   __typename?: 'PdbxSolnScatterModel';
   /**
    * A description of the conformer selection criteria
@@ -5483,9 +5483,9 @@ export interface PdbxSolnScatterModel {
    * INSIGHT II, HOMOLOGY, DISCOVERY, BIOPOLYMER, DELPHI
    */
   software_list?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxStructAssembly {
+export type PdbxStructAssembly = {
   __typename?: 'PdbxStructAssembly';
   /**
    * A description of special aspects of the macromolecular assembly.
@@ -5535,9 +5535,9 @@ export interface PdbxStructAssembly {
    * author_and_software_defined_assembly, author_defined_assembly, software_defined_assembly
    */
   rcsb_details?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxStructAssemblyAuthEvidence {
+export type PdbxStructAssemblyAuthEvidence = {
   __typename?: 'PdbxStructAssemblyAuthEvidence';
   /** This item references an assembly in pdbx_struct_assembly */
   assembly_id: Scalars['String'];
@@ -5557,9 +5557,9 @@ export interface PdbxStructAssemblyAuthEvidence {
   experimental_support?: Maybe<Scalars['String']>;
   /** Identifies a unique record in pdbx_struct_assembly_auth_evidence. */
   id: Scalars['String'];
-}
+};
 
-export interface PdbxStructAssemblyGen {
+export type PdbxStructAssemblyGen = {
   __typename?: 'PdbxStructAssemblyGen';
   /**
    * This data item is a pointer to _pdbx_struct_assembly.id in the
@@ -5596,9 +5596,9 @@ export interface PdbxStructAssemblyGen {
    *  PDBX_STRUCT_ASSEMBLY category.
    */
   ordinal: Scalars['Int'];
-}
+};
 
-export interface PdbxStructAssemblyProp {
+export type PdbxStructAssemblyProp = {
   __typename?: 'PdbxStructAssemblyProp';
   /** The identifier for the assembly used in category PDBX_STRUCT_ASSEMBLY. */
   assembly_id?: Maybe<Scalars['String']>;
@@ -5613,9 +5613,9 @@ export interface PdbxStructAssemblyProp {
   type: Scalars['String'];
   /** The value of the assembly property. */
   value?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxStructOperList {
+export type PdbxStructOperList = {
   __typename?: 'PdbxStructOperList';
   /**
    * This identifier code must uniquely identify a
@@ -5703,9 +5703,9 @@ export interface PdbxStructOperList {
    *  transformation operation.
    */
   vector_3?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface PdbxStructSpecialSymmetry {
+export type PdbxStructSpecialSymmetry = {
   __typename?: 'PdbxStructSpecialSymmetry';
   /**
    * Part of the identifier for the molecular component.
@@ -5742,9 +5742,9 @@ export interface PdbxStructSpecialSymmetry {
    *  ATOM_SITE category.
    */
   label_comp_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface PdbxVrptSummary {
+export type PdbxVrptSummary = {
   __typename?: 'PdbxVrptSummary';
   /**
    * String for B_factor_type either "PARTIAL" or "FULL".
@@ -6457,10 +6457,10 @@ export interface PdbxVrptSummary {
    * Example            X-ray entry specific, calculated by Phenix Xtriage program.
    */
   xtriage_input_columns?: Maybe<Scalars['String']>;
-}
+};
 
 /** Query root */
-export interface Query {
+export type Query = {
   __typename?: 'Query';
   /** Get a PDB polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instance?: Maybe<CorePolymerEntityInstance>;
@@ -6504,151 +6504,151 @@ export interface Query {
   nonpolymer_entity_instances?: Maybe<Array<Maybe<CoreNonpolymerEntityInstance>>>;
   /** Get a PDB non-polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   nonpolymer_entity?: Maybe<CoreNonpolymerEntity>;
-}
+};
 
 
 /** Query root */
-export interface QueryPolymer_Entity_InstanceArgs {
+export type QueryPolymer_Entity_InstanceArgs = {
   asym_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryChem_CompsArgs {
+export type QueryChem_CompsArgs = {
   comp_ids: Array<Maybe<Scalars['String']>>;
-}
+};
 
 
 /** Query root */
-export interface QueryNonpolymer_EntitiesArgs {
+export type QueryNonpolymer_EntitiesArgs = {
   entity_ids: Array<Scalars['String']>;
-}
+};
 
 
 /** Query root */
-export interface QueryPolymer_EntitiesArgs {
+export type QueryPolymer_EntitiesArgs = {
   entity_ids: Array<Scalars['String']>;
-}
+};
 
 
 /** Query root */
-export interface QueryPolymer_EntityArgs {
+export type QueryPolymer_EntityArgs = {
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryPubmedArgs {
+export type QueryPubmedArgs = {
   pubmed_id: Scalars['Int'];
-}
+};
 
 
 /** Query root */
-export interface QueryAssemblyArgs {
+export type QueryAssemblyArgs = {
   assembly_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryBranched_Entity_InstancesArgs {
+export type QueryBranched_Entity_InstancesArgs = {
   instance_ids: Array<Maybe<Scalars['String']>>;
-}
+};
 
 
 /** Query root */
-export interface QueryUniprot_Entity_GroupArgs {
+export type QueryUniprot_Entity_GroupArgs = {
   group_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryPolymer_Entity_InstancesArgs {
+export type QueryPolymer_Entity_InstancesArgs = {
   instance_ids: Array<Maybe<Scalars['String']>>;
-}
+};
 
 
 /** Query root */
-export interface QueryAssembliesArgs {
+export type QueryAssembliesArgs = {
   assembly_ids: Array<Maybe<Scalars['String']>>;
-}
+};
 
 
 /** Query root */
-export interface QueryBranched_EntityArgs {
+export type QueryBranched_EntityArgs = {
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryBranched_Entity_InstanceArgs {
+export type QueryBranched_Entity_InstanceArgs = {
   asym_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryNonpolymer_Entity_InstanceArgs {
+export type QueryNonpolymer_Entity_InstanceArgs = {
   asym_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryChem_CompArgs {
+export type QueryChem_CompArgs = {
   comp_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryEntryArgs {
+export type QueryEntryArgs = {
   entry_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryEntriesArgs {
+export type QueryEntriesArgs = {
   entry_ids: Array<Scalars['String']>;
-}
+};
 
 
 /** Query root */
-export interface QueryBranched_EntitiesArgs {
+export type QueryBranched_EntitiesArgs = {
   entity_ids: Array<Scalars['String']>;
-}
+};
 
 
 /** Query root */
-export interface QueryUniprotArgs {
+export type QueryUniprotArgs = {
   uniprot_id: Scalars['String'];
-}
+};
 
 
 /** Query root */
-export interface QueryNonpolymer_Entity_InstancesArgs {
+export type QueryNonpolymer_Entity_InstancesArgs = {
   instance_ids: Array<Maybe<Scalars['String']>>;
-}
+};
 
 
 /** Query root */
-export interface QueryNonpolymer_EntityArgs {
+export type QueryNonpolymer_EntityArgs = {
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
+};
 
-export interface RankingOptionsGroupMembers {
+export type RankingOptionsGroupMembers = {
   __typename?: 'RankingOptionsGroupMembers';
   member_id: Scalars['String'];
   /** Quantifies the criteria used for ranking */
   original_score?: Maybe<Scalars['Float']>;
   /** Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second */
   rank: Scalars['Int'];
-}
+};
 
-export interface RcsbAccessionInfo {
+export type RcsbAccessionInfo = {
   __typename?: 'RcsbAccessionInfo';
   /**
    * The entry deposition date.
@@ -6689,9 +6689,9 @@ export interface RcsbAccessionInfo {
    * AUCO, AUTH, HOLD, HPUB', POLC, PROC, REFI, REL, REPL, WAIT, WDRN
    */
   status_code?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbAssemblyContainerIdentifiers {
+export type RcsbAssemblyContainerIdentifiers = {
   __typename?: 'RcsbAssemblyContainerIdentifiers';
   /**
    * Assembly identifier for the container.
@@ -6710,9 +6710,9 @@ export interface RcsbAssemblyContainerIdentifiers {
    * 1KIP-1
    */
   rcsb_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbAssemblyInfo {
+export type RcsbAssemblyInfo = {
   __typename?: 'RcsbAssemblyInfo';
   /** Entity identifier for the container. */
   assembly_id?: Maybe<Scalars['String']>;
@@ -6837,9 +6837,9 @@ export interface RcsbAssemblyInfo {
    *  entity instances in the generated assembly coordinate data.
    */
   unmodeled_polymer_monomer_count?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbBindingAffinity {
+export type RcsbBindingAffinity = {
   __typename?: 'RcsbBindingAffinity';
   /**
    * Ligand identifier.
@@ -6887,9 +6887,9 @@ export interface RcsbBindingAffinity {
   unit: Scalars['String'];
   /** Binding affinity value between a ligand and its target molecule. */
   value: Scalars['Float'];
-}
+};
 
-export interface RcsbBirdCitation {
+export type RcsbBirdCitation = {
   __typename?: 'RcsbBirdCitation';
   /**
    * The value of _rcsb_bird_citation.id must uniquely identify a record in the
@@ -6960,9 +6960,9 @@ export interface RcsbBirdCitation {
    *  and book chapters.
    */
   year?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbBranchedEntity {
+export type RcsbBranchedEntity = {
   __typename?: 'RcsbBranchedEntity';
   /** A description of special aspects of the branched entity. */
   details?: Maybe<Scalars['String']>;
@@ -6982,9 +6982,9 @@ export interface RcsbBranchedEntity {
   pdbx_description?: Maybe<Scalars['String']>;
   /** The number of molecules of the branched entity in the entry. */
   pdbx_number_of_molecules?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbBranchedEntityAnnotation {
+export type RcsbBranchedEntityAnnotation = {
   __typename?: 'RcsbBranchedEntityAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -7010,9 +7010,9 @@ export interface RcsbBranchedEntityAnnotation {
   provenance_source?: Maybe<Scalars['String']>;
   /** A type or category of the annotation. */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityAnnotationAnnotationLineage {
+export type RcsbBranchedEntityAnnotationAnnotationLineage = {
   __typename?: 'RcsbBranchedEntityAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -7020,9 +7020,9 @@ export interface RcsbBranchedEntityAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityContainerIdentifiers {
+export type RcsbBranchedEntityContainerIdentifiers = {
   __typename?: 'RcsbBranchedEntityContainerIdentifiers';
   /** Instance identifiers corresponding to copies of the entity in this container. */
   asym_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -7067,9 +7067,9 @@ export interface RcsbBranchedEntityContainerIdentifiers {
    */
   rcsb_id?: Maybe<Scalars['String']>;
   reference_identifiers?: Maybe<Array<Maybe<RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers>>>;
-}
+};
 
-export interface RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers {
+export type RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers = {
   __typename?: 'RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers';
   /**
    * Source of the reference resource assignment
@@ -7092,9 +7092,9 @@ export interface RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers {
    * GlyCosmos, GlyGen, GlyTouCan
    */
   resource_name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityFeature {
+export type RcsbBranchedEntityFeature = {
   __typename?: 'RcsbBranchedEntityFeature';
   additional_properties?: Maybe<Array<Maybe<RcsbBranchedEntityFeatureAdditionalProperties>>>;
   /**
@@ -7133,17 +7133,17 @@ export interface RcsbBranchedEntityFeature {
    * mutation
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityFeatureAdditionalProperties {
+export type RcsbBranchedEntityFeatureAdditionalProperties = {
   __typename?: 'RcsbBranchedEntityFeatureAdditionalProperties';
   /** The additional property name. */
   name?: Maybe<Scalars['String']>;
   /** 2.54, 300 */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
-}
+};
 
-export interface RcsbBranchedEntityFeatureFeaturePositions {
+export type RcsbBranchedEntityFeatureFeaturePositions = {
   __typename?: 'RcsbBranchedEntityFeatureFeaturePositions';
   /**
    * An identifier for the leading monomer corresponding to the feature assignment.
@@ -7163,9 +7163,9 @@ export interface RcsbBranchedEntityFeatureFeaturePositions {
    * null, null
    */
   value?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbBranchedEntityFeatureSummary {
+export type RcsbBranchedEntityFeatureSummary = {
   __typename?: 'RcsbBranchedEntityFeatureSummary';
   /** The feature count. */
   count?: Maybe<Scalars['Int']>;
@@ -7201,9 +7201,9 @@ export interface RcsbBranchedEntityFeatureSummary {
    * mutation
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityInstanceContainerIdentifiers {
+export type RcsbBranchedEntityInstanceContainerIdentifiers = {
   __typename?: 'RcsbBranchedEntityInstanceContainerIdentifiers';
   /** Instance identifier for this container. */
   asym_id: Scalars['String'];
@@ -7221,15 +7221,15 @@ export interface RcsbBranchedEntityInstanceContainerIdentifiers {
    * 1KIP.A
    */
   rcsb_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityKeywords {
+export type RcsbBranchedEntityKeywords = {
   __typename?: 'RcsbBranchedEntityKeywords';
   /** Keywords describing this branched entity. */
   text?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityNameCom {
+export type RcsbBranchedEntityNameCom = {
   __typename?: 'RcsbBranchedEntityNameCom';
   /**
    * A common name for the branched entity.
@@ -7238,17 +7238,17 @@ export interface RcsbBranchedEntityNameCom {
    * HIV protease monomer, hemoglobin alpha chain
    */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedEntityNameSys {
+export type RcsbBranchedEntityNameSys = {
   __typename?: 'RcsbBranchedEntityNameSys';
   /** The systematic name for the branched entity. */
   name: Scalars['String'];
   /** The system used to generate the systematic name of the branched entity. */
   system?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedInstanceAnnotation {
+export type RcsbBranchedInstanceAnnotation = {
   __typename?: 'RcsbBranchedInstanceAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -7288,9 +7288,9 @@ export interface RcsbBranchedInstanceAnnotation {
    * CATH, SCOP
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedInstanceAnnotationAnnotationLineage {
+export type RcsbBranchedInstanceAnnotationAnnotationLineage = {
   __typename?: 'RcsbBranchedInstanceAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -7298,9 +7298,9 @@ export interface RcsbBranchedInstanceAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedInstanceFeature {
+export type RcsbBranchedInstanceFeature = {
   __typename?: 'RcsbBranchedInstanceFeature';
   additional_properties?: Maybe<Array<Maybe<RcsbBranchedInstanceFeatureAdditionalProperties>>>;
   /**
@@ -7342,9 +7342,9 @@ export interface RcsbBranchedInstanceFeature {
    * BINDING_SITE, CATH, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, SCOP, STEREO_OUTLIER, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedInstanceFeatureAdditionalProperties {
+export type RcsbBranchedInstanceFeatureAdditionalProperties = {
   __typename?: 'RcsbBranchedInstanceFeatureAdditionalProperties';
   /**
    * The additional property name.
@@ -7355,9 +7355,9 @@ export interface RcsbBranchedInstanceFeatureAdditionalProperties {
   name?: Maybe<Scalars['String']>;
   /** 2.54, 300 */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
-}
+};
 
-export interface RcsbBranchedInstanceFeatureFeaturePositions {
+export type RcsbBranchedInstanceFeatureFeaturePositions = {
   __typename?: 'RcsbBranchedInstanceFeatureFeaturePositions';
   /**
    * An identifier for the monomer(s) corresponding to the feature assignment.
@@ -7377,9 +7377,9 @@ export interface RcsbBranchedInstanceFeatureFeaturePositions {
    * null, null
    */
   value?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbBranchedInstanceFeatureFeatureValue {
+export type RcsbBranchedInstanceFeatureFeatureValue = {
   __typename?: 'RcsbBranchedInstanceFeatureFeatureValue';
   /**
    * The chemical component identifier for the instance of the feature value.
@@ -7423,9 +7423,9 @@ export interface RcsbBranchedInstanceFeatureFeatureValue {
    * Z-Score
    */
   uncertainty_estimate_type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedInstanceFeatureSummary {
+export type RcsbBranchedInstanceFeatureSummary = {
   __typename?: 'RcsbBranchedInstanceFeatureSummary';
   /** The feature count. */
   count?: Maybe<Scalars['Int']>;
@@ -7461,9 +7461,9 @@ export interface RcsbBranchedInstanceFeatureSummary {
    * BINDING_SITE, CATH, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, SCOP, STEREO_OUTLIER, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedStructConn {
+export type RcsbBranchedStructConn = {
   __typename?: 'RcsbBranchedStructConn';
   connect_partner?: Maybe<RcsbBranchedStructConnConnectPartner>;
   connect_target?: Maybe<RcsbBranchedStructConnConnectTarget>;
@@ -7505,9 +7505,9 @@ export interface RcsbBranchedStructConn {
    * doub, quad, sing, trip
    */
   value_order?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedStructConnConnectPartner {
+export type RcsbBranchedStructConnConnectPartner = {
   __typename?: 'RcsbBranchedStructConnConnectPartner';
   /**
    * A component of the identifier for the partner in the structure
@@ -7558,9 +7558,9 @@ export interface RcsbBranchedStructConnConnectPartner {
    * 1_555, 7_645
    */
   symmetry?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbBranchedStructConnConnectTarget {
+export type RcsbBranchedStructConnConnectTarget = {
   __typename?: 'RcsbBranchedStructConnConnectTarget';
   /**
    * A component of the identifier for the target of the structure
@@ -7627,9 +7627,9 @@ export interface RcsbBranchedStructConnConnectTarget {
    * 1_555, 7_645
    */
   symmetry?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbChemCompAnnotation {
+export type RcsbChemCompAnnotation = {
   __typename?: 'RcsbChemCompAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -7660,9 +7660,9 @@ export interface RcsbChemCompAnnotation {
    * ATC, Carbohydrate Anomer, Carbohydrate Isomer, Carbohydrate Primary Carbonyl Group, Carbohydrate Ring, Generating Enzyme, Modification Type, PSI-MOD
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbChemCompAnnotationAnnotationLineage {
+export type RcsbChemCompAnnotationAnnotationLineage = {
   __typename?: 'RcsbChemCompAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -7670,9 +7670,9 @@ export interface RcsbChemCompAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbChemCompContainerIdentifiers {
+export type RcsbChemCompContainerIdentifiers = {
   __typename?: 'RcsbChemCompContainerIdentifiers';
   /**
    * The Anatomical Therapeutic Chemical (ATC) Classification System identifiers corresponding
@@ -7709,9 +7709,9 @@ export interface RcsbChemCompContainerIdentifiers {
   rcsb_id?: Maybe<Scalars['String']>;
   /** The list of subcomponents contained in this component. */
   subcomponent_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface RcsbChemCompDescriptor {
+export type RcsbChemCompDescriptor = {
   __typename?: 'RcsbChemCompDescriptor';
   /**
    * Standard IUPAC International Chemical Identifier (InChI) descriptor for the chemical component.
@@ -7768,9 +7768,9 @@ export interface RcsbChemCompDescriptor {
   SMILES_stereo?: Maybe<Scalars['String']>;
   /** The chemical component identifier. */
   comp_id: Scalars['String'];
-}
+};
 
-export interface RcsbChemCompInfo {
+export type RcsbChemCompInfo = {
   __typename?: 'RcsbChemCompInfo';
   /** Chemical component total atom count */
   atom_count?: Maybe<Scalars['Int']>;
@@ -7805,9 +7805,9 @@ export interface RcsbChemCompInfo {
    * 2016-10-12
    */
   revision_date?: Maybe<Scalars['Date']>;
-}
+};
 
-export interface RcsbChemCompRelated {
+export type RcsbChemCompRelated = {
   __typename?: 'RcsbChemCompRelated';
   /**
    * The value of _rcsb_chem_comp_related.comp_id is a reference to
@@ -7840,9 +7840,9 @@ export interface RcsbChemCompRelated {
    * CAS, CCDC/CSD, ChEBI, ChEMBL, DrugBank, Pharos, PubChem, RESID
    */
   resource_name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbChemCompSynonyms {
+export type RcsbChemCompSynonyms = {
   __typename?: 'RcsbChemCompSynonyms';
   /** The chemical component to which this synonym applies. */
   comp_id: Scalars['String'];
@@ -7872,9 +7872,9 @@ export interface RcsbChemCompSynonyms {
    * Brand Name, Common Name, Condensed IUPAC Carbohydrate Symbol, IUPAC Carbohydrate Symbol, Preferred Common Name, Preferred Name, Preferred Synonym, SNFG Carbohydrate Symbol, Synonym, Systematic Name
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbChemCompTarget {
+export type RcsbChemCompTarget = {
   __typename?: 'RcsbChemCompTarget';
   /**
    * The value of _rcsb_chem_comp_target.comp_id is a reference to
@@ -7913,9 +7913,9 @@ export interface RcsbChemCompTarget {
   reference_database_name?: Maybe<Scalars['String']>;
   /** The mechanism of action of the chemical component - target interaction. */
   target_actions?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface RcsbClusterFlexibility {
+export type RcsbClusterFlexibility = {
   __typename?: 'RcsbClusterFlexibility';
   /** Average RMSD refer to average pairwise RMSD (Root Mean Square Deviation of C-alpha atoms) between structures in the cluster (95% sequence identity) where a given entity belongs. */
   avg_rmsd?: Maybe<Scalars['Float']>;
@@ -7927,17 +7927,17 @@ export interface RcsbClusterFlexibility {
   max_rmsd?: Maybe<Scalars['Float']>;
   /** Allowable values: PDBFlex. */
   provenance_code?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbClusterMembership {
+export type RcsbClusterMembership = {
   __typename?: 'RcsbClusterMembership';
   /** Identifier for a cluster at the specified level of sequence identity within the cluster data set. */
   cluster_id?: Maybe<Scalars['Int']>;
   /** Sequence identity expressed as an integer percent value. */
   identity?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbEntityHostOrganism {
+export type RcsbEntityHostOrganism = {
   __typename?: 'RcsbEntityHostOrganism';
   /**
    * The beginning polymer sequence position for the polymer section corresponding
@@ -8044,9 +8044,9 @@ export interface RcsbEntityHostOrganism {
   /** The scientific name of the host organism */
   scientific_name?: Maybe<Scalars['String']>;
   taxonomy_lineage?: Maybe<Array<Maybe<RcsbEntityHostOrganismTaxonomyLineage>>>;
-}
+};
 
-export interface RcsbEntityHostOrganismTaxonomyLineage {
+export type RcsbEntityHostOrganismTaxonomyLineage = {
   __typename?: 'RcsbEntityHostOrganismTaxonomyLineage';
   /** Members of the NCBI Taxonomy lineage as parent taxonomy lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -8064,9 +8064,9 @@ export interface RcsbEntityHostOrganismTaxonomyLineage {
    * Escherichia coli BL21(DE3), Baculovirus
    */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbEntitySourceOrganism {
+export type RcsbEntitySourceOrganism = {
   __typename?: 'RcsbEntitySourceOrganism';
   /**
    * The beginning polymer sequence position for the polymer section corresponding
@@ -8181,9 +8181,9 @@ export interface RcsbEntitySourceOrganism {
    */
   source_type?: Maybe<Scalars['String']>;
   taxonomy_lineage?: Maybe<Array<Maybe<RcsbEntitySourceOrganismTaxonomyLineage>>>;
-}
+};
 
-export interface RcsbEntitySourceOrganismRcsbGeneName {
+export type RcsbEntitySourceOrganismRcsbGeneName = {
   __typename?: 'RcsbEntitySourceOrganismRcsbGeneName';
   /**
    * A code indicating the provenance of the source organism details for the entity
@@ -8199,9 +8199,9 @@ export interface RcsbEntitySourceOrganismRcsbGeneName {
    * lacA, hemH
    */
   value?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbEntitySourceOrganismTaxonomyLineage {
+export type RcsbEntitySourceOrganismTaxonomyLineage = {
   __typename?: 'RcsbEntitySourceOrganismTaxonomyLineage';
   /** Members of the NCBI Taxonomy lineage as parent taxonomy lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -8219,9 +8219,9 @@ export interface RcsbEntitySourceOrganismTaxonomyLineage {
    * Homo sapiens, Mus musculus
    */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbEntryContainerIdentifiers {
+export type RcsbEntryContainerIdentifiers = {
   __typename?: 'RcsbEntryContainerIdentifiers';
   /** List of identifiers for assemblies generated from the entry. */
   assembly_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -8263,9 +8263,9 @@ export interface RcsbEntryContainerIdentifiers {
   related_emdb_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** List of identifiers for the solvent/water entity constituents for the entry. */
   water_entity_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface RcsbEntryInfo {
+export type RcsbEntryInfo = {
   __typename?: 'RcsbEntryInfo';
   /** The number of assemblies defined for this entry including the deposited assembly. */
   assembly_count?: Maybe<Scalars['Int']>;
@@ -8431,9 +8431,9 @@ export interface RcsbEntryInfo {
   software_programs_combined?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** The number of distinct solvent entities per deposited structure model. */
   solvent_entity_count?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbEntryInfoDiffrnResolutionHigh {
+export type RcsbEntryInfoDiffrnResolutionHigh = {
   __typename?: 'RcsbEntryInfoDiffrnResolutionHigh';
   /**
    * The provenence source for the high resolution limit of data collection.
@@ -8444,9 +8444,9 @@ export interface RcsbEntryInfoDiffrnResolutionHigh {
   provenance_source?: Maybe<Scalars['String']>;
   /** The high resolution limit of data collection. */
   value?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbExternalReferences {
+export type RcsbExternalReferences = {
   __typename?: 'RcsbExternalReferences';
   /** ID (accession) from external resource linked to this entry. */
   id: Scalars['String'];
@@ -8459,9 +8459,9 @@ export interface RcsbExternalReferences {
    * OLDERADO, BMRB, NDB, SB GRID, PROTEIN DIFFRACTION, EM DATA RESOURCE
    */
   type: Scalars['String'];
-}
+};
 
-export interface RcsbGenomicLineage {
+export type RcsbGenomicLineage = {
   __typename?: 'RcsbGenomicLineage';
   /** Classification hierarchy depth. */
   depth?: Maybe<Scalars['Int']>;
@@ -8479,15 +8479,15 @@ export interface RcsbGenomicLineage {
    * Homo sapiens, 8, defensin beta 103A
    */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbGroupAccessionInfo {
+export type RcsbGroupAccessionInfo = {
   __typename?: 'RcsbGroupAccessionInfo';
   /** Identifies the version of the groups solution */
   version: Scalars['Int'];
-}
+};
 
-export interface RcsbGroupContainerIdentifiers {
+export type RcsbGroupContainerIdentifiers = {
   __typename?: 'RcsbGroupContainerIdentifiers';
   /** A unique textual identifier for a group */
   group_id: Scalars['String'];
@@ -8497,9 +8497,9 @@ export interface RcsbGroupContainerIdentifiers {
   group_provenance_id: Scalars['String'];
   /** Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship */
   parent_member_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface RcsbGroupInfo {
+export type RcsbGroupInfo = {
   __typename?: 'RcsbGroupInfo';
   group_description: Scalars['String'];
   group_members_count: Scalars['Int'];
@@ -8511,9 +8511,9 @@ export interface RcsbGroupInfo {
    */
   group_members_granularity: Scalars['String'];
   group_name: Scalars['String'];
-}
+};
 
-export interface RcsbGroupMembersRankings {
+export type RcsbGroupMembersRankings = {
   __typename?: 'RcsbGroupMembersRankings';
   ranking_options: Array<Maybe<RcsbGroupMembersRankingsRankingOptions>>;
   /**
@@ -8523,9 +8523,9 @@ export interface RcsbGroupMembersRankings {
    * best coverage, best resolution
    */
   representative_criteria_type: Scalars['String'];
-}
+};
 
-export interface RcsbGroupMembersRankingsRankingOptions {
+export type RcsbGroupMembersRankingsRankingOptions = {
   __typename?: 'RcsbGroupMembersRankingsRankingOptions';
   group_members: Array<Maybe<RankingOptionsGroupMembers>>;
   /**
@@ -8535,9 +8535,9 @@ export interface RcsbGroupMembersRankingsRankingOptions {
    * RMSD, data quality, number of modified residues, coverage
    */
   ranking_criteria_type: Scalars['String'];
-}
+};
 
-export interface RcsbGroupRelated {
+export type RcsbGroupRelated = {
   __typename?: 'RcsbGroupRelated';
   /**
    * A unique code assigned to a reference related the group
@@ -8553,39 +8553,39 @@ export interface RcsbGroupRelated {
    * UniProt
    */
   resource_name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbGroupSequenceAlignment {
+export type RcsbGroupSequenceAlignment = {
   __typename?: 'RcsbGroupSequenceAlignment';
   /** Abstract reference where group members can be aligned to generate a MSA */
   abstract_reference: RcsbGroupSequenceAlignmentAbstractReference;
   group_members_alignment: Array<Maybe<RcsbGroupSequenceAlignmentGroupMembersAlignment>>;
-}
+};
 
-export interface RcsbGroupSequenceAlignmentAbstractReference {
+export type RcsbGroupSequenceAlignmentAbstractReference = {
   __typename?: 'RcsbGroupSequenceAlignmentAbstractReference';
   /** Abstract reference length */
   length: Scalars['Int'];
   /** Sequence that represents the abstract reference */
   sequence?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbGroupSequenceAlignmentGroupMembersAlignment {
+export type RcsbGroupSequenceAlignmentGroupMembersAlignment = {
   __typename?: 'RcsbGroupSequenceAlignmentGroupMembersAlignment';
   aligned_regions: Array<Maybe<GroupMembersAlignmentAlignedRegions>>;
   /** Identifier of the group member */
   group_member_id: Scalars['String'];
-}
+};
 
-export interface RcsbGroupStatistics {
+export type RcsbGroupStatistics = {
   __typename?: 'RcsbGroupStatistics';
   /** Similarity score between two most similar group members */
   similarity_score_max?: Maybe<Scalars['Float']>;
   /** Similarity score between two least similar group members */
   similarity_score_min?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbLatestRevision {
+export type RcsbLatestRevision = {
   __typename?: 'RcsbLatestRevision';
   /** The major version number of the latest revision. */
   major_revision?: Maybe<Scalars['Int']>;
@@ -8593,9 +8593,9 @@ export interface RcsbLatestRevision {
   minor_revision?: Maybe<Scalars['Int']>;
   /** The release date of the latest revision item. */
   revision_date?: Maybe<Scalars['Date']>;
-}
+};
 
-export interface RcsbLigandNeighbors {
+export type RcsbLigandNeighbors = {
   __typename?: 'RcsbLigandNeighbors';
   /** Alternate conformer identifier for the target instance. */
   alt_id?: Maybe<Scalars['String']>;
@@ -8653,9 +8653,9 @@ export interface RcsbLigandNeighbors {
   ligand_model_id?: Maybe<Scalars['Int']>;
   /** The sequence position for the target instance. */
   seq_id?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbMembraneLineage {
+export type RcsbMembraneLineage = {
   __typename?: 'RcsbMembraneLineage';
   /** Hierarchy depth. */
   depth?: Maybe<Scalars['Int']>;
@@ -8668,9 +8668,9 @@ export interface RcsbMembraneLineage {
   id?: Maybe<Scalars['String']>;
   /** Membrane protein classification term. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerEntity {
+export type RcsbNonpolymerEntity = {
   __typename?: 'RcsbNonpolymerEntity';
   /** A description of special aspects of the entity. */
   details?: Maybe<Scalars['String']>;
@@ -8680,9 +8680,9 @@ export interface RcsbNonpolymerEntity {
   pdbx_description?: Maybe<Scalars['String']>;
   /** The number of molecules of the nonpolymer entity in the entry. */
   pdbx_number_of_molecules?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbNonpolymerEntityAnnotation {
+export type RcsbNonpolymerEntityAnnotation = {
   __typename?: 'RcsbNonpolymerEntityAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -8720,9 +8720,9 @@ export interface RcsbNonpolymerEntityAnnotation {
    * SUBJECT_OF_INVESTIGATION
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerEntityAnnotationAnnotationLineage {
+export type RcsbNonpolymerEntityAnnotationAnnotationLineage = {
   __typename?: 'RcsbNonpolymerEntityAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -8730,9 +8730,9 @@ export interface RcsbNonpolymerEntityAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerEntityContainerIdentifiers {
+export type RcsbNonpolymerEntityContainerIdentifiers = {
   __typename?: 'RcsbNonpolymerEntityContainerIdentifiers';
   /** Instance identifiers corresponding to copies of the entity in this container. */
   asym_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -8797,9 +8797,9 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    * ChEBI, ChEMBL, DrugBank, PubChem
    */
   reference_chemical_identifiers_resource_name?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface RcsbNonpolymerEntityFeature {
+export type RcsbNonpolymerEntityFeature = {
   __typename?: 'RcsbNonpolymerEntityFeature';
   additional_properties?: Maybe<Array<Maybe<RcsbNonpolymerEntityFeatureAdditionalProperties>>>;
   /**
@@ -8839,17 +8839,17 @@ export interface RcsbNonpolymerEntityFeature {
   type?: Maybe<Scalars['String']>;
   /** The feature value. */
   value?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbNonpolymerEntityFeatureAdditionalProperties {
+export type RcsbNonpolymerEntityFeatureAdditionalProperties = {
   __typename?: 'RcsbNonpolymerEntityFeatureAdditionalProperties';
   /** The additional property name. */
   name?: Maybe<Scalars['String']>;
   /** 2.54, 300 */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
-}
+};
 
-export interface RcsbNonpolymerEntityFeatureSummary {
+export type RcsbNonpolymerEntityFeatureSummary = {
   __typename?: 'RcsbNonpolymerEntityFeatureSummary';
   /**
    * Non-polymer(ligand) chemical component identifier for the entity.
@@ -8885,9 +8885,9 @@ export interface RcsbNonpolymerEntityFeatureSummary {
    * SUBJECT_OF_INVESTIGATION
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerEntityInstanceContainerIdentifiers {
+export type RcsbNonpolymerEntityInstanceContainerIdentifiers = {
   __typename?: 'RcsbNonpolymerEntityInstanceContainerIdentifiers';
   /** Instance identifier for this container. */
   asym_id: Scalars['String'];
@@ -8909,21 +8909,21 @@ export interface RcsbNonpolymerEntityInstanceContainerIdentifiers {
    * 1KIP.A
    */
   rcsb_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerEntityKeywords {
+export type RcsbNonpolymerEntityKeywords = {
   __typename?: 'RcsbNonpolymerEntityKeywords';
   /** Keywords describing this non-polymer entity. */
   text?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerEntityNameCom {
+export type RcsbNonpolymerEntityNameCom = {
   __typename?: 'RcsbNonpolymerEntityNameCom';
   /** A common name for the nonpolymer entity. */
   name: Scalars['String'];
-}
+};
 
-export interface RcsbNonpolymerInstanceAnnotation {
+export type RcsbNonpolymerInstanceAnnotation = {
   __typename?: 'RcsbNonpolymerInstanceAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -8963,9 +8963,9 @@ export interface RcsbNonpolymerInstanceAnnotation {
    * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerInstanceAnnotationAnnotationLineage {
+export type RcsbNonpolymerInstanceAnnotationAnnotationLineage = {
   __typename?: 'RcsbNonpolymerInstanceAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -8973,9 +8973,9 @@ export interface RcsbNonpolymerInstanceAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerInstanceFeature {
+export type RcsbNonpolymerInstanceFeature = {
   __typename?: 'RcsbNonpolymerInstanceFeature';
   additional_properties?: Maybe<Array<Maybe<RcsbNonpolymerInstanceFeatureAdditionalProperties>>>;
   /**
@@ -9011,9 +9011,9 @@ export interface RcsbNonpolymerInstanceFeature {
    * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, STEREO_OUTLIER
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerInstanceFeatureAdditionalProperties {
+export type RcsbNonpolymerInstanceFeatureAdditionalProperties = {
   __typename?: 'RcsbNonpolymerInstanceFeatureAdditionalProperties';
   /**
    * The additional property name.
@@ -9024,9 +9024,9 @@ export interface RcsbNonpolymerInstanceFeatureAdditionalProperties {
   name?: Maybe<Scalars['String']>;
   /** 2.54, 300 */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
-}
+};
 
-export interface RcsbNonpolymerInstanceFeatureFeatureValue {
+export type RcsbNonpolymerInstanceFeatureFeatureValue = {
   __typename?: 'RcsbNonpolymerInstanceFeatureFeatureValue';
   /**
    * The chemical component identifier for the instance of the feature value.
@@ -9070,9 +9070,9 @@ export interface RcsbNonpolymerInstanceFeatureFeatureValue {
    * Z-Score
    */
   uncertainty_estimate_type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerInstanceFeatureSummary {
+export type RcsbNonpolymerInstanceFeatureSummary = {
   __typename?: 'RcsbNonpolymerInstanceFeatureSummary';
   /** Component identifier for non-polymer entity instance. */
   comp_id?: Maybe<Scalars['String']>;
@@ -9103,9 +9103,9 @@ export interface RcsbNonpolymerInstanceFeatureSummary {
    * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, STEREO_OUTLIER
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerInstanceValidationScore {
+export type RcsbNonpolymerInstanceValidationScore = {
   __typename?: 'RcsbNonpolymerInstanceValidationScore';
   /**
    * The real space correlation coefficient (RSCC) for the non-polymer entity instance.
@@ -9225,9 +9225,9 @@ export interface RcsbNonpolymerInstanceValidationScore {
    * RCSB_LIGAND_QUALITY_SCORE_2021
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerStructConn {
+export type RcsbNonpolymerStructConn = {
   __typename?: 'RcsbNonpolymerStructConn';
   connect_partner?: Maybe<RcsbNonpolymerStructConnConnectPartner>;
   connect_target?: Maybe<RcsbNonpolymerStructConnConnectTarget>;
@@ -9274,9 +9274,9 @@ export interface RcsbNonpolymerStructConn {
    * doub, quad, sing, trip
    */
   value_order?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerStructConnConnectPartner {
+export type RcsbNonpolymerStructConnConnectPartner = {
   __typename?: 'RcsbNonpolymerStructConnConnectPartner';
   /**
    * A component of the identifier for the partner in the structure
@@ -9327,9 +9327,9 @@ export interface RcsbNonpolymerStructConnConnectPartner {
    * 1_555, 7_645
    */
   symmetry?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbNonpolymerStructConnConnectTarget {
+export type RcsbNonpolymerStructConnConnectTarget = {
   __typename?: 'RcsbNonpolymerStructConnConnectTarget';
   /**
    * A component of the identifier for the target of the structure
@@ -9396,15 +9396,15 @@ export interface RcsbNonpolymerStructConnConnectTarget {
    * 1_555, 7_645
    */
   symmetry?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPfamContainerIdentifiers {
+export type RcsbPfamContainerIdentifiers = {
   __typename?: 'RcsbPfamContainerIdentifiers';
   /** Accession number of Pfam entry. */
   pfam_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntity {
+export type RcsbPolymerEntity = {
   __typename?: 'RcsbPolymerEntity';
   /** A description of special aspects of the entity. */
   details?: Maybe<Scalars['String']>;
@@ -9474,9 +9474,9 @@ export interface RcsbPolymerEntity {
    * man, nat, syn
    */
   src_method?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityAlign {
+export type RcsbPolymerEntityAlign = {
   __typename?: 'RcsbPolymerEntityAlign';
   aligned_regions?: Maybe<Array<Maybe<RcsbPolymerEntityAlignAlignedRegions>>>;
   /**
@@ -9508,9 +9508,9 @@ export interface RcsbPolymerEntityAlign {
    * EMBL, GenBank, NDB, NORINE, PDB, PIR, PRF, RefSeq, UniProt
    */
   reference_database_name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityAlignAlignedRegions {
+export type RcsbPolymerEntityAlignAlignedRegions = {
   __typename?: 'RcsbPolymerEntityAlignAlignedRegions';
   /** An identifier for the monomer in the entity sequence at which this segment of the alignment begins. */
   entity_beg_seq_id?: Maybe<Scalars['Int']>;
@@ -9518,9 +9518,9 @@ export interface RcsbPolymerEntityAlignAlignedRegions {
   length?: Maybe<Scalars['Int']>;
   /** An identifier for the monomer in the reference sequence at which this segment of the alignment begins. */
   ref_beg_seq_id?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbPolymerEntityAnnotation {
+export type RcsbPolymerEntityAnnotation = {
   __typename?: 'RcsbPolymerEntityAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -9551,9 +9551,9 @@ export interface RcsbPolymerEntityAnnotation {
    * GO, GlyCosmos, GlyGen, InterPro, MemProtMD, OPM, PDBTM, Pfam, mpstruc
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityAnnotationAnnotationLineage {
+export type RcsbPolymerEntityAnnotationAnnotationLineage = {
   __typename?: 'RcsbPolymerEntityAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -9561,9 +9561,9 @@ export interface RcsbPolymerEntityAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityContainerIdentifiers {
+export type RcsbPolymerEntityContainerIdentifiers = {
   __typename?: 'RcsbPolymerEntityContainerIdentifiers';
   /** Instance identifiers corresponding to copies of the entity in this container. */
   asym_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -9611,9 +9611,9 @@ export interface RcsbPolymerEntityContainerIdentifiers {
   rcsb_id?: Maybe<Scalars['String']>;
   reference_sequence_identifiers?: Maybe<Array<Maybe<RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers>>>;
   uniprot_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers {
+export type RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers = {
   __typename?: 'RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers';
   /**
    * Reference database accession code
@@ -9643,9 +9643,9 @@ export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifie
    * PDB, RCSB, SIFTS
    */
   provenance_source?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityFeature {
+export type RcsbPolymerEntityFeature = {
   __typename?: 'RcsbPolymerEntityFeature';
   additional_properties?: Maybe<Array<Maybe<RcsbPolymerEntityFeatureAdditionalProperties>>>;
   /**
@@ -9684,9 +9684,9 @@ export interface RcsbPolymerEntityFeature {
    * Pfam, artifact, modified_monomer, mutation
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityFeatureAdditionalProperties {
+export type RcsbPolymerEntityFeatureAdditionalProperties = {
   __typename?: 'RcsbPolymerEntityFeatureAdditionalProperties';
   /**
    * The additional property name.
@@ -9697,9 +9697,9 @@ export interface RcsbPolymerEntityFeatureAdditionalProperties {
   name?: Maybe<Scalars['String']>;
   /** globin-like, 2.54, 300 */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
-}
+};
 
-export interface RcsbPolymerEntityFeatureFeaturePositions {
+export type RcsbPolymerEntityFeatureFeaturePositions = {
   __typename?: 'RcsbPolymerEntityFeatureFeaturePositions';
   /**
    * An identifier for the monomer(s) corresponding to the feature assignment.
@@ -9719,9 +9719,9 @@ export interface RcsbPolymerEntityFeatureFeaturePositions {
    * null, null
    */
   value?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbPolymerEntityFeatureSummary {
+export type RcsbPolymerEntityFeatureSummary = {
   __typename?: 'RcsbPolymerEntityFeatureSummary';
   /** The feature count. */
   count?: Maybe<Scalars['Int']>;
@@ -9759,9 +9759,9 @@ export interface RcsbPolymerEntityFeatureSummary {
    * Pfam, artifact, modified_monomer, mutation
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityInstanceContainerIdentifiers {
+export type RcsbPolymerEntityInstanceContainerIdentifiers = {
   __typename?: 'RcsbPolymerEntityInstanceContainerIdentifiers';
   /** Instance identifier for this container. */
   asym_id: Scalars['String'];
@@ -9787,15 +9787,15 @@ export interface RcsbPolymerEntityInstanceContainerIdentifiers {
    * 1KIP.A
    */
   rcsb_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityKeywords {
+export type RcsbPolymerEntityKeywords = {
   __typename?: 'RcsbPolymerEntityKeywords';
   /** Keywords describing this polymer entity. */
   text?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityNameCom {
+export type RcsbPolymerEntityNameCom = {
   __typename?: 'RcsbPolymerEntityNameCom';
   /**
    * A common name for the polymer entity.
@@ -9804,9 +9804,9 @@ export interface RcsbPolymerEntityNameCom {
    * HIV protease monomer, hemoglobin alpha chain
    */
   name: Scalars['String'];
-}
+};
 
-export interface RcsbPolymerEntityNameSys {
+export type RcsbPolymerEntityNameSys = {
   __typename?: 'RcsbPolymerEntityNameSys';
   /** The systematic name for the polymer entity. */
   name: Scalars['String'];
@@ -9817,9 +9817,9 @@ export interface RcsbPolymerEntityNameSys {
    * Chemical Abstracts conventions
    */
   system?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityRcsbEcLineage {
+export type RcsbPolymerEntityRcsbEcLineage = {
   __typename?: 'RcsbPolymerEntityRcsbEcLineage';
   /** Members of the enzyme classification lineage as parent classification hierarchy depth (1-N). */
   depth?: Maybe<Scalars['Int']>;
@@ -9837,9 +9837,9 @@ export interface RcsbPolymerEntityRcsbEcLineage {
    * Transferases, phosphatidylinositol-4,5-bisphosphate 3-kinase
    */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityRcsbEnzymeClassCombined {
+export type RcsbPolymerEntityRcsbEnzymeClassCombined = {
   __typename?: 'RcsbPolymerEntityRcsbEnzymeClassCombined';
   /** The enzyme classification hierarchy depth (1-N). */
   depth?: Maybe<Scalars['Int']>;
@@ -9852,9 +9852,9 @@ export interface RcsbPolymerEntityRcsbEnzymeClassCombined {
    * PDB Primary Data, UniProt
    */
   provenance_source?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerEntityRcsbMacromolecularNamesCombined {
+export type RcsbPolymerEntityRcsbMacromolecularNamesCombined = {
   __typename?: 'RcsbPolymerEntityRcsbMacromolecularNamesCombined';
   /**
    * Combined list of macromolecular names.
@@ -9876,9 +9876,9 @@ export interface RcsbPolymerEntityRcsbMacromolecularNamesCombined {
    * PDB Preferred Name, PDB Synonym
    */
   provenance_source?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerInstanceAnnotation {
+export type RcsbPolymerInstanceAnnotation = {
   __typename?: 'RcsbPolymerInstanceAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -9911,9 +9911,9 @@ export interface RcsbPolymerInstanceAnnotation {
    * CATH, SCOP
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerInstanceAnnotationAnnotationLineage {
+export type RcsbPolymerInstanceAnnotationAnnotationLineage = {
   __typename?: 'RcsbPolymerInstanceAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -9921,9 +9921,9 @@ export interface RcsbPolymerInstanceAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerInstanceFeature {
+export type RcsbPolymerInstanceFeature = {
   __typename?: 'RcsbPolymerInstanceFeature';
   additional_properties?: Maybe<Array<Maybe<RcsbPolymerInstanceFeatureAdditionalProperties>>>;
   /**
@@ -9964,9 +9964,9 @@ export interface RcsbPolymerInstanceFeature {
    * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SCOP, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerInstanceFeatureAdditionalProperties {
+export type RcsbPolymerInstanceFeatureAdditionalProperties = {
   __typename?: 'RcsbPolymerInstanceFeatureAdditionalProperties';
   /**
    * The additional property name.
@@ -9977,9 +9977,9 @@ export interface RcsbPolymerInstanceFeatureAdditionalProperties {
   name?: Maybe<Scalars['String']>;
   /** globin-like, 2.54, 300 */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
-}
+};
 
-export interface RcsbPolymerInstanceFeatureFeaturePositions {
+export type RcsbPolymerInstanceFeatureFeaturePositions = {
   __typename?: 'RcsbPolymerInstanceFeatureFeaturePositions';
   /**
    * An identifier for the monomer(s) corresponding to the feature assignment.
@@ -9999,9 +9999,9 @@ export interface RcsbPolymerInstanceFeatureFeaturePositions {
    * null, null
    */
   value?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbPolymerInstanceFeatureSummary {
+export type RcsbPolymerInstanceFeatureSummary = {
   __typename?: 'RcsbPolymerInstanceFeatureSummary';
   /** The feature count per polymer chain. */
   count?: Maybe<Scalars['Int']>;
@@ -10039,9 +10039,9 @@ export interface RcsbPolymerInstanceFeatureSummary {
    * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SCOP, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerStructConn {
+export type RcsbPolymerStructConn = {
   __typename?: 'RcsbPolymerStructConn';
   connect_partner?: Maybe<RcsbPolymerStructConnConnectPartner>;
   connect_target?: Maybe<RcsbPolymerStructConnConnectTarget>;
@@ -10088,9 +10088,9 @@ export interface RcsbPolymerStructConn {
    * doub, quad, sing, trip
    */
   value_order?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerStructConnConnectPartner {
+export type RcsbPolymerStructConnConnectPartner = {
   __typename?: 'RcsbPolymerStructConnConnectPartner';
   /**
    * A component of the identifier for the partner in the structure
@@ -10141,9 +10141,9 @@ export interface RcsbPolymerStructConnConnectPartner {
    * 1_555, 7_645
    */
   symmetry?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPolymerStructConnConnectTarget {
+export type RcsbPolymerStructConnConnectTarget = {
   __typename?: 'RcsbPolymerStructConnConnectTarget';
   /**
    * A component of the identifier for the target of the structure
@@ -10210,9 +10210,9 @@ export interface RcsbPolymerStructConnConnectTarget {
    * 1_555, 7_645
    */
   symmetry?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbPrimaryCitation {
+export type RcsbPrimaryCitation = {
   __typename?: 'RcsbPrimaryCitation';
   /**
    * The International Standard Book Number (ISBN) code assigned to
@@ -10378,9 +10378,9 @@ export interface RcsbPrimaryCitation {
    *  and book chapters.
    */
   year?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbPubmedContainerIdentifiers {
+export type RcsbPubmedContainerIdentifiers = {
   __typename?: 'RcsbPubmedContainerIdentifiers';
   /**
    * UID assigned to each PubMed record.
@@ -10389,9 +10389,9 @@ export interface RcsbPubmedContainerIdentifiers {
    * null
    */
   pubmed_id?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbPubmedMeshDescriptorsLineage {
+export type RcsbPubmedMeshDescriptorsLineage = {
   __typename?: 'RcsbPubmedMeshDescriptorsLineage';
   /** Hierarchy depth. */
   depth?: Maybe<Scalars['Int']>;
@@ -10409,9 +10409,9 @@ export interface RcsbPubmedMeshDescriptorsLineage {
    * Chemistry, Mammals, Therapeutic Uses
    */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbRepositoryHoldingsCurrent {
+export type RcsbRepositoryHoldingsCurrent = {
   __typename?: 'RcsbRepositoryHoldingsCurrent';
   /**
    * The list of content types associated with this entry.
@@ -10420,9 +10420,9 @@ export interface RcsbRepositoryHoldingsCurrent {
    * 2fo-fc Map, Combined NMR data (NEF), Combined NMR data (NMR-STAR), FASTA sequence, Map Coefficients, NMR chemical shifts, NMR restraints V1, NMR restraints V2, assembly PDB, assembly mmCIF, entry PDB, entry PDB bundle, entry PDBML, entry mmCIF, fo-fc Map, structure factors, validation data mmCIF, validation report, validation slider image
    */
   repository_content_types?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
+};
 
-export interface RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers {
+export type RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers = {
   __typename?: 'RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers';
   /** The assembly id codes. */
   assembly_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -10447,9 +10447,9 @@ export interface RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers {
    * 2018_23
    */
   update_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbSchemaContainerIdentifiers {
+export type RcsbSchemaContainerIdentifiers = {
   __typename?: 'RcsbSchemaContainerIdentifiers';
   /** Collection name associated with the data in the container. */
   collection_name: Scalars['String'];
@@ -10457,9 +10457,9 @@ export interface RcsbSchemaContainerIdentifiers {
   collection_schema_version?: Maybe<Scalars['String']>;
   /** Schema name associated with the data in the container. */
   schema_name: Scalars['String'];
-}
+};
 
-export interface RcsbStructSymmetry {
+export type RcsbStructSymmetry = {
   __typename?: 'RcsbStructSymmetry';
   /** Clusters describe grouping of 'identical' subunits. */
   clusters: Array<Maybe<RcsbStructSymmetryClusters>>;
@@ -10495,17 +10495,17 @@ export interface RcsbStructSymmetry {
    * Asymmetric, Cyclic, Dihedral, Tetrahedral, Octahedral, Icosahedral, Helical
    */
   type: Scalars['String'];
-}
+};
 
-export interface RcsbStructSymmetryClusters {
+export type RcsbStructSymmetryClusters = {
   __typename?: 'RcsbStructSymmetryClusters';
   /** Average RMSD between members of a given cluster. */
   avg_rmsd?: Maybe<Scalars['Float']>;
   /** Subunits that belong to the cluster, identified by asym_id and optionally by assembly operator id(s). */
   members: Array<Maybe<ClustersMembers>>;
-}
+};
 
-export interface RcsbStructSymmetryLineage {
+export type RcsbStructSymmetryLineage = {
   __typename?: 'RcsbStructSymmetryLineage';
   /** Hierarchy depth. */
   depth?: Maybe<Scalars['Int']>;
@@ -10523,9 +10523,9 @@ export interface RcsbStructSymmetryLineage {
    * Asymmetric, Global Symmetry, C1, Hetero 3-mer
    */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbStructSymmetryRotationAxes {
+export type RcsbStructSymmetryRotationAxes = {
   __typename?: 'RcsbStructSymmetryRotationAxes';
   /** coordinate */
   end: Array<Maybe<Scalars['Float']>>;
@@ -10533,9 +10533,9 @@ export interface RcsbStructSymmetryRotationAxes {
   order?: Maybe<Scalars['Int']>;
   /** coordinate */
   start: Array<Maybe<Scalars['Float']>>;
-}
+};
 
-export interface RcsbTargetNeighbors {
+export type RcsbTargetNeighbors = {
   __typename?: 'RcsbTargetNeighbors';
   /** Alternate conformer identifier for the non-polymer entity instance. */
   alt_id?: Maybe<Scalars['String']>;
@@ -10591,15 +10591,15 @@ export interface RcsbTargetNeighbors {
   target_model_id?: Maybe<Scalars['Int']>;
   /** The sequence position for the target of interaction. */
   target_seq_id?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface RcsbUniprotAlignments {
+export type RcsbUniprotAlignments = {
   __typename?: 'RcsbUniprotAlignments';
   /** List of alignments with core_entity canonical sequences */
   core_entity_alignments?: Maybe<Array<Maybe<RcsbUniprotAlignmentsCoreEntityAlignments>>>;
-}
+};
 
-export interface RcsbUniprotAlignmentsCoreEntityAlignments {
+export type RcsbUniprotAlignmentsCoreEntityAlignments = {
   __typename?: 'RcsbUniprotAlignmentsCoreEntityAlignments';
   /** Aligned region */
   aligned_regions?: Maybe<Array<Maybe<CoreEntityAlignmentsAlignedRegions>>>;
@@ -10607,9 +10607,9 @@ export interface RcsbUniprotAlignmentsCoreEntityAlignments {
   core_entity_identifiers?: Maybe<CoreEntityAlignmentsCoreEntityIdentifiers>;
   /** Alignment scores */
   scores?: Maybe<CoreEntityAlignmentsScores>;
-}
+};
 
-export interface RcsbUniprotAnnotation {
+export type RcsbUniprotAnnotation = {
   __typename?: 'RcsbUniprotAnnotation';
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
@@ -10632,9 +10632,9 @@ export interface RcsbUniprotAnnotation {
    * disease, phenotype
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotAnnotationAnnotationLineage {
+export type RcsbUniprotAnnotationAnnotationLineage = {
   __typename?: 'RcsbUniprotAnnotationAnnotationLineage';
   /** Members of the annotation lineage as parent lineage depth (1-N) */
   depth?: Maybe<Scalars['Int']>;
@@ -10642,16 +10642,16 @@ export interface RcsbUniprotAnnotationAnnotationLineage {
   id?: Maybe<Scalars['String']>;
   /** Members of the annotation lineage as parent class names. */
   name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotContainerIdentifiers {
+export type RcsbUniprotContainerIdentifiers = {
   __typename?: 'RcsbUniprotContainerIdentifiers';
   reference_sequence_identifiers?: Maybe<Array<Maybe<RcsbUniprotContainerIdentifiersReferenceSequenceIdentifiers>>>;
   /** Primary accession number of a given UniProtKB entry. */
   uniprot_id?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotContainerIdentifiersReferenceSequenceIdentifiers {
+export type RcsbUniprotContainerIdentifiersReferenceSequenceIdentifiers = {
   __typename?: 'RcsbUniprotContainerIdentifiersReferenceSequenceIdentifiers';
   /** Reference database accession code */
   database_accession?: Maybe<Scalars['String']>;
@@ -10661,17 +10661,17 @@ export interface RcsbUniprotContainerIdentifiersReferenceSequenceIdentifiers {
   database_name?: Maybe<Scalars['String']>;
   /** Source of the reference database assignment */
   provenance_source?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotExternalReference {
+export type RcsbUniprotExternalReference = {
   __typename?: 'RcsbUniprotExternalReference';
   provenance_source?: Maybe<Scalars['String']>;
   reference_id?: Maybe<Scalars['String']>;
   /** Allowable values: IMPC, GTEX, PHAROS. */
   reference_name?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotFeature {
+export type RcsbUniprotFeature = {
   __typename?: 'RcsbUniprotFeature';
   /** Identifies the version of the feature assignment. */
   assignment_version?: Maybe<Scalars['String']>;
@@ -10696,9 +10696,9 @@ export interface RcsbUniprotFeature {
    * ACTIVE_SITE, BINDING_SITE, CALCIUM_BINDING_REGION, CHAIN, COMPOSITIONALLY_BIASED_REGION, CROSS_LINK, DNA_BINDING_REGION, DOMAIN, GLYCOSYLATION_SITE, INITIATOR_METHIONINE, LIPID_MOIETY_BINDING_REGION, METAL_ION_BINDING_SITE, MODIFIED_RESIDUE, MUTAGENESIS_SITE, NON_CONSECUTIVE_RESIDUES, NON_TERMINAL_RESIDUE, NUCLEOTIDE_PHOSPHATE_BINDING_REGION, PEPTIDE, PROPEPTIDE, REGION_OF_INTEREST, REPEAT, NON_STANDARD_AMINO_ACID, SEQUENCE_CONFLICT, SEQUENCE_VARIANT, SHORT_SEQUENCE_MOTIF, SIGNAL_PEPTIDE, SITE, SPLICE_VARIANT, TOPOLOGICAL_DOMAIN, TRANSIT_PEPTIDE, TRANSMEMBRANE_REGION, UNSURE_RESIDUE, ZINC_FINGER_REGION, INTRAMEMBRANE_REGION
    */
   type?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotFeatureFeaturePositions {
+export type RcsbUniprotFeatureFeaturePositions = {
   __typename?: 'RcsbUniprotFeatureFeaturePositions';
   /** An identifier for the monomer(s) corresponding to the feature assignment. */
   beg_comp_id?: Maybe<Scalars['String']>;
@@ -10708,9 +10708,9 @@ export interface RcsbUniprotFeatureFeaturePositions {
   end_seq_id?: Maybe<Scalars['Int']>;
   /** The value for the feature over this monomer segment. */
   value?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RcsbUniprotKeyword {
+export type RcsbUniprotKeyword = {
   __typename?: 'RcsbUniprotKeyword';
   /**
    * A unique keyword identifier.
@@ -10726,9 +10726,9 @@ export interface RcsbUniprotKeyword {
    * Lipid metabolism, Phosphoprotein, Fatty acid biosynthesis
    */
   value?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotProtein {
+export type RcsbUniprotProtein = {
   __typename?: 'RcsbUniprotProtein';
   /** Enzyme Commission (EC) number(s). */
   ec?: Maybe<Array<Maybe<RcsbUniprotProteinEc>>>;
@@ -10740,29 +10740,29 @@ export interface RcsbUniprotProtein {
   sequence?: Maybe<Scalars['String']>;
   /** Taxonomy information on the organism that is the source of the protein sequence. */
   source_organism?: Maybe<RcsbUniprotProteinSourceOrganism>;
-}
+};
 
-export interface RcsbUniprotProteinEc {
+export type RcsbUniprotProteinEc = {
   __typename?: 'RcsbUniprotProteinEc';
   number?: Maybe<Scalars['String']>;
   /** Historical record of the data attribute. */
   provenance_code?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotProteinFunction {
+export type RcsbUniprotProteinFunction = {
   __typename?: 'RcsbUniprotProteinFunction';
   /** General function(s) of a protein. */
   details?: Maybe<Scalars['String']>;
   /** Historical record of the data attribute. */
   provenance_code?: Maybe<Scalars['String']>;
-}
+};
 
-export interface RcsbUniprotProteinGene {
+export type RcsbUniprotProteinGene = {
   __typename?: 'RcsbUniprotProteinGene';
   name?: Maybe<Array<Maybe<GeneName>>>;
-}
+};
 
-export interface RcsbUniprotProteinName {
+export type RcsbUniprotProteinName = {
   __typename?: 'RcsbUniprotProteinName';
   /** Historical record of the data attribute. */
   provenance_code: Scalars['String'];
@@ -10773,9 +10773,9 @@ export interface RcsbUniprotProteinName {
    * Hemoglobin alpha
    */
   value: Scalars['String'];
-}
+};
 
-export interface RcsbUniprotProteinSourceOrganism {
+export type RcsbUniprotProteinSourceOrganism = {
   __typename?: 'RcsbUniprotProteinSourceOrganism';
   /** Historical record of the data attribute. */
   provenance_code: Scalars['String'];
@@ -10783,9 +10783,9 @@ export interface RcsbUniprotProteinSourceOrganism {
   scientific_name: Scalars['String'];
   /** NCBI Taxonomy identifier for the organism in which a protein occurs. */
   taxonomy_id?: Maybe<Scalars['Int']>;
-}
+};
 
-export interface Refine {
+export type Refine = {
   __typename?: 'Refine';
   /**
    * The maximum isotropic displacement parameter (B value)
@@ -11648,9 +11648,9 @@ export interface Refine {
    *  Ref: Tronrud, D. E. (1997). Methods Enzymol. 277, 243-268.
    */
   solvent_model_param_ksol?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface RefineAnalyze {
+export type RefineAnalyze = {
   __typename?: 'RefineAnalyze';
   /**
    * The estimated coordinate error obtained from the plot of
@@ -11737,9 +11737,9 @@ export interface RefineAnalyze {
    *  of joint refinements.
    */
   pdbx_refine_id: Scalars['String'];
-}
+};
 
-export interface RefineHist {
+export type RefineHist = {
   __typename?: 'RefineHist';
   /**
    * The value of _refine_hist.cycle_id must uniquely identify a
@@ -11789,9 +11789,9 @@ export interface RefineHist {
    *  of joint refinements.
    */
   pdbx_refine_id: Scalars['String'];
-}
+};
 
-export interface RefineLsRestr {
+export type RefineLsRestr = {
   __typename?: 'RefineLsRestr';
   /**
    * For the given parameter type, the root-mean-square deviation
@@ -11844,9 +11844,9 @@ export interface RefineLsRestr {
    *  the least-squares refinement.
    */
   weight?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface Reflns {
+export type Reflns = {
   __typename?: 'Reflns';
   /**
    * The value of the overall isotropic displacement parameter
@@ -12143,9 +12143,9 @@ export interface Reflns {
    * From model, NCS averaging, Solvent flipping, Solvent flattening, Multiple crystal averaging, Multiple phase modification, Other phase modification
    */
   phase_calculation_details?: Maybe<Scalars['String']>;
-}
+};
 
-export interface ReflnsShell {
+export type ReflnsShell = {
   __typename?: 'ReflnsShell';
   /**
    * Residual factor Rmerge for all reflections that satisfy the
@@ -12385,9 +12385,9 @@ export interface ReflnsShell {
    *  _reflns.observed_criterion) for this shell.
    */
   percent_possible_obs?: Maybe<Scalars['Float']>;
-}
+};
 
-export interface Software {
+export type Software = {
   __typename?: 'Software';
   /**
    * The classification of the program according to its
@@ -12477,9 +12477,9 @@ export interface Software {
    * v1.0, beta, 3.1-2, unknown
    */
   version?: Maybe<Scalars['String']>;
-}
+};
 
-export interface Struct {
+export type Struct = {
   __typename?: 'Struct';
   /**
    * The item indicates whether the entry is a CASP target, a CASD-NMR target,
@@ -12522,9 +12522,9 @@ export interface Struct {
    * T4 lysozyme mutant - S32A, Rhinovirus 16 polymerase elongation complex (r1_form), Crystal structure of the OXA-10 W154A mutant at pH 9.0, Mutant structure of Thermus thermophilus HB8 uridine-cytidine kinase, Crystal structure of xylanase from Trichoderma longibrachiatum
    */
   title?: Maybe<Scalars['String']>;
-}
+};
 
-export interface StructKeywords {
+export type StructKeywords = {
   __typename?: 'StructKeywords';
   /**
    * Terms characterizing the macromolecular structure.
@@ -12540,9 +12540,9 @@ export interface StructKeywords {
    * Inhibitor, Complex, Isomerase..., serine protease, inhibited complex, high-resolution refinement
    */
   text?: Maybe<Scalars['String']>;
-}
+};
 
-export interface Symmetry {
+export type Symmetry = {
   __typename?: 'Symmetry';
   /**
    * Space-group number from International Tables for Crystallography
@@ -12604,5 +12604,5 @@ export interface Symmetry {
    * -P 2ac 2n, -R 3 2", P 61 2 2 (0 0 -1)
    */
   space_group_name_Hall?: Maybe<Scalars['String']>;
-}
+};
 

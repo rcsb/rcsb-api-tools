@@ -4,7 +4,7 @@ module.exports = {
     mode: "development",
     //mode: "production",
     entry: {
-        'test':'./src/RcsbSearch/QueryTest.ts'
+        'test':'./build/RcsbSearch/QueryTest.js'
     },
     module: {
       rules: [

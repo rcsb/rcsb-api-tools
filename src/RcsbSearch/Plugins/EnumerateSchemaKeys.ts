@@ -2,13 +2,6 @@ import {compileFromFile, Options} from "json-schema-to-typescript"
 import * as fs from "fs";
 import * as _ from "lodash";
 
-async function generateInterface(schemaFile: string, interfaceFile: string, constantsFile: string, options?:Partial<Options>): Promise<string>{
-    const schema: string = await compileFromFile(schemaFile, {cwd:"./search_schema", ...options});
-    fs.writeFileSync(interfaceFile, schema);
-    generateEnum(interfaceFile, constantsFile);
-    return interfaceFile;
-}
-
 function replace(value: string): string{
     const replace: RegExp = new RegExp(/"|\s|;|\?|:|\||\(|\)/gi);
     return value.replace(replace,"");
@@ -65,22 +58,10 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
     fs.appendFileSync(constantsFile, `${enums.join("\n")}\n`);
 }
 
-if(fs.existsSync("src/RcsbSearch/Types/SearchEnums.ts"))
-    fs.unlinkSync("src/RcsbSearch/Types/SearchEnums.ts");
-
-generateInterface(
-    "search_schema/json-schema-rcsb_search_query.json",
-    "src/RcsbSearch/Types/SearchQueryInterface.ts",
-    "src/RcsbSearch/Types/SearchEnums.ts"
-).then((resolve)=>{
-    console.log(`${resolve} interface generated`);
-});
-
-generateInterface(
-    "search_schema/json-schema-rcsb_query_result.json",
-    "src/RcsbSearch/Types/SearchResultInterface.ts",
-    "src/RcsbSearch/Types/SearchEnums.ts"
-).then((resolve)=>{
-    console.log(`${resolve} interface generated`);
-});
+export async function generateInterface(schemaFile: string, interfaceFile: string, constantsFile: string, options?:Partial<Options>): Promise<string>{
+    const schema: string = await compileFromFile(schemaFile, {cwd:"./search_schema", ...options});
+    fs.writeFileSync(interfaceFile, schema);
+    generateEnum(interfaceFile, constantsFile);
+    return interfaceFile;
+}
 

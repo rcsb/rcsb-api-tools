@@ -1,7 +1,8 @@
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
-import {CoreConstants} from "../RcsbGraphQL/Types/Yosemite/CoreConstants";
+import {CoreEntry, CorePolymerEntity} from "../RcsbGraphQL/Types/Yosemite/CorePaths";
 import {AggregationType, Operator, ReturnType, Service, Type} from "./Types/SearchEnums";
+import {SearchRequest} from "./SearchRequest";
 
 const query: SearchQuery = {
     query: {
@@ -10,22 +11,22 @@ const query: SearchQuery = {
         parameters: {
             operator: Operator.Greater,
             value: "1900-01-01",
-            attribute: [CoreConstants.RcsbAccessionInfo, CoreConstants.InitialReleaseDate].join(".")
+            attribute: CoreEntry.RcsbAccessionInfo.DepositDate
         }
     },
     request_options: {
         facets: [
             {
                 aggregation_type: AggregationType.Terms,
-                attribute: [CoreConstants.Exptl, CoreConstants.Method].join(".")
+                attribute: CoreEntry.Exptl.Method
             },
             {
                 aggregation_type: AggregationType.Terms,
-                attribute: [CoreConstants.RcsbPrimaryCitation, CoreConstants.RcsbJournalAbbrev].join(".")
+                attribute: CoreEntry.RcsbPrimaryCitation.RcsbJournalAbbrev
             },
             {
                 aggregation_type: AggregationType.Histogram,
-                attribute: [CoreConstants.RcsbPolymerEntity, CoreConstants.FormulaWeight].join("."),
+                attribute: CorePolymerEntity.RcsbPolymerEntity.FormulaWeight,
                 interval: 10,
                 min_interval_population: 1
             }
@@ -34,17 +35,9 @@ const query: SearchQuery = {
     return_type: ReturnType.Entry
 };
 
-const result = fetch("https://search.rcsb.org/rcsbsearch/v1/query", {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(query)
-});
-
-result.then(async (response)=>{
-    const queryResult: QueryResult = await response.json();
-    console.log(queryResult.drilldown![0]);
+const searchRequest: SearchRequest = new SearchRequest();
+const result: Promise<QueryResult> = searchRequest.request(query);
+result.then((response)=>{
+    response.drilldown!.filter(dd=>dd.attribute===CoreEntry.RcsbPrimaryCitation.RcsbJournalAbbrev)[0];
 });
 

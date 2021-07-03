@@ -4,20 +4,32 @@ import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
 import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
 
 
-export class RcsbQueryAlignment {
+export class GraphQLRequest {
 
-    private static readonly client = {
-        "borrego": new ApolloClient({
-            uri: (<any>configBorregoGraphQL).schema
-        }),
-        "yosemite": new ApolloClient({
-            uri: (<any>configYosemiteGraphQL).schema
-        })
+    private readonly client: ApolloClient<unknown>;
+
+    constructor(api: "yosemite" | "borrego" | string) {
+        switch (api){
+            case "yosemite":
+                this.client = new ApolloClient({
+                    uri: (<any>configYosemiteGraphQL).schema
+                });
+                break;
+            case "borrego":
+                this.client = new ApolloClient({
+                    uri: (<any>configBorregoGraphQL).schema
+                });
+                break;
+            default:
+                this.client = new ApolloClient({
+                    uri: api
+                });
+        }
     }
 
-    public async request<Q,R>(requestConfig: Q, query: DocumentNode, api: "yosemite" | "borrego"): Promise<R> {
+    public async request<Q,R>(requestConfig: Q, query: DocumentNode): Promise<R> {
         try {
-            const alignment: ApolloQueryResult<R> = await RcsbQueryAlignment.client[api].query<R>({
+            const alignment: ApolloQueryResult<R> = await this.client.query<R>({
                 query: query,
                 variables: {
                     ...requestConfig
