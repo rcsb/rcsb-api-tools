@@ -1,7 +1,8 @@
 import {ApolloQueryResult} from "apollo-client";
-import ApolloClient, {DocumentNode} from "apollo-boost";
+import ApolloClient from "apollo-boost";
 import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
 import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
+import gql from 'graphql-tag';
 
 
 export class GraphQLRequest {
@@ -27,10 +28,10 @@ export class GraphQLRequest {
         }
     }
 
-    public async request<Q,R>(requestConfig: Q, query: DocumentNode): Promise<R> {
+    public async request<Q,R>(requestConfig: Q, query: string): Promise<R> {
         try {
             const alignment: ApolloQueryResult<R> = await this.client.query<R>({
-                query: query,
+                query: gql(query),
                 variables: {
                     ...requestConfig
                 }
