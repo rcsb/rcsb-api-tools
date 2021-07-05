@@ -5,6 +5,9 @@ export async function generateInterfaces(schemaFile: string, interfaceOutputFile
         {
             schema: schemaFile,
             documents:  documents ? process.cwd() +"/"+ documents : undefined,
+            config:{
+                declarationKind:"interface"
+            },
             generates: {
                 [process.cwd() + "/" + interfaceOutputFile]: {
                     plugins: ['typescript'],

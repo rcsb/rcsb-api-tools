@@ -20,6 +20,20 @@ function mapToObject(map) {
     return out
 }
 
+function stringify(obj){
+    if(typeof obj !== "object" || Array.isArray(obj)){
+        // not an object, stringify using native function
+        return JSON.stringify(obj);
+    }
+    // Implements recursive object serialization according to JSON spec
+    // but without quotes around the keys.
+    let props = Object
+        .keys(obj)
+        .map(key => `${key}:${stringify(obj[key])}`)
+        .join(",");
+    return `{${props}}`;
+}
+
 module.exports = {
     plugin: (schema, documents, config, info) => {
         const printedSchema = printSchema(schema); // Returns a string representation of the schema
@@ -90,9 +104,9 @@ module.exports = {
             });
             storeMap.forEach((v,k)=>{
                 if(v instanceof Map)
-                    out.push(`\tpublic static readonly ${k} = ${JSON.stringify(mapToObject(v))};`);
+                    out.push(`\tpublic static readonly ${k}: ${stringify(mapToObject(v))} = ${stringify(mapToObject(v))};`);
                 else
-                    out.push(`\tpublic static readonly ${k} = "${v}";`);
+                    out.push(`\tpublic static readonly ${k}: "${v}" = "${v}";`);
             })
             out.push("}\n");
         });

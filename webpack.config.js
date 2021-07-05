@@ -26,7 +26,7 @@ const commonConfig = {
 const app = {
     ...commonConfig,
     entry: {
-        'index':'./src/app.ts'
+        'app':'./src/app.ts'
     },
     output: {
         filename: '[name].js',

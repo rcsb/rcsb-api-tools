@@ -3,7 +3,7 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
+export interface Scalars {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -13,9 +13,9 @@ export type Scalars = {
   ObjectScalar: any;
   /** Use SPQR's SchemaPrinter to remove this from SDL */
   UNREPRESENTABLE: any;
-};
+}
 
-export type AdditionalProperty = {
+export interface AdditionalProperty {
   __typename?: 'AdditionalProperty';
   /**
    * The additional property name.
@@ -25,9 +25,9 @@ export type AdditionalProperty = {
    */
   property_name?: Maybe<PropertyName>;
   property_value?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
-};
+}
 
-export type AlignedRegion = {
+export interface AlignedRegion {
   __typename?: 'AlignedRegion';
   /** List of genomic indexes that are needed to complete the last nucleotide triad of a genome-protein sequence alignment */
   exon_shift?: Maybe<Array<Maybe<Scalars['Int']>>>;
@@ -39,17 +39,17 @@ export type AlignedRegion = {
   target_begin: Scalars['Int'];
   /** Target sequence start position */
   target_end: Scalars['Int'];
-};
+}
 
-export type AlignmentResponse = {
+export interface AlignmentResponse {
   __typename?: 'AlignmentResponse';
   /** Full sequence of the query */
   query_sequence?: Maybe<Scalars['String']>;
   /** JSON schema that describes the different alignments between the query sequence and targets */
   target_alignment?: Maybe<Array<Maybe<TargetAlignment>>>;
-};
+}
 
-export type AnnotationFeatures = {
+export interface AnnotationFeatures {
   __typename?: 'AnnotationFeatures';
   /** List of positional features */
   features?: Maybe<Array<Maybe<Feature>>>;
@@ -57,9 +57,9 @@ export type AnnotationFeatures = {
   source?: Maybe<Source>;
   /** Database source entry identifier associated to the positional features */
   target_id?: Maybe<Scalars['String']>;
-};
+}
 
-export type Coverage = {
+export interface Coverage {
   __typename?: 'Coverage';
   /** Percentage of the query sequence covered byt the alignment */
   query_coverage?: Maybe<Scalars['Int']>;
@@ -69,9 +69,9 @@ export type Coverage = {
   target_coverage?: Maybe<Scalars['Int']>;
   /** Length of the full target sequence */
   target_length?: Maybe<Scalars['Int']>;
-};
+}
 
-export type Feature = {
+export interface Feature {
   __typename?: 'Feature';
   additional_properties?: Maybe<Array<Maybe<AdditionalProperty>>>;
   /** Free-form text describing the feature */
@@ -93,9 +93,9 @@ export type Feature = {
   type?: Maybe<Type>;
   /** Numerical value associated with the feature */
   value?: Maybe<Scalars['Float']>;
-};
+}
 
-export type FeaturePosition = {
+export interface FeaturePosition {
   __typename?: 'FeaturePosition';
   /** Index at which this segment of the feature begins on the original provenance_source. When reference and source point to the same reference system this file will be null */
   beg_ori_id?: Maybe<Scalars['Int']>;
@@ -113,14 +113,14 @@ export type FeaturePosition = {
   range_id?: Maybe<Scalars['String']>;
   /** The value for the feature at this region */
   value?: Maybe<Scalars['Float']>;
-};
+}
 
-export type FilterInput = {
+export interface FilterInput {
   field?: Maybe<FieldName>;
   operation?: Maybe<OperationType>;
   source?: Maybe<Source>;
   values?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
+}
 
 
 export enum PropertyName {
@@ -148,32 +148,32 @@ export enum PropertyName {
 }
 
 /** Query root */
-export type Query = {
+export interface Query {
   __typename?: 'Query';
   /** Get positional features */
   annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
   /** Get sequence alignments */
   alignment?: Maybe<AlignmentResponse>;
-};
+}
 
 
 /** Query root */
-export type QueryAnnotationsArgs = {
+export interface QueryAnnotationsArgs {
   reference?: Maybe<SequenceReference>;
   sources?: Maybe<Array<Maybe<Source>>>;
   range?: Maybe<Array<Maybe<Scalars['Int']>>>;
   filters?: Maybe<Array<Maybe<FilterInput>>>;
   queryId: Scalars['String'];
-};
+}
 
 
 /** Query root */
-export type QueryAlignmentArgs = {
+export interface QueryAlignmentArgs {
   range?: Maybe<Array<Maybe<Scalars['Int']>>>;
   from?: Maybe<SequenceReference>;
   to?: Maybe<SequenceReference>;
   queryId: Scalars['String'];
-};
+}
 
 export enum SequenceReference {
   NcbiGenome = 'NCBI_GENOME',
@@ -189,7 +189,7 @@ export enum Source {
   Uniprot = 'UNIPROT'
 }
 
-export type TargetAlignment = {
+export interface TargetAlignment {
   __typename?: 'TargetAlignment';
   /** Aligned region */
   aligned_regions?: Maybe<Array<Maybe<AlignedRegion>>>;
@@ -201,7 +201,7 @@ export type TargetAlignment = {
   target_id?: Maybe<Scalars['String']>;
   /** Full sequence of the target */
   target_sequence?: Maybe<Scalars['String']>;
-};
+}
 
 export enum Type {
   ActiveSite = 'ACTIVE_SITE',

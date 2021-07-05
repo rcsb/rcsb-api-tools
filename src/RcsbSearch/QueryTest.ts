@@ -1,6 +1,6 @@
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
-import {CoreEntry, CorePolymerEntity} from "../RcsbGraphQL/Types/Yosemite/CorePaths";
+import {CoreEntry} from "../RcsbGraphQL/Types/Yosemite/CorePaths";
 import {AggregationType, Operator, ReturnType, Service, Type} from "./Types/SearchEnums";
 import {SearchRequest} from "./SearchRequest";
 
@@ -26,8 +26,8 @@ const query: SearchQuery = {
             },
             {
                 aggregation_type: AggregationType.Histogram,
-                attribute: CorePolymerEntity.RcsbPolymerEntity.FormulaWeight,
-                interval: 10,
+                attribute: CoreEntry.RcsbEntryInfo.DiffrnResolutionHigh.Value,
+                interval: 0.5,
                 min_interval_population: 1
             }
         ]
