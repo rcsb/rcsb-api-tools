@@ -1,11 +1,9 @@
 const path = require('path');
 
-module.exports = {
+const commonConfig = {
     mode: "development",
     //mode: "production",
-    entry: {
-        'test':'./build/RcsbSearch/QueryTest.js'
-    },
+
     module: {
       rules: [
         {
@@ -22,12 +20,35 @@ module.exports = {
     resolve: {
       extensions: [ '.tsx', '.ts', '.js', 'jsx' ]
     },
+    devtool: 'source-map'
+};
+
+const app = {
+    ...commonConfig,
+    entry: {
+        'index':'./src/app.ts'
+    },
     output: {
         filename: '[name].js',
         /*library: 'RcsbChart',
-        libraryTarget: 'umd',*/
-        umdNamedDefine: true,
+        libraryTarget: 'umd',
+        umdNamedDefine: true,*/
         path: path.resolve(__dirname, 'build')
+    }
+}
+
+const bin = {
+    ...commonConfig,
+    entry: {
+        'check-queries':'./src/RcsbGraphQL/Generator/CheckQueries.ts'
     },
-    devtool: 'source-map'
-};
+    output: {
+        filename: '[name].js',
+        /*library: 'RcsbChart',
+        libraryTarget: 'umd',
+        umdNamedDefine: true,*/
+        path: path.resolve(__dirname, 'build/bin')
+    }
+}
+
+module.exports=[app];

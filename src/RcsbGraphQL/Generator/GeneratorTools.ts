@@ -15,6 +15,7 @@ export async function generateInterfaces(schemaFile: string, interfaceOutputFile
     );
     if(pluginConfig)
         pluginConfig.forEach((pc)=>{
+            console.log(`Running plugin ${pc.pluginFile}`);
             generate(
                 {
                     schema: schemaFile,
@@ -26,7 +27,9 @@ export async function generateInterfaces(schemaFile: string, interfaceOutputFile
                     },
                 },
                 true
-            );
+            ).then(()=>{
+                console.log(`Generated ${process.cwd() + "/" + pc.outputFile}`);
+            });
         })
 
 
@@ -41,7 +44,7 @@ export async function validateQueries(schemaFile: string, documents: string): Pr
                     documents: documents,
                     generates: {
                         [process.cwd()]: {
-                            plugins: ['typescript'],
+                            plugins: [__dirname+"/../Plugins/null.js"],
                         }
                     }
                 },
