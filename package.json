@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-saguaro-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "build/app.js",
   "files": [
@@ -18,9 +18,16 @@
     "buildApp": "npm run buildSources && npm run tsc && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bioinsilico/rcsb-saguaro-api.git"
+  },
+  "author": "Joan Segura Mora <joan.segura@rcsb.org>",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
