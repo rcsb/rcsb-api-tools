@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [1.0.6] - 2021-07-12
+### Bug fixes
+- yosemite server config fixed
+
 ## [1.0.5] - 2021-07-12
 ### Bug fixes
 - apollo-boost dependency added
