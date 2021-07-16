@@ -1,7 +1,9 @@
 import {generateInterfaces} from "./GeneratorTools";
+import * as configBorregoGraphQL from "../ServerConfig/codegen.borrego.json";
+import * as configYosemiteGraphQL from "../ServerConfig/codegen.yosemite.json";
 
 generateInterfaces(
-    "http://132.249.213.110/graphql",
+    configYosemiteGraphQL.schema,
     "src/RcsbGraphQL/Types/Yosemite/GqlTypes.ts",
     "src/RcsbGraphQL/Queries/Yosemite/*.graphql",
     [{
@@ -14,7 +16,7 @@ generateInterfaces(
 );
 
 generateInterfaces(
-    "https://1d-coordinates.rcsb.org/graphql",
+    configBorregoGraphQL.documents,
     "src/RcsbGraphQL/Types/Borrego/GqlTypes.ts",
     "src/RcsbGraphQL/Queries/Borrego/*.graphql"
 );

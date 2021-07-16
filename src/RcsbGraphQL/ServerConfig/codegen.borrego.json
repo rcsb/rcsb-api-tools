@@ -1,15 +1,4 @@
 {
-  "overwrite": true,
   "schema": "https://1d-coordinates.rcsb.org/graphql",
-  "documents": "src/RcsbGraphQL/Queries/Borrego/*.graphql",
-  "config":{
-    "declarationKind":"interface"
-  },
-  "generates": {
-    "./src/RcsbGraphQL/Types/Borrego/GqlTypes.ts": {
-      "plugins": [
-        "typescript"
-      ]
-    }
-  }
+  "documents": "src/RcsbGraphQL/Queries/Borrego/*.graphql"
 }

@@ -3,6 +3,7 @@ import { generate } from '@graphql-codegen/cli';
 export async function generateInterfaces(schemaFile: string, interfaceOutputFile: string, documents?: string, pluginConfig?: {outputFile:string, pluginFile:string}[]) {
     await generate(
         {
+            overwrite: true,
             schema: schemaFile,
             documents:  documents ? process.cwd() +"/"+ documents : undefined,
             config:{
