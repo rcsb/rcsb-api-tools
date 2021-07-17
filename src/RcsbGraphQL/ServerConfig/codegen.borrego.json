@@ -1,4 +1,5 @@
 {
   "schema": "https://1d-coordinates.rcsb.org/graphql",
-  "documents": "src/RcsbGraphQL/Queries/Borrego/*.graphql"
+  "documents": "src/RcsbGraphQL/Queries/Borrego/*.graphql",
+  "interfaceOutputFile": "src/RcsbGraphQL/Types/Borrego/GqlTypes.ts"
 }

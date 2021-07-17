@@ -131,7 +131,6 @@ export enum PropertyName {
   DiseaseType = 'DISEASE_TYPE',
   Evidence = 'EVIDENCE',
   Link = 'LINK',
-  ModificationType = 'MODIFICATION_TYPE',
   MutatedType = 'MUTATED_TYPE',
   OmegaAngle = 'OMEGA_ANGLE',
   ParentCompId = 'PARENT_COMP_ID',
@@ -144,35 +143,36 @@ export enum PropertyName {
   ScopSunId = 'SCOP_SUN_ID',
   SheetSense = 'SHEET_SENSE',
   StrainId = 'STRAIN_ID',
+  Subtype = 'SUBTYPE',
   WildType = 'WILD_TYPE'
 }
 
 /** Query root */
 export interface Query {
   __typename?: 'Query';
-  /** Get sequence alignments */
-  alignment?: Maybe<AlignmentResponse>;
   /** Get positional features */
   annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
-}
-
-
-/** Query root */
-export interface QueryAlignmentArgs {
-  from?: Maybe<SequenceReference>;
-  queryId: Scalars['String'];
-  range?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  to?: Maybe<SequenceReference>;
+  /** Get sequence alignments */
+  alignment?: Maybe<AlignmentResponse>;
 }
 
 
 /** Query root */
 export interface QueryAnnotationsArgs {
-  filters?: Maybe<Array<Maybe<FilterInput>>>;
-  queryId: Scalars['String'];
-  range?: Maybe<Array<Maybe<Scalars['Int']>>>;
   reference?: Maybe<SequenceReference>;
   sources?: Maybe<Array<Maybe<Source>>>;
+  range?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  filters?: Maybe<Array<Maybe<FilterInput>>>;
+  queryId: Scalars['String'];
+}
+
+
+/** Query root */
+export interface QueryAlignmentArgs {
+  range?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  from?: Maybe<SequenceReference>;
+  to?: Maybe<SequenceReference>;
+  queryId: Scalars['String'];
 }
 
 export enum SequenceReference {

@@ -701,19 +701,6 @@ export interface CoreEntry {
   symmetry?: Maybe<Symmetry>;
 }
 
-export interface CoreGroup {
-  __typename?: 'CoreGroup';
-  rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
-  rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
-  rcsb_group_info: RcsbGroupInfo;
-  rcsb_group_members_rankings?: Maybe<Array<Maybe<RcsbGroupMembersRankings>>>;
-  rcsb_group_related?: Maybe<Array<Maybe<RcsbGroupRelated>>>;
-  rcsb_group_sequence_alignment?: Maybe<RcsbGroupSequenceAlignment>;
-  rcsb_group_statistics?: Maybe<RcsbGroupStatistics>;
-  /** A unique textual identifier for a group */
-  rcsb_id: Scalars['String'];
-}
-
 export interface CoreNonpolymerEntity {
   __typename?: 'CoreNonpolymerEntity';
   /** Get PDB entry that contains this non-polymer entity. */
@@ -3038,16 +3025,6 @@ export interface GeneName {
   /** Allowable values: PRIMARY, SYNONYM, ORDERED_LOCUS, ORF. */
   type?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
-}
-
-export interface GroupMembersAlignmentAlignedRegions {
-  __typename?: 'GroupMembersAlignmentAlignedRegions';
-  /** An identifier for the monomer in the entity sequence at which this segment of the alignment begins */
-  entity_beg_seq_id: Scalars['Int'];
-  /** An length of the this segment of the alignment */
-  length: Scalars['Int'];
-  /** An identifier for the monomer in the reference sequence at which this segment of the alignment begins */
-  ref_beg_seq_id: Scalars['Int'];
 }
 
 
@@ -6478,8 +6455,6 @@ export interface Query {
   assembly?: Maybe<CoreAssembly>;
   /** Get a list of PDB branched entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   branched_entity_instances?: Maybe<Array<Maybe<CoreBranchedEntityInstance>>>;
-  /** Provides a set of PDB entities grouped by a common UniProt accession. */
-  uniprot_entity_group?: Maybe<CoreGroup>;
   /** Get a list of PDB polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
   /** Get a list of assemblies given the list of ASSEMBLY IDs. Here an ASSEMBLY ID is a compound identifier that includes entry_id and assembly_id separated by '-', e.g. 1XXX-1. */
@@ -6559,12 +6534,6 @@ export interface QueryBranched_Entity_InstancesArgs {
 
 
 /** Query root */
-export interface QueryUniprot_Entity_GroupArgs {
-  group_id: Scalars['String'];
-}
-
-
-/** Query root */
 export interface QueryPolymer_Entity_InstancesArgs {
   instance_ids: Array<Maybe<Scalars['String']>>;
 }
@@ -6637,15 +6606,6 @@ export interface QueryNonpolymer_Entity_InstancesArgs {
 export interface QueryNonpolymer_EntityArgs {
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
-
-export interface RankingOptionsGroupMembers {
-  __typename?: 'RankingOptionsGroupMembers';
-  member_id: Scalars['String'];
-  /** Quantifies the criteria used for ranking */
-  original_score?: Maybe<Scalars['Float']>;
-  /** Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second */
-  rank: Scalars['Int'];
 }
 
 export interface RcsbAccessionInfo {
@@ -8479,110 +8439,6 @@ export interface RcsbGenomicLineage {
    * Homo sapiens, 8, defensin beta 103A
    */
   name?: Maybe<Scalars['String']>;
-}
-
-export interface RcsbGroupAccessionInfo {
-  __typename?: 'RcsbGroupAccessionInfo';
-  /** Identifies the version of the groups solution */
-  version: Scalars['Int'];
-}
-
-export interface RcsbGroupContainerIdentifiers {
-  __typename?: 'RcsbGroupContainerIdentifiers';
-  /** A unique textual identifier for a group */
-  group_id: Scalars['String'];
-  /** Member identifiers representing a group */
-  group_member_ids: Array<Maybe<Scalars['String']>>;
-  /** This data item is a pointer to a group provenance definition */
-  group_provenance_id: Scalars['String'];
-  /** Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship */
-  parent_member_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
-}
-
-export interface RcsbGroupInfo {
-  __typename?: 'RcsbGroupInfo';
-  group_description: Scalars['String'];
-  group_members_count: Scalars['Int'];
-  /**
-   * Granularity of group members identifiers
-   *
-   * Allowable values:
-   * assembly, polymer_entity, polymer_entity_instance
-   */
-  group_members_granularity: Scalars['String'];
-  group_name: Scalars['String'];
-}
-
-export interface RcsbGroupMembersRankings {
-  __typename?: 'RcsbGroupMembersRankings';
-  ranking_options: Array<Maybe<RcsbGroupMembersRankingsRankingOptions>>;
-  /**
-   * Uniquely identifies the criteria incorporated into selecting a representative group member
-   *
-   * Allowable values:
-   * best coverage, best resolution
-   */
-  representative_criteria_type: Scalars['String'];
-}
-
-export interface RcsbGroupMembersRankingsRankingOptions {
-  __typename?: 'RcsbGroupMembersRankingsRankingOptions';
-  group_members: Array<Maybe<RankingOptionsGroupMembers>>;
-  /**
-   * Defines ranking option applicable to group members
-   *
-   * Allowable values:
-   * RMSD, data quality, number of modified residues, coverage
-   */
-  ranking_criteria_type: Scalars['String'];
-}
-
-export interface RcsbGroupRelated {
-  __typename?: 'RcsbGroupRelated';
-  /**
-   * A unique code assigned to a reference related the group
-   *
-   * Examples:
-   * P69905
-   */
-  resource_accession_code?: Maybe<Scalars['String']>;
-  /**
-   * Defines the type of the resource describing related references
-   *
-   * Examples:
-   * UniProt
-   */
-  resource_name?: Maybe<Scalars['String']>;
-}
-
-export interface RcsbGroupSequenceAlignment {
-  __typename?: 'RcsbGroupSequenceAlignment';
-  /** Abstract reference where group members can be aligned to generate a MSA */
-  abstract_reference: RcsbGroupSequenceAlignmentAbstractReference;
-  group_members_alignment: Array<Maybe<RcsbGroupSequenceAlignmentGroupMembersAlignment>>;
-}
-
-export interface RcsbGroupSequenceAlignmentAbstractReference {
-  __typename?: 'RcsbGroupSequenceAlignmentAbstractReference';
-  /** Abstract reference length */
-  length: Scalars['Int'];
-  /** Sequence that represents the abstract reference */
-  sequence?: Maybe<Scalars['String']>;
-}
-
-export interface RcsbGroupSequenceAlignmentGroupMembersAlignment {
-  __typename?: 'RcsbGroupSequenceAlignmentGroupMembersAlignment';
-  aligned_regions: Array<Maybe<GroupMembersAlignmentAlignedRegions>>;
-  /** Identifier of the group member */
-  group_member_id: Scalars['String'];
-}
-
-export interface RcsbGroupStatistics {
-  __typename?: 'RcsbGroupStatistics';
-  /** Similarity score between two most similar group members */
-  similarity_score_max?: Maybe<Scalars['Float']>;
-  /** Similarity score between two least similar group members */
-  similarity_score_min?: Maybe<Scalars['Float']>;
 }
 
 export interface RcsbLatestRevision {

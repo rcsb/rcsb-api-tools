@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [1.1.0] - 2021-07-16
+### Config format
+- simplified gql server config
+
 ## [1.0.6] - 2021-07-12
 ### Bug fixes
 - yosemite server config fixed

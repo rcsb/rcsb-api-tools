@@ -4,19 +4,13 @@ import * as configYosemiteGraphQL from "../ServerConfig/codegen.yosemite.json";
 
 generateInterfaces(
     configYosemiteGraphQL.schema,
-    "src/RcsbGraphQL/Types/Yosemite/GqlTypes.ts",
-    "src/RcsbGraphQL/Queries/Yosemite/*.graphql",
-    [{
-        pluginFile: "src/RcsbGraphQL/Plugins/fullpath_schema_keys.js",
-        outputFile: "src/RcsbGraphQL/Types/Yosemite/CorePaths.ts"
-    },{
-        pluginFile: "src/RcsbGraphQL/Plugins/enumerate_schema_keys.js",
-        outputFile: "src/RcsbGraphQL/Types/Yosemite/CoreConstants.ts"
-    }]
+    configYosemiteGraphQL.interfaceOutputFile,
+    configYosemiteGraphQL.documents,
+    configYosemiteGraphQL.pluginFile
 );
 
 generateInterfaces(
-    configBorregoGraphQL.documents,
-    "src/RcsbGraphQL/Types/Borrego/GqlTypes.ts",
-    "src/RcsbGraphQL/Queries/Borrego/*.graphql"
+    configBorregoGraphQL.schema,
+    configBorregoGraphQL.interfaceOutputFile,
+    configBorregoGraphQL.documents
 );

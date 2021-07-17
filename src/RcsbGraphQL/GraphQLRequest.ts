@@ -13,12 +13,12 @@ export class GraphQLRequest {
         switch (api){
             case "yosemite":
                 this.client = new ApolloClient({
-                    uri: (<any>configYosemiteGraphQL).schema
+                    uri: configYosemiteGraphQL.schema
                 });
                 break;
             case "borrego":
                 this.client = new ApolloClient({
-                    uri: (<any>configBorregoGraphQL).schema
+                    uri: configBorregoGraphQL.schema
                 });
                 break;
             default:
