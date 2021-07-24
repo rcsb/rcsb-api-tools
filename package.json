@@ -1,13 +1,13 @@
 {
   "name": "@rcsb/rcsb-saguaro-api",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "",
   "main": "build/app.js",
   "files": [
     "build"
   ],
   "scripts": {
-    "buildSearchInterface": "ts-node src/RcsbSearch/Generator/GenerateInterfaces.ts",
+    "buildSearchInterface": "ts-node src/RcsbSearch/Generator/GenerateInterfaces.ts && ts-node src/RcsbSearch/Generator/CompileSearchMetadata.ts",
     "buildGraphQLInterfaces": "ts-node src/RcsbGraphQL/Generator/GenerateInterfaces.ts",
     "buildSources": "npm run buildSearchInterface && npm run buildGraphQLInterfaces",
     "build": "webpack --config webpack.config.js",
@@ -31,12 +31,14 @@
     "@graphql-codegen/typescript": "^1.22.3",
     "@types/lodash": "^4.14.170",
     "@types/node": "^15.12.5",
+    "@types/node-fetch": "^2.5.12",
     "@types/react-dom": "^17.0.8",
     "apollo-client": "^2.6.10",
     "babel-loader": "^8.2.2",
     "graphql-tag": "^2.12.5",
     "json-schema-to-typescript": "^10.1.4",
     "lodash": "^4.17.21",
+    "node-fetch": "^2.6.1",
     "ts-loader": "^9.2.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.3.4",

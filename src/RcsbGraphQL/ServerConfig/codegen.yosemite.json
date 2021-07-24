@@ -3,8 +3,8 @@
   "documents": "src/RcsbGraphQL/Queries/Yosemite/*.graphql",
   "interfaceOutputFile": "src/RcsbGraphQL/Types/Yosemite/GqlTypes.ts",
   "pluginFile": [{
-    "pluginFile": "src/RcsbGraphQL/Plugins/fullpath_schema_keys.js",
-    "outputFile": "src/RcsbGraphQL/Types/Yosemite/CorePaths.ts"
+    "pluginFile": "src/RcsbGraphQL/Plugins/fullpath_schema_objects.js",
+    "outputFile": "src/RcsbGraphQL/Types/Yosemite/CoreObjects.ts"
   },{
     "pluginFile": "src/RcsbGraphQL/Plugins/enumerate_schema_keys.js",
     "outputFile": "src/RcsbGraphQL/Types/Yosemite/CoreConstants.ts"

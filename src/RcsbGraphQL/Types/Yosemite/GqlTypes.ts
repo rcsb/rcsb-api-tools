@@ -850,6 +850,8 @@ export interface CorePolymerEntity {
   rcsb_polymer_entity_keywords?: Maybe<RcsbPolymerEntityKeywords>;
   rcsb_polymer_entity_name_com?: Maybe<Array<Maybe<RcsbPolymerEntityNameCom>>>;
   rcsb_polymer_entity_name_sys?: Maybe<Array<Maybe<RcsbPolymerEntityNameSys>>>;
+  rcsb_related_target_references?: Maybe<Array<Maybe<RcsbRelatedTargetReferences>>>;
+  rcsb_target_cofactors?: Maybe<Array<Maybe<RcsbTargetCofactors>>>;
   /** Get all unique UniProt KB annotations associated with this molecular entity. */
   uniprots?: Maybe<Array<Maybe<CoreUniprot>>>;
 }
@@ -3164,7 +3166,7 @@ export interface PdbxAuditSupport {
    *  after June 2016.
    *
    * Examples:
-   * National Institutes of Health, Welcome Trust, National Institutes of Health/National Institute of General Medical Sciences
+   * National Institutes of Health, Wellcome Trust, National Institutes of Health/National Institute of General Medical Sciences
    */
   funding_organization?: Maybe<Scalars['String']>;
   /** The grant number associated with this source of support. */
@@ -9537,7 +9539,7 @@ export interface RcsbPolymerEntityFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * Pfam, artifact, modified_monomer, mutation
+   * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, modified_monomer, mutation
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9548,7 +9550,7 @@ export interface RcsbPolymerEntityFeatureAdditionalProperties {
    * The additional property name.
    *
    * Allowable values:
-   * PARENT_COMP_ID
+   * CARD_MODEL_DESCRIPTION, CARD_MODEL_ORGANISM, PARENT_COMP_ID
    */
   name?: Maybe<Scalars['String']>;
   /** globin-like, 2.54, 300 */
@@ -9817,7 +9819,7 @@ export interface RcsbPolymerInstanceFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SCOP, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9828,7 +9830,7 @@ export interface RcsbPolymerInstanceFeatureAdditionalProperties {
    * The additional property name.
    *
    * Allowable values:
-   * CATH_DOMAIN_ID, CATH_NAME, OMEGA_ANGLE, PARTNER_ASYM_ID, PARTNER_BOND_DISTANCE, PARTNER_COMP_ID, SCOP_DOMAIN_ID, SCOP_NAME, SCOP_SUN_ID, SHEET_SENSE
+   * CARD_MODEL_DESCRIPTION, CARD_MODEL_ORGANISM, CATH_DOMAIN_ID, CATH_NAME, ECOD_DOMAIN_ID, ECOD_FAMILY_NAME, OMEGA_ANGLE, PARTNER_ASYM_ID, PARTNER_BOND_DISTANCE, PARTNER_COMP_ID, SCOP2_DOMAIN_ID, SCOP2_FAMILY_ID, SCOP2_FAMILY_NAME, SCOP2_SUPERFAMILY_ID, SCOP2_SUPERFAMILY_NAME, SCOP_DOMAIN_ID, SCOP_NAME, SCOP_SUN_ID, SHEET_SENSE
    */
   name?: Maybe<Scalars['String']>;
   /** globin-like, 2.54, 300 */
@@ -10267,6 +10269,67 @@ export interface RcsbPubmedMeshDescriptorsLineage {
   name?: Maybe<Scalars['String']>;
 }
 
+export interface RcsbRelatedTargetReferences {
+  __typename?: 'RcsbRelatedTargetReferences';
+  aligned_target?: Maybe<Array<Maybe<RcsbRelatedTargetReferencesAlignedTarget>>>;
+  /**
+   * Entity identifier for the polymer.
+   *
+   * Examples:
+   * 1
+   */
+  entity_id?: Maybe<Scalars['String']>;
+  /**
+   * Structure entry identifier.
+   *
+   * Examples:
+   * 1ABC
+   */
+  entry_id?: Maybe<Scalars['String']>;
+  /** Ordinal identifier for this category */
+  ordinal: Scalars['Int'];
+  /**
+   * The related target data resource name.
+   *
+   * Allowable values:
+   * ChEMBL, DrugBank, Pharos
+   */
+  related_resource_name?: Maybe<Scalars['String']>;
+  /**
+   * The version of the target data resource.
+   *
+   * Examples:
+   * 6.11.0
+   */
+  related_resource_version?: Maybe<Scalars['String']>;
+  /** An identifier for the target sequence in the related data resource. */
+  related_target_id?: Maybe<Scalars['String']>;
+  /**
+   * NCBI Taxonomy identifier for the target organism.
+   *
+   *  Reference:
+   *
+   *  Wheeler DL, Chappey C, Lash AE, Leipe DD, Madden TL, Schuler GD,
+   *  Tatusova TA, Rapp BA (2000). Database resources of the National
+   *  Center for Biotechnology Information. Nucleic Acids Res 2000 Jan
+   *  1;28(1):10-4
+   *
+   *  Benson DA, Karsch-Mizrachi I, Lipman DJ, Ostell J, Rapp BA,
+   *  Wheeler DL (2000). GenBank. Nucleic Acids Res 2000 Jan 1;28(1):15-18.
+   */
+  target_taxonomy_id?: Maybe<Scalars['Int']>;
+}
+
+export interface RcsbRelatedTargetReferencesAlignedTarget {
+  __typename?: 'RcsbRelatedTargetReferencesAlignedTarget';
+  /** The position of the monomer in the entity sequence at which the alignment begins. */
+  entity_beg_seq_id?: Maybe<Scalars['Int']>;
+  /** The length of the alignment. */
+  length?: Maybe<Scalars['Int']>;
+  /** The position of the monomer in the target sequence at which the alignment begins. */
+  target_beg_seq_id?: Maybe<Scalars['Int']>;
+}
+
 export interface RcsbRepositoryHoldingsCurrent {
   __typename?: 'RcsbRepositoryHoldingsCurrent';
   /**
@@ -10389,6 +10452,145 @@ export interface RcsbStructSymmetryRotationAxes {
   order?: Maybe<Scalars['Int']>;
   /** coordinate */
   start: Array<Maybe<Scalars['Float']>>;
+}
+
+export interface RcsbTargetCofactors {
+  __typename?: 'RcsbTargetCofactors';
+  /**
+   * The value measured or determined by the assay.
+   *
+   * Examples:
+   * null
+   */
+  binding_assay_value?: Maybe<Scalars['Float']>;
+  /**
+   * The type of measurement or value determined by the assay.
+   *
+   * Allowable values:
+   * pEC50, pIC50, pKd, pKi
+   */
+  binding_assay_value_type?: Maybe<Scalars['String']>;
+  /**
+   * Standard IUPAC International Chemical Identifier (InChI) descriptor key
+   *  for the cofactor.
+   *
+   *  InChI, the IUPAC International Chemical Identifier,
+   *  by Stephen R Heller, Alan McNaught, Igor Pletnev, Stephen Stein and Dmitrii Tchekhovskoi,
+   *  Journal of Cheminformatics, 2015, 7:23
+   *
+   * Examples:
+   * BNOCDEBUFVJMQI-REOHCLBHSA-N
+   */
+  cofactor_InChIKey?: Maybe<Scalars['String']>;
+  /**
+   * Simplified molecular-input line-entry system (SMILES) descriptor for the cofactor.
+   *
+   *    Weininger D (February 1988). "SMILES, a chemical language and information system. 1.
+   *    Introduction to methodology and encoding rules". Journal of Chemical Information and Modeling. 28 (1): 31-6.
+   *
+   *    Weininger D, Weininger A, Weininger JL (May 1989).
+   *    "SMILES. 2. Algorithm for generation of unique SMILES notation",
+   *    Journal of Chemical Information and Modeling. 29 (2): 97-101.
+   *
+   * Examples:
+   * OC(=O)[CH](CF)O[P](O)(O)=O
+   */
+  cofactor_SMILES?: Maybe<Scalars['String']>;
+  /**
+   * The chemical component definition identifier for the cofactor.
+   *
+   * Examples:
+   * 0Z3, CD9
+   */
+  cofactor_chem_comp_id?: Maybe<Scalars['String']>;
+  /**
+   * The cofactor description.
+   *
+   * Examples:
+   * A synthetic naphthoquinone without the isoprenoid side chain and biological activity,
+   *   but can be converted to active vitamin K2, menaquinone, after alkylation in vivo.
+   */
+  cofactor_description?: Maybe<Scalars['String']>;
+  /**
+   * The cofactor name.
+   *
+   * Examples:
+   * Menadione
+   */
+  cofactor_name?: Maybe<Scalars['String']>;
+  /**
+   * The BIRD definition identifier for the cofactor.
+   *
+   * Examples:
+   * PRD_000010
+   */
+  cofactor_prd_id?: Maybe<Scalars['String']>;
+  /**
+   * Identifier for the cofactor assigned by the resource.
+   *
+   * Examples:
+   * CHEMBL1987, DB00170
+   */
+  cofactor_resource_id?: Maybe<Scalars['String']>;
+  /**
+   * Entity identifier for the polymer.
+   *
+   * Examples:
+   * 1
+   */
+  entity_id?: Maybe<Scalars['String']>;
+  /**
+   * Structure entry identifier.
+   *
+   * Examples:
+   * 1ABC
+   */
+  entry_id?: Maybe<Scalars['String']>;
+  /**
+   * Mechanism of action describes the biochemical interaction through which the
+   *  cofactor produces a pharmacological effect.
+   *
+   * Examples:
+   * Menadione (vitamin K3) is involved as a cofactor in the posttranslational gamma-carboxylation of glutamic acid residues of certain proteins i
+   * n the body. These proteins include the vitamin K-dependent coagulation factors II (prothrombin), VII (proconvertin), IX (Christmas factor), X (Stuart factor), protein
+   * C, protein S, protein Zv and a growth-arrest-specific factor (Gas6).
+   */
+  mechanism_of_action?: Maybe<Scalars['String']>;
+  /**
+   * A flag to indicate the cofactor is a structural neighbor of this
+   *  entity.
+   *
+   * Allowable values:
+   * N, Y
+   */
+  neighbor_flag?: Maybe<Scalars['String']>;
+  /** Ordinal identifier for this category */
+  ordinal: Scalars['Int'];
+  /** Patent numbers reporting the pharmacology or activity data. */
+  patent_nos?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** PubMed identifiers for literature supporting the pharmacology or activity data. */
+  pubmed_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  /**
+   * Resource providing target and cofactor data.
+   *
+   * Allowable values:
+   * ChEMBL, DrugBank, Pharos
+   */
+  resource_name?: Maybe<Scalars['String']>;
+  /**
+   * Version of the information distributed by the data resource.
+   *
+   * Examples:
+   * V4_0_2
+   */
+  resource_version?: Maybe<Scalars['String']>;
+  /**
+   * Identifier for the target assigned by the resource.
+   *
+   * Examples:
+   * P00734, CHEMBL2242
+   */
+  target_resource_id?: Maybe<Scalars['String']>;
 }
 
 export interface RcsbTargetNeighbors {
