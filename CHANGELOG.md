@@ -2,6 +2,14 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [2.0.0] - 2021-07-23
+### Added search metadata package
+- Search data field paths and allowed operations
+
+## [1.1.1] - 2021-07-16
+### Dependency Bug
+- Fixed production dependencies
+
 ## [1.1.0] - 2021-07-16
 ### Config format
 - simplified gql server config

@@ -1,3 +1,4 @@
 {
-  "uri": "https://search.rcsb.org/rcsbsearch/v1/query"
+  "uri": "https://search.rcsb.org/rcsbsearch/v1/query",
+  "schema": "https://search.rcsb.org/rcsbsearch/v1/metadata/schema"
 }
