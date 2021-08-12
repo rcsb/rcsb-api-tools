@@ -1,5 +1,5 @@
 {
-  "schema": "https://1d-coordinates.rcsb.org/graphql",
+  "schema": "http://132.249.213.213/graphql",
   "documents": "src/RcsbGraphQL/Queries/Borrego/*.graphql",
   "interfaceOutputFile": "src/RcsbGraphQL/Types/Borrego/GqlTypes.ts"
 }

@@ -122,17 +122,17 @@ export interface FilterInput {
   values?: Maybe<Array<Maybe<Scalars['String']>>>;
 }
 
+export enum GroupReference {
+  UniprotEntityGroup = 'UNIPROT_ENTITY_GROUP'
+}
+
 
 export enum PropertyName {
-  CardModelDescription = 'CARD_MODEL_DESCRIPTION',
-  CardModelOrganism = 'CARD_MODEL_ORGANISM',
   CathDomainId = 'CATH_DOMAIN_ID',
   CathName = 'CATH_NAME',
   ClinicalSignificance = 'CLINICAL_SIGNIFICANCE',
   ConsequenceType = 'CONSEQUENCE_TYPE',
   DiseaseType = 'DISEASE_TYPE',
-  EcodDomainId = 'ECOD_DOMAIN_ID',
-  EcodFamilyName = 'ECOD_FAMILY_NAME',
   Evidence = 'EVIDENCE',
   Link = 'LINK',
   MutatedType = 'MUTATED_TYPE',
@@ -142,11 +142,6 @@ export enum PropertyName {
   PartnerBondDistance = 'PARTNER_BOND_DISTANCE',
   PartnerCompId = 'PARTNER_COMP_ID',
   PredictedImpact = 'PREDICTED_IMPACT',
-  Scop_2DomainId = 'SCOP_2_DOMAIN_ID',
-  Scop_2FamilyId = 'SCOP_2_FAMILY_ID',
-  Scop_2FamilyName = 'SCOP_2_FAMILY_NAME',
-  Scop_2SuperfamilyId = 'SCOP_2_SUPERFAMILY_ID',
-  Scop_2SuperfamilyName = 'SCOP_2_SUPERFAMILY_NAME',
   ScopDomainId = 'SCOP_DOMAIN_ID',
   ScopName = 'SCOP_NAME',
   ScopSunId = 'SCOP_SUN_ID',
@@ -159,10 +154,21 @@ export enum PropertyName {
 /** Query root */
 export interface Query {
   __typename?: 'Query';
+  /** Get group sequence alignments */
+  group_alignment?: Maybe<AlignmentResponse>;
   /** Get positional features */
   annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
   /** Get sequence alignments */
   alignment?: Maybe<AlignmentResponse>;
+  /** Get group positional features */
+  group_annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
+}
+
+
+/** Query root */
+export interface QueryGroup_AlignmentArgs {
+  groupId?: Maybe<Scalars['String']>;
+  group: GroupReference;
 }
 
 
@@ -182,6 +188,15 @@ export interface QueryAlignmentArgs {
   from?: Maybe<SequenceReference>;
   to?: Maybe<SequenceReference>;
   queryId: Scalars['String'];
+}
+
+
+/** Query root */
+export interface QueryGroup_AnnotationsArgs {
+  sources?: Maybe<Array<Maybe<Source>>>;
+  groupId: Scalars['String'];
+  filters?: Maybe<Array<Maybe<FilterInput>>>;
+  group: GroupReference;
 }
 
 export enum SequenceReference {
@@ -219,7 +234,6 @@ export enum Type {
   BindingSite = 'BINDING_SITE',
   BondOutlier = 'BOND_OUTLIER',
   CalciumBindingRegion = 'CALCIUM_BINDING_REGION',
-  CardModel = 'CARD_MODEL',
   Cath = 'CATH',
   Chain = 'CHAIN',
   CisPeptide = 'CIS_PEPTIDE',
@@ -234,17 +248,9 @@ export enum Type {
   DisulfideBridge = 'DISULFIDE_BRIDGE',
   DnaBindingRegion = 'DNA_BINDING_REGION',
   Domain = 'DOMAIN',
-  Ecod = 'ECOD',
   GlycosylationSite = 'GLYCOSYLATION_SITE',
   HelixP = 'HELIX_P',
   HydrogenBond = 'HYDROGEN_BOND',
-  ImgtAntibodyDescription = 'IMGT_ANTIBODY_DESCRIPTION',
-  ImgtAntibodyDomainName = 'IMGT_ANTIBODY_DOMAIN_NAME',
-  ImgtAntibodyGeneAlleleName = 'IMGT_ANTIBODY_GENE_ALLELE_NAME',
-  ImgtAntibodyOrganismName = 'IMGT_ANTIBODY_ORGANISM_NAME',
-  ImgtAntibodyProteinName = 'IMGT_ANTIBODY_PROTEIN_NAME',
-  ImgtAntibodyReceptorDescription = 'IMGT_ANTIBODY_RECEPTOR_DESCRIPTION',
-  ImgtAntibodyReceptorType = 'IMGT_ANTIBODY_RECEPTOR_TYPE',
   InitiatorMethionine = 'INITIATOR_METHIONINE',
   IntramembraneRegion = 'INTRAMEMBRANE_REGION',
   IonicInteraction = 'IONIC_INTERACTION',
@@ -274,16 +280,7 @@ export enum Type {
   RotamerOutlier = 'ROTAMER_OUTLIER',
   RsccOutlier = 'RSCC_OUTLIER',
   RsrzOutlier = 'RSRZ_OUTLIER',
-  SabdabAntibodyAntigenName = 'SABDAB_ANTIBODY_ANTIGEN_NAME',
-  SabdabAntibodyHeavyChainSubclass = 'SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS',
-  SabdabAntibodyLightChainSubclass = 'SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS',
-  SabdabAntibodyLightChainType = 'SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE',
-  SabdabAntibodyName = 'SABDAB_ANTIBODY_NAME',
-  SabdabAntibodyTarget = 'SABDAB_ANTIBODY_TARGET',
   Scop = 'SCOP',
-  Scop_2BSuperfamily = 'SCOP_2_B_SUPERFAMILY',
-  Scop_2Family = 'SCOP_2_FAMILY',
-  Scop_2Superfamily = 'SCOP_2_SUPERFAMILY',
   SequenceConflict = 'SEQUENCE_CONFLICT',
   SequenceVariant = 'SEQUENCE_VARIANT',
   Sheet = 'SHEET',
