@@ -113,6 +113,8 @@ export interface FeaturePosition {
   range_id?: Maybe<Scalars['String']>;
   /** The value for the feature at this region */
   value?: Maybe<Scalars['Float']>;
+  /** The value(s) for the feature at this region */
+  values?: Maybe<Array<Maybe<Scalars['Float']>>>;
 }
 
 export interface FilterInput {
@@ -231,6 +233,8 @@ export enum Type {
   CovalentResidueModification = 'COVALENT_RESIDUE_MODIFICATION',
   CrossLink = 'CROSS_LINK',
   CMannosylationSite = 'C_MANNOSYLATION_SITE',
+  Disorder = 'DISORDER',
+  DisorderBinding = 'DISORDER_BINDING',
   DisulfideBridge = 'DISULFIDE_BRIDGE',
   DnaBindingRegion = 'DNA_BINDING_REGION',
   Domain = 'DOMAIN',
@@ -238,6 +242,7 @@ export enum Type {
   GlycosylationSite = 'GLYCOSYLATION_SITE',
   HelixP = 'HELIX_P',
   HydrogenBond = 'HYDROGEN_BOND',
+  Hydropathy = 'HYDROPATHY',
   ImgtAntibodyDescription = 'IMGT_ANTIBODY_DESCRIPTION',
   ImgtAntibodyDomainName = 'IMGT_ANTIBODY_DOMAIN_NAME',
   ImgtAntibodyGeneAlleleName = 'IMGT_ANTIBODY_GENE_ALLELE_NAME',

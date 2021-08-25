@@ -969,6 +969,7 @@ export class CoreConstants{
 	public static readonly ATOM_COUNT_HEAVY = "atom_count_heavy";
 	public static readonly BOND_COUNT = "bond_count";
 	public static readonly BOND_COUNT_AROMATIC = "bond_count_aromatic";
+	public static readonly INITIAL_DEPOSITION_DATE = "initial_deposition_date";
 	public static readonly RELATED_MAPPING_METHOD = "related_mapping_method";
 	public static readonly RESOURCE_ACCESSION_CODE = "resource_accession_code";
 	public static readonly AVG_RMSD = "avg_rmsd";
