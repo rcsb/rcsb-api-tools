@@ -126,7 +126,7 @@ export interface FilterInput {
 
 export enum GroupReference {
   MatchingUniprotAccession = 'matching_uniprot_accession',
-  SeqeunceIdentity = 'seqeunce_identity'
+  SequenceIdentity = 'sequence_identity'
 }
 
 
