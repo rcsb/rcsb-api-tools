@@ -43,6 +43,8 @@ export interface AlignedRegion {
 
 export interface AlignmentResponse {
   __typename?: 'AlignmentResponse';
+  /** Length of the alignment */
+  alignment_length?: Maybe<Scalars['Int']>;
   /** Full sequence of the query */
   query_sequence?: Maybe<Scalars['String']>;
   /** JSON schema that describes the different alignments between the query sequence and targets */
