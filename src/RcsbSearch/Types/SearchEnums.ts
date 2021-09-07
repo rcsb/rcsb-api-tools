@@ -1,3 +1,8 @@
+export enum SortDirection {
+    Asc = "asc",
+    Desc = "desc"
+}
+
 export enum Src {
     Ui = "ui",
     MypdbService = "mypdb_service",

@@ -15,13 +15,24 @@ function camelCase(value: string): string{
 function generateEnum(interfaceFile: string, constantsFile: string): void{
     const file:string = fs.readFileSync(interfaceFile, "utf-8");
     const regExpUnion = new RegExp(/(\w+)(\??)(:)(\s)(")/);
+    const regExpTypeUnion = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)(\s*)(")(\w+)(")(\s*)(\|)/);
     const regExpSingleKey = new RegExp(/(\w+)(\??)(:)(\s?\(?)$/);
     const regExpSingleUnion = new RegExp(/(\s+)(\|)(\s)(")([a-zA-Z0-9-_]+)(")(;?)$/);
     const keyUnionMap: Map<string, Set<string>> = new Map<string, Set<string>>();
     let multiLineUnionFlag: boolean = false;
     let holdKey: string;
     file.split("\n").forEach((line, n)=>{
-        if(regExpUnion.test(line)){
+        if(regExpTypeUnion.test(line)){
+            const match: RegExpMatchArray | null = line.match(regExpTypeUnion);
+            if(match){
+                const key: string = match[5];
+                if(!keyUnionMap.has(key))
+                    keyUnionMap.set(key, new Set<string>());
+                line.split("=")[1].split("|").forEach(unionValue=>{
+                    keyUnionMap.get(key)?.add(replace(unionValue));
+                });
+            }
+        }else if(regExpUnion.test(line)){
             const keyUnion: string[] = line.split(":");
             if(keyUnion.length != 2){
                 throw `Unknown line format in (line number ${n}): ${line}`;
