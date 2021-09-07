@@ -1,0 +1,20 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_results_facets_cardinality.json",
+  "title": "Distinct Count",
+  "type": "object",
+  "required": [
+    "attribute",
+    "distinct_count"
+  ],
+  "properties": {
+    "attribute": {
+      "type": "string",
+      "description": "A field being analyzed."
+    },
+    "distinct_count": {
+      "type": "integer",
+      "description": "The approximate count of distinct values in a field calculated by aggregation."
+    }
+  },
+  "additionalProperties": false
+}

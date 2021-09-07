@@ -38,7 +38,7 @@
       "description": "Maximum number of intervals to return for a given facet."
     },
     "filter": {
-      "$ref": "json-schema-rcsb_search_query_parameters_text.json"
+      "$ref": "json-schema-rcsb_search_query_parameters_attribute_text.json"
     },
     "facets": {
       "$ref": "json-schema-rcsb_search_query_facets.json"

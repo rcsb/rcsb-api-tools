@@ -1,0 +1,59 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_attribute_text_value_date_range.json",
+  "title": "Date Range",
+  "type": "object",
+  "properties": {
+    "from": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(now|[12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])\\|\\|)([-+]([1-9]\\d*w|[1-9]\\d*M|[1-9]\\d*y))?$",
+          "description": "The date math expression string starts with an \"anchor\" date, which can be either now or a date string (in the format yyyy-MM-dd) ending with ||. It can be followed by a math expression, supporting + and -. The units supported are y (year), M (month), and w (week)."
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date-time string is in ISO 8601 date-time format: 2019-01-01'T'00:00:00'Z'"
+        },
+        {
+          "type": "string",
+          "format": "date",
+          "description": "The date string is in ISO 8601 date format: 2019-01-01"
+        }
+      ],
+      "description": "The starting value of the range."
+    },
+    "include_lower": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicated an inclusive lower bound."
+    },
+    "to": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(now|[12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])\\|\\|)([-+]([1-9]\\d*w|[1-9]\\d*M|[1-9]\\d*y))?$",
+          "description": "The date math expression string starts with an \"anchor\" date, which can be either now or a date string (in the format yyyy-MM-dd) ending with ||. It can be followed by a math expression, supporting + and -. The units supported are y (year), M (month), and w (week)."
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date-time string is in ISO 8601 date-time format: 2019-01-01'T'00:00:00'Z'"
+        },
+        {
+          "type": "string",
+          "format": "date",
+          "description": "The date string is in ISO 8601 date format: 2019-01-01"
+        }
+      ],
+      "description": "The end of the range."
+    },
+    "include_upper": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicated an inclusive upper bound."
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false
+}

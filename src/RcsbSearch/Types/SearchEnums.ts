@@ -5,9 +5,13 @@ export enum Src {
     RcsbTest = "rcsb_test"
 }
 
-export enum Direction {
-    Asc = "asc",
-    Desc = "desc"
+export enum ReturnType {
+    Entry = "entry",
+    PolymerEntity = "polymer_entity",
+    NonPolymerEntity = "non_polymer_entity",
+    PolymerInstance = "polymer_instance",
+    Assembly = "assembly",
+    MolDefinition = "mol_definition"
 }
 
 export enum ScoringStrategy {
@@ -18,16 +22,8 @@ export enum ScoringStrategy {
     Structure = "structure",
     Chemical = "chemical",
     Text = "text",
-    Descriptor = "DESCRIPTOR",
-    Alignment = "ALIGNMENT"
-}
-
-export enum ReturnType {
-    Entry = "entry",
-    PolymerEntity = "polymer_entity",
-    NonPolymerEntity = "non_polymer_entity",
-    PolymerInstance = "polymer_instance",
-    Assembly = "assembly"
+    TextChem = "text_chem",
+    FullText = "full_text"
 }
 
 export enum AggregationType {
@@ -60,6 +56,21 @@ export enum Interval {
     Year = "year"
 }
 
+export enum AggregationMethod {
+    SequenceIdentity = "sequence_identity",
+    MatchingUniprotAccession = "matching_uniprot_accession"
+}
+
+export enum RankingCriteriaType {
+    MemberQuality = "member_quality",
+    Coverage = "coverage"
+}
+
+export enum SortBy {
+    Size = "size",
+    Count = "count"
+}
+
 export enum Type {
     Group = "group",
     Terminal = "terminal",
@@ -73,7 +84,9 @@ export enum LogicalOperator {
 }
 
 export enum Service {
+    FullText = "full_text",
     Text = "text",
+    TextChem = "text_chem",
     Sequence = "sequence",
     Structure = "structure",
     Chemical = "chemical",
@@ -85,6 +98,13 @@ export enum Target {
     PdbProteinSequence = "pdb_protein_sequence",
     PdbRnaSequence = "pdb_rna_sequence",
     PdbDnaSequence = "pdb_dna_sequence"
+}
+
+export enum FileFormat {
+    Cif = "cif",
+    Bcif = "bcif",
+    Pdb = "pdb",
+    Ccp4 = "ccp4"
 }
 
 export enum DescriptorType {
@@ -143,7 +163,7 @@ export enum Allowed {
     N = "N"
 }
 
-export enum AtomPairingStrategy {
+export enum AtomPairingScheme {
     All = "ALL",
     Backbone = "BACKBONE",
     SideChain = "SIDE_CHAIN",
@@ -160,7 +180,8 @@ export enum ResultType {
     PolymerEntity = "polymer_entity",
     NonPolymerEntity = "non_polymer_entity",
     PolymerInstance = "polymer_instance",
-    Assembly = "assembly"
+    Assembly = "assembly",
+    MolDefinition = "mol_definition"
 }
 
 export enum ServiceType {

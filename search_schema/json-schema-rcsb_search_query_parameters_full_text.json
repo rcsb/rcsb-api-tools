@@ -1,0 +1,16 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_full_text.json",
+  "title": "Full Text Query Parameters",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "The search term(s)."
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false
+}

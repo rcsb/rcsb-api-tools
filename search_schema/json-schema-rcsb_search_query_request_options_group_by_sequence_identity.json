@@ -1,0 +1,36 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_request_options_group_by_sequence_identity.json",
+  "title": "Group By Sequence Identity",
+  "type": "object",
+  "required": [
+    "aggregation_method",
+    "similarity_cutoff"
+  ],
+  "properties": {
+    "aggregation_method": {
+      "type": "string",
+      "enum": [
+        "sequence_identity"
+      ]
+    },
+    "similarity_cutoff": {
+      "type": "integer",
+      "enum": [
+        100,
+        95,
+        90,
+        70,
+        50,
+        30
+      ]
+    },
+    "ranking_criteria_type": {
+      "type": "string",
+      "enum": [
+        "member_quality"
+      ],
+      "default": "member_quality"
+    }
+  },
+  "additionalProperties": false
+}

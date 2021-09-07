@@ -1,0 +1,10 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_request_options_sort_direction.json",
+  "title": "Sort Direction",
+  "type": "string",
+  "enum": [
+    "asc",
+    "desc"
+  ],
+  "description": "The order in which to sort. Defaults to “desc”."
+}

@@ -1,0 +1,41 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_unreleased_results_identifier.json",
+  "title": "Service Identifier",
+  "type": "object",
+  "required": [
+    "identifier",
+    "score",
+    "services"
+  ],
+  "properties": {
+    "identifier": {
+      "$ref": "json-schema-rcsb_search_results_identifier.json#/properties/identifier"
+    },
+    "score": {
+      "$ref": "json-schema-rcsb_search_results_identifier.json#/properties/score"
+    },
+    "services": {
+      "type": "array",
+      "excludedFromEqualsAndHashCode" : true,
+      "items": {
+        "type": "object",
+        "required": [
+          "service_type",
+          "nodes"
+        ],
+        "properties": {
+          "service_type": {
+            "$ref": "json-schema-rcsb_search_unreleased_query_node_terminal.json#/properties/service"
+          },
+          "nodes": {
+            "$ref": "json-schema-rcsb_search_results_identifier.json#/properties/services/items/properties/nodes"
+          }
+        },
+        "javaType" : "org.rcsb.arches.auto.model.Service"
+      },
+      "minItems": 1,
+      "description": "Shows the query node that rendered the identifier and the scoring details."
+    }
+  },
+  "additionalProperties": false
+}

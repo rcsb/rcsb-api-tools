@@ -1,0 +1,18 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_request_options_sort_attributes.json",
+  "title": "Sort Option Attributes",
+  "required": [
+    "sort_by"
+  ],
+  "properties": {
+    "sort_by": {
+      "type": "string",
+      "default": "score",
+      "description": "Supported options include “score“ or attribute name for results returned as flat list"
+    },
+    "direction": {
+      "$ref": "json-schema-rcsb_search_query_request_options_sort_direction.json"
+    }
+  },
+  "additionalProperties": false
+}

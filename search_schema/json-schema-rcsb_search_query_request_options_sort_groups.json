@@ -1,0 +1,22 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_request_options_sort_groups.json",
+  "title": "Sort Option Groups",
+  "required": [
+    "sort_by"
+  ],
+  "properties": {
+    "sort_by": {
+      "type": "string",
+      "enum": [
+        "size",
+        "count"
+      ],
+      "default": "count",
+      "description": "Sort options supported for results returned as groups"
+    },
+    "direction": {
+      "$ref": "json-schema-rcsb_search_query_request_options_sort_direction.json"
+    }
+  },
+  "additionalProperties": false
+}

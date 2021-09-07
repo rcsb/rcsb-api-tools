@@ -12,6 +12,10 @@ export type RequestOptionsFacets = [
   TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet,
   ...(TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet)[]
 ];
+/**
+ * The order in which to sort. Defaults to “desc”.
+ */
+export type SortDirection = "asc" | "desc";
 
 /**
  * Provides a generic interface to represent the RCSB Search API query language.
@@ -30,67 +34,66 @@ export interface SearchQuery {
      */
     src?: "ui" | "mypdb_service" | "mypdb_user" | "rcsb_test";
   };
-  request_options?: {
-    facets?: RequestOptionsFacets;
-    /**
-     * When set to true, all hits are returned as a result set.
-     */
-    return_all_hits?: boolean;
-    /**
-     * Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned.
-     */
-    return_counts?: boolean;
-    /**
-     * Sorting parameters.
-     */
-    sort?: [
-      {
-        /**
-         * The sort field. Supported values include “score“ or field name.
-         */
-        sort_by: string;
-        /**
-         * The order in which to sort. Can either be “asc” or “desc”.
-         */
-        direction?: "asc" | "desc";
-      },
-      ...{
-        /**
-         * The sort field. Supported values include “score“ or field name.
-         */
-        sort_by: string;
-        /**
-         * The order in which to sort. Can either be “asc” or “desc”.
-         */
-        direction?: "asc" | "desc";
-      }[]
-    ];
-    /**
-     * Specifies a range in the query result set. When absent, returns only the top 10 entries, e.g. 'start' defaults to 0, and 'rows' defaults to 10.
-     */
-    pager?: {
-      /**
-       * The offset from the first result.
-       */
-      start?: number;
-      /**
-       * Number of entries returned in the result set.
-       */
-      rows?: number;
-    };
-    /**
-     * Scoring algorithm to be used for scores calculation of the final result set.
-     */
-    scoring_strategy?: "combined" | "sequence" | "seqmotif" | "strucmotif" | "structure" | "chemical" | "text";
-  };
+  request_options?: RequestOptions;
   /**
    * Specifies the type of the returned identifiers.
    */
-  return_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly";
+  return_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly" | "mol_definition";
   /**
    * Any valid query string as per the Search Aggregator query syntax is permitted. A search consists of one or more groups combined.
    */
   query?: GroupNode | TerminalNode;
+}
+export interface RequestOptions {
+  facets?: RequestOptionsFacets;
+  /**
+   * When set to true, all hits are returned as a result set.
+   */
+  return_all_hits?: boolean;
+  /**
+   * Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned.
+   */
+  return_counts?: boolean;
+  /**
+   * When enabled, the search results are return with profiling info on execution timings
+   */
+  return_explain_metadata?: boolean;
+  /**
+   * When enabled, the search hits are returned with additional metadata such as scores returned by individual services and context of the match, e.g. alignments from sequence search service.
+   */
+  return_service_metadata?: boolean;
+  group_by?: GroupBySequenceIdentity | GroupByUniProtAccession;
+  /**
+   * When enabled, only the identifier is returned from each group
+   */
+  return_representatives?: boolean;
+  sort?: [SortOptionAttributes, ...SortOptionAttributes[]] | [SortOptionGroups];
+  /**
+   * Specifies a range in the query result set. When absent, returns only the top 10 entries, e.g. 'start' defaults to 0, and 'rows' defaults to 10.
+   */
+  pager?: {
+    /**
+     * The offset from the first result.
+     */
+    start?: number;
+    /**
+     * Number of entries returned in the result set.
+     */
+    rows?: number;
+  };
+  /**
+   * Scoring algorithm to be used for scores calculation of the final result set.
+   */
+  scoring_strategy?:
+    | "combined"
+    | "sequence"
+    | "seqmotif"
+    | "strucmotif"
+    | "structure"
+    | "chemical"
+    | "text"
+    | "text_chem"
+    | "full_text";
 }
 export interface TermsFacet {
   /**
@@ -106,10 +109,10 @@ export interface TermsFacet {
    * Maximum number of intervals to return for a given facet.
    */
   max_num_intervals?: number;
-  filter?: TextQueryParameters;
+  filter?: AttributeTextQueryParameters;
   facets?: RequestOptionsFacets;
 }
-export interface TextQueryParameters {
+export interface AttributeTextQueryParameters {
   /**
    * The search term(s). Can be a single or multiple words, numbers, dates, date math expressions, or ranges.
    */
@@ -117,7 +120,7 @@ export interface TextQueryParameters {
   /**
    * The search field. Must exist in the current schema.
    */
-  attribute?: string;
+  attribute: string;
   /**
    * Indicates if the operator is negated.
    */
@@ -125,7 +128,7 @@ export interface TextQueryParameters {
   /**
    * The operator allows specifying the evaluation expression.
    */
-  operator?:
+  operator:
     | "equals"
     | "greater"
     | "greater_or_equal"
@@ -197,7 +200,7 @@ export interface HistogramFacet {
    * Maximum number of intervals to return for a given facet.
    */
   max_num_intervals?: number;
-  filter?: TextQueryParameters;
+  filter?: AttributeTextQueryParameters;
   facets?: RequestOptionsFacets;
 }
 export interface DateHistogramFacet {
@@ -218,7 +221,7 @@ export interface DateHistogramFacet {
    * Maximum number of intervals to return for a given facet.
    */
   max_num_intervals?: number;
-  filter?: TextQueryParameters;
+  filter?: AttributeTextQueryParameters;
   facets?: RequestOptionsFacets;
 }
 export interface RangeFacet {
@@ -262,7 +265,7 @@ export interface RangeFacet {
    * Maximum number of intervals to return for a given facet.
    */
   max_num_intervals?: number;
-  filter?: TextQueryParameters;
+  filter?: AttributeTextQueryParameters;
   facets?: RequestOptionsFacets;
 }
 export interface DateRangeFacet {
@@ -306,7 +309,7 @@ export interface DateRangeFacet {
    * Maximum number of intervals to return for a given facet.
    */
   max_num_intervals?: number;
-  filter?: TextQueryParameters;
+  filter?: AttributeTextQueryParameters;
   facets?: RequestOptionsFacets;
 }
 export interface CardinalityFacet {
@@ -315,12 +318,35 @@ export interface CardinalityFacet {
    */
   aggregation_type: "cardinality";
   attribute: string;
-  filter?: TextQueryParameters;
+  filter?: AttributeTextQueryParameters;
   facets?: RequestOptionsFacets;
 }
 export interface FilterFacet {
-  filter: TextQueryParameters;
+  filter: AttributeTextQueryParameters;
   facets: RequestOptionsFacets;
+}
+export interface GroupBySequenceIdentity {
+  aggregation_method: "sequence_identity";
+  similarity_cutoff: 100 | 95 | 90 | 70 | 50 | 30;
+  ranking_criteria_type?: "member_quality";
+}
+export interface GroupByUniProtAccession {
+  aggregation_method: "matching_uniprot_accession";
+  ranking_criteria_type?: "coverage";
+}
+export interface SortOptionAttributes {
+  /**
+   * Supported options include “score“ or attribute name for results returned as flat list
+   */
+  sort_by: string;
+  direction?: SortDirection;
+}
+export interface SortOptionGroups {
+  /**
+   * Sort options supported for results returned as groups
+   */
+  sort_by: "size" | "count";
+  direction?: SortDirection;
 }
 export interface GroupNode {
   /**
@@ -352,12 +378,13 @@ export interface TerminalNode {
   /**
    * The search service that is responsible for running the query and retrieving the search results.
    */
-  service: "text" | "sequence" | "structure" | "chemical" | "seqmotif" | "strucmotif";
+  service: "full_text" | "text" | "text_chem" | "sequence" | "structure" | "chemical" | "seqmotif" | "strucmotif";
   /**
    * Search parameters. Parameters are specific to the search service.
    */
   parameters?:
-    | TextQueryParameters
+    | FullTextQueryParameters
+    | AttributeTextQueryParameters
     | SequenceQueryParameters
     | StructureQueryParameters
     | ChemicalQueryFormulaParameters
@@ -369,6 +396,12 @@ export interface TerminalNode {
    */
   label?: string;
   [k: string]: unknown;
+}
+export interface FullTextQueryParameters {
+  /**
+   * The search term(s).
+   */
+  value: string;
 }
 export interface SequenceQueryParameters {
   /**
@@ -389,18 +422,51 @@ export interface SequenceQueryParameters {
   evalue_cutoff?: number;
 }
 export interface StructureQueryParameters {
-  /**
-   * Compound structure identifier that includes PDB code and either assembly or chain identifier.
-   */
-  value: {
-    entry_id: string;
-    asym_id?: string;
-    assembly_id?: string;
-  };
+  value: StructureQueryChainParameters | StructureQueryAssemblyParameters | StructureQueryFileParameters;
   /**
    * The operator allows specifying the evaluation expression.
    */
   operator?: "strict_shape_match" | "relaxed_shape_match";
+}
+/**
+ * Compound structure identifier that includes PDB code and chain identifier.
+ */
+export interface StructureQueryChainParameters {
+  /**
+   * The PDB code that defines the structure.
+   */
+  entry_id: string;
+  /**
+   * The chain identifier.
+   */
+  asym_id: string;
+}
+/**
+ * Compound structure identifier that includes PDB code and assembly identifier
+ */
+export interface StructureQueryAssemblyParameters {
+  /**
+   * The PDB code that defines the structure.
+   */
+  entry_id: string;
+  /**
+   * The assembly identifier.
+   */
+  assembly_id: string;
+}
+/**
+ * Base64-encoded file can be uploaded together with the provided file_format (cif, bcif, pdb, ccp4).
+ */
+export interface StructureQueryFileParameters {
+  /**
+   * File content converted to a Base64 string.
+   */
+  file: string;
+  file_format: "cif" | "bcif" | "pdb" | "ccp4";
+  /**
+   * True if the content of the 'file' property is compressed by the GZIP algorithm (before being Base64-encoded).
+   */
+  gzipped: boolean;
 }
 export interface ChemicalQueryFormulaParameters {
   /**
@@ -458,17 +524,7 @@ export interface SeqmotifQueryParameters {
   pattern_type: "simple" | "prosite" | "regex";
 }
 export interface StrucmotifQueryParameters {
-  value: {
-    /**
-     * Provides the information from which will defined the query motif. Must either be: 1) the entry identifier or 2) CIF structure data.
-     */
-    data: string;
-    /**
-     * Provides the set of residue identifiers that define the query. Can be empty iff an extracted motif is submitted via the data property.
-     */
-    residue_ids?: ResidueIdentifier[];
-    [k: string]: unknown;
-  };
+  value: StrucmotifQueryEntryParameters | StrucmotifQueryFileParameters;
   /**
    * Allowed backbone distance tolerance in Angstrom.
    */
@@ -481,10 +537,6 @@ export interface StrucmotifQueryParameters {
    * Allowed angle tolerance in multiples of 20 degrees.
    */
   angle_tolerance?: number;
-  /**
-   * Threshold above which hits will be filtered.
-   */
-  score_cutoff?: number;
   /**
    * Threshold above which hits will be filtered by RMSD.
    */
@@ -531,13 +583,9 @@ export interface StrucmotifQueryParameters {
    */
   limit?: number;
   /**
-   * How to score hits. The default 'DESCRIPTOR' will use data from geometric descriptors to score hits. This is fast but less accurate. The 'ALIGNMENT' option will load structure data of all potential hits and align each candidate to the query motif. The resulting RMSD values are more descriptive, especially when a suitable 'atom_pairing_strategy' is specified. As a trade-off, the 'ALIGNMENT' option is 2-3 times slower.
+   * Which atoms to consider to compute RMSD scores and transformations.
    */
-  scoring_strategy?: "DESCRIPTOR" | "ALIGNMENT";
-  /**
-   * If scoring strategy is based on alignment: Which atoms to pair.
-   */
-  atom_pairing_strategy?: "ALL" | "BACKBONE" | "SIDE_CHAIN" | "PSEUDO_ATOMS";
+  atom_pairing_scheme?: "ALL" | "BACKBONE" | "SIDE_CHAIN" | "PSEUDO_ATOMS";
   /**
    * Specifies how query motifs are pruned (i.e. simplified). The default option 'KRUSKAL' determines the minimum spanning tree of residue pairs in the query. This leads to less stringent queries and faster results.
    */
@@ -550,6 +598,19 @@ export interface StrucmotifQueryParameters {
    * Specified entry identifiers will not be evaluated.
    */
   blacklist?: string[];
+}
+/**
+ * Compound structure identifier that includes PDB code and residue identifiers.
+ */
+export interface StrucmotifQueryEntryParameters {
+  /**
+   * The PDB code that defines the structure with the query motif.
+   */
+  entry_id: string;
+  /**
+   * Provides the set of residue identifiers that define the query.
+   */
+  residue_ids: ResidueIdentifier[];
 }
 export interface ResidueIdentifier {
   /**
@@ -564,4 +625,22 @@ export interface ResidueIdentifier {
    * Sequence identifier of this residue.
    */
   label_seq_id: number;
+}
+/**
+ * Base64-encoded file can be uploaded together with the provided file_format (cif, bcif).
+ */
+export interface StrucmotifQueryFileParameters {
+  /**
+   * File content converted to a Base64 string.
+   */
+  file: string;
+  file_format: "cif" | "bcif";
+  /**
+   * True if the content of the 'file' property is compressed by the GZIP algorithm (before being Base64-encoded).
+   */
+  gzipped: boolean;
+  /**
+   * Provides the set of residue identifiers that define the query. Can be empty if the submitted file property contains an extracted motif.
+   */
+  residue_ids?: ResidueIdentifier[];
 }

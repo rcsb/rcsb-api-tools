@@ -1,0 +1,31 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_shape_value_file.json",
+  "title": "Structure Query File Parameters",
+  "type": "object",
+  "required": [
+    "file",
+    "file_format",
+    "gzipped"
+  ],
+  "properties": {
+    "file": {
+      "type": "string",
+      "description": "File content converted to a Base64 string."
+    },
+    "file_format": {
+      "type": "string",
+      "enum": [
+        "cif",
+        "bcif",
+        "pdb",
+        "ccp4"
+      ]
+    },
+    "gzipped": {
+      "type": "boolean",
+      "description": "True if the content of the 'file' property is compressed by the GZIP algorithm (before being Base64-encoded)."
+    }
+  },
+  "additionalProperties": false,
+  "description": "Base64-encoded file can be uploaded together with the provided file_format (cif, bcif, pdb, ccp4)."
+}

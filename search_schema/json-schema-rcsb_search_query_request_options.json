@@ -1,0 +1,102 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_request_options.json",
+  "title": "Request Options",
+  "type": "object",
+  "properties": {
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    },
+    "return_all_hits": {
+      "type": "boolean",
+      "default": false,
+      "description": "When set to true, all hits are returned as a result set."
+    },
+    "return_counts": {
+      "type": "boolean",
+      "default": false,
+      "description": "Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned."
+    },
+    "return_explain_metadata": {
+      "type": "boolean",
+      "default": false,
+      "description": "When enabled, the search results are return with profiling info on execution timings"
+    },
+    "return_service_metadata": {
+      "type": "boolean",
+      "default": true,
+      "description": "When enabled, the search hits are returned with additional metadata such as scores returned by individual services and context of the match, e.g. alignments from sequence search service."
+    },
+    "group_by": {
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_sequence_identity.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_uniprot_accession.json"
+        }
+      ]
+    },
+    "return_representatives": {
+      "type": "boolean",
+      "default": false,
+      "description": "When enabled, only the identifier is returned from each group"
+    },
+    "sort": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "json-schema-rcsb_search_query_request_options_sort_attributes.json"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "json-schema-rcsb_search_query_request_options_sort_groups.json"
+          },
+          "minItems": 1,
+          "maxItems": 1,
+          "uniqueItems": true
+        }
+      ]
+    },
+    "pager": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "description": "The offset from the first result."
+        },
+        "rows": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of entries returned in the result set."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Specifies a range in the query result set. When absent, returns only the top 10 entries, e.g. 'start' defaults to 0, and 'rows' defaults to 10."
+    },
+    "scoring_strategy": {
+      "type": "string",
+      "enum": [
+        "combined",
+        "sequence",
+        "seqmotif",
+        "strucmotif",
+        "structure",
+        "chemical",
+        "text",
+        "text_chem",
+        "full_text"
+      ],
+      "default": "combined",
+      "description": "Scoring algorithm to be used for scores calculation of the final result set."
+    }
+  },
+  "additionalProperties": false
+}

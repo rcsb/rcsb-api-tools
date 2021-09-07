@@ -7,22 +7,13 @@
   ],
   "properties": {
     "value": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "string",
-          "description": "Provides the information from which will defined the query motif. Must either be: 1) the entry identifier or 2) CIF structure data."
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_entry.json"
         },
-        "residue_ids": {
-          "type": "array",
-          "items": {
-            "$ref": "json-schema-rcsb_search_residue_identifier.json"
-          },
-          "description": "Provides the set of residue identifiers that define the query. Can be empty iff an extracted motif is submitted via the data property."
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_file.json"
         }
-      },
-      "required": [
-        "data"
       ]
     },
     "backbone_distance_tolerance": {
@@ -46,14 +37,10 @@
       "maximum": 3,
       "description": "Allowed angle tolerance in multiples of 20 degrees."
     },
-    "score_cutoff": {
-      "type": "number",
-      "minimum": 0,
-      "description": "Threshold above which hits will be filtered."
-    },
     "rmsd_cutoff": {
       "type": "number",
       "minimum": 0,
+      "default": 2,
       "description": "Threshold above which hits will be filtered by RMSD."
     },
     "exchanges": {
@@ -62,7 +49,7 @@
         "type": "object",
         "properties": {
           "residue_id": {
-            "$ref": "json-schema-rcsb_search_residue_identifier.json"
+            "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
           },
           "allowed": {
             "type": "array",
@@ -82,15 +69,9 @@
       "minimum": 0,
       "description": "Optionally: Stop after accepting this many hits."
     },
-    "scoring_strategy": {
+    "atom_pairing_scheme": {
       "type": "string",
-      "description": "How to score hits. The default 'DESCRIPTOR' will use data from geometric descriptors to score hits. This is fast but less accurate. The 'ALIGNMENT' option will load structure data of all potential hits and align each candidate to the query motif. The resulting RMSD values are more descriptive, especially when a suitable 'atom_pairing_strategy' is specified. As a trade-off, the 'ALIGNMENT' option is 2-3 times slower.",
-      "default": "DESCRIPTOR",
-      "enum": ["DESCRIPTOR", "ALIGNMENT"]
-    },
-    "atom_pairing_strategy": {
-      "type": "string",
-      "description": "If scoring strategy is based on alignment: Which atoms to pair.",
+      "description": "Which atoms to consider to compute RMSD scores and transformations.",
       "default": "SIDE_CHAIN",
       "enum": ["ALL", "BACKBONE", "SIDE_CHAIN", "PSEUDO_ATOMS"]
     },

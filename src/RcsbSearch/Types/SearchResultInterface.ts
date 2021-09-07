@@ -16,7 +16,7 @@ export interface QueryResult {
   /**
    * Specifies the type of the returned identifiers.
    */
-  result_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly";
+  result_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly" | "mol_definition";
   /**
    * The total number of identifiers in the result set.
    */

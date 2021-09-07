@@ -97,6 +97,8 @@ type FeaturePosition {
     range_id: String
     "The value for the feature at this region"
     value: Float
+    "The value(s) for the feature at this region"
+    values: [Float]
 }
 
 "Query root"
@@ -107,7 +109,7 @@ type Query {
         from: SequenceReference,
         "Database sequence identifier"
         queryId: String!,
-        "Optional integer list (2-tuple) to filter the alignment to a particular region"
+        "Optional integer list (2-tuple) to filter the alignments to a particular region"
         range: [Int],
         "Target Sequence database"
         to: SequenceReference
@@ -122,6 +124,24 @@ type Query {
         range: [Int],
         "Query database"
         reference: SequenceReference,
+        "List defining the annotation collections to be requested"
+        sources: [Source]
+    ): [AnnotationFeatures]
+    "Get group sequence alignments"
+    group_alignment(
+        "Group Type"
+        group: GroupReference!,
+        "Group Id"
+        groupId: String
+    ): AlignmentResponse
+    "Get group positional features"
+    group_annotations(
+        "Optional list of filters that can be used to select what annotations will be retrieved"
+        filters: [FilterInput],
+        "Group Type"
+        group: GroupReference!,
+        "Group Id"
+        groupId: String!,
         "List defining the annotation collections to be requested"
         sources: [Source]
     ): [AnnotationFeatures]
@@ -140,15 +160,23 @@ type TargetAlignment {
     target_sequence: String
 }
 
+enum GroupReference {
+    matching_uniprot_accession
+    seqeunce_identity
+}
+
 enum PropertyName {
+    CARD_MODEL_DESCRIPTION
+    CARD_MODEL_ORGANISM
     CATH_DOMAIN_ID
     CATH_NAME
     CLINICAL_SIGNIFICANCE
     CONSEQUENCE_TYPE
     DISEASE_TYPE
+    ECOD_DOMAIN_ID
+    ECOD_FAMILY_NAME
     EVIDENCE
     LINK
-    MODIFICATION_TYPE
     MUTATED_TYPE
     OMEGA_ANGLE
     PARENT_COMP_ID
@@ -156,11 +184,17 @@ enum PropertyName {
     PARTNER_BOND_DISTANCE
     PARTNER_COMP_ID
     PREDICTED_IMPACT
+    SCOP_2_DOMAIN_ID
+    SCOP_2_FAMILY_ID
+    SCOP_2_FAMILY_NAME
+    SCOP_2_SUPERFAMILY_ID
+    SCOP_2_SUPERFAMILY_NAME
     SCOP_DOMAIN_ID
     SCOP_NAME
     SCOP_SUN_ID
     SHEET_SENSE
     STRAIN_ID
+    SUBTYPE
     WILD_TYPE
 }
 
@@ -185,6 +219,7 @@ enum Type {
     BINDING_SITE
     BOND_OUTLIER
     CALCIUM_BINDING_REGION
+    CARD_MODEL
     CATH
     CHAIN
     CIS_PEPTIDE
@@ -196,12 +231,23 @@ enum Type {
     COVALENT_RESIDUE_MODIFICATION
     CROSS_LINK
     C_MANNOSYLATION_SITE
+    DISORDER
+    DISORDER_BINDING
     DISULFIDE_BRIDGE
     DNA_BINDING_REGION
     DOMAIN
+    ECOD
     GLYCOSYLATION_SITE
     HELIX_P
     HYDROGEN_BOND
+    HYDROPATHY
+    IMGT_ANTIBODY_DESCRIPTION
+    IMGT_ANTIBODY_DOMAIN_NAME
+    IMGT_ANTIBODY_GENE_ALLELE_NAME
+    IMGT_ANTIBODY_ORGANISM_NAME
+    IMGT_ANTIBODY_PROTEIN_NAME
+    IMGT_ANTIBODY_RECEPTOR_DESCRIPTION
+    IMGT_ANTIBODY_RECEPTOR_TYPE
     INITIATOR_METHIONINE
     INTRAMEMBRANE_REGION
     IONIC_INTERACTION
@@ -231,7 +277,16 @@ enum Type {
     ROTAMER_OUTLIER
     RSCC_OUTLIER
     RSRZ_OUTLIER
+    SABDAB_ANTIBODY_ANTIGEN_NAME
+    SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS
+    SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS
+    SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE
+    SABDAB_ANTIBODY_NAME
+    SABDAB_ANTIBODY_TARGET
     SCOP
+    SCOP_2_B_SUPERFAMILY
+    SCOP_2_FAMILY
+    SCOP_2_SUPERFAMILY
     SEQUENCE_CONFLICT
     SEQUENCE_VARIANT
     SHEET

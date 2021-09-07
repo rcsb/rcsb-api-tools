@@ -1,0 +1,56 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_unreleased_query.json",
+  "title": "Unreleased Entry Search Query",
+  "type": "object",
+  "required": [
+    "return_type"
+  ],
+  "properties": {
+    "request_info": {
+      "$ref": "json-schema-rcsb_search_query.json#/properties/request_info"
+    },
+    "request_options": {
+      "type": "object",
+      "properties": {
+        "facets": {
+          "$ref": "json-schema-rcsb_search_query_facets.json"
+        },
+        "return_counts": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/return_counts"
+        },
+        "sort": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/sort"
+        },
+        "pager": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/pager"
+        },
+        "scoring_strategy": {
+          "type": "string",
+          "enum": [
+            "text"
+          ],
+          "description": "Scoring algorithm to be used for scores calculation of the final result set."
+        }
+      }
+    },
+    "return_type": {
+      "type": "string",
+      "enum": [
+        "unreleased_entry"
+      ],
+      "javaType" : "org.rcsb.arches.auto.model.ReturnType",
+      "description": "Specifies the type of the returned identifiers."
+    },
+    "query": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_unreleased_query_node_group.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_unreleased_query_node_terminal.json"
+        }
+        ],
+      "description": "Any valid query string as per the Search Aggregator query syntax is permitted. A search consists of one or more groups combined."
+    }
+  }
+}

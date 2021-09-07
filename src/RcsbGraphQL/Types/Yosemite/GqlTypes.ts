@@ -863,6 +863,8 @@ export interface CorePolymerEntity {
   rcsb_polymer_entity_keywords?: Maybe<RcsbPolymerEntityKeywords>;
   rcsb_polymer_entity_name_com?: Maybe<Array<Maybe<RcsbPolymerEntityNameCom>>>;
   rcsb_polymer_entity_name_sys?: Maybe<Array<Maybe<RcsbPolymerEntityNameSys>>>;
+  rcsb_related_target_references?: Maybe<Array<Maybe<RcsbRelatedTargetReferences>>>;
+  rcsb_target_cofactors?: Maybe<Array<Maybe<RcsbTargetCofactors>>>;
   /** Get all unique UniProt KB annotations associated with this molecular entity. */
   uniprots?: Maybe<Array<Maybe<CoreUniprot>>>;
 }
@@ -1882,7 +1884,7 @@ export interface EmImaging {
    * The name of the model of microscope.
    *
    * Allowable values:
-   * FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, ZEISS LEO912, ZEISS LIBRA120PLUS
+   * FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
    */
   microscope_model?: Maybe<Scalars['String']>;
   /**
@@ -3040,14 +3042,27 @@ export interface GeneName {
   value?: Maybe<Scalars['String']>;
 }
 
+export enum GroupAggregationMethod {
+  MatchingUniprotAccession = 'matching_uniprot_accession',
+  SequenceIdentity = 'sequence_identity'
+}
+
 export interface GroupMembersAlignmentAlignedRegions {
   __typename?: 'GroupMembersAlignmentAlignedRegions';
-  /** An identifier for the monomer in the entity sequence at which this segment of the alignment begins */
-  entity_beg_seq_id: Scalars['Int'];
-  /** An length of the this segment of the alignment */
+  /** Aligned region length */
   length: Scalars['Int'];
-  /** An identifier for the monomer in the reference sequence at which this segment of the alignment begins */
-  ref_beg_seq_id: Scalars['Int'];
+  /** Entity seqeunce start position */
+  query_begin: Scalars['Int'];
+  /** NCBI sequence start position */
+  target_begin: Scalars['Int'];
+}
+
+export interface GroupMembersAlignmentScores {
+  __typename?: 'GroupMembersAlignmentScores';
+  query_coverage: Scalars['Int'];
+  query_length: Scalars['Int'];
+  target_coverage: Scalars['Int'];
+  target_length: Scalars['Int'];
 }
 
 
@@ -3187,7 +3202,7 @@ export interface PdbxAuditSupport {
    *  after June 2016.
    *
    * Examples:
-   * National Institutes of Health, Welcome Trust, National Institutes of Health/National Institute of General Medical Sciences
+   * National Institutes of Health, Wellcome Trust, National Institutes of Health/National Institute of General Medical Sciences
    */
   funding_organization?: Maybe<Scalars['String']>;
   /** The grant number associated with this source of support. */
@@ -3674,7 +3689,7 @@ export interface PdbxMoleculeFeatures {
    */
   name?: Maybe<Scalars['String']>;
   /**
-   * The value of _pdbx_molecule_features.prd_id is the PDB accession code for this
+   * The value of _pdbx_molecule_features.prd_id is the accession code for this
    *  reference molecule.
    */
   prd_id: Scalars['String'];
@@ -4088,7 +4103,7 @@ export interface PdbxNmrSpectrometer {
   __typename?: 'PdbxNmrSpectrometer';
   /** A text description of the NMR spectrometer. */
   details?: Maybe<Scalars['String']>;
-  /** Select the field strength for protons in MHz. */
+  /** The field strength in MHz of the spectrometer */
   field_strength?: Maybe<Scalars['Float']>;
   /**
    * The name of the manufacturer of the spectrometer.
@@ -5552,7 +5567,7 @@ export interface PdbxStructAssemblyAuthEvidence {
    * Provides the experimental method to determine the state of this assembly
    *
    * Allowable values:
-   * NMR relaxation study, SAXS, assay for oligomerization, cross-linking, equilibrium centrifugation, fluorescence resonance energy transfer, gel filtration, homology, immunoprecipitation, isothermal titration calorimetry, light scattering, mass spectrometry, microscopy, native gel electrophoresis, none, scanning transmission electron microscopy, surface plasmon resonance
+   * NMR Distance Restraints, NMR relaxation study, SAXS, assay for oligomerization, cross-linking, electron microscopy, equilibrium centrifugation, fluorescence resonance energy transfer, gel filtration, homology, immunoprecipitation, isothermal titration calorimetry, light scattering, mass spectrometry, microscopy, native gel electrophoresis, none, scanning transmission electron microscopy, surface plasmon resonance
    */
   experimental_support?: Maybe<Scalars['String']>;
   /** Identifies a unique record in pdbx_struct_assembly_auth_evidence. */
@@ -6478,14 +6493,16 @@ export interface Query {
   assembly?: Maybe<CoreAssembly>;
   /** Get a list of PDB branched entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   branched_entity_instances?: Maybe<Array<Maybe<CoreBranchedEntityInstance>>>;
-  /** Provides a set of PDB entities grouped by a common UniProt accession. */
-  uniprot_entity_group?: Maybe<CoreGroup>;
   /** Get a list of PDB polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
+  /** Given a group ID get a group object formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity */
+  group?: Maybe<CoreGroup>;
   /** Get a list of assemblies given the list of ASSEMBLY IDs. Here an ASSEMBLY ID is a compound identifier that includes entry_id and assembly_id separated by '-', e.g. 1XXX-1. */
   assemblies?: Maybe<Array<Maybe<CoreAssembly>>>;
   /** Get a PDB branched entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   branched_entity?: Maybe<CoreBranchedEntity>;
+  /** Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity */
+  groups?: Maybe<Array<Maybe<CoreGroup>>>;
   /** Get a PDB branched entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   branched_entity_instance?: Maybe<CoreBranchedEntityInstance>;
   /** Get a PDB non-polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
@@ -6559,14 +6576,15 @@ export interface QueryBranched_Entity_InstancesArgs {
 
 
 /** Query root */
-export interface QueryUniprot_Entity_GroupArgs {
-  group_id: Scalars['String'];
+export interface QueryPolymer_Entity_InstancesArgs {
+  instance_ids: Array<Maybe<Scalars['String']>>;
 }
 
 
 /** Query root */
-export interface QueryPolymer_Entity_InstancesArgs {
-  instance_ids: Array<Maybe<Scalars['String']>>;
+export interface QueryGroupArgs {
+  group_id: Scalars['String'];
+  aggregation_method: GroupAggregationMethod;
 }
 
 
@@ -6580,6 +6598,13 @@ export interface QueryAssembliesArgs {
 export interface QueryBranched_EntityArgs {
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
+}
+
+
+/** Query root */
+export interface QueryGroupsArgs {
+  group_ids: Array<Maybe<Scalars['String']>>;
+  aggregation_method: GroupAggregationMethod;
 }
 
 
@@ -6637,15 +6662,6 @@ export interface QueryNonpolymer_Entity_InstancesArgs {
 export interface QueryNonpolymer_EntityArgs {
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
-}
-
-export interface RankingOptionsGroupMembers {
-  __typename?: 'RankingOptionsGroupMembers';
-  member_id: Scalars['String'];
-  /** Quantifies the criteria used for ranking */
-  original_score?: Maybe<Scalars['Float']>;
-  /** Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second */
-  rank: Scalars['Int'];
 }
 
 export interface RcsbAccessionInfo {
@@ -7139,7 +7155,7 @@ export interface RcsbBranchedEntityFeatureAdditionalProperties {
   __typename?: 'RcsbBranchedEntityFeatureAdditionalProperties';
   /** The additional property name. */
   name?: Maybe<Scalars['String']>;
-  /** 2.54, 300 */
+  /** The value(s) of the additional property. */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
 }
 
@@ -7339,7 +7355,7 @@ export interface RcsbBranchedInstanceFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * BINDING_SITE, CATH, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, SCOP, STEREO_OUTLIER, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   * BINDING_SITE, CATH, ECOD, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, SCOP, STEREO_OUTLIER, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7353,7 +7369,7 @@ export interface RcsbBranchedInstanceFeatureAdditionalProperties {
    * bond_distance, bond_angle
    */
   name?: Maybe<Scalars['String']>;
-  /** 2.54, 300 */
+  /** The value(s) of the additional property. */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
 }
 
@@ -7377,6 +7393,8 @@ export interface RcsbBranchedInstanceFeatureFeaturePositions {
    * null, null
    */
   value?: Maybe<Scalars['Float']>;
+  /** The value(s) of the feature at the monomer position. */
+  values?: Maybe<Array<Maybe<Scalars['Float']>>>;
 }
 
 export interface RcsbBranchedInstanceFeatureFeatureValue {
@@ -7785,6 +7803,13 @@ export interface RcsbChemCompInfo {
   /** The chemical component identifier. */
   comp_id: Scalars['String'];
   /**
+   * The date the chemical definition was first deposited in the PDB repository.
+   *
+   * Examples:
+   * 2016-09-11
+   */
+  initial_deposition_date?: Maybe<Scalars['Date']>;
+  /**
    * The initial date the chemical definition was released in the PDB repository.
    *
    * Examples:
@@ -8106,8 +8131,10 @@ export interface RcsbEntitySourceOrganism {
    */
   ncbi_common_names?: Maybe<Array<Maybe<Scalars['String']>>>;
   /**
-   * The parent scientific name in the NCBI taxonomy hierarchy (depth=1) of the source organism assigned by the PDB depositor.
-   *
+   * A parent scientific name in the NCBI taxonomy hierarchy of the source organism assigned by the PDB depositor.
+   *   For cellular organism this corresponds to a superkingdom (e.g., Archaea, Bacteria, Eukaryota).  For viruses this
+   *   corresponds to a clade (e.g.  Adnaviria, Bicaudaviridae, Clavaviridae). For other and unclassified entries this
+   *   corresponds to the first level of any taxonomic rank below the root level.
    *
    * References:
    *
@@ -8123,6 +8150,9 @@ export interface RcsbEntitySourceOrganism {
    * Benson DA, Karsch-Mizrachi I, Lipman DJ, Ostell J, Sayers EW (2009).
    * GenBank. Nucleic Acids Res. 2009 Jan;37(Database issue):D26-31.
    * Epub 2008 Oct 21.
+   *
+   * Examples:
+   * Archaea, Bacteria, Eukaryota, Adnaviria, Bicaudaviridae, Clavaviridae, Duplodnaviria
    */
   ncbi_parent_scientific_name?: Maybe<Scalars['String']>;
   /**
@@ -8515,26 +8545,23 @@ export interface RcsbGroupInfo {
 
 export interface RcsbGroupMembersRankings {
   __typename?: 'RcsbGroupMembersRankings';
-  ranking_options: Array<Maybe<RcsbGroupMembersRankingsRankingOptions>>;
-  /**
-   * Uniquely identifies the criteria incorporated into selecting a representative group member
-   *
-   * Allowable values:
-   * best coverage, best resolution
-   */
-  representative_criteria_type: Scalars['String'];
-}
-
-export interface RcsbGroupMembersRankingsRankingOptions {
-  __typename?: 'RcsbGroupMembersRankingsRankingOptions';
-  group_members: Array<Maybe<RankingOptionsGroupMembers>>;
+  group_members: Array<Maybe<RcsbGroupMembersRankingsGroupMembers>>;
   /**
    * Defines ranking option applicable to group members
    *
    * Allowable values:
-   * RMSD, data quality, number of modified residues, coverage
+   * rmsd, data_quality, number_of_modified_residues, coverage, member_quality
    */
   ranking_criteria_type: Scalars['String'];
+}
+
+export interface RcsbGroupMembersRankingsGroupMembers {
+  __typename?: 'RcsbGroupMembersRankingsGroupMembers';
+  member_id: Scalars['String'];
+  /** Quantifies the criteria used for ranking */
+  original_score?: Maybe<Scalars['Float']>;
+  /** Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second */
+  rank: Scalars['Int'];
 }
 
 export interface RcsbGroupRelated {
@@ -8559,6 +8586,7 @@ export interface RcsbGroupSequenceAlignment {
   __typename?: 'RcsbGroupSequenceAlignment';
   /** Abstract reference where group members can be aligned to generate a MSA */
   abstract_reference: RcsbGroupSequenceAlignmentAbstractReference;
+  /** List of alignments with core_entity canonical sequences */
   group_members_alignment: Array<Maybe<RcsbGroupSequenceAlignmentGroupMembersAlignment>>;
 }
 
@@ -8572,13 +8600,17 @@ export interface RcsbGroupSequenceAlignmentAbstractReference {
 
 export interface RcsbGroupSequenceAlignmentGroupMembersAlignment {
   __typename?: 'RcsbGroupSequenceAlignmentGroupMembersAlignment';
+  /** Aligned region */
   aligned_regions: Array<Maybe<GroupMembersAlignmentAlignedRegions>>;
-  /** Identifier of the group member */
-  group_member_id: Scalars['String'];
+  member_id?: Maybe<Scalars['String']>;
+  /** Alignment scores */
+  scores: GroupMembersAlignmentScores;
 }
 
 export interface RcsbGroupStatistics {
   __typename?: 'RcsbGroupStatistics';
+  /** The desired lower limit for the similarity between two members that belong to the same group */
+  similarity_cutoff?: Maybe<Scalars['Float']>;
   /** Similarity score between two most similar group members */
   similarity_score_max?: Maybe<Scalars['Float']>;
   /** Similarity score between two least similar group members */
@@ -8845,7 +8877,7 @@ export interface RcsbNonpolymerEntityFeatureAdditionalProperties {
   __typename?: 'RcsbNonpolymerEntityFeatureAdditionalProperties';
   /** The additional property name. */
   name?: Maybe<Scalars['String']>;
-  /** 2.54, 300 */
+  /** The value(s) of the additional property. */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
 }
 
@@ -9022,7 +9054,7 @@ export interface RcsbNonpolymerInstanceFeatureAdditionalProperties {
    * bond_distance, bond_angle
    */
   name?: Maybe<Scalars['String']>;
-  /** 2.54, 300 */
+  /** The value(s) of the additional property. */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
 }
 
@@ -9594,6 +9626,7 @@ export interface RcsbPolymerEntityContainerIdentifiers {
    * 4HHB, 1KIP
    */
   entry_id: Scalars['String'];
+  group_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
   /**
    * The BIRD identifier for the entity in this container.
    *
@@ -9681,7 +9714,7 @@ export interface RcsbPolymerEntityFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * Pfam, artifact, modified_monomer, mutation
+   * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, modified_monomer, mutation, hydropathy, disorder, disorder_binding
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9692,17 +9725,17 @@ export interface RcsbPolymerEntityFeatureAdditionalProperties {
    * The additional property name.
    *
    * Allowable values:
-   * PARENT_COMP_ID
+   * CARD_MODEL_DESCRIPTION, CARD_MODEL_ORGANISM, PARENT_COMP_ID
    */
   name?: Maybe<Scalars['String']>;
-  /** globin-like, 2.54, 300 */
+  /** The value(s) of the additional property. */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
 }
 
 export interface RcsbPolymerEntityFeatureFeaturePositions {
   __typename?: 'RcsbPolymerEntityFeatureFeaturePositions';
   /**
-   * An identifier for the monomer(s) corresponding to the feature assignment.
+   * An identifier for the leading monomer corresponding to the feature assignment.
    *
    * Examples:
    * TRP, VAL
@@ -9719,6 +9752,8 @@ export interface RcsbPolymerEntityFeatureFeaturePositions {
    * null, null
    */
   value?: Maybe<Scalars['Float']>;
+  /** The value(s) for the feature over this monomer segment. */
+  values?: Maybe<Array<Maybe<Scalars['Float']>>>;
 }
 
 export interface RcsbPolymerEntityFeatureSummary {
@@ -9756,7 +9791,7 @@ export interface RcsbPolymerEntityFeatureSummary {
    * Type or category of the feature.
    *
    * Allowable values:
-   * Pfam, artifact, modified_monomer, mutation
+   * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, modified_monomer, mutation
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9961,7 +9996,7 @@ export interface RcsbPolymerInstanceFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SCOP, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9972,10 +10007,10 @@ export interface RcsbPolymerInstanceFeatureAdditionalProperties {
    * The additional property name.
    *
    * Allowable values:
-   * CATH_DOMAIN_ID, CATH_NAME, OMEGA_ANGLE, PARTNER_ASYM_ID, PARTNER_BOND_DISTANCE, PARTNER_COMP_ID, SCOP_DOMAIN_ID, SCOP_NAME, SCOP_SUN_ID, SHEET_SENSE
+   * CATH_DOMAIN_ID, CATH_NAME, ECOD_DOMAIN_ID, ECOD_FAMILY_NAME, OMEGA_ANGLE, PARTNER_ASYM_ID, PARTNER_BOND_DISTANCE, PARTNER_COMP_ID, SCOP2_DOMAIN_ID, SCOP2_FAMILY_ID, SCOP2_FAMILY_NAME, SCOP2_SUPERFAMILY_ID, SCOP2_SUPERFAMILY_NAME, SCOP_DOMAIN_ID, SCOP_NAME, SCOP_SUN_ID, SHEET_SENSE
    */
   name?: Maybe<Scalars['String']>;
-  /** globin-like, 2.54, 300 */
+  /** The value(s) of the additional property. */
   values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
 }
 
@@ -9999,6 +10034,8 @@ export interface RcsbPolymerInstanceFeatureFeaturePositions {
    * null, null
    */
   value?: Maybe<Scalars['Float']>;
+  /** The value(s) of the feature over the monomer segment. */
+  values?: Maybe<Array<Maybe<Scalars['Float']>>>;
 }
 
 export interface RcsbPolymerInstanceFeatureSummary {
@@ -10036,7 +10073,7 @@ export interface RcsbPolymerInstanceFeatureSummary {
    * Type or category of the feature.
    *
    * Allowable values:
-   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SCOP, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SAbDab Antibody Heavy Chain Subclass, SAbDab Antibody Light Chain Subclass, SAbDab Antibody Light Chain Type, SCOP, SCOP2 Family, SCOP2 Superfamily, SCOP2B Superfamily, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -10411,6 +10448,51 @@ export interface RcsbPubmedMeshDescriptorsLineage {
   name?: Maybe<Scalars['String']>;
 }
 
+export interface RcsbRelatedTargetReferences {
+  __typename?: 'RcsbRelatedTargetReferences';
+  aligned_target?: Maybe<Array<Maybe<RcsbRelatedTargetReferencesAlignedTarget>>>;
+  /**
+   * The related target data resource name.
+   *
+   * Allowable values:
+   * ChEMBL, DrugBank, Pharos
+   */
+  related_resource_name?: Maybe<Scalars['String']>;
+  /**
+   * The version of the target data resource.
+   *
+   * Examples:
+   * 6.11.0
+   */
+  related_resource_version?: Maybe<Scalars['String']>;
+  /** An identifier for the target sequence in the related data resource. */
+  related_target_id?: Maybe<Scalars['String']>;
+  /**
+   * NCBI Taxonomy identifier for the target organism.
+   *
+   *  Reference:
+   *
+   *  Wheeler DL, Chappey C, Lash AE, Leipe DD, Madden TL, Schuler GD,
+   *  Tatusova TA, Rapp BA (2000). Database resources of the National
+   *  Center for Biotechnology Information. Nucleic Acids Res 2000 Jan
+   *  1;28(1):10-4
+   *
+   *  Benson DA, Karsch-Mizrachi I, Lipman DJ, Ostell J, Rapp BA,
+   *  Wheeler DL (2000). GenBank. Nucleic Acids Res 2000 Jan 1;28(1):15-18.
+   */
+  target_taxonomy_id?: Maybe<Scalars['Int']>;
+}
+
+export interface RcsbRelatedTargetReferencesAlignedTarget {
+  __typename?: 'RcsbRelatedTargetReferencesAlignedTarget';
+  /** The position of the monomer in the entity sequence at which the alignment begins. */
+  entity_beg_seq_id?: Maybe<Scalars['Int']>;
+  /** The length of the alignment. */
+  length?: Maybe<Scalars['Int']>;
+  /** The position of the monomer in the target sequence at which the alignment begins. */
+  target_beg_seq_id?: Maybe<Scalars['Int']>;
+}
+
 export interface RcsbRepositoryHoldingsCurrent {
   __typename?: 'RcsbRepositoryHoldingsCurrent';
   /**
@@ -10535,6 +10617,129 @@ export interface RcsbStructSymmetryRotationAxes {
   start: Array<Maybe<Scalars['Float']>>;
 }
 
+export interface RcsbTargetCofactors {
+  __typename?: 'RcsbTargetCofactors';
+  /**
+   * The value measured or determined by the assay.
+   *
+   * Examples:
+   * null
+   */
+  binding_assay_value?: Maybe<Scalars['Float']>;
+  /**
+   * The type of measurement or value determined by the assay.
+   *
+   * Allowable values:
+   * pAC50, pEC50, pIC50, pKd, pKi
+   */
+  binding_assay_value_type?: Maybe<Scalars['String']>;
+  /**
+   * Standard IUPAC International Chemical Identifier (InChI) descriptor key
+   *  for the cofactor.
+   *
+   *  InChI, the IUPAC International Chemical Identifier,
+   *  by Stephen R Heller, Alan McNaught, Igor Pletnev, Stephen Stein and Dmitrii Tchekhovskoi,
+   *  Journal of Cheminformatics, 2015, 7:23
+   *
+   * Examples:
+   * BNOCDEBUFVJMQI-REOHCLBHSA-N
+   */
+  cofactor_InChIKey?: Maybe<Scalars['String']>;
+  /**
+   * Simplified molecular-input line-entry system (SMILES) descriptor for the cofactor.
+   *
+   *    Weininger D (February 1988). "SMILES, a chemical language and information system. 1.
+   *    Introduction to methodology and encoding rules". Journal of Chemical Information and Modeling. 28 (1): 31-6.
+   *
+   *    Weininger D, Weininger A, Weininger JL (May 1989).
+   *    "SMILES. 2. Algorithm for generation of unique SMILES notation",
+   *    Journal of Chemical Information and Modeling. 29 (2): 97-101.
+   *
+   * Examples:
+   * OC(=O)[CH](CF)O[P](O)(O)=O
+   */
+  cofactor_SMILES?: Maybe<Scalars['String']>;
+  /**
+   * The chemical component definition identifier for the cofactor.
+   *
+   * Examples:
+   * 0Z3, CD9
+   */
+  cofactor_chem_comp_id?: Maybe<Scalars['String']>;
+  /**
+   * The cofactor description.
+   *
+   * Examples:
+   * A synthetic naphthoquinone without the isoprenoid side chain and biological activity,
+   *   but can be converted to active vitamin K2, menaquinone, after alkylation in vivo.
+   */
+  cofactor_description?: Maybe<Scalars['String']>;
+  /**
+   * The cofactor name.
+   *
+   * Examples:
+   * Menadione
+   */
+  cofactor_name?: Maybe<Scalars['String']>;
+  /**
+   * The BIRD definition identifier for the cofactor.
+   *
+   * Examples:
+   * PRD_000010
+   */
+  cofactor_prd_id?: Maybe<Scalars['String']>;
+  /**
+   * Identifier for the cofactor assigned by the resource.
+   *
+   * Examples:
+   * CHEMBL1987, DB00170
+   */
+  cofactor_resource_id?: Maybe<Scalars['String']>;
+  /**
+   * Mechanism of action describes the biochemical interaction through which the
+   *  cofactor produces a pharmacological effect.
+   *
+   * Examples:
+   * Menadione (vitamin K3) is involved as a cofactor in the posttranslational gamma-carboxylation of glutamic acid residues of certain proteins i
+   * n the body. These proteins include the vitamin K-dependent coagulation factors II (prothrombin), VII (proconvertin), IX (Christmas factor), X (Stuart factor), protein
+   * C, protein S, protein Zv and a growth-arrest-specific factor (Gas6).
+   */
+  mechanism_of_action?: Maybe<Scalars['String']>;
+  /**
+   * A flag to indicate the cofactor is a structural neighbor of this
+   *  entity.
+   *
+   * Allowable values:
+   * N, Y
+   */
+  neighbor_flag?: Maybe<Scalars['String']>;
+  /** Patent numbers reporting the pharmacology or activity data. */
+  patent_nos?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** PubMed identifiers for literature supporting the pharmacology or activity data. */
+  pubmed_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  /**
+   * Resource providing target and cofactor data.
+   *
+   * Allowable values:
+   * ChEMBL, DrugBank, Pharos
+   */
+  resource_name?: Maybe<Scalars['String']>;
+  /**
+   * Version of the information distributed by the data resource.
+   *
+   * Examples:
+   * V4_0_2
+   */
+  resource_version?: Maybe<Scalars['String']>;
+  /**
+   * Identifier for the target assigned by the resource.
+   *
+   * Examples:
+   * P00734, CHEMBL2242
+   */
+  target_resource_id?: Maybe<Scalars['String']>;
+}
+
 export interface RcsbTargetNeighbors {
   __typename?: 'RcsbTargetNeighbors';
   /** Alternate conformer identifier for the non-polymer entity instance. */
@@ -10602,11 +10807,11 @@ export interface RcsbUniprotAlignments {
 export interface RcsbUniprotAlignmentsCoreEntityAlignments {
   __typename?: 'RcsbUniprotAlignmentsCoreEntityAlignments';
   /** Aligned region */
-  aligned_regions?: Maybe<Array<Maybe<CoreEntityAlignmentsAlignedRegions>>>;
+  aligned_regions: Array<Maybe<CoreEntityAlignmentsAlignedRegions>>;
   /** core_entity identifiers */
   core_entity_identifiers?: Maybe<CoreEntityAlignmentsCoreEntityIdentifiers>;
   /** Alignment scores */
-  scores?: Maybe<CoreEntityAlignmentsScores>;
+  scores: CoreEntityAlignmentsScores;
 }
 
 export interface RcsbUniprotAnnotation {
@@ -12123,7 +12328,7 @@ export interface Reflns {
   pdbx_number_measured_all?: Maybe<Scalars['Int']>;
   /** An ordinal identifier for this set of reflection statistics. */
   pdbx_ordinal: Scalars['Int'];
-  /** Overall redundancy for this data set (%). */
+  /** Overall redundancy for this data set. */
   pdbx_redundancy?: Maybe<Scalars['Float']>;
   /** Number of reflections rejected in scaling operations. */
   pdbx_scaling_rejects?: Maybe<Scalars['Int']>;

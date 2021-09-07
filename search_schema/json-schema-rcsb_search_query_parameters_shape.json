@@ -7,23 +7,17 @@
   ],
   "properties": {
     "value": {
-      "type": "object",
-      "properties": {
-        "entry_id": {
-          "type": "string"
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_shape_value_chain.json"
         },
-        "asym_id": {
-          "type": "string"
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_shape_value_assembly.json"
         },
-        "assembly_id": {
-          "type": "string"
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_shape_value_file.json"
         }
-      },
-      "required": [
-        "entry_id"
-      ],
-      "additionalProperties": false,
-      "description": "Compound structure identifier that includes PDB code and either assembly or chain identifier."
+      ]
     },
     "operator": {
       "type": "string",
