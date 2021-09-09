@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-saguaro-api",
-  "version": "2.1.4-groups.6",
+  "version": "2.2.0-groups.7",
   "description": "",
   "main": "build/app.js",
   "files": [
