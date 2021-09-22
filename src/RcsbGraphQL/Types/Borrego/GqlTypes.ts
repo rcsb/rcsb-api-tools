@@ -41,14 +41,29 @@ export interface AlignedRegion {
   target_end: Scalars['Int'];
 }
 
+export interface AlignmentLogo {
+  __typename?: 'AlignmentLogo';
+  symbol?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['Int']>;
+}
+
 export interface AlignmentResponse {
   __typename?: 'AlignmentResponse';
   /** Length of the alignment */
   alignment_length?: Maybe<Scalars['Int']>;
+  alignment_logo?: Maybe<Array<Maybe<Array<Maybe<AlignmentLogo>>>>>;
   /** Full sequence of the query */
   query_sequence?: Maybe<Scalars['String']>;
   /** JSON schema that describes the different alignments between the query sequence and targets */
   target_alignment?: Maybe<Array<Maybe<TargetAlignment>>>;
+  /** Multiple sequence alignment of group members. */
+  target_alignment_subset?: Maybe<TargetAlignmentConnection>;
+}
+
+
+export interface AlignmentResponseTarget_Alignment_SubsetArgs {
+  after?: Maybe<Scalars['String']>;
+  first: Scalars['Int'];
 }
 
 export interface AnnotationFeatures {
@@ -132,6 +147,19 @@ export enum GroupReference {
 }
 
 
+/** Information about pagination in a connection. */
+export interface PageInfo {
+  __typename?: 'PageInfo';
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+}
+
 export enum PropertyName {
   CardModelDescription = 'CARD_MODEL_DESCRIPTION',
   CardModelOrganism = 'CARD_MODEL_ORGANISM',
@@ -181,6 +209,7 @@ export interface Query {
 
 /** Query root */
 export interface QueryGroup_AlignmentArgs {
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
   groupId?: Maybe<Scalars['String']>;
   group: GroupReference;
 }
@@ -239,6 +268,24 @@ export interface TargetAlignment {
   target_id?: Maybe<Scalars['String']>;
   /** Full sequence of the target */
   target_sequence?: Maybe<Scalars['String']>;
+}
+
+/** A connection to a list of items. */
+export interface TargetAlignmentConnection {
+  __typename?: 'TargetAlignmentConnection';
+  /** a list of edges */
+  edges?: Maybe<Array<Maybe<TargetAlignmentEdge>>>;
+  /** details about this specific page */
+  pageInfo: PageInfo;
+}
+
+/** An edge in a connection */
+export interface TargetAlignmentEdge {
+  __typename?: 'TargetAlignmentEdge';
+  /** The item at the end of the edge */
+  node?: Maybe<TargetAlignment>;
+  /** cursor marks a unique position or index into the connection */
+  cursor: Scalars['String'];
 }
 
 export enum Type {

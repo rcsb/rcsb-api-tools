@@ -29,11 +29,21 @@ type AlignedRegion {
     target_end: Int!
 }
 
+type AlignmentLogo {
+    symbol: String
+    value: Int
+}
+
 type AlignmentResponse {
+    "Length of the alignment"
+    alignment_length: Int
+    alignment_logo: [[AlignmentLogo]]
     "Full sequence of the query"
     query_sequence: String
     "JSON schema that describes the different alignments between the query sequence and targets"
     target_alignment: [TargetAlignment]
+    "Multiple sequence alignment of group members."
+    target_alignment_subset(after: String, first: Int!): TargetAlignmentConnection
 }
 
 type AnnotationFeatures {
@@ -101,6 +111,18 @@ type FeaturePosition {
     values: [Float]
 }
 
+"Information about pagination in a connection."
+type PageInfo {
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+}
+
 "Query root"
 type Query {
     "Get sequence alignments"
@@ -129,6 +151,8 @@ type Query {
     ): [AnnotationFeatures]
     "Get group sequence alignments"
     group_alignment(
+        "List of allowed PDB entities"
+        filter: [String],
         "Group Type"
         group: GroupReference!,
         "Group Id"
@@ -160,9 +184,25 @@ type TargetAlignment {
     target_sequence: String
 }
 
+"A connection to a list of items."
+type TargetAlignmentConnection {
+    "a list of edges"
+    edges: [TargetAlignmentEdge]
+    "details about this specific page"
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection"
+type TargetAlignmentEdge {
+    "cursor marks a unique position or index into the connection"
+    cursor: String!
+    "The item at the end of the edge"
+    node: TargetAlignment
+}
+
 enum GroupReference {
     matching_uniprot_accession
-    seqeunce_identity
+    sequence_identity
 }
 
 enum PropertyName {
