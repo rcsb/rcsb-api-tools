@@ -4,7 +4,7 @@ RCSB Saguaro Web API is an open-source library that includes different tools to 
 the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https://search.rcsb.org).
 
 ### Node Module Instalation
-`npm install @rcsb/rcsb-api-tools
+`npm install @rcsb/rcsb-api-tools`
 
 ### Requesting RCSB GraphQL data
 `import {GraphQLRequest} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/GraphQLRequest"`
