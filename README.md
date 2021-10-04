@@ -12,7 +12,9 @@ the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https:/
 `const client = new GraphQLRequest("borrego"|"yosemity"|url);`
 
 `client.request(query_params, query_string)`;
+
 ####Example
+
 #####query_params
 ```javascript
 {
@@ -22,7 +24,7 @@ the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https:/
 }
 ```
 
-#####query_string
+##### query_string
 ```graphql
 query QueryAlignment($queryId: String!, $from: SequenceReference, $to:SequenceReference){
      alignment(
@@ -70,7 +72,7 @@ E.g. `import {AnnotationFeatures, Feature, AlignmentResponse} from "@rcsb/rcsb-a
 
 `client.request(query_object);`
 
-####Example
+#### Example
 ```javascript
 import {SearchQuery} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchQueryInterface";
 import {LogicalOperator, ReturnType, Service, Type} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchEnums";
@@ -111,7 +113,7 @@ Search metadata class provides the searchable paths and methods for the RCSB Sea
 
 `import {RcsbSearchMetadata} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchMetadata";`
 
-#####Utility examples
+##### Utility examples
 E.g. `RcsbSearchMetadata.RcsbEntryInfo.DiffrnResolutionHigh.Value.path` attribute contains the string `"rcsb_entry_info.diffrn_resolution_high.value"`
 
 E.g. `RcsbSearchMetadata.RcsbEntryInfo.DiffrnResolutionHigh.Value.operator` enumerates the possible comparison operations (i.e. `Equals`, `Greater`, `Range`, ...) 
