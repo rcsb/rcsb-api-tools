@@ -1,6 +1,6 @@
 {
-  "name": "@rcsb/rcsb-saguaro-api",
-  "version": "2.1.0",
+  "name": "@rcsb/rcsb-api-tools",
+  "version": "2.2.0",
   "description": "",
   "main": "build/app.js",
   "files": [
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bioinsilico/rcsb-saguaro-api.git"
+    "url": "git://github.com/rcsb/rcsb-api-tools.git"
   },
   "author": "Joan Segura Mora <joan.segura@rcsb.org>",
   "publishConfig": {

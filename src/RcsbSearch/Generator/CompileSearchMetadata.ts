@@ -20,6 +20,27 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}): vo
                 for(const p in json.items.properties){
                     parseMetadata(json.items.properties[p], p, path.concat(p), root);
                 }
+            }else{
+                if(json.items.rcsb_search_context) {
+                    let a: any = root;
+                    path.forEach(q=>{
+                        const p = camelCase(q);
+                        if(a[p]){
+                            a = a[p];
+                        }else{
+                            a[p] = {}
+                            a=a[p];
+                        }
+                    });
+                    a["path"] =  path.join(".")
+                    a["operator"] = {};
+                    for(const op of json.items.rcsb_search_context){
+                        if(operators_dict[op])
+                            for(const opName of operators_dict[op]){
+                                a["operator"][camelCase(opName)] = opName
+                            }
+                    }
+                }
             }
         }else if(json.type === "object"){
             for(const p in json.properties){
@@ -53,11 +74,16 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}): vo
 }
 
 import * as configSearch from "../ServerConfig/codegen.search.json";
+import * as configChemicalSearch from "../ServerConfig/codegen.search.chemical.json";
 fetch(configSearch.schema).then(metadata=>{
     metadata.json().then(json=>{
-        //
         const root = {};
         parseMetadata(json, "root", [], root);
-        fs.writeFileSync("src/RcsbSearch/Types/SearchMetadata.ts", "export const RcsbSearchMetadata: "+JSON.stringify(root)+" = "+JSON.stringify(root));
+        fetch(configChemicalSearch.schema).then(chemicalMetadata=>{
+            chemicalMetadata.json().then(json=>{
+                parseMetadata(json, "root", [], root);
+                fs.writeFileSync("src/RcsbSearch/Types/SearchMetadata.ts", "export const RcsbSearchMetadata: "+JSON.stringify(root)+" = "+JSON.stringify(root));
+            })
+        })
     })
 });

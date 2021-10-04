@@ -9782,7 +9782,7 @@ export interface RcsbPolymerInstanceAnnotation {
    * A type or category of the annotation.
    *
    * Allowable values:
-   * CATH, SCOP
+   * CATH, ECOD, SCOP, SCOP2
    */
   type?: Maybe<Scalars['String']>;
 }
