@@ -13,9 +13,9 @@ the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https:/
 
 `client.request(query_params, query_string)`;
 
-####Example
+#### Example
 
-#####query_params
+##### query_params
 ```javascript
 {
   queryId: "P01112",
