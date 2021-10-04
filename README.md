@@ -17,16 +17,16 @@ the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https:/
 
 ##### query_params
 ```javascript
-{
+const query_params = {
   queryId: "P01112",
-  from: UNIPROT,
-  to: PDB_ENTITY
+  from: "UNIPROT",
+  to: "PDB_ENTITY"
 }
 ```
 
 ##### query_string
 ```graphql
-query QueryAlignment($queryId: String!, $from: SequenceReference, $to:SequenceReference){
+query QueryAlignment($queryId: String!, $from: String!, $to: String!){
      alignment(
          queryId:$queryId
          from:$from
