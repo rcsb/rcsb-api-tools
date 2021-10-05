@@ -703,6 +703,8 @@ export interface CoreEntry {
 
 export interface CoreGroup {
   __typename?: 'CoreGroup';
+  /** Get provenance associated with this group. */
+  provenance?: Maybe<CoreGroupProvenance>;
   rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
   rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
   rcsb_group_info: RcsbGroupInfo;
@@ -712,6 +714,19 @@ export interface CoreGroup {
   rcsb_group_statistics?: Maybe<RcsbGroupStatistics>;
   /** A unique textual identifier for a group */
   rcsb_id: Scalars['String'];
+}
+
+export interface CoreGroupProvenance {
+  __typename?: 'CoreGroupProvenance';
+  rcsb_group_aggregation_method?: Maybe<RcsbGroupAggregationMethod>;
+  rcsb_group_provenance_container_identifiers?: Maybe<RcsbGroupProvenanceContainerIdentifiers>;
+  /**
+   * A unique group provenance identifier
+   *
+   * Allowable values:
+   * provenance_sequence_identity, provenance_matching_uniprot_accession
+   */
+  rcsb_id?: Maybe<Scalars['String']>;
 }
 
 export interface CoreNonpolymerEntity {
@@ -3063,6 +3078,18 @@ export interface GroupMembersAlignmentScores {
   query_length: Scalars['Int'];
   target_coverage: Scalars['Int'];
   target_length: Scalars['Int'];
+}
+
+export interface MethodDetails {
+  __typename?: 'MethodDetails';
+  /** A description of special aspects of the clustering process */
+  description?: Maybe<Scalars['String']>;
+  /** Defines the name of the description associated with the clustering process */
+  name?: Maybe<Scalars['String']>;
+  /** Defines the type of the description associated with the clustering process */
+  type?: Maybe<Scalars['String']>;
+  /** Defines the value associated with the clustering process */
+  value?: Maybe<Scalars['Float']>;
 }
 
 
@@ -6493,6 +6520,8 @@ export interface Query {
   assembly?: Maybe<CoreAssembly>;
   /** Get a list of PDB branched entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   branched_entity_instances?: Maybe<Array<Maybe<CoreBranchedEntityInstance>>>;
+  /** Given a group provenance ID get an object that describes aggregation method used to create groups */
+  group_provenance?: Maybe<CoreGroupProvenance>;
   /** Get a list of PDB polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
   /** Given a group ID get a group object formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity */
@@ -6572,6 +6601,12 @@ export interface QueryAssemblyArgs {
 /** Query root */
 export interface QueryBranched_Entity_InstancesArgs {
   instance_ids: Array<Maybe<Scalars['String']>>;
+}
+
+
+/** Query root */
+export interface QueryGroup_ProvenanceArgs {
+  group_provenance_id: Scalars['String'];
 }
 
 
@@ -8517,13 +8552,63 @@ export interface RcsbGroupAccessionInfo {
   version: Scalars['Int'];
 }
 
+export interface RcsbGroupAggregationMethod {
+  __typename?: 'RcsbGroupAggregationMethod';
+  /** The details on a method used to calculate cluster solutions */
+  method: RcsbGroupAggregationMethodMethod;
+  similarity_criteria?: Maybe<RcsbGroupAggregationMethodSimilarityCriteria>;
+  /**
+   * Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy
+   *
+   * Allowable values:
+   * sequence_identity, matching_uniprot_accession
+   */
+  type: Scalars['String'];
+}
+
+export interface RcsbGroupAggregationMethodMethod {
+  __typename?: 'RcsbGroupAggregationMethodMethod';
+  /** Additional details describing the clustering process */
+  details?: Maybe<Array<Maybe<MethodDetails>>>;
+  /**
+   * The name of the software or the method used to calculate cluster solutions
+   *
+   * Allowable values:
+   * mmseqs2, matching_reference_identity
+   */
+  name: Scalars['String'];
+  /**
+   * The version of the software.
+   *
+   * Examples:
+   * v1.0, 3.1-2, unknown
+   */
+  version?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbGroupAggregationMethodSimilarityCriteria {
+  __typename?: 'RcsbGroupAggregationMethodSimilarityCriteria';
+  /**
+   * A function or similarity measure that quantifies the similarity between two members
+   *
+   * Allowable values:
+   * rmsd, sequence_identity
+   */
+  similarity_function?: Maybe<Scalars['String']>;
+}
+
 export interface RcsbGroupContainerIdentifiers {
   __typename?: 'RcsbGroupContainerIdentifiers';
   /** A unique textual identifier for a group */
   group_id: Scalars['String'];
   /** Member identifiers representing a group */
   group_member_ids: Array<Maybe<Scalars['String']>>;
-  /** This data item is a pointer to a group provenance definition */
+  /**
+   * A unique group provenance identifier
+   *
+   * Allowable values:
+   * provenance_sequence_identity, provenance_matching_uniprot_accession
+   */
   group_provenance_id: Scalars['String'];
   /** Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship */
   parent_member_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -8562,6 +8647,17 @@ export interface RcsbGroupMembersRankingsGroupMembers {
   original_score?: Maybe<Scalars['Float']>;
   /** Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second */
   rank: Scalars['Int'];
+}
+
+export interface RcsbGroupProvenanceContainerIdentifiers {
+  __typename?: 'RcsbGroupProvenanceContainerIdentifiers';
+  /**
+   * A unique group provenance identifier
+   *
+   * Allowable values:
+   * provenance_sequence_identity, provenance_matching_uniprot_accession
+   */
+  group_provenance_id: Scalars['String'];
 }
 
 export interface RcsbGroupRelated {

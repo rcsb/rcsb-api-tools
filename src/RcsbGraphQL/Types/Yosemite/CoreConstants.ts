@@ -213,6 +213,7 @@ export class CoreConstants{
 	public static readonly STRUCT = "struct";
 	public static readonly STRUCT_KEYWORDS = "struct_keywords";
 	public static readonly SYMMETRY = "symmetry";
+	public static readonly PROVENANCE = "provenance";
 	public static readonly RCSB_GROUP_ACCESSION_INFO = "rcsb_group_accession_info";
 	public static readonly RCSB_GROUP_CONTAINER_IDENTIFIERS = "rcsb_group_container_identifiers";
 	public static readonly RCSB_GROUP_INFO = "rcsb_group_info";
@@ -220,6 +221,8 @@ export class CoreConstants{
 	public static readonly RCSB_GROUP_RELATED = "rcsb_group_related";
 	public static readonly RCSB_GROUP_SEQUENCE_ALIGNMENT = "rcsb_group_sequence_alignment";
 	public static readonly RCSB_GROUP_STATISTICS = "rcsb_group_statistics";
+	public static readonly RCSB_GROUP_AGGREGATION_METHOD = "rcsb_group_aggregation_method";
+	public static readonly RCSB_GROUP_PROVENANCE_CONTAINER_IDENTIFIERS = "rcsb_group_provenance_container_identifiers";
 	public static readonly NONPOLYMER_COMP = "nonpolymer_comp";
 	public static readonly NONPOLYMER_ENTITY_INSTANCES = "nonpolymer_entity_instances";
 	public static readonly PDBX_ENTITY_NONPOLY = "pdbx_entity_nonpoly";
@@ -883,6 +886,7 @@ export class CoreConstants{
 	public static readonly POLYMER_ENTITY_INSTANCE = "polymer_entity_instance";
 	public static readonly CHEM_COMPS = "chem_comps";
 	public static readonly ASSEMBLY = "assembly";
+	public static readonly GROUP_PROVENANCE = "group_provenance";
 	public static readonly GROUPS = "groups";
 	public static readonly BRANCHED_ENTITY_INSTANCE = "branched_entity_instance";
 	public static readonly NONPOLYMER_ENTITY_INSTANCE = "nonpolymer_entity_instance";
@@ -1035,6 +1039,8 @@ export class CoreConstants{
 	public static readonly POLYMER_MONOMER_COUNT_MINIMUM = "polymer_monomer_count_minimum";
 	public static readonly RESOLUTION_COMBINED = "resolution_combined";
 	public static readonly SOFTWARE_PROGRAMS_COMBINED = "software_programs_combined";
+	public static readonly SIMILARITY_CRITERIA = "similarity_criteria";
+	public static readonly SIMILARITY_FUNCTION = "similarity_function";
 	public static readonly GROUP_MEMBER_IDS = "group_member_ids";
 	public static readonly GROUP_PROVENANCE_ID = "group_provenance_id";
 	public static readonly PARENT_MEMBER_IDS = "parent_member_ids";
