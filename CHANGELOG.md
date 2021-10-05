@@ -2,6 +2,21 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [2.2.0] - 2021-10-04
+### Chemical Search and bug correction
+- Added chemical search metadata schemas
+- Added a new regex to include missing enums in search end point
+- 
+
+## [2.1.0] - 2021-08-24
+### Bug correction
+- Yosemite config fixed
+- Generation of new types for Yosemite
+
+## [2.0.1] - 2021-07-23
+### Bug correction
+- Yosemite config fixed
+
 ## [2.0.0] - 2021-07-23
 ### Added search metadata package
 - Search data field paths and allowed operations
