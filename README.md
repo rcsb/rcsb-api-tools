@@ -106,6 +106,12 @@ const search = new SearchRequest();
 search.request(search_query);
 ```
 
+### GRphQL query validation
+````javascript
+import {validateQueries} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Generator/GeneratorTools";
+validateQueries(graphql_schema_url, "path_to_queries/my_query.graphql");
+````
+
 ### Importing RCSB Search classes/interfaces
 
 #### Search metadata class
