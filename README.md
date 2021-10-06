@@ -65,6 +65,12 @@ E.g. `import {CoreEntry, RcsbEntryContainerIdentifiers} from "@rcsb/rcsb-api-too
 #### 1d-coordinates/borrego server
 E.g. `import {AnnotationFeatures, Feature, AlignmentResponse} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Types/Borrego/GqlTypes";`
 
+### GRphQL query validation
+````javascript
+import {validateQueries} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Generator/GeneratorTools";
+validateQueries(graphql_schema_url, "path_to_queries/my_query.graphql");
+````
+
 ### Requesting RCSB Search data
 `import {SearchRequest} from "@rcsb/rcsb-api-tools/build/RcsbSearch/SearchRequest";`
 
@@ -105,12 +111,6 @@ const search_query = {
 const search = new SearchRequest();
 search.request(search_query);
 ```
-
-### GRphQL query validation
-````javascript
-import {validateQueries} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Generator/GeneratorTools";
-validateQueries(graphql_schema_url, "path_to_queries/my_query.graphql");
-````
 
 ### Importing RCSB Search classes/interfaces
 
