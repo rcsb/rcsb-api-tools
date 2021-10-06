@@ -57,7 +57,7 @@ query QueryAlignment($queryId: String!, $from: String!, $to: String!){
  }
 ```
 
-### Importing RCSB GraphQL classes/interfaces
+### Importing RCSB GraphQL interfaces
 
 #### data-api/yosemite server
 E.g. `import {CoreEntry, RcsbEntryContainerIdentifiers} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Types/Yosemite/GqlTypes";`
