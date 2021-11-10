@@ -7,7 +7,7 @@ export class SearchRequest {
     constructor(uri?:string) {
         this.uri = uri ?? serverSearch.uri;
     }
-    public async request(query: SearchQuery): Promise<QueryResult>{
+    public async request(query: SearchQuery): Promise<QueryResult|null>{
         const response: Response = await fetch(this.uri, {
             method: 'POST',
             headers: {
@@ -16,6 +16,12 @@ export class SearchRequest {
             },
             body: JSON.stringify(query)
         });
-        return await response.json() as QueryResult;
+        try {
+            return await response.json() as QueryResult;
+        }catch (e) {
+            console.error(e);
+            console.error(response);
+            return null;
+        }
     }
 }

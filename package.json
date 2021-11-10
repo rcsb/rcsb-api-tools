@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "2.2.1-groups.9",
+  "version": "2.2.1-groups.10",
   "description": "",
   "main": "build/app.js",
   "files": [

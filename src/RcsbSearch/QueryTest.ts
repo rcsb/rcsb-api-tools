@@ -36,8 +36,9 @@ const query: SearchQuery = {
 };
 
 const searchRequest: SearchRequest = new SearchRequest();
-const result: Promise<QueryResult> = searchRequest.request(query);
+const result: Promise<QueryResult | null> = searchRequest.request(query);
 result.then((response)=>{
-    response.drilldown!.filter(dd=>dd.attribute===CoreEntry.RcsbPrimaryCitation.RcsbJournalAbbrev)[0];
+    if(response)
+        response.drilldown!.filter(dd=>dd.attribute===CoreEntry.RcsbPrimaryCitation.RcsbJournalAbbrev)[0];
 });
 
