@@ -2,11 +2,14 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [2.2.1] - 2021-10-05
+### Build configuration
+- Allow JavaScript during TypeScript compile
+
 ## [2.2.0] - 2021-10-04
 ### Chemical Search and bug correction
 - Added chemical search metadata schemas
 - Added a new regex to include missing enums in search end point
-- 
 
 ## [2.1.0] - 2021-08-24
 ### Bug correction
