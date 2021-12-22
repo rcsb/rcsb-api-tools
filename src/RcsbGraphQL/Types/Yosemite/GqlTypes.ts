@@ -10646,11 +10646,11 @@ export interface RcsbUniprotAlignments {
 export interface RcsbUniprotAlignmentsCoreEntityAlignments {
   __typename?: 'RcsbUniprotAlignmentsCoreEntityAlignments';
   /** Aligned region */
-  aligned_regions?: Maybe<Array<Maybe<CoreEntityAlignmentsAlignedRegions>>>;
+  aligned_regions: Array<Maybe<CoreEntityAlignmentsAlignedRegions>>;
   /** core_entity identifiers */
   core_entity_identifiers?: Maybe<CoreEntityAlignmentsCoreEntityIdentifiers>;
   /** Alignment scores */
-  scores?: Maybe<CoreEntityAlignmentsScores>;
+  scores: CoreEntityAlignmentsScores;
 }
 
 export interface RcsbUniprotAnnotation {

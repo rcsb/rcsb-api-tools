@@ -2,6 +2,11 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [2.2.2] - 2021-12-21
+### Configuration improvement
+- `GraphQLRequest` exposes ApolloClient configuration as an optional parameter
+- `SearchRequest` accepts an external fetch-like request (e.g. node-fetch) as an optional parameter
+
 ## [2.2.1] - 2021-10-05
 ### Build configuration
 - Allow JavaScript during TypeScript compile
