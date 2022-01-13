@@ -4,7 +4,7 @@
   "type": "object",
   "required": [
     "identifier",
-    "count",
+    "score",
     "result_set"
   ],
   "properties": {
@@ -12,15 +12,23 @@
       "type": "string",
       "description": "Group identifier"
     },
+    "score": {
+      "type": "number",
+      "excludedFromEqualsAndHashCode" : true,
+      "description": "The relevance score for the group given the query, calculated from the members relevance scores. Highest is more relevant. From 0 to 1"
+    },
     "count": {
       "type": "integer",
-      "description": "The number of search hits in the group"
+      "excludedFromEqualsAndHashCode" : true,
+      "description": "The number of group members that match the search query"
     },
     "result_set": {
       "type": "array",
+      "excludedFromEqualsAndHashCode" : true,
       "items": {
         "$ref": "json-schema-rcsb_search_results_identifier.json"
-      }
+      },
+      "description": "The group members that match the query"
     }
   },
   "additionalProperties": false

@@ -13,9 +13,17 @@ export type RequestOptionsFacets = [
   ...(TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet)[]
 ];
 /**
+ * Search results are ordered by the relevancy scores by default, from the most relevant matches to the least relevant matches (higher score to lower score).
+ */
+export type RelevanceScoreRankingOption = "score";
+/**
  * The order in which to sort. Defaults to “desc”.
  */
 export type SortDirection = "asc" | "desc";
+/**
+ * Sort options supported for results returned as groups
+ */
+export type SortOptionGroupsSortBy = "size" | "count";
 
 /**
  * Provides a generic interface to represent the RCSB Search API query language.
@@ -47,27 +55,14 @@ export interface SearchQuery {
 export interface RequestOptions {
   facets?: RequestOptionsFacets;
   /**
-   * When set to true, all hits are returned as a result set.
+   * Option that is used to partition search results into groups
    */
-  return_all_hits?: boolean;
+  group_by?: GroupByDepositID | GroupBySequenceIdentity | GroupByUniProtAccession;
   /**
-   * Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned.
+   * Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group;
    */
-  return_counts?: boolean;
-  /**
-   * When enabled, the search results are return with profiling info on execution timings
-   */
-  return_explain_metadata?: boolean;
-  /**
-   * When enabled, the search hits are returned with additional metadata such as scores returned by individual services and context of the match, e.g. alignments from sequence search service.
-   */
-  return_service_metadata?: boolean;
-  group_by?: GroupBySequenceIdentity | GroupByUniProtAccession;
-  /**
-   * When enabled, only the identifier is returned from each group
-   */
-  return_representatives?: boolean;
-  sort?: [SortOptionAttributes, ...SortOptionAttributes[]] | [SortOptionGroups];
+  group_by_return_type?: "groups" | "representatives";
+  sort?: [SortOptionAttributes | SortOptionGroups, ...(SortOptionAttributes | SortOptionGroups)[]];
   /**
    * Specifies a range in the query result set. When absent, returns only the top 10 entries, e.g. 'start' defaults to 0, and 'rows' defaults to 10.
    */
@@ -94,6 +89,22 @@ export interface RequestOptions {
     | "text"
     | "text_chem"
     | "full_text";
+  /**
+   * When set to true, all hits are returned as a result set.
+   */
+  return_all_hits?: boolean;
+  /**
+   * Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned.
+   */
+  return_counts?: boolean;
+  /**
+   * Allows to control the additional metadata returned with search hits such as scores returned by individual services and context of the match, e.g. alignments from sequence search service.
+   */
+  results_verbosity?: "compact" | "minimal" | "verbose";
+  /**
+   * When enabled, the search results are return with profiling info on execution timings
+   */
+  return_explain_metadata?: boolean;
 }
 export interface TermsFacet {
   /**
@@ -325,27 +336,41 @@ export interface FilterFacet {
   filter: AttributeTextQueryParameters;
   facets: RequestOptionsFacets;
 }
-export interface GroupBySequenceIdentity {
-  aggregation_method: "sequence_identity";
-  similarity_cutoff: 100 | 95 | 90 | 70 | 50 | 30;
-  ranking_criteria_type?: "member_quality";
-}
-export interface GroupByUniProtAccession {
-  aggregation_method: "matching_uniprot_accession";
-  ranking_criteria_type?: "coverage";
+export interface GroupByDepositID {
+  /**
+   * The method used to group search hits on the basis of common identifier for a group of entries deposited as a collection
+   */
+  aggregation_method: "matching_deposit_group_id";
+  ranking_criteria_type?: SortOptionAttributes;
 }
 export interface SortOptionAttributes {
-  /**
-   * Supported options include “score“ or attribute name for results returned as flat list
-   */
-  sort_by: string;
+  sort_by: RelevanceScoreRankingOption | string;
   direction?: SortDirection;
 }
-export interface SortOptionGroups {
+export interface GroupBySequenceIdentity {
   /**
-   * Sort options supported for results returned as groups
+   * The method used to group search hits on the basis of protein sequence clusters that meet a predefined identity threshold
    */
-  sort_by: "size" | "count";
+  aggregation_method: "sequence_identity";
+  similarity_cutoff: 100 | 95 | 90 | 70 | 50 | 30;
+  ranking_criteria_type?: SortOptionAttributes;
+}
+export interface GroupByUniProtAccession {
+  /**
+   * The method used to group search hits on the basis of common UniProt accession
+   */
+  aggregation_method: "matching_uniprot_accession";
+  /**
+   * Predefined set of criteria used to determine group members ranking
+   */
+  ranking_criteria_type?: SortOptionAttributes | UniprotAccessionGroupRankingOption;
+}
+export interface UniprotAccessionGroupRankingOption {
+  sort_by: "coverage";
+  [k: string]: unknown;
+}
+export interface SortOptionGroups {
+  sort_by: RelevanceScoreRankingOption | SortOptionGroupsSortBy;
   direction?: SortDirection;
 }
 export interface GroupNode {

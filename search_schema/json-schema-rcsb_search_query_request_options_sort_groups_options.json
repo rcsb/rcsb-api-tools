@@ -1,0 +1,10 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_request_options_sort_groups_options.json",
+  "title": "Sort Option Groups Sort By",
+  "type": "string",
+  "enum": [
+    "size",
+    "count"
+  ],
+  "description": "Sort options supported for results returned as groups"
+}

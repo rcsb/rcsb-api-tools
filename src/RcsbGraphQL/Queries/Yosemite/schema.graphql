@@ -664,6 +664,8 @@ type CoreEntry {
     exptl: [Exptl]
     exptl_crystal: [ExptlCrystal]
     exptl_crystal_grow: [ExptlCrystalGrow]
+    "Get all groups for this PDB entry."
+    groups: [GroupEntry]
     "Get all non-polymer (non-solvent) entities for this PDB entry."
     nonpolymer_entities: [CoreNonpolymerEntity]
     pdbx_SG_project: [PdbxSGProject]
@@ -705,6 +707,7 @@ type CoreEntry {
     rcsb_associated_holdings: CurrentEntry
     rcsb_binding_affinity: [RcsbBindingAffinity]
     rcsb_entry_container_identifiers: RcsbEntryContainerIdentifiers!
+    rcsb_entry_group_membership: [RcsbEntryGroupMembership]
     rcsb_entry_info: RcsbEntryInfo!
     rcsb_external_references: [RcsbExternalReferences]
     """
@@ -726,18 +729,6 @@ type CoreEntry {
     struct: Struct
     struct_keywords: StructKeywords
     symmetry: Symmetry
-}
-
-type CoreGroup {
-    rcsb_group_accession_info: RcsbGroupAccessionInfo
-    rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers!
-    rcsb_group_info: RcsbGroupInfo!
-    rcsb_group_members_rankings: [RcsbGroupMembersRankings]
-    rcsb_group_related: [RcsbGroupRelated]
-    rcsb_group_sequence_alignment: RcsbGroupSequenceAlignment
-    rcsb_group_statistics: RcsbGroupStatistics
-    "A unique textual identifier for a group"
-    rcsb_id: String!
 }
 
 type CoreNonpolymerEntity {
@@ -852,6 +843,8 @@ type CorePolymerEntity {
     entity_src_nat: [EntitySrcNat]
     "Get PDB entry that contains this molecular entity."
     entry: CoreEntry
+    "Get all groups for this PDB entity."
+    groups: [GroupPolymerEntity]
     pdbx_entity_src_syn: [PdbxEntitySrcSyn]
     "Get all unique Pfam annotations associated with this molecular entity."
     pfams: [CorePfam]
@@ -891,6 +884,7 @@ type CorePolymerEntity {
     rcsb_polymer_entity_container_identifiers: RcsbPolymerEntityContainerIdentifiers!
     rcsb_polymer_entity_feature: [RcsbPolymerEntityFeature]
     rcsb_polymer_entity_feature_summary: [RcsbPolymerEntityFeatureSummary]
+    rcsb_polymer_entity_group_membership: [RcsbPolymerEntityGroupMembership]
     rcsb_polymer_entity_keywords: RcsbPolymerEntityKeywords
     rcsb_polymer_entity_name_com: [RcsbPolymerEntityNameCom]
     rcsb_polymer_entity_name_sys: [RcsbPolymerEntityNameSys]
@@ -3270,6 +3264,18 @@ type GeneName {
     value: String
 }
 
+type GroupEntry {
+    "Get provenance associated with this group."
+    provenance: GroupProvenance
+    rcsb_group_accession_info: RcsbGroupAccessionInfo
+    rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers!
+    rcsb_group_info: RcsbGroupInfo!
+    rcsb_group_related: [RcsbGroupRelated]
+    rcsb_group_statistics: RcsbGroupStatistics
+    "A unique textual identifier for a group"
+    rcsb_id: String!
+}
+
 type GroupMembersAlignmentAlignedRegions {
     "Aligned region length"
     length: Int!
@@ -3284,6 +3290,44 @@ type GroupMembersAlignmentScores {
     query_length: Int!
     target_coverage: Int!
     target_length: Int!
+}
+
+type GroupPolymerEntity {
+    "Get provenance associated with this group."
+    provenance: GroupProvenance
+    rcsb_group_accession_info: RcsbGroupAccessionInfo
+    rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers!
+    rcsb_group_info: RcsbGroupInfo!
+    rcsb_group_related: [RcsbGroupRelated]
+    rcsb_group_statistics: RcsbGroupStatistics
+    "A unique textual identifier for a group"
+    rcsb_id: String!
+    rcsb_polymer_entity_group_members_rankings: [RcsbPolymerEntityGroupMembersRankings]
+    rcsb_polymer_entity_group_sequence_alignment: RcsbPolymerEntityGroupSequenceAlignment
+}
+
+type GroupProvenance {
+    rcsb_group_aggregation_method: RcsbGroupAggregationMethod
+    rcsb_group_provenance_container_identifiers: RcsbGroupProvenanceContainerIdentifiers
+    """
+
+    A unique group provenance identifier
+
+    Allowable values:
+    provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
+    """
+    rcsb_id: String
+}
+
+type MethodDetails {
+    "A description of special aspects of the clustering process"
+    description: String
+    "Defines the name of the description associated with the clustering process"
+    name: String
+    "Defines the type of the description associated with the clustering process"
+    type: String
+    "Defines the value associated with the clustering process"
+    value: Float
 }
 
 type PdbxAuditRevisionCategory {
@@ -6436,7 +6480,7 @@ type PdbxVrptSummary {
 
     The steps that were attempted by the validation pipeline software.
     A step typically involves running a 3rd party validation tool, for instance "mogul"
-  Each step that was successfully completed will result in a pdbx_vrpt_software element in the pdbx_vrpt_sotfware_notused list.
+    Each step that was successfully completed will result in a pdbx_vrpt_software element in the pdbx_vrpt_sotfware_notused list.
     """
     attempted_validation_steps: String
     "The resolution from the intersection of the author provided fsc and the indicator curve halfbit."
@@ -6558,7 +6602,7 @@ type PdbxVrptSummary {
 
     An identifier for the map
     For released or annotated structures this will be the EMDB ID EMD-\d{4-5} eg "EMD-1001", "EMD-12325"
-  """
+    """
     emdb_id: String
     """
 
@@ -6763,7 +6807,7 @@ type PdbxVrptSummary {
 
     The number of PDB depositions used in the comparison when calculating the attribute
     "absolute-percentile-clashscore"
-  Example:             Produced by the percentiles step of the validation pipeline software.
+    Example:             Produced by the percentiles step of the validation pipeline software.
     """
     num_PDBids_absolute_percentile_clashscore: Int
     """
@@ -6777,14 +6821,14 @@ type PdbxVrptSummary {
 
     The number of PDB depositions used in the comparison when calculating the attribute
     "absolute-percentile-percent-rama-outliers"
-  Example:            Produced by the percentiles step of the validation pipeline software.
+    Example:            Produced by the percentiles step of the validation pipeline software.
     """
     num_PDBids_absolute_percentile_percent_ramachandran_outliers: Int
     """
 
     The number of PDB depositions used in the comparison when calculating the attribute
     "absolute-percentile-percent-rota-outliers"
-  Example:             Produced by the percentiles step of the validation pipeline software.
+    Example:             Produced by the percentiles step of the validation pipeline software.
     """
     num_PDBids_absolute_percentile_percent_rotamer_outliers: Int
     """
@@ -6806,7 +6850,7 @@ type PdbxVrptSummary {
 
     The number of PDB depositions used in the comparison when calculating the attribute
     "relative-percentile-clashscore"
-  Example:            Produced by the percentiles step of the validation pipeline software.
+    Example:            Produced by the percentiles step of the validation pipeline software.
     """
     num_PDBids_relative_percentile_clashscore: Int
     """
@@ -6820,14 +6864,14 @@ type PdbxVrptSummary {
 
     The number of PDB depositions used in the comparison when calculating the attribute
     "relative-percentile-percent-rama-outliers"
-  Example:            Produced by the percentiles step of the validation pipeline software.
+    Example:            Produced by the percentiles step of the validation pipeline software.
     """
     num_PDBids_relative_percentile_percent_ramachandran_outliers: Int
     """
 
     The number of PDB depositions used in the comparison when calculating the attribute
     "relative-percentile-percent-rota-outliers"
-  Example:            Produced by the percentiles step of the validation pipeline software.
+    Example:            Produced by the percentiles step of the validation pipeline software.
     """
     num_PDBids_relative_percentile_percent_rotamer_outliers: Int
     """
@@ -6991,7 +7035,7 @@ type PdbxVrptSummary {
 
     A sentence giving the result of Xtriage&#8217;s analysis on translational NCS.
     Example: largest off-origin peak in the Patterson function is 8.82% of the height of the origin peak. No significant pseudotranslation is detected."
-  X-ray entry specific, obtained from the Xtriage program.
+    X-ray entry specific, obtained from the Xtriage program.
     """
     trans_NSC: String
     """
@@ -7079,19 +7123,20 @@ type Query {
     "Get PDB entry given the PDB id."
     entry(entry_id: String!): CoreEntry
     "Given a group ID get a group object formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity"
-    group(
-        "Determines how the groups where calculated (aggregated)"
-        aggregation_method: GroupAggregationMethod!,
+    entry_group(
         "Group ID"
         group_id: String!
-    ): CoreGroup
-    "Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity"
-    groups(
-        "Determines how the groups where calculated (aggregated)"
-        aggregation_method: GroupAggregationMethod!,
+    ): GroupEntry
+    "Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures that share a degree of similarity"
+    entry_groups(
         "List of group IDs"
         group_ids: [String]!
-    ): [CoreGroup]
+    ): [GroupEntry]
+    "Given a group provenance ID get an object that describes aggregation method used to create groups"
+    group_provenance(
+        "Group provenance ID"
+        group_provenance_id: String!
+    ): GroupProvenance
     "Get a list of PDB non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1."
     nonpolymer_entities(
         "List of compound identifiers each includes entry_id and entity_id separated by '_', e.g. 1XXX_1"
@@ -7128,6 +7173,16 @@ type Query {
         "PDB ID"
         entry_id: String!
     ): CorePolymerEntity
+    "Given a group ID get a group object formed by aggregating individual sequences that share a degree of similarity"
+    polymer_entity_group(
+        "Group ID"
+        group_id: String!
+    ): GroupPolymerEntity
+    "Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity"
+    polymer_entity_groups(
+        "List of group IDs"
+        group_ids: [String]!
+    ): [GroupPolymerEntity]
     "Get a PDB polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
     polymer_entity_instance(
         "ENTITY INSTANCE ID, e.g. 'A', 'B'. Identifies structural element in the asymmetric unit (_struct_asym.id)"
@@ -8897,6 +8952,19 @@ type RcsbEntryContainerIdentifiers {
     water_entity_ids: [String]
 }
 
+type RcsbEntryGroupMembership {
+    """
+
+    Method used to establish group membership
+
+    Allowable values:
+    matching_deposit_group_id
+    """
+    aggregation_method: String!
+    "Identifier for a group a given polymer entity belongs to"
+    group_id: String!
+}
+
 type RcsbEntryInfo {
     "The number of assemblies defined for this entry including the deposited assembly."
     assembly_count: Int
@@ -9134,12 +9202,64 @@ type RcsbGroupAccessionInfo {
     version: Int!
 }
 
+type RcsbGroupAggregationMethod {
+    "The details on a method used to calculate cluster solutions"
+    method: RcsbGroupAggregationMethodMethod!
+    similarity_criteria: RcsbGroupAggregationMethodSimilarityCriteria
+    """
+
+    Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy
+
+    Allowable values:
+    sequence_identity, matching_uniprot_accession, matching_deposit_group_id
+    """
+    type: String!
+}
+
+type RcsbGroupAggregationMethodMethod {
+    "Additional details describing the clustering process"
+    details: [MethodDetails]
+    """
+
+    The name of the software or the method used to calculate cluster solutions
+
+    Allowable values:
+    mmseqs2, matching_reference_identity
+    """
+    name: String!
+    """
+
+    The version of the software.
+
+    Examples:
+    v1.0, 3.1-2, unknown
+    """
+    version: String
+}
+
+type RcsbGroupAggregationMethodSimilarityCriteria {
+    """
+
+    A function or similarity measure that quantifies the similarity between two members
+
+    Allowable values:
+    rmsd, sequence_identity
+    """
+    similarity_function: String
+}
+
 type RcsbGroupContainerIdentifiers {
     "A unique textual identifier for a group"
     group_id: String!
     "Member identifiers representing a group"
     group_member_ids: [String]!
-    "This data item is a pointer to a group provenance definition"
+    """
+
+    A unique group provenance identifier
+
+    Allowable values:
+    provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
+    """
     group_provenance_id: String!
     "Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship"
     parent_member_ids: [String]
@@ -9153,30 +9273,21 @@ type RcsbGroupInfo {
     Granularity of group members identifiers
 
     Allowable values:
-    assembly, polymer_entity, polymer_entity_instance
+    assembly, entry, polymer_entity, polymer_entity_instance
     """
     group_members_granularity: String!
     group_name: String!
 }
 
-type RcsbGroupMembersRankings {
-    group_members: [RcsbGroupMembersRankingsGroupMembers]!
+type RcsbGroupProvenanceContainerIdentifiers {
     """
 
-    Defines ranking option applicable to group members
+    A unique group provenance identifier
 
     Allowable values:
-    rmsd, data_quality, number_of_modified_residues, coverage, member_quality
+    provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
     """
-    ranking_criteria_type: String!
-}
-
-type RcsbGroupMembersRankingsGroupMembers {
-    member_id: String!
-    "Quantifies the criteria used for ranking"
-    original_score: Float
-    "Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second"
-    rank: Int!
+    group_provenance_id: String!
 }
 
 type RcsbGroupRelated {
@@ -9196,28 +9307,6 @@ type RcsbGroupRelated {
     UniProt
     """
     resource_name: String
-}
-
-type RcsbGroupSequenceAlignment {
-    "Abstract reference where group members can be aligned to generate a MSA"
-    abstract_reference: RcsbGroupSequenceAlignmentAbstractReference!
-    "List of alignments with core_entity canonical sequences"
-    group_members_alignment: [RcsbGroupSequenceAlignmentGroupMembersAlignment]!
-}
-
-type RcsbGroupSequenceAlignmentAbstractReference {
-    "Abstract reference length"
-    length: Int!
-    "Sequence that represents the abstract reference"
-    sequence: String
-}
-
-type RcsbGroupSequenceAlignmentGroupMembersAlignment {
-    "Aligned region"
-    aligned_regions: [GroupMembersAlignmentAlignedRegions]!
-    member_id: String
-    "Alignment scores"
-    scores: GroupMembersAlignmentScores!
 }
 
 type RcsbGroupStatistics {
@@ -10307,7 +10396,6 @@ type RcsbPolymerEntityContainerIdentifiers {
     4HHB, 1KIP
     """
     entry_id: String!
-    group_ids: [String]
     """
 
     The BIRD identifier for the entity in this container.
@@ -10489,6 +10577,63 @@ type RcsbPolymerEntityFeatureSummary {
     type: String
 }
 
+type RcsbPolymerEntityGroupMembersRankings {
+    group_members: [RcsbPolymerEntityGroupMembersRankingsGroupMembers]!
+    """
+
+    Defines ranking option applicable to group members
+
+    Allowable values:
+    coverage
+    """
+    ranking_criteria_type: String!
+}
+
+type RcsbPolymerEntityGroupMembersRankingsGroupMembers {
+    member_id: String!
+    "Quantifies the criteria used for ranking"
+    original_score: Float
+    "Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second"
+    rank: Int!
+}
+
+type RcsbPolymerEntityGroupMembership {
+    """
+
+    Method used to establish group membership
+
+    Allowable values:
+    sequence_identity, matching_uniprot_accession
+    """
+    aggregation_method: String!
+    "Identifier for a group a given polymer entity belongs to"
+    group_id: String!
+    "Degree of similarity expressed as a floating-point number"
+    similarity_cutoff: Float
+}
+
+type RcsbPolymerEntityGroupSequenceAlignment {
+    "Abstract reference where group members can be aligned to generate a MSA"
+    abstract_reference: RcsbPolymerEntityGroupSequenceAlignmentAbstractReference!
+    "List of alignments with core_entity canonical sequences"
+    group_members_alignment: [RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment]!
+}
+
+type RcsbPolymerEntityGroupSequenceAlignmentAbstractReference {
+    "Abstract reference length"
+    length: Int!
+    "Sequence that represents the abstract reference"
+    sequence: String
+}
+
+type RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment {
+    "Aligned region"
+    aligned_regions: [GroupMembersAlignmentAlignedRegions]!
+    member_id: String
+    "Alignment scores"
+    scores: GroupMembersAlignmentScores!
+}
+
 type RcsbPolymerEntityInstanceContainerIdentifiers {
     "Instance identifier for this container."
     asym_id: String!
@@ -10641,7 +10786,7 @@ type RcsbPolymerInstanceAnnotation {
     A type or category of the annotation.
 
     Allowable values:
-    CATH, SCOP
+    CATH, ECOD, SCOP, SCOP2
     """
     type: String
 }
@@ -13721,12 +13866,6 @@ type Symmetry {
     """
     space_group_name_Hall: String
 }
-
-enum GroupAggregationMethod {
-    matching_uniprot_accession
-    sequence_identity
-}
-
 
 "Built-in scalar representing an instant in time"
 scalar Date

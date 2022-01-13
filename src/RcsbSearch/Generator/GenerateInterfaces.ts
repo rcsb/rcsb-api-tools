@@ -13,7 +13,7 @@ generateInterface(
 });
 
 generateInterface(
-    "search_schema/json-schema-rcsb_query_result.json",
+    "search_schema/json-schema-rcsb_search_results.json",
     "src/RcsbSearch/Types/SearchResultInterface.ts",
     "src/RcsbSearch/Types/SearchEnums.ts"
 ).then((resolve)=>{

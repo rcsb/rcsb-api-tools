@@ -11,7 +11,8 @@
       "type": "string",
       "enum": [
         "sequence_identity"
-      ]
+      ],
+      "description": "The method used to group search hits on the basis of protein sequence clusters that meet a predefined identity threshold"
     },
     "similarity_cutoff": {
       "type": "integer",
@@ -25,11 +26,7 @@
       ]
     },
     "ranking_criteria_type": {
-      "type": "string",
-      "enum": [
-        "member_quality"
-      ],
-      "default": "member_quality"
+      "$ref": "json-schema-rcsb_search_query_request_options_sort_attributes.json"
     }
   },
   "additionalProperties": false

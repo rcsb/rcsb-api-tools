@@ -3,6 +3,11 @@ export enum SortDirection {
     Desc = "desc"
 }
 
+export enum SortOptionGroupsSortBy {
+    Size = "size",
+    Count = "count"
+}
+
 export enum Src {
     Ui = "ui",
     MypdbService = "mypdb_service",
@@ -19,6 +24,11 @@ export enum ReturnType {
     MolDefinition = "mol_definition"
 }
 
+export enum GroupByReturnType {
+    Groups = "groups",
+    Representatives = "representatives"
+}
+
 export enum ScoringStrategy {
     Combined = "combined",
     Sequence = "sequence",
@@ -29,6 +39,12 @@ export enum ScoringStrategy {
     Text = "text",
     TextChem = "text_chem",
     FullText = "full_text"
+}
+
+export enum ResultsVerbosity {
+    Compact = "compact",
+    Minimal = "minimal",
+    Verbose = "verbose"
 }
 
 export enum AggregationType {
@@ -62,18 +78,13 @@ export enum Interval {
 }
 
 export enum AggregationMethod {
+    MatchingDepositGroupId = "matching_deposit_group_id",
     SequenceIdentity = "sequence_identity",
     MatchingUniprotAccession = "matching_uniprot_accession"
 }
 
-export enum RankingCriteriaType {
-    MemberQuality = "member_quality",
-    Coverage = "coverage"
-}
-
 export enum SortBy {
-    Size = "size",
-    Count = "count"
+    Coverage = "coverage"
 }
 
 export enum Type {
@@ -190,7 +201,9 @@ export enum ResultType {
 }
 
 export enum ServiceType {
+    FullText = "full_text",
     Text = "text",
+    TextChem = "text_chem",
     Sequence = "sequence",
     Structure = "structure",
     Chemical = "chemical",

@@ -6,13 +6,14 @@
   ],
   "properties": {
     "sort_by": {
-      "type": "string",
-      "enum": [
-        "size",
-        "count"
-      ],
-      "default": "count",
-      "description": "Sort options supported for results returned as groups"
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_sort_relevance_score.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_sort_groups_options.json"
+        }
+      ]
     },
     "direction": {
       "$ref": "json-schema-rcsb_search_query_request_options_sort_direction.json"

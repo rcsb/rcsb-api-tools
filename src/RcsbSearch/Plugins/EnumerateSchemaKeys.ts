@@ -12,6 +12,24 @@ function camelCase(value: string): string{
     return val.charAt(0).toUpperCase() + val.slice(1)
 }
 
+function getCurrentEnums(fileName: string): Set<string>{
+    const enumSet: Set<string> = new Set<string>();
+    const regExp = new RegExp(/(export)(\s+)(enum)(\s+)(\w+)(\s+)/);
+    if(fs.existsSync(fileName)) {
+        const file: string = fs.readFileSync(fileName, "utf-8");
+        file.split("\n").forEach((line, n)=>{
+            if(regExp.test(line)){
+                const match: RegExpMatchArray | null = line.match(regExp);
+                if(match){
+                    const key: string = match[5];
+                    enumSet.add(key);
+                }
+            }
+        });
+    }
+    return enumSet;
+}
+
 function generateEnum(interfaceFile: string, constantsFile: string): void{
     const file:string = fs.readFileSync(interfaceFile, "utf-8");
     const regExpUnion = new RegExp(/(\w+)(\??)(:)(\s)(")/);
@@ -58,7 +76,11 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
         }
     });
     const enums: string[] = [];
+    const enumSet: Set<String> = getCurrentEnums(constantsFile);
     keyUnionMap.forEach((unionValues,key)=>{
+        if(enumSet.has(camelCase(key)))
+            return;
+        enumSet.add(camelCase(key));
         enums.push(`export enum ${camelCase(key)} {`);
         unionValues.forEach(uV=>{
             enums.push(`    ${camelCase(uV)} = "${uV}",`);

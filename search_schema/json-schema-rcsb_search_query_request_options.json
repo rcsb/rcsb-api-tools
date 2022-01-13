@@ -6,61 +6,44 @@
     "facets": {
       "$ref": "json-schema-rcsb_search_query_facets.json"
     },
-    "return_all_hits": {
-      "type": "boolean",
-      "default": false,
-      "description": "When set to true, all hits are returned as a result set."
-    },
-    "return_counts": {
-      "type": "boolean",
-      "default": false,
-      "description": "Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned."
-    },
-    "return_explain_metadata": {
-      "type": "boolean",
-      "default": false,
-      "description": "When enabled, the search results are return with profiling info on execution timings"
-    },
-    "return_service_metadata": {
-      "type": "boolean",
-      "default": true,
-      "description": "When enabled, the search hits are returned with additional metadata such as scores returned by individual services and context of the match, e.g. alignments from sequence search service."
-    },
     "group_by": {
-      "oneOf": [
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_deposit_id.json"
+        },
         {
           "$ref": "json-schema-rcsb_search_query_request_options_group_by_sequence_identity.json"
         },
         {
           "$ref": "json-schema-rcsb_search_query_request_options_group_by_uniprot_accession.json"
         }
-      ]
+      ],
+      "description": "Option that is used to partition search results into groups"
     },
-    "return_representatives": {
-      "type": "boolean",
-      "default": false,
-      "description": "When enabled, only the identifier is returned from each group"
+    "group_by_return_type": {
+      "type": "string",
+      "enum": [
+        "groups",
+        "representatives"
+      ],
+      "default": "representatives",
+      "javaType" : "org.rcsb.arches.auto.model.GroupByReturnType",
+      "description": "Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group;"
     },
     "sort": {
-      "anyOf": [
-        {
-          "type": "array",
-          "items": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
             "$ref": "json-schema-rcsb_search_query_request_options_sort_attributes.json"
           },
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        {
-          "type": "array",
-          "items": {
+          {
             "$ref": "json-schema-rcsb_search_query_request_options_sort_groups.json"
-          },
-          "minItems": 1,
-          "maxItems": 1,
-          "uniqueItems": true
-        }
-      ]
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "pager": {
       "type": "object",
@@ -96,6 +79,31 @@
       ],
       "default": "combined",
       "description": "Scoring algorithm to be used for scores calculation of the final result set."
+    },
+    "return_all_hits": {
+      "type": "boolean",
+      "default": false,
+      "description": "When set to true, all hits are returned as a result set."
+    },
+    "return_counts": {
+      "type": "boolean",
+      "default": false,
+      "description": "Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned."
+    },
+    "results_verbosity": {
+      "type": "string",
+      "enum": [
+        "compact",
+        "minimal",
+        "verbose"
+      ],
+      "default": "verbose",
+      "description": "Allows to control the additional metadata returned with search hits such as scores returned by individual services and context of the match, e.g. alignments from sequence search service."
+    },
+    "return_explain_metadata": {
+      "type": "boolean",
+      "default": false,
+      "description": "When enabled, the search results are return with profiling info on execution timings"
     }
   },
   "additionalProperties": false

@@ -10,14 +10,19 @@
       "type": "string",
       "enum": [
         "matching_uniprot_accession"
-      ]
+      ],
+      "description": "The method used to group search hits on the basis of common UniProt accession"
     },
     "ranking_criteria_type": {
-      "type": "string",
-      "enum": [
-        "coverage"
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_sort_attributes.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_rankings_uniprot_accession.json"
+        }
       ],
-      "default": "coverage"
+      "description": "Predefined set of criteria used to determine group members ranking"
     }
   },
   "additionalProperties": false
