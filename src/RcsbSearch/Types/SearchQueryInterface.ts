@@ -120,8 +120,174 @@ export interface TermsFacet {
    * Maximum number of intervals to return for a given facet.
    */
   max_num_intervals?: number;
-  filter?: AttributeTextQueryParameters;
   facets?: RequestOptionsFacets;
+}
+export interface HistogramFacet {
+  /**
+   * Specifies the type of aggregating data for analysis.
+   */
+  aggregation_type: "histogram";
+  attribute: string;
+  /**
+   * The bin size.
+   */
+  interval: number | number;
+  /**
+   * The minimum number of items in the bin required for the bin to be returned.
+   */
+  min_interval_population?: number;
+  /**
+   * Maximum number of intervals to return for a given facet.
+   */
+  max_num_intervals?: number;
+  facets?: RequestOptionsFacets;
+}
+export interface DateHistogramFacet {
+  /**
+   * Specifies the type of aggregating data for analysis.
+   */
+  aggregation_type: "date_histogram";
+  attribute: string;
+  /**
+   * The bin size.
+   */
+  interval: "year";
+  /**
+   * The minimum number of items in the bin required for the bin to be returned.
+   */
+  min_interval_population?: number;
+  /**
+   * Maximum number of intervals to return for a given facet.
+   */
+  max_num_intervals?: number;
+  facets?: RequestOptionsFacets;
+}
+export interface RangeFacet {
+  /**
+   * Specifies the type of aggregating data for analysis.
+   */
+  aggregation_type: "range";
+  attribute: string;
+  /**
+   * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range.
+   */
+  ranges: [
+    {
+      /**
+       * The starting value of the range.
+       */
+      from?: number;
+      /**
+       * The end of the range.
+       */
+      to?: number;
+      [k: string]: unknown;
+    },
+    ...{
+      /**
+       * The starting value of the range.
+       */
+      from?: number;
+      /**
+       * The end of the range.
+       */
+      to?: number;
+      [k: string]: unknown;
+    }[]
+  ];
+  /**
+   * The minimum number of items in the bin required for the bin to be returned.
+   */
+  min_interval_population?: number;
+  /**
+   * Maximum number of intervals to return for a given facet.
+   */
+  max_num_intervals?: number;
+  facets?: RequestOptionsFacets;
+}
+export interface DateRangeFacet {
+  /**
+   * A range aggregation that is dedicated for date values.
+   */
+  aggregation_type: "date_range";
+  attribute: string;
+  /**
+   * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range.
+   */
+  ranges: [
+    {
+      /**
+       * The starting value of the range.
+       */
+      from?: string;
+      /**
+       * The end of the range.
+       */
+      to?: string;
+      [k: string]: unknown;
+    },
+    ...{
+      /**
+       * The starting value of the range.
+       */
+      from?: string;
+      /**
+       * The end of the range.
+       */
+      to?: string;
+      [k: string]: unknown;
+    }[]
+  ];
+  /**
+   * The minimum number of items in the bin required for the bin to be returned.
+   */
+  min_interval_population?: number;
+  /**
+   * Maximum number of intervals to return for a given facet.
+   */
+  max_num_intervals?: number;
+  facets?: RequestOptionsFacets;
+}
+export interface CardinalityFacet {
+  /**
+   * Specifies the type of aggregating data for analysis.
+   */
+  aggregation_type: "cardinality";
+  attribute: string;
+}
+export interface FilterFacet {
+  filter: FilterQueryGroupNode | FilterQueryTerminalNode;
+  facets: RequestOptionsFacets;
+}
+export interface FilterQueryGroupNode {
+  /**
+   * The type of the node.
+   */
+  type: "group";
+  /**
+   * Boolean operator connects and defines the relationship between the child nodes.
+   */
+  logical_operator: "or" | "and";
+  nodes: [FilterQueryTerminalNode | FilterQueryGroupNode, ...(FilterQueryTerminalNode | FilterQueryGroupNode)[]];
+}
+/**
+ * A terminal node is an atomic-level element within a query.
+ */
+export interface FilterQueryTerminalNode {
+  /**
+   * The type of the node.
+   */
+  type: "terminal";
+  /**
+   * An ID that is unique within the enclosing query.
+   */
+  node_id?: number;
+  /**
+   * The search service that is responsible for running the query and retrieving the search results.
+   */
+  service: "text" | "text_chem";
+  parameters?: AttributeTextQueryParameters;
+  [k: string]: unknown;
 }
 export interface AttributeTextQueryParameters {
   /**
@@ -192,149 +358,6 @@ export interface DateRange {
    * Indicated an inclusive upper bound.
    */
   include_upper?: boolean;
-}
-export interface HistogramFacet {
-  /**
-   * Specifies the type of aggregating data for analysis.
-   */
-  aggregation_type: "histogram";
-  attribute: string;
-  /**
-   * The bin size.
-   */
-  interval: number | number;
-  /**
-   * The minimum number of items in the bin required for the bin to be returned.
-   */
-  min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given facet.
-   */
-  max_num_intervals?: number;
-  filter?: AttributeTextQueryParameters;
-  facets?: RequestOptionsFacets;
-}
-export interface DateHistogramFacet {
-  /**
-   * Specifies the type of aggregating data for analysis.
-   */
-  aggregation_type: "date_histogram";
-  attribute: string;
-  /**
-   * The bin size.
-   */
-  interval: "year";
-  /**
-   * The minimum number of items in the bin required for the bin to be returned.
-   */
-  min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given facet.
-   */
-  max_num_intervals?: number;
-  filter?: AttributeTextQueryParameters;
-  facets?: RequestOptionsFacets;
-}
-export interface RangeFacet {
-  /**
-   * Specifies the type of aggregating data for analysis.
-   */
-  aggregation_type: "range";
-  attribute: string;
-  /**
-   * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range.
-   */
-  ranges: [
-    {
-      /**
-       * The starting value of the range.
-       */
-      from?: number;
-      /**
-       * The end of the range.
-       */
-      to?: number;
-      [k: string]: unknown;
-    },
-    ...{
-      /**
-       * The starting value of the range.
-       */
-      from?: number;
-      /**
-       * The end of the range.
-       */
-      to?: number;
-      [k: string]: unknown;
-    }[]
-  ];
-  /**
-   * The minimum number of items in the bin required for the bin to be returned.
-   */
-  min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given facet.
-   */
-  max_num_intervals?: number;
-  filter?: AttributeTextQueryParameters;
-  facets?: RequestOptionsFacets;
-}
-export interface DateRangeFacet {
-  /**
-   * A range aggregation that is dedicated for date values.
-   */
-  aggregation_type: "date_range";
-  attribute: string;
-  /**
-   * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range.
-   */
-  ranges: [
-    {
-      /**
-       * The starting value of the range.
-       */
-      from?: string;
-      /**
-       * The end of the range.
-       */
-      to?: string;
-      [k: string]: unknown;
-    },
-    ...{
-      /**
-       * The starting value of the range.
-       */
-      from?: string;
-      /**
-       * The end of the range.
-       */
-      to?: string;
-      [k: string]: unknown;
-    }[]
-  ];
-  /**
-   * The minimum number of items in the bin required for the bin to be returned.
-   */
-  min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given facet.
-   */
-  max_num_intervals?: number;
-  filter?: AttributeTextQueryParameters;
-  facets?: RequestOptionsFacets;
-}
-export interface CardinalityFacet {
-  /**
-   * Specifies the type of aggregating data for analysis.
-   */
-  aggregation_type: "cardinality";
-  attribute: string;
-  filter?: AttributeTextQueryParameters;
-  facets?: RequestOptionsFacets;
-}
-export interface FilterFacet {
-  filter: AttributeTextQueryParameters;
-  facets: RequestOptionsFacets;
 }
 export interface GroupByDepositID {
   /**

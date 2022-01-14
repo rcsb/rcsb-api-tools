@@ -56,6 +56,33 @@ export enum AggregationType {
     Cardinality = "cardinality"
 }
 
+export enum Interval {
+    Year = "year"
+}
+
+export enum Type {
+    Group = "group",
+    Terminal = "terminal",
+    Formula = "formula",
+    Descriptor = "descriptor"
+}
+
+export enum LogicalOperator {
+    Or = "or",
+    And = "and"
+}
+
+export enum Service {
+    Text = "text",
+    TextChem = "text_chem",
+    FullText = "full_text",
+    Sequence = "sequence",
+    Structure = "structure",
+    Chemical = "chemical",
+    Seqmotif = "seqmotif",
+    Strucmotif = "strucmotif"
+}
+
 export enum Operator {
     Equals = "equals",
     Greater = "greater",
@@ -73,10 +100,6 @@ export enum Operator {
     RelaxedShapeMatch = "relaxed_shape_match"
 }
 
-export enum Interval {
-    Year = "year"
-}
-
 export enum AggregationMethod {
     MatchingDepositGroupId = "matching_deposit_group_id",
     SequenceIdentity = "sequence_identity",
@@ -85,29 +108,6 @@ export enum AggregationMethod {
 
 export enum SortBy {
     Coverage = "coverage"
-}
-
-export enum Type {
-    Group = "group",
-    Terminal = "terminal",
-    Formula = "formula",
-    Descriptor = "descriptor"
-}
-
-export enum LogicalOperator {
-    Or = "or",
-    And = "and"
-}
-
-export enum Service {
-    FullText = "full_text",
-    Text = "text",
-    TextChem = "text_chem",
-    Sequence = "sequence",
-    Structure = "structure",
-    Chemical = "chemical",
-    Seqmotif = "seqmotif",
-    Strucmotif = "strucmotif"
 }
 
 export enum Target {
