@@ -1,0 +1,251 @@
+{
+  "type" : "object",
+  "properties" : {
+    "rcsb_repository_holdings_prerelease" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "entity_id" : {
+            "type" : "string",
+            "examples" : [ "1" ],
+            "description" : "The polymer entity identifier.",
+            "rcsb_description" : [ {
+              "text" : "The polymer entity identifier.",
+              "context" : "dictionary"
+            } ]
+          },
+          "seq_one_letter_code" : {
+            "type" : "string",
+            "examples" : [ "HHHHAKQRSG...", "AUCGGAAU...", "(DG}(DA)(DT)(DA)(DT)..." ],
+            "description" : "Chemical sequence expressed as string of one-letter amino acid codes.\n Modifications and non-standard amino acids are represented parenthetically\n as 3-letter codes.",
+            "rcsb_description" : [ {
+              "text" : "Chemical sequence expressed as string of one-letter amino acid codes.\n Modifications and non-standard amino acids are represented parenthetically\n as 3-letter codes.",
+              "context" : "dictionary"
+            } ]
+          }
+        },
+        "additionalProperties" : false,
+        "required" : [ "entity_id" ]
+      },
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "rcsb_nested_indexing" : true
+    },
+    "rcsb_repository_holdings_unreleased" : {
+      "type" : "object",
+      "properties" : {
+        "audit_authors" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "Bleary, Percival R.; O'Neil, F.K." ],
+            "description" : "Names of the authors of the entry.",
+            "rcsb_search_context" : [ "full-text" ],
+            "rcsb_full_text_priority" : 1,
+            "rcsb_description" : [ {
+              "text" : "Names of the authors of the entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "author_prerelease_sequence_status" : {
+          "type" : "string",
+          "enum" : [ "HOLD FOR PUBLICATION", "HOLD FOR RELEASE", "RELEASE IMMEDIATELY", "RELEASE NOW" ],
+          "examples" : [ "RELEASE IMMEDIATELY" ],
+          "description" : "The prerelease status for the molecular sequences for the entry .",
+          "rcsb_description" : [ {
+            "text" : "The prerelease status for the molecular sequences for the entry .",
+            "context" : "dictionary"
+          } ]
+        },
+        "deposit_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The entry deposition date.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The entry deposition date.",
+            "context" : "dictionary"
+          } ]
+        },
+        "deposit_date_coordinates" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The deposition date of entry coordinate data.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The deposition date of entry coordinate data.",
+            "context" : "dictionary"
+          } ]
+        },
+        "deposit_date_nmr_restraints" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The deposition date of entry NMR restraint data.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The deposition date of entry NMR restraint data.",
+            "context" : "dictionary"
+          } ]
+        },
+        "deposit_date_structure_factors" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The deposition date of entry structure factor data.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The deposition date of entry structure factor data.",
+            "context" : "dictionary"
+          } ]
+        },
+        "hold_date_coordinates" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The embargo date of entry coordinate data.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The embargo date of entry coordinate data.",
+            "context" : "dictionary"
+          } ]
+        },
+        "hold_date_nmr_restraints" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The embargo date of entry NMR restraint data.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The embargo date of entry NMR restraint data.",
+            "context" : "dictionary"
+          } ]
+        },
+        "hold_date_structure_factors" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The embargo date of entry structure factor data.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The embargo date of entry structure factor data.",
+            "context" : "dictionary"
+          } ]
+        },
+        "prerelease_sequence_available_flag" : {
+          "type" : "string",
+          "enum" : [ "N", "Y" ],
+          "examples" : [ "Y" ],
+          "description" : "A flag to indicate the molecular sequences for an unreleased entry are available.",
+          "rcsb_search_context" : [ "exact-match" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "A flag to indicate the molecular sequences for an unreleased entry are available.",
+            "context" : "dictionary"
+          }, {
+            "text" : "Prerelease sequence available",
+            "context" : "brief"
+          } ]
+        },
+        "release_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-09-11" ],
+          "description" : "The release date for the entry.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The release date for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "status_code" : {
+          "type" : "string",
+          "enum" : [ "AUCO", "AUTH", "HOLD", "HPUB", "POLC", "PROC", "REFI", "REPL", "WAIT", "WDRN" ],
+          "examples" : [ "HPUB" ],
+          "description" : "The release status for the entry.",
+          "rcsb_search_context" : [ "exact-match" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "The release status for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "title" : {
+          "type" : "string",
+          "examples" : [ "The structure of this interesting pathogen molecule" ],
+          "description" : "The entry title.",
+          "rcsb_search_context" : [ "exact-match", "full-text" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "The entry title.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_repository_holdings_unreleased_entry_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "entry_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The PDB entry accession code.",
+          "rcsb_search_context" : [ "exact-match", "suggest" ],
+          "rcsb_full_text_priority" : 20,
+          "rcsb_description" : [ {
+            "text" : "The PDB entry accession code.",
+            "context" : "dictionary"
+          }, {
+            "text" : "Unreleased Structure PDB IDs",
+            "context" : "brief"
+          } ]
+        },
+        "rcsb_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The RCSB entry identifier.",
+          "rcsb_search_context" : [ "exact-match" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "The RCSB entry identifier.",
+            "context" : "dictionary"
+          } ]
+        },
+        "update_id" : {
+          "type" : "string",
+          "examples" : [ "2019_24" ],
+          "description" : "Identifier for the data exchange status record.",
+          "rcsb_description" : [ {
+            "text" : "Identifier for the data exchange status record.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false,
+      "required" : [ "entry_id" ]
+    },
+    "rcsb_id" : {
+      "type" : "string",
+      "examples" : [ "1KIP" ],
+      "description" : "The RCSB entry identifier.",
+      "rcsb_search_context" : [ "exact-match" ],
+      "rcsb_full_text_priority" : 10,
+      "rcsb_description" : [ {
+        "text" : "The RCSB entry identifier.",
+        "context" : "dictionary"
+      } ]
+    }
+  },
+  "additionalProperties" : false,
+  "required" : [ "rcsb_id" ],
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "schema: repository_holdings collection: repository_holdings_unreleased_entry version: 3.5.0",
+  "description" : "RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_unreleased_entry version 3.5.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_unreleased_entry.json and follows JSON schema specification version 4",
+  "$comment" : "schema_version: 3.5.0"
+}

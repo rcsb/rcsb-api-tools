@@ -1,0 +1,410 @@
+{
+  "type" : "object",
+  "properties" : {
+    "rcsb_repository_holdings_insilico_models" : {
+      "type" : "object",
+      "properties" : {
+        "audit_authors" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "Bleary, Percival R.; O'Neil, F.K." ],
+            "description" : "Names of the authors of the entry.",
+            "rcsb_search_context" : [ "full-text" ],
+            "rcsb_full_text_priority" : 1,
+            "rcsb_description" : [ {
+              "text" : "Names of the authors of the entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "deposit_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The entry deposition date.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The entry deposition date.",
+            "context" : "dictionary"
+          } ]
+        },
+        "id_codes_replaced_by" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "4ABC", "3ABC" ],
+            "description" : "The list of superseding PDB accession codes for the removed insilico model entry.",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "The list of superseding PDB accession codes for the removed insilico model entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "release_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-09-11" ],
+          "description" : "The release date for the entry.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The release date for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "remove_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2017-09-11" ],
+          "description" : "The removal date for the entry.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The removal date for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "status_code" : {
+          "type" : "string",
+          "enum" : [ "OBS", "TRSF", "WDRN" ],
+          "examples" : [ "HPUB" ],
+          "description" : "The release status for the entry.",
+          "rcsb_search_context" : [ "exact-match" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "The release status for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "title" : {
+          "type" : "string",
+          "examples" : [ "The structure of this interesting pathogen molecule" ],
+          "description" : "The entry title.",
+          "rcsb_search_context" : [ "full-text" ],
+          "rcsb_full_text_priority" : 1,
+          "rcsb_description" : [ {
+            "text" : "The entry title.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_repository_holdings_removed" : {
+      "type" : "object",
+      "properties" : {
+        "audit_authors" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "Bleary, Percival R.;O'Neil, F.K." ],
+            "description" : "Names of the authors of the entry.",
+            "rcsb_search_context" : [ "full-text" ],
+            "rcsb_full_text_priority" : 1,
+            "rcsb_description" : [ {
+              "text" : "Names of the authors of the entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "deposit_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The entry deposition date.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The entry deposition date.",
+            "context" : "dictionary"
+          } ]
+        },
+        "details" : {
+          "type" : "string",
+          "examples" : [ "An improved ligand starting model was found to significantly improve the model\nand refinement statistics for this entry." ],
+          "description" : "The entry title.",
+          "rcsb_search_context" : [ "full-text" ],
+          "rcsb_full_text_priority" : 1,
+          "rcsb_description" : [ {
+            "text" : "The entry title.",
+            "context" : "dictionary"
+          } ]
+        },
+        "id_codes_replaced_by" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "4ABC", "3ABC" ],
+            "description" : "The list of superseding PDB accession codes for the removed entry.",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "The list of superseding PDB accession codes for the removed entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "release_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-09-11" ],
+          "description" : "The initial date the entry was released in the PDB repository.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The initial date the entry was released in the PDB repository.",
+            "context" : "dictionary"
+          } ]
+        },
+        "remove_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2018-07-11" ],
+          "description" : "The date the entry was removed from the PDB repository.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The date the entry was removed from the PDB repository.",
+            "context" : "dictionary"
+          } ]
+        },
+        "repository_content_types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "Combined NMR data (NEF)", "Combined NMR data (NMR-STAR)", "NMR chemical shifts", "NMR restraints V1", "NMR restraints V2", "assembly PDB", "assembly mmCIF", "entry PDB", "entry PDB bundle", "entry PDBML", "entry mmCIF", "structure factors" ],
+            "examples" : [ "entry mmCIF" ],
+            "description" : "The list of content types associated with this removed entry.",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "The list of content types associated with this removed entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "title" : {
+          "type" : "string",
+          "examples" : [ "The structure of this interesting pathogen molecule" ],
+          "description" : "The entry title.",
+          "rcsb_search_context" : [ "full-text" ],
+          "rcsb_full_text_priority" : 1,
+          "rcsb_description" : [ {
+            "text" : "The entry title.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_repository_holdings_removed_audit_author" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "audit_author" : {
+            "type" : "string",
+            "examples" : [ "Bleary, Percival R." ],
+            "description" : "Name of the audit author of the entry.",
+            "rcsb_description" : [ {
+              "text" : "Name of the audit author of the entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "ordinal_id" : {
+            "type" : "integer",
+            "description" : "An ordinal identifier for an audit author in an entry.",
+            "rcsb_description" : [ {
+              "text" : "An ordinal identifier for an audit author in an entry.",
+              "context" : "dictionary"
+            } ]
+          }
+        },
+        "additionalProperties" : false,
+        "required" : [ "ordinal_id" ]
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    },
+    "rcsb_repository_holdings_removed_entry_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "entry_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The PDB entry accession code.",
+          "rcsb_search_context" : [ "exact-match", "suggest" ],
+          "rcsb_full_text_priority" : 20,
+          "rcsb_description" : [ {
+            "text" : "The PDB entry accession code.",
+            "context" : "dictionary"
+          }, {
+            "text" : "Obsolete/Removed PDB IDs",
+            "context" : "brief"
+          } ]
+        },
+        "rcsb_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The RCSB entry identifier.",
+          "rcsb_description" : [ {
+            "text" : "The RCSB entry identifier.",
+            "context" : "dictionary"
+          } ]
+        },
+        "update_id" : {
+          "type" : "string",
+          "examples" : [ "2019_24" ],
+          "description" : "Identifier for the data exchange status record.",
+          "rcsb_description" : [ {
+            "text" : "Identifier for the data exchange status record.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false,
+      "required" : [ "entry_id" ]
+    },
+    "rcsb_repository_holdings_superseded" : {
+      "type" : "object",
+      "properties" : {
+        "id_codes_superseded" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "1KIP" ],
+            "description" : "The PDB accesion codes supersed by this entry.",
+            "rcsb_description" : [ {
+              "text" : "The PDB accesion codes supersed by this entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_repository_holdings_transferred" : {
+      "type" : "object",
+      "properties" : {
+        "audit_authors" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "Bleary, Percival R., O'Neil, F.K." ],
+            "description" : "Names of the authors of the entry.",
+            "rcsb_search_context" : [ "full-text" ],
+            "rcsb_full_text_priority" : 1,
+            "rcsb_description" : [ {
+              "text" : "Names of the authors of the entry.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "deposit_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-07-11" ],
+          "description" : "The entry deposition date.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The entry deposition date.",
+            "context" : "dictionary"
+          } ]
+        },
+        "release_date" : {
+          "type" : "string",
+          "format" : "date",
+          "examples" : [ "2016-09-11" ],
+          "description" : "The release date for the entry.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "The release date for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "remote_accession_code" : {
+          "type" : "string",
+          "examples" : [ "ma-czyyf" ],
+          "description" : "The prerelease status for the molecular sequences for the entry .",
+          "rcsb_search_context" : [ "exact-match" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "The prerelease status for the molecular sequences for the entry .",
+            "context" : "dictionary"
+          } ]
+        },
+        "remote_repository_name" : {
+          "type" : "string",
+          "examples" : [ "Model Archive" ],
+          "description" : "For the transferred content, the remote repository name.",
+          "rcsb_search_context" : [ "exact-match" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "For the transferred content, the remote repository name.",
+            "context" : "dictionary"
+          } ]
+        },
+        "repository_content_types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "Combined NMR data (NEF)", "Combined NMR data (NMR-STAR)", "NMR chemical shifts", "NMR restraints", "coordinates", "structure factors" ],
+            "examples" : [ "coordinates" ],
+            "description" : "The types of transferred content.",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "The types of transferred content.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "status_code" : {
+          "type" : "string",
+          "enum" : [ "TRSF" ],
+          "examples" : [ "HPUB" ],
+          "description" : "The release status for the entry.",
+          "rcsb_search_context" : [ "exact-match" ],
+          "rcsb_full_text_priority" : 10,
+          "rcsb_description" : [ {
+            "text" : "The release status for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "title" : {
+          "type" : "string",
+          "examples" : [ "The structure of this interesting pathogen molecule" ],
+          "description" : "The entry title.",
+          "rcsb_search_context" : [ "full-text" ],
+          "rcsb_full_text_priority" : 1,
+          "rcsb_description" : [ {
+            "text" : "The entry title.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_id" : {
+      "type" : "string",
+      "examples" : [ "1KIP" ],
+      "description" : "The RCSB entry identifier.",
+      "rcsb_description" : [ {
+        "text" : "The RCSB entry identifier.",
+        "context" : "dictionary"
+      } ]
+    }
+  },
+  "additionalProperties" : false,
+  "required" : [ "rcsb_id" ],
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "schema: repository_holdings collection: repository_holdings_removed_entry version: 3.3.0",
+  "description" : "RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_removed_entry version 3.3.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_removed_entry.json and follows JSON schema specification version 4",
+  "$comment" : "schema_version: 3.3.0"
+}

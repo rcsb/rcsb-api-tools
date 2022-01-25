@@ -9,7 +9,12 @@ function replace(value: string): string{
 
 function camelCase(value: string): string{
     const val: string =  _.camelCase(value);
-    return val.charAt(0).toUpperCase() + val.slice(1)
+    let out: string = val.charAt(0).toUpperCase() + val.slice(1)
+    if(!(/^[a-z0-9_]+$/i).test(value))
+        out += "_";
+    if((/^\d$/).test(out.charAt(0)))
+        return "_"+out;
+    return out;
 }
 
 function getCurrentEnums(fileName: string): Set<string>{
@@ -92,7 +97,7 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
 }
 
 export async function generateInterface(schemaFile: string, interfaceFile: string, constantsFile: string, options?:Partial<Options>): Promise<string>{
-    const schema: string = await compileFromFile(schemaFile, {cwd:"./search_schema", ...options});
+    const schema: string = await compileFromFile(schemaFile, options);
     fs.writeFileSync(interfaceFile, schema);
     generateEnum(interfaceFile, constantsFile);
     return interfaceFile;

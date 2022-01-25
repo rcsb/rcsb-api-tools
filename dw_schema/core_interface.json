@@ -1,0 +1,229 @@
+{
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "Core Interface",
+  "description" : "JSON schema for binary interfaces core data.",
+  "type" : "object",
+  "required" : [ "rcsb_interface_container_identifiers", "rcsb_interface_partner", "rcsb_id", "rcsb_interface_operator" ],
+  "properties" : {
+    "rcsb_id" : {
+      "type" : "string"
+    },
+    "rcsb_interface_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "entry_id" : {
+          "type" : "string",
+          "description" : "Entry identifier for the container."
+        },
+        "assembly_id" : {
+          "type" : "string",
+          "description" : "This item references an assembly in pdbx_struct_assembly"
+        },
+        "interface_id" : {
+          "type" : "string",
+          "examples" : [ "1", "2" ],
+          "description" : "Identifier for the geometrically equivalent (same asym_ids on either side) interfaces within the assembly"
+        },
+        "interface_entity_id" : {
+          "type" : "string",
+          "examples" : [ "1", "2" ],
+          "description" : "Identifier for NCS-equivalent interfaces within the assembly (same entity_ids on both sides)"
+        },
+        "rcsb_id" : {
+          "type" : "string",
+          "examples" : [ "2UZI-1.A.B?1" ],
+          "description" : "Unique identifier for the document"
+        }
+      },
+      "additionalProperties" : false,
+      "required" : [ "entry_id", "assembly_id", "interface_id", "rcsb_id" ]
+    },
+    "rcsb_interface_partner" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "interface_partner_identifier" : {
+            "type" : "object",
+            "properties" : {
+              "entity_id" : {
+                "type" : "string",
+                "description" : "Polymer entity identifier for the container."
+              },
+              "asym_id" : {
+                "type" : "string",
+                "description" : "Instance identifier for this container."
+              }
+            },
+            "additionalProperties" : false,
+            "required" : [ "asym_id", "entity_id" ]
+          },
+          "interface_partner_feature" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "assignment_version" : {
+                  "type" : "string",
+                  "examples" : [ "V4_0_2" ],
+                  "description" : "Identifies the version of the feature assignment."
+                },
+                "description" : {
+                  "type" : "string",
+                  "description" : "A description for the feature."
+                },
+                "feature_id" : {
+                  "type" : "string",
+                  "description" : "An identifier for the feature."
+                },
+                "name" : {
+                  "type" : "string",
+                  "description" : "A name for the feature."
+                },
+                "provenance_source" : {
+                  "type" : "string",
+                  "examples" : [ "NACCESS" ],
+                  "description" : "Code identifying the individual, organization or program that assigned the feature."
+                },
+                "type" : {
+                  "type" : "string",
+                  "enum" : [ "ASA_UNBOUND", "ASA_BOUND" ],
+                  "examples" : [ "ASA_UNBOUND", "BINDING_SITE" ],
+                  "description" : "A type or category of the feature."
+                },
+                "feature_positions" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "beg_seq_id" : {
+                        "type" : "integer",
+                        "description" : "An identifier for the monomer at which this segment of the feature begins."
+                      },
+                      "end_seq_id" : {
+                        "type" : "integer",
+                        "description" : "An identifier for the monomer at which this segment of the feature ends."
+                      },
+                      "values" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "number",
+                          "examples" : [ 1.5, 0.25 ],
+                          "description" : "The value(s) of the feature over the monomer segment."
+                        },
+                        "uniqueItems" : false
+                      }
+                    },
+                    "additionalProperties" : false,
+                    "required" : [ "beg_seq_id" ]
+                  },
+                  "uniqueItems" : false
+                },
+                "additional_properties" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "name" : {
+                        "type" : "string",
+                        "enum" : [ "TO_BE_DEFINED" ],
+                        "examples" : [ "TO_BE_DEFINED" ],
+                        "description" : "The additional property name."
+                      },
+                      "values" : {
+                        "type" : "array",
+                        "items" : {
+                          "anyOf" : [ {
+                            "type" : "string"
+                          }, {
+                            "type" : "integer"
+                          }, {
+                            "type" : "number"
+                          } ],
+                          "examples" : [ "globin-like", "2.54", "300" ],
+                          "description" : "The value(s) of the additional property."
+                        },
+                        "uniqueItems" : false
+                      }
+                    },
+                    "additionalProperties" : false
+                  },
+                  "uniqueItems" : false
+                }
+              },
+              "additionalProperties" : false
+            },
+            "minItems" : 1,
+            "uniqueItems" : true
+          }
+        }
+      },
+      "maxLength" : 2,
+      "minLength" : 2
+    },
+    "rcsb_interface_operator" : {
+      "type" : "array",
+      "items" : {
+        "type" : "array",
+        "maxLength" : 2,
+        "minLength" : 2,
+        "description" : "List of operations for each interface partner.",
+        "items" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "description" : "Identifies the list of operations from the category pdbx_struct_oper_list. One item in array per operator applied. The order follows how operators are applied."
+        }
+      }
+    },
+    "rcsb_interface_info" : {
+      "type" : "object",
+      "properties" : {
+        "polymer_composition" : {
+          "type" : "string",
+          "enum" : [ "Nucleic acid (only)", "Protein (only)", "Protein/NA" ]
+        },
+        "interface_character" : {
+          "type" : "string",
+          "enum" : [ "homo", "hetero" ]
+        },
+        "interface_area" : {
+          "type" : "number",
+          "description" : "Total interface buried surface area"
+        },
+        "self_jaccard_contact_score" : {
+          "type" : "number",
+          "description" : "The Jaccard score (intersection over union) of interface contacts in homomeric interfaces, comparing contact sets left-right vs right-left. High values indicate isologous (symmetric) interfaces, with value=1 if perfectly symmetric (e.g. crystallographic symmetry)"
+        },
+        "num_interface_residues" : {
+          "type" : "integer",
+          "description" : "Number of interface residues, defined as those with burial fraction > 0"
+        },
+        "num_core_interface_residues" : {
+          "type" : "integer",
+          "description" : "Number of core interface residues, defined as those that bury >90% accessible surface area with respect to the unbound state"
+        }
+      }
+    },
+    "rcsb_latest_revision" : {
+      "type" : "object",
+      "properties" : {
+        "major_revision" : {
+          "type" : "integer",
+          "description" : "The major version number of the latest revision."
+        },
+        "minor_revision" : {
+          "type" : "integer",
+          "description" : "The minor version number of the latest revision."
+        },
+        "revision_date" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The release date of the latest revision item."
+        }
+      }
+    }
+  },
+  "additionalProperties" : false
+}

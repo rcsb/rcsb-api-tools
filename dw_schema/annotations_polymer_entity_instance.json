@@ -1,0 +1,521 @@
+{
+  "$schema" : "https://json-schema.org/draft-07/schema#",
+  "title" : "Entity Annotations",
+  "type" : "object",
+  "required" : [ "annotations_polymer_entity_instance_container_identifiers" ],
+  "properties" : {
+    "annotations_polymer_entity_instance_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "entity_id" : {
+          "type" : "string",
+          "description" : "Entity identifier for the container."
+        },
+        "entry_id" : {
+          "type" : "string",
+          "description" : "Entry identifier for the container."
+        },
+        "asym_id" : {
+          "type" : "string",
+          "description" : "Asymmetric chain identifier for the container."
+        }
+      },
+      "additionalProperties" : false
+    },
+    "annotations" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string",
+            "description" : "A description for the feature."
+          },
+          "feature_id" : {
+            "type" : "string",
+            "description" : "An identifier for the feature."
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "A name for the feature."
+          },
+          "provenance_source" : {
+            "type" : "string",
+            "description" : "A name for the provenance source."
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "ASA", "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "hydropathy", "disorder", "disorder_binding", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "modified_monomer", "mutation", "ANGLE_OUTLIER", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs" ],
+            "examples" : [ "ASA_UNBOUND", "BINDING_SITE", "mutation", "artifact", "CATH", "SCOP" ],
+            "description" : "The connection type.",
+            "rcsb_enum_annotated" : [ {
+              "value" : "ACTIVE_SITE",
+              "name" : "Active site",
+              "detail" : "Amino acid(s) directly involved in the activity of an enzyme"
+            }, {
+              "value" : "BINDING_SITE",
+              "name" : "Binding site",
+              "detail" : "Binding site for any chemical group (co-enzyme, prosthetic group, etc.)"
+            }, {
+              "value" : "CALCIUM_BINDING_REGION",
+              "name" : "Calcium binding",
+              "detail" : "Position(s) of calcium binding region(s) within the protein (e.g. EF-hand)"
+            }, {
+              "value" : "CHAIN",
+              "name" : "Chain",
+              "detail" : "Extent of a polypeptide chain in the mature protein following processing or proteolytic cleavage"
+            }, {
+              "value" : "COMPOSITIONALLY_BIASED_REGION",
+              "name" : "Compositional bias",
+              "detail" : "Homopolymeric stretches and large regions of compositional bias in the protein"
+            }, {
+              "value" : "CROSS_LINK",
+              "name" : "Cross-link",
+              "detail" : "Residues participating in covalent linkage(s) between proteins"
+            }, {
+              "value" : "DNA_BINDING_REGION",
+              "name" : "DNA binding",
+              "detail" : "Experimentally determined and conserved DNA-binding domains defined by the InterPro resources PROSITE, Pfam and SMART (the AP2/ERF domain, the ETS domain, the Fork-Head domain, etc.)"
+            }, {
+              "value" : "DOMAIN",
+              "name" : "Domain",
+              "detail" : "Modular protein domains which are self-stabilizing and fold independently of the rest of the protein chain"
+            }, {
+              "value" : "GLYCOSYLATION_SITE",
+              "name" : "Glycosylation",
+              "detail" : "Covalently attached glycan group(s) (mono-, di-, or polysaccharide)"
+            }, {
+              "value" : "INITIATOR_METHIONINE",
+              "name" : "Initiator methionine",
+              "detail" : "Cleavage of the initiator methionine from the mature protein"
+            }, {
+              "value" : "LIPID_MOIETY_BINDING_REGION",
+              "name" : "Lipidation",
+              "detail" : "Covalently attached lipid group(s)"
+            }, {
+              "value" : "METAL_ION_BINDING_SITE",
+              "name" : "Metal binding",
+              "detail" : "Binding site for a metal ion"
+            }, {
+              "value" : "MODIFIED_RESIDUE",
+              "name" : "Modified residue",
+              "detail" : "Modified residues excluding lipids, glycans and protein cross-links"
+            }, {
+              "value" : "MUTAGENESIS_SITE",
+              "name" : "Mutagenesis",
+              "detail" : "Site which has been experimentally altered by mutagenesis"
+            }, {
+              "value" : "NON_CONSECUTIVE_RESIDUES",
+              "name" : "Non-adjacent residues",
+              "detail" : "Indicates that two residues in a sequence are not consecutive and that there is an undetermined number of unsequenced residues between them"
+            }, {
+              "value" : "NON_TERMINAL_RESIDUE",
+              "name" : "Non-terminal residue",
+              "detail" : "Indicates that a residue is not the terminal residue of the complete protein (the sequence is incomplete)"
+            }, {
+              "value" : "NUCLEOTIDE_PHOSPHATE_BINDING_REGION",
+              "name" : "Nucleotide binding",
+              "detail" : "Nucleotide phosphate binding region"
+            }, {
+              "value" : "PEPTIDE",
+              "name" : "Peptide",
+              "detail" : "Extent of an active peptide in the mature protein"
+            }, {
+              "value" : "PROPEPTIDE",
+              "name" : "Propeptide",
+              "detail" : "Part of a protein that is cleaved during maturation or activation"
+            }, {
+              "value" : "REGION_OF_INTEREST",
+              "name" : "Region of interest",
+              "detail" : "Region of interest in the sequence (e.g. different regions in multifunctional enzymes or fusion proteins)"
+            }, {
+              "value" : "REPEAT",
+              "name" : "Repeat",
+              "detail" : "Denotes the positions of repeated sequence motifs or repeated domains"
+            }, {
+              "value" : "NON_STANDARD_AMINO_ACID",
+              "name" : "Non-standard residue",
+              "detail" : "Occurrences of non-standard amino acids (selenocysteine and pyrrolysine) in the protein sequence"
+            }, {
+              "value" : "SEQUENCE_CONFLICT",
+              "name" : "Sequence conflict",
+              "detail" : "Description of sequence discrepancies of unknown origin"
+            }, {
+              "value" : "SEQUENCE_VARIANT",
+              "name" : "Natural variant",
+              "detail" : "Description of a natural variant of the protein (polymorphisms, disease-associated mutations, RNA editing events, etc.)"
+            }, {
+              "value" : "SHORT_SEQUENCE_MOTIF",
+              "name" : "Motif",
+              "detail" : "Short (up to 20 amino acids) sequence motif of biological interest"
+            }, {
+              "value" : "SIGNAL_PEPTIDE",
+              "name" : "Signal peptide",
+              "detail" : "Sequence targeting proteins to the secretory pathway or periplasmic space"
+            }, {
+              "value" : "SITE",
+              "name" : "Site",
+              "detail" : "Any interesting single amino acid site on the sequence"
+            }, {
+              "value" : "SPLICE_VARIANT",
+              "name" : "Alternative sequence",
+              "detail" : "Amino acid change(s) producing alternate protein isoforms"
+            }, {
+              "value" : "TOPOLOGICAL_DOMAIN",
+              "name" : "Topological domain",
+              "detail" : "Location of non-membrane regions of membrane-spanning proteins"
+            }, {
+              "value" : "TRANSIT_PEPTIDE",
+              "name" : "Transit peptide",
+              "detail" : "Extent of a transit peptide for organelle targeting"
+            }, {
+              "value" : "TRANSMEMBRANE_REGION",
+              "name" : "Transmembrane",
+              "detail" : "Extent of a membrane-spanning region"
+            }, {
+              "value" : "UNSURE_RESIDUE",
+              "name" : "Sequence uncertainty",
+              "detail" : "Describes region(s) of a sequence for which the authors are unsure about the sequence assignment"
+            }, {
+              "value" : "ZINC_FINGER_REGION",
+              "name" : "Zinc finger",
+              "detail" : "Denotes the position(s) and type(s) of zinc fingers within the protein"
+            }, {
+              "value" : "INTRAMEMBRANE_REGION",
+              "name" : "Intramembrane",
+              "detail" : "Extent of a region located in a membrane without crossing it"
+            }, {
+              "value" : "CARD_MODEL",
+              "detail" : "Comprehensive Antibiotic Resistance Database Detection Model",
+              "name" : "CARD AMR Detection Model"
+            }, {
+              "value" : "IMGT_ANTIBODY_DESCRIPTION",
+              "detail" : "International Immunogenetic Information System (IMGT) antibody description",
+              "name" : "IMGT Antibody Description"
+            }, {
+              "value" : "IMGT_ANTIBODY_DOMAIN_NAME",
+              "detail" : "International Immunogenetic Information System (IMGT) domain name",
+              "name" : "IMGT Antibody Domain Name"
+            }, {
+              "value" : "IMGT_ANTIBODY_GENE_ALLELE_NAME",
+              "detail" : "International Immunogenetic Information System (IMGT) gene and allele name",
+              "name" : "IMGT Antibody Gene and Allele Name"
+            }, {
+              "value" : "IMGT_ANTIBODY_ORGANISM_NAME",
+              "detail" : "International Immunogenetic Information System (IMGT) organism name",
+              "name" : "IMGT Antibody Organism Name"
+            }, {
+              "value" : "IMGT_ANTIBODY_PROTEIN_NAME",
+              "detail" : "International Immunogenetic Information System (IMGT) protein name",
+              "name" : "IMGT Antibody Protein Name"
+            }, {
+              "value" : "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION",
+              "detail" : "International Immunogenetic Information System (IMGT) receptor description",
+              "name" : "IMGT Antibody Receptor Description"
+            }, {
+              "value" : "IMGT_ANTIBODY_RECEPTOR_TYPE",
+              "detail" : "International Immunogenetic Information System (IMGT) receptor type",
+              "name" : "IMGT Antibody Receptor Type"
+            }, {
+              "value" : "Pfam",
+              "detail" : "Pfam Protein Family",
+              "name" : "Pfam Protein Family"
+            }, {
+              "value" : "SABDAB_ANTIBODY_ANTIGEN_NAME",
+              "detail" : "Structural Antibody Database (SAbDab) antibody antigen name",
+              "name" : "SAbDab Antibody Antigen Name"
+            }, {
+              "value" : "SABDAB_ANTIBODY_NAME",
+              "detail" : "Therapeutic Structural Antibody Database (Thera-SAbDab) antibody name",
+              "name" : "SAbDab Antibody Name"
+            }, {
+              "value" : "SABDAB_ANTIBODY_TARGET",
+              "detail" : "Therapeutic Structural Antibody Database (Thera-SAbDab) antigen targeted by the antibody",
+              "name" : "SAbDab Antibody Target"
+            }, {
+              "value" : "artifact",
+              "detail" : "Cloning artifact, expression tag, linker",
+              "name" : "Cloning artifact, expression tag, linker"
+            }, {
+              "value" : "modified_monomer",
+              "detail" : "Modified chemical component",
+              "name" : "Modified chemical component"
+            }, {
+              "value" : "mutation",
+              "detail" : "Engineered mutations and chemical modifications",
+              "name" : "Engineered mutations and chemical modifications"
+            }, {
+              "value" : "ANGLE_OUTLIER",
+              "detail" : "Molprobity bond angle outlier",
+              "name" : "Molprobity bond angle outlier"
+            }, {
+              "value" : "BINDING_SITE",
+              "detail" : "Macromolecular target for ligand binding",
+              "name" : "Ligand Binding Site"
+            }, {
+              "value" : "BOND_OUTLIER",
+              "detail" : "Molprobity bond distance outlier",
+              "name" : "Molprobity bond distance outlier"
+            }, {
+              "value" : "C-MANNOSYLATION_SITE",
+              "detail" : "Mannose glycan binding to the first tryptophan (W) residue in the sequence motif WXXW  (where X is any amino acid).",
+              "name" : "C-Mannosylation Site"
+            }, {
+              "value" : "CATH",
+              "detail" : "CATH - Class, Architecture, Topology, and Homology Protein Structure Database",
+              "name" : "CATH"
+            }, {
+              "value" : "CIS-PEPTIDE",
+              "detail" : "Peptide linkages with CIS configurations",
+              "name" : "CIS Peptide linkages"
+            }, {
+              "value" : "ECOD",
+              "detail" : "ECOD - An Evolutionary Classification of Protein Domains",
+              "name" : "ECOD"
+            }, {
+              "value" : "HELIX_P",
+              "detail" : "Protein helices",
+              "name" : "Protein helices"
+            }, {
+              "value" : "MEMBRANE_SEGMENT",
+              "detail" : "Extent of a region located in a membrane",
+              "name" : "Extent of a region located in a membrane"
+            }, {
+              "value" : "MOGUL_ANGLE_OUTLIER",
+              "detail" : "Mogul bond angle outlier",
+              "name" : "Mogul bond angle outlier"
+            }, {
+              "value" : "MOGUL_BOND_OUTLIER",
+              "detail" : "Mogul bond distance outlier",
+              "name" : "Mogul bond distance outlier"
+            }, {
+              "value" : "N-GLYCOSYLATION_SITE",
+              "detail" : "Glycan binding to the amide nitrogen of an asparagine (Asn) residue",
+              "name" : "N-Glycosylation Site"
+            }, {
+              "value" : "O-GLYCOSYLATION_SITE",
+              "detail" : "Glycan binding to the oxygen atom of serine (Ser) or threonine (Thr) residues",
+              "name" : "O-Glycosylation Site"
+            }, {
+              "value" : "RAMACHANDRAN_OUTLIER",
+              "detail" : "Molprobity Ramachandran outlier",
+              "name" : "Molprobity Ramachandran outlier"
+            }, {
+              "value" : "ROTAMER_OUTLIER",
+              "detail" : "Molprobity rotamer outlier",
+              "name" : "Molprobity rotamer outlier"
+            }, {
+              "value" : "RSCC_OUTLIER",
+              "detail" : "Real space density correlation value < 0.65",
+              "name" : "Real space density correlation outlier"
+            }, {
+              "value" : "RSRZ_OUTLIER",
+              "detail" : "Real space R-value Z score > 2",
+              "name" : "Real space outlier"
+            }, {
+              "value" : "S-GLYCOSYLATION_SITE",
+              "detail" : "Glycan binding to the sulfur atom of a cysteine (Cys) residue",
+              "name" : "S-Glycosylation Site"
+            }, {
+              "value" : "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS",
+              "detail" : "Structural Antibody Database (SAbDab) antibody heavy chain subclass (IGHV1, IGHV2,)",
+              "name" : "SAbDab Antibody Heavy Chain Subclass"
+            }, {
+              "value" : "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS",
+              "detail" : "Structural Antibody Database (SAbDab) antibody light chain subclass (IGLV1, IGLV2, ...)",
+              "name" : "SAbDab Antibody Light Chain Subclass"
+            }, {
+              "value" : "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE",
+              "detail" : "Structural Antibody Database (SAbDab) antibody light chain type (Kappa or Lambda)",
+              "name" : "SAbDab Antibody Light Chain Type"
+            }, {
+              "value" : "SCOP",
+              "detail" : "SCOP - Structural Classification of Proteins",
+              "name" : "SCOP"
+            }, {
+              "value" : "SCOP2B_SUPERFAMILY",
+              "detail" : "SCOP2B - Structural Classification of Proteins 2 - Superfamily automated assignments",
+              "name" : "SCOP2B Superfamily"
+            }, {
+              "value" : "SCOP2_FAMILY",
+              "detail" : "SCOP2 - Structural Classification of Proteins 2 Family",
+              "name" : "SCOP2 Family"
+            }, {
+              "value" : "SCOP2_SUPERFAMILY",
+              "detail" : "SCOP2 - Structural Classification of Proteins 2 Superfamily",
+              "name" : "SCOP2 Superfamily"
+            }, {
+              "value" : "SHEET",
+              "detail" : "Beta-sheets",
+              "name" : "Beta-sheets"
+            }, {
+              "value" : "STEREO_OUTLIER",
+              "detail" : "Stereochemical/chirality outlier",
+              "name" : "Stereochemical/chirality outlier"
+            }, {
+              "value" : "UNASSIGNED_SEC_STRUCT",
+              "detail" : "Unassigned secondary structure",
+              "name" : "Unassigned secondary structure"
+            }, {
+              "value" : "UNOBSERVED_ATOM_XYZ",
+              "detail" : "Unobserved atom coordinates",
+              "name" : "Unobserved Atoms"
+            }, {
+              "value" : "UNOBSERVED_RESIDUE_XYZ",
+              "detail" : "Unobserved residue coordinates",
+              "name" : "Unobserved Residues"
+            }, {
+              "value" : "ZERO_OCCUPANCY_ATOM_XYZ",
+              "detail" : "Atom coordinates with zero occupancy",
+              "name" : "Zero Occupancy Atoms"
+            }, {
+              "value" : "ZERO_OCCUPANCY_RESIDUE_XYZ",
+              "detail" : "Residue coordinates with zero occupancy",
+              "name" : "Zero Occupancy Residues"
+            } ],
+            "rcsb_description" : [ {
+              "text" : "A type or category of the feature.",
+              "context" : "dictionary"
+            }, {
+              "text" : "Feature Type",
+              "context" : "brief"
+            }, {
+              "text" : "The connection type.",
+              "context" : "dictionary"
+            } ],
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10
+          },
+          "value" : {
+            "type" : "number",
+            "description" : "The value for the feature."
+          },
+          "additional_properties" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "property_name" : {
+                  "type" : "string",
+                  "enum" : [ "LINK", "WILD_TYPE", "MUTATED_TYPE", "CONSEQUENCE_TYPE", "PREDICTED_IMPACT", "CLINICAL_SIGNIFICANCE", "EVIDENCE", "DISEASE_TYPE", "STRAIN_ID", "SUBTYPE", "CARD_MODEL_DESCRIPTION", "CARD_MODEL_ORGANISM", "PARENT_COMP_ID", "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
+                  "examples" : [ "PARENT_COMP_ID", "CATH_NAME", "PARTNER_BOND_DISTANCE" ],
+                  "description" : "The additional property name.",
+                  "rcsb_enum_annotated" : [ {
+                    "value" : "CARD_MODEL_DESCRIPTION",
+                    "detail" : "CARD Model Description"
+                  }, {
+                    "value" : "CARD_MODEL_ORGANISM",
+                    "detail" : "CARD Model Organism"
+                  }, {
+                    "value" : "PARENT_COMP_ID",
+                    "detail" : "Parent Chemical Component Reference Dictionary Identifier"
+                  }, {
+                    "value" : "CATH_DOMAIN_ID",
+                    "detail" : "CATH Domain Identifier"
+                  }, {
+                    "value" : "CATH_NAME",
+                    "detail" : "CATH Classification Name"
+                  }, {
+                    "value" : "ECOD_DOMAIN_ID",
+                    "detail" : "ECOD Domain Identifier"
+                  }, {
+                    "value" : "ECOD_FAMILY_NAME",
+                    "detail" : "ECOD Family Name"
+                  }, {
+                    "value" : "OMEGA_ANGLE",
+                    "detail" : "Cis-Peptide Omega Angle"
+                  }, {
+                    "value" : "PARTNER_ASYM_ID",
+                    "detail" : "Binding Partner Instance Identifier"
+                  }, {
+                    "value" : "PARTNER_BOND_DISTANCE",
+                    "detail" : "Binding Bond Distance"
+                  }, {
+                    "value" : "PARTNER_COMP_ID",
+                    "detail" : "Binding Partner Chemical Component Identifier"
+                  }, {
+                    "value" : "SCOP2_DOMAIN_ID",
+                    "detail" : "SCOP2 Domain Identifier"
+                  }, {
+                    "value" : "SCOP2_FAMILY_ID",
+                    "detail" : "SCOP2 Family Identifier"
+                  }, {
+                    "value" : "SCOP2_FAMILY_NAME",
+                    "detail" : "SCOP2 Family Name"
+                  }, {
+                    "value" : "SCOP2_SUPERFAMILY_ID",
+                    "detail" : "SCOP2 Superfamily Identifier"
+                  }, {
+                    "value" : "SCOP2_SUPERFAMILY_NAME",
+                    "detail" : "SCOP2 Superfamily Name"
+                  }, {
+                    "value" : "SCOP_DOMAIN_ID",
+                    "detail" : "SCOP Domain Identifier"
+                  }, {
+                    "value" : "SCOP_NAME",
+                    "detail" : "SCOP Classification Name"
+                  }, {
+                    "value" : "SCOP_SUN_ID",
+                    "detail" : "SCOP Unique Identifier"
+                  }, {
+                    "value" : "SHEET_SENSE",
+                    "detail" : "Secondary Structure Sheet Sense"
+                  } ],
+                  "rcsb_description" : [ {
+                    "text" : "The additional property name.",
+                    "context" : "dictionary"
+                  } ]
+                },
+                "property_value" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [ {
+                      "type" : "string"
+                    }, {
+                      "type" : "integer"
+                    }, {
+                      "type" : "number"
+                    } ]
+                  }
+                }
+              }
+            }
+          },
+          "feature_positions" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "beg_seq_id" : {
+                  "type" : "integer",
+                  "description" : "An identifier for the monomer at which this segment of the feature begins."
+                },
+                "end_seq_id" : {
+                  "type" : "integer",
+                  "description" : "An identifier for the monomer at which this segment of the feature ends."
+                },
+                "value" : {
+                  "type" : "number",
+                  "description" : "The value for the feature over this monomer segment."
+                },
+                "values" : {
+                  "description" : "The value(s) for the feature over this monomer segment.",
+                  "type" : "array",
+                  "items" : {
+                    "type" : "number"
+                  }
+                }
+              },
+              "additionalProperties" : false
+            },
+            "uniqueItems" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    }
+  },
+  "additionalProperties" : false
+}

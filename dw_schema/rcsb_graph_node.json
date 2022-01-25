@@ -1,0 +1,44 @@
+{
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "RCSB tree node",
+  "description" : "A tree node with a linkage to immediate parent(s) and all ancestors (node's lineage).",
+  "type" : "object",
+  "required" : [ "id" ],
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "description" : "Unique node identifier."
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Human-readable term associated with the node."
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "Node description."
+    },
+    "depth" : {
+      "type" : "integer",
+      "description" : "Hierarchy depth."
+    },
+    "parents" : {
+      "type" : "array",
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "items" : {
+        "type" : "string"
+      },
+      "description" : "ID(s) of the node’s immediate parents."
+    },
+    "related" : {
+      "type" : "array",
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "items" : {
+        "type" : "string"
+      },
+      "description" : "Terms or IDs related to the node."
+    }
+  },
+  "additionalProperties" : false
+}

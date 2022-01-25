@@ -129,15 +129,15 @@ export enum DescriptorType {
 }
 
 export enum MatchType {
-    GraphExact = "graph-exact",
-    GraphStrict = "graph-strict",
-    GraphRelaxed = "graph-relaxed",
-    GraphRelaxedStereo = "graph-relaxed-stereo",
-    FingerprintSimilarity = "fingerprint-similarity",
-    SubStructGraphExact = "sub-struct-graph-exact",
-    SubStructGraphStrict = "sub-struct-graph-strict",
-    SubStructGraphRelaxed = "sub-struct-graph-relaxed",
-    SubStructGraphRelaxedStereo = "sub-struct-graph-relaxed-stereo"
+    GraphExact_ = "graph-exact",
+    GraphStrict_ = "graph-strict",
+    GraphRelaxed_ = "graph-relaxed",
+    GraphRelaxedStereo_ = "graph-relaxed-stereo",
+    FingerprintSimilarity_ = "fingerprint-similarity",
+    SubStructGraphExact_ = "sub-struct-graph-exact",
+    SubStructGraphStrict_ = "sub-struct-graph-strict",
+    SubStructGraphRelaxed_ = "sub-struct-graph-relaxed",
+    SubStructGraphRelaxedStereo_ = "sub-struct-graph-relaxed-stereo"
 }
 
 export enum PatternType {

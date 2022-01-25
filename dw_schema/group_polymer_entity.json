@@ -1,0 +1,246 @@
+{
+  "title" : "Group Polymer Entity",
+  "$schema" : "https://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "required" : [ "rcsb_id", "rcsb_group_container_identifiers", "rcsb_group_info" ],
+  "properties" : {
+    "rcsb_id" : {
+      "type" : "string",
+      "rcsb_search_context" : [ "exact-match" ],
+      "description" : "A unique textual identifier for a group"
+    },
+    "rcsb_group_container_identifiers" : {
+      "type" : "object",
+      "required" : [ "group_id", "group_provenance_id", "group_member_ids" ],
+      "properties" : {
+        "group_id" : {
+          "type" : "string",
+          "description" : "A unique textual identifier for a group",
+          "rcsb_search_context" : [ "exact-match" ]
+        },
+        "group_provenance_id" : {
+          "type" : "string",
+          "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id" ],
+          "description" : "A unique group provenance identifier"
+        },
+        "parent_member_ids" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "minItems" : 1,
+          "uniqueItems" : true,
+          "description" : "Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship"
+        },
+        "group_member_ids" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "rcsb_search_context" : [ "exact-match" ]
+          },
+          "minItems" : 1,
+          "uniqueItems" : true,
+          "description" : "Member identifiers representing a group"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_group_info" : {
+      "type" : "object",
+      "required" : [ "group_name", "group_description", "group_members_granularity", "group_members_count" ],
+      "properties" : {
+        "group_name" : {
+          "type" : "string",
+          "rcsb_search_context" : [ "exact-match" ]
+        },
+        "group_description" : {
+          "type" : "string"
+        },
+        "group_members_granularity" : {
+          "type" : "string",
+          "enum" : [ "assembly", "entry", "polymer_entity", "polymer_entity_instance" ],
+          "description" : "Granularity of group members identifiers"
+        },
+        "group_members_count" : {
+          "type" : "integer",
+          "rcsb_search_context" : [ "default-match" ]
+        }
+      }
+    },
+    "rcsb_group_statistics" : {
+      "type" : "object",
+      "properties" : {
+        "similarity_cutoff" : {
+          "type" : "number",
+          "rcsb_search_context" : [ "default-match" ],
+          "description" : "The desired lower limit for the similarity between two members that belong to the same group"
+        },
+        "similarity_score_min" : {
+          "type" : "number",
+          "description" : "Similarity score between two least similar group members"
+        },
+        "similarity_score_max" : {
+          "type" : "number",
+          "description" : "Similarity score between two most similar group members"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_group_accession_info" : {
+      "type" : "object",
+      "required" : [ "version" ],
+      "properties" : {
+        "version" : {
+          "type" : "integer",
+          "description" : "Identifies the version of the groups solution"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_group_related" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "resource_accession_code" : {
+            "type" : "string",
+            "examples" : [ "P69905" ],
+            "description" : "A unique code assigned to a reference related the group"
+          },
+          "resource_name" : {
+            "type" : "string",
+            "examples" : [ "UniProt" ],
+            "description" : "Defines the type of the resource describing related references"
+          }
+        }
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    },
+    "rcsb_polymer_entity_group_members_rankings" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "required" : [ "ranking_criteria_type", "group_members" ],
+        "properties" : {
+          "ranking_criteria_type" : {
+            "type" : "string",
+            "enum" : [ "coverage" ],
+            "rcsb_enum_annotated" : [ {
+              "value" : "coverage",
+              "detail" : "The higher the coverage, the better"
+            } ],
+            "description" : "Defines ranking option applicable to group members",
+            "rcsb_search_context" : [ "exact-match" ]
+          },
+          "group_members" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "required" : [ "member_id", "rank" ],
+              "properties" : {
+                "member_id" : {
+                  "type" : "string",
+                  "rcsb_search_context" : [ "exact-match" ]
+                },
+                "rank" : {
+                  "type" : "integer",
+                  "description" : "Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second",
+                  "rcsb_search_context" : [ "default-match" ]
+                },
+                "original_score" : {
+                  "type" : "number",
+                  "description" : "Quantifies the criteria used for ranking",
+                  "rcsb_search_context" : [ "default-match" ]
+                }
+              },
+              "additionalProperties" : false
+            },
+            "minItems" : 1,
+            "uniqueItems" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    },
+    "rcsb_polymer_entity_group_sequence_alignment" : {
+      "type" : "object",
+      "required" : [ "abstract_reference", "group_members_alignment" ],
+      "properties" : {
+        "abstract_reference" : {
+          "type" : "object",
+          "description" : "Abstract reference where group members can be aligned to generate a MSA",
+          "required" : [ "length" ],
+          "properties" : {
+            "length" : {
+              "type" : "integer",
+              "description" : "Abstract reference length"
+            },
+            "sequence" : {
+              "type" : "string",
+              "description" : "Sequence that represents the abstract reference"
+            }
+          }
+        },
+        "group_members_alignment" : {
+          "type" : "array",
+          "description" : "List of alignments with core_entity canonical sequences",
+          "items" : {
+            "type" : "object",
+            "required" : [ "scores", "aligned_regions" ],
+            "properties" : {
+              "scores" : {
+                "type" : "object",
+                "description" : "Alignment scores",
+                "required" : [ "target_coverage", "query_coverage", "target_length", "query_length" ],
+                "properties" : {
+                  "target_coverage" : {
+                    "type" : "integer"
+                  },
+                  "query_coverage" : {
+                    "type" : "integer"
+                  },
+                  "target_length" : {
+                    "type" : "integer"
+                  },
+                  "query_length" : {
+                    "type" : "integer"
+                  }
+                }
+              },
+              "aligned_regions" : {
+                "type" : "array",
+                "description" : "Aligned sequence regions",
+                "items" : {
+                  "type" : "object",
+                  "description" : "Aligned region",
+                  "required" : [ "target_begin", "query_begin", "length" ],
+                  "properties" : {
+                    "target_begin" : {
+                      "type" : "integer",
+                      "description" : "NCBI sequence start position"
+                    },
+                    "query_begin" : {
+                      "type" : "integer",
+                      "description" : "Entity seqeunce start position"
+                    },
+                    "length" : {
+                      "type" : "integer",
+                      "description" : "Aligned region length"
+                    }
+                  }
+                }
+              },
+              "member_id" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties" : false
+}

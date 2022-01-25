@@ -1,0 +1,398 @@
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "title" : "Core NCBI",
+  "description" : "JSON schema for core NCBI collection in RCSB Data Warehouse.",
+  "type" : "object",
+  "required" : [ "rcsb_ncbi_containers_identifiers", "rcsb_ncbi_metadata", "rcsb_ncbi_sequence", "rcsb_ncbi_organism" ],
+  "properties" : {
+    "rcsb_ncbi_containers_identifiers" : {
+      "type" : "object",
+      "description" : "RCSB NCBI entry identifiers.",
+      "required" : [ "protein_accession", "protein_title", "protein_version", "protein_gi", "tax_id", "uniprot_accession" ],
+      "properties" : {
+        "gene_id" : {
+          "type" : "string",
+          "description" : "NCBI gene ID.",
+          "examples" : [ "3265" ]
+        },
+        "rna_nucleotide_accession" : {
+          "type" : "string",
+          "description" : "NCBI transcript accession.",
+          "examples" : [ "NM_005343" ],
+          "pattern" : "^(.*)$"
+        },
+        "rna_nucleotide_title" : {
+          "type" : "string",
+          "description" : "NCBI transcript title.",
+          "examples" : [ "Mus musculus structural maintenance of chromosomes 3 (Smc3), mRNA." ],
+          "pattern" : "^(.*)$"
+        },
+        "rna_nucleotide_version" : {
+          "type" : "integer",
+          "description" : "NCBI transcript accession version.",
+          "examples" : [ 4 ]
+        },
+        "rna_nucleotide_gi" : {
+          "type" : "string",
+          "description" : "NCBI transcript GI number.",
+          "examples" : [ "568815587" ]
+        },
+        "protein_accession" : {
+          "type" : "string",
+          "description" : "NCBI protein accession.",
+          "examples" : [ "NP_005334" ],
+          "pattern" : "^(.*)$"
+        },
+        "protein_title" : {
+          "type" : "string",
+          "description" : "NCBI protein title.",
+          "examples" : [ "GTPase HRas isoform 1 [Homo sapiens]" ],
+          "pattern" : "^(.*)$"
+        },
+        "protein_version" : {
+          "type" : "integer",
+          "description" : "NCBI protein accession title.",
+          "examples" : [ 1 ]
+        },
+        "protein_gi" : {
+          "type" : "string",
+          "description" : "NCBI protein GI number.",
+          "examples" : [ "4885425" ]
+        },
+        "symbol" : {
+          "type" : "string",
+          "description" : "NCBI gene symbol.",
+          "examples" : [ "HRAS" ],
+          "pattern" : "^(.*)$"
+        },
+        "gene_name" : {
+          "type" : "string",
+          "description" : "NCBI gene name.",
+          "examples" : [ "GTPase HRAS human gene" ],
+          "pattern" : "^(.*)$"
+        },
+        "tax_id" : {
+          "type" : "string",
+          "description" : "NCBI taxonomy ID (String).",
+          "examples" : [ "9606" ],
+          "pattern" : "^(.*)$"
+        },
+        "uniprot_accession" : {
+          "type" : "array",
+          "description" : "UniProt accession list.",
+          "items" : {
+            "type" : "object",
+            "required" : [ "accession_id", "isoform_id" ],
+            "properties" : {
+              "accession_id" : {
+                "type" : "string",
+                "description" : "UniProt accesion.",
+                "examples" : [ "P01112" ],
+                "pattern" : "^(.*)$"
+              },
+              "isoform_id" : {
+                "type" : "integer",
+                "description" : "UniProt isoform ID.",
+                "examples" : [ 1 ]
+              }
+            },
+            "additionalProperties" : false
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_ncbi_metadata" : {
+      "type" : "object",
+      "description" : "NCBI metadata.",
+      "required" : [ "status" ],
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : "NCBI entry status.",
+          "examples" : [ "REVIEWED" ],
+          "pattern" : "^(.*)$"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_ncbi_chromosome" : {
+      "type" : "object",
+      "description" : "NCBI entry chromosome information.",
+      "properties" : {
+        "genomic_nucleotide_accession" : {
+          "type" : "string",
+          "description" : "NCBI chromosome accession.",
+          "examples" : [ "NC_000011" ],
+          "pattern" : "^(.*)$"
+        },
+        "genomic_nucleotide_version" : {
+          "type" : "integer",
+          "description" : "NCBI chromosome accession version.",
+          "examples" : [ 10 ]
+        },
+        "genomic_nucleotide_gi" : {
+          "type" : "string",
+          "description" : "NCBI chromosome GI number.",
+          "examples" : [ "568815587" ]
+        },
+        "assembly" : {
+          "type" : "string",
+          "description" : "Genome assembly name.",
+          "examples" : [ "GRCh38" ],
+          "pattern" : "^(.*)$"
+        },
+        "genomic_nucleotide_name" : {
+          "type" : "string",
+          "description" : "NCBI chromosome name.",
+          "examples" : [ "11" ],
+          "pattern" : "^(.*)$"
+        },
+        "genomic_nucleotide_title" : {
+          "type" : "string",
+          "description" : "NCBI chromosome title.",
+          "examples" : [ "Homo sapiens chromosome 11, GRCh38.p12 Primary Assembly" ],
+          "pattern" : "^(.*)$"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_ncbi_coordinates" : {
+      "type" : "object",
+      "description" : "NCBI coordinates.",
+      "properties" : {
+        "start_position_on_the_genomic_accession" : {
+          "type" : "integer",
+          "description" : "NCBI gene start position.",
+          "examples" : [ 532241 ]
+        },
+        "end_position_on_the_genomic_accession" : {
+          "type" : "integer",
+          "description" : "NCBI gene end position.",
+          "examples" : [ 535566 ]
+        },
+        "orientation" : {
+          "type" : "integer",
+          "description" : "NCBI gene DNA strand.",
+          "examples" : [ 2 ]
+        },
+        "rna_coordinates" : {
+          "type" : "array",
+          "description" : "NCBI transcript coordinates list.",
+          "items" : {
+            "type" : "object",
+            "required" : [ "start_position_on_the_gene_sequence", "end_position_on_the_gene_sequence" ],
+            "properties" : {
+              "start_position_on_the_gene_sequence" : {
+                "type" : "integer",
+                "description" : "NCBI exon start position on the gene.",
+                "examples" : [ 1 ]
+              },
+              "end_position_on_the_gene_sequence" : {
+                "type" : "integer",
+                "description" : "NCBI exon end position on the gene.",
+                "examples" : [ 152 ]
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
+        "protein_coordinates" : {
+          "type" : "array",
+          "description" : "NCBI protein coordinates list.",
+          "items" : {
+            "type" : "object",
+            "required" : [ "start_position_on_the_gene_sequence", "end_position_on_the_gene_sequence" ],
+            "properties" : {
+              "start_position_on_the_gene_sequence" : {
+                "type" : "integer",
+                "description" : "NCBI CDS start position on the gene.",
+                "examples" : [ 1246 ]
+              },
+              "end_position_on_the_gene_sequence" : {
+                "type" : "integer",
+                "description" : "NCBI CDS end position on the gene.",
+                "examples" : [ 1356 ]
+              }
+            },
+            "additionalProperties" : false
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_ncbi_organism" : {
+      "type" : "object",
+      "description" : "NCBI organism information.",
+      "required" : [ "tax_id", "scientific_name", "source" ],
+      "properties" : {
+        "tax_id" : {
+          "type" : "string",
+          "description" : "NCBI taxonomy ID.",
+          "examples" : [ "9606" ]
+        },
+        "source" : {
+          "type" : "string",
+          "description" : "Scientific name source: Data Warehouse (DW) or NCBI Web Services (WS).",
+          "enum" : [ "DW", "WS" ]
+        },
+        "scientific_name" : {
+          "type" : "string",
+          "description" : "NCBI organism scientific name.",
+          "examples" : [ "Homo sapiens" ],
+          "pattern" : "^(.*)$"
+        },
+        "common_name" : {
+          "type" : "string",
+          "description" : "NCBI organism common name.",
+          "examples" : [ "Human" ],
+          "pattern" : "^(.*)$"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_ncbi_alignments" : {
+      "type" : "object",
+      "description" : "NCBI pairwise sequence alignments.",
+      "properties" : {
+        "core_entity_alignments" : {
+          "type" : "array",
+          "description" : "List of alignments with core_entity canonical sequences",
+          "required" : [ "core_entity_identifiers", "scores", "aligned_regions" ],
+          "items" : {
+            "type" : "object",
+            "required" : [ "scores", "aligned_regions" ],
+            "properties" : {
+              "scores" : {
+                "type" : "object",
+                "description" : "Alignment scores",
+                "required" : [ "target_coverage", "query_coverage", "target_length", "query_length" ],
+                "properties" : {
+                  "target_coverage" : {
+                    "type" : "integer"
+                  },
+                  "query_coverage" : {
+                    "type" : "integer"
+                  },
+                  "target_length" : {
+                    "type" : "integer"
+                  },
+                  "query_length" : {
+                    "type" : "integer"
+                  }
+                }
+              },
+              "aligned_regions" : {
+                "type" : "array",
+                "description" : "Aligned sequence regions",
+                "items" : {
+                  "type" : "object",
+                  "description" : "Aligned region",
+                  "required" : [ "target_begin", "query_begin", "length" ],
+                  "properties" : {
+                    "target_begin" : {
+                      "type" : "integer",
+                      "description" : "NCBI sequence start position"
+                    },
+                    "query_begin" : {
+                      "type" : "integer",
+                      "description" : "Entity seqeunce start position"
+                    },
+                    "length" : {
+                      "type" : "integer",
+                      "description" : "Aligned region length"
+                    }
+                  }
+                }
+              },
+              "core_entity_identifiers" : {
+                "type" : "object",
+                "description" : "core_entity identifiers",
+                "required" : [ "entity_id", "entry_id" ],
+                "properties" : {
+                  "entry_id" : {
+                    "type" : "string"
+                  },
+                  "entity_id" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "core_uniprot_alignments" : {
+          "type" : "array",
+          "description" : "List of alignments with core_uniprot sequences",
+          "items" : {
+            "type" : "object",
+            "required" : [ "scores", "aligned_regions" ],
+            "properties" : {
+              "scores" : {
+                "type" : "object",
+                "description" : "Alignment scores",
+                "required" : [ "target_coverage", "query_coverage", "target_length", "query_length" ],
+                "properties" : {
+                  "target_coverage" : {
+                    "type" : "integer"
+                  },
+                  "query_coverage" : {
+                    "type" : "integer"
+                  },
+                  "target_length" : {
+                    "type" : "integer"
+                  },
+                  "query_length" : {
+                    "type" : "integer"
+                  }
+                }
+              },
+              "aligned_regions" : {
+                "type" : "array",
+                "description" : "Aligned sequence regions",
+                "items" : {
+                  "type" : "object",
+                  "description" : "Aligned region",
+                  "required" : [ "target_begin", "query_begin", "length" ],
+                  "properties" : {
+                    "target_begin" : {
+                      "type" : "integer",
+                      "description" : "NCBI sequence start position"
+                    },
+                    "query_begin" : {
+                      "type" : "integer",
+                      "description" : "Entity seqeunce start position"
+                    },
+                    "length" : {
+                      "type" : "integer",
+                      "description" : "Aligned region length"
+                    }
+                  }
+                }
+              },
+              "uniprot_id" : {
+                "type" : "string",
+                "description" : "UniProt accession"
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_ncbi_sequence" : {
+      "type" : "object",
+      "description" : "NCBI sequences.",
+      "required" : [ "protein" ],
+      "properties" : {
+        "protein" : {
+          "type" : "string",
+          "description" : "NCBI protein sequence.",
+          "examples" : [ "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLAARTVESRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS" ]
+        }
+      },
+      "additionalProperties" : false
+    }
+  },
+  "additionalProperties" : false
+}

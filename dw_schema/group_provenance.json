@@ -1,0 +1,99 @@
+{
+  "$schema" : "https://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "properties" : {
+    "rcsb_id" : {
+      "type" : "string",
+      "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id" ],
+      "description" : "A unique group provenance identifier"
+    },
+    "rcsb_group_provenance_container_identifiers" : {
+      "type" : "object",
+      "required" : [ "group_provenance_id" ],
+      "properties" : {
+        "group_provenance_id" : {
+          "type" : "string",
+          "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id" ],
+          "description" : "A unique group provenance identifier"
+        }
+      }
+    },
+    "rcsb_group_aggregation_method" : {
+      "type" : "object",
+      "required" : [ "type", "method" ],
+      "properties" : {
+        "type" : {
+          "type" : "string",
+          "enum" : [ "sequence_identity", "matching_uniprot_accession", "matching_deposit_group_id" ],
+          "description" : "Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy"
+        },
+        "method" : {
+          "type" : "object",
+          "required" : [ "name" ],
+          "properties" : {
+            "name" : {
+              "type" : "string",
+              "enum" : [ "mmseqs2", "matching_reference_identity" ],
+              "examples" : [ "mmseqs2" ],
+              "description" : "The name of the software or the method used to calculate cluster solutions"
+            },
+            "version" : {
+              "type" : "string",
+              "examples" : [ "v1.0", "3.1-2", "unknown" ],
+              "description" : "The version of the software."
+            },
+            "details" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "type" : {
+                    "type" : "string",
+                    "description" : "Defines the type of the description associated with the clustering process"
+                  },
+                  "name" : {
+                    "type" : "string",
+                    "description" : "Defines the name of the description associated with the clustering process"
+                  },
+                  "value" : {
+                    "type" : "number",
+                    "description" : "Defines the value associated with the clustering process"
+                  },
+                  "description" : {
+                    "type" : "string",
+                    "description" : "A description of special aspects of the clustering process"
+                  }
+                }
+              },
+              "description" : "Additional details describing the clustering process"
+            }
+          },
+          "description" : "The details on a method used to calculate cluster solutions",
+          "additionalProperties" : false
+        },
+        "similarity_criteria" : {
+          "type" : "object",
+          "properties" : {
+            "similarity_function" : {
+              "type" : "string",
+              "enum" : [ "rmsd", "sequence_identity" ],
+              "examples" : [ "RMSD" ],
+              "description" : "A function or similarity measure that quantifies the similarity between two members",
+              "rcsb_enum_annotated" : [ {
+                "value" : "rmsd",
+                "detail" : "The lower the RMSD, the higher the similarity between two group members",
+                "units" : "Å"
+              }, {
+                "value" : "sequence_identity",
+                "detail" : "The higher the sequence identity, the higher the similarity between two group members",
+                "units" : "%"
+              } ]
+            }
+          }
+        }
+      },
+      "additionalProperties" : false
+    }
+  },
+  "additionalProperties" : false
+}
