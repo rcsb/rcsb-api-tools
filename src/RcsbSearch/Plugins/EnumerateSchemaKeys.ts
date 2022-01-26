@@ -39,6 +39,7 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
     const file:string = fs.readFileSync(interfaceFile, "utf-8");
     const regExpUnion = new RegExp(/(\w+)(\??)(:)(\s)(")/);
     const regExpTypeUnion = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)(\s*)(")(\w+)(")(\s*)(\|)/);
+    const regExpSingleType = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)(\s*)(")(\w+)(")(;)/);
     const regExpSingleKey = new RegExp(/(\w+)(\??)(:)(\s?\(?)$/);
     const regExpSingleUnion = new RegExp(/(\s+)(\|)(\s)(")([a-zA-Z0-9-_]+)(")(;?)$/);
     const keyUnionMap: Map<string, Set<string>> = new Map<string, Set<string>>();
@@ -54,6 +55,15 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
                 line.split("=")[1].split("|").forEach(unionValue=>{
                     keyUnionMap.get(key)?.add(replace(unionValue));
                 });
+            }
+        }else if(regExpSingleType.test(line)){
+            const match: RegExpMatchArray | null = line.match(regExpSingleType);
+            if(match) {
+                const key: string = match[5];
+                const value: string = match[10];
+                if(!keyUnionMap.has(key))
+                    keyUnionMap.set(key, new Set<string>());
+                keyUnionMap.get(key)?.add(replace(value));
             }
         }else if(regExpUnion.test(line)){
             const keyUnion: string[] = line.split(":");

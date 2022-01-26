@@ -1,3 +1,7 @@
+export enum RelevanceScoreRankingOption {
+    Score = "score"
+}
+
 export enum SortDirection {
     Asc = "asc",
     Desc = "desc"
