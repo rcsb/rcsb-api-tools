@@ -25,6 +25,11 @@
       "minimum": 0,
       "description": "The number of hits returned by group_by operation"
     },
+    "ungrouped_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number returned by group_by operation that counts hits that are not members of requested groups"
+    },
     "explain_metadata": {
       "type": "object",
       "required": [

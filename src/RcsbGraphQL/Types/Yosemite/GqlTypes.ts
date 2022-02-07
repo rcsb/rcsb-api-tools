@@ -635,11 +635,11 @@ export interface CoreEntry {
   em_staining?: Maybe<Array<Maybe<EmStaining>>>;
   em_vitrification?: Maybe<Array<Maybe<EmVitrification>>>;
   entry?: Maybe<Entry>;
+  /** Get all groups for this PDB entry. */
+  entry_groups?: Maybe<Array<Maybe<GroupEntry>>>;
   exptl?: Maybe<Array<Maybe<Exptl>>>;
   exptl_crystal?: Maybe<Array<Maybe<ExptlCrystal>>>;
   exptl_crystal_grow?: Maybe<Array<Maybe<ExptlCrystalGrow>>>;
-  /** Get all groups for this PDB entry. */
-  groups?: Maybe<Array<Maybe<GroupEntry>>>;
   /** Get all non-polymer (non-solvent) entities for this PDB entry. */
   nonpolymer_entities?: Maybe<Array<Maybe<CoreNonpolymerEntity>>>;
   pdbx_SG_project?: Maybe<Array<Maybe<PdbxSgProject>>>;
@@ -813,11 +813,11 @@ export interface CorePolymerEntity {
   entity_src_nat?: Maybe<Array<Maybe<EntitySrcNat>>>;
   /** Get PDB entry that contains this molecular entity. */
   entry?: Maybe<CoreEntry>;
-  /** Get all groups for this PDB entity. */
-  groups?: Maybe<Array<Maybe<GroupPolymerEntity>>>;
   pdbx_entity_src_syn?: Maybe<Array<Maybe<PdbxEntitySrcSyn>>>;
   /** Get all unique Pfam annotations associated with this molecular entity. */
   pfams?: Maybe<Array<Maybe<CorePfam>>>;
+  /** Get all groups for this PDB entity. */
+  polymer_entity_groups?: Maybe<Array<Maybe<GroupPolymerEntity>>>;
   /** Get all unique polymer instances (chains) for this molecular entity. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
   /** Get a BIRD chemical components described in this molecular entity. */
@@ -3038,7 +3038,7 @@ export interface GeneName {
 export interface GroupEntry {
   __typename?: 'GroupEntry';
   /** Get provenance associated with this group. */
-  provenance?: Maybe<GroupProvenance>;
+  group_provenance?: Maybe<GroupProvenance>;
   rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
   rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
   rcsb_group_info: RcsbGroupInfo;
@@ -3069,7 +3069,7 @@ export interface GroupMembersAlignmentScores {
 export interface GroupPolymerEntity {
   __typename?: 'GroupPolymerEntity';
   /** Get provenance associated with this group. */
-  provenance?: Maybe<GroupProvenance>;
+  group_provenance?: Maybe<GroupProvenance>;
   rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
   rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
   rcsb_group_info: RcsbGroupInfo;
@@ -8367,7 +8367,12 @@ export interface RcsbEntryGroupMembership {
    * matching_deposit_group_id
    */
   aggregation_method: Scalars['String'];
-  /** Identifier for a group a given polymer entity belongs to */
+  /**
+   * A unique identifier for a group of entries
+   *
+   * Examples:
+   * G_1001001
+   */
   group_id: Scalars['String'];
 }
 
@@ -8657,7 +8662,7 @@ export interface RcsbGroupContainerIdentifiers {
 
 export interface RcsbGroupInfo {
   __typename?: 'RcsbGroupInfo';
-  group_description: Scalars['String'];
+  group_description?: Maybe<Scalars['String']>;
   group_members_count: Scalars['Int'];
   /**
    * Granularity of group members identifiers
@@ -8666,7 +8671,7 @@ export interface RcsbGroupInfo {
    * assembly, entry, polymer_entity, polymer_entity_instance
    */
   group_members_granularity: Scalars['String'];
-  group_name: Scalars['String'];
+  group_name?: Maybe<Scalars['String']>;
 }
 
 export interface RcsbGroupProvenanceContainerIdentifiers {
@@ -9578,6 +9583,7 @@ export interface RcsbPolymerEntity {
    * N, Y
    */
   rcsb_multiple_source_flag?: Maybe<Scalars['String']>;
+  rcsb_polymer_name_combined?: Maybe<RcsbPolymerEntityRcsbPolymerNameCombined>;
   /**
    * The number of biological sources for the polymer entity. Multiple source contributions
    *  may come from the same organism (taxonomy).
@@ -9916,7 +9922,12 @@ export interface RcsbPolymerEntityGroupMembership {
    * sequence_identity, matching_uniprot_accession
    */
   aggregation_method: Scalars['String'];
-  /** Identifier for a group a given polymer entity belongs to */
+  /**
+   * A unique identifier for a group of entities
+   *
+   * Examples:
+   * 1_100, P00003
+   */
   group_id: Scalars['String'];
   /** Degree of similarity expressed as a floating-point number */
   similarity_cutoff?: Maybe<Scalars['Float']>;
@@ -10061,6 +10072,14 @@ export interface RcsbPolymerEntityRcsbMacromolecularNamesCombined {
    * Allowable values:
    * PDB Preferred Name, PDB Synonym
    */
+  provenance_source?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbPolymerEntityRcsbPolymerNameCombined {
+  __typename?: 'RcsbPolymerEntityRcsbPolymerNameCombined';
+  /** Protein name annotated by the UniProt or macromolecular name PDB assigned by the PDB */
+  names?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Allowable values: PDB Preferred Name, PDB Description, UniProt Name. */
   provenance_source?: Maybe<Scalars['String']>;
 }
 

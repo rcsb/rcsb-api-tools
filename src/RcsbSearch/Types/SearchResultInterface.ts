@@ -35,6 +35,10 @@ export interface QueryResult {
    */
   group_by_count?: number;
   /**
+   * The number returned by group_by operation that counts hits that are not members of requested groups
+   */
+  ungrouped_count?: number;
+  /**
    * Explains the query execution time.
    */
   explain_metadata?: {

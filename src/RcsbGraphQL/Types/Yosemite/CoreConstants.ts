@@ -160,10 +160,10 @@ export class CoreConstants{
 	public static readonly EM_SPECIMEN = "em_specimen";
 	public static readonly EM_STAINING = "em_staining";
 	public static readonly EM_VITRIFICATION = "em_vitrification";
+	public static readonly ENTRY_GROUPS = "entry_groups";
 	public static readonly EXPTL = "exptl";
 	public static readonly EXPTL_CRYSTAL = "exptl_crystal";
 	public static readonly EXPTL_CRYSTAL_GROW = "exptl_crystal_grow";
-	public static readonly GROUPS = "groups";
 	public static readonly NONPOLYMER_ENTITIES = "nonpolymer_entities";
 	public static readonly PDBX_SG_PROJECT = "pdbx_SG_project";
 	public static readonly PDBX_AUDIT_REVISION_CATEGORY = "pdbx_audit_revision_category";
@@ -247,6 +247,7 @@ export class CoreConstants{
 	public static readonly ENTITY_SRC_NAT = "entity_src_nat";
 	public static readonly PDBX_ENTITY_SRC_SYN = "pdbx_entity_src_syn";
 	public static readonly PFAMS = "pfams";
+	public static readonly POLYMER_ENTITY_GROUPS = "polymer_entity_groups";
 	public static readonly POLYMER_ENTITY_INSTANCES = "polymer_entity_instances";
 	public static readonly RCSB_CLUSTER_FLEXIBILITY = "rcsb_cluster_flexibility";
 	public static readonly RCSB_CLUSTER_MEMBERSHIP = "rcsb_cluster_membership";
@@ -533,7 +534,7 @@ export class CoreConstants{
 	public static readonly PDBX_PH_RANGE = "pdbx_pH_range";
 	public static readonly TEMP_DETAILS = "temp_details";
 	public static readonly VALUE = "value";
-	public static readonly PROVENANCE = "provenance";
+	public static readonly GROUP_PROVENANCE = "group_provenance";
 	public static readonly RCSB_GROUP_ACCESSION_INFO = "rcsb_group_accession_info";
 	public static readonly RCSB_GROUP_CONTAINER_IDENTIFIERS = "rcsb_group_container_identifiers";
 	public static readonly RCSB_GROUP_INFO = "rcsb_group_info";
@@ -888,15 +889,12 @@ export class CoreConstants{
 	public static readonly XTRIAGE_INPUT_COLUMNS = "xtriage_input_columns";
 	public static readonly POLYMER_ENTITY_INSTANCE = "polymer_entity_instance";
 	public static readonly CHEM_COMPS = "chem_comps";
-	public static readonly POLYMER_ENTITY_GROUPS = "polymer_entity_groups";
 	public static readonly ENTRY_GROUP = "entry_group";
 	public static readonly ASSEMBLY = "assembly";
-	public static readonly GROUP_PROVENANCE = "group_provenance";
 	public static readonly POLYMER_ENTITY_GROUP = "polymer_entity_group";
 	public static readonly BRANCHED_ENTITY_INSTANCE = "branched_entity_instance";
 	public static readonly NONPOLYMER_ENTITY_INSTANCE = "nonpolymer_entity_instance";
 	public static readonly ENTRIES = "entries";
-	public static readonly ENTRY_GROUPS = "entry_groups";
 	public static readonly UNIPROT = "uniprot";
 	public static readonly DEPOSIT_DATE = "deposit_date";
 	public static readonly HAS_RELEASED_EXPERIMENTAL_DATA = "has_released_experimental_data";
@@ -1096,6 +1094,7 @@ export class CoreConstants{
 	public static readonly RCSB_ENZYME_CLASS_COMBINED = "rcsb_enzyme_class_combined";
 	public static readonly RCSB_MACROMOLECULAR_NAMES_COMBINED = "rcsb_macromolecular_names_combined";
 	public static readonly RCSB_MULTIPLE_SOURCE_FLAG = "rcsb_multiple_source_flag";
+	public static readonly RCSB_POLYMER_NAME_COMBINED = "rcsb_polymer_name_combined";
 	public static readonly RCSB_SOURCE_PART_COUNT = "rcsb_source_part_count";
 	public static readonly RCSB_SOURCE_TAXONOMY_COUNT = "rcsb_source_taxonomy_count";
 	public static readonly SRC_METHOD = "src_method";
@@ -1120,6 +1119,7 @@ export class CoreConstants{
 	public static readonly SCORES = "scores";
 	public static readonly AUTH_TO_ENTITY_POLY_SEQ_MAPPING = "auth_to_entity_poly_seq_mapping";
 	public static readonly EC = "ec";
+	public static readonly NAMES = "names";
 	public static readonly RCSB_ORCID_IDENTIFIERS = "rcsb_ORCID_identifiers";
 	public static readonly ALIGNED_TARGET = "aligned_target";
 	public static readonly RELATED_RESOURCE_NAME = "related_resource_name";
