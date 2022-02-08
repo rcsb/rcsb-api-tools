@@ -4,11 +4,15 @@ import * as serverSearch from "./ServerConfig/codegen.search.json";
 
 export class SearchRequest {
     private readonly uri: string;
-    private readonly fetch:(input:RequestInfo,init?:RequestInit)=>Promise<Response> = fetch;
+    private readonly fetch:(input:RequestInfo,init?:RequestInit)=>Promise<Response>;
     constructor(uri?:string, externalFetch?:(input:RequestInfo,init?:RequestInit)=>Promise<Response>) {
         this.uri = uri ?? serverSearch.uri;
         if(typeof externalFetch === "function")
             this.fetch = externalFetch;
+        else
+            this.fetch = fetch;
+        if(!this.fetch)
+            throw "ERROR: fetch function was not provided"
     }
     public async request(query: SearchQuery): Promise<QueryResult|null>{
         const response: Response = await this.fetch(this.uri, {

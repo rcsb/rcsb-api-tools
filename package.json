@@ -1,7 +1,7 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "2.2.2",
-  "description": "",
+  "version": "2.2.3",
+  "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
     "build"

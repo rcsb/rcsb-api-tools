@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [2.2.3] - 2022-02-08
+### Bug fixes
+- `SearchRequest` initializes `fetch` within the constructor
+
 ## [2.2.2] - 2021-12-21
 ### Configuration improvement
 - `GraphQLRequest` exposes ApolloClient configuration as an optional parameter
