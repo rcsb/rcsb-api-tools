@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [2.2.4] - 2022-02-08
+### Dependency update
+- Updated several dependencies
+
 ## [2.2.3] - 2022-02-08
 ### Bug fixes
 - `SearchRequest` initializes `fetch` within the constructor
