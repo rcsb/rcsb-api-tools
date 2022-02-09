@@ -1,0 +1,58 @@
+{
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "Core Pfam",
+  "description" : "JSON schema for core Pfam collection in RCSB Data Warehouse.",
+  "type" : "object",
+  "required" : [ "rcsb_id", "rcsb_pfam_container_identifiers", "rcsb_pfam_accession" ],
+  "properties" : {
+    "rcsb_id" : {
+      "type" : "string",
+      "description" : "Accession number of Pfam entry.",
+      "rcsb_search_context" : [ "exact-match" ]
+    },
+    "rcsb_pfam_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "pfam_id" : {
+          "type" : "string",
+          "description" : "Accession number of Pfam entry."
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_pfam_accession" : {
+      "type" : "string",
+      "examples" : [ "PF00621", "PF00637", "PF00656" ],
+      "description" : "The unique accession code of protein families and domains in the Pfam database."
+    },
+    "rcsb_pfam_identifier" : {
+      "type" : "string",
+      "examples" : [ "RhoGEF", "Clathrin", "Peptidase_C14" ],
+      "description" : "The unique identifier of protein families and domains in the Pfam database."
+    },
+    "rcsb_pfam_seed_source" : {
+      "type" : "string",
+      "enum" : [ "Family", "Domain", "Repeat", "Motif", "Disordered", "Coiled-coil" ],
+      "description" : "Pfam entries are classified into six different categories, depending on the length and nature of the sequence regions included in the entry: family, domain, repeats, motifs, coiled-coil, and disordered."
+    },
+    "rcsb_pfam_description" : {
+      "type" : "string",
+      "examples" : [ "Lectin like domain", "Cell division control protein 24, OB domain 2", "Protein of unknown function (DUF722)" ],
+      "description" : "A human-readable name of protein families and domains."
+    },
+    "rcsb_pfam_comment" : {
+      "type" : "string",
+      "description" : "Textual description of the family."
+    },
+    "rcsb_pfam_clan_id" : {
+      "type" : "string",
+      "description" : "Details of the Pfam clan to which the entity belongs."
+    },
+    "rcsb_pfam_provenance_code" : {
+      "type" : "string",
+      "enum" : [ "Pfam-A" ],
+      "description" : "Pfam-A is the manually curated portion of the Pfam database."
+    }
+  },
+  "additionalProperties" : false
+}

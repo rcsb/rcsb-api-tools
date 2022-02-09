@@ -1,0 +1,38 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_unreleased_results.json",
+  "title": "Unreleased Entry Result",
+  "type": "object",
+  "required": [
+    "query_id",
+    "result_type",
+    "total_count",
+    "explain_metadata"
+  ],
+  "properties": {
+    "query_id": {
+      "$ref": "json-schema-rcsb_search_results.json#/properties/query_id"
+    },
+    "result_type": {
+      "$ref": "json-schema-rcsb_search_unreleased_query.json#/properties/return_type"
+    },
+    "total_count": {
+      "$ref": "json-schema-rcsb_search_results.json#/properties/total_count"
+    },
+    "explain_metadata": {
+      "$ref": "json-schema-rcsb_search_results.json#/properties/explain_metadata"
+    },
+    "result_set": {
+      "type": "array",
+      "items": {
+        "$ref": "json-schema-rcsb_search_unreleased_results_identifier.json"
+      },
+      "minItems": 1,
+      "description": "A list of search result identifiers including each identifier's score and the service query where the identifier was rendered from."
+    },
+    "drilldown": {
+      "$ref": "json-schema-rcsb_search_results.json#/properties/drilldown"
+    }
+  },
+  "description": "Provides a generic interface to represent the RCSB unreleased entries search result.",
+  "additionalProperties": false
+}

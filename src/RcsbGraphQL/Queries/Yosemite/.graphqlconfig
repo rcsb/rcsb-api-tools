@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "http://132.249.213.110/graphql",
+        "url": "https://data.rcsb.org/graphql",
         "headers": {
           "user-agent": "JS GraphQL"
         },

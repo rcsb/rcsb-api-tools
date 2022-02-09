@@ -1,0 +1,35 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_facets_filter_node_terminal.json",
+  "title": "Filter Query Terminal Node",
+  "type": "object",
+  "required": [
+    "type",
+    "service"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "terminal"
+      ],
+      "description": "The type of the node."
+    },
+    "node_id": {
+      "type": "integer",
+      "description": "An ID that is unique within the enclosing query."
+    },
+    "service": {
+      "type": "string",
+      "enum": [
+        "text",
+        "text_chem"
+      ],
+      "javaType" : "org.rcsb.arches.auto.model.FilterQueryServiceType",
+      "description": "The search service that is responsible for running the query and retrieving the search results."
+    },
+    "parameters": {
+      "$ref": "json-schema-rcsb_search_query_parameters_attribute_text.json"
+    }
+  },
+  "description": "A terminal node is an atomic-level element within a query."
+}

@@ -9,13 +9,7 @@
           "$ref": "../json-schema-rcsb_search_query.json#/properties/return_type"
         },
         {
-          "$ref": "../json-schema-rcsb_search_unreleased_entry_query.json#/properties/return_type"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "chem_comp"
-          ]
+          "$ref": "../json-schema-rcsb_search_unreleased_query.json#/properties/return_type"
         }
       ]
     }

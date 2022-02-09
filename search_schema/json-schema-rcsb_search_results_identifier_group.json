@@ -1,0 +1,35 @@
+{
+  "$id": "/schema/json-schema-rcsb_query_result_identifier_group.json",
+  "title": "Group Identifier",
+  "type": "object",
+  "required": [
+    "identifier",
+    "score",
+    "result_set"
+  ],
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Group identifier"
+    },
+    "score": {
+      "type": "number",
+      "excludedFromEqualsAndHashCode" : true,
+      "description": "The relevance score for the group given the query, calculated from the members relevance scores. Highest is more relevant. From 0 to 1"
+    },
+    "count": {
+      "type": "integer",
+      "excludedFromEqualsAndHashCode" : true,
+      "description": "The number of group members that match the search query"
+    },
+    "result_set": {
+      "type": "array",
+      "excludedFromEqualsAndHashCode" : true,
+      "items": {
+        "$ref": "json-schema-rcsb_search_results_identifier.json"
+      },
+      "description": "The group members that match the query"
+    }
+  },
+  "additionalProperties": false
+}

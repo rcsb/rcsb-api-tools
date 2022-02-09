@@ -1,0 +1,25 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json",
+  "title": "Residue Identifier",
+  "type": "object",
+  "required": [
+    "label_asym_id",
+    "label_seq_id"
+  ],
+  "properties": {
+    "label_asym_id": {
+      "type": "string",
+      "description": "Chain identifier of this residue."
+    },
+    "struct_oper_id": {
+      "type": "string",
+      "default": "1",
+      "description": "Identifier of the assembly generating operation that was used to determine the coordinates of this residue. Chaining of operations is expressed by '1stx2nd'."
+    },
+    "label_seq_id": {
+      "type": "integer",
+      "description": "Sequence identifier of this residue."
+    }
+  },
+  "additionalProperties": false
+}

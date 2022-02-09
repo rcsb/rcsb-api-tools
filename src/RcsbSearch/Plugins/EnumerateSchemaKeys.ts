@@ -9,13 +9,37 @@ function replace(value: string): string{
 
 function camelCase(value: string): string{
     const val: string =  _.camelCase(value);
-    return val.charAt(0).toUpperCase() + val.slice(1)
+    let out: string = val.charAt(0).toUpperCase() + val.slice(1)
+    if(!(/^[a-z0-9_]+$/i).test(value))
+        out += "_";
+    if((/^\d$/).test(out.charAt(0)))
+        return "_"+out;
+    return out;
+}
+
+function getCurrentEnums(fileName: string): Set<string>{
+    const enumSet: Set<string> = new Set<string>();
+    const regExp = new RegExp(/(export)(\s+)(enum)(\s+)(\w+)(\s+)/);
+    if(fs.existsSync(fileName)) {
+        const file: string = fs.readFileSync(fileName, "utf-8");
+        file.split("\n").forEach((line, n)=>{
+            if(regExp.test(line)){
+                const match: RegExpMatchArray | null = line.match(regExp);
+                if(match){
+                    const key: string = match[5];
+                    enumSet.add(key);
+                }
+            }
+        });
+    }
+    return enumSet;
 }
 
 function generateEnum(interfaceFile: string, constantsFile: string): void{
     const file:string = fs.readFileSync(interfaceFile, "utf-8");
     const regExpUnion = new RegExp(/(\w+)(\??)(:)(\s)(")/);
     const regExpTypeUnion = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)(\s*)(")(\w+)(")(\s*)(\|)/);
+    const regExpSingleType = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)(\s*)(")(\w+)(")(;)/);
     const regExpSingleKey = new RegExp(/(\w+)(\??)(:)(\s?\(?)$/);
     const regExpSingleUnion = new RegExp(/(\s+)(\|)(\s)(")([a-zA-Z0-9-_]+)(")(;?)$/);
     const keyUnionMap: Map<string, Set<string>> = new Map<string, Set<string>>();
@@ -31,6 +55,15 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
                 line.split("=")[1].split("|").forEach(unionValue=>{
                     keyUnionMap.get(key)?.add(replace(unionValue));
                 });
+            }
+        }else if(regExpSingleType.test(line)){
+            const match: RegExpMatchArray | null = line.match(regExpSingleType);
+            if(match) {
+                const key: string = match[5];
+                const value: string = match[10];
+                if(!keyUnionMap.has(key))
+                    keyUnionMap.set(key, new Set<string>());
+                keyUnionMap.get(key)?.add(replace(value));
             }
         }else if(regExpUnion.test(line)){
             const keyUnion: string[] = line.split(":");
@@ -58,7 +91,11 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
         }
     });
     const enums: string[] = [];
+    const enumSet: Set<String> = getCurrentEnums(constantsFile);
     keyUnionMap.forEach((unionValues,key)=>{
+        if(enumSet.has(camelCase(key)))
+            return;
+        enumSet.add(camelCase(key));
         enums.push(`export enum ${camelCase(key)} {`);
         unionValues.forEach(uV=>{
             enums.push(`    ${camelCase(uV)} = "${uV}",`);
@@ -70,7 +107,7 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
 }
 
 export async function generateInterface(schemaFile: string, interfaceFile: string, constantsFile: string, options?:Partial<Options>): Promise<string>{
-    const schema: string = await compileFromFile(schemaFile, {cwd:"./search_schema", ...options});
+    const schema: string = await compileFromFile(schemaFile, options);
     fs.writeFileSync(interfaceFile, schema);
     generateEnum(interfaceFile, constantsFile);
     return interfaceFile;

@@ -41,8 +41,17 @@ export interface AlignedRegion {
   target_end: Scalars['Int'];
 }
 
+export interface AlignmentLogo {
+  __typename?: 'AlignmentLogo';
+  symbol?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['Int']>;
+}
+
 export interface AlignmentResponse {
   __typename?: 'AlignmentResponse';
+  /** Length of the alignment */
+  alignment_length?: Maybe<Scalars['Int']>;
+  alignment_logo?: Maybe<Array<Maybe<Array<Maybe<AlignmentLogo>>>>>;
   /** Full sequence of the query */
   query_sequence?: Maybe<Scalars['String']>;
   /** JSON schema that describes the different alignments between the query sequence and targets */
@@ -57,6 +66,7 @@ export interface AnnotationFeatures {
   source?: Maybe<Source>;
   /** Database source entry identifier associated to the positional features */
   target_id?: Maybe<Scalars['String']>;
+  target_identifiers?: Maybe<TargetIdentifiers>;
 }
 
 export interface Coverage {
@@ -88,7 +98,7 @@ export interface Feature {
    * The connection type.
    *
    * Examples:
-   * mutation, artifact, CATH, SCOP
+   * ASA_UNBOUND, BINDING_SITE, mutation, artifact, CATH, SCOP
    */
   type?: Maybe<Type>;
   /** Numerical value associated with the feature */
@@ -197,6 +207,7 @@ export enum SequenceReference {
 export enum Source {
   PdbEntity = 'PDB_ENTITY',
   PdbInstance = 'PDB_INSTANCE',
+  PdbInterface = 'PDB_INTERFACE',
   Uniprot = 'UNIPROT'
 }
 
@@ -214,10 +225,25 @@ export interface TargetAlignment {
   target_sequence?: Maybe<Scalars['String']>;
 }
 
+export interface TargetIdentifiers {
+  __typename?: 'TargetIdentifiers';
+  assembly_id?: Maybe<Scalars['String']>;
+  asym_id?: Maybe<Scalars['String']>;
+  entity_id?: Maybe<Scalars['String']>;
+  entry_id?: Maybe<Scalars['String']>;
+  interface_id?: Maybe<Scalars['String']>;
+  interface_partner_index?: Maybe<Scalars['Int']>;
+  target_id?: Maybe<Scalars['String']>;
+  uniprot_id?: Maybe<Scalars['String']>;
+}
+
 export enum Type {
   ActiveSite = 'ACTIVE_SITE',
   AngleOutlier = 'ANGLE_OUTLIER',
   Artifact = 'ARTIFACT',
+  Asa = 'ASA',
+  AsaBound = 'ASA_BOUND',
+  AsaUnbound = 'ASA_UNBOUND',
   BindingSite = 'BINDING_SITE',
   BondOutlier = 'BOND_OUTLIER',
   CalciumBindingRegion = 'CALCIUM_BINDING_REGION',

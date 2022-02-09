@@ -1,15 +1,16 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "2.2.4",
+  "version": "2.3.1",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
     "build"
   ],
   "scripts": {
+    "buildDwInterface": "ts-node src/RcsbDw/Generator/GenerateInterfaces.ts",
     "buildSearchInterface": "ts-node src/RcsbSearch/Generator/GenerateInterfaces.ts && ts-node src/RcsbSearch/Generator/CompileSearchMetadata.ts",
     "buildGraphQLInterfaces": "ts-node src/RcsbGraphQL/Generator/GenerateInterfaces.ts",
-    "buildSources": "npm run buildSearchInterface && npm run buildGraphQLInterfaces",
+    "buildSources": "npm run buildSearchInterface && npm run buildGraphQLInterfaces && npm run buildDwInterface",
     "build": "webpack --config webpack.config.js",
     "tsc": "tsc",
     "buildApp": "npm run buildSources && npm run tsc && npm run build",
@@ -49,5 +50,8 @@
     "@graphql-codegen/cli": "^2.5.0",
     "apollo-boost": "^0.4.9",
     "graphql": "^15.5.1"
+  },
+  "rcsb-dependencies": {
+    "rcsb-mojave-model": "1.28.1"
   }
 }

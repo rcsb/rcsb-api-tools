@@ -1,0 +1,96 @@
+{
+  "type" : "object",
+  "properties" : {
+    "rcsb_repository_holdings_current" : {
+      "type" : "object",
+      "properties" : {
+        "repository_content_types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "2fo-fc Map", "Combined NMR data (NEF)", "Combined NMR data (NMR-STAR)", "FASTA sequence", "Map Coefficients", "NMR chemical shifts", "NMR restraints V1", "NMR restraints V2", "assembly PDB", "assembly mmCIF", "entry PDB", "entry PDB bundle", "entry PDBML", "entry mmCIF", "fo-fc Map", "structure factors", "validation data mmCIF", "validation report", "validation slider image" ],
+            "examples" : [ "entry mmCIF" ],
+            "description" : "The list of content types associated with this entry.",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "The list of content types associated with this entry.",
+              "context" : "dictionary"
+            }, {
+              "text" : "Content Types Available in the Repository",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Deposition",
+              "priority_order" : 75
+            } ]
+          },
+          "uniqueItems" : false
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_repository_holdings_current_entry_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "assembly_ids" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "examples" : [ "1", "2", "3" ],
+            "description" : "The assembly id codes.",
+            "rcsb_description" : [ {
+              "text" : "The assembly id codes.",
+              "context" : "dictionary"
+            } ]
+          },
+          "uniqueItems" : false
+        },
+        "entry_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The PDB entry accession code.",
+          "rcsb_description" : [ {
+            "text" : "The PDB entry accession code.",
+            "context" : "dictionary"
+          } ]
+        },
+        "rcsb_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The RCSB entry identifier.",
+          "rcsb_description" : [ {
+            "text" : "The RCSB entry identifier.",
+            "context" : "dictionary"
+          } ]
+        },
+        "update_id" : {
+          "type" : "string",
+          "examples" : [ "2018_23" ],
+          "description" : "Identifier for the current data exchange status record.",
+          "rcsb_description" : [ {
+            "text" : "Identifier for the current data exchange status record.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false,
+      "required" : [ "entry_id" ]
+    },
+    "rcsb_id" : {
+      "type" : "string",
+      "examples" : [ "1KIP" ],
+      "description" : "The RCSB entry identifier.",
+      "rcsb_description" : [ {
+        "text" : "The RCSB entry identifier.",
+        "context" : "dictionary"
+      } ]
+    }
+  },
+  "additionalProperties" : false,
+  "required" : [ "rcsb_id" ],
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "schema: repository_holdings collection: repository_holdings_current_entry version: 3.4.3",
+  "description" : "RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_current_entry version 3.4.3. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_current_entry.json and follows JSON schema specification version 4",
+  "$comment" : "schema_version: 3.4.3"
+}

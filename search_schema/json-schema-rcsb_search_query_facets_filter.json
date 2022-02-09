@@ -8,7 +8,14 @@
   ],
   "properties": {
     "filter": {
-      "$ref": "json-schema-rcsb_search_query_parameters_text.json"
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_facets_filter_node_group.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_facets_filter_node_terminal.json"
+        }
+      ]
     },
     "facets": {
       "$ref": "json-schema-rcsb_search_query_facets.json"

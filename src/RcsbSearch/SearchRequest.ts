@@ -23,6 +23,12 @@ export class SearchRequest {
             },
             body: JSON.stringify(query)
         });
-        return await response.json() as QueryResult;
+        try {
+            return await response.json() as QueryResult;
+        }catch (e) {
+            console.error(e);
+            console.error(response);
+            return null;
+        }
     }
 }

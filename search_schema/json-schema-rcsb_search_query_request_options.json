@@ -1,0 +1,110 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_request_options.json",
+  "title": "Request Options",
+  "type": "object",
+  "properties": {
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    },
+    "group_by": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_deposit_id.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_sequence_identity.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_uniprot_accession.json"
+        }
+      ],
+      "description": "Option that is used to partition search results into groups"
+    },
+    "group_by_return_type": {
+      "type": "string",
+      "enum": [
+        "groups",
+        "representatives"
+      ],
+      "default": "representatives",
+      "javaType" : "org.rcsb.arches.auto.model.GroupByReturnType",
+      "description": "Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group;"
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "json-schema-rcsb_search_query_request_options_sort_attributes.json"
+          },
+          {
+            "$ref": "json-schema-rcsb_search_query_request_options_sort_groups.json"
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "pager": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "description": "The offset from the first result."
+        },
+        "rows": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "description": "Number of entries returned in the result set."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Specifies a range in the query result set. When absent, returns only the top 10 entries, e.g. 'start' defaults to 0, and 'rows' defaults to 10."
+    },
+    "scoring_strategy": {
+      "type": "string",
+      "enum": [
+        "combined",
+        "sequence",
+        "seqmotif",
+        "strucmotif",
+        "structure",
+        "chemical",
+        "text",
+        "text_chem",
+        "full_text"
+      ],
+      "default": "combined",
+      "description": "Scoring algorithm to be used for scores calculation of the final result set."
+    },
+    "return_all_hits": {
+      "type": "boolean",
+      "default": false,
+      "description": "When set to true, all hits are returned as a result set."
+    },
+    "return_counts": {
+      "type": "boolean",
+      "default": false,
+      "description": "Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned."
+    },
+    "results_verbosity": {
+      "type": "string",
+      "enum": [
+        "compact",
+        "minimal",
+        "verbose"
+      ],
+      "default": "verbose",
+      "description": "Allows to control the additional metadata returned with search hits such as scores returned by individual services and context of the match, e.g. alignments from sequence search service."
+    },
+    "return_explain_metadata": {
+      "type": "boolean",
+      "default": false,
+      "description": "When enabled, the search results are return with profiling info on execution timings"
+    }
+  },
+  "additionalProperties": false
+}

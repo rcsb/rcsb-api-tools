@@ -1,0 +1,132 @@
+{
+  "type" : "object",
+  "properties" : {
+    "rcsb_repository_holdings_combined" : {
+      "type" : "object",
+      "properties" : {
+        "id_code_replaced_by_latest" : {
+          "type" : "string",
+          "examples" : [ "4HHB" ],
+          "description" : "The latest superseding PDB accession code for the removed entry.",
+          "rcsb_description" : [ {
+            "text" : "The latest superseding PDB accession code for the removed entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "CURRENT", "REMOVED", "UNRELEASED" ],
+          "examples" : [ "CURRENT" ],
+          "description" : "The status category for the entry.",
+          "rcsb_description" : [ {
+            "text" : "The status category for the entry.",
+            "context" : "dictionary"
+          } ]
+        },
+        "status_code" : {
+          "type" : "string",
+          "enum" : [ "AUCO", "AUTH", "HOLD", "HPUB", "OBS", "POLC", "PROC", "REFI", "REL", "REPL", "RMVD", "TRSF", "WAIT", "WDRN" ],
+          "examples" : [ "HPUB" ],
+          "description" : "The status code for the entry.",
+          "rcsb_enum_annotated" : [ {
+            "value" : "AUCO",
+            "detail" : "Author corrections pending review"
+          }, {
+            "value" : "AUTH",
+            "detail" : "Processed, waiting for author review and approval"
+          }, {
+            "value" : "HOLD",
+            "detail" : "On hold until yyyy-mm-dd"
+          }, {
+            "value" : "HPUB",
+            "detail" : "On hold until publication"
+          }, {
+            "value" : "OBS",
+            "detail" : "Entry has been obsoleted and replaced by another entry"
+          }, {
+            "value" : "POLC",
+            "detail" : "Processing, waiting for a policy decision"
+          }, {
+            "value" : "PROC",
+            "detail" : "To be processed"
+          }, {
+            "value" : "REFI",
+            "detail" : "Re-refined entry"
+          }, {
+            "value" : "REL",
+            "detail" : "Released"
+          }, {
+            "value" : "REPL",
+            "detail" : "Author sent new coordinates to be incorporated"
+          }, {
+            "value" : "RMVD",
+            "detail" : "Entry has been removed"
+          }, {
+            "value" : "TRSF",
+            "detail" : "Entry transferred to another data repository"
+          }, {
+            "value" : "WAIT",
+            "detail" : "Processing started, waiting for author input to continue processing"
+          }, {
+            "value" : "WDRN",
+            "detail" : "Deposition has been withdrawn"
+          } ],
+          "rcsb_description" : [ {
+            "text" : "The status code for the entry.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_repository_holdings_combined_entry_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "entry_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The PDB entry accession code.",
+          "rcsb_description" : [ {
+            "text" : "The PDB entry accession code.",
+            "context" : "dictionary"
+          } ]
+        },
+        "rcsb_id" : {
+          "type" : "string",
+          "examples" : [ "1KIP" ],
+          "description" : "The RCSB entry identifier.",
+          "rcsb_description" : [ {
+            "text" : "The RCSB entry identifier.",
+            "context" : "dictionary"
+          } ]
+        },
+        "update_id" : {
+          "type" : "string",
+          "examples" : [ "2018_23" ],
+          "description" : "Identifier for the current data exchange status record.",
+          "rcsb_description" : [ {
+            "text" : "Identifier for the current data exchange status record.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false,
+      "required" : [ "entry_id" ]
+    },
+    "rcsb_id" : {
+      "type" : "string",
+      "examples" : [ "1KIP" ],
+      "description" : "The RCSB entry identifier.",
+      "rcsb_description" : [ {
+        "text" : "The RCSB entry identifier.",
+        "context" : "dictionary"
+      } ]
+    }
+  },
+  "additionalProperties" : false,
+  "required" : [ "rcsb_id" ],
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "schema: repository_holdings collection: repository_holdings_combined_entry version: 1.0.0",
+  "description" : "RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_combined_entry version 1.0.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_combined_entry.json and follows JSON schema specification version 4",
+  "$comment" : "schema_version: 1.0.0"
+}

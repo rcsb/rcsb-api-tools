@@ -1,0 +1,20 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_results_identifier_match_context_shape.json",
+  "title": "Shape Service match context",
+  "type": "object",
+  "required": [
+    "biozernike_score",
+    "geo_score"
+  ],
+  "properties": {
+    "biozernike_score": {
+      "type": "number",
+      "description": "The BioZernike score, expressing the likelihood of the match being relevant. Range: 0-1."
+    },
+    "geo_score": {
+      "type": "number",
+      "description": "The score calculated from the GEO descriptors. Range: 0-1."
+    }
+  },
+  "additionalProperties": false
+}

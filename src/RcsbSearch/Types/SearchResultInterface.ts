@@ -6,7 +6,16 @@
  */
 
 /**
- * Provides a generic interface to represent the RCSB search query result.
+ * Search results are ordered by the relevancy scores by default, from the most relevant matches to the least relevant matches (higher score to lower score).
+ */
+export type RelevanceScoreRankingOption = "score";
+/**
+ * The order in which to sort. Defaults to “desc”.
+ */
+export type SortDirection = "asc" | "desc";
+
+/**
+ * Provides a generic interface to represent the RCSB search query result
  */
 export interface QueryResult {
   /**
@@ -16,27 +25,39 @@ export interface QueryResult {
   /**
    * Specifies the type of the returned identifiers.
    */
-  result_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly";
+  result_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly" | "mol_definition";
   /**
-   * The total number of identifiers in the result set.
+   * The total number of hits returned by search
    */
   total_count: number;
   /**
+   * The number of hits returned by group_by operation
+   */
+  group_by_count?: number;
+  /**
+   * The number returned by group_by operation that counts hits that are not members of requested groups
+   */
+  ungrouped_count?: number;
+  /**
    * Explains the query execution time.
    */
-  explain_meta_data: {
+  explain_metadata?: {
     /**
-     * The total time taken in milliseconds to produce the query result.
+     * The total time taken in milliseconds to produce the query result
      */
     total_timing: number;
     /**
-     * The time taken in milliseconds to produce the drilldowns.
+     * The time taken in milliseconds to produce the drilldowns
      */
     facet_timing?: number;
     /**
-     * The time taken in milliseconds in sorting the result identifiers.
+     * The time taken in milliseconds to sort the result identifiers
      */
     sort_timing?: number;
+    /**
+     * The time taken in milliseconds to group the result identifiers
+     */
+    grouping_timing?: number;
     /**
      * The time taken in milliseconds in retrieving the result identifiers from each service type query node. Multiple text service nodes are bundled to a single text service query.
      */
@@ -48,11 +69,19 @@ export interface QueryResult {
   /**
    * A list of search result identifiers including each identifier's score and the service query where the identifier was rendered from.
    */
-  result_set?: [ServiceIdentifier, ...ServiceIdentifier[]];
+  result_set?: [string | ServiceIdentifier, ...(string | ServiceIdentifier)[]];
   /**
    * Provides summaries of the search result by aggregating the result data on different attributes.
    */
   drilldown?: [Facet | DistinctCount, ...(Facet | DistinctCount)[]];
+  /**
+   * Option that is used to partition search results into groups
+   */
+  group_by?: GroupByDepositID | GroupBySequenceIdentity | GroupByUniProtAccession;
+  /**
+   * A list of search result identifiers returned as groups
+   */
+  group_set?: [string | GroupIdentifier, ...(string | GroupIdentifier)[]];
 }
 export interface ServiceIdentifier {
   /**
@@ -66,12 +95,20 @@ export interface ServiceIdentifier {
   /**
    * Shows the query node that rendered the identifier and the scoring details.
    */
-  services: [
+  services?: [
     {
       /**
        * The search service that is responsible for running the query and retrieving the search results.
        */
-      service_type: "text" | "sequence" | "structure" | "chemical" | "seqmotif" | "strucmotif";
+      service_type:
+        | "full_text"
+        | "text"
+        | "text_chem"
+        | "sequence"
+        | "structure"
+        | "chemical"
+        | "seqmotif"
+        | "strucmotif";
       /**
        * Provides the result identifier scoring details.
        */
@@ -131,7 +168,15 @@ export interface ServiceIdentifier {
       /**
        * The search service that is responsible for running the query and retrieving the search results.
        */
-      service_type: "text" | "sequence" | "structure" | "chemical" | "seqmotif" | "strucmotif";
+      service_type:
+        | "full_text"
+        | "text"
+        | "text_chem"
+        | "sequence"
+        | "structure"
+        | "chemical"
+        | "seqmotif"
+        | "strucmotif";
       /**
        * Provides the result identifier scoring details.
        */
@@ -273,9 +318,34 @@ export interface StrucmotifServiceMatchContext {
    */
   residue_ids: ResidueIdentifier[];
   /**
-   * Score between query and this particular match context.
+   * The root-mean-square deviation between atoms of the query and this particular match context.
    */
   score: number;
+  /**
+   * Three-letter-codes of matched positions.
+   */
+  residue_types?: string[];
+  /**
+   * 4x4 transformation matrix in a column major (j * 4 + i indexing) format
+   */
+  transformation?: [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number
+  ];
 }
 export interface ResidueIdentifier {
   /**
@@ -335,4 +405,55 @@ export interface DistinctCount {
    * The approximate count of distinct values in a field calculated by aggregation.
    */
   distinct_count: number;
+}
+export interface GroupByDepositID {
+  /**
+   * The method used to group search hits on the basis of common identifier for a group of entries deposited as a collection
+   */
+  aggregation_method: "matching_deposit_group_id";
+  ranking_criteria_type?: SortOptionAttributes;
+}
+export interface SortOptionAttributes {
+  sort_by: RelevanceScoreRankingOption | string;
+  direction?: SortDirection;
+}
+export interface GroupBySequenceIdentity {
+  /**
+   * The method used to group search hits on the basis of protein sequence clusters that meet a predefined identity threshold
+   */
+  aggregation_method: "sequence_identity";
+  similarity_cutoff: 100 | 95 | 90 | 70 | 50 | 30;
+  ranking_criteria_type?: SortOptionAttributes;
+}
+export interface GroupByUniProtAccession {
+  /**
+   * The method used to group search hits on the basis of common UniProt accession
+   */
+  aggregation_method: "matching_uniprot_accession";
+  /**
+   * Predefined set of criteria used to determine group members ranking
+   */
+  ranking_criteria_type?: SortOptionAttributes | UniprotAccessionGroupRankingOption;
+}
+export interface UniprotAccessionGroupRankingOption {
+  sort_by: "coverage";
+  [k: string]: unknown;
+}
+export interface GroupIdentifier {
+  /**
+   * Group identifier
+   */
+  identifier: string;
+  /**
+   * The relevance score for the group given the query, calculated from the members relevance scores. Highest is more relevant. From 0 to 1
+   */
+  score: number;
+  /**
+   * The number of group members that match the search query
+   */
+  count?: number;
+  /**
+   * The group members that match the query
+   */
+  result_set: ServiceIdentifier[];
 }

@@ -1,0 +1,24 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_parameters_strucmotif_value_entry.json",
+  "title": "Strucmotif Query Entry Parameters",
+  "type": "object",
+  "required": [
+    "entry_id",
+    "residue_ids"
+  ],
+  "properties": {
+    "entry_id": {
+      "type": "string",
+      "description": "The PDB code that defines the structure with the query motif."
+    },
+    "residue_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
+      },
+      "description": "Provides the set of residue identifiers that define the query."
+    }
+  },
+  "additionalProperties": false,
+  "description": "Compound structure identifier that includes PDB code and residue identifiers."
+}

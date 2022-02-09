@@ -1,0 +1,72 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_node_terminal.json",
+  "title": "Terminal Node",
+  "type": "object",
+  "required": [
+    "type",
+    "service"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "terminal"
+      ],
+      "description": "The type of the node."
+    },
+    "node_id": {
+      "type": "integer",
+      "description": "An ID that is unique within the enclosing query."
+    },
+    "service": {
+      "type": "string",
+      "enum": [
+        "full_text",
+        "text",
+        "text_chem",
+        "sequence",
+        "structure",
+        "chemical",
+        "seqmotif",
+        "strucmotif"
+      ],
+      "javaType" : "org.rcsb.arches.auto.model.ServiceType",
+      "description": "The search service that is responsible for running the query and retrieving the search results."
+    },
+    "parameters": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_full_text.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_attribute_text.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_sequence.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_shape.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_chemical_formula.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_chemical_descriptor.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_seqmotif.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_strucmotif.json"
+        }
+      ],
+      "minProperties": 1,
+      "description": "Search parameters. Parameters are specific to the search service."
+    },
+    "label": {
+      "type": "string",
+      "description": "A textual description of what the node represents."
+    }
+  },
+  "description": "A terminal node is an atomic-level element within a query."
+}

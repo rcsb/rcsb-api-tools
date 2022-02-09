@@ -2,6 +2,14 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [2.3.1] - 2022-02-08
+### Bug fix
+- Fixed server config
+
+## [2.3.0] - 2022-02-08
+### RCSB data api schemas
+- Added RCSB DW schema interfaces and enumerations
+
 ## [2.2.4] - 2022-02-08
 ### Dependency update
 - Updated several dependencies

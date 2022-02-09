@@ -29,7 +29,15 @@ type AlignedRegion {
     target_end: Int!
 }
 
+type AlignmentLogo {
+    symbol: String
+    value: Int
+}
+
 type AlignmentResponse {
+    "Length of the alignment"
+    alignment_length: Int
+    alignment_logo: [[AlignmentLogo]]
     "Full sequence of the query"
     query_sequence: String
     "JSON schema that describes the different alignments between the query sequence and targets"
@@ -43,6 +51,7 @@ type AnnotationFeatures {
     source: Source
     "Database source entry identifier associated to the positional features"
     target_id: String
+    target_identifiers: TargetIdentifiers
 }
 
 type Coverage {
@@ -73,7 +82,7 @@ type Feature {
     The connection type.
 
     Examples:
-    mutation, artifact, CATH, SCOP
+    ASA_UNBOUND, BINDING_SITE, mutation, artifact, CATH, SCOP
     """
     type: Type
     "Numerical value associated with the feature"
@@ -97,6 +106,8 @@ type FeaturePosition {
     range_id: String
     "The value for the feature at this region"
     value: Float
+    "The value(s) for the feature at this region"
+    values: [Float]
 }
 
 "Query root"
@@ -107,7 +118,7 @@ type Query {
         from: SequenceReference,
         "Database sequence identifier"
         queryId: String!,
-        "Optional integer list (2-tuple) to filter the alignment to a particular region"
+        "Optional integer list (2-tuple) to filter the alignments to a particular region"
         range: [Int],
         "Target Sequence database"
         to: SequenceReference
@@ -140,15 +151,29 @@ type TargetAlignment {
     target_sequence: String
 }
 
+type TargetIdentifiers {
+    assembly_id: String
+    asym_id: String
+    entity_id: String
+    entry_id: String
+    interface_id: String
+    interface_partner_index: Int
+    target_id: String
+    uniprot_id: String
+}
+
 enum PropertyName {
+    CARD_MODEL_DESCRIPTION
+    CARD_MODEL_ORGANISM
     CATH_DOMAIN_ID
     CATH_NAME
     CLINICAL_SIGNIFICANCE
     CONSEQUENCE_TYPE
     DISEASE_TYPE
+    ECOD_DOMAIN_ID
+    ECOD_FAMILY_NAME
     EVIDENCE
     LINK
-    MODIFICATION_TYPE
     MUTATED_TYPE
     OMEGA_ANGLE
     PARENT_COMP_ID
@@ -156,11 +181,17 @@ enum PropertyName {
     PARTNER_BOND_DISTANCE
     PARTNER_COMP_ID
     PREDICTED_IMPACT
+    SCOP_2_DOMAIN_ID
+    SCOP_2_FAMILY_ID
+    SCOP_2_FAMILY_NAME
+    SCOP_2_SUPERFAMILY_ID
+    SCOP_2_SUPERFAMILY_NAME
     SCOP_DOMAIN_ID
     SCOP_NAME
     SCOP_SUN_ID
     SHEET_SENSE
     STRAIN_ID
+    SUBTYPE
     WILD_TYPE
 }
 
@@ -175,6 +206,7 @@ enum SequenceReference {
 enum Source {
     PDB_ENTITY
     PDB_INSTANCE
+    PDB_INTERFACE
     UNIPROT
 }
 
@@ -182,9 +214,13 @@ enum Type {
     ACTIVE_SITE
     ANGLE_OUTLIER
     ARTIFACT
+    ASA
+    ASA_BOUND
+    ASA_UNBOUND
     BINDING_SITE
     BOND_OUTLIER
     CALCIUM_BINDING_REGION
+    CARD_MODEL
     CATH
     CHAIN
     CIS_PEPTIDE
@@ -196,12 +232,23 @@ enum Type {
     COVALENT_RESIDUE_MODIFICATION
     CROSS_LINK
     C_MANNOSYLATION_SITE
+    DISORDER
+    DISORDER_BINDING
     DISULFIDE_BRIDGE
     DNA_BINDING_REGION
     DOMAIN
+    ECOD
     GLYCOSYLATION_SITE
     HELIX_P
     HYDROGEN_BOND
+    HYDROPATHY
+    IMGT_ANTIBODY_DESCRIPTION
+    IMGT_ANTIBODY_DOMAIN_NAME
+    IMGT_ANTIBODY_GENE_ALLELE_NAME
+    IMGT_ANTIBODY_ORGANISM_NAME
+    IMGT_ANTIBODY_PROTEIN_NAME
+    IMGT_ANTIBODY_RECEPTOR_DESCRIPTION
+    IMGT_ANTIBODY_RECEPTOR_TYPE
     INITIATOR_METHIONINE
     INTRAMEMBRANE_REGION
     IONIC_INTERACTION
@@ -231,7 +278,16 @@ enum Type {
     ROTAMER_OUTLIER
     RSCC_OUTLIER
     RSRZ_OUTLIER
+    SABDAB_ANTIBODY_ANTIGEN_NAME
+    SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS
+    SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS
+    SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE
+    SABDAB_ANTIBODY_NAME
+    SABDAB_ANTIBODY_TARGET
     SCOP
+    SCOP_2_B_SUPERFAMILY
+    SCOP_2_FAMILY
+    SCOP_2_SUPERFAMILY
     SEQUENCE_CONFLICT
     SEQUENCE_VARIANT
     SHEET
@@ -263,16 +319,15 @@ enum operationType {
     equals
 }
 
+"Built-in scalar for dynamic values"
+scalar ObjectScalar
+
+"Use SPQR's SchemaPrinter to remove this from SDL"
+scalar UNREPRESENTABLE
+
 input FilterInput {
     field: fieldName
     operation: operationType
     source: Source
     values: [String]
 }
-
-
-"Built-in scalar for dynamic values"
-scalar ObjectScalar
-
-"Use SPQR's SchemaPrinter to remove this from SDL"
-scalar UNREPRESENTABLE

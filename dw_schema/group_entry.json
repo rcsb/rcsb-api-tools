@@ -1,0 +1,122 @@
+{
+  "title" : "Group Entry",
+  "$schema" : "https://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "required" : [ "rcsb_id", "rcsb_group_container_identifiers", "rcsb_group_info" ],
+  "properties" : {
+    "rcsb_id" : {
+      "type" : "string",
+      "rcsb_search_context" : [ "exact-match" ],
+      "description" : "A unique textual identifier for a group"
+    },
+    "rcsb_group_container_identifiers" : {
+      "type" : "object",
+      "required" : [ "group_id", "group_provenance_id", "group_member_ids" ],
+      "properties" : {
+        "group_id" : {
+          "type" : "string",
+          "description" : "A unique textual identifier for a group",
+          "rcsb_search_context" : [ "exact-match" ]
+        },
+        "group_provenance_id" : {
+          "type" : "string",
+          "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id" ],
+          "description" : "A unique group provenance identifier"
+        },
+        "parent_member_ids" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "minItems" : 1,
+          "uniqueItems" : true,
+          "description" : "Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship"
+        },
+        "group_member_ids" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "rcsb_search_context" : [ "exact-match" ]
+          },
+          "minItems" : 1,
+          "uniqueItems" : true,
+          "description" : "Member identifiers representing a group"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_group_info" : {
+      "type" : "object",
+      "required" : [ "group_name", "group_description", "group_members_granularity", "group_members_count" ],
+      "properties" : {
+        "group_name" : {
+          "type" : "string",
+          "rcsb_search_context" : [ "exact-match" ]
+        },
+        "group_description" : {
+          "type" : "string"
+        },
+        "group_members_granularity" : {
+          "type" : "string",
+          "enum" : [ "assembly", "entry", "polymer_entity", "polymer_entity_instance" ],
+          "description" : "Granularity of group members identifiers"
+        },
+        "group_members_count" : {
+          "type" : "integer",
+          "rcsb_search_context" : [ "default-match" ]
+        }
+      }
+    },
+    "rcsb_group_statistics" : {
+      "type" : "object",
+      "properties" : {
+        "similarity_cutoff" : {
+          "type" : "number",
+          "rcsb_search_context" : [ "default-match" ],
+          "description" : "The desired lower limit for the similarity between two members that belong to the same group"
+        },
+        "similarity_score_min" : {
+          "type" : "number",
+          "description" : "Similarity score between two least similar group members"
+        },
+        "similarity_score_max" : {
+          "type" : "number",
+          "description" : "Similarity score between two most similar group members"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_group_accession_info" : {
+      "type" : "object",
+      "required" : [ "version" ],
+      "properties" : {
+        "version" : {
+          "type" : "integer",
+          "description" : "Identifies the version of the groups solution"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "rcsb_group_related" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "resource_accession_code" : {
+            "type" : "string",
+            "examples" : [ "P69905" ],
+            "description" : "A unique code assigned to a reference related the group"
+          },
+          "resource_name" : {
+            "type" : "string",
+            "examples" : [ "UniProt" ],
+            "description" : "Defines the type of the resource describing related references"
+          }
+        }
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    }
+  },
+  "additionalProperties" : false
+}

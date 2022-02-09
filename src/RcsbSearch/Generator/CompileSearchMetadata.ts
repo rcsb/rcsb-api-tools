@@ -75,15 +75,25 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}): vo
 
 import * as configSearch from "../ServerConfig/codegen.search.json";
 import * as configChemicalSearch from "../ServerConfig/codegen.search.chemical.json";
-fetch(configSearch.schema).then(metadata=>{
-    metadata.json().then(json=>{
-        const root = {};
-        parseMetadata(json, "root", [], root);
-        fetch(configChemicalSearch.schema).then(chemicalMetadata=>{
-            chemicalMetadata.json().then(json=>{
+fetch(configSearch.schema)
+    .then(metadata=>{
+        metadata.json()
+            .then(json=>{
+                const root = {};
                 parseMetadata(json, "root", [], root);
-                fs.writeFileSync("src/RcsbSearch/Types/SearchMetadata.ts", "export const RcsbSearchMetadata: "+JSON.stringify(root)+" = "+JSON.stringify(root));
+                fetch(configChemicalSearch.schema).then(chemicalMetadata=>{
+                    chemicalMetadata.json().then(json=>{
+                        parseMetadata(json, "root", [], root);
+                        fs.writeFileSync("src/RcsbSearch/Types/SearchMetadata.ts", "export const RcsbSearchMetadata: "+JSON.stringify(root)+" = "+JSON.stringify(root));
+                    })
+                })
             })
-        })
+            .catch(error=>{
+                console.error(error);
+                throw error;
+            })
     })
-});
+    .catch(error=>{
+        console.error(error);
+        throw error;
+    });

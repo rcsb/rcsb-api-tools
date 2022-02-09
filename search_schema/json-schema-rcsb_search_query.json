@@ -29,83 +29,7 @@
       "description": "Information about the query."
     },
     "request_options": {
-      "type": "object",
-      "properties": {
-        "facets": {
-          "$ref": "json-schema-rcsb_search_query_facets.json"
-        },
-        "return_all_hits": {
-          "type": "boolean",
-          "default": false,
-          "description": "When set to true, all hits are returned as a result set."
-        },
-        "return_counts": {
-          "type": "boolean",
-          "default": false,
-          "description": "Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned."
-        },
-        "sort": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "sort_by"
-            ],
-            "properties": {
-              "sort_by": {
-                "type": "string",
-                "default": "score",
-                "description": "The sort field. Supported values include “score“ or field name."
-              },
-              "direction": {
-                "type": "string",
-                "enum": [
-                  "asc",
-                  "desc"
-                ],
-                "default": "desc",
-                "description": "The order in which to sort. Can either be “asc” or “desc”."
-              }
-            },
-            "additionalProperties": false
-          },
-          "description": "Sorting parameters.",
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "pager": {
-          "type": "object",
-          "properties": {
-            "start": {
-              "type": "integer",
-              "default": 0,
-              "description": "The offset from the first result."
-            },
-            "rows": {
-              "type": "integer",
-              "default": 10,
-              "description": "Number of entries returned in the result set."
-            }
-          },
-          "additionalProperties": false,
-          "description": "Specifies a range in the query result set. When absent, returns only the top 10 entries, e.g. 'start' defaults to 0, and 'rows' defaults to 10."
-        },
-        "scoring_strategy": {
-          "type": "string",
-          "enum": [
-            "combined",
-            "sequence",
-            "seqmotif",
-            "strucmotif",
-            "structure",
-            "chemical",
-            "text"
-          ],
-          "default": "combined",
-          "description": "Scoring algorithm to be used for scores calculation of the final result set."
-        }
-      },
-      "additionalProperties": false
+      "$ref": "json-schema-rcsb_search_query_request_options.json"
     },
     "return_type": {
       "type": "string",
@@ -114,18 +38,19 @@
         "polymer_entity",
         "non_polymer_entity",
         "polymer_instance",
-        "assembly"
+        "assembly",
+        "mol_definition"
       ],
       "javaType" : "org.rcsb.arches.auto.model.ReturnType",
       "description": "Specifies the type of the returned identifiers."
     },
     "query": {
-      "anyOf": [
+      "oneOf": [
         {
-          "$ref": "json-schema-rcsb_search_query_group.json"
+          "$ref": "json-schema-rcsb_search_query_node_group.json"
         },
         {
-          "$ref": "json-schema-rcsb_search_query_terminal.json"
+          "$ref": "json-schema-rcsb_search_query_node_terminal.json"
         }
       ],
       "description": "Any valid query string as per the Search Aggregator query syntax is permitted. A search consists of one or more groups combined."

@@ -1,9 +1,7 @@
 const path = require('path');
 
 const commonConfig = {
-    mode: "development",
-    //mode: "production",
-
+    mode: "production",
     module: {
       rules: [
         {

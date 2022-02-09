@@ -1,0 +1,111 @@
+{
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "title" : "Shape Descriptor",
+  "description" : "Schema for the shape service to contain the BioZernike descriptors data that describe PDB volumes at different granularities.",
+  "type" : "object",
+  "required" : [ "rcsb_shape_container_identifiers", "max_order_zernike_invariants", "max_order_zernike_align", "zernike_invariants", "geom_invariants", "zernike_align", "volume_center", "shape_entity_type", "rcsb_latest_revision" ],
+  "properties" : {
+    "rcsb_shape_container_identifiers" : {
+      "type" : "object",
+      "properties" : {
+        "assembly_id" : {
+          "type" : "string",
+          "description" : "Assembly identifier."
+        },
+        "entry_id" : {
+          "type" : "string",
+          "description" : "Entry identifier."
+        },
+        "asym_id" : {
+          "type" : "string",
+          "description" : "Polymer entity instance identifier."
+        }
+      },
+      "required" : [ "entry_id" ],
+      "additionalProperties" : false
+    },
+    "max_order_zernike_invariants" : {
+      "type" : "integer",
+      "description" : "The maximum order of Zernike moments (the n index in Ω_nlm) that are stored in the zernike_invariants object."
+    },
+    "max_order_zernike_align" : {
+      "type" : "integer",
+      "description" : "The maximum order of Zernike moments (the n index in Ω_nlm) that are stored in the zernike_align object."
+    },
+    "zernike_invariants" : {
+      "type" : "array",
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "items" : {
+        "type" : "object",
+        "required" : [ "norm_order", "values" ],
+        "properties" : {
+          "norm_order" : {
+            "type" : "integer",
+            "description" : "0 is for the special case of the classic Zernike/Novotni invariants (norms of Ω_nlm, a.k.a. 3DZD, a.k.a. fingerprints), any other positive integer represents the order of the Canterakis norm as described in Guzenko et al 2019."
+          },
+          "values" : {
+            "type" : "array",
+            "minItems" : 1,
+            "uniqueItems" : false,
+            "items" : {
+              "type" : "number",
+              "description" : "The value of the Ω_nlm invariant. Only l>=0 is stored (l<0 can be calculated from the corresponding l>0)."
+            }
+          }
+        }
+      }
+    },
+    "geom_invariants" : {
+      "type" : "array",
+      "minItems" : 1,
+      "uniqueItems" : false,
+      "items" : {
+        "type" : "number",
+        "description" : "The geometric descriptors as defined in the BioZernike library in Descriptor object."
+      }
+    },
+    "zernike_align" : {
+      "type" : "array",
+      "minItems" : 1,
+      "uniqueItems" : false,
+      "items" : {
+        "type" : "number",
+        "description" : "The value of the Ω_nlm original unscaled moment, used for alignment. The hierarchical list of complex numbers is stored as a flattened list of real and imaginary parts (doubles)."
+      }
+    },
+    "volume_center" : {
+      "type" : "array",
+      "minItems" : 3,
+      "uniqueItems" : false,
+      "items" : {
+        "type" : "number",
+        "description" : "Original coordinates of the structure's volume center of mass, used for alignment."
+      }
+    },
+    "shape_entity_type" : {
+      "type" : "string",
+      "enum" : [ "assembly", "chain", "domain" ],
+      "description" : "Type of the object represented by the descriptor, used for independent searches."
+    },
+    "rcsb_latest_revision" : {
+      "type" : "object",
+      "properties" : {
+        "major_revision" : {
+          "type" : "integer",
+          "description" : "The major version number of the latest revision."
+        },
+        "minor_revision" : {
+          "type" : "integer",
+          "description" : "The minor version number of the latest revision."
+        },
+        "revision_date" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The release date of the latest revision item."
+        }
+      }
+    }
+  },
+  "additionalProperties" : false
+}

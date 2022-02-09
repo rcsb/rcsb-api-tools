@@ -1,3 +1,17 @@
+export enum RelevanceScoreRankingOption {
+    Score = "score"
+}
+
+export enum SortDirection {
+    Asc = "asc",
+    Desc = "desc"
+}
+
+export enum SortOptionGroupsSortBy {
+    Size = "size",
+    Count = "count"
+}
+
 export enum Src {
     Ui = "ui",
     MypdbService = "mypdb_service",
@@ -5,9 +19,18 @@ export enum Src {
     RcsbTest = "rcsb_test"
 }
 
-export enum Direction {
-    Asc = "asc",
-    Desc = "desc"
+export enum ReturnType {
+    Entry = "entry",
+    PolymerEntity = "polymer_entity",
+    NonPolymerEntity = "non_polymer_entity",
+    PolymerInstance = "polymer_instance",
+    Assembly = "assembly",
+    MolDefinition = "mol_definition"
+}
+
+export enum GroupByReturnType {
+    Groups = "groups",
+    Representatives = "representatives"
 }
 
 export enum ScoringStrategy {
@@ -18,16 +41,14 @@ export enum ScoringStrategy {
     Structure = "structure",
     Chemical = "chemical",
     Text = "text",
-    Descriptor = "DESCRIPTOR",
-    Alignment = "ALIGNMENT"
+    TextChem = "text_chem",
+    FullText = "full_text"
 }
 
-export enum ReturnType {
-    Entry = "entry",
-    PolymerEntity = "polymer_entity",
-    NonPolymerEntity = "non_polymer_entity",
-    PolymerInstance = "polymer_instance",
-    Assembly = "assembly"
+export enum ResultsVerbosity {
+    Compact = "compact",
+    Minimal = "minimal",
+    Verbose = "verbose"
 }
 
 export enum AggregationType {
@@ -37,23 +58,6 @@ export enum AggregationType {
     Range = "range",
     DateRange = "date_range",
     Cardinality = "cardinality"
-}
-
-export enum Operator {
-    Equals = "equals",
-    Greater = "greater",
-    GreaterOrEqual = "greater_or_equal",
-    Less = "less",
-    LessOrEqual = "less_or_equal",
-    Range = "range",
-    RangeClosed = "range_closed",
-    ContainsWords = "contains_words",
-    ContainsPhrase = "contains_phrase",
-    ExactMatch = "exact_match",
-    In = "in",
-    Exists = "exists",
-    StrictShapeMatch = "strict_shape_match",
-    RelaxedShapeMatch = "relaxed_shape_match"
 }
 
 export enum Interval {
@@ -74,11 +78,40 @@ export enum LogicalOperator {
 
 export enum Service {
     Text = "text",
+    TextChem = "text_chem",
+    FullText = "full_text",
     Sequence = "sequence",
     Structure = "structure",
     Chemical = "chemical",
     Seqmotif = "seqmotif",
     Strucmotif = "strucmotif"
+}
+
+export enum Operator {
+    Equals = "equals",
+    Greater = "greater",
+    GreaterOrEqual = "greater_or_equal",
+    Less = "less",
+    LessOrEqual = "less_or_equal",
+    Range = "range",
+    RangeClosed = "range_closed",
+    ContainsWords = "contains_words",
+    ContainsPhrase = "contains_phrase",
+    ExactMatch = "exact_match",
+    In = "in",
+    Exists = "exists",
+    StrictShapeMatch = "strict_shape_match",
+    RelaxedShapeMatch = "relaxed_shape_match"
+}
+
+export enum AggregationMethod {
+    MatchingDepositGroupId = "matching_deposit_group_id",
+    SequenceIdentity = "sequence_identity",
+    MatchingUniprotAccession = "matching_uniprot_accession"
+}
+
+export enum SortBy {
+    Coverage = "coverage"
 }
 
 export enum Target {
@@ -87,21 +120,28 @@ export enum Target {
     PdbDnaSequence = "pdb_dna_sequence"
 }
 
+export enum FileFormat {
+    Cif = "cif",
+    Bcif = "bcif",
+    Pdb = "pdb",
+    Ccp4 = "ccp4"
+}
+
 export enum DescriptorType {
     Smiles = "SMILES",
     InChI = "InChI"
 }
 
 export enum MatchType {
-    GraphExact = "graph-exact",
-    GraphStrict = "graph-strict",
-    GraphRelaxed = "graph-relaxed",
-    GraphRelaxedStereo = "graph-relaxed-stereo",
-    FingerprintSimilarity = "fingerprint-similarity",
-    SubStructGraphExact = "sub-struct-graph-exact",
-    SubStructGraphStrict = "sub-struct-graph-strict",
-    SubStructGraphRelaxed = "sub-struct-graph-relaxed",
-    SubStructGraphRelaxedStereo = "sub-struct-graph-relaxed-stereo"
+    GraphExact_ = "graph-exact",
+    GraphStrict_ = "graph-strict",
+    GraphRelaxed_ = "graph-relaxed",
+    GraphRelaxedStereo_ = "graph-relaxed-stereo",
+    FingerprintSimilarity_ = "fingerprint-similarity",
+    SubStructGraphExact_ = "sub-struct-graph-exact",
+    SubStructGraphStrict_ = "sub-struct-graph-strict",
+    SubStructGraphRelaxed_ = "sub-struct-graph-relaxed",
+    SubStructGraphRelaxedStereo_ = "sub-struct-graph-relaxed-stereo"
 }
 
 export enum PatternType {
@@ -143,7 +183,7 @@ export enum Allowed {
     N = "N"
 }
 
-export enum AtomPairingStrategy {
+export enum AtomPairingScheme {
     All = "ALL",
     Backbone = "BACKBONE",
     SideChain = "SIDE_CHAIN",
@@ -160,11 +200,14 @@ export enum ResultType {
     PolymerEntity = "polymer_entity",
     NonPolymerEntity = "non_polymer_entity",
     PolymerInstance = "polymer_instance",
-    Assembly = "assembly"
+    Assembly = "assembly",
+    MolDefinition = "mol_definition"
 }
 
 export enum ServiceType {
+    FullText = "full_text",
     Text = "text",
+    TextChem = "text_chem",
     Sequence = "sequence",
     Structure = "structure",
     Chemical = "chemical",
