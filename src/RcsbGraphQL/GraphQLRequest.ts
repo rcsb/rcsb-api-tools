@@ -1,5 +1,12 @@
-import {ApolloQueryResult} from "apollo-client";
-import ApolloClient, {PresetConfig} from "apollo-boost";
+import {
+    ApolloQueryResult,
+    ApolloClient,
+    createHttpLink,
+    ApolloClientOptions,
+    HttpOptions,
+    InMemoryCache,
+    NormalizedCacheObject
+} from "@apollo/client";
 import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
 import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
 import gql from 'graphql-tag';
@@ -9,25 +16,29 @@ export class GraphQLRequest {
 
     private readonly client: ApolloClient<unknown>;
 
-    constructor(api: "yosemite" | "borrego" | string, config?: PresetConfig) {
+    constructor(api: "yosemite" | "borrego" | string, httpOptions?: HttpOptions, apolloClientOptions?: ApolloClientOptions<NormalizedCacheObject>) {
         switch (api){
             case "yosemite":
                 this.client = new ApolloClient({
-                    ...config,
-                    uri: configYosemiteGraphQL.schema
+                    link: createHttpLink({uri:configYosemiteGraphQL.schema, ...httpOptions}),
+                    cache: new InMemoryCache(),
+                    ...apolloClientOptions
                 });
                 break;
             case "borrego":
                 this.client = new ApolloClient({
-                    ...config,
-                    uri: configBorregoGraphQL.schema
+                    link: createHttpLink({uri:configBorregoGraphQL.schema, ...httpOptions}),
+                    cache: new InMemoryCache(),
+                    ...apolloClientOptions
                 });
                 break;
             default:
                 this.client = new ApolloClient({
-                    ...config,
-                    uri: api
+                    link: createHttpLink({uri:api, ...httpOptions}),
+                    cache: new InMemoryCache(),
+                    ...apolloClientOptions
                 });
+                break;
         }
     }
 

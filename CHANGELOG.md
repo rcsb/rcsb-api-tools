@@ -2,6 +2,15 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [3.0.0] - 2022-02-14
+### Breaking changes
+- `GraphQLRequest` exposes `HttpOptions` and `ApolloClientOptions` configurations as optional arguments. 
+- Previous ApolloClient config exposed through apollo-boost module is not available anymore
+
+### Dependency update
+- Removed apollo-boost v0.4.9
+- Update apollo-client v2.6.10 to @apollo/client v3.5.8 
+
 ## [2.3.1] - 2022-02-08
 ### Bug fix
 - Fixed server config

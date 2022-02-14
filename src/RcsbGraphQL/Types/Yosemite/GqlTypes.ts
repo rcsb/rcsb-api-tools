@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -24,6 +25,7 @@ export interface AuditAuthor {
    *
    * Examples:
    * 0000-0002-6681-547X
+   *
    */
   identifier_ORCID?: Maybe<Scalars['String']>;
   /**
@@ -34,6 +36,7 @@ export interface AuditAuthor {
    *
    * Examples:
    * Jones, T.J., Bleary, Percival R., O'Neil, F.K., Van den Bossche, G., Yang, D.-L., Simonov, Yu.A
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -126,6 +129,7 @@ export interface ChemComp {
    *
    * Examples:
    * C18 H19 N7 O8 S
+   *
    */
   formula?: Maybe<Scalars['String']>;
   /**
@@ -133,6 +137,7 @@ export interface ChemComp {
    *
    * Examples:
    * null, null
+   *
    */
   formula_weight?: Maybe<Scalars['Float']>;
   /**
@@ -147,6 +152,7 @@ export interface ChemComp {
    *
    * Examples:
    * ALA, VAL, DG, C
+   *
    */
   id: Scalars['String'];
   /**
@@ -163,6 +169,7 @@ export interface ChemComp {
    *
    * Examples:
    * alanine, valine, adenine, cytosine
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -176,6 +183,7 @@ export interface ChemComp {
    *
    * Examples:
    * A, B, R, N, D, C, Q, E, Z, G, H, I, L, K, M, F, P, S, T, W, Y, V, U, O, X
+   *
    */
   one_letter_code?: Maybe<Scalars['String']>;
   /**
@@ -201,6 +209,7 @@ export interface ChemComp {
    *
    * Allowable values:
    * EBI, PDBC, PDBE, PDBJ, RCSB
+   *
    */
   pdbx_processing_site?: Maybe<Scalars['String']>;
   /**
@@ -208,6 +217,7 @@ export interface ChemComp {
    *
    * Allowable values:
    * DEL, HOLD, HPUB, OBS, REF_ONLY, REL
+   *
    */
   pdbx_release_status?: Maybe<Scalars['String']>;
   /**
@@ -216,6 +226,7 @@ export interface ChemComp {
    *
    * Examples:
    * q11, tvx
+   *
    */
   pdbx_replaced_by?: Maybe<Scalars['String']>;
   /**
@@ -225,6 +236,7 @@ export interface ChemComp {
    *
    * Examples:
    * q11, tvx,atv
+   *
    */
   pdbx_replaces?: Maybe<Scalars['String']>;
   /**
@@ -232,6 +244,7 @@ export interface ChemComp {
    *
    * Examples:
    * TSM DPH HIS CHF EMR
+   *
    */
   pdbx_subcomponent_list?: Maybe<Scalars['String']>;
   /**
@@ -245,6 +258,7 @@ export interface ChemComp {
    *
    * Examples:
    * ALA, ARG, ASN, ASP, ASX, CYS, GLN, GLU, GLY, GLX, HIS, ILE, LEU, LYS, MET, PHE, PRO, SER, THR, TRP, TYR, VAL, 1MA, 5MC, OMC, 1MG, 2MG, M2G, 7MG, 0MG, H2U, 5MU, PSU, ACE, FOR, HOH, UNK
+   *
    */
   three_letter_code?: Maybe<Scalars['String']>;
   /**
@@ -255,6 +269,7 @@ export interface ChemComp {
    *
    * Allowable values:
    * D-beta-peptide, C-gamma linking, D-gamma-peptide, C-delta linking, D-peptide COOH carboxy terminus, D-peptide NH3 amino terminus, D-peptide linking, D-saccharide, D-saccharide, alpha linking, D-saccharide, beta linking, DNA OH 3 prime terminus, DNA OH 5 prime terminus, DNA linking, L-DNA linking, L-RNA linking, L-beta-peptide, C-gamma linking, L-gamma-peptide, C-delta linking, L-peptide COOH carboxy terminus, L-peptide NH3 amino terminus, L-peptide linking, L-saccharide, L-saccharide, alpha linking, L-saccharide, beta linking, RNA OH 3 prime terminus, RNA OH 5 prime terminus, RNA linking, non-polymer, other, peptide linking, peptide-like, saccharide
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -272,6 +287,7 @@ export interface Citation {
    *
    * Examples:
    * John Wiley and Sons
+   *
    */
   book_publisher?: Maybe<Scalars['String']>;
   /**
@@ -280,6 +296,7 @@ export interface Citation {
    *
    * Examples:
    * London
+   *
    */
   book_publisher_city?: Maybe<Scalars['String']>;
   /**
@@ -297,6 +314,7 @@ export interface Citation {
    *
    * Allowable values:
    * n, no, y, yes
+   *
    */
   coordinate_linkage?: Maybe<Scalars['String']>;
   /**
@@ -317,6 +335,7 @@ export interface Citation {
    *
    * Examples:
    * primary, 1, 2
+   *
    */
   id: Scalars['String'];
   /**
@@ -325,6 +344,7 @@ export interface Citation {
    *
    * Examples:
    * J.Mol.Biol., J. Mol. Biol.
+   *
    */
   journal_abbrev?: Maybe<Scalars['String']>;
   /**
@@ -341,6 +361,7 @@ export interface Citation {
    *
    * Examples:
    * 0070
+   *
    */
   journal_id_CSD?: Maybe<Scalars['String']>;
   /**
@@ -354,6 +375,7 @@ export interface Citation {
    *
    * Examples:
    * 2
+   *
    */
   journal_issue?: Maybe<Scalars['String']>;
   /**
@@ -362,6 +384,7 @@ export interface Citation {
    *
    * Examples:
    * 174
+   *
    */
   journal_volume?: Maybe<Scalars['String']>;
   /**
@@ -369,6 +392,7 @@ export interface Citation {
    *
    * Examples:
    * German
+   *
    */
   language?: Maybe<Scalars['String']>;
   /**
@@ -387,6 +411,7 @@ export interface Citation {
    *
    * Examples:
    * 10.2345/S1384107697000225
+   *
    */
   pdbx_database_id_DOI?: Maybe<Scalars['String']>;
   /**
@@ -407,6 +432,7 @@ export interface Citation {
    *
    * Allowable values:
    * N, Y
+   *
    */
   rcsb_is_primary?: Maybe<Scalars['String']>;
   /**
@@ -414,6 +440,7 @@ export interface Citation {
    *
    * Examples:
    * Nat Struct Mol Biol
+   *
    */
   rcsb_journal_abbrev?: Maybe<Scalars['String']>;
   /**
@@ -423,6 +450,7 @@ export interface Citation {
    * Examples:
    * Structure of diferric duck ovotransferrin
    *                                   at 2.35 Angstroms resolution.
+   *
    */
   title?: Maybe<Scalars['String']>;
   /**
@@ -430,6 +458,7 @@ export interface Citation {
    *
    * Allowable values:
    * N, Y
+   *
    */
   unpublished_flag?: Maybe<Scalars['String']>;
   /**
@@ -466,6 +495,7 @@ export interface CoreAssembly {
    *
    * Examples:
    * 1KIP-1
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
@@ -501,6 +531,7 @@ export interface CoreBranchedEntity {
    *
    * Examples:
    * 2HYV_2
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
@@ -522,6 +553,7 @@ export interface CoreBranchedEntityInstance {
    *
    * Examples:
    * 1KIP.A
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
@@ -566,6 +598,7 @@ export interface CoreChemComp {
    *
    * Examples:
    * ATP, PRD_000010
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_schema_container_identifiers?: Maybe<Array<Maybe<RcsbSchemaContainerIdentifiers>>>;
@@ -688,6 +721,7 @@ export interface CoreEntry {
    *
    * Examples:
    * 1KIP
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_primary_citation?: Maybe<RcsbPrimaryCitation>;
@@ -731,6 +765,7 @@ export interface CoreNonpolymerEntity {
    *
    * Examples:
    * 6EL3_1
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
@@ -754,6 +789,7 @@ export interface CoreNonpolymerEntityInstance {
    *
    * Examples:
    * 1KIP.A
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
@@ -775,6 +811,7 @@ export interface CorePfam {
    *
    * Examples:
    * PF00621, PF00637, PF00656
+   *
    */
   rcsb_pfam_accession: Scalars['String'];
   /** Details of the Pfam clan to which the entity belongs. */
@@ -787,6 +824,7 @@ export interface CorePfam {
    *
    * Examples:
    * Lectin like domain, Cell division control protein 24, OB domain 2, Protein of unknown function (DUF722)
+   *
    */
   rcsb_pfam_description?: Maybe<Scalars['String']>;
   /**
@@ -794,6 +832,7 @@ export interface CorePfam {
    *
    * Examples:
    * RhoGEF, Clathrin, Peptidase_C14
+   *
    */
   rcsb_pfam_identifier?: Maybe<Scalars['String']>;
   /**
@@ -801,6 +840,7 @@ export interface CorePfam {
    *
    * Allowable values:
    * Pfam-A
+   *
    */
   rcsb_pfam_provenance_code?: Maybe<Scalars['String']>;
   /**
@@ -808,6 +848,7 @@ export interface CorePfam {
    *
    * Allowable values:
    * Family, Domain, Repeat, Motif, Disordered, Coiled-coil
+   *
    */
   rcsb_pfam_seed_source?: Maybe<Scalars['String']>;
 }
@@ -842,6 +883,7 @@ export interface CorePolymerEntity {
    *
    * Examples:
    * 6EL3_1
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
@@ -852,6 +894,7 @@ export interface CorePolymerEntity {
    *
    * Allowable values:
    * Mpstruc, Homology
+   *
    */
   rcsb_membrane_lineage_provenance_code?: Maybe<Scalars['String']>;
   rcsb_polymer_entity?: Maybe<RcsbPolymerEntity>;
@@ -880,6 +923,7 @@ export interface CorePolymerEntityInstance {
    *
    * Examples:
    * 1KIP.A
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
@@ -936,12 +980,12 @@ export interface CurrentEntry {
    *
    * Examples:
    * 1KIP
+   *
    */
   rcsb_id: Scalars['String'];
   rcsb_repository_holdings_current?: Maybe<RcsbRepositoryHoldingsCurrent>;
   rcsb_repository_holdings_current_entry_container_identifiers?: Maybe<RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers>;
 }
-
 
 export interface Diffrn {
   __typename?: 'Diffrn';
@@ -971,6 +1015,7 @@ export interface Diffrn {
    *
    * Examples:
    * glass capillary, quartz capillary, fiber, metal loop
+   *
    */
   crystal_support?: Maybe<Scalars['String']>;
   /**
@@ -989,6 +1034,7 @@ export interface Diffrn {
    *
    * Examples:
    * Y, N
+   *
    */
   pdbx_serial_crystal_experiment?: Maybe<Scalars['String']>;
 }
@@ -1002,6 +1048,7 @@ export interface DiffrnDetector {
    *
    * Examples:
    * photographic film, scintillation counter, CCD plate, BF~3~ counter
+   *
    */
   detector?: Maybe<Scalars['String']>;
   /**
@@ -1014,6 +1061,7 @@ export interface DiffrnDetector {
    *
    * Examples:
    * 1996-12-25
+   *
    */
   pdbx_collection_date?: Maybe<Scalars['Date']>;
   /** The operating frequency of the detector (Hz) used in data collection. */
@@ -1023,6 +1071,7 @@ export interface DiffrnDetector {
    *
    * Examples:
    * DECTRIS PILATUS 12M, RAYONIX MX-325
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -1034,6 +1083,7 @@ export interface DiffrnRadiation {
    *
    * Examples:
    * 0.3 mm double-pinhole, 0.5 mm, focusing mirrors
+   *
    */
   collimation?: Maybe<Scalars['String']>;
   /**
@@ -1048,6 +1098,7 @@ export interface DiffrnRadiation {
    *
    * Examples:
    * Zr filter, Ge 220, none, equatorial mounted graphite
+   *
    */
   monochromator?: Maybe<Scalars['String']>;
   /**
@@ -1055,6 +1106,7 @@ export interface DiffrnRadiation {
    *
    * Examples:
    * SINGLE WAVELENGTH, MONOCHROMATIC, LAUE, MAD, OTHER
+   *
    */
   pdbx_diffrn_protocol?: Maybe<Scalars['String']>;
   /**
@@ -1062,6 +1114,7 @@ export interface DiffrnRadiation {
    *
    * Allowable values:
    * L, M
+   *
    */
   pdbx_monochromatic_or_laue_m_l?: Maybe<Scalars['String']>;
   /**
@@ -1069,6 +1122,7 @@ export interface DiffrnRadiation {
    *
    * Allowable values:
    * electron, neutron, x-ray
+   *
    */
   pdbx_scattering_type?: Maybe<Scalars['String']>;
   /** Wavelength of radiation. */
@@ -1081,6 +1135,7 @@ export interface DiffrnRadiation {
    *
    * Examples:
    * CuK\a, Cu K\a~1~, Cu K-L~2,3~, white-beam
+   *
    */
   type?: Maybe<Scalars['String']>;
   /**
@@ -1104,6 +1159,7 @@ export interface DiffrnSource {
    *
    * Examples:
    * 17-ID-1, 19-ID
+   *
    */
   pdbx_synchrotron_beamline?: Maybe<Scalars['String']>;
   /**
@@ -1111,6 +1167,7 @@ export interface DiffrnSource {
    *
    * Examples:
    * APS, NSLS-II
+   *
    */
   pdbx_synchrotron_site?: Maybe<Scalars['String']>;
   /** Wavelength of radiation. */
@@ -1120,6 +1177,7 @@ export interface DiffrnSource {
    *
    * Examples:
    * 0.987 or 0.987, 0.988, 1.0 or 0.99-1.5
+   *
    */
   pdbx_wavelength_list?: Maybe<Scalars['String']>;
   /**
@@ -1127,6 +1185,7 @@ export interface DiffrnSource {
    *
    * Examples:
    * sealed X-ray tube, nuclear reactor, spallation source, electron microscope, rotating-anode X-ray tube, synchrotron
+   *
    */
   source?: Maybe<Scalars['String']>;
   /**
@@ -1134,6 +1193,7 @@ export interface DiffrnSource {
    *
    * Examples:
    * NSLS beamline X8C, Rigaku RU200
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -1157,6 +1217,7 @@ export interface DrugbankInfo {
    *
    * Examples:
    * 56-65-5
+   *
    */
   cas_number?: Maybe<Scalars['String']>;
   /** The DrugBank drug description. */
@@ -1172,6 +1233,7 @@ export interface DrugbankInfo {
    *
    * Examples:
    * For nutritional supplementation, also for treating dietary shortage or imbalance
+   *
    */
   indication?: Maybe<Scalars['String']>;
   /**
@@ -1179,6 +1241,7 @@ export interface DrugbankInfo {
    *
    * Examples:
    * ATP is able to store and transport chemical energy within cells.
+   *
    */
   mechanism_of_action?: Maybe<Scalars['String']>;
   /** The DrugBank drug name. */
@@ -1188,6 +1251,7 @@ export interface DrugbankInfo {
    *
    * Examples:
    * Adenosine triphosphate (ATP) is the nucleotide known in biochemistry as the "molecular currency" of intracellular energy transfer; that is, ATP is able to store and transport chemical energy within cells. ATP also plays an important role in the synthesis of nucleic acids. The total quantity of ATP in the human body is about 0.1 mole. The energy used by human cells requires the hydrolysis of 200 to 300 moles of ATP daily. This means that each ATP molecule is recycled 2000 to 3000 times during a single day. ATP cannot be stored, hence its consumption must closely follow its synthesis.
+   *
    */
   pharmacology?: Maybe<Scalars['String']>;
   /** DrugBank drug name synonyms. */
@@ -1212,6 +1276,7 @@ export interface DrugbankTarget {
    *
    * Examples:
    * Q9HD40
+   *
    */
   reference_database_accession_code?: Maybe<Scalars['String']>;
   /**
@@ -1219,6 +1284,7 @@ export interface DrugbankTarget {
    *
    * Allowable values:
    * UniProt
+   *
    */
   reference_database_name?: Maybe<Scalars['String']>;
   /**
@@ -1226,6 +1292,7 @@ export interface DrugbankTarget {
    *
    * Examples:
    * MAKQRSG...
+   *
    */
   seq_one_letter_code?: Maybe<Scalars['String']>;
   /** The actions of the target interaction. */
@@ -1259,6 +1326,7 @@ export interface Em2dCrystalEntity {
    *
    * Allowable values:
    * C 1 2, C 2 2 2, P 1, P 1 2, P 1 21, P 2, P 2 2 2, P 2 2 21, P 2 21 21, P 3, P 3 1 2, P 3 2 1, P 4, P 4 2 2, P 4 21 2, P 6, P 6 2 2
+   *
    */
   space_group_name_H_M?: Maybe<Scalars['String']>;
 }
@@ -1286,6 +1354,7 @@ export interface Em3dCrystalEntity {
    *
    * Examples:
    * P 1, P 21 21 2, I 4, H 3
+   *
    */
   space_group_name?: Maybe<Scalars['String']>;
   /** Space group number. */
@@ -1301,6 +1370,7 @@ export interface Em3dFitting {
    *
    * Examples:
    * Initial local fitting was done using Chimera and then NMFF was used for flexible fitting.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -1321,6 +1391,7 @@ export interface Em3dFitting {
    *
    * Allowable values:
    * AB INITIO MODEL, BACKBONE TRACE, FLEXIBLE FIT, OTHER, RIGID BODY FIT
+   *
    */
   ref_protocol?: Maybe<Scalars['String']>;
   /**
@@ -1329,6 +1400,7 @@ export interface Em3dFitting {
    *
    * Allowable values:
    * REAL, RECIPROCAL
+   *
    */
   ref_space?: Maybe<Scalars['String']>;
   /**
@@ -1337,6 +1409,7 @@ export interface Em3dFitting {
    *
    * Examples:
    * Cross-correlation coefficient
+   *
    */
   target_criteria?: Maybe<Scalars['String']>;
 }
@@ -1365,6 +1438,7 @@ export interface Em3dFittingList {
    *
    * Examples:
    * PDB entry 1EHZ
+   *
    */
   pdb_entry_id?: Maybe<Scalars['String']>;
 }
@@ -1376,6 +1450,7 @@ export interface Em3dReconstruction {
    *
    * Examples:
    * null, null
+   *
    */
   actual_pixel_size?: Maybe<Scalars['Float']>;
   /** The algorithm used project from 2D orientations to 3D map. */
@@ -1385,6 +1460,7 @@ export interface Em3dReconstruction {
    *
    * Examples:
    * a modified version of SPIDER program was used for the reconstruction
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -1399,6 +1475,7 @@ export interface Em3dReconstruction {
    *
    * Examples:
    * TMV images
+   *
    */
   magnification_calibration?: Maybe<Scalars['String']>;
   /**
@@ -1406,6 +1483,7 @@ export interface Em3dReconstruction {
    *
    * Examples:
    * cross-common lines, polar Fourier transform (PFT)
+   *
    */
   method?: Maybe<Scalars['String']>;
   /**
@@ -1413,6 +1491,7 @@ export interface Em3dReconstruction {
    *
    * Examples:
    * null, null
+   *
    */
   nominal_pixel_size?: Maybe<Scalars['Float']>;
   /**
@@ -1428,6 +1507,7 @@ export interface Em3dReconstruction {
    *
    * Allowable values:
    * HALF-MAPS REFINED AGAINST SAME DATA, HALF-MAPS REFINED INDEPENDENTLY, HALF-MAPS REFINED INDEPENDENTLY WITH FREQUENCY RANGE OMITTED, HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED, OTHER
+   *
    */
   refinement_type?: Maybe<Scalars['String']>;
   /**
@@ -1435,6 +1515,7 @@ export interface Em3dReconstruction {
    *
    * Examples:
    * null, null
+   *
    */
   resolution?: Maybe<Scalars['Float']>;
   /**
@@ -1447,6 +1528,7 @@ export interface Em3dReconstruction {
    *
    * Examples:
    * FSC at 0.5 cut-off
+   *
    */
   resolution_method?: Maybe<Scalars['String']>;
   /**
@@ -1454,6 +1536,7 @@ export interface Em3dReconstruction {
    *
    * Allowable values:
    * 2D CRYSTAL, 3D CRYSTAL, HELICAL, POINT
+   *
    */
   symmetry_type?: Maybe<Scalars['String']>;
 }
@@ -1465,6 +1548,7 @@ export interface EmCtfCorrection {
    *
    * Examples:
    * CTF amplitude correction was performed following 3D reconstruction
+   *
    */
   details?: Maybe<Scalars['String']>;
   /** Foreign key to the EM_IMAGE_PROCESSING category */
@@ -1488,6 +1572,7 @@ export interface EmDiffraction {
    *
    * Examples:
    * 20,40,50,55
+   *
    */
   tilt_angle_list?: Maybe<Scalars['String']>;
 }
@@ -1501,6 +1586,7 @@ export interface EmDiffractionShell {
    *
    * Examples:
    * null
+   *
    */
   fourier_space_coverage?: Maybe<Scalars['Float']>;
   /**
@@ -1508,6 +1594,7 @@ export interface EmDiffractionShell {
    *
    * Examples:
    * null
+   *
    */
   high_resolution?: Maybe<Scalars['Float']>;
   /** Unique identifier for the category em_diffraction_shell */
@@ -1517,6 +1604,7 @@ export interface EmDiffractionShell {
    *
    * Examples:
    * null
+   *
    */
   low_resolution?: Maybe<Scalars['Float']>;
   /**
@@ -1524,6 +1612,7 @@ export interface EmDiffractionShell {
    *
    * Examples:
    * null
+   *
    */
   multiplicity?: Maybe<Scalars['Float']>;
   /** Number of measured structure factors in this resolution shell */
@@ -1533,6 +1622,7 @@ export interface EmDiffractionShell {
    *
    * Examples:
    * null
+   *
    */
   phase_residual?: Maybe<Scalars['Float']>;
 }
@@ -1544,6 +1634,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * Phases were obtained from micrograph images of the 2D crystals
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -1552,6 +1643,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * null
+   *
    */
   fourier_space_coverage?: Maybe<Scalars['Float']>;
   /**
@@ -1559,6 +1651,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * null
+   *
    */
   high_resolution?: Maybe<Scalars['Float']>;
   /** Identifier for this category */
@@ -1574,6 +1667,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * null
+   *
    */
   overall_phase_error?: Maybe<Scalars['Float']>;
   /**
@@ -1581,6 +1675,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * null
+   *
    */
   overall_phase_residual?: Maybe<Scalars['Float']>;
   /**
@@ -1588,6 +1683,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * Structure factors with phase errors higher than 20 degrees were omitted from refinement
+   *
    */
   phase_error_rejection_criteria?: Maybe<Scalars['String']>;
   /**
@@ -1595,6 +1691,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * null
+   *
    */
   r_merge?: Maybe<Scalars['Float']>;
   /**
@@ -1602,6 +1699,7 @@ export interface EmDiffractionStats {
    *
    * Examples:
    * null
+   *
    */
   r_sym?: Maybe<Scalars['Float']>;
 }
@@ -1616,6 +1714,7 @@ export interface EmEmbedding {
    *   1 % tannin sitting on a carbon film supported by a molybdenum grid.  An equal volume
    *   of 1% glucose was then added and the solution thoroughly but gently mixed.  The grid
    *   was then blotted, air dried, and frozen in LN2.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /** This data item is the primary key of the category. */
@@ -1625,6 +1724,7 @@ export interface EmEmbedding {
    *
    * Examples:
    * tannin and glucose
+   *
    */
   material?: Maybe<Scalars['String']>;
   /** Foreign key relationship to the EMD SPECIMEN category */
@@ -1638,6 +1738,7 @@ export interface EmEntityAssembly {
    *
    * Examples:
    * Fab fragment generated by proteolytic cleavage of LA2 IgG antibody.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -1655,6 +1756,7 @@ export interface EmEntityAssembly {
    *
    * Examples:
    * Ternary complex of alpha-tubulin with tubulin folding cofactors TBCE and TBCB, 80S Ribosome bound to emetine, messenger RNA, initiation factor 2, GroEL, antibody Fab fragment
+   *
    */
   name?: Maybe<Scalars['String']>;
   /** oligomeric details */
@@ -1670,6 +1772,7 @@ export interface EmEntityAssembly {
    *
    * Allowable values:
    * MULTIPLE SOURCES, NATURAL, RECOMBINANT, SYNTHETIC
+   *
    */
   source?: Maybe<Scalars['String']>;
   /**
@@ -1677,6 +1780,7 @@ export interface EmEntityAssembly {
    *
    * Examples:
    * FADV-1
+   *
    */
   synonym?: Maybe<Scalars['String']>;
   /**
@@ -1693,6 +1797,7 @@ export interface EmExperiment {
    *
    * Allowable values:
    * 2D ARRAY, 3D ARRAY, CELL, FILAMENT, HELICAL ARRAY, PARTICLE, TISSUE
+   *
    */
   aggregation_state?: Maybe<Scalars['String']>;
   /** Foreign key to the EM_ENTITY_ASSEMBLY category */
@@ -1704,6 +1809,7 @@ export interface EmExperiment {
    *
    * Allowable values:
    * CRYSTALLOGRAPHY, HELICAL, SINGLE PARTICLE, SUBTOMOGRAM AVERAGING, TOMOGRAPHY
+   *
    */
   reconstruction_method?: Maybe<Scalars['String']>;
 }
@@ -1715,6 +1821,7 @@ export interface EmHelicalEntity {
    *
    * Examples:
    * null
+   *
    */
   angular_rotation_per_subunit?: Maybe<Scalars['Float']>;
   /**
@@ -1722,6 +1829,7 @@ export interface EmHelicalEntity {
    *
    * Examples:
    * null
+   *
    */
   axial_rise_per_subunit?: Maybe<Scalars['Float']>;
   /**
@@ -1729,6 +1837,7 @@ export interface EmHelicalEntity {
    *
    * Examples:
    * C1, D2, C7
+   *
    */
   axial_symmetry?: Maybe<Scalars['String']>;
   /**
@@ -1736,6 +1845,7 @@ export interface EmHelicalEntity {
    *
    * Examples:
    * Dihedral symmetry
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -1758,6 +1868,7 @@ export interface EmImageRecording {
    *
    * Examples:
    * null
+   *
    */
   average_exposure_time?: Maybe<Scalars['Float']>;
   /**
@@ -1765,6 +1876,7 @@ export interface EmImageRecording {
    *
    * Examples:
    * null
+   *
    */
   avg_electron_dose_per_image?: Maybe<Scalars['Float']>;
   /**
@@ -1772,6 +1884,7 @@ export interface EmImageRecording {
    *
    * Examples:
    * Images were collected in movie-mode at 17 frames per second
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -1779,6 +1892,7 @@ export interface EmImageRecording {
    *
    * Allowable values:
    * COUNTING, INTEGRATING, OTHER, SUPER-RESOLUTION
+   *
    */
   detector_mode?: Maybe<Scalars['String']>;
   /**
@@ -1810,6 +1924,7 @@ export interface EmImaging {
    *
    * Allowable values:
    * BASIC, COMA FREE, NONE, OTHER, ZEMLIN TABLEAU
+   *
    */
   alignment_procedure?: Maybe<Scalars['String']>;
   /** astigmatism */
@@ -1840,6 +1955,7 @@ export interface EmImaging {
    *
    * Allowable values:
    * HELIUM, NITROGEN
+   *
    */
   cryogen?: Maybe<Scalars['String']>;
   /**
@@ -1848,6 +1964,7 @@ export interface EmImaging {
    *
    * Examples:
    * 2001-05-08
+   *
    */
   date?: Maybe<Scalars['Date']>;
   /**
@@ -1855,6 +1972,7 @@ export interface EmImaging {
    *
    * Examples:
    * Preliminary grid screening was performed manually.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -1878,6 +1996,7 @@ export interface EmImaging {
    *
    * Allowable values:
    * FLOOD BEAM, OTHER, SPOT SCAN
+   *
    */
   illumination_mode?: Maybe<Scalars['String']>;
   /**
@@ -1885,6 +2004,7 @@ export interface EmImaging {
    *
    * Allowable values:
    * FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
+   *
    */
   microscope_model?: Maybe<Scalars['String']>;
   /**
@@ -1892,6 +2012,7 @@ export interface EmImaging {
    *
    * Allowable values:
    * BRIGHT FIELD, DARK FIELD, DIFFRACTION, OTHER
+   *
    */
   mode?: Maybe<Scalars['String']>;
   /**
@@ -1900,6 +2021,7 @@ export interface EmImaging {
    *
    * Examples:
    * null
+   *
    */
   nominal_cs?: Maybe<Scalars['Float']>;
   /**
@@ -1931,6 +2053,7 @@ export interface EmImaging {
    *
    * Allowable values:
    * FEI TITAN KRIOS AUTOGRID HOLDER, FISCHIONE 2550, FISCHIONE INSTRUMENTS DUAL AXIS TOMOGRAPHY HOLDER, GATAN 626 SINGLE TILT LIQUID NITROGEN CRYO TRANSFER HOLDER, GATAN 910 MULTI-SPECIMEN SINGLE TILT CRYO TRANSFER HOLDER, GATAN 914 HIGH TILT LIQUID NITROGEN CRYO TRANSFER TOMOGRAPHY HOLDER, GATAN 915 DOUBLE TILT LIQUID NITROGEN CRYO TRANSFER HOLDER, GATAN CHDT 3504 DOUBLE TILT HIGH RESOLUTION NITROGEN COOLING HOLDER, GATAN CT3500 SINGLE TILT LIQUID NITROGEN CRYO TRANSFER HOLDER, GATAN CT3500TR SINGLE TILT ROTATION LIQUID NITROGEN CRYO TRANSFER HOLDER, GATAN ELSA 698 SINGLE TILT LIQUID NITROGEN CRYO TRANSFER HOLDER, GATAN HC 3500 SINGLE TILT HEATING/NITROGEN COOLING HOLDER, GATAN HCHDT 3010 DOUBLE TILT HIGH RESOLUTION HELIUM COOLING HOLDER, GATAN HCHST 3008 SINGLE TILT HIGH RESOLUTION HELIUM COOLING HOLDER, GATAN HELIUM, GATAN LIQUID NITROGEN, GATAN UHRST 3500 SINGLE TILT ULTRA HIGH RESOLUTION NITROGEN COOLING HOLDER, GATAN ULTDT ULTRA LOW TEMPERATURE DOUBLE TILT HELIUM COOLING HOLDER, GATAN ULTST ULTRA LOW TEMPERATURE SINGLE TILT HELIUM COOLING HOLDER, HOME BUILD, JEOL, JEOL 3200FSC CRYOHOLDER, JEOL CRYOSPECPORTER, OTHER, PHILIPS ROTATION HOLDER, SIDE ENTRY, EUCENTRIC
+   *
    */
   specimen_holder_model?: Maybe<Scalars['String']>;
   /**
@@ -1938,6 +2061,7 @@ export interface EmImaging {
    *
    * Examples:
    * cryo
+   *
    */
   specimen_holder_type?: Maybe<Scalars['String']>;
   /** Foreign key to the EM_SPECIMEN category */
@@ -1966,6 +2090,7 @@ export interface EmParticleSelection {
    *
    * Examples:
    * negative monitor contrast facilitated particle picking
+   *
    */
   details?: Maybe<Scalars['String']>;
   /** Ordinal identifier */
@@ -1990,6 +2115,7 @@ export interface EmSingleParticleEntity {
    *
    * Examples:
    * C1, C5, C4
+   *
    */
   point_symmetry?: Maybe<Scalars['String']>;
 }
@@ -2001,6 +2127,7 @@ export interface EmSoftware {
    *
    * Allowable values:
    * CLASSIFICATION, CRYSTALLOGRAPHY MERGING, CTF CORRECTION, DIFFRACTION INDEXING, FINAL EULER ASSIGNMENT, IMAGE ACQUISITION, INITIAL EULER ASSIGNMENT, LATTICE DISTORTION CORRECTION, LAYERLINE INDEXING, MASKING, MODEL FITTING, MODEL REFINEMENT, MOLECULAR REPLACEMENT, OTHER, PARTICLE SELECTION, RECONSTRUCTION, SERIES ALIGNMENT, SYMMETRY DETERMINATION, VOLUME SELECTION
+   *
    */
   category?: Maybe<Scalars['String']>;
   /**
@@ -2008,6 +2135,7 @@ export interface EmSoftware {
    *
    * Examples:
    * EMAN2 e2boxer.py was used to automatically select particle images.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /** pointer to _em_3d_fitting.id in the EM_3D_FITTING category. */
@@ -2024,6 +2152,7 @@ export interface EmSoftware {
    *
    * Examples:
    * EMAN, Imagic, Spider, Bsoft, UCSF-Chimera
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -2031,6 +2160,7 @@ export interface EmSoftware {
    *
    * Examples:
    * 9.03, 2.1
+   *
    */
   version?: Maybe<Scalars['String']>;
 }
@@ -2043,6 +2173,7 @@ export interface EmSpecimen {
    *
    * Examples:
    * null
+   *
    */
   concentration?: Maybe<Scalars['Float']>;
   /**
@@ -2050,6 +2181,7 @@ export interface EmSpecimen {
    *
    * Examples:
    * This sample was monodisperse., Au was deposited at a 30 degree angle to 15 nm thickness., Colloidal gold particles were deposited by dipping into dilute solution., The specimen was frozen at high pressure using the bal-tec hpm 010 instrument., The embedded sample was sectioned at 100 K to 50 nm final thickness.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -2057,6 +2189,7 @@ export interface EmSpecimen {
    *
    * Allowable values:
    * NO, YES
+   *
    */
   embedding_applied?: Maybe<Scalars['String']>;
   /** Pointer to _em_experiment.id. */
@@ -2071,6 +2204,7 @@ export interface EmSpecimen {
    *
    * Allowable values:
    * NO, YES
+   *
    */
   shadowing_applied?: Maybe<Scalars['String']>;
   /**
@@ -2078,6 +2212,7 @@ export interface EmSpecimen {
    *
    * Allowable values:
    * NO, YES
+   *
    */
   staining_applied?: Maybe<Scalars['String']>;
   /**
@@ -2085,6 +2220,7 @@ export interface EmSpecimen {
    *
    * Allowable values:
    * NO, YES
+   *
    */
   vitrification_applied?: Maybe<Scalars['String']>;
 }
@@ -2097,6 +2233,7 @@ export interface EmStaining {
    * Examples:
    * Negatively stained EM specimens were prepared using a carbon-sandwich technique
    *   and uranyl-formate stain.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /** This data item is the primary key of the category. */
@@ -2106,6 +2243,7 @@ export interface EmStaining {
    *
    * Examples:
    * Uranyl Acetate
+   *
    */
   material?: Maybe<Scalars['String']>;
   /** Foreign key relationship to the EMD SPECIMEN category */
@@ -2115,6 +2253,7 @@ export interface EmStaining {
    *
    * Allowable values:
    * NEGATIVE, NONE, POSITIVE
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -2128,6 +2267,7 @@ export interface EmVitrification {
    *
    * Allowable values:
    * ETHANE, ETHANE-PROPANE, FREON 12, FREON 22, HELIUM, METHANE, NITROGEN, OTHER, PROPANE
+   *
    */
   cryogen_name?: Maybe<Scalars['String']>;
   /**
@@ -2135,6 +2275,7 @@ export interface EmVitrification {
    *
    * Examples:
    * Vitrification carried out in argon atmosphere.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /** The humidity (%) in the vicinity of the vitrification process. */
@@ -2149,6 +2290,7 @@ export interface EmVitrification {
    *
    * Allowable values:
    * EMS-002 RAPID IMMERSION FREEZER, FEI VITROBOT MARK I, FEI VITROBOT MARK II, FEI VITROBOT MARK III, FEI VITROBOT MARK IV, GATAN CRYOPLUNGE 3, HOMEMADE PLUNGER, LEICA EM CPC, LEICA EM GP, LEICA KF80, LEICA PLUNGER, REICHERT-JUNG PLUNGER, SPOTITON, ZEISS PLUNGE FREEZER CRYOBOX
+   *
    */
   instrument?: Maybe<Scalars['String']>;
   /**
@@ -2156,6 +2298,7 @@ export interface EmVitrification {
    *
    * Examples:
    * plunge freezing
+   *
    */
   method?: Maybe<Scalars['String']>;
   /** This data item is a pointer to _em_specimen.id */
@@ -2171,6 +2314,7 @@ export interface EmVitrification {
    *
    * Examples:
    * plunge 30 msec after spraying with effector
+   *
    */
   time_resolved_state?: Maybe<Scalars['String']>;
 }
@@ -2184,6 +2328,7 @@ export interface EntityPoly {
    *
    * Allowable values:
    * n, no, y, yes
+   *
    */
   nstd_linkage?: Maybe<Scalars['String']>;
   /**
@@ -2192,6 +2337,7 @@ export interface EntityPoly {
    *
    * Allowable values:
    * n, no, y, yes
+   *
    */
   nstd_monomer?: Maybe<Scalars['String']>;
   /**
@@ -2244,6 +2390,7 @@ export interface EntityPoly {
    *
    * Examples:
    * HHHH(MSE)AKQRSG or AUCGGAAU, (MSE)SHHWGYGKHNGPEHWHKDFPIAKGERQSPVDIDTHTAKYDPSLKPLSVSYDQATSLRILNNGAAFNVEFD
+   *
    */
   pdbx_seq_one_letter_code?: Maybe<Scalars['String']>;
   /**
@@ -2260,6 +2407,7 @@ export interface EntityPoly {
    *
    * Examples:
    * MSHHWGYGKHNGPEHWHKDFPIAKGERQSPVDIDTHTAKYDPSLKPLSVSYDQATSLRILNNGAAFNVEFD
+   *
    */
   pdbx_seq_one_letter_code_can?: Maybe<Scalars['String']>;
   /**
@@ -2267,6 +2415,7 @@ export interface EntityPoly {
    *
    * Examples:
    * A,B, A, B, A,B,C
+   *
    */
   pdbx_strand_id?: Maybe<Scalars['String']>;
   /**
@@ -2274,6 +2423,7 @@ export interface EntityPoly {
    *
    * Examples:
    * JCSG-11211, 356560
+   *
    */
   pdbx_target_identifier?: Maybe<Scalars['String']>;
   /**
@@ -2290,6 +2440,7 @@ export interface EntityPoly {
    *
    * Allowable values:
    * DNA, NA-hybrid, Other, Protein, RNA
+   *
    */
   rcsb_entity_polymer_type?: Maybe<Scalars['String']>;
   /** Number of monomer insertions relative to the reference sequence. */
@@ -2309,6 +2460,7 @@ export interface EntityPoly {
    *
    * Allowable values:
    * cyclic-pseudo-peptide, other, peptide nucleic acid, polydeoxyribonucleotide, polydeoxyribonucleotide/polyribonucleotide hybrid, polypeptide(D), polypeptide(L), polyribonucleotide
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -2327,6 +2479,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * man, yeast, bacteria
+   *
    */
   gene_src_common_name?: Maybe<Scalars['String']>;
   /**
@@ -2340,6 +2493,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * Homo, Saccharomyces, Escherichia
+   *
    */
   gene_src_genus?: Maybe<Scalars['String']>;
   /**
@@ -2348,6 +2502,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * sapiens, cerevisiae, coli
+   *
    */
   gene_src_species?: Maybe<Scalars['String']>;
   /**
@@ -2356,6 +2511,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * DH5a, BMH 71-18
+   *
    */
   gene_src_strain?: Maybe<Scalars['String']>;
   /**
@@ -2364,6 +2520,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * heart, liver, eye lens
+   *
    */
   gene_src_tissue?: Maybe<Scalars['String']>;
   /**
@@ -2372,6 +2529,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * mitochondria, nucleus, membrane
+   *
    */
   gene_src_tissue_fraction?: Maybe<Scalars['String']>;
   /**
@@ -2383,6 +2541,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * yeast, bacteria
+   *
    */
   host_org_common_name?: Maybe<Scalars['String']>;
   /**
@@ -2398,6 +2557,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * Saccharomyces, Escherichia
+   *
    */
   host_org_genus?: Maybe<Scalars['String']>;
   /**
@@ -2406,6 +2566,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * cerevisiae, coli
+   *
    */
   host_org_species?: Maybe<Scalars['String']>;
   /**
@@ -2414,6 +2575,7 @@ export interface EntitySrcGen {
    *
    * Allowable values:
    * model, sample
+   *
    */
   pdbx_alt_source_flag?: Maybe<Scalars['String']>;
   /**
@@ -2437,6 +2599,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * 6051
+   *
    */
   pdbx_gene_src_atcc?: Maybe<Scalars['String']>;
   /**
@@ -2444,6 +2607,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * ENDOTHELIAL
+   *
    */
   pdbx_gene_src_cell?: Maybe<Scalars['String']>;
   /**
@@ -2451,6 +2615,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * HELA CELLS
+   *
    */
   pdbx_gene_src_cell_line?: Maybe<Scalars['String']>;
   /**
@@ -2458,6 +2623,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * CYTOPLASM, NUCLEUS
+   *
    */
   pdbx_gene_src_cellular_location?: Maybe<Scalars['String']>;
   /**
@@ -2465,6 +2631,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * CYTOPLASM, NUCLEUS
+   *
    */
   pdbx_gene_src_fragment?: Maybe<Scalars['String']>;
   /** Identifies the gene. */
@@ -2488,6 +2655,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * KIDNEY, LIVER, PANCREAS
+   *
    */
   pdbx_gene_src_organ?: Maybe<Scalars['String']>;
   /**
@@ -2495,6 +2663,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * MITOCHONDRIA
+   *
    */
   pdbx_gene_src_organelle?: Maybe<Scalars['String']>;
   /**
@@ -2502,6 +2671,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * Homo sapiens, Saccharomyces Cerevisiae
+   *
    */
   pdbx_gene_src_scientific_name?: Maybe<Scalars['String']>;
   /**
@@ -2509,6 +2679,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * DELTAH1DELTATRP
+   *
    */
   pdbx_gene_src_variant?: Maybe<Scalars['String']>;
   /**
@@ -2525,6 +2696,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * ENDOTHELIAL
+   *
    */
   pdbx_host_org_cell?: Maybe<Scalars['String']>;
   /**
@@ -2535,6 +2707,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * HELA
+   *
    */
   pdbx_host_org_cell_line?: Maybe<Scalars['String']>;
   /**
@@ -2543,6 +2716,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * CYTOPLASM, NUCLEUS
+   *
    */
   pdbx_host_org_cellular_location?: Maybe<Scalars['String']>;
   /**
@@ -2557,6 +2731,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * HIV-1 POL, GLNS7, U1A (2-98, Y31H, Q36R)
+   *
    */
   pdbx_host_org_gene?: Maybe<Scalars['String']>;
   /**
@@ -2578,6 +2753,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * KIDNEY
+   *
    */
   pdbx_host_org_organ?: Maybe<Scalars['String']>;
   /**
@@ -2585,6 +2761,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * MITOCHONDRIA
+   *
    */
   pdbx_host_org_organelle?: Maybe<Scalars['String']>;
   /**
@@ -2596,6 +2773,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * ESCHERICHIA COLI, SACCHAROMYCES CEREVISIAE
+   *
    */
   pdbx_host_org_scientific_name?: Maybe<Scalars['String']>;
   /**
@@ -2604,6 +2782,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * AR120
+   *
    */
   pdbx_host_org_strain?: Maybe<Scalars['String']>;
   /**
@@ -2613,6 +2792,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * heart, liver, eye lens
+   *
    */
   pdbx_host_org_tissue?: Maybe<Scalars['String']>;
   /**
@@ -2621,6 +2801,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * mitochondria, nucleus, membrane
+   *
    */
   pdbx_host_org_tissue_fraction?: Maybe<Scalars['String']>;
   /**
@@ -2632,6 +2813,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * TRP-LAC, LAMBDA DE3
+   *
    */
   pdbx_host_org_variant?: Maybe<Scalars['String']>;
   /**
@@ -2641,6 +2823,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * PBIT36, PET15B, PUC18
+   *
    */
   pdbx_host_org_vector?: Maybe<Scalars['String']>;
   /**
@@ -2651,6 +2834,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * COSMID, PLASMID
+   *
    */
   pdbx_host_org_vector_type?: Maybe<Scalars['String']>;
   /**
@@ -2658,6 +2842,7 @@ export interface EntitySrcGen {
    *
    * Allowable values:
    * Biological sequence, C-terminal tag, Linker, N-terminal tag
+   *
    */
   pdbx_seq_type?: Maybe<Scalars['String']>;
   /** This data item is an ordinal identifier for entity_src_gen data records. */
@@ -2679,6 +2864,7 @@ export interface EntitySrcGen {
    *
    * Examples:
    * pET3C, pT123sab
+   *
    */
   plasmid_name?: Maybe<Scalars['String']>;
 }
@@ -2691,6 +2877,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * man, yeast, bacteria
+   *
    */
   common_name?: Maybe<Scalars['String']>;
   /**
@@ -2703,6 +2890,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * Homo, Saccharomyces, Escherichia
+   *
    */
   genus?: Maybe<Scalars['String']>;
   /**
@@ -2711,6 +2899,7 @@ export interface EntitySrcNat {
    *
    * Allowable values:
    * model, sample
+   *
    */
   pdbx_alt_source_flag?: Maybe<Scalars['String']>;
   /**
@@ -2718,6 +2907,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * 6051
+   *
    */
   pdbx_atcc?: Maybe<Scalars['String']>;
   /**
@@ -2732,6 +2922,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * BHK-21
+   *
    */
   pdbx_cell?: Maybe<Scalars['String']>;
   /**
@@ -2739,6 +2930,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * HELA
+   *
    */
   pdbx_cell_line?: Maybe<Scalars['String']>;
   /** Identifies the location inside (or outside) the cell. */
@@ -2771,6 +2963,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * KIDNEY
+   *
    */
   pdbx_organ?: Maybe<Scalars['String']>;
   /**
@@ -2778,6 +2971,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * MITOCHONDRIA
+   *
    */
   pdbx_organelle?: Maybe<Scalars['String']>;
   /**
@@ -2785,6 +2979,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * Bos taurus, BOS TAURUS, SUS SCROFA, ASPERGILLUS ORYZAE
+   *
    */
   pdbx_organism_scientific?: Maybe<Scalars['String']>;
   /**
@@ -2792,6 +2987,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * PLC28 DERIVATIVE
+   *
    */
   pdbx_plasmid_details?: Maybe<Scalars['String']>;
   /**
@@ -2799,6 +2995,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * pB322
+   *
    */
   pdbx_plasmid_name?: Maybe<Scalars['String']>;
   /**
@@ -2806,6 +3003,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * saliva, urine, venom
+   *
    */
   pdbx_secretion?: Maybe<Scalars['String']>;
   /** This data item is an ordinal identifier for entity_src_nat data records. */
@@ -2817,6 +3015,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * sapiens, cerevisiae, coli
+   *
    */
   species?: Maybe<Scalars['String']>;
   /**
@@ -2824,6 +3023,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * DH5a, BMH 71-18
+   *
    */
   strain?: Maybe<Scalars['String']>;
   /**
@@ -2831,6 +3031,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * heart, liver, eye lens
+   *
    */
   tissue?: Maybe<Scalars['String']>;
   /**
@@ -2839,6 +3040,7 @@ export interface EntitySrcNat {
    *
    * Examples:
    * mitochondria, nucleus, membrane
+   *
    */
   tissue_fraction?: Maybe<Scalars['String']>;
 }
@@ -2871,6 +3073,7 @@ export interface Exptl {
    *
    * Allowable values:
    * ELECTRON CRYSTALLOGRAPHY, ELECTRON MICROSCOPY, EPR, FIBER DIFFRACTION, FLUORESCENCE TRANSFER, INFRARED SPECTROSCOPY, NEUTRON DIFFRACTION, POWDER DIFFRACTION, SOLID-STATE NMR, SOLUTION NMR, SOLUTION SCATTERING, THEORETICAL MODEL, X-RAY DIFFRACTION
+   *
    */
   method: Scalars['String'];
   /**
@@ -2878,6 +3081,7 @@ export interface Exptl {
    *
    * Examples:
    * 29 structures, minimized average structure
+   *
    */
   method_details?: Maybe<Scalars['String']>;
 }
@@ -2889,6 +3093,7 @@ export interface ExptlCrystal {
    *
    * Examples:
    * dark green
+   *
    */
   colour?: Maybe<Scalars['String']>;
   /**
@@ -2900,6 +3105,7 @@ export interface ExptlCrystal {
    *
    * Examples:
    * null
+   *
    */
   density_Matthews?: Maybe<Scalars['Float']>;
   /**
@@ -2958,6 +3164,7 @@ export interface ExptlCrystal {
    *
    * Examples:
    * mounted in an argon-filled quartz capillary
+   *
    */
   preparation?: Maybe<Scalars['String']>;
 }
@@ -2986,6 +3193,7 @@ export interface ExptlCrystalGrow {
    *                                   of tiny crystals grew, at pH 7.5 well formed
    *                                   single crystals grew, at pH 7.6 no
    *                                   crystallization occurred at all.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -2993,6 +3201,7 @@ export interface ExptlCrystalGrow {
    *
    * Examples:
    * MICROBATCH, VAPOR DIFFUSION, HANGING DROP
+   *
    */
   method?: Maybe<Scalars['String']>;
   /**
@@ -3003,6 +3212,7 @@ export interface ExptlCrystalGrow {
    *
    * Examples:
    * null, null, null
+   *
    */
   pH?: Maybe<Scalars['Float']>;
   /**
@@ -3010,6 +3220,7 @@ export interface ExptlCrystalGrow {
    *
    * Examples:
    * PEG 4000, potassium phosphate, magnesium chloride, cacodylate
+   *
    */
   pdbx_details?: Maybe<Scalars['String']>;
   /**
@@ -3018,6 +3229,7 @@ export interface ExptlCrystalGrow {
    *
    * Examples:
    * 5.6 - 6.4
+   *
    */
   pdbx_pH_range?: Maybe<Scalars['String']>;
   /**
@@ -3049,6 +3261,7 @@ export interface InterfacePartnerFeatureAdditionalProperties {
    *
    * Allowable values:
    * TO_BE_DEFINED
+   *
    */
   name?: Maybe<Scalars['String']>;
   /** The value(s) of the additional property. */
@@ -3065,7 +3278,6 @@ export interface InterfacePartnerFeatureFeaturePositions {
   values?: Maybe<Array<Maybe<Scalars['Float']>>>;
 }
 
-
 export interface PdbxAuditRevisionCategory {
   __typename?: 'PdbxAuditRevisionCategory';
   /**
@@ -3073,6 +3285,7 @@ export interface PdbxAuditRevisionCategory {
    *
    * Examples:
    * audit_author, citation
+   *
    */
   category?: Maybe<Scalars['String']>;
   /**
@@ -3080,6 +3293,7 @@ export interface PdbxAuditRevisionCategory {
    *
    * Allowable values:
    * Chemical component, NMR restraints, NMR shifts, Structure factors, Structure model
+   *
    */
   data_content_type: Scalars['String'];
   /** A unique identifier for the pdbx_audit_revision_category record. */
@@ -3095,6 +3309,7 @@ export interface PdbxAuditRevisionDetails {
    *
    * Allowable values:
    * Chemical component, NMR restraints, NMR shifts, Structure factors, Structure model
+   *
    */
   data_content_type: Scalars['String'];
   /** Additional details describing the revision. */
@@ -3108,6 +3323,7 @@ export interface PdbxAuditRevisionDetails {
    *
    * Allowable values:
    * author, repository
+   *
    */
   provider?: Maybe<Scalars['String']>;
   /** A pointer to  _pdbx_audit_revision_history.ordinal */
@@ -3117,6 +3333,7 @@ export interface PdbxAuditRevisionDetails {
    *
    * Allowable values:
    * Coordinate replacement, Initial release, Obsolete, Remediation
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -3128,6 +3345,7 @@ export interface PdbxAuditRevisionGroup {
    *
    * Allowable values:
    * Chemical component, NMR restraints, NMR shifts, Structure factors, Structure model
+   *
    */
   data_content_type: Scalars['String'];
   /**
@@ -3135,6 +3353,7 @@ export interface PdbxAuditRevisionGroup {
    *
    * Allowable values:
    * Advisory, Atomic model, Author supporting evidence, Data collection, Data processing, Database references, Derived calculations, Experimental data, Experimental preparation, Initial release, Non-polymer description, Other, Polymer sequence, Refinement description, Source and taxonomy, Structure summary, Version format compliance
+   *
    */
   group?: Maybe<Scalars['String']>;
   /** A unique identifier for the pdbx_audit_revision_group record. */
@@ -3150,6 +3369,7 @@ export interface PdbxAuditRevisionHistory {
    *
    * Allowable values:
    * Chemical component, NMR restraints, NMR shifts, Structure factors, Structure model
+   *
    */
   data_content_type: Scalars['String'];
   /** The major version number of deposition release. */
@@ -3163,6 +3383,7 @@ export interface PdbxAuditRevisionHistory {
    *
    * Examples:
    * 2017-03-08
+   *
    */
   revision_date?: Maybe<Scalars['Date']>;
 }
@@ -3174,6 +3395,7 @@ export interface PdbxAuditRevisionItem {
    *
    * Allowable values:
    * Chemical component, NMR restraints, NMR shifts, Structure factors, Structure model
+   *
    */
   data_content_type: Scalars['String'];
   /**
@@ -3181,6 +3403,7 @@ export interface PdbxAuditRevisionItem {
    *
    * Examples:
    * _atom_site.type_symbol
+   *
    */
   item?: Maybe<Scalars['String']>;
   /** A unique identifier for the pdbx_audit_revision_item record. */
@@ -3203,6 +3426,7 @@ export interface PdbxAuditSupport {
    *
    * Examples:
    * National Institutes of Health, Wellcome Trust, National Institutes of Health/National Institute of General Medical Sciences
+   *
    */
   funding_organization?: Maybe<Scalars['String']>;
   /** The grant number associated with this source of support. */
@@ -3218,6 +3442,7 @@ export interface PdbxChemCompAudit {
    *
    * Allowable values:
    * Create component, Initial release, Modify aromatic_flag, Modify atom id, Modify charge, Modify component atom id, Modify component comp_id, Modify coordinates, Modify descriptor, Modify formal charge, Modify formula, Modify identifier, Modify internal type, Modify leaving atom flag, Modify linking type, Modify model coordinates code, Modify name, Modify one letter code, Modify parent residue, Modify processing site, Modify subcomponent list, Modify synonyms, Modify value order, Obsolete component, Other modification
+   *
    */
   action_type?: Maybe<Scalars['String']>;
   /**
@@ -3232,6 +3457,7 @@ export interface PdbxChemCompAudit {
    *
    * Examples:
    * Added C14 as a leaving atom.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -3259,6 +3485,7 @@ export interface PdbxChemCompDescriptor {
    *
    * Examples:
    * OPENEYE, CACTVS, DAYLIGHT, OTHER
+   *
    */
   program: Scalars['String'];
   /**
@@ -3271,6 +3498,7 @@ export interface PdbxChemCompDescriptor {
    *
    * Allowable values:
    * InChI, InChIKey, InChI_CHARGE, InChI_FIXEDH, InChI_ISOTOPE, InChI_MAIN, InChI_MAIN_CONNECT, InChI_MAIN_FORMULA, InChI_MAIN_HATOM, InChI_RECONNECT, InChI_STEREO, SMILES, SMILES_CANNONICAL, SMILES_CANONICAL
+   *
    */
   type: Scalars['String'];
 }
@@ -3282,6 +3510,7 @@ export interface PdbxChemCompFeature {
    *
    * Examples:
    * ABC, ATP
+   *
    */
   comp_id: Scalars['String'];
   /**
@@ -3289,6 +3518,7 @@ export interface PdbxChemCompFeature {
    *
    * Examples:
    * PDB, CHEBI, DRUGBANK, PUBCHEM
+   *
    */
   source: Scalars['String'];
   /**
@@ -3296,6 +3526,7 @@ export interface PdbxChemCompFeature {
    *
    * Allowable values:
    * CARBOHYDRATE ANOMER, CARBOHYDRATE ISOMER, CARBOHYDRATE PRIMARY CARBONYL GROUP, CARBOHYDRATE RING
+   *
    */
   type: Scalars['String'];
   /** The component feature value. */
@@ -3320,6 +3551,7 @@ export interface PdbxChemCompIdentifier {
    *
    * Examples:
    * OPENEYE, DAYLIGHT, ACD, AUTONOM, PUBCHEM_CID, PUBCHEM_SID, OTHER, NONE
+   *
    */
   program: Scalars['String'];
   /**
@@ -3332,6 +3564,7 @@ export interface PdbxChemCompIdentifier {
    *
    * Allowable values:
    * CAS REGISTRY NUMBER, COMMON NAME, CONDENSED IUPAC CARB SYMBOL, CONDENSED IUPAC CARBOHYDRATE SYMBOL, IUPAC CARB SYMBOL, IUPAC CARBOHYDRATE SYMBOL, MDL Identifier, PUBCHEM Identifier, SNFG CARB SYMBOL, SNFG CARBOHYDRATE SYMBOL, SYNONYM, SYSTEMATIC NAME
+   *
    */
   type: Scalars['String'];
 }
@@ -3343,6 +3576,7 @@ export interface PdbxDatabasePdbObsSpr {
    *
    * Examples:
    * 1997-03-30
+   *
    */
   date?: Maybe<Scalars['Date']>;
   /** Details related to the replaced or replacing entry. */
@@ -3352,6 +3586,7 @@ export interface PdbxDatabasePdbObsSpr {
    *
    * Allowable values:
    * OBSLTE, SPRSDE
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -3359,6 +3594,7 @@ export interface PdbxDatabasePdbObsSpr {
    *
    * Examples:
    * 2ABC
+   *
    */
   pdb_id: Scalars['String'];
   /**
@@ -3366,6 +3602,7 @@ export interface PdbxDatabasePdbObsSpr {
    *
    * Examples:
    * 3ABC
+   *
    */
   replace_pdb_id: Scalars['String'];
 }
@@ -3377,6 +3614,7 @@ export interface PdbxDatabaseRelated {
    *
    * Allowable values:
    * associated EM volume, associated NMR restraints, associated SAS data, associated structure factors, complete structure, derivative structure, ensemble, minimized average structure, native structure, other, other EM volume, protein target sequence and/or protocol data, re-refinement, representative structure, split, unspecified
+   *
    */
   content_type: Scalars['String'];
   /**
@@ -3384,6 +3622,7 @@ export interface PdbxDatabaseRelated {
    *
    * Examples:
    * 1ABC, BDL001
+   *
    */
   db_id: Scalars['String'];
   /**
@@ -3397,6 +3636,7 @@ export interface PdbxDatabaseRelated {
    * BMCD - Biological Macromolecule Crystallization Database
    * TargetTrack - Target Registration and Protocol Database
    * SASBDB - Small Angle Scattering Biological Data Bank
+   *
    */
   db_name: Scalars['String'];
   /**
@@ -3404,6 +3644,7 @@ export interface PdbxDatabaseRelated {
    *
    * Examples:
    * 1ABC contains the same protein complexed with Netropsin.
+   *
    */
   details?: Maybe<Scalars['String']>;
 }
@@ -3416,6 +3657,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * N, Y
+   *
    */
   SG_entry?: Maybe<Scalars['String']>;
   /**
@@ -3423,6 +3665,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * BMRB, BNL, NDB, PDBC, PDBE, PDBJ, RCSB
+   *
    */
   deposit_site?: Maybe<Scalars['String']>;
   /**
@@ -3431,6 +3674,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * CAPRI, CASD-NMR, CASP, D3R, FoldIt, GPCR Dock, RNA-Puzzles
+   *
    */
   methods_development_category?: Maybe<Scalars['String']>;
   /**
@@ -3441,6 +3685,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * N, Y
+   *
    */
   pdb_format_compatible?: Maybe<Scalars['String']>;
   /**
@@ -3448,6 +3693,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * BNL, NDB, PDBC, PDBE, PDBJ, RCSB
+   *
    */
   process_site?: Maybe<Scalars['String']>;
   /**
@@ -3456,6 +3702,7 @@ export interface PdbxDatabaseStatus {
    *
    * Examples:
    * 1983-02-21
+   *
    */
   recvd_initial_deposition_date?: Maybe<Scalars['Date']>;
   /**
@@ -3463,6 +3710,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * AUCO, AUTH, BIB, DEL, HOLD, HPUB, OBS, POLC, PROC, REFI, REL, REPL, REV, RMVD, TRSF, UPD, WAIT, WDRN
+   *
    */
   status_code?: Maybe<Scalars['String']>;
   /**
@@ -3470,6 +3718,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * AUCO, AUTH, HOLD, HPUB, OBS, POLC, PROC, REL, REPL, RMVD, WAIT, WDRN
+   *
    */
   status_code_cs?: Maybe<Scalars['String']>;
   /**
@@ -3477,6 +3726,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * AUCO, AUTH, HOLD, HPUB, OBS, POLC, PROC, REL, REPL, RMVD, WAIT, WDRN
+   *
    */
   status_code_mr?: Maybe<Scalars['String']>;
   /**
@@ -3484,6 +3734,7 @@ export interface PdbxDatabaseStatus {
    *
    * Allowable values:
    * AUTH, HOLD, HPUB, OBS, POLC, PROC, REL, REPL, RMVD, WAIT, WDRN
+   *
    */
   status_code_sf?: Maybe<Scalars['String']>;
 }
@@ -3497,6 +3748,7 @@ export interface PdbxDepositGroup {
    *
    * Examples:
    * G_1002119, G_1002043
+   *
    */
   group_id: Scalars['String'];
   /** A title to describe the group of entries deposited in the collection. */
@@ -3506,6 +3758,7 @@ export interface PdbxDepositGroup {
    *
    * Allowable values:
    * changed state, ground state, undefined
+   *
    */
   group_type?: Maybe<Scalars['String']>;
 }
@@ -3519,6 +3772,7 @@ export interface PdbxEntityBranch {
    *
    * Allowable values:
    * oligosaccharide
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -3536,6 +3790,7 @@ export interface PdbxEntityBranchDescriptor {
    *
    * Examples:
    * PDB-CARE, OTHER, GEMS
+   *
    */
   program?: Maybe<Scalars['String']>;
   /**
@@ -3548,6 +3803,7 @@ export interface PdbxEntityBranchDescriptor {
    *
    * Allowable values:
    * Glycam Condensed Core Sequence, Glycam Condensed Sequence, LINUCS, WURCS
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -3572,6 +3828,7 @@ export interface PdbxEntitySrcSyn {
    *
    * Examples:
    * This sequence occurs naturally in humans.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -3595,6 +3852,7 @@ export interface PdbxEntitySrcSyn {
    *
    * Examples:
    * house mouse
+   *
    */
   organism_common_name?: Maybe<Scalars['String']>;
   /**
@@ -3603,6 +3861,7 @@ export interface PdbxEntitySrcSyn {
    *
    * Examples:
    * synthetic construct, Mus musculus
+   *
    */
   organism_scientific?: Maybe<Scalars['String']>;
   /**
@@ -3611,6 +3870,7 @@ export interface PdbxEntitySrcSyn {
    *
    * Allowable values:
    * model, sample
+   *
    */
   pdbx_alt_source_flag?: Maybe<Scalars['String']>;
   /**
@@ -3638,6 +3898,7 @@ export interface PdbxFamilyPrdAudit {
    *
    * Allowable values:
    * Add PRD, Create family, Initial release, Modify annotation, Modify citation, Modify family classification, Modify family name, Modify feature, Modify molecule details, Modify related structures, Modify sequence, Modify synonyms, Obsolete family, Obsolete familyt, Other modification, Remove PRD
+   *
    */
   action_type: Scalars['String'];
   /**
@@ -3645,6 +3906,7 @@ export interface PdbxFamilyPrdAudit {
    *
    * Examples:
    * JO, SJ, KB
+   *
    */
   annotator?: Maybe<Scalars['String']>;
   /** The date associated with this audit record. */
@@ -3654,6 +3916,7 @@ export interface PdbxFamilyPrdAudit {
    *
    * Examples:
    * Revise molecule sequence.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -3666,6 +3929,7 @@ export interface PdbxFamilyPrdAudit {
    *
    * Examples:
    * RCSB, PDBE, PDBJ, BMRB, PDBC
+   *
    */
   processing_site?: Maybe<Scalars['String']>;
 }
@@ -3677,6 +3941,7 @@ export interface PdbxMoleculeFeatures {
    *
    * Allowable values:
    * Antagonist, Anthelmintic, Antibiotic, Antibiotic, Anthelmintic, Antibiotic, Antimicrobial, Antibiotic, Antineoplastic, Anticancer, Anticoagulant, Anticoagulant, Antithrombotic, Antifungal, Antigen, Antiinflammatory, Antimicrobial, Antimicrobial, Antiparasitic, Antibiotic, Antimicrobial, Antiretroviral, Antimicrobial, Antitumor, Antineoplastic, Antiparasitic, Antiretroviral, Antithrombotic, Antitumor, Antiviral, CASPASE inhibitor, Chaperone binding, Drug delivery, Enzyme inhibitor, Glycan component, Growth factor, Immunosuppressant, Inducer, Inhibitor, Lantibiotic, Metabolism, Metal transport, Nutrient, Oxidation-reduction, Protein binding, Receptor, Substrate analog, Synthetic opioid, Thrombin inhibitor, Thrombin inhibitor, Trypsin inhibitor, Toxin, Transition state mimetic, Transport activator, Trypsin inhibitor, Unknown, Water retention
+   *
    */
   class?: Maybe<Scalars['String']>;
   /** Additional details describing the molecule. */
@@ -3686,6 +3951,7 @@ export interface PdbxMoleculeFeatures {
    *
    * Examples:
    * thiostrepton
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -3698,6 +3964,7 @@ export interface PdbxMoleculeFeatures {
    *
    * Allowable values:
    * Amino acid, Aminoglycoside, Ansamycin, Anthracycline, Anthraquinone, Chalkophore, Chalkophore, Polypeptide, Chromophore, Cyclic depsipeptide, Cyclic lipopeptide, Cyclic peptide, Glycopeptide, Heterocyclic, Imino sugar, Keto acid, Lipoglycopeptide, Lipopeptide, Macrolide, Non-polymer, Nucleoside, Oligopeptide, Oligosaccharide, Peptaibol, Peptide-like, Polycyclic, Polypeptide, Polysaccharide, Quinolone, Siderophore, Thiolactone, Thiopeptide, Unknown
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -3709,6 +3976,7 @@ export interface PdbxNmrDetails {
    *
    * Examples:
    * This structure was determined using standard 2D homonuclear techniques., The structure was determined using triple-resonance NMR spectroscopy.
+   *
    */
   text?: Maybe<Scalars['String']>;
 }
@@ -3721,6 +3989,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * null
+   *
    */
   average_constraint_violations_per_residue?: Maybe<Scalars['Int']>;
   /**
@@ -3728,6 +3997,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * null
+   *
    */
   average_constraints_per_residue?: Maybe<Scalars['Int']>;
   /**
@@ -3735,6 +4005,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * null
+   *
    */
   average_distance_constraint_violation?: Maybe<Scalars['Float']>;
   /**
@@ -3742,6 +4013,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * null
+   *
    */
   average_torsion_angle_constraint_violation?: Maybe<Scalars['Float']>;
   /**
@@ -3752,6 +4024,7 @@ export interface PdbxNmrEnsemble {
    * structures with the lowest energy, structures with the least restraint violations, structures with acceptable covalent geometry, structures with favorable non-bond energy, target function, back calculated data agree with experimental NOESY spectrum, all calculated structures submitted, The submitted conformer models are the 25 structures with the lowest
    *     energy., The submitted conformer models are those with the fewest number of
    *     constraint violations.
+   *
    */
   conformer_selection_criteria?: Maybe<Scalars['String']>;
   /** The total number of conformer (models) that were calculated in the final round. */
@@ -3765,6 +4038,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * Statistics were calculated over all of the distance constraints., Statistics were calculated for violations only
+   *
    */
   distance_constraint_violation_method?: Maybe<Scalars['String']>;
   /**
@@ -3772,6 +4046,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * null
+   *
    */
   maximum_distance_constraint_violation?: Maybe<Scalars['Float']>;
   /**
@@ -3779,6 +4054,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * null
+   *
    */
   maximum_lower_distance_constraint_violation?: Maybe<Scalars['Float']>;
   /** The maximum torsion angle constraint violation for the ensemble. */
@@ -3788,6 +4064,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * null
+   *
    */
   maximum_upper_distance_constraint_violation?: Maybe<Scalars['Float']>;
   /** The number of the conformer identified as most representative. */
@@ -3798,6 +4075,7 @@ export interface PdbxNmrEnsemble {
    *
    * Examples:
    * Statistics were calculated over all the torsion angle constraints., Statistics were calculated for torsion angle constraints violations only.
+   *
    */
   torsion_angle_constraint_violation_method?: Maybe<Scalars['String']>;
 }
@@ -3809,6 +4087,7 @@ export interface PdbxNmrExptl {
    *
    * Examples:
    * 1, 2, 3
+   *
    */
   conditions_id: Scalars['String'];
   /**
@@ -3816,6 +4095,7 @@ export interface PdbxNmrExptl {
    *
    * Examples:
    * 1, 2, 3
+   *
    */
   experiment_id: Scalars['String'];
   /**
@@ -3823,6 +4103,7 @@ export interface PdbxNmrExptl {
    *
    * Allowable values:
    * anisotropic, isotropic
+   *
    */
   sample_state?: Maybe<Scalars['String']>;
   /**
@@ -3834,6 +4115,7 @@ export interface PdbxNmrExptl {
    *
    * Examples:
    * 1, 2, 3
+   *
    */
   solution_id: Scalars['String'];
   /** Pointer to '_pdbx_nmr_spectrometer.spectrometer_id' */
@@ -3843,6 +4125,7 @@ export interface PdbxNmrExptl {
    *
    * Examples:
    * 2D NOESY, 3D_15N-separated_NOESY, 3D_13C-separated_NOESY, 4D_13C-separated_NOESY, 4D_13C/15N-separated_NOESY, 3D_15N-separated_ROESY, 3D_13C-separated_ROESY, HNCA-J, HNHA, DQF-COSY, P-COSY, PE-COSY, E-COSY
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -3854,6 +4137,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * 1, 2, 3
+   *
    */
   conditions_id: Scalars['String'];
   /**
@@ -3862,6 +4146,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * The high salinity of the sample may have contributed to overheating of the sample during experiments with long saturation periods like the TOCSY experiments.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -3874,6 +4159,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * null
+   *
    */
   ionic_strength_err?: Maybe<Scalars['Float']>;
   /**
@@ -3881,6 +4167,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Allowable values:
    * M, Not defined, mM
+   *
    */
   ionic_strength_units?: Maybe<Scalars['String']>;
   /**
@@ -3888,6 +4175,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * conditions_1
+   *
    */
   label?: Maybe<Scalars['String']>;
   /**
@@ -3895,6 +4183,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * null, null
+   *
    */
   pH?: Maybe<Scalars['String']>;
   /**
@@ -3902,6 +4191,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * null
+   *
    */
   pH_err?: Maybe<Scalars['Float']>;
   /**
@@ -3909,6 +4199,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Allowable values:
    * Not defined, pD, pH, pH*
+   *
    */
   pH_units?: Maybe<Scalars['String']>;
   /**
@@ -3916,6 +4207,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * 1, ambient, 1atm
+   *
    */
   pressure?: Maybe<Scalars['String']>;
   /**
@@ -3923,6 +4215,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * null
+   *
    */
   pressure_err?: Maybe<Scalars['Float']>;
   /**
@@ -3930,6 +4223,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * Pa, atm, Torr
+   *
    */
   pressure_units?: Maybe<Scalars['String']>;
   /**
@@ -3942,6 +4236,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Examples:
    * null
+   *
    */
   temperature_err?: Maybe<Scalars['Float']>;
   /**
@@ -3949,6 +4244,7 @@ export interface PdbxNmrExptlSampleConditions {
    *
    * Allowable values:
    * C, K, Not defined
+   *
    */
   temperature_units?: Maybe<Scalars['String']>;
 }
@@ -3963,6 +4259,7 @@ export interface PdbxNmrRefine {
    * the structures are based on a total of 3344 restraints, 3167 are NOE-derived
    * distance constraints, 68 dihedral angle restraints,109 distance restraints
    * from hydrogen bonds.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -3974,6 +4271,7 @@ export interface PdbxNmrRefine {
    *   molecular dynamics
    *   matrix relaxation
    *   torsion angle dynamics
+   *
    */
   method?: Maybe<Scalars['String']>;
   /** Pointer to _software.ordinal */
@@ -3988,6 +4286,7 @@ export interface PdbxNmrRepresentative {
    *
    * Examples:
    * 15
+   *
    */
   conformer_id?: Maybe<Scalars['String']>;
   /**
@@ -4000,6 +4299,7 @@ export interface PdbxNmrRepresentative {
    * The structure with the lowest energy was selected.
    * The structure with the fewest number of violations was selected.
    * A minimized average structure was calculated.
+   *
    */
   selection_criteria?: Maybe<Scalars['String']>;
 }
@@ -4023,6 +4323,7 @@ export interface PdbxNmrSampleDetails {
    *
    * Examples:
    * 2mM Ribonuclease  U-15N,13C; 50mM phosphate buffer NA; 90% H2O, 10% D2O
+   *
    */
   contents?: Maybe<Scalars['String']>;
   /**
@@ -4030,6 +4331,7 @@ export interface PdbxNmrSampleDetails {
    *
    * Examples:
    * The added glycerol was used to raise the viscosity of the solution to 1.05 poisson.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -4038,6 +4340,7 @@ export interface PdbxNmrSampleDetails {
    *
    * Examples:
    * 15N_sample
+   *
    */
   label?: Maybe<Scalars['String']>;
   /**
@@ -4045,6 +4348,7 @@ export interface PdbxNmrSampleDetails {
    *
    * Examples:
    * 1, 2, 3
+   *
    */
   solution_id: Scalars['String'];
   /**
@@ -4052,6 +4356,7 @@ export interface PdbxNmrSampleDetails {
    *
    * Examples:
    * 90% H2O, 10% D2O
+   *
    */
   solvent_system?: Maybe<Scalars['String']>;
   /**
@@ -4060,6 +4365,7 @@ export interface PdbxNmrSampleDetails {
    *
    * Allowable values:
    * bicelle, emulsion, fiber, fibrous protein, filamentous virus, gel solid, gel solution, liposome, lyophilized powder, membrane, micelle, oriented membrane film, polycrystalline powder, reverse micelle, single crystal, solid, solution
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -4072,6 +4378,7 @@ export interface PdbxNmrSoftware {
    *
    * Examples:
    * Brunger, Guentert
+   *
    */
   authors?: Maybe<Scalars['String']>;
   /**
@@ -4079,6 +4386,7 @@ export interface PdbxNmrSoftware {
    *
    * Examples:
    * collection, processing, data analysis, structure solution, refinement, iterative matrix relaxation
+   *
    */
   classification?: Maybe<Scalars['String']>;
   /**
@@ -4086,6 +4394,7 @@ export interface PdbxNmrSoftware {
    *
    * Examples:
    * ANSIG, AURELIA, AZARA, CHARMM, CoMAND, CORMA, DIANA, DYANA, DSPACE, DISGEO, DGII, DISMAN, DINOSAUR, DISCOVER, FELIX, FT_NMR, GROMOS, IRMA, MARDIGRAS, NMRPipe, SA, UXNMR, VNMR, X-PLOR, XWINNMR
+   *
    */
   name?: Maybe<Scalars['String']>;
   /** An ordinal index for this category */
@@ -4095,6 +4404,7 @@ export interface PdbxNmrSoftware {
    *
    * Examples:
    * 940501.3, 2.1
+   *
    */
   version?: Maybe<Scalars['String']>;
 }
@@ -4110,6 +4420,7 @@ export interface PdbxNmrSpectrometer {
    *
    * Examples:
    * Varian, Bruker, JEOL, GE
+   *
    */
   manufacturer?: Maybe<Scalars['String']>;
   /**
@@ -4117,6 +4428,7 @@ export interface PdbxNmrSpectrometer {
    *
    * Examples:
    * AVANCE, AVANCE II, AVANCE III, AVANCE III HD, WH, WM, AM, AMX, DMX, DRX, MSL, OMEGA, OMEGA PSG, GX, GSX, A, AL, EC, EX, LA, ECP, VXRS, UNITY, UNITYPLUS, INOVA
+   *
    */
   model?: Maybe<Scalars['String']>;
   /**
@@ -4124,6 +4436,7 @@ export interface PdbxNmrSpectrometer {
    *
    * Examples:
    * 1, 2, 3
+   *
    */
   spectrometer_id: Scalars['String'];
   /**
@@ -4132,6 +4445,7 @@ export interface PdbxNmrSpectrometer {
    *
    * Examples:
    * Bruker WH, Bruker WM, Bruker AM, Bruker AMX, Bruker DMX, Bruker DRX, Bruker MSL, Bruker AVANCE, GE Omega, GE Omega PSG, JEOL GX, JEOL GSX, JEOL A, JEOL AL, JEOL EC, JEOL EX, JEOL LA, JEOL ECP, Varian VXRS, Varian UNITY, Varian UNITYplus, Varian INOVA, other
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -4143,6 +4457,7 @@ export interface PdbxPrdAudit {
    *
    * Allowable values:
    * Create molecule, Initial release, Modify audit, Modify class, Modify linkage, Modify molecule name, Modify representation, Modify sequence, Modify taxonomy organism, Modify type, Obsolete molecule, Other modification
+   *
    */
   action_type: Scalars['String'];
   /**
@@ -4150,6 +4465,7 @@ export interface PdbxPrdAudit {
    *
    * Examples:
    * JO, SJ, KB
+   *
    */
   annotator?: Maybe<Scalars['String']>;
   /** The date associated with this audit record. */
@@ -4159,6 +4475,7 @@ export interface PdbxPrdAudit {
    *
    * Examples:
    * Revise molecule sequence.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -4171,6 +4488,7 @@ export interface PdbxPrdAudit {
    *
    * Allowable values:
    * BMRB, PDBC, PDBJ, PDBe, RCSB
+   *
    */
   processing_site?: Maybe<Scalars['String']>;
 }
@@ -4196,6 +4514,7 @@ export interface PdbxReferenceEntityList {
    *
    * Allowable values:
    * branched, non-polymer, polymer, polymer-like
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -4221,6 +4540,7 @@ export interface PdbxReferenceEntityPoly {
    *
    * Allowable values:
    * nucleic-acid-like, oligosaccharide, peptide-like, polysaccharide-like
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -4293,6 +4613,7 @@ export interface PdbxReferenceEntityPolyLink {
    *
    * Allowable values:
    * arom, delo, doub, pi, poly, quad, sing, trip
+   *
    */
   value_order?: Maybe<Scalars['String']>;
 }
@@ -4304,6 +4625,7 @@ export interface PdbxReferenceEntityPolySeq {
    *
    * Allowable values:
    * N, Y
+   *
    */
   hetero: Scalars['String'];
   /** This data item is the chemical component identifier of monomer. */
@@ -4321,6 +4643,7 @@ export interface PdbxReferenceEntityPolySeq {
    *
    * Allowable values:
    * N, Y
+   *
    */
   observed?: Maybe<Scalars['String']>;
   /** This data item is the chemical component identifier for the parent component corresponding to this monomer. */
@@ -4344,6 +4667,7 @@ export interface PdbxReferenceEntitySequence {
    *
    * Allowable values:
    * N, Y
+   *
    */
   NRP_flag?: Maybe<Scalars['String']>;
   /** The one-letter-code sequence for this entity.  Non-standard monomers are represented as 'X'. */
@@ -4363,6 +4687,7 @@ export interface PdbxReferenceEntitySequence {
    *
    * Allowable values:
    * peptide-like, saccharide
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -4385,6 +4710,7 @@ export interface PdbxReferenceEntitySrcNat {
    *
    * Examples:
    * Mus musculus
+   *
    */
   organism_scientific?: Maybe<Scalars['String']>;
   /**
@@ -4413,6 +4739,7 @@ export interface PdbxReferenceMolecule {
    *
    * Examples:
    * 0Z3, CD9
+   *
    */
   chem_comp_id?: Maybe<Scalars['String']>;
   /**
@@ -4420,6 +4747,7 @@ export interface PdbxReferenceMolecule {
    *
    * Allowable values:
    * Antagonist, Anthelmintic, Antibiotic, Antibiotic, Anthelmintic, Antibiotic, Antimicrobial, Antibiotic, Antineoplastic, Anticancer, Anticoagulant, Anticoagulant, Antithrombotic, Antifungal, Antigen, Antiinflammatory, Antimicrobial, Antimicrobial, Antiparasitic, Antibiotic, Antimicrobial, Antiretroviral, Antimicrobial, Antitumor, Antineoplastic, Antiparasitic, Antiretroviral, Antithrombotic, Antitumor, Antiviral, CASPASE inhibitor, Chaperone binding, Drug delivery, Enzyme inhibitor, Glycan component, Growth factor, Immunosuppressant, Inducer, Inhibitor, Lantibiotic, Metabolism, Metal transport, Nutrient, Oxidation-reduction, Protein binding, Receptor, Substrate analog, Synthetic opioid, Thrombin inhibitor, Thrombin inhibitor, Trypsin inhibitor, Toxin, Transition state mimetic, Transport activator, Trypsin inhibitor, Unknown, Water retention
+   *
    */
   class?: Maybe<Scalars['String']>;
   /** Evidence for the assignment of _pdbx_reference_molecule.class */
@@ -4449,6 +4777,7 @@ export interface PdbxReferenceMolecule {
    *
    * Examples:
    * C18 H19 N7 O8 S
+   *
    */
   formula?: Maybe<Scalars['String']>;
   /** Formula mass in daltons of the entity. */
@@ -4458,6 +4787,7 @@ export interface PdbxReferenceMolecule {
    *
    * Examples:
    * thiostrepton
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -4471,6 +4801,7 @@ export interface PdbxReferenceMolecule {
    *
    * Examples:
    * PRD_000001, PRD_0000010
+   *
    */
   prd_id: Scalars['String'];
   /**
@@ -4478,6 +4809,7 @@ export interface PdbxReferenceMolecule {
    *
    * Allowable values:
    * HOLD, OBS, REL, WAIT
+   *
    */
   release_status?: Maybe<Scalars['String']>;
   /** Assigns the identifier of the reference molecule that has replaced this molecule. */
@@ -4493,6 +4825,7 @@ export interface PdbxReferenceMolecule {
    *
    * Allowable values:
    * branched, polymer, single molecule
+   *
    */
   represent_as?: Maybe<Scalars['String']>;
   /** The PDB accession code for the entry containing a representative example of this molecule. */
@@ -4502,6 +4835,7 @@ export interface PdbxReferenceMolecule {
    *
    * Allowable values:
    * Amino acid, Aminoglycoside, Ansamycin, Anthracycline, Anthraquinone, Chalkophore, Chalkophore, Polypeptide, Chromophore, Cyclic depsipeptide, Cyclic lipopeptide, Cyclic peptide, Glycopeptide, Heterocyclic, Imino sugar, Keto acid, Lipoglycopeptide, Lipopeptide, Macrolide, Non-polymer, Nucleoside, Oligopeptide, Oligosaccharide, Peptaibol, Peptide-like, Polycyclic, Polypeptide, Polysaccharide, Quinolone, Siderophore, Thiolactone, Thiopeptide, Unknown
+   *
    */
   type?: Maybe<Scalars['String']>;
   /** Evidence for the assignment of _pdbx_reference_molecule.type */
@@ -4527,6 +4861,7 @@ export interface PdbxReferenceMoleculeAnnotation {
    *
    * Examples:
    * depositor provided, from UniProt Entry P200311
+   *
    */
   source?: Maybe<Scalars['String']>;
   /**
@@ -4534,6 +4869,7 @@ export interface PdbxReferenceMoleculeAnnotation {
    *
    * Examples:
    * antigen binding, glucose transporter activity
+   *
    */
   text?: Maybe<Scalars['String']>;
   /**
@@ -4541,6 +4877,7 @@ export interface PdbxReferenceMoleculeAnnotation {
    *
    * Examples:
    * Function, Use, Pharmacology, Mechanism_of_Action, Biological_Activity, Inhibitor_Class, Therapeutic_Category, Research_Use, Other_annotation
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -4582,6 +4919,7 @@ export interface PdbxReferenceMoleculeFamily {
    *
    * Examples:
    * actinomycin, adriamycin
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -4589,6 +4927,7 @@ export interface PdbxReferenceMoleculeFamily {
    *
    * Allowable values:
    * HOLD, OBS, REL, WAIT
+   *
    */
   release_status?: Maybe<Scalars['String']>;
   /** Assigns the identifier of the family that has replaced this component. */
@@ -4622,6 +4961,7 @@ export interface PdbxReferenceMoleculeFeatures {
    *
    * Examples:
    * PDB, CHEBI, DRUGBANK, PUBCHEM
+   *
    */
   source?: Maybe<Scalars['String']>;
   /**
@@ -4634,6 +4974,7 @@ export interface PdbxReferenceMoleculeFeatures {
    *
    * Examples:
    * FUNCTION, ENZYME INHIBITED, STRUCTURE IMAGE URL
+   *
    */
   type?: Maybe<Scalars['String']>;
   /** The entity feature value. */
@@ -4668,6 +5009,7 @@ export interface PdbxReferenceMoleculeRelatedStructures {
    *
    * Examples:
    * 143108
+   *
    */
   db_accession?: Maybe<Scalars['String']>;
   /**
@@ -4675,6 +5017,7 @@ export interface PdbxReferenceMoleculeRelatedStructures {
    *
    * Examples:
    * QEFHUE
+   *
    */
   db_code?: Maybe<Scalars['String']>;
   /**
@@ -4682,6 +5025,7 @@ export interface PdbxReferenceMoleculeRelatedStructures {
    *
    * Examples:
    * CCDC
+   *
    */
   db_name?: Maybe<Scalars['String']>;
   /**
@@ -4710,6 +5054,7 @@ export interface PdbxReferenceMoleculeRelatedStructures {
    *
    * Examples:
    * C18 H19 N7 O8 S
+   *
    */
   formula?: Maybe<Scalars['String']>;
   /**
@@ -4717,6 +5062,7 @@ export interface PdbxReferenceMoleculeRelatedStructures {
    *
    * Examples:
    * actinomycn
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -4738,6 +5084,7 @@ export interface PdbxReferenceMoleculeSynonyms {
    *
    * Examples:
    * thiostrepton
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -4755,6 +5102,7 @@ export interface PdbxReferenceMoleculeSynonyms {
    *
    * Examples:
    * CAS
+   *
    */
   source?: Maybe<Scalars['String']>;
 }
@@ -4766,6 +5114,7 @@ export interface PdbxRelatedExpDataSet {
    *
    * Examples:
    * 10.000/10002/image_data/cif
+   *
    */
   data_reference?: Maybe<Scalars['String']>;
   /**
@@ -4773,6 +5122,7 @@ export interface PdbxRelatedExpDataSet {
    *
    * Examples:
    * diffraction image data, NMR free induction decay data
+   *
    */
   data_set_type?: Maybe<Scalars['String']>;
   /**
@@ -4785,6 +5135,7 @@ export interface PdbxRelatedExpDataSet {
    *
    * Examples:
    * 10.000/10002/image_data/txt
+   *
    */
   metadata_reference?: Maybe<Scalars['String']>;
 }
@@ -4796,6 +5147,7 @@ export interface PdbxSgProject {
    *
    * Allowable values:
    * Accelerated Technologies Center for Gene to 3D Structure, Assembly, Dynamics and Evolution of Cell-Cell and Cell-Matrix Adhesions, Atoms-to-Animals: The Immune Function Network, Bacterial targets at IGS-CNRS, France, Berkeley Structural Genomics Center, Center for Eukaryotic Structural Genomics, Center for High-Throughput Structural Biology, Center for Membrane Proteins of Infectious Diseases, Center for Structural Genomics of Infectious Diseases, Center for Structures of Membrane Proteins, Center for the X-ray Structure Determination of Human Transporters, Chaperone-Enabled Studies of Epigenetic Regulation Enzymes, Enzyme Discovery for Natural Product Biosynthesis, GPCR Network, Integrated Center for Structure and Function Innovation, Israel Structural Proteomics Center, Joint Center for Structural Genomics, Marseilles Structural Genomics Program @ AFMB, Medical Structural Genomics of Pathogenic Protozoa, Membrane Protein Structural Biology Consortium, Membrane Protein Structures by Solution NMR, Midwest Center for Macromolecular Research, Midwest Center for Structural Genomics, Mitochondrial Protein Partnership, Montreal-Kingston Bacterial Structural Genomics Initiative, Mycobacterium Tuberculosis Structural Proteomics Project, New York Consortium on Membrane Protein Structure, New York SGX Research Center for Structural Genomics, New York Structural GenomiX Research Consortium, New York Structural Genomics Research Consortium, Northeast Structural Genomics Consortium, Nucleocytoplasmic Transport: a Target for Cellular Control, Ontario Centre for Structural Proteomics, Oxford Protein Production Facility, Paris-Sud Yeast Structural Genomics, Partnership for Nuclear Receptor Signaling Code Biology, Partnership for Stem Cell Biology, Partnership for T-Cell Biology, Program for the Characterization of Secreted Effector Proteins, Protein Structure Factory, RIKEN Structural Genomics/Proteomics Initiative, Scottish Structural Proteomics Facility, Seattle Structural Genomics Center for Infectious Disease, South Africa Structural Targets Annotation Database, Southeast Collaboratory for Structural Genomics, Structural Genomics Consortium, Structural Genomics Consortium for Research on Gene Expression, Structural Genomics of Pathogenic Protozoa Consortium, Structural Proteomics in Europe, Structural Proteomics in Europe 2, Structure 2 Function Project, Structure, Dynamics and Activation Mechanisms of Chemokine Receptors, Structure-Function Analysis of Polymorphic CDI Toxin-Immunity Protein Complexes, Structure-Function Studies of Tight Junction Membrane Proteins, Structures of Mtb Proteins Conferring Susceptibility to Known Mtb Inhibitors, TB Structural Genomics Consortium, Transcontinental EM Initiative for Membrane Protein Structure, Transmembrane Protein Center
+   *
    */
   full_name_of_center?: Maybe<Scalars['String']>;
   /**
@@ -4803,6 +5155,7 @@ export interface PdbxSgProject {
    *
    * Allowable values:
    * 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+   *
    */
   id: Scalars['Int'];
   /**
@@ -4810,6 +5163,7 @@ export interface PdbxSgProject {
    *
    * Allowable values:
    * ATCG3D, BIGS, BSGC, BSGI, CEBS, CELLMAT, CESG, CHSAM, CHTSB, CSGID, CSMP, GPCR, IFN, ISFI, ISPC, JCSG, MCMR, MCSG, MPID, MPP, MPSBC, MPSbyNMR, MSGP, MSGPP, MTBI, NESG, NHRs, NPCXstals, NYCOMPS, NYSGRC, NYSGXRC, NatPro, OCSP, OPPF, PCSEP, PSF, RSGI, S2F, SASTAD, SECSG, SGC, SGCGES, SGPP, SPINE, SPINE-2, SSGCID, SSPF, STEMCELL, TBSGC, TCELL, TEMIMPS, TJMP, TMPC, TransportPDB, UC4CDI, XMTB, YSG
+   *
    */
   initial_of_center?: Maybe<Scalars['String']>;
   /**
@@ -4817,6 +5171,7 @@ export interface PdbxSgProject {
    *
    * Allowable values:
    * Enzyme Function Initiative, NIAID, National Institute of Allergy and Infectious Diseases, NPPSFA, National Project on Protein Structural and Functional Analyses, PSI, Protein Structure Initiative, PSI:Biology
+   *
    */
   project_name?: Maybe<Scalars['String']>;
 }
@@ -4835,6 +5190,7 @@ export interface PdbxSerialCrystallographyDataReduction {
    *
    * Examples:
    * 1
+   *
    */
   diffrn_id: Scalars['String'];
   /**
@@ -4888,6 +5244,7 @@ export interface PdbxSerialCrystallographyMeasurement {
    *
    * Examples:
    * null
+   *
    */
   collection_time_total?: Maybe<Scalars['Float']>;
   /**
@@ -4895,6 +5252,7 @@ export interface PdbxSerialCrystallographyMeasurement {
    *
    * Examples:
    * Kirkpatrick-Baez mirrors, Beryllium compound refractive lenses, Fresnel zone plates
+   *
    */
   collimation?: Maybe<Scalars['String']>;
   /**
@@ -4903,6 +5261,7 @@ export interface PdbxSerialCrystallographyMeasurement {
    *
    * Examples:
    * 1
+   *
    */
   diffrn_id: Scalars['String'];
   /**
@@ -4937,6 +5296,7 @@ export interface PdbxSerialCrystallographySampleDelivery {
    *
    * Examples:
    * fixed target, electrospin, MESH, CoMESH, gas dynamic virtual nozzle, LCP injector, addressable microarray
+   *
    */
   description?: Maybe<Scalars['String']>;
   /**
@@ -4945,6 +5305,7 @@ export interface PdbxSerialCrystallographySampleDelivery {
    *
    * Examples:
    * 1
+   *
    */
   diffrn_id: Scalars['String'];
   /**
@@ -4953,6 +5314,7 @@ export interface PdbxSerialCrystallographySampleDelivery {
    *
    * Allowable values:
    * fixed target, injection
+   *
    */
   method?: Maybe<Scalars['String']>;
 }
@@ -4971,6 +5333,7 @@ export interface PdbxSerialCrystallographySampleDeliveryFixedTarget {
    *
    * Examples:
    * 1
+   *
    */
   diffrn_id: Scalars['String'];
   /**
@@ -4978,6 +5341,7 @@ export interface PdbxSerialCrystallographySampleDeliveryFixedTarget {
    *
    * Examples:
    * DMC-4080
+   *
    */
   motion_control?: Maybe<Scalars['String']>;
   /**
@@ -4985,6 +5349,7 @@ export interface PdbxSerialCrystallographySampleDeliveryFixedTarget {
    *
    * Examples:
    * seal, humidifed gas, flash freezing
+   *
    */
   sample_dehydration_prevention?: Maybe<Scalars['String']>;
   /**
@@ -4992,6 +5357,7 @@ export interface PdbxSerialCrystallographySampleDeliveryFixedTarget {
    *
    * Examples:
    * mesh, loop, grid
+   *
    */
   sample_holding?: Maybe<Scalars['String']>;
   /** The sample solution content and concentration */
@@ -5006,6 +5372,7 @@ export interface PdbxSerialCrystallographySampleDeliveryFixedTarget {
    *
    * Examples:
    * goniometer
+   *
    */
   support_base?: Maybe<Scalars['String']>;
   /** Velocity of sample horizontally relative to a perpendicular beam in millimetres/second */
@@ -5023,6 +5390,7 @@ export interface PdbxSerialCrystallographySampleDeliveryInjection {
    *
    * Examples:
    * LCP, grease, liquid
+   *
    */
   carrier_solvent?: Maybe<Scalars['String']>;
   /**
@@ -5038,6 +5406,7 @@ export interface PdbxSerialCrystallographySampleDeliveryInjection {
    *
    * Examples:
    * microextrusion injector
+   *
    */
   description?: Maybe<Scalars['String']>;
   /**
@@ -5046,6 +5415,7 @@ export interface PdbxSerialCrystallographySampleDeliveryInjection {
    *
    * Examples:
    * 1
+   *
    */
   diffrn_id: Scalars['String'];
   /** The size of filter in micrometres in filtering crystals */
@@ -5065,6 +5435,7 @@ export interface PdbxSerialCrystallographySampleDeliveryInjection {
    *
    * Examples:
    * gas, GDVN
+   *
    */
   injector_nozzle?: Maybe<Scalars['String']>;
   /**
@@ -5085,6 +5456,7 @@ export interface PdbxSerialCrystallographySampleDeliveryInjection {
    *
    * Examples:
    * syringe, gas, electronic potential
+   *
    */
   power_by?: Maybe<Scalars['String']>;
   /**
@@ -5092,6 +5464,7 @@ export interface PdbxSerialCrystallographySampleDeliveryInjection {
    *
    * Examples:
    * Crystals transfered to carrier solvent at room temperature
+   *
    */
   preparation?: Maybe<Scalars['String']>;
 }
@@ -5104,6 +5477,7 @@ export interface PdbxSolnScatter {
    *
    * Examples:
    * acetic acid
+   *
    */
   buffer_name?: Maybe<Scalars['String']>;
   /**
@@ -5113,6 +5487,7 @@ export interface PdbxSolnScatter {
    *
    * Examples:
    * 0.7 - 14
+   *
    */
   concentration_range?: Maybe<Scalars['String']>;
   /**
@@ -5120,6 +5495,7 @@ export interface PdbxSolnScatter {
    *
    * Examples:
    * SCTPL5 GNOM
+   *
    */
   data_analysis_software_list?: Maybe<Scalars['String']>;
   /**
@@ -5127,6 +5503,7 @@ export interface PdbxSolnScatter {
    *
    * Examples:
    * OTOKO
+   *
    */
   data_reduction_software_list?: Maybe<Scalars['String']>;
   /**
@@ -5400,6 +5777,7 @@ export interface PdbxSolnScatter {
    *
    * Examples:
    * neutron source, synchrotron
+   *
    */
   source_class?: Maybe<Scalars['String']>;
   /** The make, model, name or beamline of the source of radiation. */
@@ -5414,6 +5792,7 @@ export interface PdbxSolnScatter {
    *
    * Allowable values:
    * modelling, neutron, x-ray
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -5432,6 +5811,7 @@ export interface PdbxSolnScatterModel {
    *    defined by analogy with protein crystallography
    *    and based on the experimental curves in the Q range
    *    extending to 1.4 nm-1.
+   *
    */
   conformer_selection_criteria?: Maybe<Scalars['String']>;
   /**
@@ -5454,6 +5834,7 @@ export interface PdbxSolnScatterModel {
    *     sphere models without corrections for wavelength spread or
    *     beam divergence, while these corrections were applied for
    *     the neutron curves but now using unhydrated models.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -5462,6 +5843,7 @@ export interface PdbxSolnScatterModel {
    *
    * Examples:
    * PDB CODE 1HFI, 1HCC, 1HFH, 1VCC
+   *
    */
   entry_fitting_list?: Maybe<Scalars['String']>;
   /**
@@ -5474,6 +5856,7 @@ export interface PdbxSolnScatterModel {
    *
    * Examples:
    * Constrained scattering fitting of homology models
+   *
    */
   method?: Maybe<Scalars['String']>;
   /** The number of model conformers calculated. */
@@ -5489,6 +5872,7 @@ export interface PdbxSolnScatterModel {
    *
    * Examples:
    * MSI
+   *
    */
   software_author_list?: Maybe<Scalars['String']>;
   /**
@@ -5496,6 +5880,7 @@ export interface PdbxSolnScatterModel {
    *
    * Examples:
    * INSIGHT II, HOMOLOGY, DISCOVERY, BIOPOLYMER, DELPHI
+   *
    */
   software_list?: Maybe<Scalars['String']>;
 }
@@ -5507,6 +5892,7 @@ export interface PdbxStructAssembly {
    *
    * Examples:
    * The icosahedral virus particle.
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -5526,6 +5912,7 @@ export interface PdbxStructAssembly {
    *
    * Examples:
    * monomer, octameric, tetradecameric, eicosameric, 21-meric, 60-meric, 180-meric, helical
+   *
    */
   oligomeric_details?: Maybe<Scalars['String']>;
   /**
@@ -5541,6 +5928,7 @@ export interface PdbxStructAssembly {
    *
    * Allowable values:
    * N, Y
+   *
    */
   rcsb_candidate_assembly?: Maybe<Scalars['String']>;
   /**
@@ -5548,6 +5936,7 @@ export interface PdbxStructAssembly {
    *
    * Allowable values:
    * author_and_software_defined_assembly, author_defined_assembly, software_defined_assembly
+   *
    */
   rcsb_details?: Maybe<Scalars['String']>;
 }
@@ -5561,6 +5950,7 @@ export interface PdbxStructAssemblyAuthEvidence {
    *
    * Examples:
    * Homology to bacteriorhodopsin, Helical filament was observed by negative staining and Cryo-EM
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -5568,6 +5958,7 @@ export interface PdbxStructAssemblyAuthEvidence {
    *
    * Allowable values:
    * NMR Distance Restraints, NMR relaxation study, SAXS, assay for oligomerization, cross-linking, electron microscopy, equilibrium centrifugation, fluorescence resonance energy transfer, gel filtration, homology, immunoprecipitation, isothermal titration calorimetry, light scattering, mass spectrometry, microscopy, native gel electrophoresis, none, scanning transmission electron microscopy, surface plasmon resonance
+   *
    */
   experimental_support?: Maybe<Scalars['String']>;
   /** Identifies a unique record in pdbx_struct_assembly_auth_evidence. */
@@ -5604,6 +5995,7 @@ export interface PdbxStructAssemblyGen {
    *
    * Examples:
    * (1), (1,2,5), (1-60), (1-60)(61)
+   *
    */
   oper_expression?: Maybe<Scalars['String']>;
   /**
@@ -5624,6 +6016,7 @@ export interface PdbxStructAssemblyProp {
    *
    * Allowable values:
    * ABSA (A^2), MORE, SSA (A^2)
+   *
    */
   type: Scalars['String'];
   /** The value of the assembly property. */
@@ -5687,6 +6080,7 @@ export interface PdbxStructOperList {
    *
    * Examples:
    * 1_555, two-fold rotation
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -5694,6 +6088,7 @@ export interface PdbxStructOperList {
    *
    * Examples:
    * x,y,z, x+1/2,y,-z
+   *
    */
   symmetry_operation?: Maybe<Scalars['String']>;
   /**
@@ -5701,6 +6096,7 @@ export interface PdbxStructOperList {
    *
    * Allowable values:
    * 2D crystal symmetry operation, 3D crystal symmetry operation, build 2D crystal asymmetric unit, build 3D crystal asymmetric unit, build helical asymmetric unit, build point asymmetric unit, crystal symmetry operation, helical symmetry operation, identity operation, point symmetry operation, transform to 2D crystal frame, transform to 3D crystal frame, transform to crystal frame, transform to helical frame, transform to point frame
+   *
    */
   type?: Maybe<Scalars['String']>;
   /**
@@ -5766,6 +6162,7 @@ export interface PdbxVrptSummary {
    *
    * Allowable values:
    * FULL, PARTIAL
+   *
    */
   B_factor_type?: Maybe<Scalars['String']>;
   /**
@@ -5783,6 +6180,7 @@ export interface PdbxVrptSummary {
    *
    * Allowable values:
    * yes
+   *
    */
   CA_ONLY?: Maybe<Scalars['String']>;
   /**
@@ -6125,6 +6523,7 @@ export interface PdbxVrptSummary {
    *
    * Allowable values:
    * yes
+   *
    */
   ligands_for_buster_report?: Maybe<Scalars['String']>;
   /**
@@ -6212,6 +6611,7 @@ export interface PdbxVrptSummary {
    *
    * Allowable values:
    * yes
+   *
    */
   no_ligands_for_buster_report?: Maybe<Scalars['String']>;
   /**
@@ -6219,6 +6619,7 @@ export interface PdbxVrptSummary {
    *
    * Allowable values:
    * yes
+   *
    */
   no_ligands_for_mogul?: Maybe<Scalars['String']>;
   /**
@@ -6526,7 +6927,7 @@ export interface Query {
 
 /** Query root */
 export interface QueryAssembliesArgs {
-  assembly_ids: Array<Maybe<Scalars['String']>>;
+  assembly_ids: Array<InputMaybe<Scalars['String']>>;
 }
 
 
@@ -6559,7 +6960,7 @@ export interface QueryBranched_Entity_InstanceArgs {
 
 /** Query root */
 export interface QueryBranched_Entity_InstancesArgs {
-  instance_ids: Array<Maybe<Scalars['String']>>;
+  instance_ids: Array<InputMaybe<Scalars['String']>>;
 }
 
 
@@ -6571,7 +6972,7 @@ export interface QueryChem_CompArgs {
 
 /** Query root */
 export interface QueryChem_CompsArgs {
-  comp_ids: Array<Maybe<Scalars['String']>>;
+  comp_ids: Array<InputMaybe<Scalars['String']>>;
 }
 
 
@@ -6623,7 +7024,7 @@ export interface QueryNonpolymer_Entity_InstanceArgs {
 
 /** Query root */
 export interface QueryNonpolymer_Entity_InstancesArgs {
-  instance_ids: Array<Maybe<Scalars['String']>>;
+  instance_ids: Array<InputMaybe<Scalars['String']>>;
 }
 
 
@@ -6649,7 +7050,7 @@ export interface QueryPolymer_Entity_InstanceArgs {
 
 /** Query root */
 export interface QueryPolymer_Entity_InstancesArgs {
-  instance_ids: Array<Maybe<Scalars['String']>>;
+  instance_ids: Array<InputMaybe<Scalars['String']>>;
 }
 
 
@@ -6671,6 +7072,7 @@ export interface RcsbAccessionInfo {
    *
    * Examples:
    * 2020-07-11, 2013-10-01
+   *
    */
   deposit_date?: Maybe<Scalars['Date']>;
   /**
@@ -6678,6 +7080,7 @@ export interface RcsbAccessionInfo {
    *
    * Allowable values:
    * N, Y
+   *
    */
   has_released_experimental_data?: Maybe<Scalars['String']>;
   /**
@@ -6685,6 +7088,7 @@ export interface RcsbAccessionInfo {
    *
    * Examples:
    * 2020-01-10, 2018-01-23
+   *
    */
   initial_release_date?: Maybe<Scalars['Date']>;
   /** The latest entry major revision number. */
@@ -6696,6 +7100,7 @@ export interface RcsbAccessionInfo {
    *
    * Examples:
    * 2020-02-11, 2018-10-23
+   *
    */
   revision_date?: Maybe<Scalars['Date']>;
   /**
@@ -6703,6 +7108,7 @@ export interface RcsbAccessionInfo {
    *
    * Allowable values:
    * AUCO, AUTH, HOLD, HPUB', POLC, PROC, REFI, REL, REPL, WAIT, WDRN
+   *
    */
   status_code?: Maybe<Scalars['String']>;
 }
@@ -6714,6 +7120,7 @@ export interface RcsbAssemblyContainerIdentifiers {
    *
    * Examples:
    * 1, 5
+   *
    */
   assembly_id: Scalars['String'];
   /** Entry identifier for the container. */
@@ -6726,6 +7133,7 @@ export interface RcsbAssemblyContainerIdentifiers {
    *
    * Examples:
    * 1KIP-1
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
 }
@@ -6750,6 +7158,7 @@ export interface RcsbAssemblyInfo {
    *
    * Examples:
    * 1KIP
+   *
    */
   entry_id: Scalars['String'];
   /** The assembly hydrogen atomic coordinate count. */
@@ -6765,6 +7174,7 @@ export interface RcsbAssemblyInfo {
    *
    * Allowable values:
    * DNA (only), DNA/RNA (only), NA-hybrid (only), Other, RNA (only)
+   *
    */
   na_polymer_entity_types?: Maybe<Scalars['String']>;
   /** The assembly non-hydrogen non-polymer entity atomic coordinate count. */
@@ -6801,6 +7211,7 @@ export interface RcsbAssemblyInfo {
    *
    * Allowable values:
    * DNA, DNA/RNA, NA-hybrid, NA/oligosaccharide, RNA, heteromeric protein, homomeric protein, oligosaccharide, other, other type composition, other type pair, protein/NA, protein/NA/oligosaccharide, protein/oligosaccharide
+   *
    */
   polymer_composition?: Maybe<Scalars['String']>;
   /** The number of distinct polymer entities in the generated assembly. */
@@ -6856,6 +7267,7 @@ export interface RcsbAssemblyInfo {
    *
    * Allowable values:
    * Nucleic acid (only), Other, Protein (only), Protein/NA
+   *
    */
   selected_polymer_entity_types?: Maybe<Scalars['String']>;
   /** The assembly non-hydrogen solvent atomic coordinate count. */
@@ -6886,6 +7298,7 @@ export interface RcsbBindingAffinity {
    *
    * Examples:
    * 0WE, SPE, CL
+   *
    */
   comp_id: Scalars['String'];
   /** Link to external resource referencing the data. */
@@ -6895,6 +7308,7 @@ export interface RcsbBindingAffinity {
    *
    * Allowable values:
    * PDBBind, Binding MOAD, BindingDB
+   *
    */
   provenance_code: Scalars['String'];
   /**
@@ -6902,6 +7316,7 @@ export interface RcsbBindingAffinity {
    *
    * Examples:
    * null, null, null
+   *
    */
   reference_sequence_identity?: Maybe<Scalars['Int']>;
   /**
@@ -6909,6 +7324,7 @@ export interface RcsbBindingAffinity {
    *
    * Examples:
    * ~, =, >, <, >=, <=
+   *
    */
   symbol?: Maybe<Scalars['String']>;
   /**
@@ -6916,6 +7332,7 @@ export interface RcsbBindingAffinity {
    *
    * Allowable values:
    * IC50, EC50, Kd, Ka, Ki, &Delta;G, &Delta;H, -T&Delta;S
+   *
    */
   type: Scalars['String'];
   /**
@@ -6923,6 +7340,7 @@ export interface RcsbBindingAffinity {
    *
    * Examples:
    * nM, kJ/mol
+   *
    */
   unit: Scalars['String'];
   /** Binding affinity value between a ligand and its target molecule. */
@@ -6937,6 +7355,7 @@ export interface RcsbBirdCitation {
    *
    * Examples:
    * 1, 2
+   *
    */
   id: Scalars['String'];
   /**
@@ -6945,6 +7364,7 @@ export interface RcsbBirdCitation {
    *
    * Examples:
    * J.Mol.Biol., J. Mol. Biol.
+   *
    */
   journal_abbrev?: Maybe<Scalars['String']>;
   /**
@@ -6953,6 +7373,7 @@ export interface RcsbBirdCitation {
    *
    * Examples:
    * 174
+   *
    */
   journal_volume?: Maybe<Scalars['String']>;
   /**
@@ -6971,6 +7392,7 @@ export interface RcsbBirdCitation {
    *
    * Examples:
    * 10.2345/S1384107697000225
+   *
    */
   pdbx_database_id_DOI?: Maybe<Scalars['String']>;
   /**
@@ -6993,6 +7415,7 @@ export interface RcsbBirdCitation {
    * Examples:
    * Structure of diferric duck ovotransferrin
    *                                   at 2.35 Angstroms resolution.
+   *
    */
   title?: Maybe<Scalars['String']>;
   /**
@@ -7011,6 +7434,7 @@ export interface RcsbBranchedEntity {
    *
    * Examples:
    * null, null
+   *
    */
   formula_weight?: Maybe<Scalars['Float']>;
   /**
@@ -7018,6 +7442,7 @@ export interface RcsbBranchedEntity {
    *
    * Examples:
    * alpha-D-glucopyranose-(1-6)-beta-D-glucopyranose, beta-D-xylopyranose-(1-4)-beta-D-xylopyranose
+   *
    */
   pdbx_description?: Maybe<Scalars['String']>;
   /** The number of molecules of the branched entity in the entry. */
@@ -7034,6 +7459,7 @@ export interface RcsbBranchedEntityAnnotation {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the annotation. */
@@ -7046,6 +7472,7 @@ export interface RcsbBranchedEntityAnnotation {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /** A type or category of the annotation. */
@@ -7075,6 +7502,7 @@ export interface RcsbBranchedEntityContainerIdentifiers {
    *
    * Examples:
    * PRD_000010
+   *
    */
   chem_ref_def_id?: Maybe<Scalars['String']>;
   /**
@@ -7082,6 +7510,7 @@ export interface RcsbBranchedEntityContainerIdentifiers {
    *
    * Examples:
    * 1, 2
+   *
    */
   entity_id: Scalars['String'];
   /**
@@ -7089,6 +7518,7 @@ export interface RcsbBranchedEntityContainerIdentifiers {
    *
    * Examples:
    * 1B5F, 2HYV
+   *
    */
   entry_id: Scalars['String'];
   /**
@@ -7096,6 +7526,7 @@ export interface RcsbBranchedEntityContainerIdentifiers {
    *
    * Examples:
    * PRD_000010
+   *
    */
   prd_id?: Maybe<Scalars['String']>;
   /**
@@ -7104,6 +7535,7 @@ export interface RcsbBranchedEntityContainerIdentifiers {
    *
    * Examples:
    * 2HYV_2
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
   reference_identifiers?: Maybe<Array<Maybe<RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers>>>;
@@ -7116,6 +7548,7 @@ export interface RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers {
    *
    * Allowable values:
    * PDB, RCSB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -7123,6 +7556,7 @@ export interface RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers {
    *
    * Examples:
    * G07411ON, G42666HT
+   *
    */
   resource_accession?: Maybe<Scalars['String']>;
   /**
@@ -7130,6 +7564,7 @@ export interface RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers {
    *
    * Allowable values:
    * GlyCosmos, GlyGen, GlyTouCan
+   *
    */
   resource_name?: Maybe<Scalars['String']>;
 }
@@ -7142,6 +7577,7 @@ export interface RcsbBranchedEntityFeature {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the feature. */
@@ -7157,6 +7593,7 @@ export interface RcsbBranchedEntityFeature {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -7164,6 +7601,7 @@ export interface RcsbBranchedEntityFeature {
    *
    * Allowable values:
    * PDB entity
+   *
    */
   reference_scheme?: Maybe<Scalars['String']>;
   /**
@@ -7171,6 +7609,7 @@ export interface RcsbBranchedEntityFeature {
    *
    * Allowable values:
    * mutation
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7190,6 +7629,7 @@ export interface RcsbBranchedEntityFeatureFeaturePositions {
    *
    * Examples:
    * NAG, MAN
+   *
    */
   beg_comp_id?: Maybe<Scalars['String']>;
   /** An identifier for the leading monomer position of the feature. */
@@ -7201,6 +7641,7 @@ export interface RcsbBranchedEntityFeatureFeaturePositions {
    *
    * Examples:
    * null, null
+   *
    */
   value?: Maybe<Scalars['Float']>;
 }
@@ -7214,6 +7655,7 @@ export interface RcsbBranchedEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   coverage?: Maybe<Scalars['Float']>;
   /** The maximum feature length. */
@@ -7223,6 +7665,7 @@ export interface RcsbBranchedEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   maximum_value?: Maybe<Scalars['Float']>;
   /** The minimum feature length. */
@@ -7232,6 +7675,7 @@ export interface RcsbBranchedEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   minimum_value?: Maybe<Scalars['Float']>;
   /**
@@ -7239,6 +7683,7 @@ export interface RcsbBranchedEntityFeatureSummary {
    *
    * Allowable values:
    * mutation
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7259,6 +7704,7 @@ export interface RcsbBranchedEntityInstanceContainerIdentifiers {
    *
    * Examples:
    * 1KIP.A
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
 }
@@ -7276,6 +7722,7 @@ export interface RcsbBranchedEntityNameCom {
    *
    * Examples:
    * HIV protease monomer, hemoglobin alpha chain
+   *
    */
   name?: Maybe<Scalars['String']>;
 }
@@ -7298,6 +7745,7 @@ export interface RcsbBranchedInstanceAnnotation {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /**
@@ -7305,6 +7753,7 @@ export interface RcsbBranchedInstanceAnnotation {
    *
    * Examples:
    * ATP
+   *
    */
   comp_id?: Maybe<Scalars['String']>;
   /** A description for the annotation. */
@@ -7319,6 +7768,7 @@ export interface RcsbBranchedInstanceAnnotation {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -7326,6 +7776,7 @@ export interface RcsbBranchedInstanceAnnotation {
    *
    * Allowable values:
    * CATH, SCOP
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7348,6 +7799,7 @@ export interface RcsbBranchedInstanceFeature {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the feature. */
@@ -7366,6 +7818,7 @@ export interface RcsbBranchedInstanceFeature {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -7373,6 +7826,7 @@ export interface RcsbBranchedInstanceFeature {
    *
    * Allowable values:
    * PDB entity, PDB entry
+   *
    */
   reference_scheme?: Maybe<Scalars['String']>;
   /**
@@ -7380,6 +7834,7 @@ export interface RcsbBranchedInstanceFeature {
    *
    * Allowable values:
    * BINDING_SITE, CATH, ECOD, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, SCOP, STEREO_OUTLIER, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7391,6 +7846,7 @@ export interface RcsbBranchedInstanceFeatureAdditionalProperties {
    *
    * Examples:
    * bond_distance, bond_angle
+   *
    */
   name?: Maybe<Scalars['String']>;
   /** The value(s) of the additional property. */
@@ -7404,6 +7860,7 @@ export interface RcsbBranchedInstanceFeatureFeaturePositions {
    *
    * Examples:
    * NAG, MAN
+   *
    */
   beg_comp_id?: Maybe<Scalars['String']>;
   /** An identifier for the leading monomer feature position. */
@@ -7415,6 +7872,7 @@ export interface RcsbBranchedInstanceFeatureFeaturePositions {
    *
    * Examples:
    * null, null
+   *
    */
   value?: Maybe<Scalars['Float']>;
   /** The value(s) of the feature at the monomer position. */
@@ -7428,6 +7886,7 @@ export interface RcsbBranchedInstanceFeatureFeatureValue {
    *
    * Examples:
    * ATP,, STN
+   *
    */
   comp_id?: Maybe<Scalars['String']>;
   /**
@@ -7435,6 +7894,7 @@ export interface RcsbBranchedInstanceFeatureFeatureValue {
    *
    * Examples:
    * C1,C2, C1,C2,C3
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -7442,6 +7902,7 @@ export interface RcsbBranchedInstanceFeatureFeatureValue {
    *
    * Examples:
    * null, null
+   *
    */
   reference?: Maybe<Scalars['Float']>;
   /**
@@ -7449,6 +7910,7 @@ export interface RcsbBranchedInstanceFeatureFeatureValue {
    *
    * Examples:
    * null, null
+   *
    */
   reported?: Maybe<Scalars['Float']>;
   /**
@@ -7456,6 +7918,7 @@ export interface RcsbBranchedInstanceFeatureFeatureValue {
    *
    * Examples:
    * null, null
+   *
    */
   uncertainty_estimate?: Maybe<Scalars['Float']>;
   /**
@@ -7463,6 +7926,7 @@ export interface RcsbBranchedInstanceFeatureFeatureValue {
    *
    * Allowable values:
    * Z-Score
+   *
    */
   uncertainty_estimate_type?: Maybe<Scalars['String']>;
 }
@@ -7476,6 +7940,7 @@ export interface RcsbBranchedInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   coverage?: Maybe<Scalars['Float']>;
   /** The maximum feature length. */
@@ -7485,6 +7950,7 @@ export interface RcsbBranchedInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   maximum_value?: Maybe<Scalars['Float']>;
   /** The minimum feature length. */
@@ -7494,6 +7960,7 @@ export interface RcsbBranchedInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   minimum_value?: Maybe<Scalars['Float']>;
   /**
@@ -7501,6 +7968,7 @@ export interface RcsbBranchedInstanceFeatureSummary {
    *
    * Allowable values:
    * BINDING_SITE, CATH, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, SCOP, STEREO_OUTLIER, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7514,6 +7982,7 @@ export interface RcsbBranchedStructConn {
    *
    * Allowable values:
    * covalent bond, hydrogen bond, ionic interaction, metal coordination, mismatched base pairs
+   *
    */
   connect_type?: Maybe<Scalars['String']>;
   /**
@@ -7521,6 +7990,7 @@ export interface RcsbBranchedStructConn {
    *
    * Examples:
    * Watson-Crick base pair
+   *
    */
   description?: Maybe<Scalars['String']>;
   /** Distance value for this contact. */
@@ -7537,6 +8007,7 @@ export interface RcsbBranchedStructConn {
    *
    * Allowable values:
    * C-Mannosylation, N-Glycosylation, O-Glycosylation
+   *
    */
   role?: Maybe<Scalars['String']>;
   /**
@@ -7545,6 +8016,7 @@ export interface RcsbBranchedStructConn {
    *
    * Allowable values:
    * doub, quad, sing, trip
+   *
    */
   value_order?: Maybe<Scalars['String']>;
 }
@@ -7598,6 +8070,7 @@ export interface RcsbBranchedStructConnConnectPartner {
    *
    * Examples:
    * 1_555, 7_645
+   *
    */
   symmetry?: Maybe<Scalars['String']>;
 }
@@ -7667,6 +8140,7 @@ export interface RcsbBranchedStructConnConnectTarget {
    *
    * Examples:
    * 1_555, 7_645
+   *
    */
   symmetry?: Maybe<Scalars['String']>;
 }
@@ -7681,6 +8155,7 @@ export interface RcsbChemCompAnnotation {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the annotation. */
@@ -7693,6 +8168,7 @@ export interface RcsbChemCompAnnotation {
    *
    * Examples:
    * RESID, UniProt, PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -7700,6 +8176,7 @@ export interface RcsbChemCompAnnotation {
    *
    * Allowable values:
    * ATC, Carbohydrate Anomer, Carbohydrate Isomer, Carbohydrate Primary Carbonyl Group, Carbohydrate Ring, Generating Enzyme, Modification Type, PSI-MOD
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7726,6 +8203,7 @@ export interface RcsbChemCompContainerIdentifiers {
    *
    * Examples:
    * ATP, STI
+   *
    */
   comp_id: Scalars['String'];
   /**
@@ -7733,6 +8211,7 @@ export interface RcsbChemCompContainerIdentifiers {
    *
    * Examples:
    * DB00781, DB15263
+   *
    */
   drugbank_id?: Maybe<Scalars['String']>;
   /**
@@ -7740,6 +8219,7 @@ export interface RcsbChemCompContainerIdentifiers {
    *
    * Examples:
    * PRD_000010
+   *
    */
   prd_id?: Maybe<Scalars['String']>;
   /**
@@ -7747,6 +8227,7 @@ export interface RcsbChemCompContainerIdentifiers {
    *
    * Examples:
    * ATP, PRD_000010
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
   /** The list of subcomponents contained in this component. */
@@ -7764,6 +8245,7 @@ export interface RcsbChemCompDescriptor {
    *
    * Examples:
    * InChI=1S/C3H6FO6P/c4-1-2(3(5)6)10-11(7,8)9/h2H,1H2,(H,5,6)(H2,7,8,9)/t2-/m0/s1
+   *
    */
   InChI?: Maybe<Scalars['String']>;
   /**
@@ -7776,6 +8258,7 @@ export interface RcsbChemCompDescriptor {
    *
    * Examples:
    * BNOCDEBUFVJMQI-REOHCLBHSA-N
+   *
    */
   InChIKey?: Maybe<Scalars['String']>;
   /**
@@ -7790,6 +8273,7 @@ export interface RcsbChemCompDescriptor {
    *
    * Examples:
    * OC(=O)[CH](CF)O[P](O)(O)=O
+   *
    */
   SMILES?: Maybe<Scalars['String']>;
   /**
@@ -7806,6 +8290,7 @@ export interface RcsbChemCompDescriptor {
    *
    * Examples:
    * OC(=O)[C@H](CF)O[P](O)(O)=O
+   *
    */
   SMILES_stereo?: Maybe<Scalars['String']>;
   /** The chemical component identifier. */
@@ -7831,6 +8316,7 @@ export interface RcsbChemCompInfo {
    *
    * Examples:
    * 2016-09-11
+   *
    */
   initial_deposition_date?: Maybe<Scalars['Date']>;
   /**
@@ -7838,6 +8324,7 @@ export interface RcsbChemCompInfo {
    *
    * Examples:
    * 2016-09-11
+   *
    */
   initial_release_date?: Maybe<Scalars['Date']>;
   /**
@@ -7845,6 +8332,7 @@ export interface RcsbChemCompInfo {
    *
    * Allowable values:
    * DEL, HOLD, HPUB, OBS, REF_ONLY, REL
+   *
    */
   release_status?: Maybe<Scalars['String']>;
   /**
@@ -7852,6 +8340,7 @@ export interface RcsbChemCompInfo {
    *
    * Examples:
    * 2016-10-12
+   *
    */
   revision_date?: Maybe<Scalars['Date']>;
 }
@@ -7873,6 +8362,7 @@ export interface RcsbChemCompRelated {
    *
    * Allowable values:
    * assigned by DrugBank resource, assigned by PDB, assigned by PubChem resource, matching ChEMBL ID in Pharos, matching InChIKey in DrugBank, matching InChIKey in PubChem, matching InChIKey-prefix in DrugBank, matching by RESID resource
+   *
    */
   related_mapping_method?: Maybe<Scalars['String']>;
   /**
@@ -7880,6 +8370,7 @@ export interface RcsbChemCompRelated {
    *
    * Examples:
    * 124832
+   *
    */
   resource_accession_code?: Maybe<Scalars['String']>;
   /**
@@ -7887,6 +8378,7 @@ export interface RcsbChemCompRelated {
    *
    * Allowable values:
    * CAS, CCDC/CSD, ChEBI, ChEMBL, DrugBank, Pharos, PubChem, RESID
+   *
    */
   resource_name?: Maybe<Scalars['String']>;
 }
@@ -7900,6 +8392,7 @@ export interface RcsbChemCompSynonyms {
    *
    * Examples:
    * Ursonic acid, Talotrexin, 4-oxodecanedioic acid
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -7912,6 +8405,7 @@ export interface RcsbChemCompSynonyms {
    *
    * Allowable values:
    * ACDLabs, Author, ChEBI, ChEMBL, DrugBank, GMML, Lexichem, OpenEye OEToolkits, OpenEye/Lexichem, PDB Reference Data, PDB Reference Data (Preferred), PDB-CARE, PubChem, RESID
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -7919,6 +8413,7 @@ export interface RcsbChemCompSynonyms {
    *
    * Allowable values:
    * Brand Name, Common Name, Condensed IUPAC Carbohydrate Symbol, IUPAC Carbohydrate Symbol, Preferred Common Name, Preferred Name, Preferred Synonym, SNFG Carbohydrate Symbol, Synonym, Systematic Name
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -7944,6 +8439,7 @@ export interface RcsbChemCompTarget {
    *
    * Allowable values:
    * DrugBank, PDB Primary Data
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -7951,6 +8447,7 @@ export interface RcsbChemCompTarget {
    *
    * Examples:
    * Q9HD40
+   *
    */
   reference_database_accession_code?: Maybe<Scalars['String']>;
   /**
@@ -7958,6 +8455,7 @@ export interface RcsbChemCompTarget {
    *
    * Allowable values:
    * UniProt
+   *
    */
   reference_database_name?: Maybe<Scalars['String']>;
   /** The mechanism of action of the chemical component - target interaction. */
@@ -8088,6 +8586,7 @@ export interface RcsbEntityHostOrganism {
    *
    * Allowable values:
    * PDB Primary Data
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /** The scientific name of the host organism */
@@ -8104,6 +8603,7 @@ export interface RcsbEntityHostOrganismTaxonomyLineage {
    *
    * Examples:
    * 469008, 10469
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -8111,6 +8611,7 @@ export interface RcsbEntityHostOrganismTaxonomyLineage {
    *
    * Examples:
    * Escherichia coli BL21(DE3), Baculovirus
+   *
    */
   name?: Maybe<Scalars['String']>;
 }
@@ -8177,6 +8678,7 @@ export interface RcsbEntitySourceOrganism {
    *
    * Examples:
    * Archaea, Bacteria, Eukaryota, Adnaviria, Bicaudaviridae, Clavaviridae, Duplodnaviria
+   *
    */
   ncbi_parent_scientific_name?: Maybe<Scalars['String']>;
   /**
@@ -8222,6 +8724,7 @@ export interface RcsbEntitySourceOrganism {
    *
    * Allowable values:
    * PDB Primary Data
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   rcsb_gene_name?: Maybe<Array<Maybe<RcsbEntitySourceOrganismRcsbGeneName>>>;
@@ -8232,6 +8735,7 @@ export interface RcsbEntitySourceOrganism {
    *
    * Allowable values:
    * genetically engineered, natural, synthetic
+   *
    */
   source_type?: Maybe<Scalars['String']>;
   taxonomy_lineage?: Maybe<Array<Maybe<RcsbEntitySourceOrganismTaxonomyLineage>>>;
@@ -8244,6 +8748,7 @@ export interface RcsbEntitySourceOrganismRcsbGeneName {
    *
    * Allowable values:
    * PDB Primary Data, UniProt
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -8251,6 +8756,7 @@ export interface RcsbEntitySourceOrganismRcsbGeneName {
    *
    * Examples:
    * lacA, hemH
+   *
    */
   value?: Maybe<Scalars['String']>;
 }
@@ -8264,6 +8770,7 @@ export interface RcsbEntitySourceOrganismTaxonomyLineage {
    *
    * Examples:
    * 9606, 10090
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -8271,6 +8778,7 @@ export interface RcsbEntitySourceOrganismTaxonomyLineage {
    *
    * Examples:
    * Homo sapiens, Mus musculus
+   *
    */
   name?: Maybe<Scalars['String']>;
 }
@@ -8293,6 +8801,7 @@ export interface RcsbEntryContainerIdentifiers {
    *
    * Examples:
    * 1KIP, 4HHB
+   *
    */
   entry_id: Scalars['String'];
   /** List of PDB model identifiers for the entry. */
@@ -8308,6 +8817,7 @@ export interface RcsbEntryContainerIdentifiers {
    *
    * Examples:
    * 1KIP
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
   /**
@@ -8330,6 +8840,7 @@ export interface RcsbEntryInfo {
    *
    * Examples:
    * null, null
+   *
    */
   branched_molecular_weight_maximum?: Maybe<Scalars['Float']>;
   /**
@@ -8337,6 +8848,7 @@ export interface RcsbEntryInfo {
    *
    * Examples:
    * null, null
+   *
    */
   branched_molecular_weight_minimum?: Maybe<Scalars['Float']>;
   /** The number of cis-peptide linkages per deposited structure model. */
@@ -8393,6 +8905,7 @@ export interface RcsbEntryInfo {
    *
    * Allowable values:
    * EM, Multiple methods, NMR, Neutron, Other, X-ray
+   *
    */
   experimental_method?: Maybe<Scalars['String']>;
   /** The number of experimental methods contributing data to the structure determination. */
@@ -8406,6 +8919,7 @@ export interface RcsbEntryInfo {
    *
    * Examples:
    * null, null
+   *
    */
   molecular_weight?: Maybe<Scalars['Float']>;
   /**
@@ -8413,6 +8927,7 @@ export interface RcsbEntryInfo {
    *
    * Allowable values:
    * DNA (only), DNA/RNA (only), NA-hybrid (only), Other, RNA (only)
+   *
    */
   na_polymer_entity_types?: Maybe<Scalars['String']>;
   /** Bound nonpolymer components in this entry. */
@@ -8424,6 +8939,7 @@ export interface RcsbEntryInfo {
    *
    * Examples:
    * null, null
+   *
    */
   nonpolymer_molecular_weight_maximum?: Maybe<Scalars['Float']>;
   /**
@@ -8431,6 +8947,7 @@ export interface RcsbEntryInfo {
    *
    * Examples:
    * null, null
+   *
    */
   nonpolymer_molecular_weight_minimum?: Maybe<Scalars['Float']>;
   /**
@@ -8438,6 +8955,7 @@ export interface RcsbEntryInfo {
    *
    * Allowable values:
    * DNA, DNA/RNA, NA-hybrid, NA/oligosaccharide, RNA, heteromeric protein, homomeric protein, oligosaccharide, other, other type composition, other type pair, protein/NA, protein/NA/oligosaccharide, protein/oligosaccharide
+   *
    */
   polymer_composition?: Maybe<Scalars['String']>;
   /** The number of distinct polymer entities in the structure entry. */
@@ -8459,6 +8977,7 @@ export interface RcsbEntryInfo {
    *
    * Examples:
    * null, null
+   *
    */
   polymer_molecular_weight_maximum?: Maybe<Scalars['Float']>;
   /**
@@ -8466,6 +8985,7 @@ export interface RcsbEntryInfo {
    *
    * Examples:
    * null, null
+   *
    */
   polymer_molecular_weight_minimum?: Maybe<Scalars['Float']>;
   /** The maximum monomer count of a polymer entity per deposited structure model. */
@@ -8479,6 +8999,7 @@ export interface RcsbEntryInfo {
    *
    * Allowable values:
    * Nucleic acid (only), Oligosaccharide (only), Other, Protein (only), Protein/NA, Protein/Oligosaccharide
+   *
    */
   selected_polymer_entity_types?: Maybe<Scalars['String']>;
   /** Combined list of software programs names reported in connection with the production of this entry. */
@@ -8494,6 +9015,7 @@ export interface RcsbEntryInfoDiffrnResolutionHigh {
    *
    * Allowable values:
    * Depositor assigned, From refinement resolution cutoff, From the high resolution shell
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /** The high resolution limit of data collection. */
@@ -8511,6 +9033,7 @@ export interface RcsbExternalReferences {
    *
    * Allowable values:
    * OLDERADO, BMRB, NDB, SB GRID, PROTEIN DIFFRACTION, EM DATA RESOURCE
+   *
    */
   type: Scalars['String'];
 }
@@ -8524,6 +9047,7 @@ export interface RcsbGenomicLineage {
    *
    * Examples:
    * 9606, 568815441, 414325
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -8531,6 +9055,7 @@ export interface RcsbGenomicLineage {
    *
    * Examples:
    * Homo sapiens, 8, defensin beta 103A
+   *
    */
   name?: Maybe<Scalars['String']>;
 }
@@ -8546,6 +9071,7 @@ export interface RcsbInterfaceContainerIdentifiers {
    *
    * Examples:
    * 1, 2
+   *
    */
   interface_entity_id?: Maybe<Scalars['String']>;
   /**
@@ -8553,6 +9079,7 @@ export interface RcsbInterfaceContainerIdentifiers {
    *
    * Examples:
    * 1, 2
+   *
    */
   interface_id: Scalars['String'];
   /**
@@ -8560,6 +9087,7 @@ export interface RcsbInterfaceContainerIdentifiers {
    *
    * Examples:
    * 2UZI-1.A.B?1
+   *
    */
   rcsb_id: Scalars['String'];
 }
@@ -8594,6 +9122,7 @@ export interface RcsbInterfacePartnerInterfacePartnerFeature {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the feature. */
@@ -8608,6 +9137,7 @@ export interface RcsbInterfacePartnerInterfacePartnerFeature {
    *
    * Examples:
    * NACCESS
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -8615,6 +9145,7 @@ export interface RcsbInterfacePartnerInterfacePartnerFeature {
    *
    * Allowable values:
    * ASA_UNBOUND, ASA_BOUND
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -8646,6 +9177,7 @@ export interface RcsbLigandNeighbors {
    *
    * Examples:
    * O1, N1, C1
+   *
    */
   atom_id?: Maybe<Scalars['String']>;
   /** The author residue index for the target instance. */
@@ -8661,6 +9193,7 @@ export interface RcsbLigandNeighbors {
    *
    * Examples:
    * A, B
+   *
    */
   ligand_asym_id?: Maybe<Scalars['String']>;
   /**
@@ -8668,6 +9201,7 @@ export interface RcsbLigandNeighbors {
    *
    * Examples:
    * OG, OE1, CD1
+   *
    */
   ligand_atom_id?: Maybe<Scalars['String']>;
   /**
@@ -8675,6 +9209,7 @@ export interface RcsbLigandNeighbors {
    *
    * Examples:
    * ASN, TRP, SER
+   *
    */
   ligand_comp_id?: Maybe<Scalars['String']>;
   /**
@@ -8682,6 +9217,7 @@ export interface RcsbLigandNeighbors {
    *
    * Examples:
    * 1, 2
+   *
    */
   ligand_entity_id?: Maybe<Scalars['String']>;
   /**
@@ -8689,6 +9225,7 @@ export interface RcsbLigandNeighbors {
    *
    * Allowable values:
    * N, Y
+   *
    */
   ligand_is_bound?: Maybe<Scalars['String']>;
   /** Model identifier for the ligand interaction. */
@@ -8706,6 +9243,7 @@ export interface RcsbMembraneLineage {
    *
    * Examples:
    * MONOTOPIC MEMBRANE PROTEINS.Oxidases.Monoamine Oxidase A
+   *
    */
   id?: Maybe<Scalars['String']>;
   /** Membrane protein classification term. */
@@ -8734,6 +9272,7 @@ export interface RcsbNonpolymerEntityAnnotation {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /**
@@ -8741,6 +9280,7 @@ export interface RcsbNonpolymerEntityAnnotation {
    *
    * Examples:
    * GTP, STN
+   *
    */
   comp_id?: Maybe<Scalars['String']>;
   /** A description for the annotation. */
@@ -8753,6 +9293,7 @@ export interface RcsbNonpolymerEntityAnnotation {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -8760,6 +9301,7 @@ export interface RcsbNonpolymerEntityAnnotation {
    *
    * Allowable values:
    * SUBJECT_OF_INVESTIGATION
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -8785,6 +9327,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Examples:
    * PRD_000010
+   *
    */
   chem_ref_def_id?: Maybe<Scalars['String']>;
   /**
@@ -8792,6 +9335,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Examples:
    * 1, 2
+   *
    */
   entity_id: Scalars['String'];
   /**
@@ -8799,6 +9343,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Examples:
    * 4HHB, 1KIP
+   *
    */
   entry_id: Scalars['String'];
   /**
@@ -8806,6 +9351,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Examples:
    * GTP, STN
+   *
    */
   nonpolymer_comp_id?: Maybe<Scalars['String']>;
   /**
@@ -8813,6 +9359,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Examples:
    * PRD_000010
+   *
    */
   prd_id?: Maybe<Scalars['String']>;
   /**
@@ -8821,6 +9368,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Examples:
    * 6EL3_1
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
   /**
@@ -8828,6 +9376,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Allowable values:
    * PDB, RCSB
+   *
    */
   reference_chemical_identifiers_provenance_source?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Reference resource accession code */
@@ -8837,6 +9386,7 @@ export interface RcsbNonpolymerEntityContainerIdentifiers {
    *
    * Allowable values:
    * ChEBI, ChEMBL, DrugBank, PubChem
+   *
    */
   reference_chemical_identifiers_resource_name?: Maybe<Array<Maybe<Scalars['String']>>>;
 }
@@ -8849,6 +9399,7 @@ export interface RcsbNonpolymerEntityFeature {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /**
@@ -8856,6 +9407,7 @@ export interface RcsbNonpolymerEntityFeature {
    *
    * Examples:
    * GTP, STN
+   *
    */
   comp_id?: Maybe<Scalars['String']>;
   /** A description for the feature. */
@@ -8870,6 +9422,7 @@ export interface RcsbNonpolymerEntityFeature {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -8877,6 +9430,7 @@ export interface RcsbNonpolymerEntityFeature {
    *
    * Allowable values:
    * SUBJECT_OF_INVESTIGATION
+   *
    */
   type?: Maybe<Scalars['String']>;
   /** The feature value. */
@@ -8898,6 +9452,7 @@ export interface RcsbNonpolymerEntityFeatureSummary {
    *
    * Examples:
    * GTP, STN
+   *
    */
   comp_id?: Maybe<Scalars['String']>;
   /** The feature count. */
@@ -8909,6 +9464,7 @@ export interface RcsbNonpolymerEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   maximum_value?: Maybe<Scalars['Float']>;
   /** The minimum feature length. */
@@ -8918,6 +9474,7 @@ export interface RcsbNonpolymerEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   minimum_value?: Maybe<Scalars['Float']>;
   /**
@@ -8925,6 +9482,7 @@ export interface RcsbNonpolymerEntityFeatureSummary {
    *
    * Allowable values:
    * SUBJECT_OF_INVESTIGATION
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -8949,6 +9507,7 @@ export interface RcsbNonpolymerEntityInstanceContainerIdentifiers {
    *
    * Examples:
    * 1KIP.A
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
 }
@@ -8975,6 +9534,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /**
@@ -8982,6 +9542,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    *
    * Examples:
    * ATP
+   *
    */
   comp_id?: Maybe<Scalars['String']>;
   /** A description for the annotation. */
@@ -8996,6 +9557,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -9003,6 +9565,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    *
    * Allowable values:
    * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9025,6 +9588,7 @@ export interface RcsbNonpolymerInstanceFeature {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** Component identifier for non-polymer entity instance. */
@@ -9044,6 +9608,7 @@ export interface RcsbNonpolymerInstanceFeature {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -9051,6 +9616,7 @@ export interface RcsbNonpolymerInstanceFeature {
    *
    * Allowable values:
    * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, STEREO_OUTLIER
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9062,6 +9628,7 @@ export interface RcsbNonpolymerInstanceFeatureAdditionalProperties {
    *
    * Examples:
    * bond_distance, bond_angle
+   *
    */
   name?: Maybe<Scalars['String']>;
   /** The value(s) of the additional property. */
@@ -9075,6 +9642,7 @@ export interface RcsbNonpolymerInstanceFeatureFeatureValue {
    *
    * Examples:
    * ATP,, STN
+   *
    */
   comp_id?: Maybe<Scalars['String']>;
   /**
@@ -9082,6 +9650,7 @@ export interface RcsbNonpolymerInstanceFeatureFeatureValue {
    *
    * Examples:
    * C1,C2, C1,C2,C3
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -9089,6 +9658,7 @@ export interface RcsbNonpolymerInstanceFeatureFeatureValue {
    *
    * Examples:
    * null, null
+   *
    */
   reference?: Maybe<Scalars['Float']>;
   /**
@@ -9096,6 +9666,7 @@ export interface RcsbNonpolymerInstanceFeatureFeatureValue {
    *
    * Examples:
    * null, null
+   *
    */
   reported?: Maybe<Scalars['Float']>;
   /**
@@ -9103,6 +9674,7 @@ export interface RcsbNonpolymerInstanceFeatureFeatureValue {
    *
    * Examples:
    * null, null
+   *
    */
   uncertainty_estimate?: Maybe<Scalars['Float']>;
   /**
@@ -9110,6 +9682,7 @@ export interface RcsbNonpolymerInstanceFeatureFeatureValue {
    *
    * Allowable values:
    * Z-Score
+   *
    */
   uncertainty_estimate_type?: Maybe<Scalars['String']>;
 }
@@ -9127,6 +9700,7 @@ export interface RcsbNonpolymerInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   maximum_value?: Maybe<Scalars['Float']>;
   /** The minimum feature length. */
@@ -9136,6 +9710,7 @@ export interface RcsbNonpolymerInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   minimum_value?: Maybe<Scalars['Float']>;
   /**
@@ -9143,6 +9718,7 @@ export interface RcsbNonpolymerInstanceFeatureSummary {
    *
    * Allowable values:
    * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, STEREO_OUTLIER
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9154,6 +9730,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   RSCC?: Maybe<Scalars['Float']>;
   /**
@@ -9161,6 +9738,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   RSR?: Maybe<Scalars['Float']>;
   /** Alternate conformer identifier for the non-polymer entity instance. */
@@ -9170,6 +9748,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   average_occupancy?: Maybe<Scalars['Float']>;
   /**
@@ -9177,6 +9756,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   completeness?: Maybe<Scalars['Float']>;
   /** The number of intermolecular MolProbity clashes cacluated for reported atomic coordinate records. */
@@ -9186,6 +9766,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Allowable values:
    * N, Y
+   *
    */
   is_best_instance?: Maybe<Scalars['String']>;
   /**
@@ -9193,6 +9774,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Allowable values:
    * N, Y
+   *
    */
   is_subject_of_investigation?: Maybe<Scalars['String']>;
   /**
@@ -9200,6 +9782,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Allowable values:
    * Author, RCSB
+   *
    */
   is_subject_of_investigation_provenance?: Maybe<Scalars['String']>;
   /**
@@ -9214,6 +9797,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   mogul_angles_RMSZ?: Maybe<Scalars['Float']>;
   /**
@@ -9228,6 +9812,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   mogul_bonds_RMSZ?: Maybe<Scalars['Float']>;
   /**
@@ -9235,6 +9820,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   ranking_model_fit?: Maybe<Scalars['Float']>;
   /**
@@ -9242,6 +9828,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   ranking_model_geometry?: Maybe<Scalars['Float']>;
   /**
@@ -9249,6 +9836,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   score_model_fit?: Maybe<Scalars['Float']>;
   /**
@@ -9256,6 +9844,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Examples:
    * null, null
+   *
    */
   score_model_geometry?: Maybe<Scalars['Float']>;
   /** Number of stereochemical/chirality errors. */
@@ -9265,6 +9854,7 @@ export interface RcsbNonpolymerInstanceValidationScore {
    *
    * Allowable values:
    * RCSB_LIGAND_QUALITY_SCORE_2021
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9278,6 +9868,7 @@ export interface RcsbNonpolymerStructConn {
    *
    * Allowable values:
    * covalent bond, disulfide bridge, hydrogen bond, ionic interaction, metal coordination, mismatched base pairs
+   *
    */
   connect_type?: Maybe<Scalars['String']>;
   /**
@@ -9285,6 +9876,7 @@ export interface RcsbNonpolymerStructConn {
    *
    * Examples:
    * Watson-Crick base pair
+   *
    */
   description?: Maybe<Scalars['String']>;
   /** Distance value for this contact. */
@@ -9306,6 +9898,7 @@ export interface RcsbNonpolymerStructConn {
    *
    * Allowable values:
    * C-Mannosylation, N-Glycosylation, O-Glycosylation, S-Glycosylation
+   *
    */
   role?: Maybe<Scalars['String']>;
   /**
@@ -9314,6 +9907,7 @@ export interface RcsbNonpolymerStructConn {
    *
    * Allowable values:
    * doub, quad, sing, trip
+   *
    */
   value_order?: Maybe<Scalars['String']>;
 }
@@ -9367,6 +9961,7 @@ export interface RcsbNonpolymerStructConnConnectPartner {
    *
    * Examples:
    * 1_555, 7_645
+   *
    */
   symmetry?: Maybe<Scalars['String']>;
 }
@@ -9436,6 +10031,7 @@ export interface RcsbNonpolymerStructConnConnectTarget {
    *
    * Examples:
    * 1_555, 7_645
+   *
    */
   symmetry?: Maybe<Scalars['String']>;
 }
@@ -9455,6 +10051,7 @@ export interface RcsbPolymerEntity {
    *
    * Examples:
    * null, null
+   *
    */
   formula_weight?: Maybe<Scalars['Float']>;
   /**
@@ -9462,6 +10059,7 @@ export interface RcsbPolymerEntity {
    *
    * Examples:
    * Green fluorescent protein, 23S ribosomal RNA, NAD-dependent protein deacylase sirtuin-5, mitochondrial
+   *
    */
   pdbx_description?: Maybe<Scalars['String']>;
   /**
@@ -9469,6 +10067,7 @@ export interface RcsbPolymerEntity {
    *
    * Examples:
    * 2.7.7.7
+   *
    */
   pdbx_ec?: Maybe<Scalars['String']>;
   /**
@@ -9476,6 +10075,7 @@ export interface RcsbPolymerEntity {
    *
    * Examples:
    * KLENOW FRAGMENT, REPLICASE OPERATOR HAIRPIN, C-TERMINAL DOMAIN
+   *
    */
   pdbx_fragment?: Maybe<Scalars['String']>;
   /**
@@ -9483,6 +10083,7 @@ export interface RcsbPolymerEntity {
    *
    * Examples:
    * Y31H, DEL(298-323)
+   *
    */
   pdbx_mutation?: Maybe<Scalars['String']>;
   /** The number of molecules of the entity in the entry. */
@@ -9495,6 +10096,7 @@ export interface RcsbPolymerEntity {
    *
    * Allowable values:
    * N, Y
+   *
    */
   rcsb_multiple_source_flag?: Maybe<Scalars['String']>;
   /**
@@ -9514,6 +10116,7 @@ export interface RcsbPolymerEntity {
    *
    * Allowable values:
    * man, nat, syn
+   *
    */
   src_method?: Maybe<Scalars['String']>;
 }
@@ -9527,6 +10130,7 @@ export interface RcsbPolymerEntityAlign {
    *
    * Examples:
    * PDB, SIFTS, RCSB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -9534,6 +10138,7 @@ export interface RcsbPolymerEntityAlign {
    *
    * Examples:
    * Q9HD40
+   *
    */
   reference_database_accession?: Maybe<Scalars['String']>;
   /**
@@ -9541,6 +10146,7 @@ export interface RcsbPolymerEntityAlign {
    *
    * Examples:
    * P01116-2
+   *
    */
   reference_database_isoform?: Maybe<Scalars['String']>;
   /**
@@ -9548,6 +10154,7 @@ export interface RcsbPolymerEntityAlign {
    *
    * Allowable values:
    * EMBL, GenBank, NDB, NORINE, PDB, PIR, PRF, RefSeq, UniProt
+   *
    */
   reference_database_name?: Maybe<Scalars['String']>;
 }
@@ -9572,6 +10179,7 @@ export interface RcsbPolymerEntityAnnotation {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the annotation. */
@@ -9584,6 +10192,7 @@ export interface RcsbPolymerEntityAnnotation {
    *
    * Examples:
    * PDB, UniProt
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -9591,6 +10200,7 @@ export interface RcsbPolymerEntityAnnotation {
    *
    * Allowable values:
    * GO, GlyCosmos, GlyGen, InterPro, MemProtMD, OPM, PDBTM, Pfam, mpstruc
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9620,6 +10230,7 @@ export interface RcsbPolymerEntityContainerIdentifiers {
    *
    * Examples:
    * PRD_000010
+   *
    */
   chem_ref_def_id?: Maybe<Scalars['String']>;
   /**
@@ -9627,6 +10238,7 @@ export interface RcsbPolymerEntityContainerIdentifiers {
    *
    * Examples:
    * 1, 2
+   *
    */
   entity_id: Scalars['String'];
   /**
@@ -9634,6 +10246,7 @@ export interface RcsbPolymerEntityContainerIdentifiers {
    *
    * Examples:
    * 4HHB, 1KIP
+   *
    */
   entry_id: Scalars['String'];
   /**
@@ -9641,6 +10254,7 @@ export interface RcsbPolymerEntityContainerIdentifiers {
    *
    * Examples:
    * PRD_000010
+   *
    */
   prd_id?: Maybe<Scalars['String']>;
   /**
@@ -9649,6 +10263,7 @@ export interface RcsbPolymerEntityContainerIdentifiers {
    *
    * Examples:
    * 6EL3_1
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
   reference_sequence_identifiers?: Maybe<Array<Maybe<RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers>>>;
@@ -9662,6 +10277,7 @@ export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifie
    *
    * Examples:
    * P01116, 55771382
+   *
    */
   database_accession?: Maybe<Scalars['String']>;
   /**
@@ -9669,6 +10285,7 @@ export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifie
    *
    * Examples:
    * P01116-2
+   *
    */
   database_isoform?: Maybe<Scalars['String']>;
   /**
@@ -9676,6 +10293,7 @@ export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifie
    *
    * Allowable values:
    * EMBL, GenBank, NDB, NORINE, PDB, PIR, PRF, RefSeq, UniProt
+   *
    */
   database_name?: Maybe<Scalars['String']>;
   /**
@@ -9683,6 +10301,7 @@ export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifie
    *
    * Allowable values:
    * PDB, RCSB, SIFTS
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
 }
@@ -9695,6 +10314,7 @@ export interface RcsbPolymerEntityFeature {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the feature. */
@@ -9710,6 +10330,7 @@ export interface RcsbPolymerEntityFeature {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -9717,6 +10338,7 @@ export interface RcsbPolymerEntityFeature {
    *
    * Allowable values:
    * NCBI, PDB entity, UniProt
+   *
    */
   reference_scheme?: Maybe<Scalars['String']>;
   /**
@@ -9724,6 +10346,7 @@ export interface RcsbPolymerEntityFeature {
    *
    * Allowable values:
    * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, modified_monomer, mutation, hydropathy, disorder, disorder_binding
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9735,6 +10358,7 @@ export interface RcsbPolymerEntityFeatureAdditionalProperties {
    *
    * Allowable values:
    * CARD_MODEL_DESCRIPTION, CARD_MODEL_ORGANISM, PARENT_COMP_ID
+   *
    */
   name?: Maybe<Scalars['String']>;
   /** The value(s) of the additional property. */
@@ -9748,6 +10372,7 @@ export interface RcsbPolymerEntityFeatureFeaturePositions {
    *
    * Examples:
    * TRP, VAL
+   *
    */
   beg_comp_id?: Maybe<Scalars['String']>;
   /** An identifier for the monomer at which this segment of the feature begins. */
@@ -9759,6 +10384,7 @@ export interface RcsbPolymerEntityFeatureFeaturePositions {
    *
    * Examples:
    * null, null
+   *
    */
   value?: Maybe<Scalars['Float']>;
   /** The value(s) for the feature over this monomer segment. */
@@ -9776,6 +10402,7 @@ export interface RcsbPolymerEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   coverage?: Maybe<Scalars['Float']>;
   /** The maximum feature length. */
@@ -9785,6 +10412,7 @@ export interface RcsbPolymerEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   maximum_value?: Maybe<Scalars['Float']>;
   /** The minimum feature length. */
@@ -9794,6 +10422,7 @@ export interface RcsbPolymerEntityFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   minimum_value?: Maybe<Scalars['Float']>;
   /**
@@ -9801,6 +10430,7 @@ export interface RcsbPolymerEntityFeatureSummary {
    *
    * Allowable values:
    * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, modified_monomer, mutation
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9829,6 +10459,7 @@ export interface RcsbPolymerEntityInstanceContainerIdentifiers {
    *
    * Examples:
    * 1KIP.A
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
 }
@@ -9846,6 +10477,7 @@ export interface RcsbPolymerEntityNameCom {
    *
    * Examples:
    * HIV protease monomer, hemoglobin alpha chain
+   *
    */
   name: Scalars['String'];
 }
@@ -9859,6 +10491,7 @@ export interface RcsbPolymerEntityNameSys {
    *
    * Examples:
    * Chemical Abstracts conventions
+   *
    */
   system?: Maybe<Scalars['String']>;
 }
@@ -9872,6 +10505,7 @@ export interface RcsbPolymerEntityRcsbEcLineage {
    *
    * Examples:
    * 2, 2.7.1.153
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -9879,6 +10513,7 @@ export interface RcsbPolymerEntityRcsbEcLineage {
    *
    * Examples:
    * Transferases, phosphatidylinositol-4,5-bisphosphate 3-kinase
+   *
    */
   name?: Maybe<Scalars['String']>;
 }
@@ -9894,6 +10529,7 @@ export interface RcsbPolymerEntityRcsbEnzymeClassCombined {
    *
    * Allowable values:
    * PDB Primary Data, UniProt
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
 }
@@ -9905,6 +10541,7 @@ export interface RcsbPolymerEntityRcsbMacromolecularNamesCombined {
    *
    * Examples:
    * Lysozyme C, Plasmid recombination enzyme, Pyruvate carboxylase
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -9918,6 +10555,7 @@ export interface RcsbPolymerEntityRcsbMacromolecularNamesCombined {
    *
    * Allowable values:
    * PDB Preferred Name, PDB Synonym
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
 }
@@ -9932,6 +10570,7 @@ export interface RcsbPolymerInstanceAnnotation {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the annotation. */
@@ -9946,6 +10585,7 @@ export interface RcsbPolymerInstanceAnnotation {
    *
    * Examples:
    * PDB
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -9953,6 +10593,7 @@ export interface RcsbPolymerInstanceAnnotation {
    *
    * Allowable values:
    * CATH, ECOD, SCOP, SCOP2
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -9975,6 +10616,7 @@ export interface RcsbPolymerInstanceFeature {
    *
    * Examples:
    * V4_0_2
+   *
    */
   assignment_version?: Maybe<Scalars['String']>;
   /** A description for the feature. */
@@ -9992,6 +10634,7 @@ export interface RcsbPolymerInstanceFeature {
    *
    * Examples:
    * CATH, SCOP
+   *
    */
   provenance_source?: Maybe<Scalars['String']>;
   /**
@@ -9999,6 +10642,7 @@ export interface RcsbPolymerInstanceFeature {
    *
    * Allowable values:
    * NCBI, PDB entity, PDB entry, UniProt
+   *
    */
   reference_scheme?: Maybe<Scalars['String']>;
   /**
@@ -10006,6 +10650,7 @@ export interface RcsbPolymerInstanceFeature {
    *
    * Allowable values:
    * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -10017,6 +10662,7 @@ export interface RcsbPolymerInstanceFeatureAdditionalProperties {
    *
    * Allowable values:
    * CATH_DOMAIN_ID, CATH_NAME, ECOD_DOMAIN_ID, ECOD_FAMILY_NAME, OMEGA_ANGLE, PARTNER_ASYM_ID, PARTNER_BOND_DISTANCE, PARTNER_COMP_ID, SCOP2_DOMAIN_ID, SCOP2_FAMILY_ID, SCOP2_FAMILY_NAME, SCOP2_SUPERFAMILY_ID, SCOP2_SUPERFAMILY_NAME, SCOP_DOMAIN_ID, SCOP_NAME, SCOP_SUN_ID, SHEET_SENSE
+   *
    */
   name?: Maybe<Scalars['String']>;
   /** The value(s) of the additional property. */
@@ -10030,6 +10676,7 @@ export interface RcsbPolymerInstanceFeatureFeaturePositions {
    *
    * Examples:
    * TRP, VAL
+   *
    */
   beg_comp_id?: Maybe<Scalars['String']>;
   /** An identifier for the monomer at which this segment of the feature begins. */
@@ -10041,6 +10688,7 @@ export interface RcsbPolymerInstanceFeatureFeaturePositions {
    *
    * Examples:
    * null, null
+   *
    */
   value?: Maybe<Scalars['Float']>;
   /** The value(s) of the feature over the monomer segment. */
@@ -10058,6 +10706,7 @@ export interface RcsbPolymerInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   coverage?: Maybe<Scalars['Float']>;
   /** The maximum feature length. */
@@ -10067,6 +10716,7 @@ export interface RcsbPolymerInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   maximum_value?: Maybe<Scalars['Float']>;
   /** The minimum feature length. */
@@ -10076,6 +10726,7 @@ export interface RcsbPolymerInstanceFeatureSummary {
    *
    * Examples:
    * null, null
+   *
    */
   minimum_value?: Maybe<Scalars['Float']>;
   /**
@@ -10083,6 +10734,7 @@ export interface RcsbPolymerInstanceFeatureSummary {
    *
    * Allowable values:
    * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SAbDab Antibody Heavy Chain Subclass, SAbDab Antibody Light Chain Subclass, SAbDab Antibody Light Chain Type, SCOP, SCOP2 Family, SCOP2 Superfamily, SCOP2B Superfamily, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -10096,6 +10748,7 @@ export interface RcsbPolymerStructConn {
    *
    * Allowable values:
    * covalent bond, covalent modification of a nucleotide base, covalent modification of a nucleotide phosphate, covalent modification of a nucleotide sugar, covalent residue modification, disulfide bridge, hydrogen bond, ionic interaction, metal coordination, mismatched base pairs
+   *
    */
   connect_type?: Maybe<Scalars['String']>;
   /**
@@ -10103,6 +10756,7 @@ export interface RcsbPolymerStructConn {
    *
    * Examples:
    * Watson-Crick base pair
+   *
    */
   description?: Maybe<Scalars['String']>;
   /** Distance value for this contact. */
@@ -10124,6 +10778,7 @@ export interface RcsbPolymerStructConn {
    *
    * Allowable values:
    * C-Mannosylation, N-Glycosylation, O-Glycosylation, S-Glycosylation
+   *
    */
   role?: Maybe<Scalars['String']>;
   /**
@@ -10132,6 +10787,7 @@ export interface RcsbPolymerStructConn {
    *
    * Allowable values:
    * doub, quad, sing, trip
+   *
    */
   value_order?: Maybe<Scalars['String']>;
 }
@@ -10185,6 +10841,7 @@ export interface RcsbPolymerStructConnConnectPartner {
    *
    * Examples:
    * 1_555, 7_645
+   *
    */
   symmetry?: Maybe<Scalars['String']>;
 }
@@ -10254,6 +10911,7 @@ export interface RcsbPolymerStructConnConnectTarget {
    *
    * Examples:
    * 1_555, 7_645
+   *
    */
   symmetry?: Maybe<Scalars['String']>;
 }
@@ -10271,6 +10929,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * John Wiley and Sons
+   *
    */
   book_publisher?: Maybe<Scalars['String']>;
   /**
@@ -10279,6 +10938,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * London
+   *
    */
   book_publisher_city?: Maybe<Scalars['String']>;
   /**
@@ -10296,6 +10956,7 @@ export interface RcsbPrimaryCitation {
    *
    * Allowable values:
    * n, no, y, yes
+   *
    */
   coordinate_linkage?: Maybe<Scalars['String']>;
   /**
@@ -10316,6 +10977,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * primary
+   *
    */
   id: Scalars['String'];
   /**
@@ -10324,6 +10986,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * J.Mol.Biol., J. Mol. Biol.
+   *
    */
   journal_abbrev?: Maybe<Scalars['String']>;
   /**
@@ -10340,6 +11003,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * 0070
+   *
    */
   journal_id_CSD?: Maybe<Scalars['String']>;
   /**
@@ -10353,6 +11017,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * 2
+   *
    */
   journal_issue?: Maybe<Scalars['String']>;
   /**
@@ -10361,6 +11026,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * 174
+   *
    */
   journal_volume?: Maybe<Scalars['String']>;
   /**
@@ -10368,6 +11034,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * German
+   *
    */
   language?: Maybe<Scalars['String']>;
   /**
@@ -10386,6 +11053,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * 10.2345/S1384107697000225
+   *
    */
   pdbx_database_id_DOI?: Maybe<Scalars['String']>;
   /**
@@ -10408,6 +11076,7 @@ export interface RcsbPrimaryCitation {
    *
    * Examples:
    * Nat Struct Mol Biol
+   *
    */
   rcsb_journal_abbrev?: Maybe<Scalars['String']>;
   /**
@@ -10417,6 +11086,7 @@ export interface RcsbPrimaryCitation {
    * Examples:
    * Structure of diferric duck ovotransferrin
    *                                   at 2.35 Angstroms resolution.
+   *
    */
   title?: Maybe<Scalars['String']>;
   /**
@@ -10433,6 +11103,7 @@ export interface RcsbPubmedContainerIdentifiers {
    *
    * Examples:
    * null
+   *
    */
   pubmed_id?: Maybe<Scalars['Int']>;
 }
@@ -10446,6 +11117,7 @@ export interface RcsbPubmedMeshDescriptorsLineage {
    *
    * Examples:
    * E01.370.225.500.388, H01.181
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -10453,6 +11125,7 @@ export interface RcsbPubmedMeshDescriptorsLineage {
    *
    * Examples:
    * Chemistry, Mammals, Therapeutic Uses
+   *
    */
   name?: Maybe<Scalars['String']>;
 }
@@ -10465,6 +11138,7 @@ export interface RcsbRelatedTargetReferences {
    *
    * Allowable values:
    * ChEMBL, DrugBank, Pharos
+   *
    */
   related_resource_name?: Maybe<Scalars['String']>;
   /**
@@ -10472,6 +11146,7 @@ export interface RcsbRelatedTargetReferences {
    *
    * Examples:
    * 6.11.0
+   *
    */
   related_resource_version?: Maybe<Scalars['String']>;
   /** An identifier for the target sequence in the related data resource. */
@@ -10509,6 +11184,7 @@ export interface RcsbRepositoryHoldingsCurrent {
    *
    * Allowable values:
    * 2fo-fc Map, Combined NMR data (NEF), Combined NMR data (NMR-STAR), FASTA sequence, Map Coefficients, NMR chemical shifts, NMR restraints V1, NMR restraints V2, assembly PDB, assembly mmCIF, entry PDB, entry PDB bundle, entry PDBML, entry mmCIF, fo-fc Map, structure factors, validation data mmCIF, validation report, validation slider image
+   *
    */
   repository_content_types?: Maybe<Array<Maybe<Scalars['String']>>>;
 }
@@ -10522,6 +11198,7 @@ export interface RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers {
    *
    * Examples:
    * 1KIP
+   *
    */
   entry_id: Scalars['String'];
   /**
@@ -10529,6 +11206,7 @@ export interface RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers {
    *
    * Examples:
    * 1KIP
+   *
    */
   rcsb_id?: Maybe<Scalars['String']>;
   /**
@@ -10536,6 +11214,7 @@ export interface RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers {
    *
    * Examples:
    * 2018_23
+   *
    */
   update_id?: Maybe<Scalars['String']>;
 }
@@ -10559,6 +11238,7 @@ export interface RcsbStructSymmetry {
    *
    * Allowable values:
    * Global Symmetry, Pseudo Symmetry, Local Symmetry
+   *
    */
   kind: Scalars['String'];
   /**
@@ -10566,6 +11246,7 @@ export interface RcsbStructSymmetry {
    *
    * Examples:
    * Monomer, Homo 2-mer, Hetero 3-mer
+   *
    */
   oligomeric_state: Scalars['String'];
   /** The orientation of the principal rotation (symmetry) axis. */
@@ -10577,6 +11258,7 @@ export interface RcsbStructSymmetry {
    *
    * Examples:
    * C1, D3, H
+   *
    */
   symbol: Scalars['String'];
   /**
@@ -10584,6 +11266,7 @@ export interface RcsbStructSymmetry {
    *
    * Allowable values:
    * Asymmetric, Cyclic, Dihedral, Tetrahedral, Octahedral, Icosahedral, Helical
+   *
    */
   type: Scalars['String'];
 }
@@ -10605,6 +11288,7 @@ export interface RcsbStructSymmetryLineage {
    *
    * Examples:
    * Global Symmetry.Cyclic.C2.Homo 2-mer
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -10612,6 +11296,7 @@ export interface RcsbStructSymmetryLineage {
    *
    * Examples:
    * Asymmetric, Global Symmetry, C1, Hetero 3-mer
+   *
    */
   name?: Maybe<Scalars['String']>;
 }
@@ -10633,6 +11318,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * null
+   *
    */
   binding_assay_value?: Maybe<Scalars['Float']>;
   /**
@@ -10640,6 +11326,7 @@ export interface RcsbTargetCofactors {
    *
    * Allowable values:
    * pAC50, pEC50, pIC50, pKd, pKi
+   *
    */
   binding_assay_value_type?: Maybe<Scalars['String']>;
   /**
@@ -10652,6 +11339,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * BNOCDEBUFVJMQI-REOHCLBHSA-N
+   *
    */
   cofactor_InChIKey?: Maybe<Scalars['String']>;
   /**
@@ -10666,6 +11354,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * OC(=O)[CH](CF)O[P](O)(O)=O
+   *
    */
   cofactor_SMILES?: Maybe<Scalars['String']>;
   /**
@@ -10673,6 +11362,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * 0Z3, CD9
+   *
    */
   cofactor_chem_comp_id?: Maybe<Scalars['String']>;
   /**
@@ -10681,6 +11371,7 @@ export interface RcsbTargetCofactors {
    * Examples:
    * A synthetic naphthoquinone without the isoprenoid side chain and biological activity,
    *   but can be converted to active vitamin K2, menaquinone, after alkylation in vivo.
+   *
    */
   cofactor_description?: Maybe<Scalars['String']>;
   /**
@@ -10688,6 +11379,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * Menadione
+   *
    */
   cofactor_name?: Maybe<Scalars['String']>;
   /**
@@ -10695,6 +11387,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * PRD_000010
+   *
    */
   cofactor_prd_id?: Maybe<Scalars['String']>;
   /**
@@ -10702,6 +11395,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * CHEMBL1987, DB00170
+   *
    */
   cofactor_resource_id?: Maybe<Scalars['String']>;
   /**
@@ -10712,6 +11406,7 @@ export interface RcsbTargetCofactors {
    * Menadione (vitamin K3) is involved as a cofactor in the posttranslational gamma-carboxylation of glutamic acid residues of certain proteins i
    * n the body. These proteins include the vitamin K-dependent coagulation factors II (prothrombin), VII (proconvertin), IX (Christmas factor), X (Stuart factor), protein
    * C, protein S, protein Zv and a growth-arrest-specific factor (Gas6).
+   *
    */
   mechanism_of_action?: Maybe<Scalars['String']>;
   /**
@@ -10720,6 +11415,7 @@ export interface RcsbTargetCofactors {
    *
    * Allowable values:
    * N, Y
+   *
    */
   neighbor_flag?: Maybe<Scalars['String']>;
   /** Patent numbers reporting the pharmacology or activity data. */
@@ -10731,6 +11427,7 @@ export interface RcsbTargetCofactors {
    *
    * Allowable values:
    * ChEMBL, DrugBank, Pharos
+   *
    */
   resource_name?: Maybe<Scalars['String']>;
   /**
@@ -10738,6 +11435,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * V4_0_2
+   *
    */
   resource_version?: Maybe<Scalars['String']>;
   /**
@@ -10745,6 +11443,7 @@ export interface RcsbTargetCofactors {
    *
    * Examples:
    * P00734, CHEMBL2242
+   *
    */
   target_resource_id?: Maybe<Scalars['String']>;
 }
@@ -10758,6 +11457,7 @@ export interface RcsbTargetNeighbors {
    *
    * Examples:
    * O1, N1, C1
+   *
    */
   atom_id?: Maybe<Scalars['String']>;
   /** Component identifier for the non-polymer entity instance. */
@@ -10769,6 +11469,7 @@ export interface RcsbTargetNeighbors {
    *
    * Examples:
    * A, B
+   *
    */
   target_asym_id?: Maybe<Scalars['String']>;
   /**
@@ -10776,6 +11477,7 @@ export interface RcsbTargetNeighbors {
    *
    * Examples:
    * OG, OE1, CD1
+   *
    */
   target_atom_id?: Maybe<Scalars['String']>;
   /** The author residue index for the target of interaction. */
@@ -10785,6 +11487,7 @@ export interface RcsbTargetNeighbors {
    *
    * Examples:
    * ASN, TRP, SER
+   *
    */
   target_comp_id?: Maybe<Scalars['String']>;
   /**
@@ -10792,6 +11495,7 @@ export interface RcsbTargetNeighbors {
    *
    * Examples:
    * 1, 2
+   *
    */
   target_entity_id?: Maybe<Scalars['String']>;
   /**
@@ -10799,6 +11503,7 @@ export interface RcsbTargetNeighbors {
    *
    * Allowable values:
    * N, Y
+   *
    */
   target_is_bound?: Maybe<Scalars['String']>;
   /** Model identifier for the target of interaction. */
@@ -10844,6 +11549,7 @@ export interface RcsbUniprotAnnotation {
    *
    * Allowable values:
    * disease, phenotype
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -10908,6 +11614,7 @@ export interface RcsbUniprotFeature {
    *
    * Allowable values:
    * ACTIVE_SITE, BINDING_SITE, CALCIUM_BINDING_REGION, CHAIN, COMPOSITIONALLY_BIASED_REGION, CROSS_LINK, DNA_BINDING_REGION, DOMAIN, GLYCOSYLATION_SITE, INITIATOR_METHIONINE, LIPID_MOIETY_BINDING_REGION, METAL_ION_BINDING_SITE, MODIFIED_RESIDUE, MUTAGENESIS_SITE, NON_CONSECUTIVE_RESIDUES, NON_TERMINAL_RESIDUE, NUCLEOTIDE_PHOSPHATE_BINDING_REGION, PEPTIDE, PROPEPTIDE, REGION_OF_INTEREST, REPEAT, NON_STANDARD_AMINO_ACID, SEQUENCE_CONFLICT, SEQUENCE_VARIANT, SHORT_SEQUENCE_MOTIF, SIGNAL_PEPTIDE, SITE, SPLICE_VARIANT, TOPOLOGICAL_DOMAIN, TRANSIT_PEPTIDE, TRANSMEMBRANE_REGION, UNSURE_RESIDUE, ZINC_FINGER_REGION, INTRAMEMBRANE_REGION
+   *
    */
   type?: Maybe<Scalars['String']>;
 }
@@ -10931,6 +11638,7 @@ export interface RcsbUniprotKeyword {
    *
    * Examples:
    * KW-0275, KW-0597
+   *
    */
   id?: Maybe<Scalars['String']>;
   /**
@@ -10938,6 +11646,7 @@ export interface RcsbUniprotKeyword {
    *
    * Examples:
    * Lipid metabolism, Phosphoprotein, Fatty acid biosynthesis
+   *
    */
   value?: Maybe<Scalars['String']>;
 }
@@ -10985,6 +11694,7 @@ export interface RcsbUniprotProteinName {
    *
    * Examples:
    * Hemoglobin alpha
+   *
    */
   value: Scalars['String'];
 }
@@ -11096,6 +11806,7 @@ export interface Refine {
    *
    * Examples:
    * HYDROGENS HAVE BEEN ADDED IN THE RIDING POSITIONS
+   *
    */
   details?: Maybe<Scalars['String']>;
   /**
@@ -11219,6 +11930,7 @@ export interface Refine {
    *
    * Allowable values:
    * atomblock, diagonal, full, fullcycle, sparse, userblock
+   *
    */
   ls_matrix_type?: Maybe<Scalars['String']>;
   /**
@@ -11585,6 +12297,7 @@ export interface Refine {
    *
    * Examples:
    * Random selection
+   *
    */
   pdbx_R_Free_selection_details?: Maybe<Scalars['String']>;
   /**
@@ -11593,6 +12306,7 @@ export interface Refine {
    *
    * Allowable values:
    * LIKELY RESIDUAL, UNVERIFIED
+   *
    */
   pdbx_TLS_residual_ADP_flag?: Maybe<Scalars['String']>;
   /**
@@ -11710,6 +12424,7 @@ export interface Refine {
    *
    * Examples:
    * null
+   *
    */
   pdbx_data_cutoff_high_rms_absF?: Maybe<Scalars['Float']>;
   /**
@@ -11717,6 +12432,7 @@ export interface Refine {
    *
    * Examples:
    * null
+   *
    */
   pdbx_data_cutoff_low_absF?: Maybe<Scalars['Float']>;
   /**
@@ -11731,6 +12447,7 @@ export interface Refine {
    *
    * Examples:
    * Isotropic, Overall
+   *
    */
   pdbx_isotropic_thermal_model?: Maybe<Scalars['String']>;
   /**
@@ -11739,6 +12456,7 @@ export interface Refine {
    *
    * Examples:
    * FREE R-VALUE
+   *
    */
   pdbx_ls_cross_valid_method?: Maybe<Scalars['String']>;
   /** Data cutoff (SIGMA(F)) */
@@ -11752,6 +12470,7 @@ export interface Refine {
    *
    * Examples:
    * AB INITIO PHASING, DM, ISAS, ISIR, ISIRAS, MAD, MIR, MIRAS, MR, SIR, SIRAS
+   *
    */
   pdbx_method_to_determine_struct?: Maybe<Scalars['String']>;
   /**
@@ -11794,6 +12513,7 @@ export interface Refine {
    *
    * Examples:
    * null
+   *
    */
   pdbx_overall_phase_error?: Maybe<Scalars['Float']>;
   /**
@@ -11815,6 +12535,7 @@ export interface Refine {
    *
    * Examples:
    * 1XYZ, 2XYZ, BDL001
+   *
    */
   pdbx_starting_model?: Maybe<Scalars['String']>;
   /**
@@ -12038,6 +12759,7 @@ export interface RefineLsRestr {
    *
    * Examples:
    * SINUSOIDAL, HARMONIC, SEMIHARMONIC
+   *
    */
   pdbx_restraint_function?: Maybe<Scalars['String']>;
   /**
@@ -12051,6 +12773,7 @@ export interface RefineLsRestr {
    *
    * Examples:
    * p_bond_d, p_angle_d, p_planar_d, p_xhbond_d, p_xhangle_d, p_hydrog_d, p_special_d, p_planar, p_chiral, p_singtor_nbd, p_multtor_nbd, p_xyhbond_nbd, p_xhyhbond_nbd, p_special_tor, p_planar_tor, p_staggered_tor, p_orthonormal_tor, p_mcbond_it, p_mcangle_it, p_scbond_it, p_scangle_it, p_xhbond_it, p_xhangle_it, p_special_it, RESTRAIN_Distances < 2.12, RESTRAIN_Distances 2.12 < D < 2.625, RESTRAIN_Distances > 2.625, RESTRAIN_Peptide Planes, RESTRAIN_Ring and other planes, RESTRAIN_rms diffs for Uiso atoms at dist 1.2-1.4, RESTRAIN_rms diffs for Uiso atoms at dist 1.4-1.6, RESTRAIN_rms diffs for Uiso atoms at dist 1.8-2.0, RESTRAIN_rms diffs for Uiso atoms at dist 2.0-2.2, RESTRAIN_rms diffs for Uiso atoms at dist 2.2-2.4, RESTRAIN_rms diffs for Uiso atoms at dist >2.4
+   *
    */
   type: Scalars['String'];
   /**
@@ -12078,6 +12801,7 @@ export interface Reflns {
    *                                   10th reflection in this sorted list was
    *                                   excluded from refinement and included in the
    *                                   calculation of a 'free' R factor.
+   *
    */
   R_free_details?: Maybe<Scalars['String']>;
   /**
@@ -12132,6 +12856,7 @@ export interface Reflns {
    * Examples:
    * Merging and scaling based on only those
    *                                   reflections with I > sig(I).
+   *
    */
   data_reduction_details?: Maybe<Scalars['String']>;
   /**
@@ -12147,6 +12872,7 @@ export interface Reflns {
    * Examples:
    * Profile fitting by method of Kabsch (1987).
    *                                   Scaling used spherical harmonic coefficients.
+   *
    */
   data_reduction_method?: Maybe<Scalars['String']>;
   /**
@@ -12206,6 +12932,7 @@ export interface Reflns {
    *
    * Examples:
    * >2sigma(I)
+   *
    */
   observed_criterion?: Maybe<Scalars['String']>;
   /**
@@ -12313,6 +13040,7 @@ export interface Reflns {
    *
    * Examples:
    * null
+   *
    */
   pdbx_Rsym_value?: Maybe<Scalars['Float']>;
   /** Overall  Chi-squared statistic. */
@@ -12355,6 +13083,7 @@ export interface Reflns {
    *
    * Examples:
    * From model, NCS averaging, Solvent flipping, Solvent flattening, Multiple crystal averaging, Multiple phase modification, Other phase modification
+   *
    */
   phase_calculation_details?: Maybe<Scalars['String']>;
 }
@@ -12609,6 +13338,7 @@ export interface Software {
    *
    * Examples:
    * data collection, data reduction, phasing, model building, refinement, validation, other
+   *
    */
   classification?: Maybe<Scalars['String']>;
   /**
@@ -12619,6 +13349,7 @@ export interface Software {
    *
    * Examples:
    * T. Alwyn Jones, Axel Brunger
+   *
    */
   contact_author?: Maybe<Scalars['String']>;
   /**
@@ -12627,6 +13358,7 @@ export interface Software {
    *
    * Examples:
    * bourne@sdsc.edu
+   *
    */
   contact_author_email?: Maybe<Scalars['String']>;
   /**
@@ -12634,6 +13366,7 @@ export interface Software {
    *
    * Examples:
    * 1991-10-01, 1990-04-30
+   *
    */
   date?: Maybe<Scalars['String']>;
   /**
@@ -12641,6 +13374,7 @@ export interface Software {
    *
    * Examples:
    * Uses method of restrained least squares
+   *
    */
   description?: Maybe<Scalars['String']>;
   /**
@@ -12649,6 +13383,7 @@ export interface Software {
    *
    * Allowable values:
    * Ada, Awk, Basic, C, C++, C/C++, Fortran, Fortran 77, Fortran 90, Fortran_77, Java, Java & Fortran, Other, Pascal, Perl, Python, Python/C++, Tcl, assembler, csh, ksh, sh
+   *
    */
   language?: Maybe<Scalars['String']>;
   /**
@@ -12657,6 +13392,7 @@ export interface Software {
    *
    * Examples:
    * http://rosebud.sdsc.edu/projects/pb/IUCr/software.html, ftp://ftp.sdsc.edu/pub/sdsc/biology/
+   *
    */
   location?: Maybe<Scalars['String']>;
   /**
@@ -12664,6 +13400,7 @@ export interface Software {
    *
    * Examples:
    * Merlot, O, Xengen, X-plor
+   *
    */
   name?: Maybe<Scalars['String']>;
   /**
@@ -12672,6 +13409,7 @@ export interface Software {
    *
    * Examples:
    * Ultrix, OpenVMS, DOS, Windows 95, Windows NT, Irix, HPUX, DEC Unix
+   *
    */
   os?: Maybe<Scalars['String']>;
   /** An ordinal index for this category */
@@ -12682,6 +13420,7 @@ export interface Software {
    *
    * Allowable values:
    * filter, jiffy, library, other, package, program
+   *
    */
   type?: Maybe<Scalars['String']>;
   /**
@@ -12689,6 +13428,7 @@ export interface Software {
    *
    * Examples:
    * v1.0, beta, 3.1-2, unknown
+   *
    */
   version?: Maybe<Scalars['String']>;
 }
@@ -12701,6 +13441,7 @@ export interface Struct {
    *
    * Allowable values:
    * N, Y
+   *
    */
   pdbx_CASP_flag?: Maybe<Scalars['String']>;
   /**
@@ -12709,6 +13450,7 @@ export interface Struct {
    *
    * Examples:
    * Cytochrome b5, Regulatory protein RecX, Uridine kinase (E.C.2.7.1.48)
+   *
    */
   pdbx_descriptor?: Maybe<Scalars['String']>;
   /**
@@ -12718,6 +13460,7 @@ export interface Struct {
    * Examples:
    * This model was produced from a 10 nanosecond Amber/MD simulation
    * starting from PDB structure ID 1ABC.
+   *
    */
   pdbx_model_details?: Maybe<Scalars['String']>;
   /**
@@ -12725,6 +13468,7 @@ export interface Struct {
    *
    * Examples:
    * MINIMIZED AVERAGE
+   *
    */
   pdbx_model_type_details?: Maybe<Scalars['String']>;
   /**
@@ -12734,6 +13478,7 @@ export interface Struct {
    *
    * Examples:
    * T4 lysozyme mutant - S32A, Rhinovirus 16 polymerase elongation complex (r1_form), Crystal structure of the OXA-10 W154A mutant at pH 9.0, Mutant structure of Thermus thermophilus HB8 uridine-cytidine kinase, Crystal structure of xylanase from Trichoderma longibrachiatum
+   *
    */
   title?: Maybe<Scalars['String']>;
 }
@@ -12745,6 +13490,7 @@ export interface StructKeywords {
    *
    * Examples:
    * DNA, RNA, T-RNA, DNA/RNA, RIBOZYME, PROTEIN/DNA, PROTEIN/RNA, PEPTIDE NUCLEIC ACID, PEPTIDE NUCLEIC ACID/DNA, DNA-BINDING PROTEIN, RNA-BINDING PROTEIN
+   *
    */
   pdbx_keywords?: Maybe<Scalars['String']>;
   /**
@@ -12752,6 +13498,7 @@ export interface StructKeywords {
    *
    * Examples:
    * Inhibitor, Complex, Isomerase..., serine protease, inhibited complex, high-resolution refinement
+   *
    */
   text?: Maybe<Scalars['String']>;
 }
@@ -12768,6 +13515,7 @@ export interface Symmetry {
    *
    * Allowable values:
    * cubic, hexagonal, monoclinic, orthorhombic, rhombohedral, tetragonal, triclinic, trigonal
+   *
    */
   cell_setting?: Maybe<Scalars['String']>;
   /**
@@ -12787,6 +13535,7 @@ export interface Symmetry {
    *            'P 1 1 21' (instead of P 21 -unique C axis)
    *            'H 3'      (instead of R 3   -hexagonal)
    *            'H 3 2'    (instead of R 3 2 -hexagonal)
+   *
    */
   pdbx_full_space_group_name_H_M?: Maybe<Scalars['String']>;
   /**
@@ -12804,6 +13553,7 @@ export interface Symmetry {
    *
    * Examples:
    * A 1, A 1 2 1, A 2, B 1 1 2, B 2, B 2 21 2, C 2, C 1 2 1, C 21, C 1 21 1, C 2(A 112), C 2 2 2, C 2 2 21, C 4 21 2, F 2 2 2, F 2 3, F 4 2 2, F 4 3 2, F 41 3 2, I 1 2 1, I 1 21 1, I 2, I 2 2 2, I 2 3, I 21, I 21 3, I 21 21 21, I 4, I 4 2 2, I 4 3 2, I 41, I 41/a, I 41 2 2, I 41 3 2, P 1, P 1-, P 2, P 1 2 1, P 1 1 2, P 2 2 2, P 2 3, P 2 2 21, P 2 21 21, P 21, P 1 21 1, P 1 21/c 1, P 1 1 21, P 21(C), P 21 2 21, P 21 3, P 21 21 2, P 21 21 2 A, P 21 21 21, P 3, P 3 1 2, P 3 2 1, P 31, P 31 1 2, P 31 2 1, P 32, P 32 1 2, P 32 2 1, P 4, P 4 2 2, P 4 3 2, P 4 21 2, P 41, P 41 2 2, P 41 3 2, P 41 21 2, P 42, P 42 2 2, P 42 3 2, P 42 21 2, P 43, P 43 2 2, P 43 3 2, P 43 21 2, P 6, P 6 2 2, P 61, P 61 2 2, P 62, P 62 2 2, P 63, P 63 2 2, P 64, P 64 2 2, P 65, P 65 2 2, H 3, R 3, H 3 2, R 3 2
+   *
    */
   space_group_name_H_M?: Maybe<Scalars['String']>;
   /**
@@ -12816,7 +13566,7 @@ export interface Symmetry {
    *
    * Examples:
    * -P 2ac 2n, -R 3 2", P 61 2 2 (0 0 -1)
+   *
    */
   space_group_name_Hall?: Maybe<Scalars['String']>;
 }
-

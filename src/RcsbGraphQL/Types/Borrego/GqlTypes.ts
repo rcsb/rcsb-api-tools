@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -22,6 +23,7 @@ export interface AdditionalProperty {
    *
    * Examples:
    * PARENT_COMP_ID, CATH_NAME, PARTNER_BOND_DISTANCE
+   *
    */
   property_name?: Maybe<PropertyName>;
   property_value?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
@@ -99,6 +101,7 @@ export interface Feature {
    *
    * Examples:
    * ASA_UNBOUND, BINDING_SITE, mutation, artifact, CATH, SCOP
+   *
    */
   type?: Maybe<Type>;
   /** Numerical value associated with the feature */
@@ -128,12 +131,11 @@ export interface FeaturePosition {
 }
 
 export interface FilterInput {
-  field?: Maybe<FieldName>;
-  operation?: Maybe<OperationType>;
-  source?: Maybe<Source>;
-  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+  field?: InputMaybe<FieldName>;
+  operation?: InputMaybe<OperationType>;
+  source?: InputMaybe<Source>;
+  values?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 }
-
 
 export enum PropertyName {
   CardModelDescription = 'CARD_MODEL_DESCRIPTION',
@@ -180,20 +182,20 @@ export interface Query {
 
 /** Query root */
 export interface QueryAlignmentArgs {
-  from?: Maybe<SequenceReference>;
+  from?: InputMaybe<SequenceReference>;
   queryId: Scalars['String'];
-  range?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  to?: Maybe<SequenceReference>;
+  range?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  to?: InputMaybe<SequenceReference>;
 }
 
 
 /** Query root */
 export interface QueryAnnotationsArgs {
-  filters?: Maybe<Array<Maybe<FilterInput>>>;
+  filters?: InputMaybe<Array<InputMaybe<FilterInput>>>;
   queryId: Scalars['String'];
-  range?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  reference?: Maybe<SequenceReference>;
-  sources?: Maybe<Array<Maybe<Source>>>;
+  range?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  reference?: InputMaybe<SequenceReference>;
+  sources?: InputMaybe<Array<InputMaybe<Source>>>;
 }
 
 export enum SequenceReference {
@@ -335,7 +337,6 @@ export enum Type {
   ZeroOccupancyResidueXyz = 'ZERO_OCCUPANCY_RESIDUE_XYZ',
   ZincFingerRegion = 'ZINC_FINGER_REGION'
 }
-
 
 export enum FieldName {
   TargetId = 'target_id',
