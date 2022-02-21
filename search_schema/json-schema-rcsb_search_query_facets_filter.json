@@ -21,5 +21,6 @@
       "$ref": "json-schema-rcsb_search_query_facets.json"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "description": "A single bucket aggregation that narrows the set of documents to those that match a filter query"
 }

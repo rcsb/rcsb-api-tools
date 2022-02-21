@@ -106,70 +106,110 @@ export interface RequestOptions {
    */
   return_explain_metadata?: boolean;
 }
+/**
+ * This aggregation dynamically builds buckets - one per unique value
+ */
 export interface TermsFacet {
   /**
-   * Specifies the type of aggregating data for analysis.
+   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   */
+  name?: string;
+  /**
+   * Specifies the type of the aggregation
    */
   aggregation_type: "terms";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
   attribute: string;
   /**
-   * The minimum number of items in the bin required for the bin to be returned.
+   * Minimum number of items in the bin required for the bin to be returned
    */
   min_interval_population?: number;
   /**
-   * Maximum number of intervals to return for a given facet.
+   * Maximum number of intervals to return for a given facet
    */
   max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
+/**
+ * This aggregation dynamically builds fixed size (a.k.a. interval) buckets over the values. Can only be used with numeric values
+ */
 export interface HistogramFacet {
   /**
-   * Specifies the type of aggregating data for analysis.
+   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   */
+  name?: string;
+  /**
+   * Specifies the type of the aggregation
    */
   aggregation_type: "histogram";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
   attribute: string;
   /**
-   * The bin size.
+   * Size of the intervals into which a given set of values is divided
    */
   interval: number | number;
   /**
-   * The minimum number of items in the bin required for the bin to be returned.
+   * Minimum number of items in the bin required for the bin to be returned
    */
   min_interval_population?: number;
   /**
-   * Maximum number of intervals to return for a given facet.
+   * Maximum number of intervals to return for a given facet
    */
   max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
+/**
+ * This aggregation dynamically builds fixed size (a.k.a. interval) buckets over the values. Can only be used with date values
+ */
 export interface DateHistogramFacet {
   /**
-   * Specifies the type of aggregating data for analysis.
+   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   */
+  name?: string;
+  /**
+   * Specifies the type of the aggregation
    */
   aggregation_type: "date_histogram";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
   attribute: string;
   /**
-   * The bin size.
+   * Size of the intervals into which a given set of values is divided
    */
   interval: "year";
   /**
-   * The minimum number of items in the bin required for the bin to be returned.
+   * Minimum number of items in the bin required for the bin to be returned
    */
   min_interval_population?: number;
   /**
-   * Maximum number of intervals to return for a given facet.
+   * Maximum number of intervals to return for a given aggregation
    */
   max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
+/**
+ * This aggregation enables to define a set of ranges - each representing a bucket. Dedicated for numeric values
+ */
 export interface RangeFacet {
   /**
-   * Specifies the type of aggregating data for analysis.
+   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   */
+  name?: string;
+  /**
+   * Specifies the type of the aggregation
    */
   aggregation_type: "range";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
   attribute: string;
   /**
-   * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range.
+   * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range
    */
   ranges: [
     {
@@ -196,20 +236,30 @@ export interface RangeFacet {
     }[]
   ];
   /**
-   * The minimum number of items in the bin required for the bin to be returned.
+   * Minimum number of items in the bin required for the bin to be returned
    */
   min_interval_population?: number;
   /**
-   * Maximum number of intervals to return for a given facet.
+   * Maximum number of intervals to return for a given facet
    */
   max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
+/**
+ * This aggregation enables to define a set of ranges - each representing a bucket. Dedicated for date values with an ability to express 'from' and 'to' values as date math expression
+ */
 export interface DateRangeFacet {
   /**
-   * A range aggregation that is dedicated for date values.
+   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   */
+  name?: string;
+  /**
+   * Specifies the type of the aggregation
    */
   aggregation_type: "date_range";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
   attribute: string;
   /**
    * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range.
@@ -239,22 +289,35 @@ export interface DateRangeFacet {
     }[]
   ];
   /**
-   * The minimum number of items in the bin required for the bin to be returned.
+   * Minimum number of items in the bin required for the bin to be returned
    */
   min_interval_population?: number;
   /**
-   * Maximum number of intervals to return for a given facet.
+   * Maximum number of intervals to return for a given facet
    */
   max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
+/**
+ * A single-value metrics aggregation that calculates an approximate count of distinct values
+ */
 export interface CardinalityFacet {
   /**
-   * Specifies the type of aggregating data for analysis.
+   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   */
+  name?: string;
+  /**
+   * Specifies the type of the aggregation
    */
   aggregation_type: "cardinality";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
   attribute: string;
 }
+/**
+ * A single bucket aggregation that narrows the set of documents to those that match a filter query
+ */
 export interface FilterFacet {
   filter: FilterQueryGroupNode | FilterQueryTerminalNode;
   facets: RequestOptionsFacets;

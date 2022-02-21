@@ -556,7 +556,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "X-ray Data Collection Details",
-              "priority_order" : 45
+              "priority_order" : 50
             } ]
           },
           "ambient_temp_details" : {
@@ -918,14 +918,21 @@
             "type" : "string",
             "examples" : [ "sealed X-ray tube", "nuclear reactor", "spallation source", "electron microscope", "rotating-anode X-ray tube", "synchrotron" ],
             "description" : "The general class of the radiation source.",
-            "rcsb_search_context" : [ "full-text" ],
-            "rcsb_full_text_priority" : 1,
+            "rcsb_search_context" : [ "exact-match", "full-text" ],
+            "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
               "text" : "The general class of the radiation source.",
               "context" : "dictionary"
             }, {
               "text" : "If an X-ray generator was used, please specify the name and model of the generator. If your particular model is not found, use other.",
               "context" : "deposition"
+            }, {
+              "text" : "Diffraction Source General Class",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "X-ray Data Collection Details",
+              "priority_order" : 45
             } ]
           },
           "type" : {
@@ -8017,7 +8024,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "X-ray Data Collection Details",
-            "priority_order" : 55
+            "priority_order" : 60
           } ]
         },
         "diffrn_radiation_wavelength_minimum" : {
@@ -8034,7 +8041,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "X-ray Data Collection Details",
-            "priority_order" : 50
+            "priority_order" : 55
           } ]
         },
         "disulfide_bond_count" : {
@@ -11253,5 +11260,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Entry",
   "description" : "JSON schema for entry level core data. Combines Exchange DB schema: json-schema-min-pdbx_core_entry.json and RCSB Data Warehouse schema: json-schema-core_entry.json",
-  "$comment" : "schema_version: 8.16.2"
+  "$comment" : "schema_version: 8.16.3"
 }

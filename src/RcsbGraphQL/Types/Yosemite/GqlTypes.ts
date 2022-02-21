@@ -480,8 +480,6 @@ export interface CoreAssembly {
   __typename?: 'CoreAssembly';
   /** Get PDB entry that includes this assembly. */
   entry?: Maybe<CoreEntry>;
-  /** Get all pairwise polymer interfaces for this PDB assembly. */
-  interfaces?: Maybe<Array<Maybe<CoreInterface>>>;
   pdbx_struct_assembly?: Maybe<PdbxStructAssembly>;
   pdbx_struct_assembly_auth_evidence?: Maybe<Array<Maybe<PdbxStructAssemblyAuthEvidence>>>;
   pdbx_struct_assembly_gen?: Maybe<Array<Maybe<PdbxStructAssemblyGen>>>;
@@ -670,6 +668,8 @@ export interface CoreEntry {
   em_staining?: Maybe<Array<Maybe<EmStaining>>>;
   em_vitrification?: Maybe<Array<Maybe<EmVitrification>>>;
   entry?: Maybe<Entry>;
+  /** Get all groups for this PDB entry. */
+  entry_groups?: Maybe<Array<Maybe<GroupEntry>>>;
   exptl?: Maybe<Array<Maybe<Exptl>>>;
   exptl_crystal?: Maybe<Array<Maybe<ExptlCrystal>>>;
   exptl_crystal_grow?: Maybe<Array<Maybe<ExptlCrystalGrow>>>;
@@ -714,6 +714,7 @@ export interface CoreEntry {
   rcsb_associated_holdings?: Maybe<CurrentEntry>;
   rcsb_binding_affinity?: Maybe<Array<Maybe<RcsbBindingAffinity>>>;
   rcsb_entry_container_identifiers: RcsbEntryContainerIdentifiers;
+  rcsb_entry_group_membership?: Maybe<Array<Maybe<RcsbEntryGroupMembership>>>;
   rcsb_entry_info: RcsbEntryInfo;
   rcsb_external_references?: Maybe<Array<Maybe<RcsbExternalReferences>>>;
   /**
@@ -735,17 +736,6 @@ export interface CoreEntry {
   struct?: Maybe<Struct>;
   struct_keywords?: Maybe<StructKeywords>;
   symmetry?: Maybe<Symmetry>;
-}
-
-export interface CoreInterface {
-  __typename?: 'CoreInterface';
-  rcsb_id: Scalars['String'];
-  rcsb_interface_container_identifiers: RcsbInterfaceContainerIdentifiers;
-  rcsb_interface_info?: Maybe<RcsbInterfaceInfo>;
-  /** List of operations for each interface partner. */
-  rcsb_interface_operator: Array<Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>>;
-  rcsb_interface_partner: Array<Maybe<RcsbInterfacePartner>>;
-  rcsb_latest_revision?: Maybe<RcsbLatestRevision>;
 }
 
 export interface CoreNonpolymerEntity {
@@ -867,6 +857,8 @@ export interface CorePolymerEntity {
   pdbx_entity_src_syn?: Maybe<Array<Maybe<PdbxEntitySrcSyn>>>;
   /** Get all unique Pfam annotations associated with this molecular entity. */
   pfams?: Maybe<Array<Maybe<CorePfam>>>;
+  /** Get all groups for this PDB entity. */
+  polymer_entity_groups?: Maybe<Array<Maybe<GroupPolymerEntity>>>;
   /** Get all unique polymer instances (chains) for this molecular entity. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
   /** Get a BIRD chemical components described in this molecular entity. */
@@ -903,6 +895,7 @@ export interface CorePolymerEntity {
   rcsb_polymer_entity_container_identifiers: RcsbPolymerEntityContainerIdentifiers;
   rcsb_polymer_entity_feature?: Maybe<Array<Maybe<RcsbPolymerEntityFeature>>>;
   rcsb_polymer_entity_feature_summary?: Maybe<Array<Maybe<RcsbPolymerEntityFeatureSummary>>>;
+  rcsb_polymer_entity_group_membership?: Maybe<Array<Maybe<RcsbPolymerEntityGroupMembership>>>;
   rcsb_polymer_entity_keywords?: Maybe<RcsbPolymerEntityKeywords>;
   rcsb_polymer_entity_name_com?: Maybe<Array<Maybe<RcsbPolymerEntityNameCom>>>;
   rcsb_polymer_entity_name_sys?: Maybe<Array<Maybe<RcsbPolymerEntityNameSys>>>;
@@ -3254,28 +3247,76 @@ export interface GeneName {
   value?: Maybe<Scalars['String']>;
 }
 
-export interface InterfacePartnerFeatureAdditionalProperties {
-  __typename?: 'InterfacePartnerFeatureAdditionalProperties';
-  /**
-   * The additional property name.
-   *
-   * Allowable values:
-   * TO_BE_DEFINED
-   *
-   */
-  name?: Maybe<Scalars['String']>;
-  /** The value(s) of the additional property. */
-  values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
+export interface GroupEntry {
+  __typename?: 'GroupEntry';
+  /** Get provenance associated with this group. */
+  group_provenance?: Maybe<GroupProvenance>;
+  rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
+  rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
+  rcsb_group_info: RcsbGroupInfo;
+  rcsb_group_related?: Maybe<Array<Maybe<RcsbGroupRelated>>>;
+  rcsb_group_statistics?: Maybe<RcsbGroupStatistics>;
+  /** A unique textual identifier for a group */
+  rcsb_id: Scalars['String'];
 }
 
-export interface InterfacePartnerFeatureFeaturePositions {
-  __typename?: 'InterfacePartnerFeatureFeaturePositions';
-  /** An identifier for the monomer at which this segment of the feature begins. */
-  beg_seq_id: Scalars['Int'];
-  /** An identifier for the monomer at which this segment of the feature ends. */
-  end_seq_id?: Maybe<Scalars['Int']>;
-  /** The value(s) of the feature over the monomer segment. */
-  values?: Maybe<Array<Maybe<Scalars['Float']>>>;
+export interface GroupMembersAlignmentAlignedRegions {
+  __typename?: 'GroupMembersAlignmentAlignedRegions';
+  /** Aligned region length */
+  length: Scalars['Int'];
+  /** Entity seqeunce start position */
+  query_begin: Scalars['Int'];
+  /** NCBI sequence start position */
+  target_begin: Scalars['Int'];
+}
+
+export interface GroupMembersAlignmentScores {
+  __typename?: 'GroupMembersAlignmentScores';
+  query_coverage: Scalars['Int'];
+  query_length: Scalars['Int'];
+  target_coverage: Scalars['Int'];
+  target_length: Scalars['Int'];
+}
+
+export interface GroupPolymerEntity {
+  __typename?: 'GroupPolymerEntity';
+  /** Get provenance associated with this group. */
+  group_provenance?: Maybe<GroupProvenance>;
+  rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
+  rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
+  rcsb_group_info: RcsbGroupInfo;
+  rcsb_group_related?: Maybe<Array<Maybe<RcsbGroupRelated>>>;
+  rcsb_group_statistics?: Maybe<RcsbGroupStatistics>;
+  /** A unique textual identifier for a group */
+  rcsb_id: Scalars['String'];
+  rcsb_polymer_entity_group_members_rankings?: Maybe<Array<Maybe<RcsbPolymerEntityGroupMembersRankings>>>;
+  rcsb_polymer_entity_group_sequence_alignment?: Maybe<RcsbPolymerEntityGroupSequenceAlignment>;
+}
+
+export interface GroupProvenance {
+  __typename?: 'GroupProvenance';
+  rcsb_group_aggregation_method?: Maybe<RcsbGroupAggregationMethod>;
+  rcsb_group_provenance_container_identifiers?: Maybe<RcsbGroupProvenanceContainerIdentifiers>;
+  /**
+   * A unique group provenance identifier
+   *
+   * Allowable values:
+   * provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
+   *
+   */
+  rcsb_id?: Maybe<Scalars['String']>;
+}
+
+export interface MethodDetails {
+  __typename?: 'MethodDetails';
+  /** A description of special aspects of the clustering process */
+  description?: Maybe<Scalars['String']>;
+  /** Defines the name of the description associated with the clustering process */
+  name?: Maybe<Scalars['String']>;
+  /** Defines the type of the description associated with the clustering process */
+  type?: Maybe<Scalars['String']>;
+  /** Defines the value associated with the clustering process */
+  value?: Maybe<Scalars['Float']>;
 }
 
 export interface PdbxAuditRevisionCategory {
@@ -6898,10 +6939,12 @@ export interface Query {
   entries?: Maybe<Array<Maybe<CoreEntry>>>;
   /** Get PDB entry given the PDB id. */
   entry?: Maybe<CoreEntry>;
-  /** Get a pairwise polymeric interface given the PDB ID, ASSEMBLY ID and INTERFACE ID. */
-  interface?: Maybe<CoreInterface>;
-  /** Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs. Here INTERFACE ID is a compound identifier that includes entry_id, assembly_id and interface_id e.g. 1XXX-1.1. */
-  interfaces?: Maybe<Array<Maybe<CoreInterface>>>;
+  /** Given a group ID get a group object formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity */
+  entry_group?: Maybe<GroupEntry>;
+  /** Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures that share a degree of similarity */
+  entry_groups?: Maybe<Array<Maybe<GroupEntry>>>;
+  /** Given a group provenance ID get an object that describes aggregation method used to create groups */
+  group_provenance?: Maybe<GroupProvenance>;
   /** Get a list of PDB non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. */
   nonpolymer_entities?: Maybe<Array<Maybe<CoreNonpolymerEntity>>>;
   /** Get a PDB non-polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
@@ -6914,6 +6957,10 @@ export interface Query {
   polymer_entities?: Maybe<Array<Maybe<CorePolymerEntity>>>;
   /** Get a PDB polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   polymer_entity?: Maybe<CorePolymerEntity>;
+  /** Given a group ID get a group object formed by aggregating individual sequences that share a degree of similarity */
+  polymer_entity_group?: Maybe<GroupPolymerEntity>;
+  /** Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity */
+  polymer_entity_groups?: Maybe<Array<Maybe<GroupPolymerEntity>>>;
   /** Get a PDB polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instance?: Maybe<CorePolymerEntityInstance>;
   /** Get a list of PDB polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
@@ -6989,16 +7036,20 @@ export interface QueryEntryArgs {
 
 
 /** Query root */
-export interface QueryInterfaceArgs {
-  assembly_id: Scalars['String'];
-  entry_id: Scalars['String'];
-  interface_id: Scalars['String'];
+export interface QueryEntry_GroupArgs {
+  group_id: Scalars['String'];
 }
 
 
 /** Query root */
-export interface QueryInterfacesArgs {
-  interface_ids: Array<Scalars['String']>;
+export interface QueryEntry_GroupsArgs {
+  group_ids: Array<InputMaybe<Scalars['String']>>;
+}
+
+
+/** Query root */
+export interface QueryGroup_ProvenanceArgs {
+  group_provenance_id: Scalars['String'];
 }
 
 
@@ -7038,6 +7089,18 @@ export interface QueryPolymer_EntitiesArgs {
 export interface QueryPolymer_EntityArgs {
   entity_id: Scalars['String'];
   entry_id: Scalars['String'];
+}
+
+
+/** Query root */
+export interface QueryPolymer_Entity_GroupArgs {
+  group_id: Scalars['String'];
+}
+
+
+/** Query root */
+export interface QueryPolymer_Entity_GroupsArgs {
+  group_ids: Array<InputMaybe<Scalars['String']>>;
 }
 
 
@@ -7125,8 +7188,6 @@ export interface RcsbAssemblyContainerIdentifiers {
   assembly_id: Scalars['String'];
   /** Entry identifier for the container. */
   entry_id: Scalars['String'];
-  /** List of binary interface Ids within the assembly (it points to interface id collection). */
-  interface_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
   /**
    * A unique identifier for each object in this assembly container formed by
    *  a dash separated concatenation of entry and assembly identifiers.
@@ -7186,24 +7247,6 @@ export interface RcsbAssemblyInfo {
    *  This is the total count of non-polymer entity instances generated in the assembly coordinate data.
    */
   nonpolymer_entity_instance_count?: Maybe<Scalars['Int']>;
-  /** Number of heterologous (both binding sites are different) interface entities */
-  num_heterologous_interface_entities?: Maybe<Scalars['Int']>;
-  /** Number of heteromeric (both partners are different polymeric entities) interface entities */
-  num_heteromeric_interface_entities?: Maybe<Scalars['Int']>;
-  /** Number of homomeric (both partners are the same polymeric entity) interface entities */
-  num_homomeric_interface_entities?: Maybe<Scalars['Int']>;
-  /** Number of polymer-polymer interface entities, grouping equivalent interfaces at the entity level (i.e. same entity_ids on either side, with similar but not identical binding sites) */
-  num_interface_entities?: Maybe<Scalars['Int']>;
-  /** Number of geometrically equivalent (i.e. same asym_ids on either side) polymer-polymer interfaces in the assembly */
-  num_interfaces?: Maybe<Scalars['Int']>;
-  /** Number of isologous (both binding sites are same, i.e. interface is symmetric) interface entities */
-  num_isologous_interface_entities?: Maybe<Scalars['Int']>;
-  /** Number of nucleic acid-nucleic acid interface entities */
-  num_na_interface_entities?: Maybe<Scalars['Int']>;
-  /** Number of protein-nucleic acid interface entities */
-  num_prot_na_interface_entities?: Maybe<Scalars['Int']>;
-  /** Number of protein-protein interface entities */
-  num_protein_interface_entities?: Maybe<Scalars['Int']>;
   /** The assembly non-hydrogen polymer entity atomic coordinate count. */
   polymer_atom_count?: Maybe<Scalars['Int']>;
   /**
@@ -7279,10 +7322,6 @@ export interface RcsbAssemblyInfo {
    *  This is the total count of solvent entity instances generated in the assembly coordinate data.
    */
   solvent_entity_instance_count?: Maybe<Scalars['Int']>;
-  /** Total buried surface area calculated as the sum of buried surface areas over all interfaces */
-  total_assembly_buried_surface_area?: Maybe<Scalars['Float']>;
-  /** Total number of interfacing residues in the assembly, calculated as the sum of interfacing residues over all interfaces */
-  total_number_interface_residues?: Maybe<Scalars['Int']>;
   /**
    * The number of unmodeled polymer monomers in the assembly coordinate data. This is
    *  the total count of monomers with unreported coordinate data for all polymer
@@ -8829,6 +8868,26 @@ export interface RcsbEntryContainerIdentifiers {
   water_entity_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
 }
 
+export interface RcsbEntryGroupMembership {
+  __typename?: 'RcsbEntryGroupMembership';
+  /**
+   * Method used to establish group membership
+   *
+   * Allowable values:
+   * matching_deposit_group_id
+   *
+   */
+  aggregation_method: Scalars['String'];
+  /**
+   * A unique identifier for a group of entries
+   *
+   * Examples:
+   * G_1001001
+   *
+   */
+  group_id: Scalars['String'];
+}
+
 export interface RcsbEntryInfo {
   __typename?: 'RcsbEntryInfo';
   /** The number of assemblies defined for this entry including the deposited assembly. */
@@ -9060,102 +9119,134 @@ export interface RcsbGenomicLineage {
   name?: Maybe<Scalars['String']>;
 }
 
-export interface RcsbInterfaceContainerIdentifiers {
-  __typename?: 'RcsbInterfaceContainerIdentifiers';
-  /** This item references an assembly in pdbx_struct_assembly */
-  assembly_id: Scalars['String'];
-  /** Entry identifier for the container. */
-  entry_id: Scalars['String'];
-  /**
-   * Identifier for NCS-equivalent interfaces within the assembly (same entity_ids on both sides)
-   *
-   * Examples:
-   * 1, 2
-   *
-   */
-  interface_entity_id?: Maybe<Scalars['String']>;
-  /**
-   * Identifier for the geometrically equivalent (same asym_ids on either side) interfaces within the assembly
-   *
-   * Examples:
-   * 1, 2
-   *
-   */
-  interface_id: Scalars['String'];
-  /**
-   * Unique identifier for the document
-   *
-   * Examples:
-   * 2UZI-1.A.B?1
-   *
-   */
-  rcsb_id: Scalars['String'];
+export interface RcsbGroupAccessionInfo {
+  __typename?: 'RcsbGroupAccessionInfo';
+  /** Identifies the version of the groups solution */
+  version: Scalars['Int'];
 }
 
-export interface RcsbInterfaceInfo {
-  __typename?: 'RcsbInterfaceInfo';
-  /** Total interface buried surface area */
-  interface_area?: Maybe<Scalars['Float']>;
-  /** Allowable values: homo, hetero. */
-  interface_character?: Maybe<Scalars['String']>;
-  /** Number of core interface residues, defined as those that bury >90% accessible surface area with respect to the unbound state */
-  num_core_interface_residues?: Maybe<Scalars['Int']>;
-  /** Number of interface residues, defined as those with burial fraction > 0 */
-  num_interface_residues?: Maybe<Scalars['Int']>;
-  /** Allowable values: Nucleic acid (only), Protein (only), Protein/NA. */
-  polymer_composition?: Maybe<Scalars['String']>;
-  /** The Jaccard score (intersection over union) of interface contacts in homomeric interfaces, comparing contact sets left-right vs right-left. High values indicate isologous (symmetric) interfaces, with value=1 if perfectly symmetric (e.g. crystallographic symmetry) */
-  self_jaccard_contact_score?: Maybe<Scalars['Float']>;
-}
-
-export interface RcsbInterfacePartner {
-  __typename?: 'RcsbInterfacePartner';
-  interface_partner_feature?: Maybe<Array<Maybe<RcsbInterfacePartnerInterfacePartnerFeature>>>;
-  interface_partner_identifier?: Maybe<RcsbInterfacePartnerInterfacePartnerIdentifier>;
-}
-
-export interface RcsbInterfacePartnerInterfacePartnerFeature {
-  __typename?: 'RcsbInterfacePartnerInterfacePartnerFeature';
-  additional_properties?: Maybe<Array<Maybe<InterfacePartnerFeatureAdditionalProperties>>>;
+export interface RcsbGroupAggregationMethod {
+  __typename?: 'RcsbGroupAggregationMethod';
+  /** The details on a method used to calculate cluster solutions */
+  method: RcsbGroupAggregationMethodMethod;
+  similarity_criteria?: Maybe<RcsbGroupAggregationMethodSimilarityCriteria>;
   /**
-   * Identifies the version of the feature assignment.
-   *
-   * Examples:
-   * V4_0_2
-   *
-   */
-  assignment_version?: Maybe<Scalars['String']>;
-  /** A description for the feature. */
-  description?: Maybe<Scalars['String']>;
-  /** An identifier for the feature. */
-  feature_id?: Maybe<Scalars['String']>;
-  feature_positions?: Maybe<Array<Maybe<InterfacePartnerFeatureFeaturePositions>>>;
-  /** A name for the feature. */
-  name?: Maybe<Scalars['String']>;
-  /**
-   * Code identifying the individual, organization or program that assigned the feature.
-   *
-   * Examples:
-   * NACCESS
-   *
-   */
-  provenance_source?: Maybe<Scalars['String']>;
-  /**
-   * A type or category of the feature.
+   * Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy
    *
    * Allowable values:
-   * ASA_UNBOUND, ASA_BOUND
+   * sequence_identity, matching_uniprot_accession, matching_deposit_group_id
    *
    */
-  type?: Maybe<Scalars['String']>;
+  type: Scalars['String'];
 }
 
-export interface RcsbInterfacePartnerInterfacePartnerIdentifier {
-  __typename?: 'RcsbInterfacePartnerInterfacePartnerIdentifier';
-  /** Instance identifier for this container. */
-  asym_id: Scalars['String'];
-  /** Polymer entity identifier for the container. */
-  entity_id: Scalars['String'];
+export interface RcsbGroupAggregationMethodMethod {
+  __typename?: 'RcsbGroupAggregationMethodMethod';
+  /** Additional details describing the clustering process */
+  details?: Maybe<Array<Maybe<MethodDetails>>>;
+  /**
+   * The name of the software or the method used to calculate cluster solutions
+   *
+   * Allowable values:
+   * mmseqs2, matching_reference_identity
+   *
+   */
+  name: Scalars['String'];
+  /**
+   * The version of the software.
+   *
+   * Examples:
+   * v1.0, 3.1-2, unknown
+   *
+   */
+  version?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbGroupAggregationMethodSimilarityCriteria {
+  __typename?: 'RcsbGroupAggregationMethodSimilarityCriteria';
+  /**
+   * A function or similarity measure that quantifies the similarity between two members
+   *
+   * Allowable values:
+   * rmsd, sequence_identity
+   *
+   */
+  similarity_function?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbGroupContainerIdentifiers {
+  __typename?: 'RcsbGroupContainerIdentifiers';
+  /** A unique textual identifier for a group */
+  group_id: Scalars['String'];
+  /** Member identifiers representing a group */
+  group_member_ids: Array<Maybe<Scalars['String']>>;
+  /**
+   * A unique group provenance identifier
+   *
+   * Allowable values:
+   * provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
+   *
+   */
+  group_provenance_id: Scalars['String'];
+  /** Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship */
+  parent_member_ids?: Maybe<Array<Maybe<Scalars['String']>>>;
+}
+
+export interface RcsbGroupInfo {
+  __typename?: 'RcsbGroupInfo';
+  group_description?: Maybe<Scalars['String']>;
+  group_members_count: Scalars['Int'];
+  /**
+   * Granularity of group members identifiers
+   *
+   * Allowable values:
+   * assembly, entry, polymer_entity, polymer_entity_instance
+   *
+   */
+  group_members_granularity: Scalars['String'];
+  group_name?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbGroupProvenanceContainerIdentifiers {
+  __typename?: 'RcsbGroupProvenanceContainerIdentifiers';
+  /**
+   * A unique group provenance identifier
+   *
+   * Allowable values:
+   * provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
+   *
+   */
+  group_provenance_id: Scalars['String'];
+}
+
+export interface RcsbGroupRelated {
+  __typename?: 'RcsbGroupRelated';
+  /**
+   * A unique code assigned to a reference related the group
+   *
+   * Examples:
+   * P69905
+   *
+   */
+  resource_accession_code?: Maybe<Scalars['String']>;
+  /**
+   * Defines the type of the resource describing related references
+   *
+   * Examples:
+   * UniProt
+   *
+   */
+  resource_name?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbGroupStatistics {
+  __typename?: 'RcsbGroupStatistics';
+  /** The desired lower limit for the similarity between two members that belong to the same group */
+  similarity_cutoff?: Maybe<Scalars['Float']>;
+  /** Similarity score between two most similar group members */
+  similarity_score_max?: Maybe<Scalars['Float']>;
+  /** Similarity score between two least similar group members */
+  similarity_score_min?: Maybe<Scalars['Float']>;
 }
 
 export interface RcsbLatestRevision {
@@ -10099,6 +10190,7 @@ export interface RcsbPolymerEntity {
    *
    */
   rcsb_multiple_source_flag?: Maybe<Scalars['String']>;
+  rcsb_polymer_name_combined?: Maybe<RcsbPolymerEntityRcsbPolymerNameCombined>;
   /**
    * The number of biological sources for the polymer entity. Multiple source contributions
    *  may come from the same organism (taxonomy).
@@ -10435,6 +10527,75 @@ export interface RcsbPolymerEntityFeatureSummary {
   type?: Maybe<Scalars['String']>;
 }
 
+export interface RcsbPolymerEntityGroupMembersRankings {
+  __typename?: 'RcsbPolymerEntityGroupMembersRankings';
+  group_members: Array<Maybe<RcsbPolymerEntityGroupMembersRankingsGroupMembers>>;
+  /**
+   * Defines ranking option applicable to group members
+   *
+   * Allowable values:
+   * coverage
+   *
+   */
+  ranking_criteria_type: Scalars['String'];
+}
+
+export interface RcsbPolymerEntityGroupMembersRankingsGroupMembers {
+  __typename?: 'RcsbPolymerEntityGroupMembersRankingsGroupMembers';
+  member_id: Scalars['String'];
+  /** Quantifies the criteria used for ranking */
+  original_score?: Maybe<Scalars['Float']>;
+  /** Reflects a relationship between group members such that, for any two members the first is ranked higher (smaller rank value) than the second */
+  rank: Scalars['Int'];
+}
+
+export interface RcsbPolymerEntityGroupMembership {
+  __typename?: 'RcsbPolymerEntityGroupMembership';
+  /**
+   * Method used to establish group membership
+   *
+   * Allowable values:
+   * sequence_identity, matching_uniprot_accession
+   *
+   */
+  aggregation_method: Scalars['String'];
+  /**
+   * A unique identifier for a group of entities
+   *
+   * Examples:
+   * 1_100, P00003
+   *
+   */
+  group_id: Scalars['String'];
+  /** Degree of similarity expressed as a floating-point number */
+  similarity_cutoff?: Maybe<Scalars['Float']>;
+}
+
+export interface RcsbPolymerEntityGroupSequenceAlignment {
+  __typename?: 'RcsbPolymerEntityGroupSequenceAlignment';
+  /** Abstract reference where group members can be aligned to generate a MSA */
+  abstract_reference: RcsbPolymerEntityGroupSequenceAlignmentAbstractReference;
+  /** List of alignments with core_entity canonical sequences */
+  group_members_alignment: Array<Maybe<RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment>>;
+}
+
+export interface RcsbPolymerEntityGroupSequenceAlignmentAbstractReference {
+  __typename?: 'RcsbPolymerEntityGroupSequenceAlignmentAbstractReference';
+  /** Abstract reference length */
+  length: Scalars['Int'];
+  /** Sequence that represents the abstract reference */
+  sequence?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment {
+  __typename?: 'RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment';
+  /** Aligned region */
+  aligned_regions: Array<Maybe<GroupMembersAlignmentAlignedRegions>>;
+  member_id?: Maybe<Scalars['String']>;
+  /** Alignment scores */
+  scores: GroupMembersAlignmentScores;
+}
+
 export interface RcsbPolymerEntityInstanceContainerIdentifiers {
   __typename?: 'RcsbPolymerEntityInstanceContainerIdentifiers';
   /** Instance identifier for this container. */
@@ -10560,6 +10721,14 @@ export interface RcsbPolymerEntityRcsbMacromolecularNamesCombined {
   provenance_source?: Maybe<Scalars['String']>;
 }
 
+export interface RcsbPolymerEntityRcsbPolymerNameCombined {
+  __typename?: 'RcsbPolymerEntityRcsbPolymerNameCombined';
+  /** Protein name annotated by the UniProt or macromolecular name PDB assigned by the PDB */
+  names?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Allowable values: PDB Preferred Name, PDB Description, UniProt Name. */
+  provenance_source?: Maybe<Scalars['String']>;
+}
+
 export interface RcsbPolymerInstanceAnnotation {
   __typename?: 'RcsbPolymerInstanceAnnotation';
   /** An identifier for the annotation. */
@@ -10649,7 +10818,7 @@ export interface RcsbPolymerInstanceFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
+   * ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    *
    */
   type?: Maybe<Scalars['String']>;

@@ -7,16 +7,22 @@
     "attribute"
   ],
   "properties": {
+    "name": {
+      "type": "string",
+      "description": "Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name"
+    },
     "aggregation_type": {
       "type": "string",
       "enum": [
         "cardinality"
       ],
-      "description": "Specifies the type of aggregating data for analysis."
+      "description": "Specifies the type of the aggregation"
     },
     "attribute": {
-      "type": "string"
+      "type": "string",
+      "description": "Specifies the full attribute name to aggregate on"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "description": "A single-value metrics aggregation that calculates an approximate count of distinct values"
 }

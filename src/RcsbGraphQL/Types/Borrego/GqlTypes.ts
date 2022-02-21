@@ -58,6 +58,14 @@ export interface AlignmentResponse {
   query_sequence?: Maybe<Scalars['String']>;
   /** JSON schema that describes the different alignments between the query sequence and targets */
   target_alignment?: Maybe<Array<Maybe<TargetAlignment>>>;
+  /** Multiple sequence alignment of group members. */
+  target_alignment_subset?: Maybe<TargetAlignmentConnection>;
+}
+
+
+export interface AlignmentResponseTarget_Alignment_SubsetArgs {
+  after?: InputMaybe<Scalars['String']>;
+  first: Scalars['Int'];
 }
 
 export interface AnnotationFeatures {
@@ -68,7 +76,6 @@ export interface AnnotationFeatures {
   source?: Maybe<Source>;
   /** Database source entry identifier associated to the positional features */
   target_id?: Maybe<Scalars['String']>;
-  target_identifiers?: Maybe<TargetIdentifiers>;
 }
 
 export interface Coverage {
@@ -100,7 +107,7 @@ export interface Feature {
    * The connection type.
    *
    * Examples:
-   * ASA_UNBOUND, BINDING_SITE, mutation, artifact, CATH, SCOP
+   * mutation, artifact, CATH, SCOP
    *
    */
   type?: Maybe<Type>;
@@ -135,6 +142,24 @@ export interface FilterInput {
   operation?: InputMaybe<OperationType>;
   source?: InputMaybe<Source>;
   values?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+}
+
+export enum GroupReference {
+  MatchingUniprotAccession = 'matching_uniprot_accession',
+  SequenceIdentity = 'sequence_identity'
+}
+
+/** Information about pagination in a connection. */
+export interface PageInfo {
+  __typename?: 'PageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
 }
 
 export enum PropertyName {
@@ -177,6 +202,10 @@ export interface Query {
   alignment?: Maybe<AlignmentResponse>;
   /** Get positional features */
   annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
+  /** Get group sequence alignments */
+  group_alignment?: Maybe<AlignmentResponse>;
+  /** Get group positional features */
+  group_annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
 }
 
 
@@ -198,6 +227,23 @@ export interface QueryAnnotationsArgs {
   sources?: InputMaybe<Array<InputMaybe<Source>>>;
 }
 
+
+/** Query root */
+export interface QueryGroup_AlignmentArgs {
+  filter?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  group: GroupReference;
+  groupId?: InputMaybe<Scalars['String']>;
+}
+
+
+/** Query root */
+export interface QueryGroup_AnnotationsArgs {
+  filters?: InputMaybe<Array<InputMaybe<FilterInput>>>;
+  group: GroupReference;
+  groupId: Scalars['String'];
+  sources?: InputMaybe<Array<InputMaybe<Source>>>;
+}
+
 export enum SequenceReference {
   NcbiGenome = 'NCBI_GENOME',
   NcbiProtein = 'NCBI_PROTEIN',
@@ -209,7 +255,6 @@ export enum SequenceReference {
 export enum Source {
   PdbEntity = 'PDB_ENTITY',
   PdbInstance = 'PDB_INSTANCE',
-  PdbInterface = 'PDB_INTERFACE',
   Uniprot = 'UNIPROT'
 }
 
@@ -227,25 +272,28 @@ export interface TargetAlignment {
   target_sequence?: Maybe<Scalars['String']>;
 }
 
-export interface TargetIdentifiers {
-  __typename?: 'TargetIdentifiers';
-  assembly_id?: Maybe<Scalars['String']>;
-  asym_id?: Maybe<Scalars['String']>;
-  entity_id?: Maybe<Scalars['String']>;
-  entry_id?: Maybe<Scalars['String']>;
-  interface_id?: Maybe<Scalars['String']>;
-  interface_partner_index?: Maybe<Scalars['Int']>;
-  target_id?: Maybe<Scalars['String']>;
-  uniprot_id?: Maybe<Scalars['String']>;
+/** A connection to a list of items. */
+export interface TargetAlignmentConnection {
+  __typename?: 'TargetAlignmentConnection';
+  /** a list of edges */
+  edges?: Maybe<Array<Maybe<TargetAlignmentEdge>>>;
+  /** details about this specific page */
+  pageInfo: PageInfo;
+}
+
+/** An edge in a connection */
+export interface TargetAlignmentEdge {
+  __typename?: 'TargetAlignmentEdge';
+  /** cursor marks a unique position or index into the connection */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge */
+  node?: Maybe<TargetAlignment>;
 }
 
 export enum Type {
   ActiveSite = 'ACTIVE_SITE',
   AngleOutlier = 'ANGLE_OUTLIER',
   Artifact = 'ARTIFACT',
-  Asa = 'ASA',
-  AsaBound = 'ASA_BOUND',
-  AsaUnbound = 'ASA_UNBOUND',
   BindingSite = 'BINDING_SITE',
   BondOutlier = 'BOND_OUTLIER',
   CalciumBindingRegion = 'CALCIUM_BINDING_REGION',

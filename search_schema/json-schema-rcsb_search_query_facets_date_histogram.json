@@ -8,15 +8,20 @@
     "interval"
   ],
   "properties": {
+    "name": {
+      "type": "string",
+      "description": "Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name"
+    },
     "aggregation_type": {
       "type": "string",
       "enum": [
         "date_histogram"
       ],
-      "description": "Specifies the type of aggregating data for analysis."
+      "description": "Specifies the type of the aggregation"
     },
     "attribute": {
-      "type": "string"
+      "type": "string",
+      "description": "Specifies the full attribute name to aggregate on"
     },
     "interval": {
       "anyOf": [
@@ -25,19 +30,20 @@
           "enum": ["year"]
         }
       ],
-      "description": "The bin size."
+      "description": "Size of the intervals into which a given set of values is divided"
     },
     "min_interval_population": {
       "type": "integer",
-      "description": "The minimum number of items in the bin required for the bin to be returned."
+      "description": "Minimum number of items in the bin required for the bin to be returned"
     },
     "max_num_intervals": {
       "type": "integer",
-      "description": "Maximum number of intervals to return for a given facet."
+      "description": "Maximum number of intervals to return for a given aggregation"
     },
     "facets": {
       "$ref": "json-schema-rcsb_search_query_facets.json"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "description": "This aggregation dynamically builds fixed size (a.k.a. interval) buckets over the values. Can only be used with date values"
 }
