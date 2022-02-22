@@ -15,7 +15,7 @@ export class SearchRequest {
             throw "ERROR: fetch function was not provided"
     }
     public async request(query: SearchQuery): Promise<QueryResult|null>{
-        const response: Response = await this.fetch(this.uri, {
+        const response: Response = await (window?.fetch ?? this.fetch)(this.uri, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
