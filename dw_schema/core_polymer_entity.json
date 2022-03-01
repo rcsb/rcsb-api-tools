@@ -1744,6 +1744,38 @@
           },
           "uniqueItems" : false,
           "rcsb_nested_indexing" : true
+        },
+        "rcsb_polymer_name_combined" : {
+          "type" : "object",
+          "properties" : {
+            "names" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "description" : "Protein name annotated by the UniProt or macromolecular name PDB assigned by the PDB",
+                "rcsb_search_context" : [ "exact-match" ]
+              },
+              "minItems" : 1,
+              "uniqueItems" : true
+            },
+            "provenance_source" : {
+              "type" : "string",
+              "enum" : [ "PDB Preferred Name", "PDB Description", "UniProt Name" ],
+              "rcsb_enum_annotated" : [ {
+                "value" : "PDB Preferred Name",
+                "name" : "PDB Preferred Name",
+                "detail" : "A description of special aspects of the entity (_rcsb_macromolecular_names_combined.name)"
+              }, {
+                "value" : "PDB Description",
+                "name" : "PDB Description",
+                "detail" : "A description of the entity (_entity.pdbx_description)"
+              }, {
+                "value" : "UniProt Recommended Name",
+                "name" : "UniProt Recommended Name",
+                "detail" : "Full name recommended by the UniProt consortium"
+              } ]
+            }
+          }
         }
       },
       "additionalProperties" : false
@@ -3135,6 +3167,44 @@
         "text" : "A unique identifier for each object in this entity container formed by\n an underscore separated concatenation of entry and entity identifiers.",
         "context" : "dictionary"
       } ]
+    },
+    "rcsb_polymer_entity_group_membership" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "required" : [ "group_id", "aggregation_method" ],
+        "properties" : {
+          "group_id" : {
+            "type" : "string",
+            "examples" : [ "1_100", "P00003" ],
+            "rcsb_search_context" : [ "exact-match" ],
+            "description" : "A unique identifier for a group of entities",
+            "rcsb_description" : [ {
+              "text" : "Polymer Entity Group ID(s)",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "ID(s) and Keywords",
+              "priority_order" : 10
+            } ]
+          },
+          "aggregation_method" : {
+            "type" : "string",
+            "enum" : [ "sequence_identity", "matching_uniprot_accession" ],
+            "rcsb_search_context" : [ "exact-match" ],
+            "description" : "Method used to establish group membership"
+          },
+          "similarity_cutoff" : {
+            "type" : "number",
+            "rcsb_search_context" : [ "default-match" ],
+            "description" : "Degree of similarity expressed as a floating-point number"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "rcsb_nested_indexing" : true
     },
     "rcsb_genomic_lineage" : {
       "type" : "array",

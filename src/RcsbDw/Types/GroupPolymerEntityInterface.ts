@@ -32,8 +32,8 @@ export interface GroupPolymerEntity {
     group_member_ids: [string, ...string[]];
   };
   rcsb_group_info: {
-    group_name: string;
-    group_description: string;
+    group_name?: string;
+    group_description?: string;
     /**
      * Granularity of group members identifiers
      */

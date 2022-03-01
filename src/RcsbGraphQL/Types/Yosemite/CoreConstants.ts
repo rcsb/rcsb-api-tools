@@ -54,6 +54,7 @@ export class CoreConstants{
 	public static readonly ASYM_ID = "asym_id";
 	public static readonly PDBX_STRUCT_OPER_LIST_IDS = "pdbx_struct_oper_list_ids";
 	public static readonly ENTRY = "entry";
+	public static readonly INTERFACES = "interfaces";
 	public static readonly PDBX_STRUCT_ASSEMBLY = "pdbx_struct_assembly";
 	public static readonly PDBX_STRUCT_ASSEMBLY_AUTH_EVIDENCE = "pdbx_struct_assembly_auth_evidence";
 	public static readonly PDBX_STRUCT_ASSEMBLY_GEN = "pdbx_struct_assembly_gen";
@@ -215,6 +216,10 @@ export class CoreConstants{
 	public static readonly STRUCT = "struct";
 	public static readonly STRUCT_KEYWORDS = "struct_keywords";
 	public static readonly SYMMETRY = "symmetry";
+	public static readonly RCSB_INTERFACE_CONTAINER_IDENTIFIERS = "rcsb_interface_container_identifiers";
+	public static readonly RCSB_INTERFACE_INFO = "rcsb_interface_info";
+	public static readonly RCSB_INTERFACE_OPERATOR = "rcsb_interface_operator";
+	public static readonly RCSB_INTERFACE_PARTNER = "rcsb_interface_partner";
 	public static readonly NONPOLYMER_COMP = "nonpolymer_comp";
 	public static readonly NONPOLYMER_ENTITY_INSTANCES = "nonpolymer_entity_instances";
 	public static readonly PDBX_ENTITY_NONPOLY = "pdbx_entity_nonpoly";
@@ -544,6 +549,9 @@ export class CoreConstants{
 	public static readonly RCSB_POLYMER_ENTITY_GROUP_SEQUENCE_ALIGNMENT = "rcsb_polymer_entity_group_sequence_alignment";
 	public static readonly RCSB_GROUP_AGGREGATION_METHOD = "rcsb_group_aggregation_method";
 	public static readonly RCSB_GROUP_PROVENANCE_CONTAINER_IDENTIFIERS = "rcsb_group_provenance_container_identifiers";
+	public static readonly VALUES = "values";
+	public static readonly BEG_SEQ_ID = "beg_seq_id";
+	public static readonly END_SEQ_ID = "end_seq_id";
 	public static readonly DATA_CONTENT_TYPE = "data_content_type";
 	public static readonly REVISION_ORDINAL = "revision_ordinal";
 	public static readonly PROVIDER = "provider";
@@ -892,6 +900,7 @@ export class CoreConstants{
 	public static readonly CHEM_COMPS = "chem_comps";
 	public static readonly ENTRIES = "entries";
 	public static readonly ENTRY_GROUP = "entry_group";
+	public static readonly INTERFACE = "interface";
 	public static readonly NONPOLYMER_ENTITY_INSTANCE = "nonpolymer_entity_instance";
 	public static readonly POLYMER_ENTITY_GROUP = "polymer_entity_group";
 	public static readonly POLYMER_ENTITY_INSTANCE = "polymer_entity_instance";
@@ -899,6 +908,7 @@ export class CoreConstants{
 	public static readonly DEPOSIT_DATE = "deposit_date";
 	public static readonly HAS_RELEASED_EXPERIMENTAL_DATA = "has_released_experimental_data";
 	public static readonly INITIAL_RELEASE_DATE = "initial_release_date";
+	public static readonly INTERFACE_IDS = "interface_ids";
 	public static readonly ATOM_COUNT = "atom_count";
 	public static readonly BRANCHED_ATOM_COUNT = "branched_atom_count";
 	public static readonly BRANCHED_ENTITY_COUNT = "branched_entity_count";
@@ -909,6 +919,15 @@ export class CoreConstants{
 	public static readonly NONPOLYMER_ATOM_COUNT = "nonpolymer_atom_count";
 	public static readonly NONPOLYMER_ENTITY_COUNT = "nonpolymer_entity_count";
 	public static readonly NONPOLYMER_ENTITY_INSTANCE_COUNT = "nonpolymer_entity_instance_count";
+	public static readonly NUM_HETEROLOGOUS_INTERFACE_ENTITIES = "num_heterologous_interface_entities";
+	public static readonly NUM_HETEROMERIC_INTERFACE_ENTITIES = "num_heteromeric_interface_entities";
+	public static readonly NUM_HOMOMERIC_INTERFACE_ENTITIES = "num_homomeric_interface_entities";
+	public static readonly NUM_INTERFACE_ENTITIES = "num_interface_entities";
+	public static readonly NUM_INTERFACES = "num_interfaces";
+	public static readonly NUM_ISOLOGOUS_INTERFACE_ENTITIES = "num_isologous_interface_entities";
+	public static readonly NUM_NA_INTERFACE_ENTITIES = "num_na_interface_entities";
+	public static readonly NUM_PROT_NA_INTERFACE_ENTITIES = "num_prot_na_interface_entities";
+	public static readonly NUM_PROTEIN_INTERFACE_ENTITIES = "num_protein_interface_entities";
 	public static readonly POLYMER_ATOM_COUNT = "polymer_atom_count";
 	public static readonly POLYMER_COMPOSITION = "polymer_composition";
 	public static readonly POLYMER_ENTITY_COUNT = "polymer_entity_count";
@@ -928,6 +947,8 @@ export class CoreConstants{
 	public static readonly SOLVENT_ATOM_COUNT = "solvent_atom_count";
 	public static readonly SOLVENT_ENTITY_COUNT = "solvent_entity_count";
 	public static readonly SOLVENT_ENTITY_INSTANCE_COUNT = "solvent_entity_instance_count";
+	public static readonly TOTAL_ASSEMBLY_BURIED_SURFACE_AREA = "total_assembly_buried_surface_area";
+	public static readonly TOTAL_NUMBER_INTERFACE_RESIDUES = "total_number_interface_residues";
 	public static readonly UNMODELED_POLYMER_MONOMER_COUNT = "unmodeled_polymer_monomer_count";
 	public static readonly LINK = "link";
 	public static readonly PROVENANCE_CODE = "provenance_code";
@@ -950,10 +971,7 @@ export class CoreConstants{
 	public static readonly FEATURE_ID = "feature_id";
 	public static readonly FEATURE_POSITIONS = "feature_positions";
 	public static readonly REFERENCE_SCHEME = "reference_scheme";
-	public static readonly VALUES = "values";
 	public static readonly BEG_COMP_ID = "beg_comp_id";
-	public static readonly BEG_SEQ_ID = "beg_seq_id";
-	public static readonly END_SEQ_ID = "end_seq_id";
 	public static readonly COUNT = "count";
 	public static readonly COVERAGE = "coverage";
 	public static readonly MAXIMUM_LENGTH = "maximum_length";
@@ -1055,6 +1073,15 @@ export class CoreConstants{
 	public static readonly SIMILARITY_CUTOFF = "similarity_cutoff";
 	public static readonly SIMILARITY_SCORE_MAX = "similarity_score_max";
 	public static readonly SIMILARITY_SCORE_MIN = "similarity_score_min";
+	public static readonly INTERFACE_ENTITY_ID = "interface_entity_id";
+	public static readonly INTERFACE_ID = "interface_id";
+	public static readonly INTERFACE_AREA = "interface_area";
+	public static readonly INTERFACE_CHARACTER = "interface_character";
+	public static readonly NUM_CORE_INTERFACE_RESIDUES = "num_core_interface_residues";
+	public static readonly NUM_INTERFACE_RESIDUES = "num_interface_residues";
+	public static readonly SELF_JACCARD_CONTACT_SCORE = "self_jaccard_contact_score";
+	public static readonly INTERFACE_PARTNER_FEATURE = "interface_partner_feature";
+	public static readonly INTERFACE_PARTNER_IDENTIFIER = "interface_partner_identifier";
 	public static readonly ALT_ID = "alt_id";
 	public static readonly ATOM_ID = "atom_id";
 	public static readonly DISTANCE = "distance";

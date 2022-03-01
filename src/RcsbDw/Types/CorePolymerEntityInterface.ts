@@ -1591,6 +1591,11 @@ export interface CorePolymerEntity {
        */
       provenance_source?: "PDB Primary Data" | "UniProt";
     }[];
+    rcsb_polymer_name_combined?: {
+      names?: [string, ...string[]];
+      provenance_source?: "PDB Preferred Name" | "PDB Description" | "UniProt Name";
+      [k: string]: unknown;
+    };
   };
   rcsb_polymer_entity_align?: [
     {
@@ -2321,6 +2326,36 @@ export interface CorePolymerEntity {
    *  an underscore separated concatenation of entry and entity identifiers.
    */
   rcsb_id: string;
+  rcsb_polymer_entity_group_membership?: [
+    {
+      /**
+       * A unique identifier for a group of entities
+       */
+      group_id: string;
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "sequence_identity" | "matching_uniprot_accession";
+      /**
+       * Degree of similarity expressed as a floating-point number
+       */
+      similarity_cutoff?: number;
+    },
+    ...{
+      /**
+       * A unique identifier for a group of entities
+       */
+      group_id: string;
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "sequence_identity" | "matching_uniprot_accession";
+      /**
+       * Degree of similarity expressed as a floating-point number
+       */
+      similarity_cutoff?: number;
+    }[]
+  ];
   rcsb_genomic_lineage?: [
     {
       /**

@@ -11034,6 +11034,39 @@
         "context" : "dictionary"
       } ]
     },
+    "rcsb_entry_group_membership" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "required" : [ "group_id", "aggregation_method" ],
+        "properties" : {
+          "group_id" : {
+            "type" : "string",
+            "examples" : [ "G_1001001" ],
+            "rcsb_search_context" : [ "exact-match" ],
+            "description" : "A unique identifier for a group of entries",
+            "rcsb_description" : [ {
+              "text" : "Entry Group ID(s)",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "ID(s) and Keywords",
+              "priority_order" : 10
+            } ]
+          },
+          "aggregation_method" : {
+            "type" : "string",
+            "enum" : [ "matching_deposit_group_id" ],
+            "rcsb_search_context" : [ "exact-match" ],
+            "description" : "Method used to establish group membership"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "minItems" : 1,
+      "uniqueItems" : true,
+      "rcsb_nested_indexing" : true
+    },
     "rcsb_external_references" : {
       "type" : "array",
       "items" : {

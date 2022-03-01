@@ -685,6 +685,10 @@ export enum CellSetting {
     Trigonal = "trigonal"
 }
 
+export enum AggregationMethod {
+    MatchingDepositGroupId = "matching_deposit_group_id"
+}
+
 export enum ProvenanceCode {
     PdbBind = "PDBBind",
     BindingMoad = "BindingMOAD",

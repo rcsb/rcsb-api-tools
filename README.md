@@ -132,3 +132,8 @@ E.g. `import {AggregationType, Operator, ReturnType, Service} from "@rcsb/rcsb-a
 `AggregationType` encodes the possible values of the schema field `"aggregation_type"`, 
 i.e. `AggregationType.Terms = "terms"`, `AggregationType.Histogram = "histogram"`, ...
 
+#### External schemas 
+
+- DW schemas rcsb-mojave-model:target/generated-sources/schema/core
+- Search schemas rcsb-arches:src/main/resources/schema
+

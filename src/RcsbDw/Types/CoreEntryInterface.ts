@@ -10342,6 +10342,28 @@ export interface CoreEntry {
    * A unique identifier for each object in this entry container.
    */
   rcsb_id: string;
+  rcsb_entry_group_membership?: [
+    {
+      /**
+       * A unique identifier for a group of entries
+       */
+      group_id: string;
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "matching_deposit_group_id";
+    },
+    ...{
+      /**
+       * A unique identifier for a group of entries
+       */
+      group_id: string;
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "matching_deposit_group_id";
+    }[]
+  ];
   rcsb_external_references?: {
     /**
      * ID (accession) from external resource linked to this entry.
