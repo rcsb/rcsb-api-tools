@@ -2,6 +2,11 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [3.0.1] - 2022-03-17
+### Improvement
+- Library adds caching and data compression at browser side through `localStorage`
+  - This feature is not use in the back end
+
 ## [3.0.0] - 2022-02-14
 ### Breaking changes
 - `GraphQLRequest` exposes `HttpOptions` and `ApolloClientOptions` configurations as optional arguments. 

@@ -366,6 +366,7 @@ export enum Type {
   Peptide = 'PEPTIDE',
   Pfam = 'PFAM',
   Propeptide = 'PROPEPTIDE',
+  ProteinBinding = 'PROTEIN_BINDING',
   RamachandranOutlier = 'RAMACHANDRAN_OUTLIER',
   RegionOfInterest = 'REGION_OF_INTEREST',
   Repeat = 'REPEAT',

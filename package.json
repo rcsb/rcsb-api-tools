@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "3.0.0-groups.2",
+  "version": "3.0.1-groups.4",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
@@ -50,6 +50,9 @@
   "dependencies": {
     "@apollo/client": "^3.5.8",
     "@graphql-codegen/cli": "^2.6.1",
-    "graphql": "^15.8.0"
+    "@types/object-hash": "^2.2.1",
+    "graphql": "^15.8.0",
+    "lzutf8": "^0.6.1",
+    "object-hash": "^3.0.0"
   }
 }

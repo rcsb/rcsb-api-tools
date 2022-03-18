@@ -1,6 +1,7 @@
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
 import * as serverSearch from "./ServerConfig/codegen.search.json";
+import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools";
 
 export class SearchRequest {
     private readonly uri: string;
@@ -15,6 +16,9 @@ export class SearchRequest {
             throw "ERROR: fetch function was not provided"
     }
     public async request(query: SearchQuery): Promise<QueryResult|null>{
+        const localObj: QueryResult | null = LST.getItem<SearchQuery,QueryResult|null>(query);
+        if(localObj)
+            return localObj;
         const response: Response = await (window?.fetch ?? this.fetch)(this.uri, {
             method: 'POST',
             headers: {
@@ -24,7 +28,9 @@ export class SearchRequest {
             body: JSON.stringify(query)
         });
         try {
-            return await response.json() as QueryResult;
+            const queryResult: QueryResult = await response.json() as QueryResult;
+            LST.setItem<SearchQuery,QueryResult>(query,queryResult);
+            return queryResult;
         }catch (e) {
             console.error(e);
             console.error(response);

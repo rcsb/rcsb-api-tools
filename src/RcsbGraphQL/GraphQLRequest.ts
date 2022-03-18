@@ -10,6 +10,7 @@ import {
 import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
 import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
 import gql from 'graphql-tag';
+import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools"
 
 
 export class GraphQLRequest {
@@ -43,14 +44,18 @@ export class GraphQLRequest {
     }
 
     public async request<Q,R>(requestConfig: Q, query: string): Promise<R> {
+        const localObj: R | null = LST.getItem<{query:string;requestConfig:Q},R>({query,requestConfig});
+        if(localObj)
+            return localObj;
         try {
-            const alignment: ApolloQueryResult<R> = await this.client.query<R>({
+            const result: ApolloQueryResult<R> = await this.client.query<R>({
                 query: gql(query),
                 variables: {
                     ...requestConfig
                 }
             });
-            return alignment.data;
+            LST.setItem<{query:string;requestConfig:Q},R>({query,requestConfig},result.data);
+            return result.data;
         } catch (error) {
             console.error(error);
             throw error;
