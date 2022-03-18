@@ -19,7 +19,7 @@ export class SearchRequest {
         const localObj: QueryResult | null = LST.getItem<SearchQuery,QueryResult|null>(query);
         if(localObj)
             return localObj;
-        const response: Response = await (window?.fetch ?? this.fetch)(this.uri, {
+        const response: Response = await (globalThis.window?.fetch ?? this.fetch)(this.uri, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
