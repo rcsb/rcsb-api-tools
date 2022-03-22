@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "3.0.1-groups.5",
+  "version": "3.0.1-groups.7",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
@@ -11,9 +11,12 @@
     "buildSearchInterface": "ts-node src/RcsbSearch/Generator/GenerateInterfaces.ts && ts-node src/RcsbSearch/Generator/CompileSearchMetadata.ts",
     "buildGraphQLInterfaces": "ts-node src/RcsbGraphQL/Generator/GenerateInterfaces.ts",
     "buildSources": "npm run buildSearchInterface && npm run buildGraphQLInterfaces && npm run buildDwInterface",
+    "testServices": "npm run testSearch && npm run testGraphQL",
+    "testSearch": "ts-node src/RcsbSearch/QueryTest.ts",
+    "testGraphQL": "npx ts-node src/RcsbGraphQL/QueryTest.ts",
     "build": "webpack --config webpack.config.js",
     "tsc": "tsc",
-    "buildApp": "npm run buildSources && npm run tsc && npm run build",
+    "buildApp": "npm run buildSources && npm run testServices && npm run tsc && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,17 +32,18 @@
   "devDependencies": {
     "@babel/core": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
-    "@graphql-codegen/typescript": "^2.4.3",
+    "@graphql-codegen/typescript": "^2.4.8",
     "@types/lodash": "^4.14.178",
     "@types/node": "^17.0.17",
-    "@types/node-fetch": "^2.5.12",
+    "@types/node-fetch": "^2.6.1",
     "@types/react": "^17.0.39",
+    "@types/object-hash": "^2.2.1",
     "babel-loader": "^8.2.3",
     "graphql-tag": "^2.12.6",
     "install": "^0.13.0",
     "json-schema-to-typescript": "^10.1.5",
     "lodash": "^4.17.21",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "react": "^17.0.2",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
@@ -48,9 +52,8 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.8",
-    "@graphql-codegen/cli": "^2.6.1",
-    "@types/object-hash": "^2.2.1",
+    "@apollo/client": "^3.5.10",
+    "@graphql-codegen/cli": "^2.6.2",
     "graphql": "^15.8.0",
     "lzutf8": "^0.6.1",
     "object-hash": "^3.0.0"

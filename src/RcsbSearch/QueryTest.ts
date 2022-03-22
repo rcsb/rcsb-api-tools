@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
 import {CoreEntry} from "../RcsbGraphQL/Types/Yosemite/CorePaths";
@@ -34,11 +35,13 @@ const query: SearchQuery = {
     },
     return_type: ReturnType.Entry
 };
-
-const searchRequest: SearchRequest = new SearchRequest();
-const result: Promise<QueryResult|null> = searchRequest.request(query);
-result.then((response)=>{
-    if(response)
-        response.drilldown!.filter(dd=>dd.attribute===CoreEntry.RcsbPrimaryCitation.RcsbJournalAbbrev)[0];
+const searchRequest: SearchRequest = new SearchRequest(undefined, fetch as unknown as (input:RequestInfo,init?:RequestInit)=>Promise<Response>);
+const request = async ()=>{
+    const response: QueryResult|null = await searchRequest.request(query);
+    console.log(response);
+}
+request().then(()=>{
+    console.log("Search check OK")
+    process.exit();
 });
 
