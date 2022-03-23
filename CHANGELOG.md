@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [3.0.2] - 2022-03-23
+### Bug fixes
+- JavaScript fetch bug fixed
+
 ## [3.0.1] - 2022-03-23
 ### Dependency update
 - Updated several dependencies

@@ -10,12 +10,12 @@ export class SearchRequest {
         if(typeof externalFetch === "function")
             this.fetch = externalFetch;
         else
-            this.fetch = fetch;
+            this.fetch = globalThis.window?.fetch;
         if(!this.fetch)
             throw "ERROR: fetch function was not provided"
     }
     public async request(query: SearchQuery): Promise<QueryResult|null>{
-        const response: Response = await this.fetch(this.uri, {
+        const response: Response = await (globalThis.window?.fetch ?? this.fetch)(this.uri, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
