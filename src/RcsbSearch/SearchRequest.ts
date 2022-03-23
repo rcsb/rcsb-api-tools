@@ -19,7 +19,8 @@ export class SearchRequest {
         const localObj: QueryResult | null = LST.getItem<SearchQuery,QueryResult|null>(query);
         if(localObj)
             return localObj;
-        const response: Response = await  this.fetch(this.uri, {
+        //TODO this fetch call is needed to avoid the error [TypeError: 'fetch' called on an object that does not implement interface Window.]
+        const response: Response = await (globalThis.window?.fetch ?? this.fetch)(this.uri, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
