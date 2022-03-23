@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [3.0.1] - 2022-03-23
+### Dependency update
+- Updated several dependencies
+
 ## [3.0.0] - 2022-02-14
 ### Breaking changes
 - `GraphQLRequest` exposes `HttpOptions` and `ApolloClientOptions` configurations as optional arguments. 
