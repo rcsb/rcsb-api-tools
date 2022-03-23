@@ -1,44 +1,25 @@
-import {
-    ApolloQueryResult,
-    ApolloClient,
-    createHttpLink,
-    ApolloClientOptions,
-    HttpOptions,
-    InMemoryCache,
-    NormalizedCacheObject
-} from "@apollo/client";
+import { GraphQLClient } from 'graphql-request'
+import {RequestInit} from "graphql-request/src/types.dom";
+
 import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
 import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
-import gql from 'graphql-tag';
 import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools"
 
 
 export class GraphQLRequest {
 
-    private readonly client: ApolloClient<unknown>;
+    private readonly client: GraphQLClient;
 
-    constructor(api: "yosemite" | "borrego" | string, httpOptions?: HttpOptions, apolloClientOptions?: ApolloClientOptions<NormalizedCacheObject>) {
+    constructor(api: "data-api" | "1d-coordinates" | string, config?: RequestInit) {
         switch (api){
-            case "yosemite":
-                this.client = new ApolloClient({
-                    link: createHttpLink({uri:configYosemiteGraphQL.schema, ...httpOptions}),
-                    cache: new InMemoryCache(),
-                    ...apolloClientOptions
-                });
+            case "data-api":
+                this.client = new GraphQLClient(configYosemiteGraphQL.schema, config);
                 break;
-            case "borrego":
-                this.client = new ApolloClient({
-                    link: createHttpLink({uri:configBorregoGraphQL.schema, ...httpOptions}),
-                    cache: new InMemoryCache(),
-                    ...apolloClientOptions
-                });
+            case "1d-coordinates":
+                this.client = new GraphQLClient(configBorregoGraphQL.schema, config);
                 break;
             default:
-                this.client = new ApolloClient({
-                    link: createHttpLink({uri:api, ...httpOptions}),
-                    cache: new InMemoryCache(),
-                    ...apolloClientOptions
-                });
+                this.client = new GraphQLClient(api, config);
                 break;
         }
     }
@@ -48,14 +29,12 @@ export class GraphQLRequest {
         if(localObj)
             return localObj;
         try {
-            const result: ApolloQueryResult<R> = await this.client.query<R>({
-                query: gql(query),
-                variables: {
-                    ...requestConfig
-                }
-            });
-            LST.setItem<{query:string;requestConfig:Q},R>({query,requestConfig},result.data);
-            return result.data;
+            const result: R = await this.client.request<R>(
+                query,
+                requestConfig
+            );
+            LST.setItem<{query:string;requestConfig:Q},R>({query,requestConfig},result);
+            return result;
         } catch (error) {
             console.error(error);
             throw error;
