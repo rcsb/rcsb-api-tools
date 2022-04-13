@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "https://1d-coordinates-groups.rcsb.org/graphql",
+        "url": "https://1d-coordinates.rcsb.org/graphql",
         "headers": {
           "user-agent": "JS GraphQL"
         },

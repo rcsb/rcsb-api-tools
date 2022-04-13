@@ -3310,13 +3310,7 @@ export interface GroupProvenance {
   __typename?: 'GroupProvenance';
   rcsb_group_aggregation_method?: Maybe<RcsbGroupAggregationMethod>;
   rcsb_group_provenance_container_identifiers?: Maybe<RcsbGroupProvenanceContainerIdentifiers>;
-  /**
-   * A unique group provenance identifier
-   *
-   * Allowable values:
-   * provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
-   *
-   */
+  /** A unique textual identifier for a group provenance */
   rcsb_id?: Maybe<Scalars['String']>;
 }
 
@@ -6976,9 +6970,9 @@ export interface Query {
   entries?: Maybe<Array<Maybe<CoreEntry>>>;
   /** Get PDB entry given the PDB id. */
   entry?: Maybe<CoreEntry>;
-  /** Given a group ID get a group object formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity */
+  /** Given a group ID get a group object formed by aggregating individual structures that share a degree of similarity */
   entry_group?: Maybe<GroupEntry>;
-  /** Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures that share a degree of similarity */
+  /** Given a list of group IDs get a list of group objects formed by aggregating structures that share a degree of similarity */
   entry_groups?: Maybe<Array<Maybe<GroupEntry>>>;
   /** Given a group provenance ID get an object that describes aggregation method used to create groups */
   group_provenance?: Maybe<GroupProvenance>;
@@ -6998,9 +6992,9 @@ export interface Query {
   polymer_entities?: Maybe<Array<Maybe<CorePolymerEntity>>>;
   /** Get a PDB polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   polymer_entity?: Maybe<CorePolymerEntity>;
-  /** Given a group ID get a group object formed by aggregating individual sequences that share a degree of similarity */
+  /** Given a group ID get a group object formed by aggregating polymer entities that share a degree of similarity */
   polymer_entity_group?: Maybe<GroupPolymerEntity>;
-  /** Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity */
+  /** Given a list of group IDs get a list of group objects formed by aggregating polymer entities that share a degree of similarity */
   polymer_entity_groups?: Maybe<Array<Maybe<GroupPolymerEntity>>>;
   /** Get a PDB polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instance?: Maybe<CorePolymerEntityInstance>;
@@ -10900,7 +10894,7 @@ export interface RcsbPolymerEntityRcsbMacromolecularNamesCombined {
 
 export interface RcsbPolymerEntityRcsbPolymerNameCombined {
   __typename?: 'RcsbPolymerEntityRcsbPolymerNameCombined';
-  /** Protein name annotated by the UniProt or macromolecular name PDB assigned by the PDB */
+  /** Protein name annotated by the UniProtKB or macromolecular name assigned by the PDB */
   names?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Allowable values: PDB Preferred Name, PDB Description, UniProt Name. */
   provenance_source?: Maybe<Scalars['String']>;

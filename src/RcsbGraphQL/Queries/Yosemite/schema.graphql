@@ -481,6 +481,8 @@ type ClustersMembers {
 type CoreAssembly {
     "Get PDB entry that includes this assembly."
     entry: CoreEntry
+    "Get all pairwise polymer interfaces for this PDB assembly."
+    interfaces: [CoreInterface]
     pdbx_struct_assembly: PdbxStructAssembly
     pdbx_struct_assembly_auth_evidence: [PdbxStructAssemblyAuthEvidence]
     pdbx_struct_assembly_gen: [PdbxStructAssemblyGen]
@@ -729,6 +731,16 @@ type CoreEntry {
     struct: Struct
     struct_keywords: StructKeywords
     symmetry: Symmetry
+}
+
+type CoreInterface {
+    rcsb_id: String!
+    rcsb_interface_container_identifiers: RcsbInterfaceContainerIdentifiers!
+    rcsb_interface_info: RcsbInterfaceInfo
+    "List of operations for each interface partner."
+    rcsb_interface_operator: [[[String]]]!
+    rcsb_interface_partner: [RcsbInterfacePartner]!
+    rcsb_latest_revision: RcsbLatestRevision
 }
 
 type CoreNonpolymerEntity {
@@ -3309,14 +3321,30 @@ type GroupPolymerEntity {
 type GroupProvenance {
     rcsb_group_aggregation_method: RcsbGroupAggregationMethod
     rcsb_group_provenance_container_identifiers: RcsbGroupProvenanceContainerIdentifiers
+    "A unique textual identifier for a group provenance"
+    rcsb_id: String
+}
+
+type InterfacePartnerFeatureAdditionalProperties {
     """
 
-    A unique group provenance identifier
+    The additional property name.
 
     Allowable values:
-    provenance_sequence_identity, provenance_matching_uniprot_accession, provenance_matching_deposit_group_id
+    TO_BE_DEFINED
     """
-    rcsb_id: String
+    name: String
+    "The value(s) of the additional property."
+    values: [ObjectScalar]
+}
+
+type InterfacePartnerFeatureFeaturePositions {
+    "An identifier for the monomer at which this segment of the feature begins."
+    beg_seq_id: Int!
+    "An identifier for the monomer at which this segment of the feature ends."
+    end_seq_id: Int
+    "The value(s) of the feature over the monomer segment."
+    values: [Float]
 }
 
 type MethodDetails {
@@ -7122,12 +7150,12 @@ type Query {
     ): [CoreEntry]
     "Get PDB entry given the PDB id."
     entry(entry_id: String!): CoreEntry
-    "Given a group ID get a group object formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity"
+    "Given a group ID get a group object formed by aggregating individual structures that share a degree of similarity"
     entry_group(
         "Group ID"
         group_id: String!
     ): GroupEntry
-    "Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures that share a degree of similarity"
+    "Given a list of group IDs get a list of group objects formed by aggregating structures that share a degree of similarity"
     entry_groups(
         "List of group IDs"
         group_ids: [String]!
@@ -7137,6 +7165,20 @@ type Query {
         "Group provenance ID"
         group_provenance_id: String!
     ): GroupProvenance
+    "Get a pairwise polymeric interface given the PDB ID, ASSEMBLY ID and INTERFACE ID."
+    interface(
+        "ASSEMBLY ID, e.g. '1', '2'"
+        assembly_id: String!,
+        "PDB ID"
+        entry_id: String!,
+        "INTERFACE ID, e.g. '1'"
+        interface_id: String!
+    ): CoreInterface
+    "Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs. Here INTERFACE ID is a compound identifier that includes entry_id, assembly_id and interface_id e.g. 1XXX-1.1."
+    interfaces(
+        "List of compound identifiers each includes entry_id, assembly_id and interface_id, e.g. 1XXX-1.1"
+        interface_ids: [String!]!
+    ): [CoreInterface]
     "Get a list of PDB non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1."
     nonpolymer_entities(
         "List of compound identifiers each includes entry_id and entity_id separated by '_', e.g. 1XXX_1"
@@ -7173,12 +7215,12 @@ type Query {
         "PDB ID"
         entry_id: String!
     ): CorePolymerEntity
-    "Given a group ID get a group object formed by aggregating individual sequences that share a degree of similarity"
+    "Given a group ID get a group object formed by aggregating polymer entities that share a degree of similarity"
     polymer_entity_group(
         "Group ID"
         group_id: String!
     ): GroupPolymerEntity
-    "Given a list of group IDs get a list of group objects formed by aggregating individual PDB structures, sequences or assemblies that share a degree of similarity"
+    "Given a list of group IDs get a list of group objects formed by aggregating polymer entities that share a degree of similarity"
     polymer_entity_groups(
         "List of group IDs"
         group_ids: [String]!
@@ -7265,6 +7307,8 @@ type RcsbAssemblyContainerIdentifiers {
     assembly_id: String!
     "Entry identifier for the container."
     entry_id: String!
+    "List of binary interface Ids within the assembly (it points to interface id collection)."
+    interface_ids: [String]
     """
 
     A unique identifier for each object in this assembly container formed by
@@ -7326,6 +7370,24 @@ type RcsbAssemblyInfo {
     This is the total count of non-polymer entity instances generated in the assembly coordinate data.
     """
     nonpolymer_entity_instance_count: Int
+    "Number of heterologous (both binding sites are different) interface entities"
+    num_heterologous_interface_entities: Int
+    "Number of heteromeric (both partners are different polymeric entities) interface entities"
+    num_heteromeric_interface_entities: Int
+    "Number of homomeric (both partners are the same polymeric entity) interface entities"
+    num_homomeric_interface_entities: Int
+    "Number of polymer-polymer interface entities, grouping equivalent interfaces at the entity level (i.e. same entity_ids on either side, with similar but not identical binding sites)"
+    num_interface_entities: Int
+    "Number of geometrically equivalent (i.e. same asym_ids on either side) polymer-polymer interfaces in the assembly"
+    num_interfaces: Int
+    "Number of isologous (both binding sites are same, i.e. interface is symmetric) interface entities"
+    num_isologous_interface_entities: Int
+    "Number of nucleic acid-nucleic acid interface entities"
+    num_na_interface_entities: Int
+    "Number of protein-nucleic acid interface entities"
+    num_prot_na_interface_entities: Int
+    "Number of protein-protein interface entities"
+    num_protein_interface_entities: Int
     "The assembly non-hydrogen polymer entity atomic coordinate count."
     polymer_atom_count: Int
     """
@@ -7409,6 +7471,10 @@ type RcsbAssemblyInfo {
     This is the total count of solvent entity instances generated in the assembly coordinate data.
     """
     solvent_entity_instance_count: Int
+    "Total buried surface area calculated as the sum of buried surface areas over all interfaces"
+    total_assembly_buried_surface_area: Float
+    "Total number of interfacing residues in the assembly, calculated as the sum of interfacing residues over all interfaces"
+    total_number_interface_residues: Int
     """
 
     The number of unmodeled polymer monomers in the assembly coordinate data. This is
@@ -9324,6 +9390,99 @@ type RcsbGroupStatistics {
     similarity_score_min: Float
 }
 
+type RcsbInterfaceContainerIdentifiers {
+    "This item references an assembly in pdbx_struct_assembly"
+    assembly_id: String!
+    "Entry identifier for the container."
+    entry_id: String!
+    """
+
+    Identifier for NCS-equivalent interfaces within the assembly (same entity_ids on both sides)
+
+    Examples:
+    1, 2
+    """
+    interface_entity_id: String
+    """
+
+    Identifier for the geometrically equivalent (same asym_ids on either side) interfaces within the assembly
+
+    Examples:
+    1, 2
+    """
+    interface_id: String!
+    """
+
+    Unique identifier for the document
+
+    Examples:
+    2UZI-1.A.B?1
+    """
+    rcsb_id: String!
+}
+
+type RcsbInterfaceInfo {
+    "Total interface buried surface area"
+    interface_area: Float
+    "Allowable values: homo, hetero."
+    interface_character: String
+    "Number of core interface residues, defined as those that bury >90% accessible surface area with respect to the unbound state"
+    num_core_interface_residues: Int
+    "Number of interface residues, defined as those with burial fraction > 0"
+    num_interface_residues: Int
+    "Allowable values: Nucleic acid (only), Protein (only), Protein/NA."
+    polymer_composition: String
+    "The Jaccard score (intersection over union) of interface contacts in homomeric interfaces, comparing contact sets left-right vs right-left. High values indicate isologous (symmetric) interfaces, with value=1 if perfectly symmetric (e.g. crystallographic symmetry)"
+    self_jaccard_contact_score: Float
+}
+
+type RcsbInterfacePartner {
+    interface_partner_feature: [RcsbInterfacePartnerInterfacePartnerFeature]
+    interface_partner_identifier: RcsbInterfacePartnerInterfacePartnerIdentifier
+}
+
+type RcsbInterfacePartnerInterfacePartnerFeature {
+    additional_properties: [InterfacePartnerFeatureAdditionalProperties]
+    """
+
+    Identifies the version of the feature assignment.
+
+    Examples:
+    V4_0_2
+    """
+    assignment_version: String
+    "A description for the feature."
+    description: String
+    "An identifier for the feature."
+    feature_id: String
+    feature_positions: [InterfacePartnerFeatureFeaturePositions]
+    "A name for the feature."
+    name: String
+    """
+
+    Code identifying the individual, organization or program that assigned the feature.
+
+    Examples:
+    NACCESS
+    """
+    provenance_source: String
+    """
+
+    A type or category of the feature.
+
+    Allowable values:
+    ASA_UNBOUND, ASA_BOUND
+    """
+    type: String
+}
+
+type RcsbInterfacePartnerInterfacePartnerIdentifier {
+    "Instance identifier for this container."
+    asym_id: String!
+    "Polymer entity identifier for the container."
+    entity_id: String!
+}
+
 type RcsbLatestRevision {
     "The major version number of the latest revision."
     major_revision: Int
@@ -10768,7 +10927,7 @@ type RcsbPolymerEntityRcsbMacromolecularNamesCombined {
 }
 
 type RcsbPolymerEntityRcsbPolymerNameCombined {
-    "Protein name annotated by the UniProt or macromolecular name PDB assigned by the PDB"
+    "Protein name annotated by the UniProtKB or macromolecular name assigned by the PDB"
     names: [String]
     "Allowable values: PDB Preferred Name, PDB Description, UniProt Name."
     provenance_source: String
@@ -10861,7 +11020,7 @@ type RcsbPolymerInstanceFeature {
     A type or category of the feature.
 
     Allowable values:
-    ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+    ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
     """
     type: String
 }

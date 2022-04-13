@@ -10,7 +10,7 @@ async function buildAll(){
     const enumOutputFile = "src/RcsbDw/Types/DwEnums.ts";
     const schemas: {schemaFile: string;interfaceOutputFile: string;}[] = [];
 
-    fs.readdirSync("./dw_schema").forEach(f => {
+    fs.readdirSync("./schemas/dw_schema").forEach(f => {
         if(/json/.test(f)){
             const val: string = _.camelCase(f.split(".")[0])
 
@@ -23,10 +23,10 @@ async function buildAll(){
 
     for(const s of schemas){
         await generateInterface(
-            `./dw_schema/${s.schemaFile}`,
+            `./schemas/dw_schema/${s.schemaFile}`,
             s.interfaceOutputFile,
             enumOutputFile,
-            {cwd:"./dw_schema"}
+            {cwd:"./schemas/dw_schema"}
         );
         console.log(`${s.schemaFile} interface and enum generated`);
     }

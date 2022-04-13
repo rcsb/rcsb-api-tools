@@ -53,6 +53,7 @@ type AnnotationFeatures {
     source: Source
     "Database source entry identifier associated to the positional features"
     target_id: String
+    target_identifiers: TargetIdentifiers
 }
 
 type Coverage {
@@ -83,7 +84,7 @@ type Feature {
     The connection type.
 
     Examples:
-    mutation, artifact, CATH, SCOP
+    ASA_UNBOUND, BINDING_SITE, mutation, artifact, CATH, SCOP
     """
     type: Type
     "Numerical value associated with the feature"
@@ -200,6 +201,17 @@ type TargetAlignmentEdge {
     node: TargetAlignment
 }
 
+type TargetIdentifiers {
+    assembly_id: String
+    asym_id: String
+    entity_id: String
+    entry_id: String
+    interface_id: String
+    interface_partner_index: Int
+    target_id: String
+    uniprot_id: String
+}
+
 enum GroupReference {
     matching_uniprot_accession
     sequence_identity
@@ -249,6 +261,7 @@ enum SequenceReference {
 enum Source {
     PDB_ENTITY
     PDB_INSTANCE
+    PDB_INTERFACE
     UNIPROT
 }
 
@@ -256,6 +269,9 @@ enum Type {
     ACTIVE_SITE
     ANGLE_OUTLIER
     ARTIFACT
+    ASA
+    ASA_BOUND
+    ASA_UNBOUND
     BINDING_SITE
     BOND_OUTLIER
     CALCIUM_BINDING_REGION
@@ -311,6 +327,7 @@ enum Type {
     PEPTIDE
     PFAM
     PROPEPTIDE
+    PROTEIN_BINDING
     RAMACHANDRAN_OUTLIER
     REGION_OF_INTEREST
     REPEAT
