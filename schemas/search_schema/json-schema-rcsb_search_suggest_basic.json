@@ -20,6 +20,7 @@
     },
     "size": {
       "type": "integer",
+      "minimum": 0,
       "default": 10,
       "description": "Configure the maximum number of suggestions to be returned."
     }

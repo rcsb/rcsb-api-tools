@@ -4193,7 +4193,7 @@
             "type" : "string",
             "examples" : [ "National Institutes of Health", "Wellcome Trust", "National Institutes of Health/National Institute of General Medical Sciences" ],
             "description" : "The name of the organization providing funding support for the\n entry. Funding information is optionally provided for entries\n after June 2016.",
-            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_search_context" : [ "exact-match", "full-text" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
               "text" : "The name of the organization providing funding support for the\n entry. Funding information is optionally provided for entries\n after June 2016.",
@@ -11051,7 +11051,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "ID(s) and Keywords",
-              "priority_order" : 10
+              "priority_order" : 100
             } ]
           },
           "aggregation_method" : {
@@ -11293,5 +11293,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Entry",
   "description" : "JSON schema for entry level core data. Combines Exchange DB schema: json-schema-min-pdbx_core_entry.json and RCSB Data Warehouse schema: json-schema-core_entry.json",
-  "$comment" : "schema_version: 8.16.3"
+  "$comment" : "schema_version: 8.16.4"
 }

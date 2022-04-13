@@ -7,12 +7,9 @@
 
 export interface GroupProvenance {
   /**
-   * A unique group provenance identifier
+   * A unique textual identifier for a group provenance
    */
-  rcsb_id?:
-    | "provenance_sequence_identity"
-    | "provenance_matching_uniprot_accession"
-    | "provenance_matching_deposit_group_id";
+  rcsb_id?: string;
   rcsb_group_provenance_container_identifiers?: {
     /**
      * A unique group provenance identifier

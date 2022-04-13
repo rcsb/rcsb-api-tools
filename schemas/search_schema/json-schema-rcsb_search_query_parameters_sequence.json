@@ -9,7 +9,7 @@
   "properties": {
     "value": {
       "type": "string",
-      "description": "Protein sequence."
+      "description": "Protein or nucleotide sequence"
     },
     "target": {
       "type": "string",
@@ -18,11 +18,13 @@
         "pdb_rna_sequence",
         "pdb_dna_sequence"
       ],
-      "description": "Identifies a specific search scope."
+      "description": "Identifies a specific search scope"
     },
     "identity_cutoff": {
       "type": "number",
       "default": 0,
+      "minimum": 0,
+      "maximum": 1,
       "description": "Hits with sequence identity below this cutoff value are filtered out (range 0-1)"
     },
     "evalue_cutoff": {

@@ -1,0 +1,28 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_results_facets_metrics_single_value.json",
+  "title": "Single Value Metrics Facet",
+  "type": "object",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Aggregation name"
+    },
+    "value": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "description": "Calculated value"
+        },
+        {
+          "type": "number",
+          "description": "Calculated value"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

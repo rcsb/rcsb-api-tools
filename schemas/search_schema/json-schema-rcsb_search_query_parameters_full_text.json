@@ -11,6 +11,5 @@
       "description": "The search term(s)."
     }
   },
-  "minProperties": 1,
   "additionalProperties": false
 }

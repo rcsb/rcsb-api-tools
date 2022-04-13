@@ -65,7 +65,6 @@
         "less",
         "less_or_equal",
         "range",
-        "range_closed",
         "contains_words",
         "contains_phrase",
         "exact_match",
@@ -80,6 +79,5 @@
       "description": "Allows case sensitive matching of the value with the indexed attribute values when set to true. Default is false which means the case insensitivity of matching."
     }
   },
-  "minProperties": 1,
   "additionalProperties": false
 }

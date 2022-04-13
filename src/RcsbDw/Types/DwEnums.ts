@@ -852,12 +852,6 @@ export enum RankingCriteriaType {
     Coverage = "coverage"
 }
 
-export enum RcsbId {
-    ProvenanceSequenceIdentity = "provenance_sequence_identity",
-    ProvenanceMatchingUniprotAccession = "provenance_matching_uniprot_accession",
-    ProvenanceMatchingDepositGroupId = "provenance_matching_deposit_group_id"
-}
-
 export enum SimilarityFunction {
     Rmsd = "rmsd",
     SequenceIdentity = "sequence_identity"

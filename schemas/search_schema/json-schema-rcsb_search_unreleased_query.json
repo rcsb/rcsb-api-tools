@@ -15,23 +15,35 @@
         "facets": {
           "$ref": "json-schema-rcsb_search_query_facets.json"
         },
-        "return_counts": {
-          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/return_counts"
-        },
         "sort": {
           "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/sort"
         },
-        "pager": {
-          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/pager"
+        "paginate": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/paginate"
         },
         "scoring_strategy": {
           "type": "string",
           "enum": [
             "text"
           ],
+          "default": "text",
           "description": "Scoring algorithm to be used for scores calculation of the final result set."
+        },
+        "return_counts": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/return_counts"
+        },
+        "return_all_hits": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/return_all_hits"
+        },
+        "results_verbosity": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/results_verbosity"
+        },
+        "return_explain_metadata": {
+          "$ref": "json-schema-rcsb_search_query_request_options.json#/properties/return_explain_metadata"
         }
-      }
+      },
+      "javaType" : "org.rcsb.arches.auto.model.UnreleasedQueryRequestOptions",
+      "additionalProperties": false
     },
     "return_type": {
       "type": "string",
@@ -52,5 +64,6 @@
         ],
       "description": "Any valid query string as per the Search Aggregator query syntax is permitted. A search consists of one or more groups combined."
     }
-  }
+  },
+  "additionalProperties": false
 }

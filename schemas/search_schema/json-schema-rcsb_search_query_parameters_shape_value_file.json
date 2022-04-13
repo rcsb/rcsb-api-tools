@@ -3,29 +3,23 @@
   "title": "Structure Query File Parameters",
   "type": "object",
   "required": [
-    "file",
-    "file_format",
-    "gzipped"
+    "data",
+    "format"
   ],
   "properties": {
-    "file": {
+    "data": {
       "type": "string",
-      "description": "File content converted to a Base64 string."
+      "description": "File content converted to a Base64 string"
     },
-    "file_format": {
+    "format": {
       "type": "string",
       "enum": [
         "cif",
         "bcif",
-        "pdb",
-        "ccp4"
+        "pdb"
       ]
-    },
-    "gzipped": {
-      "type": "boolean",
-      "description": "True if the content of the 'file' property is compressed by the GZIP algorithm (before being Base64-encoded)."
     }
   },
   "additionalProperties": false,
-  "description": "Base64-encoded file can be uploaded together with the provided file_format (cif, bcif, pdb, ccp4)."
+  "description": "Upload Base64-encoded file in one of the following formats: cif, bcif, pdb"
 }

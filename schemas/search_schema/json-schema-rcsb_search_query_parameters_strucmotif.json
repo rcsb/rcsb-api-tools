@@ -47,6 +47,9 @@
       "type": "array",
       "items": {
         "type": "object",
+        "required": [
+          "residue_id"
+        ],
         "properties": {
           "residue_id": {
             "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
@@ -55,14 +58,19 @@
             "type": "array",
             "items": {
               "type": "string",
-              "description": "Allowed exchanges at this position as three-letter-codes.",
+              "description": "Allowed exchanges at this position as three-letter-codes",
               "enum": ["ALA", "CYS", "ASP", "GLU", "PHE", "GLY", "HIS", "ILE", "LYS", "LEU", "MET", "ASN", "PRO", "GLN", "ARG", "SER", "THR", "VAL", "TRP", "TYR",
                 "A", "C", "DA", "DC", "DG", "G", "T", "U",
                 "UNK", "N", "?"]
-            }
+            },
+            "minItems": 1,
+            "maxItems": 4
           }
-        }
-      }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "description": "Specifies all allowed amino acids at a certain position. You can specify non more than 16 allowed residues in total"
     },
     "limit": {
       "type": "integer",
@@ -81,21 +89,23 @@
       "default": "KRUSKAL",
       "enum": ["NONE", "KRUSKAL"]
     },
-    "whitelist": {
+    "allowed_structures": {
       "type": "array",
-      "description": "When set: Consider only structures in the specified set.",
+      "description": "If the list of structure identifiers is specified, the search will only consider those structures",
       "items": {
         "type": "string",
-        "description": "Entry identifier that is enabled in the search space."
-      }
+        "description": "Structure identifier that is allowed in the search space"
+      },
+      "minItems": 1
     },
-    "blacklist": {
+    "excluded_structures": {
       "type": "array",
-      "description": "Specified entry identifiers will not be evaluated.",
+      "description": "If the list of structure identifiers is specified, the search will exclude those structures from the search space",
       "items": {
         "type": "string",
-        "description": "Entry identifier that will be explicitly ignored."
-      }
+        "description": "Structure identifier that will be explicitly ignored"
+      },
+      "minItems": 1
     }
   },
   "additionalProperties": false

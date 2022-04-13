@@ -1,9 +1,10 @@
 import fetch from "node-fetch";
-import {SearchQuery} from "./Types/SearchQueryInterface";
+import {HistogramFacet, SearchQuery, TermsFacet} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
 import {CoreEntry} from "../RcsbGraphQL/Types/Yosemite/CorePaths";
 import {AggregationType, Operator, ReturnType, Service, Type} from "./Types/SearchEnums";
 import {SearchRequest} from "./SearchRequest";
+import {RcsbSearchMetadata} from "./Types/SearchMetadata";
 
 const query: SearchQuery = {
     query: {
@@ -18,16 +19,19 @@ const query: SearchQuery = {
     request_options: {
         facets: [
             {
+                name: `FACET/${RcsbSearchMetadata.Exptl.Method.path}`,
                 aggregation_type: AggregationType.Terms,
-                attribute: CoreEntry.Exptl.Method
+                attribute: RcsbSearchMetadata.Exptl.Method.path
             },
             {
+                name: `FACET/${RcsbSearchMetadata.RcsbPrimaryCitation.RcsbJournalAbbrev.path}`,
                 aggregation_type: AggregationType.Terms,
-                attribute: CoreEntry.RcsbPrimaryCitation.RcsbJournalAbbrev
+                attribute: RcsbSearchMetadata.RcsbPrimaryCitation.RcsbJournalAbbrev.path
             },
             {
+                name: `FACET/${RcsbSearchMetadata.RcsbEntryInfo.DiffrnResolutionHigh.Value.path}`,
                 aggregation_type: AggregationType.Histogram,
-                attribute: CoreEntry.RcsbEntryInfo.DiffrnResolutionHigh.Value,
+                attribute: RcsbSearchMetadata.RcsbEntryInfo.DiffrnResolutionHigh.Value.path,
                 interval: 0.5,
                 min_interval_population: 1
             }

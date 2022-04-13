@@ -3,13 +3,14 @@
   "title": "Cardinality Facet",
   "type": "object",
   "required": [
+    "name",
     "aggregation_type",
     "attribute"
   ],
   "properties": {
     "name": {
       "type": "string",
-      "description": "Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name"
+      "description": "Specifies the name of the aggregation"
     },
     "aggregation_type": {
       "type": "string",
@@ -21,6 +22,12 @@
     "attribute": {
       "type": "string",
       "description": "Specifies the full attribute name to aggregate on"
+    },
+    "precision_threshold": {
+      "type": "integer",
+      "default": 40000,
+      "maximum": 40000,
+      "description": "Allows to trade memory for accuracy, and defines a unique count below which counts are expected to be close to accurate"
     }
   },
   "additionalProperties": false,

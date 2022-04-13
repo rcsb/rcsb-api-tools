@@ -15,7 +15,7 @@ export type RelevanceScoreRankingOption = "score";
 export type SortDirection = "asc" | "desc";
 
 /**
- * Provides a generic interface to represent the RCSB search query result
+ * Provides a generic interface to represent the RCSB PDB search query result
  */
 export interface QueryResult {
   /**
@@ -47,7 +47,7 @@ export interface QueryResult {
      */
     total_timing: number;
     /**
-     * The time taken in milliseconds to produce the drilldowns
+     * The time taken in milliseconds to produce facets
      */
     facet_timing?: number;
     /**
@@ -73,9 +73,9 @@ export interface QueryResult {
   /**
    * Provides summaries of the search result by aggregating the result data on different attributes.
    */
-  drilldown?: [Facet | DistinctCount, ...(Facet | DistinctCount)[]];
+  facets?: [BucketFacet | SingleValueMetricsFacet, ...(BucketFacet | SingleValueMetricsFacet)[]];
   /**
-   * Option that is used to partition search results into groups
+   * Allows partitioning search results into groups
    */
   group_by?: GroupByDepositID | GroupBySequenceIdentity | GroupByUniProtAccession;
   /**
@@ -361,50 +361,47 @@ export interface ResidueIdentifier {
    */
   label_seq_id: number;
 }
-export interface Facet {
+export interface BucketFacet {
   /**
-   * A field being analyzed.
+   * Aggregation name
    */
-  attribute: string;
+  name: string;
   /**
-   * A list of buckets built by executing an aggregation. Each bucket is associated with a key and a document criterion.
+   * A list of buckets built by executing an aggregation
    */
-  groups: [
+  buckets: [
     {
       /**
-       * The key of a bucket.
+       * Describes the content of the bucket
        */
       label: string;
       /**
-       * The number of documents in the bucket.
+       * Number of items in the bucket
        */
       population: number;
-      drilldown?: (Facet | DistinctCount)[];
+      facets?: (BucketFacet | SingleValueMetricsFacet)[];
       [k: string]: unknown;
     },
     ...{
       /**
-       * The key of a bucket.
+       * Describes the content of the bucket
        */
       label: string;
       /**
-       * The number of documents in the bucket.
+       * Number of items in the bucket
        */
       population: number;
-      drilldown?: (Facet | DistinctCount)[];
+      facets?: (BucketFacet | SingleValueMetricsFacet)[];
       [k: string]: unknown;
     }[]
   ];
 }
-export interface DistinctCount {
+export interface SingleValueMetricsFacet {
   /**
-   * A field being analyzed.
+   * Aggregation name
    */
-  attribute: string;
-  /**
-   * The approximate count of distinct values in a field calculated by aggregation.
-   */
-  distinct_count: number;
+  name: string;
+  value: number | number;
 }
 export interface GroupByDepositID {
   /**
@@ -437,7 +434,6 @@ export interface GroupByUniProtAccession {
 }
 export interface UniprotAccessionGroupRankingOption {
   sort_by: "coverage";
-  [k: string]: unknown;
 }
 export interface GroupIdentifier {
   /**

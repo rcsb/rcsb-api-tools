@@ -2,7 +2,7 @@
 
 [Semantic Versioning](https://semver.org/)
 
-## [4.0.0] - 2022-03-23
+## [4.0.0] - 2022-04-13
 ### Breaking change
 - Replaced graphql client `@apollo/client` for `graphql-request`
 - `GraphQLRequest` constructor parameters changed

@@ -4,8 +4,8 @@
   "properties" : {
     "rcsb_id" : {
       "type" : "string",
-      "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id" ],
-      "description" : "A unique group provenance identifier"
+      "rcsb_search_context" : [ "exact-match" ],
+      "description" : "A unique textual identifier for a group provenance"
     },
     "rcsb_group_provenance_container_identifiers" : {
       "type" : "object",
@@ -25,6 +25,7 @@
         "type" : {
           "type" : "string",
           "enum" : [ "sequence_identity", "matching_uniprot_accession", "matching_deposit_group_id" ],
+          "rcsb_search_context" : [ "exact-match" ],
           "description" : "Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy"
         },
         "method" : {

@@ -1752,8 +1752,16 @@
               "type" : "array",
               "items" : {
                 "type" : "string",
-                "description" : "Protein name annotated by the UniProt or macromolecular name PDB assigned by the PDB",
-                "rcsb_search_context" : [ "exact-match" ]
+                "description" : "Protein name annotated by the UniProtKB or macromolecular name assigned by the PDB",
+                "rcsb_search_context" : [ "exact-match" ],
+                "rcsb_description" : [ {
+                  "text" : "Polymer Entity Name Combined",
+                  "context" : "brief"
+                } ],
+                "rcsb_search_group" : [ {
+                  "group_name" : "Polymer Molecular Features",
+                  "priority_order" : 45
+                } ]
               },
               "minItems" : 1,
               "uniqueItems" : true
@@ -3185,7 +3193,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "ID(s) and Keywords",
-              "priority_order" : 10
+              "priority_order" : 110
             } ]
           },
           "aggregation_method" : {

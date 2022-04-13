@@ -55,29 +55,29 @@ export interface SearchQuery {
 export interface RequestOptions {
   facets?: RequestOptionsFacets;
   /**
-   * Option that is used to partition search results into groups
+   * Allows partitioning search results into groups
    */
   group_by?: GroupByDepositID | GroupBySequenceIdentity | GroupByUniProtAccession;
   /**
-   * Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group;
+   * Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group
    */
   group_by_return_type?: "groups" | "representatives";
   sort?: [SortOptionAttributes | SortOptionGroups, ...(SortOptionAttributes | SortOptionGroups)[]];
   /**
-   * Specifies a range in the query result set. When absent, returns only the top 10 entries, e.g. 'start' defaults to 0, and 'rows' defaults to 10.
+   * Pagination allows returning only a portion, rather than the whole, result set. By default, only top 10 search matches
    */
-  pager?: {
+  paginate?: {
     /**
-     * The offset from the first result.
+     * Specifies how many matches should be skipped from the top of the search results
      */
     start?: number;
     /**
-     * Number of entries returned in the result set.
+     * Number of matched returned in the result set
      */
     rows?: number;
   };
   /**
-   * Scoring algorithm to be used for scores calculation of the final result set.
+   * Scoring algorithm to be used for scores calculation of the final result set
    */
   scoring_strategy?:
     | "combined"
@@ -90,19 +90,19 @@ export interface RequestOptions {
     | "text_chem"
     | "full_text";
   /**
-   * When set to true, all hits are returned as a result set.
+   * When set to true, all search matches are returned. It cannot be used together with pagination or return count parameters
    */
   return_all_hits?: boolean;
   /**
-   * Allows obtaining the counts only instead of identifiers. When absent, search result identifiers are returned.
+   * Allows obtaining the counts only instead of identifiers. When undefined, search result identifiers are returned
    */
   return_counts?: boolean;
   /**
-   * Allows to control the additional metadata returned with search hits such as scores returned by individual services and context of the match, e.g. alignments from sequence search service.
+   * Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service
    */
   results_verbosity?: "compact" | "minimal" | "verbose";
   /**
-   * When enabled, the search results are return with profiling info on execution timings
+   * When enabled, the search results are return with profiling information, e.g. execution timings
    */
   return_explain_metadata?: boolean;
 }
@@ -111,9 +111,9 @@ export interface RequestOptions {
  */
 export interface TermsFacet {
   /**
-   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   * Specifies the name of the aggregation
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the type of the aggregation
    */
@@ -137,9 +137,9 @@ export interface TermsFacet {
  */
 export interface HistogramFacet {
   /**
-   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   * Specifies the name of the aggregation
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the type of the aggregation
    */
@@ -153,13 +153,9 @@ export interface HistogramFacet {
    */
   interval: number | number;
   /**
-   * Minimum number of items in the bin required for the bin to be returned
+   * Minimum number of items in the bin required for the bin to be returned.
    */
   min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given facet
-   */
-  max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
 /**
@@ -167,9 +163,9 @@ export interface HistogramFacet {
  */
 export interface DateHistogramFacet {
   /**
-   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   * Specifies the name of the aggregation
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the type of the aggregation
    */
@@ -183,13 +179,9 @@ export interface DateHistogramFacet {
    */
   interval: "year";
   /**
-   * Minimum number of items in the bin required for the bin to be returned
+   * Minimum number of items in the bin required for the bin to be returned.
    */
   min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given aggregation
-   */
-  max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
 /**
@@ -197,9 +189,9 @@ export interface DateHistogramFacet {
  */
 export interface RangeFacet {
   /**
-   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   * Specifies the name of the aggregation
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the type of the aggregation
    */
@@ -235,14 +227,6 @@ export interface RangeFacet {
       [k: string]: unknown;
     }[]
   ];
-  /**
-   * Minimum number of items in the bin required for the bin to be returned
-   */
-  min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given facet
-   */
-  max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
 /**
@@ -250,9 +234,9 @@ export interface RangeFacet {
  */
 export interface DateRangeFacet {
   /**
-   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   * Specifies the name of the aggregation
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the type of the aggregation
    */
@@ -274,7 +258,6 @@ export interface DateRangeFacet {
        * The end of the range.
        */
       to?: string;
-      [k: string]: unknown;
     },
     ...{
       /**
@@ -285,17 +268,8 @@ export interface DateRangeFacet {
        * The end of the range.
        */
       to?: string;
-      [k: string]: unknown;
     }[]
   ];
-  /**
-   * Minimum number of items in the bin required for the bin to be returned
-   */
-  min_interval_population?: number;
-  /**
-   * Maximum number of intervals to return for a given facet
-   */
-  max_num_intervals?: number;
   facets?: RequestOptionsFacets;
 }
 /**
@@ -303,9 +277,9 @@ export interface DateRangeFacet {
  */
 export interface CardinalityFacet {
   /**
-   * Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name
+   * Specifies the name of the aggregation
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the type of the aggregation
    */
@@ -314,6 +288,10 @@ export interface CardinalityFacet {
    * Specifies the full attribute name to aggregate on
    */
   attribute: string;
+  /**
+   * Allows to trade memory for accuracy, and defines a unique count below which counts are expected to be close to accurate
+   */
+  precision_threshold?: number;
 }
 /**
  * A single bucket aggregation that narrows the set of documents to those that match a filter query
@@ -375,7 +353,6 @@ export interface AttributeTextQueryParameters {
     | "less"
     | "less_or_equal"
     | "range"
-    | "range_closed"
     | "contains_words"
     | "contains_phrase"
     | "exact_match"
@@ -453,7 +430,6 @@ export interface GroupByUniProtAccession {
 }
 export interface UniprotAccessionGroupRankingOption {
   sort_by: "coverage";
-  [k: string]: unknown;
 }
 export interface SortOptionGroups {
   sort_by: RelevanceScoreRankingOption | SortOptionGroupsSortBy;
@@ -506,7 +482,6 @@ export interface TerminalNode {
    * A textual description of what the node represents.
    */
   label?: string;
-  [k: string]: unknown;
 }
 export interface FullTextQueryParameters {
   /**
@@ -516,11 +491,11 @@ export interface FullTextQueryParameters {
 }
 export interface SequenceQueryParameters {
   /**
-   * Protein sequence.
+   * Protein or nucleotide sequence
    */
   value: string;
   /**
-   * Identifies a specific search scope.
+   * Identifies a specific search scope
    */
   target: "pdb_protein_sequence" | "pdb_rna_sequence" | "pdb_dna_sequence";
   /**
@@ -566,18 +541,14 @@ export interface StructureQueryAssemblyParameters {
   assembly_id: string;
 }
 /**
- * Base64-encoded file can be uploaded together with the provided file_format (cif, bcif, pdb, ccp4).
+ * Upload Base64-encoded file in one of the following formats: cif, bcif, pdb
  */
 export interface StructureQueryFileParameters {
   /**
-   * File content converted to a Base64 string.
+   * File content converted to a Base64 string
    */
-  file: string;
-  file_format: "cif" | "bcif" | "pdb" | "ccp4";
-  /**
-   * True if the content of the 'file' property is compressed by the GZIP algorithm (before being Base64-encoded).
-   */
-  gzipped: boolean;
+  data: string;
+  format: "cif" | "bcif" | "pdb";
 }
 export interface ChemicalQueryFormulaParameters {
   /**
@@ -652,43 +623,691 @@ export interface StrucmotifQueryParameters {
    * Threshold above which hits will be filtered by RMSD.
    */
   rmsd_cutoff?: number;
-  exchanges?: {
-    residue_id?: ResidueIdentifier;
-    allowed?: (
-      | "ALA"
-      | "CYS"
-      | "ASP"
-      | "GLU"
-      | "PHE"
-      | "GLY"
-      | "HIS"
-      | "ILE"
-      | "LYS"
-      | "LEU"
-      | "MET"
-      | "ASN"
-      | "PRO"
-      | "GLN"
-      | "ARG"
-      | "SER"
-      | "THR"
-      | "VAL"
-      | "TRP"
-      | "TYR"
-      | "A"
-      | "C"
-      | "DA"
-      | "DC"
-      | "DG"
-      | "G"
-      | "T"
-      | "U"
-      | "UNK"
-      | "N"
-      | "?"
-    )[];
-    [k: string]: unknown;
-  }[];
+  /**
+   * Specifies all allowed amino acids at a certain position. You can specify non more than 16 allowed residues in total
+   */
+  exchanges?: [
+    {
+      residue_id: ResidueIdentifier;
+      allowed?:
+        | [
+            | "ALA"
+            | "CYS"
+            | "ASP"
+            | "GLU"
+            | "PHE"
+            | "GLY"
+            | "HIS"
+            | "ILE"
+            | "LYS"
+            | "LEU"
+            | "MET"
+            | "ASN"
+            | "PRO"
+            | "GLN"
+            | "ARG"
+            | "SER"
+            | "THR"
+            | "VAL"
+            | "TRP"
+            | "TYR"
+            | "A"
+            | "C"
+            | "DA"
+            | "DC"
+            | "DG"
+            | "G"
+            | "T"
+            | "U"
+            | "UNK"
+            | "N"
+            | "?"
+          ]
+        | [
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            )
+          ]
+        | [
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            )
+          ]
+        | [
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            )
+          ];
+    },
+    ...{
+      residue_id: ResidueIdentifier;
+      allowed?:
+        | [
+            | "ALA"
+            | "CYS"
+            | "ASP"
+            | "GLU"
+            | "PHE"
+            | "GLY"
+            | "HIS"
+            | "ILE"
+            | "LYS"
+            | "LEU"
+            | "MET"
+            | "ASN"
+            | "PRO"
+            | "GLN"
+            | "ARG"
+            | "SER"
+            | "THR"
+            | "VAL"
+            | "TRP"
+            | "TYR"
+            | "A"
+            | "C"
+            | "DA"
+            | "DC"
+            | "DG"
+            | "G"
+            | "T"
+            | "U"
+            | "UNK"
+            | "N"
+            | "?"
+          ]
+        | [
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            )
+          ]
+        | [
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            )
+          ]
+        | [
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            ),
+            (
+              | "ALA"
+              | "CYS"
+              | "ASP"
+              | "GLU"
+              | "PHE"
+              | "GLY"
+              | "HIS"
+              | "ILE"
+              | "LYS"
+              | "LEU"
+              | "MET"
+              | "ASN"
+              | "PRO"
+              | "GLN"
+              | "ARG"
+              | "SER"
+              | "THR"
+              | "VAL"
+              | "TRP"
+              | "TYR"
+              | "A"
+              | "C"
+              | "DA"
+              | "DC"
+              | "DG"
+              | "G"
+              | "T"
+              | "U"
+              | "UNK"
+              | "N"
+              | "?"
+            )
+          ];
+    }[]
+  ];
   /**
    * Optionally: Stop after accepting this many hits.
    */
@@ -702,13 +1321,13 @@ export interface StrucmotifQueryParameters {
    */
   motif_pruning_strategy?: "NONE" | "KRUSKAL";
   /**
-   * When set: Consider only structures in the specified set.
+   * If the list of structure identifiers is specified, the search will only consider those structures
    */
-  whitelist?: string[];
+  allowed_structures?: [string, ...string[]];
   /**
-   * Specified entry identifiers will not be evaluated.
+   * If the list of structure identifiers is specified, the search will exclude those structures from the search space
    */
-  blacklist?: string[];
+  excluded_structures?: [string, ...string[]];
 }
 /**
  * Compound structure identifier that includes PDB code and residue identifiers.
@@ -721,7 +1340,54 @@ export interface StrucmotifQueryEntryParameters {
   /**
    * Provides the set of residue identifiers that define the query.
    */
-  residue_ids: ResidueIdentifier[];
+  residue_ids:
+    | [ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ];
 }
 export interface ResidueIdentifier {
   /**
@@ -738,20 +1404,63 @@ export interface ResidueIdentifier {
   label_seq_id: number;
 }
 /**
- * Base64-encoded file can be uploaded together with the provided file_format (cif, bcif).
+ * Upload Base64-encoded file in one of the following formats: cif, bcif
  */
 export interface StrucmotifQueryFileParameters {
   /**
-   * File content converted to a Base64 string.
+   * File content converted to a Base64 string
    */
-  file: string;
-  file_format: "cif" | "bcif";
+  data: string;
+  format: "cif" | "bcif";
   /**
-   * True if the content of the 'file' property is compressed by the GZIP algorithm (before being Base64-encoded).
+   * Provides the set of residue identifiers that define the query. Can be undefined if the submitted file property contains an extracted motif
    */
-  gzipped: boolean;
-  /**
-   * Provides the set of residue identifiers that define the query. Can be empty if the submitted file property contains an extracted motif.
-   */
-  residue_ids?: ResidueIdentifier[];
+  residue_ids?:
+    | [ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ];
 }

@@ -94,7 +94,6 @@ export enum Operator {
     Less = "less",
     LessOrEqual = "less_or_equal",
     Range = "range",
-    RangeClosed = "range_closed",
     ContainsWords = "contains_words",
     ContainsPhrase = "contains_phrase",
     ExactMatch = "exact_match",
@@ -120,11 +119,10 @@ export enum Target {
     PdbDnaSequence = "pdb_dna_sequence"
 }
 
-export enum FileFormat {
+export enum Format {
     Cif = "cif",
     Bcif = "bcif",
-    Pdb = "pdb",
-    Ccp4 = "ccp4"
+    Pdb = "pdb"
 }
 
 export enum DescriptorType {
@@ -148,39 +146,6 @@ export enum PatternType {
     Simple = "simple",
     Prosite = "prosite",
     Regex = "regex"
-}
-
-export enum Allowed {
-    Ala = "ALA",
-    Cys = "CYS",
-    Asp = "ASP",
-    Glu = "GLU",
-    Phe = "PHE",
-    Gly = "GLY",
-    His = "HIS",
-    Ile = "ILE",
-    Lys = "LYS",
-    Leu = "LEU",
-    Met = "MET",
-    Asn = "ASN",
-    Pro = "PRO",
-    Gln = "GLN",
-    Arg = "ARG",
-    Ser = "SER",
-    Thr = "THR",
-    Val = "VAL",
-    Trp = "TRP",
-    Tyr = "TYR",
-    A = "A",
-    C = "C",
-    Da = "DA",
-    Dc = "DC",
-    Dg = "DG",
-    G = "G",
-    T = "T",
-    U = "U",
-    Unk = "UNK",
-    N = "N"
 }
 
 export enum AtomPairingScheme {

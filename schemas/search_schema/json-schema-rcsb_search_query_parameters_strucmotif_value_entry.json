@@ -16,6 +16,8 @@
       "items": {
         "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
       },
+      "minItems": 2,
+      "maxItems": 10,
       "description": "Provides the set of residue identifiers that define the query."
     }
   },

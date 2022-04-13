@@ -3,6 +3,7 @@
   "title": "Range Facet",
   "type": "object",
   "required": [
+    "name",
     "aggregation_type",
     "attribute",
     "ranges"
@@ -10,7 +11,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Specifies the name of the aggregation. If undefined, the name of the attribute will be used as aggregation name"
+      "description": "Specifies the name of the aggregation"
     },
     "aggregation_type": {
       "type": "string",
@@ -39,14 +40,6 @@
       },
       "minItems": 1,
       "description": "A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range"
-    },
-    "min_interval_population": {
-      "type": "integer",
-      "description": "Minimum number of items in the bin required for the bin to be returned"
-    },
-    "max_num_intervals": {
-      "type": "integer",
-      "description": "Maximum number of intervals to return for a given facet"
     },
     "facets": {
       "$ref": "json-schema-rcsb_search_query_facets.json"

@@ -28,6 +28,5 @@
     ]
   },
   "minItems": 1,
-  "description": "Allows obtaining the aggregations relevant to the search query. When absent, aggregations are not returned. Multi-dimensional aggregations are allowed.",
-  "additionalProperties": false
+  "description": "Allows obtaining the aggregations relevant to the search query. When absent, aggregations are not returned. Multi-dimensional aggregations are allowed."
 }

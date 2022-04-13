@@ -60,7 +60,6 @@
           "$ref": "json-schema-rcsb_search_query_parameters_strucmotif.json"
         }
       ],
-      "minProperties": 1,
       "description": "Search parameters. Parameters are specific to the search service."
     },
     "label": {
@@ -68,5 +67,6 @@
       "description": "A textual description of what the node represents."
     }
   },
-  "description": "A terminal node is an atomic-level element within a query."
+  "description": "A terminal node is an atomic-level element within a query.",
+  "additionalProperties": false
 }

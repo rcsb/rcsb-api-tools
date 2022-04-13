@@ -32,5 +32,6 @@
       "$ref": "json-schema-rcsb_search_query_node_terminal.json#/properties/label"
     }
   },
+  "additionalProperties": false,
   "description": "A terminal node is an atomic-level element within a query."
 }

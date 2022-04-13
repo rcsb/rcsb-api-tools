@@ -3,34 +3,31 @@
   "title": "Strucmotif Query File Parameters",
   "type": "object",
   "required": [
-    "file",
-    "file_format",
-    "gzipped"
+    "data",
+    "format"
   ],
   "properties": {
-    "file": {
+    "data": {
       "type": "string",
-      "description": "File content converted to a Base64 string."
+      "description": "File content converted to a Base64 string"
     },
-    "file_format": {
+    "format": {
       "type": "string",
       "enum": [
         "cif",
         "bcif"
       ]
     },
-    "gzipped": {
-      "type": "boolean",
-      "description": "True if the content of the 'file' property is compressed by the GZIP algorithm (before being Base64-encoded)."
-    },
     "residue_ids": {
       "type": "array",
       "items": {
         "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
       },
-      "description": "Provides the set of residue identifiers that define the query. Can be empty if the submitted file property contains an extracted motif."
+      "minItems": 2,
+      "maxItems": 10,
+      "description": "Provides the set of residue identifiers that define the query. Can be undefined if the submitted file property contains an extracted motif"
     }
   },
   "additionalProperties": false,
-  "description": "Base64-encoded file can be uploaded together with the provided file_format (cif, bcif)."
+  "description": "Upload Base64-encoded file in one of the following formats: cif, bcif"
 }
