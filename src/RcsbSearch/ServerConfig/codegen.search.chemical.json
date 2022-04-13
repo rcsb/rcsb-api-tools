@@ -1,4 +1,4 @@
 {
-  "uri": "https://search-dev.rcsb.org/rcsbsearch/v1/query",
-  "schema": "https://search-dev.rcsb.org/rcsbsearch/v1/metadata/chemical/schema"
+  "uri": "https://search.rcsb.org/rcsbsearch/v2/query",
+  "schema": "https://search.rcsb.org/rcsbsearch/v2/metadata/chemical/schema"
 }
