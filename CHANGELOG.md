@@ -11,11 +11,17 @@
     - `"1d-coordinates"` requests to RCSB 1d-coordinate service (https://1d-coordinates.rcsb.org
     - `string` encoding a URL 
   - `config` additional configuration for `GraphQLClient` ('graphql-request' npm package https://www.npmjs.com/package/graphql-request) 
-  
-## [3.0.1] - 2022-03-17
 ### Improvement
 - Library adds caching and data compression at browser side through `localStorage`
   - This feature is not use in the back end
+
+## [3.0.2] - 2022-03-23
+### Bug fixes
+- JavaScript fetch bug fixed
+
+## [3.0.1] - 2022-03-23
+### Dependency update
+- Updated several dependencies
 
 ## [3.0.0] - 2022-02-14
 ### Breaking changes
