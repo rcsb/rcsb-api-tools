@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.0.1] - 2022-04-14
+### Bug fixes
+- Use `node-fetch` if `window.fetch` is not defined 
+
 ## [4.0.0] - 2022-04-13
 ### Breaking change
 - Replaced graphql client `@apollo/client` for `graphql-request`

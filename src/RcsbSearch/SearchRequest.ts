@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
 import * as serverSearch from "./ServerConfig/codegen.search.json";
@@ -11,7 +13,7 @@ export class SearchRequest {
         if(typeof externalFetch === "function")
             this.fetch = externalFetch;
         else
-            this.fetch = globalThis.window?.fetch;
+            this.fetch = globalThis.window?.fetch ?? fetch;
         if(!this.fetch)
             throw "ERROR: fetch function was not provided"
     }
