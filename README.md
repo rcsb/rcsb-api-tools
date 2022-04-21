@@ -9,7 +9,7 @@ the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https:/
 ### Requesting RCSB GraphQL data
 `import {GraphQLRequest} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/GraphQLRequest"`
 
-`const client = new GraphQLRequest("borrego"|"yosemity"|url);`
+`const client = new GraphQLRequest("data-api"|"1d-coordinates"|url);`
 
 `client.request(query_params, query_string)`;
 
