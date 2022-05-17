@@ -4,6 +4,7 @@ import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
 import * as serverSearch from "./ServerConfig/codegen.search.json";
 import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools";
+import {merge} from "lodash";
 
 export class SearchRequest {
     private readonly uri: string;
@@ -17,19 +18,18 @@ export class SearchRequest {
         if(!this.fetch)
             throw "ERROR: fetch function was not provided"
     }
-    public async request(query: SearchQuery, headers?: Object | null | undefined): Promise<QueryResult|null>{
+    public async request(query: SearchQuery, headers: HeadersInit = new Headers): Promise<QueryResult|null>{
         const localObj: QueryResult | null = LST.getItem<SearchQuery,QueryResult|null>(query);
-        const localHeaders : Object = headers || {};
+        const localHeaders: any = merge({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }, headers);
         if(localObj)
             return localObj;
         //TODO this fetch call is needed to avoid the error [TypeError: 'fetch' called on an object that does not implement interface Window.]
         const response: Response = await (globalThis.window?.fetch ?? this.fetch)(this.uri, {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                ...localHeaders
-            },
+            headers: localHeaders,
             body: JSON.stringify(query)
         });
         try {

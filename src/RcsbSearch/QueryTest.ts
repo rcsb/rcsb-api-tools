@@ -41,7 +41,7 @@ const query: SearchQuery = {
 };
 const searchRequest: SearchRequest = new SearchRequest(undefined, fetch as unknown as (input:RequestInfo,init?:RequestInit)=>Promise<Response>);
 const request = async ()=>{
-    const response: QueryResult|null = await searchRequest.request(query);
+    const response: QueryResult|null = await searchRequest.request(query, {"Custom": "1234"});
     console.log(response);
 }
 request().then(()=>{
