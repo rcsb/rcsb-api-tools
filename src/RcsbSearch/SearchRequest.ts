@@ -17,8 +17,9 @@ export class SearchRequest {
         if(!this.fetch)
             throw "ERROR: fetch function was not provided"
     }
-    public async request(query: SearchQuery): Promise<QueryResult|null>{
+    public async request(query: SearchQuery, headers?: Object | null | undefined): Promise<QueryResult|null>{
         const localObj: QueryResult | null = LST.getItem<SearchQuery,QueryResult|null>(query);
+        const localHeaders : Object = headers || {};
         if(localObj)
             return localObj;
         //TODO this fetch call is needed to avoid the error [TypeError: 'fetch' called on an object that does not implement interface Window.]
@@ -26,7 +27,8 @@ export class SearchRequest {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                ...localHeaders
             },
             body: JSON.stringify(query)
         });
