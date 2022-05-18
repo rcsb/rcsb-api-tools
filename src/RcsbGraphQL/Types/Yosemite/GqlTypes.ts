@@ -3273,16 +3273,6 @@ export interface GroupEntry {
   rcsb_id: Scalars['String'];
 }
 
-export interface GroupMembersAlignmentAlignedRegions {
-  __typename?: 'GroupMembersAlignmentAlignedRegions';
-  /** Aligned region length */
-  length: Scalars['Int'];
-  /** Entity seqeunce start position */
-  query_begin: Scalars['Int'];
-  /** NCBI sequence start position */
-  target_begin: Scalars['Int'];
-}
-
 export interface GroupMembersAlignmentScores {
   __typename?: 'GroupMembersAlignmentScores';
   query_coverage: Scalars['Int'];
@@ -10746,7 +10736,7 @@ export interface RcsbPolymerEntityGroupSequenceAlignment {
   __typename?: 'RcsbPolymerEntityGroupSequenceAlignment';
   /** Abstract reference where group members can be aligned to generate a MSA */
   abstract_reference: RcsbPolymerEntityGroupSequenceAlignmentAbstractReference;
-  /** List of alignments with core_entity canonical sequences */
+  /** Alignment with a core_entity canonical sequence */
   group_members_alignment: Array<Maybe<RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment>>;
 }
 
@@ -10760,9 +10750,9 @@ export interface RcsbPolymerEntityGroupSequenceAlignmentAbstractReference {
 
 export interface RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment {
   __typename?: 'RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment';
-  /** Aligned region */
-  aligned_regions: Array<Maybe<GroupMembersAlignmentAlignedRegions>>;
-  member_id?: Maybe<Scalars['String']>;
+  /** Alignment region encoded as a triplet [query_begin, target_begin, length] */
+  aligned_regions: Array<Maybe<Array<Maybe<Scalars['Int']>>>>;
+  member_id: Scalars['String'];
   /** Alignment scores */
   scores: GroupMembersAlignmentScores;
 }
