@@ -2,6 +2,12 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.0.2] - 2022-05-18
+### Improvement
+- `GraphQLRequest` exposed optional headers (`HeadersInit`) object in `request` method
+- `SearchRequest` exposed optional fetch configuration object `RequestInit` in the constructor
+- `SearchRequest` exposed optional headers (`HeadersInit`) object in `request` method
+
 ## [4.0.1] - 2022-04-14
 ### Bug fixes
 - Use `node-fetch` if `window.fetch` is not defined 
