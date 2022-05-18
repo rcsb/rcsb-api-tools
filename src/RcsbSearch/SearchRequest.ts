@@ -11,7 +11,13 @@ export class SearchRequest {
     private readonly requestConfig: RequestInit;
     constructor(uri?:string, externalFetch?:(input:RequestInfo,init?:RequestInit)=>Promise<Response>, requestConfig?: RequestInit) {
         this.uri = uri ?? serverSearch.uri;
-        this.requestConfig = requestConfig ?? {};
+        this.requestConfig =  {
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            ...(requestConfig ?? {})
+        };
         if(typeof externalFetch === "function")
             this.fetch = externalFetch;
         else
@@ -28,7 +34,10 @@ export class SearchRequest {
             ...this.requestConfig,
             method: 'POST',
             body: JSON.stringify(query),
-            headers: headers
+            headers: {
+                ...this.requestConfig.headers,
+                ...headers
+            }
         });
         try {
             const queryResult: QueryResult = await response.json() as QueryResult;
