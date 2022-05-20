@@ -13,7 +13,6 @@ export class SearchRequest {
         this.uri = uri ?? serverSearch.uri;
         this.requestConfig =  {
             headers:{
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             ...(requestConfig ?? {})

@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.0.3] - 2022-05-20
+### Bug fixes
+- Removed `'Accept': 'application/json'` header in `SearchRequest`
+
 ## [4.0.2] - 2022-05-18
 ### Improvement
 - `GraphQLRequest` exposed optional headers (`HeadersInit`) object in `request` method
