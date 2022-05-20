@@ -39,9 +39,13 @@ const query: SearchQuery = {
     },
     return_type: ReturnType.Entry
 };
-const searchRequest: SearchRequest = new SearchRequest(undefined, fetch as unknown as (input:RequestInfo,init?:RequestInit)=>Promise<Response>);
+const searchRequest: SearchRequest = new SearchRequest(undefined, fetch as unknown as (input:RequestInfo,init?:RequestInit)=>Promise<Response>, {
+    headers: {
+        "Custom-0": "XXXX"
+    }
+});
 const request = async ()=>{
-    const response: QueryResult|null = await searchRequest.request(query, {"Custom": "1234"});
+    const response: QueryResult|null = await searchRequest.request(query, {"Custom-1": "1234"});
     console.log(response);
 }
 request().then(()=>{

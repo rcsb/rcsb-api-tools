@@ -12,10 +12,6 @@ export class SearchRequest {
     constructor(uri?:string, externalFetch?:(input:RequestInfo,init?:RequestInit)=>Promise<Response>, requestConfig?: RequestInit) {
         this.uri = uri ?? serverSearch.uri;
         this.requestConfig =  {
-            headers:{
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
             ...(requestConfig ?? {})
         };
         if(typeof externalFetch === "function")
@@ -36,7 +32,9 @@ export class SearchRequest {
             body: JSON.stringify(query),
             headers: {
                 ...this.requestConfig.headers,
-                ...headers
+                ...headers,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }
         });
         try {
