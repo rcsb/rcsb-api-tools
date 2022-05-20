@@ -2,6 +2,11 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.0.4] - 2022-05-20
+### Minor refactor
+- `Content-Type` header added at request time
+- Removed `Accept` header
+
 ## [4.0.3] - 2022-05-20
 ### Bug fixes
 - Removed `'Accept': 'application/json'` header in `SearchRequest`
