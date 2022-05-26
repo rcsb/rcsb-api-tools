@@ -4,6 +4,10 @@
 
 ## [4.0.4] - 2022-05-20
 ### Minor refactor
+- `GraphQLRequest::request` method `headers` optional parameter is not initialyzed as emty  
+
+## [4.0.4] - 2022-05-20
+### Minor refactor
 - `Content-Type` header added at request time
 - Removed `Accept` header
 
