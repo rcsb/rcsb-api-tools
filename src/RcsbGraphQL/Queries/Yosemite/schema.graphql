@@ -345,6 +345,14 @@ type Citation {
     journal_abbrev: String
     """
 
+    Full name of the cited journal; relevant for journal articles.
+
+    Examples:
+    Journal of Molecular Biology
+    """
+    journal_full: String
+    """
+
     The American Society for Testing and Materials (ASTM) code
     assigned to the journal cited (also referred to as the CODEN
     designator of the Chemical Abstracts Service); relevant for
@@ -557,6 +565,7 @@ type CoreBranchedEntityInstance {
     rcsb_id: String!
     rcsb_latest_revision: RcsbLatestRevision
     rcsb_ligand_neighbors: [RcsbLigandNeighbors]
+    struct_asym: StructAsym
 }
 
 type CoreChemComp {
@@ -637,6 +646,7 @@ type CoreEntry {
     branched_entities: [CoreBranchedEntity]
     cell: Cell
     citation: [Citation]
+    database_2: [Database2]
     diffrn: [Diffrn]
     diffrn_detector: [DiffrnDetector]
     diffrn_radiation: [DiffrnRadiation]
@@ -668,6 +678,7 @@ type CoreEntry {
     exptl: [Exptl]
     exptl_crystal: [ExptlCrystal]
     exptl_crystal_grow: [ExptlCrystalGrow]
+    ma_data: [MaData]
     "Get all non-polymer (non-solvent) entities for this PDB entry."
     nonpolymer_entities: [CoreNonpolymerEntity]
     pdbx_SG_project: [PdbxSGProject]
@@ -708,6 +719,7 @@ type CoreEntry {
     "The list of content types associated with this entry."
     rcsb_associated_holdings: CurrentEntry
     rcsb_binding_affinity: [RcsbBindingAffinity]
+    rcsb_comp_model_provenance: RcsbCompModelProvenance
     rcsb_entry_container_identifiers: RcsbEntryContainerIdentifiers!
     rcsb_entry_group_membership: [RcsbEntryGroupMembership]
     rcsb_entry_info: RcsbEntryInfo!
@@ -720,6 +732,7 @@ type CoreEntry {
     1KIP
     """
     rcsb_id: String!
+    rcsb_ma_qa_metric_global: [RcsbMaQaMetricGlobal]
     rcsb_primary_citation: RcsbPrimaryCitation
     refine: [Refine]
     refine_analyze: [RefineAnalyze]
@@ -793,6 +806,7 @@ type CoreNonpolymerEntityInstance {
     rcsb_nonpolymer_instance_validation_score: [RcsbNonpolymerInstanceValidationScore]
     rcsb_nonpolymer_struct_conn: [RcsbNonpolymerStructConn]
     rcsb_target_neighbors: [RcsbTargetNeighbors]
+    struct_asym: StructAsym
 }
 
 type CorePfam {
@@ -926,6 +940,7 @@ type CorePolymerEntityInstance {
     rcsb_polymer_instance_feature: [RcsbPolymerInstanceFeature]
     rcsb_polymer_instance_feature_summary: [RcsbPolymerInstanceFeatureSummary]
     rcsb_polymer_struct_conn: [RcsbPolymerStructConn]
+    struct_asym: StructAsym
 }
 
 type CorePubmed {
@@ -975,6 +990,26 @@ type CurrentEntry {
     rcsb_id: String!
     rcsb_repository_holdings_current: RcsbRepositoryHoldingsCurrent
     rcsb_repository_holdings_current_entry_container_identifiers: RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers
+}
+
+type Database2 {
+    """
+
+    The code assigned by the database identified in
+    _database_2.database_id.
+
+    Examples:
+    1ABC, ABCDEF
+    """
+    database_code: String!
+    """
+
+    An abbreviation that identifies the database.
+
+    Allowable values:
+    AF, BMRB, CAS, CSD, EBI, EMDB, ICSD, MA, MDF, MODBASE, NBS, NDB, PDB, PDBE, PDB_ACC, PDF, RCSB, SMR, WWPDB
+    """
+    database_id: String!
 }
 
 type Diffrn {
@@ -1302,9 +1337,9 @@ type Em2dCrystalEntity {
     id: String!
     "pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category."
     image_processing_id: String!
-    "Unit-cell length a in Angstroms."
+    "Unit-cell length a in angstroms."
     length_a: Float
-    "Unit-cell length b in Angstroms."
+    "Unit-cell length b in angstroms."
     length_b: Float
     "Thickness of 2D crystal"
     length_c: Float
@@ -1335,11 +1370,11 @@ type Em3dCrystalEntity {
     id: String!
     "pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category."
     image_processing_id: String!
-    "Unit-cell length a in Angstroms."
+    "Unit-cell length a in angstroms."
     length_a: Float
-    "Unit-cell length b in Angstroms."
+    "Unit-cell length b in angstroms."
     length_b: Float
-    "Unit-cell length c in Angstroms."
+    "Unit-cell length c in angstroms."
     length_c: Float
     """
 
@@ -1507,7 +1542,7 @@ type Em3dReconstruction {
     refinement_type: String
     """
 
-    The final resolution (in Angstroms)of the 3D reconstruction.
+    The final resolution (in angstroms)of the 3D reconstruction.
 
     Examples:
     null, null
@@ -1583,7 +1618,7 @@ type EmDiffractionShell {
     fourier_space_coverage: Float
     """
 
-    High resolution limit for this shell (Angstroms)
+    High resolution limit for this shell (angstroms)
 
     Examples:
     null
@@ -1593,7 +1628,7 @@ type EmDiffractionShell {
     id: String!
     """
 
-    Low resolution limit for this shell (Angstroms)
+    Low resolution limit for this shell (angstroms)
 
     Examples:
     null
@@ -1639,7 +1674,7 @@ type EmDiffractionStats {
     fourier_space_coverage: Float
     """
 
-    High resolution limit of the structure factor data, in Angstroms
+    High resolution limit of the structure factor data, in angstroms
 
     Examples:
     null
@@ -2039,13 +2074,13 @@ type EmImaging {
     nominal_magnification: Int
     """
 
-    The specimen temperature maximum (degrees Kelvin) for the duration
+    The specimen temperature maximum (kelvin) for the duration
     of imaging.
     """
     recording_temperature_maximum: Float
     """
 
-    The specimen temperature minimum (degrees Kelvin) for the duration
+    The specimen temperature minimum (kelvin) for the duration
     of imaging.
     """
     recording_temperature_minimum: Float
@@ -2071,7 +2106,7 @@ type EmImaging {
     specimen_id: String
     """
 
-    The mean specimen stage temperature (degrees Kelvin) during imaging
+    The mean specimen stage temperature (in kelvin) during imaging
     in the microscope.
     """
     temperature: Float
@@ -2262,7 +2297,7 @@ type EmStaining {
 }
 
 type EmVitrification {
-    "The temperature (in degrees Kelvin) of the sample just prior to vitrification."
+    "The temperature (in kelvin) of the sample just prior to vitrification."
     chamber_temperature: Float
     """
 
@@ -2308,7 +2343,7 @@ type EmVitrification {
     specimen_id: String!
     """
 
-    The vitrification temperature (in degrees Kelvin), e.g.,
+    The vitrification temperature (in kelvin), e.g.,
     temperature of the plunge instrument cryogen bath.
     """
     temp: Float
@@ -2413,6 +2448,14 @@ type EntityPoly {
     MSHHWGYGKHNGPEHWHKDFPIAKGERQSPVDIDTHTAKYDPSLKPLSVSYDQATSLRILNNGAAFNVEFD
     """
     pdbx_seq_one_letter_code_can: String
+    """
+
+    Evidence for the assignment of the polymer sequence.
+
+    Allowable values:
+    depositor provided, derived from coordinates
+    """
+    pdbx_sequence_evidence_code: String
     """
 
     The PDB strand/chain id(s) corresponding to this polymer entity.
@@ -3070,6 +3113,8 @@ type Entry {
     identifier.
     """
     id: String!
+    "An identifier for the model collection associated with the entry."
+    ma_collection_id: String
 }
 
 type Exptl {
@@ -3288,15 +3333,6 @@ type GroupEntry {
     rcsb_id: String!
 }
 
-type GroupMembersAlignmentAlignedRegions {
-    "Aligned region length"
-    length: Int!
-    "Entity seqeunce start position"
-    query_begin: Int!
-    "NCBI sequence start position"
-    target_begin: Int!
-}
-
 type GroupMembersAlignmentScores {
     query_coverage: Int!
     query_length: Int!
@@ -3345,6 +3381,29 @@ type InterfacePartnerFeatureFeaturePositions {
     end_seq_id: Int
     "The value(s) of the feature over the monomer segment."
     values: [Float]
+}
+
+type MaData {
+    """
+
+    The type of data held in the dataset.
+
+    Allowable values:
+    coevolution MSA, input structure, model coordinates, other, polymeric template library, spatial restraints, target, target-template alignment, template structure
+    """
+    content_type: String
+    "Details for other content types."
+    content_type_other_details: String
+    "A unique identifier for the data."
+    id: Int!
+    """
+
+    An author-given name for the content held in the dataset.
+
+    Examples:
+    NMR NOE Distances, Target Template Alignment, Coevolution Data
+    """
+    name: String
 }
 
 type MethodDetails {
@@ -4301,7 +4360,7 @@ type PdbxNmrExptlSampleConditions {
     pressure_units: String
     """
 
-    The temperature (in Kelvin) at which NMR data were
+    The temperature (in kelvin) at which NMR data were
     collected.
     """
     temperature: String
@@ -4557,7 +4616,7 @@ type PdbxPrdAudit {
     An identifier for the wwPDB site creating or modifying the molecule.
 
     Allowable values:
-    BMRB, PDBC, PDBJ, PDBe, RCSB
+    BMRB, PDBC, PDBE, PDBJ, RCSB
     """
     processing_site: String
 }
@@ -8666,6 +8725,21 @@ type RcsbClusterMembership {
     identity: Int
 }
 
+type RcsbCompModelProvenance {
+    """
+
+    Source database for the computed structure model.
+
+    Allowable values:
+    AlphaFoldDB, ModelArchive
+    """
+    source_db: String
+    "Source filename for the computed structure model."
+    source_filename: String
+    "Source URL for computed structure model file."
+    source_url: String
+}
+
 type RcsbEntityHostOrganism {
     """
 
@@ -8914,7 +8988,7 @@ type RcsbEntitySourceOrganism {
     A code indicating the provenance of the source organism details for the entity
 
     Allowable values:
-    PDB Primary Data
+    PDB Primary Data, UniProt
     """
     provenance_source: String
     rcsb_gene_name: [RcsbEntitySourceOrganismRcsbGeneName]
@@ -9218,6 +9292,14 @@ type RcsbEntryInfo {
     software_programs_combined: [String]
     "The number of distinct solvent entities per deposited structure model."
     solvent_entity_count: Int
+    """
+
+    Indicates if the structure was determined using experimental, computational, or integrative methods.
+
+    Allowable values:
+    computational, experimental, integrative
+    """
+    structure_determination_methodology: String
 }
 
 type RcsbEntryInfoDiffrnResolutionHigh {
@@ -9555,6 +9637,49 @@ type RcsbLigandNeighbors {
     ligand_model_id: Int
     "The sequence position for the target instance."
     seq_id: Int
+}
+
+type RcsbMaQaMetricGlobal {
+    ma_qa_metric_global: [RcsbMaQaMetricGlobalMaQaMetricGlobal]
+    "The model identifier."
+    model_id: Int!
+}
+
+type RcsbMaQaMetricGlobalMaQaMetricGlobal {
+    """
+
+    Description of the global QA metric.
+
+    Examples:
+    confidence score predicting accuracy according to the CA-only Local Distance Difference Test (lDDT-CA) in [0,100]
+    """
+    description: String
+    """
+
+    Name of the global QA metric.
+
+    Examples:
+    pLDDT
+    """
+    name: String!
+    """
+
+    The type of global QA metric.
+
+    Allowable values:
+    PAE, contact probability, distance, energy, ipTM, normalized score, other, pLDDT, pLDDT all-atom, pLDDT all-atom in [0,1], pLDDT in [0,1], pTM, zscore
+    """
+    type: String!
+    "Details for other type of global QA metric."
+    type_other_details: String
+    """
+
+    Value of the global QA metric.
+
+    Examples:
+    null
+    """
+    value: Float!
 }
 
 type RcsbMembraneLineage {
@@ -10613,7 +10738,7 @@ type RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers {
     Source of the reference database assignment
 
     Allowable values:
-    PDB, RCSB, SIFTS
+    PDB, RCSB, SIFTS, UniProt
     """
     provenance_source: String
 }
@@ -10787,7 +10912,7 @@ type RcsbPolymerEntityGroupMembership {
 type RcsbPolymerEntityGroupSequenceAlignment {
     "Abstract reference where group members can be aligned to generate a MSA"
     abstract_reference: RcsbPolymerEntityGroupSequenceAlignmentAbstractReference!
-    "List of alignments with core_entity canonical sequences"
+    "Alignment with a core_entity canonical sequence"
     group_members_alignment: [RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment]!
 }
 
@@ -10799,9 +10924,9 @@ type RcsbPolymerEntityGroupSequenceAlignmentAbstractReference {
 }
 
 type RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment {
-    "Aligned region"
-    aligned_regions: [GroupMembersAlignmentAlignedRegions]!
-    member_id: String
+    "Alignment region encoded as a triplet [query_begin, target_begin, length]"
+    aligned_regions: [[Int]]!
+    member_id: String!
     "Alignment scores"
     scores: GroupMembersAlignmentScores!
 }
@@ -11020,7 +11145,7 @@ type RcsbPolymerInstanceFeature {
     A type or category of the feature.
 
     Allowable values:
-    ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
+    ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
     """
     type: String
 }
@@ -11031,7 +11156,7 @@ type RcsbPolymerInstanceFeatureAdditionalProperties {
     The additional property name.
 
     Allowable values:
-    CATH_DOMAIN_ID, CATH_NAME, ECOD_DOMAIN_ID, ECOD_FAMILY_NAME, OMEGA_ANGLE, PARTNER_ASYM_ID, PARTNER_BOND_DISTANCE, PARTNER_COMP_ID, SCOP2_DOMAIN_ID, SCOP2_FAMILY_ID, SCOP2_FAMILY_NAME, SCOP2_SUPERFAMILY_ID, SCOP2_SUPERFAMILY_NAME, SCOP_DOMAIN_ID, SCOP_NAME, SCOP_SUN_ID, SHEET_SENSE
+    CATH_DOMAIN_ID, CATH_NAME, ECOD_DOMAIN_ID, ECOD_FAMILY_NAME, MODELCIF_MODEL_ID, OMEGA_ANGLE, PARTNER_ASYM_ID, PARTNER_BOND_DISTANCE, PARTNER_COMP_ID, SCOP2_DOMAIN_ID, SCOP2_FAMILY_ID, SCOP2_FAMILY_NAME, SCOP2_SUPERFAMILY_ID, SCOP2_SUPERFAMILY_NAME, SCOP_DOMAIN_ID, SCOP_NAME, SCOP_SUN_ID, SHEET_SENSE
     """
     name: String
     "The value(s) of the additional property."
@@ -11101,7 +11226,7 @@ type RcsbPolymerInstanceFeatureSummary {
     Type or category of the feature.
 
     Allowable values:
-    ANGLE_OUTLIER, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SAbDab Antibody Heavy Chain Subclass, SAbDab Antibody Light Chain Subclass, SAbDab Antibody Light Chain Type, SCOP, SCOP2 Family, SCOP2 Superfamily, SCOP2B Superfamily, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+    ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
     """
     type: String
 }
@@ -13811,6 +13936,12 @@ type ReflnsShell {
 type Software {
     """
 
+    This data item is a pointer to _citation.id in the CITATION
+    category.
+    """
+    citation_id: String
+    """
+
     The classification of the program according to its
     major function.
 
@@ -13957,6 +14088,39 @@ type Struct {
     T4 lysozyme mutant - S32A, Rhinovirus 16 polymerase elongation complex (r1_form), Crystal structure of the OXA-10 W154A mutant at pH 9.0, Mutant structure of Thermus thermophilus HB8 uridine-cytidine kinase, Crystal structure of xylanase from Trichoderma longibrachiatum
     """
     title: String
+}
+
+type StructAsym {
+    """
+
+    This data item is a pointer to _atom_site.pdbx_PDB_strand_id the
+    ATOM_SITE category.
+
+    Examples:
+    1ABC
+    """
+    pdbx_PDB_id: String
+    """
+
+    This data item is a pointer to _atom_site.ndb_alias_strand_id the
+    ATOM_SITE category.
+    """
+    pdbx_alt_id: String
+    """
+
+    This data item gives the order of the structural elements in the
+    ATOM_SITE category.
+    """
+    pdbx_order: Int
+    """
+
+    This data item describes the general type of the structural elements
+    in the ATOM_SITE category.
+
+    Allowable values:
+    ATOMN, ATOMP, ATOMS, HETAC, HETAD, HETAI, HETAIN, HETAS, HETIC
+    """
+    pdbx_type: String
 }
 
 type StructKeywords {

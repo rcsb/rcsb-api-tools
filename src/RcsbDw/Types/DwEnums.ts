@@ -55,36 +55,26 @@ export enum Type {
     ModifiedMonomer = "modified_monomer",
     Mutation = "mutation",
     AngleOutlier = "ANGLE_OUTLIER",
+    Bend = "BEND",
     BondOutlier = "BOND_OUTLIER",
     CMannosylationSite_ = "C-MANNOSYLATION_SITE",
     Cath = "CATH",
     CisPeptide_ = "CIS-PEPTIDE",
     Ecod = "ECOD",
     HelixP = "HELIX_P",
-    MembraneSegment = "MEMBRANE_SEGMENT",
-    MogulAngleOutlier = "MOGUL_ANGLE_OUTLIER",
-    MogulBondOutlier = "MOGUL_BOND_OUTLIER",
-    NGlycosylationSite_ = "N-GLYCOSYLATION_SITE",
-    OGlycosylationSite_ = "O-GLYCOSYLATION_SITE",
-    RamachandranOutlier = "RAMACHANDRAN_OUTLIER",
-    RotamerOutlier = "ROTAMER_OUTLIER",
-    RsccOutlier = "RSCC_OUTLIER",
-    RsrzOutlier = "RSRZ_OUTLIER",
-    SGlycosylationSite_ = "S-GLYCOSYLATION_SITE",
-    SabdabAntibodyHeavyChainSubclass = "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS",
-    SabdabAntibodyLightChainSubclass = "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS",
-    SabdabAntibodyLightChainType = "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE",
-    Scop = "SCOP",
-    Scop2BSuperfamily = "SCOP2B_SUPERFAMILY",
-    Scop2Family = "SCOP2_FAMILY",
-    Scop2Superfamily = "SCOP2_SUPERFAMILY",
-    Sheet = "SHEET",
-    StereoOutlier = "STEREO_OUTLIER",
-    UnassignedSecStruct = "UNASSIGNED_SEC_STRUCT",
-    UnobservedAtomXyz = "UNOBSERVED_ATOM_XYZ",
-    UnobservedResidueXyz = "UNOBSERVED_RESIDUE_XYZ",
-    ZeroOccupancyAtomXyz = "ZERO_OCCUPANCY_ATOM_XYZ",
-    ZeroOccupancyResidueXyz = "ZERO_OCCUPANCY_RESIDUE_XYZ"
+    HelxLhPpP = "HELX_LH_PP_P",
+    HelxRh3TP = "HELX_RH_3T_P",
+    HelxRhAlP = "HELX_RH_AL_P",
+    HelxRhPiP = "HELX_RH_PI_P",
+    MaQaMetricLocalTypeContactProbability = "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY",
+    MaQaMetricLocalTypeDistance = "MA_QA_METRIC_LOCAL_TYPE_DISTANCE",
+    MaQaMetricLocalTypeEnergy = "MA_QA_METRIC_LOCAL_TYPE_ENERGY",
+    MaQaMetricLocalTypeIptm = "MA_QA_METRIC_LOCAL_TYPE_IPTM",
+    MaQaMetricLocalTypeNormalizedScore = "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE",
+    MaQaMetricLocalTypeOther = "MA_QA_METRIC_LOCAL_TYPE_OTHER",
+    MaQaMetricLocalTypePae = "MA_QA_METRIC_LOCAL_TYPE_PAE",
+    MaQaMetricLocalTypePlddt = "MA_QA_METRIC_LOCAL_TYPE_PLDDT",
+    MaQaMetricLocalTypePlddtAllAtom_ = "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM"
 }
 
 export enum PropertyName {
@@ -105,6 +95,7 @@ export enum PropertyName {
     CathName = "CATH_NAME",
     EcodDomainId = "ECOD_DOMAIN_ID",
     EcodFamilyName = "ECOD_FAMILY_NAME",
+    ModelcifModelId = "MODELCIF_MODEL_ID",
     OmegaAngle = "OMEGA_ANGLE",
     PartnerAsymId = "PARTNER_ASYM_ID",
     PartnerBondDistance = "PARTNER_BOND_DISTANCE",
@@ -219,6 +210,18 @@ export enum LigandIsBound {
     Y = "Y"
 }
 
+export enum PdbxType {
+    Atomn = "ATOMN",
+    Atomp = "ATOMP",
+    Atoms = "ATOMS",
+    Hetac = "HETAC",
+    Hetad = "HETAD",
+    Hetai = "HETAI",
+    Hetain = "HETAIN",
+    Hetas = "HETAS",
+    Hetic = "HETIC"
+}
+
 export enum PdbxProcessingSite {
     Ebi = "EBI",
     Pdbc = "PDBC",
@@ -239,8 +242,8 @@ export enum PdbxReleaseStatus {
 export enum ProcessingSite {
     Bmrb = "BMRB",
     Pdbc = "PDBC",
+    Pdbe = "PDBE",
     Pdbj = "PDBJ",
-    PdBe = "PDBe",
     Rcsb = "RCSB"
 }
 
@@ -301,6 +304,28 @@ export enum RcsbIsPrimary {
 export enum UnpublishedFlag {
     N = "N",
     Y = "Y"
+}
+
+export enum DatabaseId {
+    Af = "AF",
+    Bmrb = "BMRB",
+    Cas = "CAS",
+    Csd = "CSD",
+    Ebi = "EBI",
+    Emdb = "EMDB",
+    Icsd = "ICSD",
+    Ma = "MA",
+    Mdf = "MDF",
+    Modbase = "MODBASE",
+    Nbs = "NBS",
+    Ndb = "NDB",
+    Pdb = "PDB",
+    Pdbe = "PDBE",
+    PdbAcc = "PDB_ACC",
+    Pdf = "PDF",
+    Rcsb = "RCSB",
+    Smr = "SMR",
+    Wwpdb = "WWPDB"
 }
 
 export enum PdbxMonochromaticOrLaueML {
@@ -639,6 +664,11 @@ export enum HasReleasedExperimentalData {
     Y = "Y"
 }
 
+export enum SourceDb {
+    AlphaFoldDb = "AlphaFoldDB",
+    ModelArchive = "ModelArchive"
+}
+
 export enum ExperimentalMethod {
     Em = "EM",
     Multiplemethods = "Multiplemethods",
@@ -646,6 +676,12 @@ export enum ExperimentalMethod {
     Neutron = "Neutron",
     Other = "Other",
     XRay_ = "X-ray"
+}
+
+export enum StructureDeterminationMethodology {
+    Computational = "computational",
+    Experimental = "experimental",
+    Integrative = "integrative"
 }
 
 export enum LsMatrixType {
@@ -751,6 +787,11 @@ export enum NstdMonomer {
     No = "no",
     Y = "y",
     Yes = "yes"
+}
+
+export enum PdbxSequenceEvidenceCode {
+    Depositorprovided = "depositorprovided",
+    Derivedfromcoordinates = "derivedfromcoordinates"
 }
 
 export enum RcsbEntityPolymerType {

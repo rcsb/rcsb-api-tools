@@ -45,7 +45,7 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ASA", "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "hydropathy", "disorder", "disorder_binding", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "modified_monomer", "mutation", "ANGLE_OUTLIER", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs" ],
+            "enum" : [ "ASA", "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "hydropathy", "disorder", "disorder_binding", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "modified_monomer", "mutation", "ANGLE_OUTLIER", "BEND", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs" ],
             "examples" : [ "ASA_UNBOUND", "BINDING_SITE", "mutation", "artifact", "CATH", "SCOP" ],
             "description" : "The connection type.",
             "rcsb_enum_annotated" : [ {
@@ -249,6 +249,10 @@
               "detail" : "Molprobity bond angle outlier",
               "name" : "Molprobity bond angle outlier"
             }, {
+              "value" : "BEND",
+              "detail" : "Bend - region with high backbone curvature without specific hydrogen bonding",
+              "name" : "Bend - region with high backbone curvature without specific hydrogen bonding"
+            }, {
               "value" : "BINDING_SITE",
               "detail" : "Macromolecular target for ligand binding",
               "name" : "Ligand Binding Site"
@@ -276,6 +280,74 @@
               "value" : "HELIX_P",
               "detail" : "Protein helices",
               "name" : "Protein helices"
+            }, {
+              "value" : "HELX_LH_PP_P",
+              "detail" : "Left-handed polyproline helix (protein)",
+              "name" : "Left-handed polyproline helix (protein)"
+            }, {
+              "value" : "HELX_RH_3T_P",
+              "detail" : "Right-handed 3-10 helix (protein)",
+              "name" : "Right-handed 3-10 helix (protein)"
+            }, {
+              "value" : "HELX_RH_AL_P",
+              "detail" : "Alpha helix (protein)",
+              "name" : "Alpha helix (protein)"
+            }, {
+              "value" : "HELX_RH_PI_P",
+              "detail" : "Right-handed pi helix (protein)",
+              "name" : "Right-handed pi helix (protein)"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY",
+              "detail" : "the contact probability of a pairwise interaction",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_DISTANCE",
+              "detail" : "the lower the distance, the better the quality",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_ENERGY",
+              "detail" : "the lower the energy, the better the quality",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_IPTM",
+              "detail" : "confidence score of protein-protein interface based on the template modeling score in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE",
+              "detail" : "normalized score ranging from 0 to 1",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_OTHER",
+              "detail" : "other type of QA metric",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PAE",
+              "detail" : "predicted aligned error (in Angstroms)",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT",
+              "detail" : "confidence score predicting accuracy according to the CA-only Local Distance Difference Test (lDDT-CA) in [0,100]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM",
+              "detail" : "confidence score predicting accuracy according to the all-atom Local Distance Difference Test (lDDT) in [0,100]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]",
+              "detail" : "confidence score predicting accuracy according to the all-atom Local Distance Difference Test (lDDT) in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]",
+              "detail" : "confidence score predicting accuracy according to the CA-only Local Distance Difference Test (lDDT-CA) in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PTM",
+              "detail" : "confidence score predicting accuracy according to the template modeling score in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_ZSCORE",
+              "detail" : "number of standard deviations from optimal/best",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
             }, {
               "value" : "MEMBRANE_SEGMENT",
               "detail" : "Extent of a region located in a membrane",
@@ -353,6 +425,14 @@
               "detail" : "Stereochemical/chirality outlier",
               "name" : "Stereochemical/chirality outlier"
             }, {
+              "value" : "STRN",
+              "detail" : "Strand or beta-bridge (protein)",
+              "name" : "Strand or beta-bridge (protein)"
+            }, {
+              "value" : "TURN_TY1_P",
+              "detail" : "Type I turn (protein)",
+              "name" : "Type I turn (protein)"
+            }, {
               "value" : "UNASSIGNED_SEC_STRUCT",
               "detail" : "Unassigned secondary structure",
               "name" : "Unassigned secondary structure"
@@ -397,7 +477,7 @@
               "properties" : {
                 "property_name" : {
                   "type" : "string",
-                  "enum" : [ "LINK", "WILD_TYPE", "MUTATED_TYPE", "CONSEQUENCE_TYPE", "PREDICTED_IMPACT", "CLINICAL_SIGNIFICANCE", "EVIDENCE", "DISEASE_TYPE", "STRAIN_ID", "SUBTYPE", "CARD_MODEL_DESCRIPTION", "CARD_MODEL_ORGANISM", "PARENT_COMP_ID", "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
+                  "enum" : [ "LINK", "WILD_TYPE", "MUTATED_TYPE", "CONSEQUENCE_TYPE", "PREDICTED_IMPACT", "CLINICAL_SIGNIFICANCE", "EVIDENCE", "DISEASE_TYPE", "STRAIN_ID", "SUBTYPE", "CARD_MODEL_DESCRIPTION", "CARD_MODEL_ORGANISM", "PARENT_COMP_ID", "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "MODELCIF_MODEL_ID", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
                   "examples" : [ "PARENT_COMP_ID", "CATH_NAME", "PARTNER_BOND_DISTANCE" ],
                   "description" : "The additional property name.",
                   "rcsb_enum_annotated" : [ {
@@ -421,6 +501,9 @@
                   }, {
                     "value" : "ECOD_FAMILY_NAME",
                     "detail" : "ECOD Family Name"
+                  }, {
+                    "value" : "MODELCIF_MODEL_ID",
+                    "detail" : "ModelCIF Model Identifier"
                   }, {
                     "value" : "OMEGA_ANGLE",
                     "detail" : "Cis-Peptide Omega Angle"

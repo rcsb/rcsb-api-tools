@@ -871,5 +871,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Branched Entity",
   "description" : "JSON schema for branched entity core.",
-  "$comment" : "schema_version: 9.2.0"
+  "$comment" : "schema_version: 10.0.0"
 }

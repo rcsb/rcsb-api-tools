@@ -2,9 +2,15 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.0-models] - 2022-06-01
+### Improvements
+- New methods for collecting DW and Search API schemas
+  - `src/DownloadSchemas/DwSchemas.ts`
+  - `src/DownloadSchemas/SearchSchemas.ts`
+
 ## [4.0.4] - 2022-05-20
 ### Minor refactor
-- `GraphQLRequest::request` method `headers` optional parameter is not initialyzed as emty  
+- `GraphQLRequest::request` method `headers` optional parameter is not initialized as an empty object 
 
 ## [4.0.4] - 2022-05-20
 ### Minor refactor

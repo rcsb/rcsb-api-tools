@@ -29,6 +29,9 @@
     },
     "highlight": {
       "$ref": "json-schema-rcsb_search_suggest_highlighter.json"
+    },
+    "results_content_type": {
+      "$ref": "json-schema-rcsb_search_query_results_content_type.json"
     }
   },
   "additionalProperties": false

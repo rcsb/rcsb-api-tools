@@ -3,6 +3,19 @@
   "title": "Request Options",
   "type": "object",
   "properties": {
+    "results_content_type": {
+      "$ref": "json-schema-rcsb_search_query_results_content_type.json"
+    },
+    "results_verbosity": {
+      "type": "string",
+      "enum": [
+        "compact",
+        "minimal",
+        "verbose"
+      ],
+      "default": "minimal",
+      "description": "Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service"
+    },
     "facets": {
       "$ref": "json-schema-rcsb_search_query_facets.json"
     },
@@ -89,16 +102,6 @@
       "type": "boolean",
       "default": false,
       "description": "Allows obtaining the counts only instead of identifiers. When undefined, search result identifiers are returned"
-    },
-    "results_verbosity": {
-      "type": "string",
-      "enum": [
-        "compact",
-        "minimal",
-        "verbose"
-      ],
-      "default": "minimal",
-      "description": "Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service"
     },
     "return_explain_metadata": {
       "type": "boolean",

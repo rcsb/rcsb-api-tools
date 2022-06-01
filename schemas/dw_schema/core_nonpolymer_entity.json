@@ -692,5 +692,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Nonpolymer Entity",
   "description" : "JSON schema for nonpolymer entity core.",
-  "$comment" : "schema_version: 9.2.0"
+  "$comment" : "schema_version: 10.0.0"
 }

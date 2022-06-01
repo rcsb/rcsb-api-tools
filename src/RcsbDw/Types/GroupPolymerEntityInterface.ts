@@ -165,38 +165,44 @@ export interface GroupPolymerEntity {
     /**
      * List of alignments with core_entity canonical sequences
      */
-    group_members_alignment: {
-      /**
-       * Alignment scores
-       */
-      scores: {
-        target_coverage: number;
-        query_coverage: number;
-        target_length: number;
-        query_length: number;
+    group_members_alignment: [
+      {
+        member_id: string;
+        /**
+         * Alignment scores
+         */
+        scores: {
+          target_coverage: number;
+          query_coverage: number;
+          target_length: number;
+          query_length: number;
+          [k: string]: unknown;
+        };
+        /**
+         * List of alignments with core_entity canonical sequences encoded as an array of triplets [query_begin, target_begin, length]
+         */
+        aligned_regions: [number, number, number][];
         [k: string]: unknown;
-      };
-      /**
-       * Aligned sequence regions
-       */
-      aligned_regions: {
+      },
+      ...{
+        member_id: string;
         /**
-         * NCBI sequence start position
+         * Alignment scores
          */
-        target_begin: number;
+        scores: {
+          target_coverage: number;
+          query_coverage: number;
+          target_length: number;
+          query_length: number;
+          [k: string]: unknown;
+        };
         /**
-         * Entity seqeunce start position
+         * List of alignments with core_entity canonical sequences encoded as an array of triplets [query_begin, target_begin, length]
          */
-        query_begin: number;
-        /**
-         * Aligned region length
-         */
-        length: number;
+        aligned_regions: [number, number, number][];
         [k: string]: unknown;
-      }[];
-      member_id?: string;
-      [k: string]: unknown;
-    }[];
+      }[]
+    ];
     [k: string]: unknown;
   };
 }

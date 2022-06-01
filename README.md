@@ -134,6 +134,19 @@ i.e. `AggregationType.Terms = "terms"`, `AggregationType.Histogram = "histogram"
 
 #### External schemas 
 
-- DW schemas rcsb-mojave-model:target/generated-sources/schema/core
-- Search schemas rcsb-arches:src/main/resources/schema
+- DW schemas are collected from rcsb-mojave-model project released in maven.
+  - rcsb-mojave-model:target/generated-sources/schema/core
+  
+- Search API schemas are collected from the rcsb-arches git repo.
+  - rcsb-arches:src/main/resources/schema
+
+##### Download external schemas
+
+- DW schemas
+  - `npm run downloadDwSchemas -- --schema-version <VERSION-TAG>`
+  - E.g. `npm run downloadDwSchemas -- --schema-version 1.32.1-MODELS-SNAPSHOT`
+  - 
+- Search schemas
+  -  `npm run downloadSearchSchemas --  --branch-name <GIT-REMOTE-BRANCH-NAME>`
+  -  E.g. `npm run downloadSearchSchemas --  --branch-name dev-computed-models`
 

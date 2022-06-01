@@ -28,6 +28,12 @@ export enum ReturnType {
     MolDefinition = "mol_definition"
 }
 
+export enum ResultsVerbosity {
+    Compact = "compact",
+    Minimal = "minimal",
+    Verbose = "verbose"
+}
+
 export enum GroupByReturnType {
     Groups = "groups",
     Representatives = "representatives"
@@ -43,12 +49,6 @@ export enum ScoringStrategy {
     Text = "text",
     TextChem = "text_chem",
     FullText = "full_text"
-}
-
-export enum ResultsVerbosity {
-    Compact = "compact",
-    Minimal = "minimal",
-    Verbose = "verbose"
 }
 
 export enum AggregationType {

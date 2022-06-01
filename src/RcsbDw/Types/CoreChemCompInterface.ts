@@ -577,7 +577,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       /**
        * An identifier for the wwPDB site creating or modifying the molecule.
        */
-      processing_site?: "BMRB" | "PDBC" | "PDBJ" | "PDBe" | "RCSB";
+      processing_site?: "BMRB" | "PDBC" | "PDBE" | "PDBJ" | "RCSB";
     },
     ...{
       /**
@@ -616,7 +616,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       /**
        * An identifier for the wwPDB site creating or modifying the molecule.
        */
-      processing_site?: "BMRB" | "PDBC" | "PDBJ" | "PDBe" | "RCSB";
+      processing_site?: "BMRB" | "PDBC" | "PDBE" | "PDBJ" | "RCSB";
     }[]
   ];
   pdbx_reference_entity_list?: [

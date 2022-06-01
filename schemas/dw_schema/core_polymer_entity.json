@@ -104,6 +104,15 @@
             "context" : "dictionary"
           } ]
         },
+        "pdbx_sequence_evidence_code" : {
+          "type" : "string",
+          "enum" : [ "depositor provided", "derived from coordinates" ],
+          "description" : "Evidence for the assignment of the polymer sequence.",
+          "rcsb_description" : [ {
+            "text" : "Evidence for the assignment of the polymer sequence.",
+            "context" : "dictionary"
+          } ]
+        },
         "pdbx_strand_id" : {
           "type" : "string",
           "examples" : [ "A,B", "A", "B", "A,B,C" ],
@@ -1323,7 +1332,7 @@
           },
           "provenance_source" : {
             "type" : "string",
-            "enum" : [ "PDB Primary Data" ],
+            "enum" : [ "PDB Primary Data", "UniProt" ],
             "description" : "A code indicating the provenance of the source organism details for the entity",
             "rcsb_description" : [ {
               "text" : "A code indicating the provenance of the source organism details for the entity",
@@ -2297,7 +2306,7 @@
               },
               "provenance_source" : {
                 "type" : "string",
-                "enum" : [ "PDB", "RCSB", "SIFTS" ],
+                "enum" : [ "PDB", "RCSB", "SIFTS", "UniProt" ],
                 "examples" : [ "PDB", "SIFTS" ],
                 "description" : "Source of the reference database assignment",
                 "rcsb_description" : [ {
@@ -3332,7 +3341,7 @@
   },
   "additionalProperties" : false,
   "description" : "JSON schema for polymer entity core.",
-  "$comment" : "schema_version: 9.2.1",
+  "$comment" : "schema_version: 10.0.0",
   "required" : [ "rcsb_id", "rcsb_polymer_entity_container_identifiers" ],
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Polymer Entity"

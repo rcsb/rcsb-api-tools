@@ -94,6 +94,10 @@ export interface CorePolymerEntity {
      */
     pdbx_seq_one_letter_code_can?: string;
     /**
+     * Evidence for the assignment of the polymer sequence.
+     */
+    pdbx_sequence_evidence_code?: "depositor provided" | "derived from coordinates";
+    /**
      * The PDB strand/chain id(s) corresponding to this polymer entity.
      */
     pdbx_strand_id?: string;
@@ -1342,7 +1346,7 @@ export interface CorePolymerEntity {
       /**
        * A code indicating the provenance of the source organism details for the entity
        */
-      provenance_source?: "PDB Primary Data";
+      provenance_source?: "PDB Primary Data" | "UniProt";
       /**
        * The scientific name of the source organism assigned by the PDB depositor.
        */
@@ -1461,7 +1465,7 @@ export interface CorePolymerEntity {
       /**
        * A code indicating the provenance of the source organism details for the entity
        */
-      provenance_source?: "PDB Primary Data";
+      provenance_source?: "PDB Primary Data" | "UniProt";
       /**
        * The scientific name of the source organism assigned by the PDB depositor.
        */
@@ -1791,7 +1795,7 @@ export interface CorePolymerEntity {
       /**
        * Source of the reference database assignment
        */
-      provenance_source?: "PDB" | "RCSB" | "SIFTS";
+      provenance_source?: "PDB" | "RCSB" | "SIFTS" | "UniProt";
     }[];
     uniprot_ids?: [string, ...string[]];
   };

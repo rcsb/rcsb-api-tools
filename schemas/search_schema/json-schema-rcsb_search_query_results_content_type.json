@@ -1,0 +1,15 @@
+{
+  "$id": "/schema/json-schema-rcsb_search_query_results_content_type.json",
+  "title": "Results Content Type",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "enum": [
+      "experimental",
+      "computational"
+    ],
+    "description": ""
+  },
+  "default": ["experimental"],
+  "minItems": 1
+}
