@@ -43,6 +43,9 @@ export interface CoreInterface {
        */
       asym_id: string;
     };
+    /**
+     * @minItems 1
+     */
     interface_partner_feature?: [
       {
         /**

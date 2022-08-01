@@ -10,11 +10,8 @@ export interface Scalars {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** Built-in scalar representing an instant in time */
   Date: any;
-  /** Built-in scalar for dynamic values */
   ObjectScalar: any;
-  /** Use SPQR's SchemaPrinter to remove this from SDL */
   UNREPRESENTABLE: any;
 }
 
@@ -653,7 +650,6 @@ export interface CoreEntry {
   branched_entities?: Maybe<Array<Maybe<CoreBranchedEntity>>>;
   cell?: Maybe<Cell>;
   citation?: Maybe<Array<Maybe<Citation>>>;
-  database_2?: Maybe<Array<Maybe<Database2>>>;
   diffrn?: Maybe<Array<Maybe<Diffrn>>>;
   diffrn_detector?: Maybe<Array<Maybe<DiffrnDetector>>>;
   diffrn_radiation?: Maybe<Array<Maybe<DiffrnRadiation>>>;
@@ -1006,27 +1002,6 @@ export interface CurrentEntry {
   rcsb_id: Scalars['String'];
   rcsb_repository_holdings_current?: Maybe<RcsbRepositoryHoldingsCurrent>;
   rcsb_repository_holdings_current_entry_container_identifiers?: Maybe<RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers>;
-}
-
-export interface Database2 {
-  __typename?: 'Database2';
-  /**
-   * The code assigned by the database identified in
-   *  _database_2.database_id.
-   *
-   * Examples:
-   * 1ABC, ABCDEF
-   *
-   */
-  database_code: Scalars['String'];
-  /**
-   * An abbreviation that identifies the database.
-   *
-   * Allowable values:
-   * AF, BMRB, CAS, CSD, EBI, EMDB, ICSD, MA, MDF, MODBASE, NBS, NDB, PDB, PDBE, PDB_ACC, PDF, RCSB, SMR, WWPDB
-   *
-   */
-  database_id: Scalars['String'];
 }
 
 export interface Diffrn {
@@ -8658,6 +8633,8 @@ export interface RcsbClusterMembership {
 
 export interface RcsbCompModelProvenance {
   __typename?: 'RcsbCompModelProvenance';
+  /** Entry identifier corresponding to the computed structure model. */
+  entry_id: Scalars['String'];
   /**
    * Source database for the computed structure model.
    *
@@ -9215,10 +9192,10 @@ export interface RcsbEntryInfo {
   /** The number of distinct solvent entities per deposited structure model. */
   solvent_entity_count?: Maybe<Scalars['Int']>;
   /**
-   * Indicates if the structure was determined using experimental, computational, or integrative methods.
+   * Indicates if the structure was determined using experimental or computational methods.
    *
    * Allowable values:
-   * computational, experimental, integrative
+   * computational, experimental
    *
    */
   structure_determination_methodology?: Maybe<Scalars['String']>;

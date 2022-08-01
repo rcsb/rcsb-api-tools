@@ -20,6 +20,9 @@ export interface EntityAnnotations {
      */
     asym_id?: string;
   };
+  /**
+   * @minItems 1
+   */
   annotations?: [
     {
       /**

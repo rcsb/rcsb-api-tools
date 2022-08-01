@@ -153,6 +153,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       | "peptide-like"
       | "saccharide";
   };
+  /**
+   * @minItems 1
+   */
   pdbx_chem_comp_audit?: [
     {
       /**
@@ -253,6 +256,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       ordinal: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_chem_comp_descriptor?: [
     {
       /**
@@ -335,6 +341,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
         | "SMILES_CANONICAL";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_chem_comp_feature?: [
     {
       /**
@@ -373,6 +382,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       value: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_chem_comp_identifier?: [
     {
       /**
@@ -451,6 +463,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
         | "SYSTEMATIC NAME";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_family_prd_audit?: [
     {
       /**
@@ -539,6 +554,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       processing_site?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_prd_audit?: [
     {
       /**
@@ -619,6 +637,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       processing_site?: "BMRB" | "PDBC" | "PDBE" | "PDBJ" | "RCSB";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_entity_list?: [
     {
       /**
@@ -669,6 +690,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       type?: "branched" | "non-polymer" | "polymer" | "polymer-like";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_entity_poly?: [
     {
       /**
@@ -719,6 +743,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       type?: "nucleic-acid-like" | "oligosaccharide" | "peptide-like" | "polysaccharide-like";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_entity_poly_link?: [
     {
       /**
@@ -859,6 +886,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       value_order?: "arom" | "delo" | "doub" | "pi" | "poly" | "quad" | "sing" | "trip";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_entity_poly_seq?: [
     {
       /**
@@ -933,6 +963,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       ref_entity_id: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_entity_sequence?: [
     {
       /**
@@ -983,6 +1016,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       type?: "peptide-like" | "saccharide";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_entity_src_nat?: [
     {
       /**
@@ -1246,6 +1282,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
      */
     type_evidence_code?: string;
   };
+  /**
+   * @minItems 1
+   */
   pdbx_reference_molecule_annotation?: [
     {
       /**
@@ -1304,6 +1343,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       type?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_molecule_details?: [
     {
       /**
@@ -1383,6 +1425,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
      */
     replaces?: string;
   };
+  /**
+   * @minItems 1
+   */
   pdbx_reference_molecule_features?: [
     {
       /**
@@ -1453,6 +1498,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       value?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_molecule_list?: [
     {
       /**
@@ -1489,6 +1537,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       prd_id: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_molecule_related_structures?: [
     {
       /**
@@ -1595,6 +1646,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       ordinal: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_reference_molecule_synonyms?: [
     {
       /**
@@ -1647,6 +1701,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       source?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_bird_citation?: [
     {
       /**
@@ -1745,6 +1802,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       year?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_chem_comp_annotation?: [
     {
       /**
@@ -1954,6 +2014,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
      */
     revision_date?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_chem_comp_related?: [
     {
       /**
@@ -2020,6 +2083,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       resource_name?: "CAS" | "CCDC/CSD" | "ChEBI" | "ChEMBL" | "DrugBank" | "Pharos" | "PubChem" | "RESID";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_chem_comp_synonyms?: [
     {
       /**
@@ -2116,6 +2182,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
         | "Systematic Name";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_chem_comp_target?: [
     {
       /**
@@ -2184,6 +2253,9 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion712 {
       target_actions?: string[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_schema_container_identifiers?: [
     {
       /**

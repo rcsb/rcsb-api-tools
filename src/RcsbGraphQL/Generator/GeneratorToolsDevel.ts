@@ -5,7 +5,7 @@ import { generate } from '@graphql-codegen/cli';
 import { buildSchema, printSchema, parse, GraphQLSchema } from 'graphql';
 import * as typescriptPlugin from '@graphql-codegen/typescript';
 import {Types} from "@graphql-codegen/plugin-helpers";
-import {loadSchema} from "@graphql-codegen/cli/load";
+import {loadSchema} from "@graphql-codegen/cli/typings/load";
 
 export async function generateInterfaces(schemaFile: string, interfaceOutputFile: string, documents?: string, pluginConfig?: {outputFile:string, pluginFile:string}) {
     const schemaSource: GraphQLSchema = await loadSchema(schemaFile,{generates:{}});

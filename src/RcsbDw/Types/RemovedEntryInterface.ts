@@ -71,6 +71,9 @@ export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsRemovedEntr
      */
     title?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_repository_holdings_removed_audit_author?: [
     {
       /**

@@ -138,7 +138,6 @@ export class CoreConstants{
 	public static readonly BRANCHED_ENTITIES = "branched_entities";
 	public static readonly CELL = "cell";
 	public static readonly CITATION = "citation";
-	public static readonly DATABASE_2 = "database_2";
 	public static readonly DIFFRN = "diffrn";
 	public static readonly DIFFRN_DETECTOR = "diffrn_detector";
 	public static readonly DIFFRN_RADIATION = "diffrn_radiation";
@@ -304,8 +303,6 @@ export class CoreConstants{
 	public static readonly RCSB_UNIPROT_PROTEIN = "rcsb_uniprot_protein";
 	public static readonly RCSB_REPOSITORY_HOLDINGS_CURRENT = "rcsb_repository_holdings_current";
 	public static readonly RCSB_REPOSITORY_HOLDINGS_CURRENT_ENTRY_CONTAINER_IDENTIFIERS = "rcsb_repository_holdings_current_entry_container_identifiers";
-	public static readonly DATABASE_CODE = "database_code";
-	public static readonly DATABASE_ID = "database_id";
 	public static readonly AMBIENT_PRESSURE = "ambient_pressure";
 	public static readonly AMBIENT_TEMP = "ambient_temp";
 	public static readonly AMBIENT_TEMP_DETAILS = "ambient_temp_details";

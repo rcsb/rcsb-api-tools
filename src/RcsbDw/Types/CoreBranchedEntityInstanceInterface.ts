@@ -9,6 +9,9 @@
  * JSON schema for branched entity instance core data.
  */
 export interface CoreBranchedEntityInstance {
+  /**
+   * @minItems 1
+   */
   pdbx_struct_special_symmetry?: [
     {
       /**
@@ -108,6 +111,9 @@ export interface CoreBranchedEntityInstance {
      */
     rcsb_id?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_branched_instance_annotation?: [
     {
       /**
@@ -208,6 +214,9 @@ export interface CoreBranchedEntityInstance {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_branched_instance_feature?: [
     {
       /**
@@ -410,6 +419,9 @@ export interface CoreBranchedEntityInstance {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_branched_instance_feature_summary?: [
     {
       /**
@@ -496,6 +508,9 @@ export interface CoreBranchedEntityInstance {
         | "ZERO_OCCUPANCY_RESIDUE_XYZ";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_branched_struct_conn?: [
     {
       /**
@@ -796,6 +811,9 @@ export interface CoreBranchedEntityInstance {
       };
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_ligand_neighbors?: [
     {
       /**

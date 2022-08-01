@@ -49,6 +49,9 @@ export interface CoreAssembly {
      */
     rcsb_details?: "author_and_software_defined_assembly" | "author_defined_assembly" | "software_defined_assembly";
   };
+  /**
+   * @minItems 1
+   */
   pdbx_struct_assembly_auth_evidence?: [
     {
       /**
@@ -125,6 +128,9 @@ export interface CoreAssembly {
       id: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_struct_assembly_gen?: [
     {
       /**
@@ -183,6 +189,9 @@ export interface CoreAssembly {
       ordinal: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_struct_assembly_prop?: [
     {
       /**
@@ -221,6 +230,9 @@ export interface CoreAssembly {
       value?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_struct_oper_list?: [
     {
       /**
@@ -638,6 +650,9 @@ export interface CoreAssembly {
    *  a dash separated concatenation of entry and assembly identifiers.
    */
   rcsb_id: string;
+  /**
+   * @minItems 1
+   */
   rcsb_struct_symmetry?: [
     {
       /**
@@ -650,6 +665,8 @@ export interface CoreAssembly {
       type: "Asymmetric" | "Cyclic" | "Dihedral" | "Tetrahedral" | "Octahedral" | "Icosahedral" | "Helical";
       /**
        * Stoichiometry of a complex represents the quantitative description and composition of its subunits.
+       *
+       * @minItems 1
        */
       stoichiometry: [string, ...string[]];
       /**
@@ -658,9 +675,14 @@ export interface CoreAssembly {
       oligomeric_state: string;
       /**
        * Clusters describe grouping of 'identical' subunits.
+       *
+       * @minItems 1
        */
       clusters: [
         {
+          /**
+           * @minItems 1
+           */
           members: [
             {
               /**
@@ -669,6 +691,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             },
@@ -679,6 +703,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             }[]
@@ -689,6 +715,9 @@ export interface CoreAssembly {
           avg_rmsd?: number;
         },
         ...{
+          /**
+           * @minItems 1
+           */
           members: [
             {
               /**
@@ -697,6 +726,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             },
@@ -707,6 +738,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             }[]
@@ -719,15 +752,23 @@ export interface CoreAssembly {
       ];
       /**
        * Specifies a single or multiple rotation axes through the same point.
+       *
+       * @minItems 1
        */
       rotation_axes?: [
         {
           /**
            * Describes x,y,z coordinate of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           start: [number, number, number];
           /**
            * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           end: [number, number, number];
           /**
@@ -738,10 +779,16 @@ export interface CoreAssembly {
         ...{
           /**
            * Describes x,y,z coordinate of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           start: [number, number, number];
           /**
            * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           end: [number, number, number];
           /**
@@ -766,6 +813,8 @@ export interface CoreAssembly {
       type: "Asymmetric" | "Cyclic" | "Dihedral" | "Tetrahedral" | "Octahedral" | "Icosahedral" | "Helical";
       /**
        * Stoichiometry of a complex represents the quantitative description and composition of its subunits.
+       *
+       * @minItems 1
        */
       stoichiometry: [string, ...string[]];
       /**
@@ -774,9 +823,14 @@ export interface CoreAssembly {
       oligomeric_state: string;
       /**
        * Clusters describe grouping of 'identical' subunits.
+       *
+       * @minItems 1
        */
       clusters: [
         {
+          /**
+           * @minItems 1
+           */
           members: [
             {
               /**
@@ -785,6 +839,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             },
@@ -795,6 +851,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             }[]
@@ -805,6 +863,9 @@ export interface CoreAssembly {
           avg_rmsd?: number;
         },
         ...{
+          /**
+           * @minItems 1
+           */
           members: [
             {
               /**
@@ -813,6 +874,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             },
@@ -823,6 +886,8 @@ export interface CoreAssembly {
               asym_id: string;
               /**
                * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
+               *
+               * @minItems 1
                */
               pdbx_struct_oper_list_ids?: [string, ...string[]];
             }[]
@@ -835,15 +900,23 @@ export interface CoreAssembly {
       ];
       /**
        * Specifies a single or multiple rotation axes through the same point.
+       *
+       * @minItems 1
        */
       rotation_axes?: [
         {
           /**
            * Describes x,y,z coordinate of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           start: [number, number, number];
           /**
            * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           end: [number, number, number];
           /**
@@ -854,10 +927,16 @@ export interface CoreAssembly {
         ...{
           /**
            * Describes x,y,z coordinate of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           start: [number, number, number];
           /**
            * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
            */
           end: [number, number, number];
           /**
@@ -876,6 +955,9 @@ export interface CoreAssembly {
    * The title and version of software package used for symmetry calculations.
    */
   rcsb_struct_symmetry_provenance_code?: string;
+  /**
+   * @minItems 1
+   */
   rcsb_struct_symmetry_lineage?: [
     {
       /**

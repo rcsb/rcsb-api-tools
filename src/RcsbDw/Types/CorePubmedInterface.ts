@@ -33,14 +33,20 @@ export interface CorePubMed {
   rcsb_pubmed_abstract_text?: string;
   /**
    * The institution(s) that the author is affiliated with. Multiple affiliations per author are allowed.
+   *
+   * @minItems 1
    */
   rcsb_pubmed_affiliation_info?: [string, ...string[]];
   /**
    * NLM controlled vocabulary, Medical Subject Headings (MeSH), is used to characterize the content of the articles represented by MEDLINE citations.
+   *
+   * @minItems 1
    */
   rcsb_pubmed_mesh_descriptors?: [string, ...string[]];
   /**
    * Members of the MeSH classification lineage.
+   *
+   * @minItems 1
    */
   rcsb_pubmed_mesh_descriptors_lineage?: [
     {

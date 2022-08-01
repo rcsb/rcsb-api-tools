@@ -27,10 +27,14 @@ export interface RCSBTreeNode {
   depth?: number;
   /**
    * ID(s) of the node’s immediate parents.
+   *
+   * @minItems 1
    */
   parents?: [string, ...string[]];
   /**
    * Terms or IDs related to the node.
+   *
+   * @minItems 1
    */
   related?: [string, ...string[]];
 }

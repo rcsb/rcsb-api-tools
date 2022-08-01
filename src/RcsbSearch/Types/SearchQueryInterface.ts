@@ -5,9 +5,14 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * @minItems 1
+ */
 export type ResultsContentType = ["experimental" | "computational", ...("experimental" | "computational")[]];
 /**
  * Allows obtaining the aggregations relevant to the search query. When absent, aggregations are not returned. Multi-dimensional aggregations are allowed.
+ *
+ * @minItems 1
  */
 export type RequestOptionsFacets = [
   TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet,
@@ -68,6 +73,9 @@ export interface RequestOptions {
    * Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group
    */
   group_by_return_type?: "groups" | "representatives";
+  /**
+   * @minItems 1
+   */
   sort?: [SortOptionAttributes | SortOptionGroups, ...(SortOptionAttributes | SortOptionGroups)[]];
   /**
    * Pagination allows returning only a portion, rather than the whole, result set. By default, only top 10 search matches
@@ -204,6 +212,8 @@ export interface RangeFacet {
   attribute: string;
   /**
    * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range
+   *
+   * @minItems 1
    */
   ranges: [
     {
@@ -249,6 +259,8 @@ export interface DateRangeFacet {
   attribute: string;
   /**
    * A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range.
+   *
+   * @minItems 1
    */
   ranges: [
     {
@@ -311,6 +323,9 @@ export interface FilterQueryGroupNode {
    * Boolean operator connects and defines the relationship between the child nodes.
    */
   logical_operator: "or" | "and";
+  /**
+   * @minItems 1
+   */
   nodes: [FilterQueryTerminalNode | FilterQueryGroupNode, ...(FilterQueryTerminalNode | FilterQueryGroupNode)[]];
 }
 /**
@@ -446,6 +461,9 @@ export interface GroupNode {
    * Boolean operator connects and defines the relationship between the child nodes.
    */
   logical_operator: "or" | "and";
+  /**
+   * @minItems 1
+   */
   nodes: [TerminalNode | GroupNode, ...(TerminalNode | GroupNode)[]];
   /**
    * A textual description of what the node represents.
@@ -627,10 +645,16 @@ export interface StrucmotifQueryParameters {
   rmsd_cutoff?: number;
   /**
    * Specifies all allowed amino acids at a certain position. You can specify non more than 16 allowed residues in total
+   *
+   * @minItems 1
    */
   exchanges?: [
     {
       residue_id: ResidueIdentifier;
+      /**
+       * @minItems 1
+       * @maxItems 4
+       */
       allowed?:
         | [
             | "ALA"
@@ -971,6 +995,10 @@ export interface StrucmotifQueryParameters {
     },
     ...{
       residue_id: ResidueIdentifier;
+      /**
+       * @minItems 1
+       * @maxItems 4
+       */
       allowed?:
         | [
             | "ALA"
@@ -1324,10 +1352,14 @@ export interface StrucmotifQueryParameters {
   motif_pruning_strategy?: "NONE" | "KRUSKAL";
   /**
    * If the list of structure identifiers is specified, the search will only consider those structures
+   *
+   * @minItems 1
    */
   allowed_structures?: [string, ...string[]];
   /**
    * If the list of structure identifiers is specified, the search will exclude those structures from the search space
+   *
+   * @minItems 1
    */
   excluded_structures?: [string, ...string[]];
 }
@@ -1341,6 +1373,9 @@ export interface StrucmotifQueryEntryParameters {
   entry_id: string;
   /**
    * Provides the set of residue identifiers that define the query.
+   *
+   * @minItems 2
+   * @maxItems 10
    */
   residue_ids:
     | [ResidueIdentifier, ResidueIdentifier]
@@ -1416,6 +1451,9 @@ export interface StrucmotifQueryFileParameters {
   format: "cif" | "bcif";
   /**
    * Provides the set of residue identifiers that define the query. Can be undefined if the submitted file property contains an extracted motif
+   *
+   * @minItems 2
+   * @maxItems 10
    */
   residue_ids?:
     | [ResidueIdentifier, ResidueIdentifier]

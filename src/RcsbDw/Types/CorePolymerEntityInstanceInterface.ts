@@ -9,6 +9,9 @@
  * JSON schema for entity instance core data.
  */
 export interface CorePolymerEntityInstance {
+  /**
+   * @minItems 1
+   */
   pdbx_struct_special_symmetry?: [
     {
       /**
@@ -85,6 +88,9 @@ export interface CorePolymerEntityInstance {
       label_comp_id?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_ligand_neighbors?: [
     {
       /**
@@ -219,6 +225,9 @@ export interface CorePolymerEntityInstance {
      */
     rcsb_id?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_instance_annotation?: [
     {
       /**
@@ -311,6 +320,9 @@ export interface CorePolymerEntityInstance {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_instance_feature?: [
     {
       /**
@@ -577,6 +589,9 @@ export interface CorePolymerEntityInstance {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_instance_feature_summary?: [
     {
       /**
@@ -747,6 +762,9 @@ export interface CorePolymerEntityInstance {
         | "ZERO_OCCUPANCY_RESIDUE_XYZ";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_struct_conn?: [
     {
       /**

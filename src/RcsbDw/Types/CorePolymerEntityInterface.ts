@@ -156,6 +156,9 @@ export interface CorePolymerEntity {
       | "polypeptide(L)"
       | "polyribonucleotide";
   };
+  /**
+   * @minItems 1
+   */
   entity_src_gen?: [
     {
       /**
@@ -702,6 +705,9 @@ export interface CorePolymerEntity {
       plasmid_name?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   entity_src_nat?: [
     {
       /**
@@ -940,6 +946,9 @@ export interface CorePolymerEntity {
       tissue_fraction?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_entity_src_syn?: [
     {
       /**
@@ -1052,6 +1061,9 @@ export interface CorePolymerEntity {
       pdbx_src_id: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_entity_host_organism?: [
     {
       /**
@@ -1260,6 +1272,9 @@ export interface CorePolymerEntity {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_entity_source_organism?: [
     {
       /**
@@ -1596,11 +1611,17 @@ export interface CorePolymerEntity {
       provenance_source?: "PDB Primary Data" | "UniProt";
     }[];
     rcsb_polymer_name_combined?: {
+      /**
+       * @minItems 1
+       */
       names?: [string, ...string[]];
       provenance_source?: "PDB Preferred Name" | "PDB Description" | "UniProt Name";
       [k: string]: unknown;
     };
   };
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_align?: [
     {
       /**
@@ -1669,6 +1690,9 @@ export interface CorePolymerEntity {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_annotation?: [
     {
       /**
@@ -1797,8 +1821,14 @@ export interface CorePolymerEntity {
        */
       provenance_source?: "PDB" | "RCSB" | "SIFTS" | "UniProt";
     }[];
+    /**
+     * @minItems 1
+     */
     uniprot_ids?: [string, ...string[]];
   };
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_feature?: [
     {
       /**
@@ -1951,6 +1981,9 @@ export interface CorePolymerEntity {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_feature_summary?: [
     {
       /**
@@ -2053,6 +2086,9 @@ export interface CorePolymerEntity {
      */
     text?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_name_com?: [
     {
       /**
@@ -2067,6 +2103,9 @@ export interface CorePolymerEntity {
       name: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_name_sys?: [
     {
       /**
@@ -2089,6 +2128,9 @@ export interface CorePolymerEntity {
       system?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_related_target_references?: [
     {
       /**
@@ -2175,6 +2217,9 @@ export interface CorePolymerEntity {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_target_cofactors?: [
     {
       /**
@@ -2330,6 +2375,9 @@ export interface CorePolymerEntity {
    *  an underscore separated concatenation of entry and entity identifiers.
    */
   rcsb_id: string;
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_group_membership?: [
     {
       /**
@@ -2360,6 +2408,9 @@ export interface CorePolymerEntity {
       similarity_cutoff?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_genomic_lineage?: [
     {
       /**
@@ -2394,6 +2445,8 @@ export interface CorePolymerEntity {
   ];
   /**
    * Information about integral membrane proteins whose crystallographic, or sometimes NMR or cryo-EM, structures have been determined to a resolution sufficient to identify TM helices of helix-bundle membrane proteins (typically 4 - 4.5 A). Mpstruc provides manually curated information about integral membrane proteins. These manual annotations are extended using sequence clusters and according to the following procedure:Single chain transmembrane proteins: Any PDB chain sharing 90% sequence identity to this transmembrane protein is assigned as a transmembrane protein as well, and shares the same transmembrane annotation.Multi-chain transmembrane proteins:If the reference mpstruc entry contains multiple protein entities, it is necessary to identify which of the entities are presumed to be transmembrane chains. This is done in conjunction with Uniprot annotations. Transmembrane protein entities are identified by checking if their corresponding Uniprot sequence has annotations labeled <i>transmembrane</i> or <i>intramembrane region</i>. For transmembrane entities, all members of the sequence cluster (90% sequence identity) are programmatically infered to be members of the same class of transmembrane proteins by applying the above procedure for single entity mpstruc entries. Annotations are denoned with 'Homology' provenance code.
+   *
+   * @minItems 1
    */
   rcsb_membrane_lineage?: [
     {

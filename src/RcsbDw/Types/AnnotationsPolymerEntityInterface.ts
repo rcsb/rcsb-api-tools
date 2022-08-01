@@ -20,6 +20,9 @@ export interface EntityAnnotations {
    * Protein sequence data for canonical protein sequence.
    */
   sequence: string;
+  /**
+   * @minItems 1
+   */
   annotations?: [
     {
       /**

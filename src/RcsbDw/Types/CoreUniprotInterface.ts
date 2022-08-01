@@ -105,6 +105,9 @@ export interface CoreUniProt {
        */
       provenance_code: string;
     };
+    /**
+     * @minItems 1
+     */
     ec?: [
       {
         number?: string;
@@ -122,6 +125,9 @@ export interface CoreUniProt {
       }[]
     ];
   };
+  /**
+   * @minItems 1
+   */
   rcsb_uniprot_feature?: [
     {
       /**
@@ -290,6 +296,9 @@ export interface CoreUniProt {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_uniprot_annotation?: [
     {
       /**
