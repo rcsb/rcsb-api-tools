@@ -32,6 +32,9 @@ export interface EntityAnnotations {
      */
     interface_partner_index?: number;
   };
+  /**
+   * @minItems 1
+   */
   annotations?: [
     {
       /**

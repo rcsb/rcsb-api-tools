@@ -45,6 +45,9 @@ export interface CoreNonpolymerEntity {
      */
     pdbx_number_of_molecules?: number;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_entity_annotation?: [
     {
       /**
@@ -169,6 +172,9 @@ export interface CoreNonpolymerEntity {
     reference_chemical_identifiers_resource_accession?: string[];
     reference_chemical_identifiers_resource_name?: ("ChEBI" | "ChEMBL" | "DrugBank" | "PubChem")[];
   };
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_entity_feature?: [
     {
       /**
@@ -255,6 +261,9 @@ export interface CoreNonpolymerEntity {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_entity_feature_summary?: [
     {
       /**
@@ -323,6 +332,9 @@ export interface CoreNonpolymerEntity {
      */
     text?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_entity_name_com?: [
     {
       /**

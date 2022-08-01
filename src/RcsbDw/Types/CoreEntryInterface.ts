@@ -9,6 +9,9 @@
  * JSON schema for entry level core data. Combines Exchange DB schema: json-schema-min-pdbx_core_entry.json and RCSB Data Warehouse schema: json-schema-core_entry.json
  */
 export interface CoreEntry {
+  /**
+   * @minItems 1
+   */
   audit_author?: [
     {
       /**
@@ -110,6 +113,9 @@ export interface CoreEntry {
      */
     volume?: number;
   };
+  /**
+   * @minItems 1
+   */
   citation?: [
     {
       /**
@@ -368,6 +374,9 @@ export interface CoreEntry {
       year?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   diffrn?: [
     {
       /**
@@ -454,6 +463,9 @@ export interface CoreEntry {
       pdbx_serial_crystal_experiment?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   diffrn_detector?: [
     {
       /**
@@ -510,6 +522,9 @@ export interface CoreEntry {
       type?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   diffrn_radiation?: [
     {
       /**
@@ -606,6 +621,9 @@ export interface CoreEntry {
       wavelength_id?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   diffrn_source?: [
     {
       /**
@@ -678,6 +696,9 @@ export interface CoreEntry {
       type?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_2d_crystal_entity?: [
     {
       /**
@@ -794,6 +815,9 @@ export interface CoreEntry {
         | "P 6 2 2";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_3d_crystal_entity?: [
     {
       /**
@@ -880,6 +904,9 @@ export interface CoreEntry {
       space_group_num?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_3d_fitting?: [
     {
       /**
@@ -956,6 +983,9 @@ export interface CoreEntry {
       target_criteria?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_3d_fitting_list?: [
     {
       /**
@@ -1016,6 +1046,9 @@ export interface CoreEntry {
       pdb_entry_id?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_3d_reconstruction?: [
     {
       /**
@@ -1160,6 +1193,9 @@ export interface CoreEntry {
       symmetry_type?: "2D CRYSTAL" | "3D CRYSTAL" | "HELICAL" | "POINT";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_ctf_correction?: [
     {
       /**
@@ -1198,6 +1234,9 @@ export interface CoreEntry {
       type?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_diffraction?: [
     {
       /**
@@ -1236,6 +1275,9 @@ export interface CoreEntry {
       tilt_angle_list?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_diffraction_shell?: [
     {
       /**
@@ -1306,6 +1348,9 @@ export interface CoreEntry {
       phase_residual?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_diffraction_stats?: [
     {
       /**
@@ -1410,6 +1455,9 @@ export interface CoreEntry {
       r_sym?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_embedding?: [
     {
       /**
@@ -1448,6 +1496,9 @@ export interface CoreEntry {
       specimen_id?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_entity_assembly?: [
     {
       /**
@@ -1546,6 +1597,9 @@ export interface CoreEntry {
      */
     reconstruction_method?: "CRYSTALLOGRAPHY" | "HELICAL" | "SINGLE PARTICLE" | "SUBTOMOGRAM AVERAGING" | "TOMOGRAPHY";
   };
+  /**
+   * @minItems 1
+   */
   em_helical_entity?: [
     {
       /**
@@ -1606,6 +1660,9 @@ export interface CoreEntry {
       image_processing_id: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_image_recording?: [
     {
       /**
@@ -1696,6 +1753,9 @@ export interface CoreEntry {
       num_real_images?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_imaging?: [
     {
       /**
@@ -2176,6 +2236,9 @@ export interface CoreEntry {
       tilt_angle_min?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_particle_selection?: [
     {
       /**
@@ -2216,6 +2279,9 @@ export interface CoreEntry {
       num_particles_selected?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_single_particle_entity?: [
     {
       /**
@@ -2246,6 +2312,9 @@ export interface CoreEntry {
       point_symmetry?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_software?: [
     {
       /**
@@ -2356,6 +2425,9 @@ export interface CoreEntry {
       version?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_specimen?: [
     {
       /**
@@ -2430,6 +2502,9 @@ export interface CoreEntry {
       vitrification_applied?: "NO" | "YES";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_staining?: [
     {
       /**
@@ -2476,6 +2551,9 @@ export interface CoreEntry {
       type?: "NEGATIVE" | "NONE" | "POSITIVE";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   em_vitrification?: [
     {
       /**
@@ -2623,6 +2701,9 @@ export interface CoreEntry {
      */
     id: string;
   };
+  /**
+   * @minItems 1
+   */
   exptl?: [
     {
       /**
@@ -2691,6 +2772,9 @@ export interface CoreEntry {
       method_details?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   exptl_crystal?: [
     {
       /**
@@ -2835,6 +2919,9 @@ export interface CoreEntry {
       preparation?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   exptl_crystal_grow?: [
     {
       /**
@@ -2925,6 +3012,9 @@ export interface CoreEntry {
       temp_details?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_SG_project?: [
     {
       /**
@@ -3203,6 +3293,9 @@ export interface CoreEntry {
         | "PSI:Biology";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_audit_revision_category?: [
     {
       /**
@@ -3251,6 +3344,9 @@ export interface CoreEntry {
       revision_ordinal: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_audit_revision_details?: [
     {
       /**
@@ -3323,6 +3419,9 @@ export interface CoreEntry {
       type?: "Coordinate replacement" | "Initial release" | "Obsolete" | "Remediation";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_audit_revision_group?: [
     {
       /**
@@ -3405,6 +3504,9 @@ export interface CoreEntry {
       revision_ordinal: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_audit_revision_history?: [
     {
       /**
@@ -3461,6 +3563,9 @@ export interface CoreEntry {
       revision_date?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_audit_revision_item?: [
     {
       /**
@@ -3509,6 +3614,9 @@ export interface CoreEntry {
       revision_ordinal: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_audit_support?: [
     {
       /**
@@ -3553,6 +3661,9 @@ export interface CoreEntry {
       ordinal: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_database_PDB_obs_spr?: [
     {
       /**
@@ -3599,6 +3710,9 @@ export interface CoreEntry {
       replace_pdb_id: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_database_related?: [
     {
       /**
@@ -3759,6 +3873,9 @@ export interface CoreEntry {
      */
     status_code_sf?: "AUTH" | "HOLD" | "HPUB" | "OBS" | "POLC" | "PROC" | "REL" | "REPL" | "RMVD" | "WAIT" | "WDRN";
   };
+  /**
+   * @minItems 1
+   */
   pdbx_deposit_group?: [
     {
       /**
@@ -3797,6 +3914,9 @@ export interface CoreEntry {
       group_type?: "changed state" | "ground state" | "undefined";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_molecule_features?: [
     {
       /**
@@ -4074,6 +4194,9 @@ export interface CoreEntry {
      */
     torsion_angle_constraint_violation_method?: string;
   };
+  /**
+   * @minItems 1
+   */
   pdbx_nmr_exptl?: [
     {
       /**
@@ -4136,6 +4259,9 @@ export interface CoreEntry {
       type?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_nmr_exptl_sample_conditions?: [
     {
       /**
@@ -4268,6 +4394,9 @@ export interface CoreEntry {
       temperature_units?: "C" | "K" | "Not defined";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_nmr_refine?: [
     {
       /**
@@ -4311,6 +4440,9 @@ export interface CoreEntry {
      */
     selection_criteria?: string;
   };
+  /**
+   * @minItems 1
+   */
   pdbx_nmr_sample_details?: [
     {
       /**
@@ -4427,6 +4559,9 @@ export interface CoreEntry {
         | "solution";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_nmr_software?: [
     {
       /**
@@ -4475,6 +4610,9 @@ export interface CoreEntry {
       version?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_nmr_spectrometer?: [
     {
       /**
@@ -4531,6 +4669,9 @@ export interface CoreEntry {
       type?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_related_exp_data_set?: [
     {
       /**
@@ -4571,6 +4712,9 @@ export interface CoreEntry {
       metadata_reference?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_serial_crystallography_data_reduction?: [
     {
       /**
@@ -4687,6 +4831,9 @@ export interface CoreEntry {
       xfel_run_numbers?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_serial_crystallography_measurement?: [
     {
       /**
@@ -4787,6 +4934,9 @@ export interface CoreEntry {
       xfel_pulse_repetition_rate?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_serial_crystallography_sample_delivery?: [
     {
       /**
@@ -4823,6 +4973,9 @@ export interface CoreEntry {
       method?: "fixed target" | "injection";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_serial_crystallography_sample_delivery_fixed_target?: [
     {
       /**
@@ -4929,6 +5082,9 @@ export interface CoreEntry {
       velocity_vertical?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_serial_crystallography_sample_delivery_injection?: [
     {
       /**
@@ -5063,6 +5219,9 @@ export interface CoreEntry {
       preparation?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_soln_scatter?: [
     {
       /**
@@ -5693,6 +5852,9 @@ export interface CoreEntry {
       type?: "modelling" | "neutron" | "x-ray";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   pdbx_soln_scatter_model?: [
     {
       /**
@@ -6936,6 +7098,9 @@ export interface CoreEntry {
      */
     year?: number;
   };
+  /**
+   * @minItems 1
+   */
   refine?: [
     {
       /**
@@ -8636,6 +8801,9 @@ export interface CoreEntry {
       solvent_model_param_ksol?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   refine_analyze?: [
     {
       /**
@@ -8816,6 +8984,9 @@ export interface CoreEntry {
       pdbx_refine_id: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   refine_hist?: [
     {
       /**
@@ -8942,6 +9113,9 @@ export interface CoreEntry {
       pdbx_refine_id: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   refine_ls_restr?: [
     {
       /**
@@ -9038,6 +9212,9 @@ export interface CoreEntry {
       weight?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   reflns?: [
     {
       /**
@@ -9596,6 +9773,9 @@ export interface CoreEntry {
       phase_calculation_details?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   reflns_shell?: [
     {
       /**
@@ -10084,6 +10264,9 @@ export interface CoreEntry {
       percent_possible_obs?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   software?: [
     {
       /**
@@ -10342,6 +10525,9 @@ export interface CoreEntry {
    * A unique identifier for each object in this entry container.
    */
   rcsb_id: string;
+  /**
+   * @minItems 1
+   */
   rcsb_entry_group_membership?: [
     {
       /**
@@ -10378,6 +10564,9 @@ export interface CoreEntry {
      */
     link: string;
   }[];
+  /**
+   * @minItems 1
+   */
   rcsb_binding_affinity?: [
     {
       /**

@@ -68,10 +68,14 @@ export interface QueryResult {
   };
   /**
    * A list of search result identifiers including each identifier's score and the service query where the identifier was rendered from.
+   *
+   * @minItems 1
    */
   result_set?: [string | ServiceIdentifier, ...(string | ServiceIdentifier)[]];
   /**
    * Provides summaries of the search result by aggregating the result data on different attributes.
+   *
+   * @minItems 1
    */
   facets?: [BucketFacet | SingleValueMetricsFacet, ...(BucketFacet | SingleValueMetricsFacet)[]];
   /**
@@ -80,6 +84,8 @@ export interface QueryResult {
   group_by?: GroupByDepositID | GroupBySequenceIdentity | GroupByUniProtAccession;
   /**
    * A list of search result identifiers returned as groups
+   *
+   * @minItems 1
    */
   group_set?: [string | GroupIdentifier, ...(string | GroupIdentifier)[]];
 }
@@ -94,6 +100,8 @@ export interface ServiceIdentifier {
   score: number;
   /**
    * Shows the query node that rendered the identifier and the scoring details.
+   *
+   * @minItems 1
    */
   services?: [
     {
@@ -111,6 +119,8 @@ export interface ServiceIdentifier {
         | "strucmotif";
       /**
        * Provides the result identifier scoring details.
+       *
+       * @minItems 1
        */
       nodes: [
         {
@@ -179,6 +189,8 @@ export interface ServiceIdentifier {
         | "strucmotif";
       /**
        * Provides the result identifier scoring details.
+       *
+       * @minItems 1
        */
       nodes: [
         {
@@ -327,6 +339,9 @@ export interface StrucmotifServiceMatchContext {
   residue_types?: string[];
   /**
    * 4x4 transformation matrix in a column major (j * 4 + i indexing) format
+   *
+   * @minItems 16
+   * @maxItems 16
    */
   transformation?: [
     number,
@@ -368,6 +383,8 @@ export interface BucketFacet {
   name: string;
   /**
    * A list of buckets built by executing an aggregation
+   *
+   * @minItems 1
    */
   buckets: [
     {

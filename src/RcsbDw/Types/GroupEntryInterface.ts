@@ -24,10 +24,14 @@ export interface GroupEntry {
       | "provenance_matching_deposit_group_id";
     /**
      * Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship
+     *
+     * @minItems 1
      */
     parent_member_ids?: [string, ...string[]];
     /**
      * Member identifiers representing a group
+     *
+     * @minItems 1
      */
     group_member_ids: [string, ...string[]];
   };
@@ -61,6 +65,9 @@ export interface GroupEntry {
      */
     version: number;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_group_related?: [
     {
       /**

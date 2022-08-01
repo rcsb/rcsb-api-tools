@@ -2,9 +2,13 @@
 
 [Semantic Versioning](https://semver.org/)
 
-## [4.0.4] - 2022-05-20
+## [4.0.6] - 2022-08-01
+### Dependency update
+- Updated several dependencies
+
+## [4.0.5] - 2022-05-26
 ### Minor refactor
-- `GraphQLRequest::request` method `headers` optional parameter is not initialyzed as emty  
+- `GraphQLRequest::request` method `headers` optional parameter is not initialized as empty  
 
 ## [4.0.4] - 2022-05-20
 ### Minor refactor

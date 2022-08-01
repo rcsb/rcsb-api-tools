@@ -31,12 +31,18 @@ export interface ShapeDescriptor {
    * The maximum order of Zernike moments (the n index in Ω_nlm) that are stored in the zernike_align object.
    */
   max_order_zernike_align: number;
+  /**
+   * @minItems 1
+   */
   zernike_invariants: [
     {
       /**
        * 0 is for the special case of the classic Zernike/Novotni invariants (norms of Ω_nlm, a.k.a. 3DZD, a.k.a. fingerprints), any other positive integer represents the order of the Canterakis norm as described in Guzenko et al 2019.
        */
       norm_order: number;
+      /**
+       * @minItems 1
+       */
       values: [number, ...number[]];
       [k: string]: unknown;
     },
@@ -45,12 +51,24 @@ export interface ShapeDescriptor {
        * 0 is for the special case of the classic Zernike/Novotni invariants (norms of Ω_nlm, a.k.a. 3DZD, a.k.a. fingerprints), any other positive integer represents the order of the Canterakis norm as described in Guzenko et al 2019.
        */
       norm_order: number;
+      /**
+       * @minItems 1
+       */
       values: [number, ...number[]];
       [k: string]: unknown;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   geom_invariants: [number, ...number[]];
+  /**
+   * @minItems 1
+   */
   zernike_align: [number, ...number[]];
+  /**
+   * @minItems 3
+   */
   volume_center: [number, number, number, ...number[]];
   /**
    * Type of the object represented by the descriptor, used for independent searches.

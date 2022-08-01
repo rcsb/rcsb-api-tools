@@ -19,6 +19,9 @@ export interface CoreBranchedEntity {
      */
     type?: "oligosaccharide";
   };
+  /**
+   * @minItems 1
+   */
   pdbx_entity_branch_descriptor?: [
     {
       /**
@@ -81,6 +84,9 @@ export interface CoreBranchedEntity {
      */
     pdbx_number_of_molecules?: number;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_branched_entity_annotation?: [
     {
       /**
@@ -205,6 +211,9 @@ export interface CoreBranchedEntity {
       resource_name?: "GlyCosmos" | "GlyGen" | "GlyTouCan";
     }[];
   };
+  /**
+   * @minItems 1
+   */
   rcsb_branched_entity_feature?: [
     {
       /**
@@ -319,6 +328,9 @@ export interface CoreBranchedEntity {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_branched_entity_feature_summary?: [
     {
       /**
@@ -393,6 +405,9 @@ export interface CoreBranchedEntity {
      */
     name?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_branched_entity_name_sys?: [
     {
       /**

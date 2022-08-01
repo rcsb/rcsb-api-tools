@@ -24,10 +24,14 @@ export interface GroupPolymerEntity {
       | "provenance_matching_deposit_group_id";
     /**
      * Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship
+     *
+     * @minItems 1
      */
     parent_member_ids?: [string, ...string[]];
     /**
      * Member identifiers representing a group
+     *
+     * @minItems 1
      */
     group_member_ids: [string, ...string[]];
   };
@@ -61,6 +65,9 @@ export interface GroupPolymerEntity {
      */
     version: number;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_group_related?: [
     {
       /**
@@ -85,12 +92,18 @@ export interface GroupPolymerEntity {
       [k: string]: unknown;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_polymer_entity_group_members_rankings?: [
     {
       /**
        * Defines ranking option applicable to group members
        */
       ranking_criteria_type: "coverage";
+      /**
+       * @minItems 1
+       */
       group_members: [
         {
           member_id: string;
@@ -121,6 +134,9 @@ export interface GroupPolymerEntity {
        * Defines ranking option applicable to group members
        */
       ranking_criteria_type: "coverage";
+      /**
+       * @minItems 1
+       */
       group_members: [
         {
           member_id: string;

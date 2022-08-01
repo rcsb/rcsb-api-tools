@@ -9,6 +9,9 @@
  * JSON schema for nonpolymer entity instance core.
  */
 export interface CoreNonpolymerEntityInstance {
+  /**
+   * @minItems 1
+   */
   pdbx_struct_special_symmetry?: [
     {
       /**
@@ -116,6 +119,9 @@ export interface CoreNonpolymerEntityInstance {
      */
     rcsb_id?: string;
   };
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_instance_annotation?: [
     {
       /**
@@ -216,6 +222,9 @@ export interface CoreNonpolymerEntityInstance {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_instance_feature?: [
     {
       /**
@@ -368,6 +377,9 @@ export interface CoreNonpolymerEntityInstance {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_instance_feature_summary?: [
     {
       /**
@@ -444,6 +456,9 @@ export interface CoreNonpolymerEntityInstance {
         | "STEREO_OUTLIER";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_instance_validation_score?: [
     {
       /**
@@ -614,6 +629,9 @@ export interface CoreNonpolymerEntityInstance {
       type?: "RCSB_LIGAND_QUALITY_SCORE_2021";
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_nonpolymer_struct_conn?: [
     {
       /**
@@ -922,6 +940,9 @@ export interface CoreNonpolymerEntityInstance {
       };
     }[]
   ];
+  /**
+   * @minItems 1
+   */
   rcsb_target_neighbors?: [
     {
       /**

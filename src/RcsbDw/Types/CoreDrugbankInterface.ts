@@ -51,6 +51,9 @@ export interface SchemaDrugbankCoreCollectionDrugbankCoreVersion131 {
     pharmacology?: string;
     synonyms?: string[];
   };
+  /**
+   * @minItems 1
+   */
   drugbank_target?: [
     {
       /**

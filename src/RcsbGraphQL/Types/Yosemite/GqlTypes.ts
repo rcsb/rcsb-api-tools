@@ -10,11 +10,8 @@ export interface Scalars {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** Built-in scalar representing an instant in time */
   Date: any;
-  /** Built-in scalar for dynamic values */
   ObjectScalar: any;
-  /** Use SPQR's SchemaPrinter to remove this from SDL */
   UNREPRESENTABLE: any;
 }
 
