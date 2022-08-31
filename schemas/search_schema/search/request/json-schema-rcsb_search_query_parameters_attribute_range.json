@@ -1,0 +1,25 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_attribute_range.json",
+  "title": "Range",
+  "type": "object",
+  "properties": {
+    "from": {
+      "$ref": "json-schema-rcsb_search_query_parameters_attribute_value_number.json"
+    },
+    "include_lower": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicated an inclusive lower bound."
+    },
+    "to": {
+      "$ref": "json-schema-rcsb_search_query_parameters_attribute_value_number.json"
+    },
+    "include_upper": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicated an inclusive upper bound."
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false
+}

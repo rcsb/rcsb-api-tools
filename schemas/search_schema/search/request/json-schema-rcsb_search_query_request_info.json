@@ -1,0 +1,24 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_info.json",
+  "title": "Request Info",
+  "type": "object",
+  "properties": {
+    "query_id": {
+      "type": "string",
+      "description": "The ID of a query is globally unique and unambiguously identifies a query."
+    },
+    "src": {
+      "type": "string",
+      "enum": [
+        "ui",
+        "mypdb_service",
+        "mypdb_user",
+        "rcsb_test"
+      ],
+      "description": "The origin of the query: <br /> - 'mypdb' indicates that the query was run by the MyPDB service that allows users to have searches run periodically and have the results emailed to them; <br /> - 'system' indicates programmatic access."
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false,
+  "description": "Information about the query."
+}

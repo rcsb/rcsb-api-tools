@@ -3,13 +3,13 @@
   "title": "Return Type Extension",
   "type": "object",
   "properties": {
-    "return_type": {
+    "dispatcher_type": {
       "allOf": [
         {
-          "$ref": "../json-schema-rcsb_search_query.json#/properties/return_type"
+          "$ref": "../search/request/json-schema-rcsb_search_query.json#/properties/return_type"
         },
         {
-          "$ref": "../json-schema-rcsb_search_unreleased_query.json#/properties/return_type"
+          "$ref": "../unreleased/request/json-schema-rcsb_unreleased_query.json#/properties/return_type"
         }
       ]
     }

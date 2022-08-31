@@ -1,0 +1,9 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_options_sort_relevance_score.json",
+  "title": "Relevance Score Ranking Option",
+  "type": "string",
+  "enum": [
+    "score"
+  ],
+  "description": "Search results are ordered by the relevancy scores by default, from the most relevant matches to the least relevant matches (higher score to lower score)."
+}

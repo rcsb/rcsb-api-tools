@@ -1,0 +1,21 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_shape_value_chain.json",
+  "title": "Structure Query Chain Parameters",
+  "type": "object",
+  "required": [
+    "entry_id",
+    "asym_id"
+  ],
+  "properties": {
+    "entry_id": {
+      "type": "string",
+      "description": "The PDB code that defines the structure."
+    },
+    "asym_id": {
+      "type": "string",
+      "description": "The chain identifier."
+    }
+  },
+  "additionalProperties": false,
+  "description": "Compound structure identifier that includes PDB code and chain identifier."
+}

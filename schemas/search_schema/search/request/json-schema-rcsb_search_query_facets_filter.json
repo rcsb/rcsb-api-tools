@@ -1,0 +1,26 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_facets_filter.json",
+  "title": "Filter Facet",
+  "type": "object",
+  "required": [
+    "filter",
+    "facets"
+  ],
+  "properties": {
+    "filter": {
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_filter_node_group.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_filter_node_terminal.json"
+        }
+      ]
+    },
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A single bucket aggregation that narrows the set of documents to those that match a filter query"
+}

@@ -1,0 +1,44 @@
+{
+  "$id": "/schema/unreleased/request/json-schema-rcsb_unreleased_query_node_group.json",
+  "title": "Group Node",
+  "type": "object",
+  "required": [
+    "type",
+    "logical_operator",
+    "nodes"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "group"
+      ]
+    },
+    "logical_operator": {
+      "type": "string",
+      "enum": [
+        "or",
+        "and"
+      ]
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "json-schema-rcsb_unreleased_query_node_terminal.json"
+          },
+          {
+            "$ref": "json-schema-rcsb_unreleased_query_node_group.json"
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "label": {
+      "type": "string",
+      "description": "A textual description of what the node represents."
+    }
+  },
+  "additionalProperties": false
+}

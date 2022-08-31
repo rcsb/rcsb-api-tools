@@ -1,0 +1,77 @@
+{
+  "$id": "/schema/unreleased/request/json-schema-rcsb_unreleased_query.json",
+  "title": "Unreleased Entry Search Query",
+  "type": "object",
+  "required": [
+    "return_type"
+  ],
+  "properties": {
+    "request_info": {
+      "$ref": "../../search/request/json-schema-rcsb_search_query_request_info.json"
+    },
+    "request_options": {
+      "type": "object",
+      "properties": {
+        "facets": {
+          "$ref": "../../search/request/json-schema-rcsb_search_query_facets.json"
+        },
+        "sort": {
+          "type": "array",
+          "items": {
+            "$ref": "../../search/request/json-schema-rcsb_search_query_request_options_sort_attributes.json"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "paginate": {
+          "$ref": "../../search/request/json-schema-rcsb_search_query_request_options_paginate.json"
+        },
+        "scoring_strategy": {
+          "type": "string",
+          "enum": [
+            "text"
+          ],
+          "default": "text",
+          "description": "Scoring algorithm to be used for scores calculation of the final result set."
+        },
+        "return_counts": {
+          "type": "boolean",
+          "default": false
+        },
+        "return_all_hits": {
+          "type": "boolean",
+          "default": false
+        },
+        "return_explain_metadata": {
+          "type": "boolean",
+          "default": false
+        },
+        "results_verbosity": {
+          "$ref": "../../search/request/json-schema-rcsb_search_query_request_options_results_verbosity.json"
+        }
+      },
+      "javaType" : "org.rcsb.arches.auto.model.UnreleasedQueryRequestOptions",
+      "additionalProperties": false
+    },
+    "return_type": {
+      "type": "string",
+      "enum": [
+        "unreleased_entry"
+      ],
+      "javaType" : "org.rcsb.arches.auto.model.ReturnType",
+      "description": "Specifies the type of the returned identifiers."
+    },
+    "query": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_unreleased_query_node_group.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_unreleased_query_node_terminal.json"
+        }
+        ],
+      "description": "Any valid query string as per the Search Aggregator query syntax is permitted. A search consists of one or more groups combined."
+    }
+  },
+  "additionalProperties": false
+}

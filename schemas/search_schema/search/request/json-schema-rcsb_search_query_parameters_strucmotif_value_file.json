@@ -1,0 +1,33 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_strucmotif_value_file.json",
+  "title": "Strucmotif Query File Parameters",
+  "type": "object",
+  "required": [
+    "data",
+    "format"
+  ],
+  "properties": {
+    "data": {
+      "type": "string",
+      "description": "File content converted to a Base64 string"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "cif",
+        "bcif"
+      ]
+    },
+    "residue_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
+      },
+      "minItems": 2,
+      "maxItems": 10,
+      "description": "Provides the set of residue identifiers that define the query. Can be undefined if the submitted file property contains an extracted motif"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Upload Base64-encoded file in one of the following formats: cif, bcif"
+}

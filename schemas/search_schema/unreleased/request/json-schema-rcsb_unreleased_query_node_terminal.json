@@ -1,0 +1,35 @@
+{
+  "$id": "/schema/unreleased/request/json-schema-rcsb_unreleased_query_node_terminal.json",
+  "title": "Unreleased Entry Terminal Node",
+  "type": "object",
+  "required": [
+    "type",
+    "service"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "terminal"
+      ]
+    },
+    "node_id": {
+      "type": "integer"
+    },
+    "service": {
+      "type": "string",
+      "enum": [
+        "text"
+      ],
+      "description": "The search service that is responsible for running the query and retrieving the search results."
+    },
+    "parameters": {
+      "$ref": "../../search/request/json-schema-rcsb_search_query_parameters_attribute_text.json"
+    },
+    "label": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A terminal node is an atomic-level element within a query."
+}

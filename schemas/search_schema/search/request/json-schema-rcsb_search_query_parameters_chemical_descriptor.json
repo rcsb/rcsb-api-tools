@@ -1,0 +1,48 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_chemical_descriptor.json",
+  "title": "Chemical Query Descriptor Parameters",
+  "type": "object",
+  "required": [
+    "type",
+    "value",
+    "descriptor_type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "descriptor"
+      ],
+      "description": "Type of chemical search."
+    },
+    "value": {
+      "type": "string",
+      "example": "c1ccc(cc1)[C@@H](C(=O)O)N",
+      "description": "SMILES or InChI chemical descriptor."
+    },
+    "descriptor_type": {
+      "type": "string",
+      "enum": [
+        "SMILES",
+        "InChI"
+      ],
+      "description": "Type of chemical descriptor (SMILES or InChI)."
+    },
+    "match_type": {
+      "type": "string",
+      "enum": [
+        "graph-exact",
+        "graph-strict",
+        "graph-relaxed",
+        "graph-relaxed-stereo",
+        "fingerprint-similarity",
+        "sub-struct-graph-exact",
+        "sub-struct-graph-strict",
+        "sub-struct-graph-relaxed",
+        "sub-struct-graph-relaxed-stereo"
+      ],
+      "description": "Qualitative graph matching or fingerprint comparison criteria, with adding the aromatic criteria. The following graph matching searches use a fingerprint prefilter so these are designed to find only similar molecules. These graph matching comparisons include: graph-exact (atom type, formal charge, aromaticity, bond order, atom/bond stereochemistry, valence degree, atom hydrogen count), graph-strict (atom type, formal charge, aromaticity, bond order, atom/bond stereochemistry, ring membership and valence degree), graph-relaxed (atom type, formal charge, bond type), graph-relaxed-stereo (atom type, formal charge, bond type, atom/bond stereochemistry), fingerprint-similarity (TREE and MACCS). The following graph matching searches perform an exhaustive substructure search with no pre-screening. These substructure graph matching comparisons include: sub-struct-graph-exact (atom type, formal charge, aromaticity, bond order, atom/bond stereochemistry, valence degree, atom hydrogen count), sub-struct-graph-strict (atom type, formal charge, aromaticity, bond order, atom/bond stereochemistry, ring membership and valence degree), sub-struct-graph-relaxed (atom type, formal charge, bond type), sub-struct-graph-relaxed-stereo (atom type, formal charge, bond type, atom/bond stereochemistry)"
+    }
+  },
+  "additionalProperties": false
+}

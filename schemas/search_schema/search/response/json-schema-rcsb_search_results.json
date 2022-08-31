@@ -1,0 +1,89 @@
+{
+  "$id": "/schema/search/response/json-schema-rcsb_search_results.json",
+  "title": "Query Result",
+  "type": "object",
+  "required": [
+    "query_id",
+    "result_type",
+    "total_count"
+  ],
+  "properties": {
+    "query_id": {
+      "type": "string",
+      "description": "The query ID of the result set"
+    },
+    "result_type": {
+      "$ref": "../request/json-schema-rcsb_search_query_return_type.json"
+    },
+    "total_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The total number of hits returned by search"
+    },
+    "group_by_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of hits returned by group_by operation"
+    },
+    "ungrouped_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number returned by group_by operation that counts hits that are not members of requested groups"
+    },
+    "explain_metadata": {
+      "$ref": "json-schema-rcsb_search_results_explain_metadata.json"
+    },
+    "result_set": {
+      "type": "array",
+      "existingJavaType": "java.util.List<T>",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "json-schema-rcsb_search_results_identifier.json"
+          }
+        ]
+      },
+      "minItems": 1,
+      "description": "A list of search result identifiers including each identifier's score and the service query where the identifier was rendered from."
+    },
+    "facets": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "json-schema-rcsb_search_results_facets_bucket.json"
+          },
+          {
+            "$ref": "json-schema-rcsb_search_results_facets_metrics_single_value.json"
+          }
+        ]
+      },
+      "minItems": 1,
+      "description": "Provides summaries of the search result by aggregating the result data on different attributes."
+    },
+    "group_by": {
+      "$ref": "../request/json-schema-rcsb_search_query_request_options.json#/properties/group_by"
+    },
+    "group_set": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "json-schema-rcsb_search_results_identifier_group.json"
+          }
+        ]
+      },
+      "minItems": 1,
+      "description": "A list of search result identifiers returned as groups"
+    }
+  },
+  "description": "Provides a generic interface to represent the RCSB PDB search query result",
+  "additionalProperties": false,
+  "javaType": "org.rcsb.arches.auto.model.QueryResult<T>"
+}

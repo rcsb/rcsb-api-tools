@@ -1,0 +1,116 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_strucmotif.json",
+  "title": "Strucmotif Query Parameters",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_entry.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_file.json"
+        }
+      ]
+    },
+    "backbone_distance_tolerance": {
+      "type": "integer",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Allowed backbone distance tolerance in Angstrom."
+    },
+    "side_chain_distance_tolerance": {
+      "type": "integer",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Allowed side-chain distance tolerance in Angstrom."
+    },
+    "angle_tolerance": {
+      "type": "integer",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Allowed angle tolerance in multiples of 20 degrees."
+    },
+    "rmsd_cutoff": {
+      "type": "number",
+      "minimum": 0,
+      "default": 2,
+      "description": "Threshold above which hits will be filtered by RMSD."
+    },
+    "exchanges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "residue_id"
+        ],
+        "properties": {
+          "residue_id": {
+            "$ref": "json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
+          },
+          "allowed": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Allowed exchanges at this position as three-letter-codes",
+              "enum": ["ALA", "CYS", "ASP", "GLU", "PHE",
+                "GLY", "HIS", "ILE", "LYS", "LEU",
+                "MET", "ASN", "PYL", "PRO", "GLN",
+                "ARG", "SER", "THR", "SEC", "VAL",
+                "TRP", "TYR", "DA", "DC", "DG",
+                "DI", "DT", "DU", "A", "C",
+                "G", "I", "U", "UNK", "N"]
+            },
+            "minItems": 1,
+            "maxItems": 4
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "description": "Specifies all allowed amino acids at a certain position. You can specify non more than 16 allowed residues in total"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Optionally: Stop after accepting this many hits."
+    },
+    "atom_pairing_scheme": {
+      "type": "string",
+      "description": "Which atoms to consider to compute RMSD scores and transformations.",
+      "default": "SIDE_CHAIN",
+      "enum": ["ALL", "BACKBONE", "SIDE_CHAIN", "PSEUDO_ATOMS"]
+    },
+    "motif_pruning_strategy": {
+      "type": "string",
+      "description": "Specifies how query motifs are pruned (i.e. simplified). The default option 'KRUSKAL' determines the minimum spanning tree of residue pairs in the query. This leads to less stringent queries and faster results.",
+      "default": "KRUSKAL",
+      "enum": ["NONE", "KRUSKAL"]
+    },
+    "allowed_structures": {
+      "type": "array",
+      "description": "If the list of structure identifiers is specified, the search will only consider those structures",
+      "items": {
+        "type": "string",
+        "description": "Structure identifier that is allowed in the search space"
+      },
+      "minItems": 1
+    },
+    "excluded_structures": {
+      "type": "array",
+      "description": "If the list of structure identifiers is specified, the search will exclude those structures from the search space",
+      "items": {
+        "type": "string",
+        "description": "Structure identifier that will be explicitly ignored"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

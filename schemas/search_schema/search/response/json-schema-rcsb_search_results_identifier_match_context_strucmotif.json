@@ -1,0 +1,39 @@
+{
+  "$id": "/schema/search/response/json-schema-rcsb_search_results_identifier_match_context_strucmotif.json",
+  "title": "Strucmotif Service match context",
+  "type": "object",
+  "required": [
+    "residue_ids",
+    "score"
+  ],
+  "properties": {
+    "residue_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../request/json-schema-rcsb_search_query_parameters_strucmotif_value_residue_identifier.json"
+      },
+      "description": "Provides the set of residue identifiers that were matched to the query."
+    },
+    "score": {
+      "type": "number",
+      "description": "The root-mean-square deviation between atoms of the query and this particular match context."
+    },
+    "residue_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Three-letter-codes of matched positions."
+    },
+    "transformation": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 16,
+      "maxItems": 16,
+      "description": "4x4 transformation matrix in a column major (j * 4 + i indexing) format"
+    }
+  },
+  "additionalProperties": false
+}

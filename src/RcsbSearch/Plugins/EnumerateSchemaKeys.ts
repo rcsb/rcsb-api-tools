@@ -35,11 +35,13 @@ function getCurrentEnums(fileName: string): Set<string>{
     return enumSet;
 }
 
+//TODO this is a very unstable method!!!!
 function generateEnum(interfaceFile: string, constantsFile: string): void{
     const file:string = fs.readFileSync(interfaceFile, "utf-8");
     const regExpUnion = new RegExp(/(\w+)(\??)(:)(\s)(")/);
     const regExpTypeUnion = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)(\s*)(")(\w+)(")(\s*)(\|)/);
     const regExpSingleType = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)(\s*)(")(\w+)(")(;)/);
+    const regExpTpyUnionBreak = new RegExp(/(export)(\s+)(type)(\s+)(\w+)(\s*)(=)($)/);
     const regExpSingleKey = new RegExp(/(\w+)(\??)(:)(\s?\(?)$/);
     const regExpSingleUnion = new RegExp(/(\s+)(\|)(\s)(")([a-zA-Z0-9-_]+)(")(;?)$/);
     const keyUnionMap: Map<string, Set<string>> = new Map<string, Set<string>>();
@@ -85,6 +87,12 @@ function generateEnum(interfaceFile: string, constantsFile: string): void{
             if(!keyUnionMap.has(holdKey))
                 keyUnionMap.set(holdKey, new Set<string>());
             keyUnionMap.get(holdKey)?.add(replace(line));
+        }else if (regExpTpyUnionBreak.test(line)){
+            const match: RegExpMatchArray | null = line.match(regExpTpyUnionBreak);
+            if(match){
+                multiLineUnionFlag = true;
+                holdKey = match[5];
+            }
         }else{
             multiLineUnionFlag = false;
             holdKey = "";

@@ -1,0 +1,32 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query.json",
+  "title": "Search Query",
+  "type": "object",
+  "required": [
+    "return_type"
+  ],
+  "properties": {
+    "request_info": {
+      "$ref": "json-schema-rcsb_search_query_request_info.json"
+    },
+    "request_options": {
+      "$ref": "json-schema-rcsb_search_query_request_options.json"
+    },
+    "return_type": {
+      "$ref": "json-schema-rcsb_search_query_return_type.json"
+    },
+    "query": {
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_node_group.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_node_terminal.json"
+        }
+      ],
+      "description": "Any valid query string as per the Search Aggregator query syntax is permitted. A search consists of one or more groups combined."
+    }
+  },
+  "description": "Provides a generic interface to represent the RCSB Search API query language.",
+  "additionalProperties": false
+}

@@ -1,0 +1,12 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_attribute_value_number.json",
+  "title": "Numeric Value",
+  "anyOf": [
+    {
+      "type": "integer"
+    },
+    {
+      "type": "number"
+    }
+  ]
+}

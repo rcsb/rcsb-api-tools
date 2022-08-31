@@ -1,0 +1,25 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_attribute_date_range.json",
+  "title": "Date Range",
+  "type": "object",
+  "properties": {
+    "from": {
+      "$ref": "json-schema-rcsb_search_query_parameters_attribute_value_date.json"
+    },
+    "include_lower": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicated an inclusive lower bound."
+    },
+    "to": {
+      "$ref": "json-schema-rcsb_search_query_parameters_attribute_value_date.json"
+    },
+    "include_upper": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicated an inclusive upper bound."
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false
+}
