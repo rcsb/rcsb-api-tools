@@ -1074,6 +1074,7 @@ export class CoreConstants{
 	public static readonly RESOLUTION_COMBINED = "resolution_combined";
 	public static readonly SOFTWARE_PROGRAMS_COMBINED = "software_programs_combined";
 	public static readonly STRUCTURE_DETERMINATION_METHODOLOGY = "structure_determination_methodology";
+	public static readonly STRUCTURE_DETERMINATION_METHODOLOGY_PRIORITY = "structure_determination_methodology_priority";
 	public static readonly SIMILARITY_CRITERIA = "similarity_criteria";
 	public static readonly SIMILARITY_FUNCTION = "similarity_function";
 	public static readonly GROUP_MEMBER_IDS = "group_member_ids";

@@ -306,28 +306,6 @@ export enum UnpublishedFlag {
     Y = "Y"
 }
 
-export enum DatabaseId {
-    Af = "AF",
-    Bmrb = "BMRB",
-    Cas = "CAS",
-    Csd = "CSD",
-    Ebi = "EBI",
-    Emdb = "EMDB",
-    Icsd = "ICSD",
-    Ma = "MA",
-    Mdf = "MDF",
-    Modbase = "MODBASE",
-    Nbs = "NBS",
-    Ndb = "NDB",
-    Pdb = "PDB",
-    Pdbe = "PDBE",
-    PdbAcc = "PDB_ACC",
-    Pdf = "PDF",
-    Rcsb = "RCSB",
-    Smr = "SMR",
-    Wwpdb = "WWPDB"
-}
-
 export enum PdbxMonochromaticOrLaueML {
     L = "L",
     M = "M"
@@ -680,8 +658,7 @@ export enum ExperimentalMethod {
 
 export enum StructureDeterminationMethodology {
     Computational = "computational",
-    Experimental = "experimental",
-    Integrative = "integrative"
+    Experimental = "experimental"
 }
 
 export enum LsMatrixType {

@@ -132,6 +132,11 @@ E.g. `import {AggregationType, Operator, ReturnType, Service} from "@rcsb/rcsb-a
 `AggregationType` encodes the possible values of the schema field `"aggregation_type"`, 
 i.e. `AggregationType.Terms = "terms"`, `AggregationType.Histogram = "histogram"`, ...
 
+#### Building GraphQL types from specific URLs
+
+- GraphQL types can be generated from specific URLs. By default, production server are used  
+  - E.g. `npm run buildGraphQLInterfaces -- --data-api http://132.249.210.199/graphql --1d-service http://132.249.213.161/graphql`
+
 #### External schemas 
 
 - DW schemas are collected from rcsb-mojave-model project released in maven.
@@ -145,7 +150,7 @@ i.e. `AggregationType.Terms = "terms"`, `AggregationType.Histogram = "histogram"
 - DW schemas
   - `npm run downloadDwSchemas -- --schema-version <VERSION-TAG>`
   - E.g. `npm run downloadDwSchemas -- --schema-version 1.32.1-MODELS-SNAPSHOT`
-  - 
+  
 - Search schemas
   -  `npm run downloadSearchSchemas --  --branch-name <GIT-REMOTE-BRANCH-NAME>`
   -  E.g. `npm run downloadSearchSchemas --  --branch-name dev-computed-models`

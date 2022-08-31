@@ -6989,7 +6989,7 @@ export interface Query {
   assemblies?: Maybe<Array<Maybe<CoreAssembly>>>;
   /** Get an assembly given the PDB ID and ASSEMBLY ID. Here ASSEMBLY ID is '1', '2', '3', etc. or 'deposited' for deposited coordinates. */
   assembly?: Maybe<CoreAssembly>;
-  /** Get a list of PDB branched entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. */
+  /** Get a list of PDB branched entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
   branched_entities?: Maybe<Array<Maybe<CoreBranchedEntity>>>;
   /** Get a PDB branched entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   branched_entity?: Maybe<CoreBranchedEntity>;
@@ -7013,9 +7013,9 @@ export interface Query {
   group_provenance?: Maybe<GroupProvenance>;
   /** Get a pairwise polymeric interface given the PDB ID, ASSEMBLY ID and INTERFACE ID. */
   interface?: Maybe<CoreInterface>;
-  /** Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs. Here INTERFACE ID is a compound identifier that includes entry_id, assembly_id and interface_id e.g. 1XXX-1.1. */
+  /** Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs. Here INTERFACE ID is a compound identifier that includes entry_id, assembly_id and interface_id e.g. 1XXX-1.1. Note that the ENTRY ID part must be upper case. */
   interfaces?: Maybe<Array<Maybe<CoreInterface>>>;
-  /** Get a list of PDB non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. */
+  /** Get a list of PDB non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
   nonpolymer_entities?: Maybe<Array<Maybe<CoreNonpolymerEntity>>>;
   /** Get a PDB non-polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   nonpolymer_entity?: Maybe<CoreNonpolymerEntity>;
@@ -7023,7 +7023,7 @@ export interface Query {
   nonpolymer_entity_instance?: Maybe<CoreNonpolymerEntityInstance>;
   /** Get a list of PDB non-polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   nonpolymer_entity_instances?: Maybe<Array<Maybe<CoreNonpolymerEntityInstance>>>;
-  /** Get a list of PDB polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. */
+  /** Get a list of PDB polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
   polymer_entities?: Maybe<Array<Maybe<CorePolymerEntity>>>;
   /** Get a PDB polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   polymer_entity?: Maybe<CorePolymerEntity>;
@@ -8633,7 +8633,13 @@ export interface RcsbClusterMembership {
 
 export interface RcsbCompModelProvenance {
   __typename?: 'RcsbCompModelProvenance';
-  /** Entry identifier corresponding to the computed structure model. */
+  /**
+   * Entry identifier corresponding to the computed structure model.
+   *
+   * Examples:
+   * AF-P60325-F1, ma-bak-cepc-0019
+   *
+   */
   entry_id: Scalars['String'];
   /**
    * Source database for the computed structure model.
@@ -8965,7 +8971,7 @@ export interface RcsbEntryContainerIdentifiers {
    * Entry identifier for the container.
    *
    * Examples:
-   * 1KIP, 4HHB
+   * 4HHB, AF_AFP60325F1, MA_MABAKCEPC0019
    *
    */
   entry_id: Scalars['String'];
@@ -9198,7 +9204,14 @@ export interface RcsbEntryInfo {
    * computational, experimental
    *
    */
-  structure_determination_methodology?: Maybe<Scalars['String']>;
+  structure_determination_methodology: Scalars['String'];
+  /**
+   * Indicates the priority of the value in _rcsb_entry_info.structure_determination_methodology.
+   *  The lower the number the higher the priority.
+   *  Priority values for "experimental" structures is currently set to 10 and
+   *  the values for "computational" structures is set to 100.
+   */
+  structure_determination_methodology_priority?: Maybe<Scalars['Int']>;
 }
 
 export interface RcsbEntryInfoDiffrnResolutionHigh {

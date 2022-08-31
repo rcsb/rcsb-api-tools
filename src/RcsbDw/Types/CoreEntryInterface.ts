@@ -385,71 +385,6 @@ export interface CoreEntry {
   /**
    * @minItems 1
    */
-  database_2?: [
-    {
-      /**
-       * The code assigned by the database identified in
-       *  _database_2.database_id.
-       */
-      database_code: string;
-      /**
-       * An abbreviation that identifies the database.
-       */
-      database_id:
-        | "AF"
-        | "BMRB"
-        | "CAS"
-        | "CSD"
-        | "EBI"
-        | "EMDB"
-        | "ICSD"
-        | "MA"
-        | "MDF"
-        | "MODBASE"
-        | "NBS"
-        | "NDB"
-        | "PDB"
-        | "PDBE"
-        | "PDB_ACC"
-        | "PDF"
-        | "RCSB"
-        | "SMR"
-        | "WWPDB";
-    },
-    ...{
-      /**
-       * The code assigned by the database identified in
-       *  _database_2.database_id.
-       */
-      database_code: string;
-      /**
-       * An abbreviation that identifies the database.
-       */
-      database_id:
-        | "AF"
-        | "BMRB"
-        | "CAS"
-        | "CSD"
-        | "EBI"
-        | "EMDB"
-        | "ICSD"
-        | "MA"
-        | "MDF"
-        | "MODBASE"
-        | "NBS"
-        | "NDB"
-        | "PDB"
-        | "PDBE"
-        | "PDB_ACC"
-        | "PDF"
-        | "RCSB"
-        | "SMR"
-        | "WWPDB";
-    }[]
-  ];
-  /**
-   * @minItems 1
-   */
   diffrn?: [
     {
       /**
@@ -6883,6 +6818,10 @@ export interface CoreEntry {
   };
   rcsb_comp_model_provenance?: {
     /**
+     * Entry identifier corresponding to the computed structure model.
+     */
+    entry_id: string;
+    /**
      * Source database for the computed structure model.
      */
     source_db?: "AlphaFoldDB" | "ModelArchive";
@@ -7117,9 +7056,16 @@ export interface CoreEntry {
      */
     solvent_entity_count?: number;
     /**
-     * Indicates if the structure was determined using experimental, computational, or integrative methods.
+     * Indicates if the structure was determined using experimental or computational methods.
      */
-    structure_determination_methodology?: "computational" | "experimental" | "integrative";
+    structure_determination_methodology: "computational" | "experimental";
+    /**
+     * Indicates the priority of the value in _rcsb_entry_info.structure_determination_methodology.
+     *  The lower the number the higher the priority.
+     *  Priority values for "experimental" structures is currently set to 10 and
+     *  the values for "computational" structures is set to 100.
+     */
+    structure_determination_methodology_priority?: number;
     diffrn_resolution_high?: {
       /**
        * The provenence source for the high resolution limit of data collection.

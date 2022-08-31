@@ -393,7 +393,7 @@
             "text" : "Assembly identifier for the container.",
             "context" : "dictionary"
           }, {
-            "text" : "PDB Assembly ID(s)",
+            "text" : "Assembly ID(s)",
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {

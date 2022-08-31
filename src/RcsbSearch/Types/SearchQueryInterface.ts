@@ -6,10 +6,6 @@
  */
 
 /**
- * @minItems 1
- */
-export type ResultsContentType = ["experimental" | "computational", ...("experimental" | "computational")[]];
-/**
  * Allows obtaining the aggregations relevant to the search query. When absent, aggregations are not returned. Multi-dimensional aggregations are allowed.
  *
  * @minItems 1
@@ -59,11 +55,6 @@ export interface SearchQuery {
   query?: GroupNode | TerminalNode;
 }
 export interface RequestOptions {
-  results_content_type?: ResultsContentType;
-  /**
-   * Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service
-   */
-  results_verbosity?: "compact" | "minimal" | "verbose";
   facets?: RequestOptionsFacets;
   /**
    * Allows partitioning search results into groups
@@ -111,6 +102,10 @@ export interface RequestOptions {
    * Allows obtaining the counts only instead of identifiers. When undefined, search result identifiers are returned
    */
   return_counts?: boolean;
+  /**
+   * Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service
+   */
+  results_verbosity?: "compact" | "minimal" | "verbose";
   /**
    * When enabled, the search results are return with profiling information, e.g. execution timings
    */

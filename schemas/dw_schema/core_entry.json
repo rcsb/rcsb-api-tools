@@ -20,7 +20,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 15
             } ]
           },
@@ -41,7 +41,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 10
             } ]
           },
@@ -528,99 +528,6 @@
         },
         "additionalProperties" : false,
         "required" : [ "id" ]
-      },
-      "minItems" : 1,
-      "uniqueItems" : true,
-      "rcsb_nested_indexing" : true
-    },
-    "database_2" : {
-      "type" : "array",
-      "items" : {
-        "type" : "object",
-        "properties" : {
-          "database_code" : {
-            "type" : "string",
-            "examples" : [ "1ABC", "ABCDEF" ],
-            "description" : "The code assigned by the database identified in\n _database_2.database_id.",
-            "rcsb_search_context" : [ "exact-match" ],
-            "rcsb_full_text_priority" : 10,
-            "rcsb_description" : [ {
-              "text" : "The code assigned by the database identified in\n _database_2.database_id.",
-              "context" : "dictionary"
-            } ]
-          },
-          "database_id" : {
-            "type" : "string",
-            "enum" : [ "AF", "BMRB", "CAS", "CSD", "EBI", "EMDB", "ICSD", "MA", "MDF", "MODBASE", "NBS", "NDB", "PDB", "PDBE", "PDB_ACC", "PDF", "RCSB", "SMR", "WWPDB" ],
-            "description" : "An abbreviation that identifies the database.",
-            "rcsb_search_context" : [ "exact-match" ],
-            "rcsb_full_text_priority" : 10,
-            "rcsb_enum_annotated" : [ {
-              "value" : "AF",
-              "detail" : "                                 AlphaFoldDB"
-            }, {
-              "value" : "BMRB",
-              "detail" : "                                 Biological Magnetic Reference Data Bank"
-            }, {
-              "value" : "CAS",
-              "detail" : "                                 Chemical Abstracts"
-            }, {
-              "value" : "CSD",
-              "detail" : "                                 Cambridge Structural Database\n                                  (organic and metal-organic compounds)"
-            }, {
-              "value" : "EBI",
-              "detail" : "                                 European Bioinformatics Institute"
-            }, {
-              "value" : "EMDB",
-              "detail" : "                                 Electron Microscopy Data Bank"
-            }, {
-              "value" : "ICSD",
-              "detail" : "                                 Inorganic Crystal Structure Database"
-            }, {
-              "value" : "MA",
-              "detail" : "                                 ModelArchive"
-            }, {
-              "value" : "MDF",
-              "detail" : "                                 Metals Data File (metal structures)"
-            }, {
-              "value" : "MODBASE",
-              "detail" : "                                 Database of Comparative Protein Structure Models"
-            }, {
-              "value" : "NBS",
-              "detail" : "                                 NBS (NIST) Crystal Data Database\n                                  (lattice parameters)"
-            }, {
-              "value" : "NDB",
-              "detail" : "                                 Nucleic Acid Database"
-            }, {
-              "value" : "PDB",
-              "detail" : "                                 Protein Data Bank"
-            }, {
-              "value" : "PDBE",
-              "detail" : "                                 Protein Data Bank Europe"
-            }, {
-              "value" : "PDB_ACC",
-              "detail" : "                                 Protein Data Bank Versioned Accession"
-            }, {
-              "value" : "PDF",
-              "detail" : "                                 Powder Diffraction File (JCPDS/ICDD)"
-            }, {
-              "value" : "RCSB",
-              "detail" : "                                 Research Collaboratory for Structural Bioinformatics"
-            }, {
-              "value" : "SMR",
-              "detail" : "                                 Swiss-Model Repository"
-            }, {
-              "value" : "WWPDB",
-              "detail" : "                                 Worldwide Protein Data Bank"
-            } ],
-            "rcsb_description" : [ {
-              "text" : "An abbreviation that identifies the database.",
-              "context" : "dictionary"
-            } ]
-          }
-        },
-        "additionalProperties" : false,
-        "required" : [ "database_code", "database_id" ]
       },
       "minItems" : 1,
       "uniqueItems" : true,
@@ -3094,8 +3001,6 @@
         "id" : {
           "type" : "string",
           "description" : "The value of _entry.id identifies the data block.\n\n Note that this item need not be a number; it can be any unique\n identifier.",
-          "rcsb_search_context" : [ "exact-match" ],
-          "rcsb_full_text_priority" : 10,
           "rcsb_description" : [ {
             "text" : "The value of _entry.id identifies the data block.\n\n Note that this item need not be a number; it can be any unique\n identifier.",
             "context" : "dictionary"
@@ -3716,7 +3621,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 45
             } ]
           },
@@ -3916,7 +3821,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 40
             } ]
           },
@@ -3938,7 +3843,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 35
             } ]
           }
@@ -4371,7 +4276,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 70
             } ]
           },
@@ -4389,7 +4294,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 60
             } ]
           },
@@ -4406,7 +4311,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 65
             } ]
           },
@@ -4508,7 +4413,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 80
             } ]
           },
@@ -4543,7 +4448,7 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "Deposition",
+              "group_name" : "Structure Details",
               "priority_order" : 85
             } ]
           },
@@ -4629,7 +4534,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposition",
+            "group_name" : "Structure Details",
             "priority_order" : 55
           } ]
         },
@@ -7760,7 +7665,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposition",
+            "group_name" : "Structure Details",
             "priority_order" : 20
           } ]
         },
@@ -7779,7 +7684,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposition",
+            "group_name" : "Structure Details",
             "priority_order" : 50
           } ]
         },
@@ -7797,7 +7702,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposition",
+            "group_name" : "Structure Details",
             "priority_order" : 25
           } ]
         },
@@ -7831,7 +7736,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposition",
+            "group_name" : "Structure Details",
             "priority_order" : 30
           } ]
         },
@@ -7851,6 +7756,24 @@
     "rcsb_comp_model_provenance" : {
       "type" : "object",
       "properties" : {
+        "entry_id" : {
+          "type" : "string",
+          "examples" : [ "AF-P60325-F1", "ma-bak-cepc-0019" ],
+          "description" : "Entry identifier corresponding to the computed structure model.",
+          "rcsb_search_context" : [ "exact-match", "suggest" ],
+          "rcsb_full_text_priority" : 20,
+          "rcsb_description" : [ {
+            "text" : "Entry identifier corresponding to the computed structure model.",
+            "context" : "dictionary"
+          }, {
+            "text" : "Computed Structure Model ID(s)",
+            "context" : "brief"
+          } ],
+          "rcsb_search_group" : [ {
+            "group_name" : "Computed Structure Model Details",
+            "priority_order" : 5
+          } ]
+        },
         "source_db" : {
           "type" : "string",
           "enum" : [ "AlphaFoldDB", "ModelArchive" ],
@@ -7867,6 +7790,13 @@
           "rcsb_description" : [ {
             "text" : "Source database for the computed structure model.",
             "context" : "dictionary"
+          }, {
+            "text" : "Source Database",
+            "context" : "brief"
+          } ],
+          "rcsb_search_group" : [ {
+            "group_name" : "Computed Structure Model Details",
+            "priority_order" : 10
           } ]
         },
         "source_filename" : {
@@ -7886,7 +7816,8 @@
           } ]
         }
       },
-      "additionalProperties" : false
+      "additionalProperties" : false,
+      "required" : [ "entry_id" ]
     },
     "rcsb_entry_container_identifiers" : {
       "type" : "object",
@@ -7951,7 +7882,7 @@
         },
         "entry_id" : {
           "type" : "string",
-          "examples" : [ "1KIP", "4HHB" ],
+          "examples" : [ "4HHB", "AF_AFP60325F1", "MA_MABAKCEPC0019" ],
           "description" : "Entry identifier for the container.",
           "rcsb_search_context" : [ "exact-match", "suggest" ],
           "rcsb_full_text_priority" : 20,
@@ -7959,7 +7890,7 @@
             "text" : "Entry identifier for the container.",
             "context" : "dictionary"
           }, {
-            "text" : "PDB ID(s)",
+            "text" : "Entry ID(s)",
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
@@ -8118,7 +8049,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 65
           } ]
         },
@@ -8134,7 +8065,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 70
           } ]
         },
@@ -8150,7 +8081,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 80
           } ]
         },
@@ -8175,7 +8106,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 55
           } ]
         },
@@ -8191,7 +8122,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 50
           } ]
         },
@@ -8207,7 +8138,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 60
           } ]
         },
@@ -8223,7 +8154,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 75
           } ]
         },
@@ -8282,7 +8213,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 85
           } ]
         },
@@ -8298,7 +8229,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 20
           } ]
         },
@@ -8388,7 +8319,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 15
           } ]
         },
@@ -8444,7 +8375,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 25
           } ]
         },
@@ -8528,7 +8459,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 10
           } ]
         },
@@ -8553,7 +8484,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 40
           } ]
         },
@@ -8569,7 +8500,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 35
           } ]
         },
@@ -8594,7 +8525,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 45
           } ]
         },
@@ -8610,7 +8541,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 30
           } ]
         },
@@ -8722,7 +8653,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposited Entry Features",
+            "group_name" : "Entry Features",
             "priority_order" : 5
           } ]
         },
@@ -8762,9 +8693,9 @@
         },
         "structure_determination_methodology" : {
           "type" : "string",
-          "enum" : [ "computational", "experimental", "integrative" ],
+          "enum" : [ "computational", "experimental" ],
           "examples" : [ "experimental" ],
-          "description" : "Indicates if the structure was determined using experimental, computational, or integrative methods.",
+          "description" : "Indicates if the structure was determined using experimental or computational methods.",
           "rcsb_search_context" : [ "exact-match" ],
           "rcsb_full_text_priority" : 10,
           "rcsb_enum_annotated" : [ {
@@ -8773,12 +8704,25 @@
           }, {
             "value" : "experimental",
             "detail" : "Experimentally based structure determination"
-          }, {
-            "value" : "integrative",
-            "detail" : "Integrative/Hybrid methods"
           } ],
           "rcsb_description" : [ {
-            "text" : "Indicates if the structure was determined using experimental, computational, or integrative methods.",
+            "text" : "Indicates if the structure was determined using experimental or computational methods.",
+            "context" : "dictionary"
+          }, {
+            "text" : "Structure Determination Methodology",
+            "context" : "brief"
+          } ],
+          "rcsb_search_group" : [ {
+            "group_name" : "Structure Details",
+            "priority_order" : 90
+          } ]
+        },
+        "structure_determination_methodology_priority" : {
+          "type" : "integer",
+          "description" : "Indicates the priority of the value in _rcsb_entry_info.structure_determination_methodology.\n The lower the number the higher the priority.\n Priority values for \"experimental\" structures is currently set to 10 and\n the values for \"computational\" structures is set to 100.",
+          "rcsb_search_context" : [ "default-match" ],
+          "rcsb_description" : [ {
+            "text" : "Indicates the priority of the value in _rcsb_entry_info.structure_determination_methodology.\n The lower the number the higher the priority.\n Priority values for \"experimental\" structures is currently set to 10 and\n the values for \"computational\" structures is set to 100.",
             "context" : "dictionary"
           } ]
         },
@@ -8825,7 +8769,8 @@
           "additionalProperties" : false
         }
       },
-      "additionalProperties" : false
+      "additionalProperties" : false,
+      "required" : [ "structure_determination_methodology" ]
     },
     "rcsb_ma_qa_metric_global" : {
       "type" : "array",
@@ -8931,6 +8876,13 @@
                   "rcsb_description" : [ {
                     "text" : "Value of the global QA metric.",
                     "context" : "dictionary"
+                  }, {
+                    "text" : "Global Quality Score",
+                    "context" : "brief"
+                  } ],
+                  "rcsb_search_group" : [ {
+                    "group_name" : "Computed Structure Model Details",
+                    "priority_order" : 15
                   } ]
                 }
               },
@@ -8938,7 +8890,18 @@
               "required" : [ "name", "type", "value" ]
             },
             "uniqueItems" : false,
-            "rcsb_nested_indexing" : true
+            "rcsb_nested_indexing" : true,
+            "rcsb_nested_indexing_context" : [ {
+              "category_name" : "ma_qa_metric_global",
+              "category_path" : "rcsb_ma_qa_metric_global.ma_qa_metric_global.type",
+              "context_attributes" : [ {
+                "context_value" : "pLDDT",
+                "attributes" : [ {
+                  "examples" : [ 0.83, 0.29 ],
+                  "path" : "rcsb_ma_qa_metric_global.ma_qa_metric_global.value"
+                } ]
+              } ]
+            } ]
           }
         },
         "additionalProperties" : false,
@@ -11279,7 +11242,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "Deposition",
+            "group_name" : "Structure Details",
             "priority_order" : 5
           } ]
         }
