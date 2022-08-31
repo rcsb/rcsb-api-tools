@@ -1,0 +1,35 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_options_sort_attributes.json",
+  "title": "Sort Option Attributes",
+  "type": "object",
+  "required": [
+    "sort_by"
+  ],
+  "properties": {
+    "sort_by": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_sort_relevance_score.json"
+        },
+        {
+          "type": "string",
+          "description": "Full attribute name (including dots for nested fields) to the property used for ordering"
+        }
+      ]
+    },
+    "filter": {
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_filter_node_group.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_filter_node_terminal.json"
+        }
+      ]
+    },
+    "direction": {
+      "$ref": "json-schema-rcsb_search_query_request_options_sort_direction.json"
+    }
+  },
+  "additionalProperties": false
+}

@@ -583,13 +583,17 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ANGLE_OUTLIER", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "ASA" ],
+            "enum" : [ "ANGLE_OUTLIER", "BEND", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "ASA" ],
             "examples" : [ "CATH", "SCOP" ],
             "description" : "A type or category of the feature.",
             "rcsb_enum_annotated" : [ {
               "value" : "ANGLE_OUTLIER",
               "detail" : "Molprobity bond angle outlier",
               "name" : "Molprobity bond angle outlier"
+            }, {
+              "value" : "BEND",
+              "detail" : "Bend - region with high backbone curvature without specific hydrogen bonding",
+              "name" : "Bend - region with high backbone curvature without specific hydrogen bonding"
             }, {
               "value" : "BINDING_SITE",
               "detail" : "Macromolecular target for ligand binding",
@@ -618,6 +622,74 @@
               "value" : "HELIX_P",
               "detail" : "Protein helices",
               "name" : "Protein helices"
+            }, {
+              "value" : "HELX_LH_PP_P",
+              "detail" : "Left-handed polyproline helix (protein)",
+              "name" : "Left-handed polyproline helix (protein)"
+            }, {
+              "value" : "HELX_RH_3T_P",
+              "detail" : "Right-handed 3-10 helix (protein)",
+              "name" : "Right-handed 3-10 helix (protein)"
+            }, {
+              "value" : "HELX_RH_AL_P",
+              "detail" : "Alpha helix (protein)",
+              "name" : "Alpha helix (protein)"
+            }, {
+              "value" : "HELX_RH_PI_P",
+              "detail" : "Right-handed pi helix (protein)",
+              "name" : "Right-handed pi helix (protein)"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY",
+              "detail" : "the contact probability of a pairwise interaction",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_DISTANCE",
+              "detail" : "the lower the distance, the better the quality",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_ENERGY",
+              "detail" : "the lower the energy, the better the quality",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_IPTM",
+              "detail" : "confidence score of protein-protein interface based on the template modeling score in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE",
+              "detail" : "normalized score ranging from 0 to 1",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_OTHER",
+              "detail" : "other type of QA metric",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PAE",
+              "detail" : "predicted aligned error (in Angstroms)",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT",
+              "detail" : "confidence score predicting accuracy according to the CA-only Local Distance Difference Test (lDDT-CA) in [0,100]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM",
+              "detail" : "confidence score predicting accuracy according to the all-atom Local Distance Difference Test (lDDT) in [0,100]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]",
+              "detail" : "confidence score predicting accuracy according to the all-atom Local Distance Difference Test (lDDT) in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]",
+              "detail" : "confidence score predicting accuracy according to the CA-only Local Distance Difference Test (lDDT-CA) in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PTM",
+              "detail" : "confidence score predicting accuracy according to the template modeling score in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_ZSCORE",
+              "detail" : "number of standard deviations from optimal/best",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
             }, {
               "value" : "MEMBRANE_SEGMENT",
               "detail" : "Extent of a region located in a membrane",
@@ -694,6 +766,14 @@
               "value" : "STEREO_OUTLIER",
               "detail" : "Stereochemical/chirality outlier",
               "name" : "Stereochemical/chirality outlier"
+            }, {
+              "value" : "STRN",
+              "detail" : "Strand or beta-bridge (protein)",
+              "name" : "Strand or beta-bridge (protein)"
+            }, {
+              "value" : "TURN_TY1_P",
+              "detail" : "Type I turn (protein)",
+              "name" : "Type I turn (protein)"
             }, {
               "value" : "UNASSIGNED_SEC_STRUCT",
               "detail" : "Unassigned secondary structure",
@@ -788,7 +868,7 @@
               "properties" : {
                 "name" : {
                   "type" : "string",
-                  "enum" : [ "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
+                  "enum" : [ "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "MODELCIF_MODEL_ID", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
                   "examples" : [ "CATH_NAME", "PARTNER_BOND_DISTANCE" ],
                   "description" : "The additional property name.",
                   "rcsb_enum_annotated" : [ {
@@ -803,6 +883,9 @@
                   }, {
                     "value" : "ECOD_FAMILY_NAME",
                     "detail" : "ECOD Family Name"
+                  }, {
+                    "value" : "MODELCIF_MODEL_ID",
+                    "detail" : "ModelCIF Model Identifier"
                   }, {
                     "value" : "OMEGA_ANGLE",
                     "detail" : "Cis-Peptide Omega Angle"
@@ -955,118 +1038,219 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ANGLE_OUTLIER", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SAbDab Antibody Heavy Chain Subclass", "SAbDab Antibody Light Chain Subclass", "SAbDab Antibody Light Chain Type", "SCOP", "SCOP2 Family", "SCOP2 Superfamily", "SCOP2B Superfamily", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ" ],
+            "enum" : [ "ANGLE_OUTLIER", "BEND", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ" ],
             "examples" : [ "CATH", "SCOP" ],
             "description" : "Type or category of the feature.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_enum_annotated" : [ {
               "value" : "ANGLE_OUTLIER",
-              "detail" : "Molprobity bond angle outlier"
+              "detail" : "Molprobity bond angle outlier",
+              "name" : "Molprobity bond angle outlier"
+            }, {
+              "value" : "BEND",
+              "detail" : "Bend - region with high backbone curvature without specific hydrogen bonding",
+              "name" : "Bend - region with high backbone curvature without specific hydrogen bonding"
             }, {
               "value" : "BINDING_SITE",
-              "detail" : "Macromolecular target for ligand binding"
+              "detail" : "Macromolecular target for ligand binding",
+              "name" : "Ligand Binding Site"
             }, {
               "value" : "BOND_OUTLIER",
-              "detail" : "Molprobity bond distance outlier"
+              "detail" : "Molprobity bond distance outlier",
+              "name" : "Molprobity bond distance outlier"
             }, {
               "value" : "C-MANNOSYLATION_SITE",
-              "detail" : "Mannose glycan binding to the first tryptophan (W) residue in the sequence motif WXXW  (where X is any amino acid)."
+              "detail" : "Mannose glycan binding to the first tryptophan (W) residue in the sequence motif WXXW  (where X is any amino acid).",
+              "name" : "C-Mannosylation Site"
             }, {
               "value" : "CATH",
-              "detail" : "CATH - Class, Architecture, Topology, and Homology Protein Structure Database"
+              "detail" : "CATH - Class, Architecture, Topology, and Homology Protein Structure Database",
+              "name" : "CATH"
             }, {
               "value" : "CIS-PEPTIDE",
-              "detail" : "Peptide linkages with CIS configurations"
+              "detail" : "Peptide linkages with CIS configurations",
+              "name" : "CIS Peptide linkages"
             }, {
-              "value" : "ECOD"
+              "value" : "ECOD",
+              "detail" : "ECOD - An Evolutionary Classification of Protein Domains",
+              "name" : "ECOD"
             }, {
               "value" : "HELIX_P",
-              "detail" : "Protein helices"
+              "detail" : "Protein helices",
+              "name" : "Protein helices"
+            }, {
+              "value" : "HELX_LH_PP_P",
+              "detail" : "Left-handed polyproline helix (protein)",
+              "name" : "Left-handed polyproline helix (protein)"
+            }, {
+              "value" : "HELX_RH_3T_P",
+              "detail" : "Right-handed 3-10 helix (protein)",
+              "name" : "Right-handed 3-10 helix (protein)"
+            }, {
+              "value" : "HELX_RH_AL_P",
+              "detail" : "Alpha helix (protein)",
+              "name" : "Alpha helix (protein)"
+            }, {
+              "value" : "HELX_RH_PI_P",
+              "detail" : "Right-handed pi helix (protein)",
+              "name" : "Right-handed pi helix (protein)"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY",
+              "detail" : "the contact probability of a pairwise interaction",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_DISTANCE",
+              "detail" : "the lower the distance, the better the quality",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_ENERGY",
+              "detail" : "the lower the energy, the better the quality",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_IPTM",
+              "detail" : "confidence score of protein-protein interface based on the template modeling score in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE",
+              "detail" : "normalized score ranging from 0 to 1",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_OTHER",
+              "detail" : "other type of QA metric",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PAE",
+              "detail" : "predicted aligned error (in Angstroms)",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT",
+              "detail" : "confidence score predicting accuracy according to the CA-only Local Distance Difference Test (lDDT-CA) in [0,100]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM",
+              "detail" : "confidence score predicting accuracy according to the all-atom Local Distance Difference Test (lDDT) in [0,100]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]",
+              "detail" : "confidence score predicting accuracy according to the all-atom Local Distance Difference Test (lDDT) in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]",
+              "detail" : "confidence score predicting accuracy according to the CA-only Local Distance Difference Test (lDDT-CA) in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_PTM",
+              "detail" : "confidence score predicting accuracy according to the template modeling score in [0,1]",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
+            }, {
+              "value" : "MA_QA_METRIC_LOCAL_TYPE_ZSCORE",
+              "detail" : "number of standard deviations from optimal/best",
+              "name" : "MA_QA_METRIC_LOCAL_TYPE"
             }, {
               "value" : "MEMBRANE_SEGMENT",
-              "detail" : "Extent of a region located in a membrane"
+              "detail" : "Extent of a region located in a membrane",
+              "name" : "Extent of a region located in a membrane"
             }, {
               "value" : "MOGUL_ANGLE_OUTLIER",
-              "detail" : "Mogul bond angle outlier"
+              "detail" : "Mogul bond angle outlier",
+              "name" : "Mogul bond angle outlier"
             }, {
               "value" : "MOGUL_BOND_OUTLIER",
-              "detail" : "Mogul bond distance outlier"
+              "detail" : "Mogul bond distance outlier",
+              "name" : "Mogul bond distance outlier"
             }, {
               "value" : "N-GLYCOSYLATION_SITE",
-              "detail" : "Glycan binding to the amide nitrogen of an asparagine (Asn) residue"
+              "detail" : "Glycan binding to the amide nitrogen of an asparagine (Asn) residue",
+              "name" : "N-Glycosylation Site"
             }, {
               "value" : "O-GLYCOSYLATION_SITE",
-              "detail" : "Glycan binding to the oxygen atom of serine (Ser) or threonine (Thr) residues"
+              "detail" : "Glycan binding to the oxygen atom of serine (Ser) or threonine (Thr) residues",
+              "name" : "O-Glycosylation Site"
             }, {
               "value" : "RAMACHANDRAN_OUTLIER",
-              "detail" : "Molprobity Ramachandran outlier"
+              "detail" : "Molprobity Ramachandran outlier",
+              "name" : "Molprobity Ramachandran outlier"
             }, {
               "value" : "ROTAMER_OUTLIER",
-              "detail" : "Molprobity rotamer outlier"
+              "detail" : "Molprobity rotamer outlier",
+              "name" : "Molprobity rotamer outlier"
             }, {
               "value" : "RSCC_OUTLIER",
-              "detail" : "Real space density correlation value < 0.65"
+              "detail" : "Real space density correlation value < 0.65",
+              "name" : "Real space density correlation outlier"
             }, {
               "value" : "RSRZ_OUTLIER",
-              "detail" : "Real space R-value Z score > 2"
+              "detail" : "Real space R-value Z score > 2",
+              "name" : "Real space outlier"
             }, {
               "value" : "S-GLYCOSYLATION_SITE",
-              "detail" : "Glycan binding to the sulfur atom of a cysteine (Cys) residue"
+              "detail" : "Glycan binding to the sulfur atom of a cysteine (Cys) residue",
+              "name" : "S-Glycosylation Site"
             }, {
               "value" : "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS",
-              "detail" : "Structural Antibody Database (SAbDab) antibody heavy chain subclass (IGHV1, IGHV2,)"
+              "detail" : "Structural Antibody Database (SAbDab) antibody heavy chain subclass (IGHV1, IGHV2,)",
+              "name" : "SAbDab Antibody Heavy Chain Subclass"
             }, {
               "value" : "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS",
-              "detail" : "Structural Antibody Database (SAbDab) antibody light chain subclass (IGLV1, IGLV2, ...)"
+              "detail" : "Structural Antibody Database (SAbDab) antibody light chain subclass (IGLV1, IGLV2, ...)",
+              "name" : "SAbDab Antibody Light Chain Subclass"
             }, {
               "value" : "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE",
-              "detail" : "Structural Antibody Database (SAbDab) antibody light chain type (Kappa or Lambda)"
-            }, {
-              "value" : "SAbDab Antibody Heavy Chain Subclass"
-            }, {
-              "value" : "SAbDab Antibody Light Chain Subclass"
-            }, {
-              "value" : "SAbDab Antibody Light Chain Type"
+              "detail" : "Structural Antibody Database (SAbDab) antibody light chain type (Kappa or Lambda)",
+              "name" : "SAbDab Antibody Light Chain Type"
             }, {
               "value" : "SCOP",
-              "detail" : "SCOP - Structural Classification of Proteins"
-            }, {
-              "value" : "SCOP2 Family"
-            }, {
-              "value" : "SCOP2 Superfamily"
-            }, {
-              "value" : "SCOP2B Superfamily"
+              "detail" : "SCOP - Structural Classification of Proteins",
+              "name" : "SCOP"
             }, {
               "value" : "SCOP2B_SUPERFAMILY",
-              "detail" : "SCOP2B - Structural Classification of Proteins 2 - Superfamily automated assignments"
+              "detail" : "SCOP2B - Structural Classification of Proteins 2 - Superfamily automated assignments",
+              "name" : "SCOP2B Superfamily"
             }, {
               "value" : "SCOP2_FAMILY",
-              "detail" : "SCOP2 - Structural Classification of Proteins 2 Family"
+              "detail" : "SCOP2 - Structural Classification of Proteins 2 Family",
+              "name" : "SCOP2 Family"
             }, {
               "value" : "SCOP2_SUPERFAMILY",
-              "detail" : "SCOP2 - Structural Classification of Proteins 2 Superfamily"
+              "detail" : "SCOP2 - Structural Classification of Proteins 2 Superfamily",
+              "name" : "SCOP2 Superfamily"
             }, {
               "value" : "SHEET",
-              "detail" : "Beta-sheets"
+              "detail" : "Beta-sheets",
+              "name" : "Beta-sheets"
             }, {
               "value" : "STEREO_OUTLIER",
-              "detail" : "Stereochemical/chirality outlier"
+              "detail" : "Stereochemical/chirality outlier",
+              "name" : "Stereochemical/chirality outlier"
+            }, {
+              "value" : "STRN",
+              "detail" : "Strand or beta-bridge (protein)",
+              "name" : "Strand or beta-bridge (protein)"
+            }, {
+              "value" : "TURN_TY1_P",
+              "detail" : "Type I turn (protein)",
+              "name" : "Type I turn (protein)"
             }, {
               "value" : "UNASSIGNED_SEC_STRUCT",
-              "detail" : "Unassigned secondary structure"
+              "detail" : "Unassigned secondary structure",
+              "name" : "Unassigned secondary structure"
             }, {
               "value" : "UNOBSERVED_ATOM_XYZ",
-              "detail" : "Unobserved atom coordinates"
+              "detail" : "Unobserved atom coordinates",
+              "name" : "Unobserved Atoms"
             }, {
               "value" : "UNOBSERVED_RESIDUE_XYZ",
-              "detail" : "Unobserved residue coordinates"
+              "detail" : "Unobserved residue coordinates",
+              "name" : "Unobserved Residues"
             }, {
               "value" : "ZERO_OCCUPANCY_ATOM_XYZ",
-              "detail" : "Atom coordinates with zero occupancy"
+              "detail" : "Atom coordinates with zero occupancy",
+              "name" : "Zero Occupancy Atoms"
             }, {
               "value" : "ZERO_OCCUPANCY_RESIDUE_XYZ",
-              "detail" : "Residue coordinates with zero occupancy"
+              "detail" : "Residue coordinates with zero occupancy",
+              "name" : "Zero Occupancy Residues"
             } ],
             "rcsb_description" : [ {
               "text" : "Type or category of the feature.",
@@ -1349,6 +1533,74 @@
       "minItems" : 1,
       "uniqueItems" : true
     },
+    "struct_asym" : {
+      "type" : "object",
+      "properties" : {
+        "pdbx_PDB_id" : {
+          "type" : "string",
+          "examples" : [ "1ABC" ],
+          "description" : "This data item is a pointer to _atom_site.pdbx_PDB_strand_id the\n ATOM_SITE category.",
+          "rcsb_description" : [ {
+            "text" : "This data item is a pointer to _atom_site.pdbx_PDB_strand_id the\n ATOM_SITE category.",
+            "context" : "dictionary"
+          } ]
+        },
+        "pdbx_alt_id" : {
+          "type" : "string",
+          "description" : "This data item is a pointer to _atom_site.ndb_alias_strand_id the\n ATOM_SITE category.",
+          "rcsb_description" : [ {
+            "text" : "This data item is a pointer to _atom_site.ndb_alias_strand_id the\n ATOM_SITE category.",
+            "context" : "dictionary"
+          } ]
+        },
+        "pdbx_order" : {
+          "type" : "integer",
+          "description" : "This data item gives the order of the structural elements in the\n ATOM_SITE category.",
+          "rcsb_description" : [ {
+            "text" : "This data item gives the order of the structural elements in the\n ATOM_SITE category.",
+            "context" : "dictionary"
+          } ]
+        },
+        "pdbx_type" : {
+          "type" : "string",
+          "enum" : [ "ATOMN", "ATOMP", "ATOMS", "HETAC", "HETAD", "HETAI", "HETAIN", "HETAS", "HETIC" ],
+          "description" : "This data item describes the general type of the structural elements\n in the ATOM_SITE category.",
+          "rcsb_enum_annotated" : [ {
+            "value" : "ATOMN",
+            "detail" : "nucleic acid"
+          }, {
+            "value" : "ATOMP",
+            "detail" : "protein"
+          }, {
+            "value" : "ATOMS",
+            "detail" : "sugar"
+          }, {
+            "value" : "HETAC",
+            "detail" : "coenzyme"
+          }, {
+            "value" : "HETAD",
+            "detail" : "drug"
+          }, {
+            "value" : "HETAI",
+            "detail" : "ion"
+          }, {
+            "value" : "HETAIN",
+            "detail" : "inhibitor"
+          }, {
+            "value" : "HETAS",
+            "detail" : "solvent"
+          }, {
+            "value" : "HETIC",
+            "detail" : "ion complex"
+          } ],
+          "rcsb_description" : [ {
+            "text" : "This data item describes the general type of the structural elements\n in the ATOM_SITE category.",
+            "context" : "dictionary"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
     "rcsb_id" : {
       "type" : "string",
       "examples" : [ "1KIP.A" ],
@@ -1384,5 +1636,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Polymer Entity Instance",
   "description" : "JSON schema for entity instance core data.",
-  "$comment" : "schema_version: 9.2.1"
+  "$comment" : "schema_version: 10.0.0"
 }

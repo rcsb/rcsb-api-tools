@@ -1,0 +1,21 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_options_group_by_deposit_id.json",
+  "title": "Group By Deposit ID",
+  "type": "object",
+  "required": [
+    "aggregation_method"
+  ],
+  "properties": {
+    "aggregation_method": {
+      "type": "string",
+      "enum": [
+        "matching_deposit_group_id"
+      ],
+      "description": "The method used to group search hits on the basis of common identifier for a group of entries deposited as a collection"
+    },
+    "ranking_criteria_type": {
+      "$ref": "json-schema-rcsb_search_query_request_options_sort_attributes.json"
+    }
+  },
+  "additionalProperties": false
+}

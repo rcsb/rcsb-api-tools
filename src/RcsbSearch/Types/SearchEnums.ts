@@ -1,3 +1,9 @@
+export enum RequestOptionsResultsVerbosity {
+    Compact = "compact",
+    Minimal = "minimal",
+    Verbose = "verbose"
+}
+
 export enum RelevanceScoreRankingOption {
     Score = "score"
 }
@@ -12,13 +18,6 @@ export enum SortOptionGroupsSortBy {
     Count = "count"
 }
 
-export enum Src {
-    Ui = "ui",
-    MypdbService = "mypdb_service",
-    MypdbUser = "mypdb_user",
-    RcsbTest = "rcsb_test"
-}
-
 export enum ReturnType {
     Entry = "entry",
     PolymerEntity = "polymer_entity",
@@ -26,6 +25,13 @@ export enum ReturnType {
     PolymerInstance = "polymer_instance",
     Assembly = "assembly",
     MolDefinition = "mol_definition"
+}
+
+export enum Src {
+    Ui = "ui",
+    MypdbService = "mypdb_service",
+    MypdbUser = "mypdb_user",
+    RcsbTest = "rcsb_test"
 }
 
 export enum GroupByReturnType {
@@ -43,12 +49,6 @@ export enum ScoringStrategy {
     Text = "text",
     TextChem = "text_chem",
     FullText = "full_text"
-}
-
-export enum ResultsVerbosity {
-    Compact = "compact",
-    Minimal = "minimal",
-    Verbose = "verbose"
 }
 
 export enum AggregationType {
@@ -76,17 +76,6 @@ export enum LogicalOperator {
     And = "and"
 }
 
-export enum Service {
-    Text = "text",
-    TextChem = "text_chem",
-    FullText = "full_text",
-    Sequence = "sequence",
-    Structure = "structure",
-    Chemical = "chemical",
-    Seqmotif = "seqmotif",
-    Strucmotif = "strucmotif"
-}
-
 export enum Operator {
     Equals = "equals",
     Greater = "greater",
@@ -94,11 +83,11 @@ export enum Operator {
     Less = "less",
     LessOrEqual = "less_or_equal",
     Range = "range",
-    ContainsWords = "contains_words",
-    ContainsPhrase = "contains_phrase",
     ExactMatch = "exact_match",
     In = "in",
     Exists = "exists",
+    ContainsWords = "contains_words",
+    ContainsPhrase = "contains_phrase",
     StrictShapeMatch = "strict_shape_match",
     RelaxedShapeMatch = "relaxed_shape_match"
 }
@@ -113,10 +102,27 @@ export enum SortBy {
     Coverage = "coverage"
 }
 
+export enum Service {
+    FullText = "full_text",
+    Text = "text",
+    TextChem = "text_chem",
+    Sequence = "sequence",
+    Structure = "structure",
+    Chemical = "chemical",
+    Seqmotif = "seqmotif",
+    Strucmotif = "strucmotif"
+}
+
 export enum Target {
     PdbProteinSequence = "pdb_protein_sequence",
     PdbRnaSequence = "pdb_rna_sequence",
     PdbDnaSequence = "pdb_dna_sequence"
+}
+
+export enum SequenceType {
+    Protein = "protein",
+    Rna = "rna",
+    Dna = "dna"
 }
 
 export enum Format {
@@ -158,15 +164,6 @@ export enum AtomPairingScheme {
 export enum MotifPruningStrategy {
     None = "NONE",
     Kruskal = "KRUSKAL"
-}
-
-export enum ResultType {
-    Entry = "entry",
-    PolymerEntity = "polymer_entity",
-    NonPolymerEntity = "non_polymer_entity",
-    PolymerInstance = "polymer_instance",
-    Assembly = "assembly",
-    MolDefinition = "mol_definition"
 }
 
 export enum ServiceType {

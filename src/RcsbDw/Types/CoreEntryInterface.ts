@@ -170,6 +170,10 @@ export interface CoreEntry {
        */
       journal_abbrev?: string;
       /**
+       * Full name of the cited journal; relevant for journal articles.
+       */
+      journal_full?: string;
+      /**
        * The American Society for Testing and Materials (ASTM) code
        *  assigned to the journal cited (also referred to as the CODEN
        *  designator of the Chemical Abstracts Service); relevant for
@@ -297,6 +301,10 @@ export interface CoreEntry {
        *  Chemical Abstracts Service Source Index.
        */
       journal_abbrev?: string;
+      /**
+       * Full name of the cited journal; relevant for journal articles.
+       */
+      journal_full?: string;
       /**
        * The American Society for Testing and Materials (ASTM) code
        *  assigned to the journal cited (also referred to as the CODEN
@@ -718,11 +726,11 @@ export interface CoreEntry {
        */
       image_processing_id: string;
       /**
-       * Unit-cell length a in Angstroms.
+       * Unit-cell length a in angstroms.
        */
       length_a?: number;
       /**
-       * Unit-cell length b in Angstroms.
+       * Unit-cell length b in angstroms.
        */
       length_b?: number;
       /**
@@ -775,11 +783,11 @@ export interface CoreEntry {
        */
       image_processing_id: string;
       /**
-       * Unit-cell length a in Angstroms.
+       * Unit-cell length a in angstroms.
        */
       length_a?: number;
       /**
-       * Unit-cell length b in Angstroms.
+       * Unit-cell length b in angstroms.
        */
       length_b?: number;
       /**
@@ -841,15 +849,15 @@ export interface CoreEntry {
        */
       image_processing_id: string;
       /**
-       * Unit-cell length a in Angstroms.
+       * Unit-cell length a in angstroms.
        */
       length_a?: number;
       /**
-       * Unit-cell length b in Angstroms.
+       * Unit-cell length b in angstroms.
        */
       length_b?: number;
       /**
-       * Unit-cell length c in Angstroms.
+       * Unit-cell length c in angstroms.
        */
       length_c?: number;
       /**
@@ -883,15 +891,15 @@ export interface CoreEntry {
        */
       image_processing_id: string;
       /**
-       * Unit-cell length a in Angstroms.
+       * Unit-cell length a in angstroms.
        */
       length_a?: number;
       /**
-       * Unit-cell length b in Angstroms.
+       * Unit-cell length b in angstroms.
        */
       length_b?: number;
       /**
-       * Unit-cell length c in Angstroms.
+       * Unit-cell length c in angstroms.
        */
       length_c?: number;
       /**
@@ -1104,7 +1112,7 @@ export interface CoreEntry {
         | "HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED"
         | "OTHER";
       /**
-       * The final resolution (in Angstroms)of the 3D reconstruction.
+       * The final resolution (in angstroms)of the 3D reconstruction.
        */
       resolution?: number;
       /**
@@ -1175,7 +1183,7 @@ export interface CoreEntry {
         | "HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED"
         | "OTHER";
       /**
-       * The final resolution (in Angstroms)of the 3D reconstruction.
+       * The final resolution (in angstroms)of the 3D reconstruction.
        */
       resolution?: number;
       /**
@@ -1289,7 +1297,7 @@ export interface CoreEntry {
        */
       fourier_space_coverage?: number;
       /**
-       * High resolution limit for this shell (Angstroms)
+       * High resolution limit for this shell (angstroms)
        */
       high_resolution?: number;
       /**
@@ -1297,7 +1305,7 @@ export interface CoreEntry {
        */
       id: string;
       /**
-       * Low resolution limit for this shell (Angstroms)
+       * Low resolution limit for this shell (angstroms)
        */
       low_resolution?: number;
       /**
@@ -1323,7 +1331,7 @@ export interface CoreEntry {
        */
       fourier_space_coverage?: number;
       /**
-       * High resolution limit for this shell (Angstroms)
+       * High resolution limit for this shell (angstroms)
        */
       high_resolution?: number;
       /**
@@ -1331,7 +1339,7 @@ export interface CoreEntry {
        */
       id: string;
       /**
-       * Low resolution limit for this shell (Angstroms)
+       * Low resolution limit for this shell (angstroms)
        */
       low_resolution?: number;
       /**
@@ -1363,7 +1371,7 @@ export interface CoreEntry {
        */
       fourier_space_coverage?: number;
       /**
-       * High resolution limit of the structure factor data, in Angstroms
+       * High resolution limit of the structure factor data, in angstroms
        */
       high_resolution?: number;
       /**
@@ -1414,7 +1422,7 @@ export interface CoreEntry {
        */
       fourier_space_coverage?: number;
       /**
-       * High resolution limit of the structure factor data, in Angstroms
+       * High resolution limit of the structure factor data, in angstroms
        */
       high_resolution?: number;
       /**
@@ -1929,12 +1937,12 @@ export interface CoreEntry {
        */
       nominal_magnification?: number;
       /**
-       * The specimen temperature maximum (degrees Kelvin) for the duration
+       * The specimen temperature maximum (kelvin) for the duration
        *  of imaging.
        */
       recording_temperature_maximum?: number;
       /**
-       * The specimen temperature minimum (degrees Kelvin) for the duration
+       * The specimen temperature minimum (kelvin) for the duration
        *  of imaging.
        */
       recording_temperature_minimum?: number;
@@ -1981,7 +1989,7 @@ export interface CoreEntry {
        */
       specimen_id?: string;
       /**
-       * The mean specimen stage temperature (degrees Kelvin) during imaging
+       * The mean specimen stage temperature (in kelvin) during imaging
        *  in the microscope.
        */
       temperature?: number;
@@ -2168,12 +2176,12 @@ export interface CoreEntry {
        */
       nominal_magnification?: number;
       /**
-       * The specimen temperature maximum (degrees Kelvin) for the duration
+       * The specimen temperature maximum (kelvin) for the duration
        *  of imaging.
        */
       recording_temperature_maximum?: number;
       /**
-       * The specimen temperature minimum (degrees Kelvin) for the duration
+       * The specimen temperature minimum (kelvin) for the duration
        *  of imaging.
        */
       recording_temperature_minimum?: number;
@@ -2220,7 +2228,7 @@ export interface CoreEntry {
        */
       specimen_id?: string;
       /**
-       * The mean specimen stage temperature (degrees Kelvin) during imaging
+       * The mean specimen stage temperature (in kelvin) during imaging
        *  in the microscope.
        */
       temperature?: number;
@@ -2557,7 +2565,7 @@ export interface CoreEntry {
   em_vitrification?: [
     {
       /**
-       * The temperature (in degrees Kelvin) of the sample just prior to vitrification.
+       * The temperature (in kelvin) of the sample just prior to vitrification.
        */
       chamber_temperature?: number;
       /**
@@ -2613,7 +2621,7 @@ export interface CoreEntry {
        */
       specimen_id: string;
       /**
-       * The vitrification temperature (in degrees Kelvin), e.g.,
+       * The vitrification temperature (in kelvin), e.g.,
        *   temperature of the plunge instrument cryogen bath.
        */
       temp?: number;
@@ -2625,7 +2633,7 @@ export interface CoreEntry {
     },
     ...{
       /**
-       * The temperature (in degrees Kelvin) of the sample just prior to vitrification.
+       * The temperature (in kelvin) of the sample just prior to vitrification.
        */
       chamber_temperature?: number;
       /**
@@ -2681,7 +2689,7 @@ export interface CoreEntry {
        */
       specimen_id: string;
       /**
-       * The vitrification temperature (in degrees Kelvin), e.g.,
+       * The vitrification temperature (in kelvin), e.g.,
        *   temperature of the plunge instrument cryogen bath.
        */
       temp?: number;
@@ -2700,6 +2708,10 @@ export interface CoreEntry {
      *  identifier.
      */
     id: string;
+    /**
+     * An identifier for the model collection associated with the entry.
+     */
+    ma_collection_id?: string;
   };
   /**
    * @minItems 1
@@ -3010,6 +3022,65 @@ export interface CoreEntry {
        *  crystal growth.
        */
       temp_details?: string;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  ma_data?: [
+    {
+      /**
+       * The type of data held in the dataset.
+       */
+      content_type?:
+        | "coevolution MSA"
+        | "input structure"
+        | "model coordinates"
+        | "other"
+        | "polymeric template library"
+        | "spatial restraints"
+        | "target"
+        | "target-template alignment"
+        | "template structure";
+      /**
+       * Details for other content types.
+       */
+      content_type_other_details?: string;
+      /**
+       * A unique identifier for the data.
+       */
+      id: number;
+      /**
+       * An author-given name for the content held in the dataset.
+       */
+      name?: string;
+    },
+    ...{
+      /**
+       * The type of data held in the dataset.
+       */
+      content_type?:
+        | "coevolution MSA"
+        | "input structure"
+        | "model coordinates"
+        | "other"
+        | "polymeric template library"
+        | "spatial restraints"
+        | "target"
+        | "target-template alignment"
+        | "template structure";
+      /**
+       * Details for other content types.
+       */
+      content_type_other_details?: string;
+      /**
+       * A unique identifier for the data.
+       */
+      id: number;
+      /**
+       * An author-given name for the content held in the dataset.
+       */
+      name?: string;
     }[]
   ];
   /**
@@ -4315,7 +4386,7 @@ export interface CoreEntry {
        */
       pressure_units?: string;
       /**
-       * The temperature (in Kelvin) at which NMR data were
+       * The temperature (in kelvin) at which NMR data were
        *  collected.
        */
       temperature?: string;
@@ -4380,7 +4451,7 @@ export interface CoreEntry {
        */
       pressure_units?: string;
       /**
-       * The temperature (in Kelvin) at which NMR data were
+       * The temperature (in kelvin) at which NMR data were
        *  collected.
        */
       temperature?: string;
@@ -6745,6 +6816,24 @@ export interface CoreEntry {
      */
     status_code?: "AUCO" | "AUTH" | "HOLD" | "HPUB'" | "POLC" | "PROC" | "REFI" | "REL" | "REPL" | "WAIT" | "WDRN";
   };
+  rcsb_comp_model_provenance?: {
+    /**
+     * Entry identifier corresponding to the computed structure model.
+     */
+    entry_id: string;
+    /**
+     * Source database for the computed structure model.
+     */
+    source_db?: "AlphaFoldDB" | "ModelArchive";
+    /**
+     * Source filename for the computed structure model.
+     */
+    source_filename?: string;
+    /**
+     * Source URL for computed structure model file.
+     */
+    source_url?: string;
+  };
   rcsb_entry_container_identifiers: {
     assembly_ids?: string[];
     branched_entity_ids?: string[];
@@ -6966,6 +7055,17 @@ export interface CoreEntry {
      * The number of distinct solvent entities per deposited structure model.
      */
     solvent_entity_count?: number;
+    /**
+     * Indicates if the structure was determined using experimental or computational methods.
+     */
+    structure_determination_methodology: "computational" | "experimental";
+    /**
+     * Indicates the priority of the value in _rcsb_entry_info.structure_determination_methodology.
+     *  The lower the number the higher the priority.
+     *  Priority values for "experimental" structures is currently set to 10 and
+     *  the values for "computational" structures is set to 100.
+     */
+    structure_determination_methodology_priority?: number;
     diffrn_resolution_high?: {
       /**
        * The provenence source for the high resolution limit of data collection.
@@ -6977,6 +7077,93 @@ export interface CoreEntry {
       value?: number;
     };
   };
+  /**
+   * @minItems 1
+   */
+  rcsb_ma_qa_metric_global?: [
+    {
+      /**
+       * The model identifier.
+       */
+      model_id: number;
+      ma_qa_metric_global?: {
+        /**
+         * Description of the global QA metric.
+         */
+        description?: string;
+        /**
+         * Name of the global QA metric.
+         */
+        name: string;
+        /**
+         * The type of global QA metric.
+         */
+        type:
+          | "PAE"
+          | "contact probability"
+          | "distance"
+          | "energy"
+          | "ipTM"
+          | "normalized score"
+          | "other"
+          | "pLDDT"
+          | "pLDDT all-atom"
+          | "pLDDT all-atom in [0,1]"
+          | "pLDDT in [0,1]"
+          | "pTM"
+          | "zscore";
+        /**
+         * Details for other type of global QA metric.
+         */
+        type_other_details?: string;
+        /**
+         * Value of the global QA metric.
+         */
+        value: number;
+      }[];
+    },
+    ...{
+      /**
+       * The model identifier.
+       */
+      model_id: number;
+      ma_qa_metric_global?: {
+        /**
+         * Description of the global QA metric.
+         */
+        description?: string;
+        /**
+         * Name of the global QA metric.
+         */
+        name: string;
+        /**
+         * The type of global QA metric.
+         */
+        type:
+          | "PAE"
+          | "contact probability"
+          | "distance"
+          | "energy"
+          | "ipTM"
+          | "normalized score"
+          | "other"
+          | "pLDDT"
+          | "pLDDT all-atom"
+          | "pLDDT all-atom in [0,1]"
+          | "pLDDT in [0,1]"
+          | "pTM"
+          | "zscore";
+        /**
+         * Details for other type of global QA metric.
+         */
+        type_other_details?: string;
+        /**
+         * Value of the global QA metric.
+         */
+        value: number;
+      }[];
+    }[]
+  ];
   rcsb_primary_citation?: {
     /**
      * The International Standard Book Number (ISBN) code assigned to
@@ -10270,6 +10457,11 @@ export interface CoreEntry {
   software?: [
     {
       /**
+       * This data item is a pointer to _citation.id in the CITATION
+       *  category.
+       */
+      citation_id?: string;
+      /**
        * The classification of the program according to its
        *  major function.
        */
@@ -10350,6 +10542,11 @@ export interface CoreEntry {
       version?: string;
     },
     ...{
+      /**
+       * This data item is a pointer to _citation.id in the CITATION
+       *  category.
+       */
+      citation_id?: string;
       /**
        * The classification of the program according to its
        *  major function.

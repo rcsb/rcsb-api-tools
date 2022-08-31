@@ -1,0 +1,12 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_options_results_verbosity.json",
+  "title": "Request Options Results Verbosity",
+  "type": "string",
+  "enum": [
+    "compact",
+    "minimal",
+    "verbose"
+  ],
+  "default": "minimal",
+  "description": "Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service"
+}

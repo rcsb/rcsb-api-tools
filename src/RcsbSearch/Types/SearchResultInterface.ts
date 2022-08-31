@@ -6,9 +6,21 @@
  */
 
 /**
+ * Specifies the type of the returned identifiers.
+ */
+export type ReturnType =
+  | "entry"
+  | "polymer_entity"
+  | "non_polymer_entity"
+  | "polymer_instance"
+  | "assembly"
+  | "mol_definition";
+/**
  * Search results are ordered by the relevancy scores by default, from the most relevant matches to the least relevant matches (higher score to lower score).
  */
 export type RelevanceScoreRankingOption = "score";
+export type NumericValue = number;
+export type DateValue = string;
 /**
  * The order in which to sort. Defaults to “desc”.
  */
@@ -19,13 +31,10 @@ export type SortDirection = "asc" | "desc";
  */
 export interface QueryResult {
   /**
-   * The query ID of the result set.
+   * The query ID of the result set
    */
   query_id: string;
-  /**
-   * Specifies the type of the returned identifiers.
-   */
-  result_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly" | "mol_definition";
+  result_type: ReturnType;
   /**
    * The total number of hits returned by search
    */
@@ -38,34 +47,7 @@ export interface QueryResult {
    * The number returned by group_by operation that counts hits that are not members of requested groups
    */
   ungrouped_count?: number;
-  /**
-   * Explains the query execution time.
-   */
-  explain_metadata?: {
-    /**
-     * The total time taken in milliseconds to produce the query result
-     */
-    total_timing: number;
-    /**
-     * The time taken in milliseconds to produce facets
-     */
-    facet_timing?: number;
-    /**
-     * The time taken in milliseconds to sort the result identifiers
-     */
-    sort_timing?: number;
-    /**
-     * The time taken in milliseconds to group the result identifiers
-     */
-    grouping_timing?: number;
-    /**
-     * The time taken in milliseconds in retrieving the result identifiers from each service type query node. Multiple text service nodes are bundled to a single text service query.
-     */
-    terminal_node_timings: {
-      [k: string]: unknown;
-    };
-    [k: string]: unknown;
-  };
+  explain_metadata?: ExplainMetadata;
   /**
    * A list of search result identifiers including each identifier's score and the service query where the identifier was rendered from.
    *
@@ -88,6 +70,34 @@ export interface QueryResult {
    * @minItems 1
    */
   group_set?: [string | GroupIdentifier, ...(string | GroupIdentifier)[]];
+}
+/**
+ * Explains the query execution time.
+ */
+export interface ExplainMetadata {
+  /**
+   * The total time taken in milliseconds to produce the query result
+   */
+  total_timing: number;
+  /**
+   * The time taken in milliseconds to produce facets
+   */
+  facet_timing?: number;
+  /**
+   * The time taken in milliseconds to sort the result identifiers
+   */
+  sort_timing?: number;
+  /**
+   * The time taken in milliseconds to group the result identifiers
+   */
+  grouping_timing?: number;
+  /**
+   * The time taken in milliseconds in retrieving the result identifiers from each service type query node. Multiple text service nodes are bundled to a single text service query.
+   */
+  terminal_node_timings: {
+    [k: string]: unknown;
+  };
+  [k: string]: unknown;
 }
 export interface ServiceIdentifier {
   /**
@@ -429,7 +439,87 @@ export interface GroupByDepositID {
 }
 export interface SortOptionAttributes {
   sort_by: RelevanceScoreRankingOption | string;
+  filter?: FilterQueryGroupNode | FilterQueryTerminalNode;
   direction?: SortDirection;
+}
+export interface FilterQueryGroupNode {
+  /**
+   * The type of the node.
+   */
+  type: "group";
+  /**
+   * Boolean operator connects and defines the relationship between the child nodes.
+   */
+  logical_operator: "or" | "and";
+  /**
+   * @minItems 1
+   */
+  nodes: [FilterQueryTerminalNode | FilterQueryGroupNode, ...(FilterQueryTerminalNode | FilterQueryGroupNode)[]];
+}
+/**
+ * A terminal node is an atomic-level element within a query.
+ */
+export interface FilterQueryTerminalNode {
+  /**
+   * The type of the node.
+   */
+  type: "terminal";
+  parameters: {
+    /**
+     * The search term(s). Can be a single or multiple words, numbers, dates, date math expressions, or ranges.
+     */
+    value?: string | number | boolean | Range | DateRange | [string | number | number, ...(string | number | number)[]];
+    /**
+     * The search field. Must exist in the current schema.
+     */
+    attribute: string;
+    /**
+     * Indicates if the operator is negated.
+     */
+    negation?: boolean;
+    /**
+     * The operator allows specifying the evaluation expression.
+     */
+    operator:
+      | "equals"
+      | "greater"
+      | "greater_or_equal"
+      | "less"
+      | "less_or_equal"
+      | "range"
+      | "exact_match"
+      | "in"
+      | "exists";
+    /**
+     * Allows case sensitive matching of the value with the indexed attribute values when set to true. Default is false which means the case insensitivity of matching.
+     */
+    case_sensitive?: boolean;
+  };
+  [k: string]: unknown;
+}
+export interface Range {
+  from?: NumericValue;
+  /**
+   * Indicated an inclusive lower bound.
+   */
+  include_lower?: boolean;
+  to?: NumericValue;
+  /**
+   * Indicated an inclusive upper bound.
+   */
+  include_upper?: boolean;
+}
+export interface DateRange {
+  from?: DateValue;
+  /**
+   * Indicated an inclusive lower bound.
+   */
+  include_lower?: boolean;
+  to?: DateValue;
+  /**
+   * Indicated an inclusive upper bound.
+   */
+  include_upper?: boolean;
 }
 export interface GroupBySequenceIdentity {
   /**

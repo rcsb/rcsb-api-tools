@@ -681,8 +681,8 @@
           },
           "processing_site" : {
             "type" : "string",
-            "enum" : [ "BMRB", "PDBC", "PDBJ", "PDBe", "RCSB" ],
-            "examples" : [ "RCSB", "PDBe", "PDBJ", "BMRB", "PDBC" ],
+            "enum" : [ "BMRB", "PDBC", "PDBE", "PDBJ", "RCSB" ],
+            "examples" : [ "RCSB", "PDBE", "PDBJ", "BMRB", "PDBC" ],
             "description" : "An identifier for the wwPDB site creating or modifying the molecule.",
             "rcsb_description" : [ {
               "text" : "An identifier for the wwPDB site creating or modifying the molecule.",

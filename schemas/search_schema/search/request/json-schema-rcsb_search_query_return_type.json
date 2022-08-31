@@ -1,0 +1,14 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_return_type.json",
+  "title": "Return Type",
+  "type": "string",
+  "enum": [
+    "entry",
+    "polymer_entity",
+    "non_polymer_entity",
+    "polymer_instance",
+    "assembly",
+    "mol_definition"
+  ],
+  "description": "Specifies the type of the returned identifiers."
+}

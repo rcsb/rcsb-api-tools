@@ -216,9 +216,24 @@ export interface CoreNCBI {
       /**
        * core_entity identifiers
        */
-      core_entity_identifiers?: {
+      core_entity_identifiers: {
         entry_id: string;
         entity_id: string;
+        [k: string]: unknown;
+      };
+      rcsb_latest_revision?: {
+        /**
+         * The major version number of the latest revision.
+         */
+        major_revision?: number;
+        /**
+         * The minor version number of the latest revision.
+         */
+        minor_revision?: number;
+        /**
+         * The release date of the latest revision item.
+         */
+        revision_date?: string;
         [k: string]: unknown;
       };
       [k: string]: unknown;

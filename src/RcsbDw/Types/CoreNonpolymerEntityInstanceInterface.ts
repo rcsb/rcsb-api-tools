@@ -1045,6 +1045,28 @@ export interface CoreNonpolymerEntityInstance {
       target_seq_id?: number;
     }[]
   ];
+  struct_asym?: {
+    /**
+     * This data item is a pointer to _atom_site.pdbx_PDB_strand_id the
+     *  ATOM_SITE category.
+     */
+    pdbx_PDB_id?: string;
+    /**
+     * This data item is a pointer to _atom_site.ndb_alias_strand_id the
+     *  ATOM_SITE category.
+     */
+    pdbx_alt_id?: string;
+    /**
+     * This data item gives the order of the structural elements in the
+     *  ATOM_SITE category.
+     */
+    pdbx_order?: number;
+    /**
+     * This data item describes the general type of the structural elements
+     *  in the ATOM_SITE category.
+     */
+    pdbx_type?: "ATOMN" | "ATOMP" | "ATOMS" | "HETAC" | "HETAD" | "HETAI" | "HETAIN" | "HETAS" | "HETIC";
+  };
   /**
    * A unique identifier for each object in this entity instance container formed by
    *  an 'dot' (.) separated concatenation of entry and entity instance identifiers.

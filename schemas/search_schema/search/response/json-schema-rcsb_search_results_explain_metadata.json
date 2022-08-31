@@ -1,0 +1,34 @@
+{
+  "$id": "/schema/search/response/json-schema-rcsb_search_results_explain_metadata.json",
+  "title": "Explain Metadata",
+  "type": "object",
+  "required": [
+    "total_timing",
+    "terminal_node_timings"
+  ],
+  "properties": {
+    "total_timing": {
+      "type": "integer",
+      "description": "The total time taken in milliseconds to produce the query result"
+    },
+    "facet_timing": {
+      "type": "integer",
+      "description": "The time taken in milliseconds to produce facets"
+    },
+    "sort_timing": {
+      "type": "integer",
+      "description": "The time taken in milliseconds to sort the result identifiers"
+    },
+    "grouping_timing": {
+      "type": "integer",
+      "description": "The time taken in milliseconds to group the result identifiers"
+    },
+    "terminal_node_timings": {
+      "existingJavaType": "java.util.Map<Integer,Integer>",
+      "type": "object",
+      "minItems": 1,
+      "description": "The time taken in milliseconds in retrieving the result identifiers from each service type query node. Multiple text service nodes are bundled to a single text service query."
+    }
+  },
+  "description": "Explains the query execution time."
+}

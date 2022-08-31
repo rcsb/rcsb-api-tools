@@ -1,0 +1,32 @@
+{
+  "$id": "/schema/suggest/response/json-schema-rcsb_suggest_results_suggestion.json",
+  "title": "Suggestion",
+  "type": "object",
+  "required": [
+    "text",
+    "score"
+  ],
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Suggested term(s)"
+    },
+    "score": {
+      "type": "number",
+      "description": "Relevancy score for suggested term(s)"
+    },
+    "contexts": {
+      "type": "object",
+      "existingJavaType": "java.util.Map<String,java.util.Set<String>>",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "description": "Associate one or more categories with suggestions"
+    }
+  }
+}

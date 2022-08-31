@@ -1,0 +1,68 @@
+{
+  "$id": "/schema/suggest/request/json-schema-rcsb_suggest_term.json",
+  "title": "Term Suggest Query",
+  "type": "object",
+  "required": [
+    "text",
+    "completion"
+  ],
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Suggestion term(s)."
+    },
+    "completion": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "attribute"
+        ],
+        "properties": {
+          "attribute": {
+            "type": "string",
+            "description": "Suggestion field."
+          },
+          "filter": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "values"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Defines a category context name."
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "description": "Specifies filter criteria. If multiple categories are set on the query, suggestions match if they contain at least one of the provided values."
+                }
+              },
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "uniqueItems": true,
+            "description": "Suggestions can be filtered by their associated categories."
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "size": {
+      "type": "integer",
+      "default": 10,
+      "description": "Configures the maximum number of suggestions to be returned."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+{
+  "$id": "/schema/extensions/json-schema-rcsb_query_provider_type.json",
+  "title": "Query Provider Type",
+  "type": "object",
+  "properties": {
+    "value": {
+      "allOf": [
+        {
+          "$ref": "../search/request/json-schema-rcsb_search_query_node_terminal.json#/properties/service"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "complete_set"
+          ],
+          "javaType" : "org.rcsb.arches.auto.model.ProviderType"
+        }
+      ]
+    }
+  },
+  "description": "Specifies the type of the identifiers returned by the integrated services."
+}

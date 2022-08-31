@@ -35,6 +35,7 @@ export class CoreConstants{
 	public static readonly COORDINATE_LINKAGE = "coordinate_linkage";
 	public static readonly COUNTRY = "country";
 	public static readonly JOURNAL_ABBREV = "journal_abbrev";
+	public static readonly JOURNAL_FULL = "journal_full";
 	public static readonly JOURNAL_ID_ASTM = "journal_id_ASTM";
 	public static readonly JOURNAL_ID_CSD = "journal_id_CSD";
 	public static readonly JOURNAL_ID_ISSN = "journal_id_ISSN";
@@ -88,6 +89,7 @@ export class CoreConstants{
 	public static readonly RCSB_BRANCHED_INSTANCE_FEATURE_SUMMARY = "rcsb_branched_instance_feature_summary";
 	public static readonly RCSB_BRANCHED_STRUCT_CONN = "rcsb_branched_struct_conn";
 	public static readonly RCSB_LIGAND_NEIGHBORS = "rcsb_ligand_neighbors";
+	public static readonly STRUCT_ASYM = "struct_asym";
 	public static readonly CHEM_COMP = "chem_comp";
 	public static readonly DRUGBANK = "drugbank";
 	public static readonly PDBX_CHEM_COMP_AUDIT = "pdbx_chem_comp_audit";
@@ -165,6 +167,7 @@ export class CoreConstants{
 	public static readonly EXPTL = "exptl";
 	public static readonly EXPTL_CRYSTAL = "exptl_crystal";
 	public static readonly EXPTL_CRYSTAL_GROW = "exptl_crystal_grow";
+	public static readonly MA_DATA = "ma_data";
 	public static readonly NONPOLYMER_ENTITIES = "nonpolymer_entities";
 	public static readonly PDBX_SG_PROJECT = "pdbx_SG_project";
 	public static readonly PDBX_AUDIT_REVISION_CATEGORY = "pdbx_audit_revision_category";
@@ -201,10 +204,12 @@ export class CoreConstants{
 	public static readonly RCSB_ACCESSION_INFO = "rcsb_accession_info";
 	public static readonly RCSB_ASSOCIATED_HOLDINGS = "rcsb_associated_holdings";
 	public static readonly RCSB_BINDING_AFFINITY = "rcsb_binding_affinity";
+	public static readonly RCSB_COMP_MODEL_PROVENANCE = "rcsb_comp_model_provenance";
 	public static readonly RCSB_ENTRY_CONTAINER_IDENTIFIERS = "rcsb_entry_container_identifiers";
 	public static readonly RCSB_ENTRY_GROUP_MEMBERSHIP = "rcsb_entry_group_membership";
 	public static readonly RCSB_ENTRY_INFO = "rcsb_entry_info";
 	public static readonly RCSB_EXTERNAL_REFERENCES = "rcsb_external_references";
+	public static readonly RCSB_MA_QA_METRIC_GLOBAL = "rcsb_ma_qa_metric_global";
 	public static readonly RCSB_PRIMARY_CITATION = "rcsb_primary_citation";
 	public static readonly REFINE = "refine";
 	public static readonly REFINE_ANALYZE = "refine_analyze";
@@ -447,6 +452,7 @@ export class CoreConstants{
 	public static readonly NSTD_MONOMER = "nstd_monomer";
 	public static readonly PDBX_SEQ_ONE_LETTER_CODE = "pdbx_seq_one_letter_code";
 	public static readonly PDBX_SEQ_ONE_LETTER_CODE_CAN = "pdbx_seq_one_letter_code_can";
+	public static readonly PDBX_SEQUENCE_EVIDENCE_CODE = "pdbx_sequence_evidence_code";
 	public static readonly PDBX_STRAND_ID = "pdbx_strand_id";
 	public static readonly PDBX_TARGET_IDENTIFIER = "pdbx_target_identifier";
 	public static readonly RCSB_ARTIFACT_MONOMER_COUNT = "rcsb_artifact_monomer_count";
@@ -525,6 +531,7 @@ export class CoreConstants{
 	public static readonly STRAIN = "strain";
 	public static readonly TISSUE = "tissue";
 	public static readonly TISSUE_FRACTION = "tissue_fraction";
+	public static readonly MA_COLLECTION_ID = "ma_collection_id";
 	public static readonly CRYSTALS_NUMBER = "crystals_number";
 	public static readonly METHOD_DETAILS = "method_details";
 	public static readonly COLOUR = "colour";
@@ -552,6 +559,8 @@ export class CoreConstants{
 	public static readonly VALUES = "values";
 	public static readonly BEG_SEQ_ID = "beg_seq_id";
 	public static readonly END_SEQ_ID = "end_seq_id";
+	public static readonly CONTENT_TYPE = "content_type";
+	public static readonly CONTENT_TYPE_OTHER_DETAILS = "content_type_other_details";
 	public static readonly DATA_CONTENT_TYPE = "data_content_type";
 	public static readonly REVISION_ORDINAL = "revision_ordinal";
 	public static readonly PROVIDER = "provider";
@@ -570,7 +579,6 @@ export class CoreConstants{
 	public static readonly IDENTIFIER = "identifier";
 	public static readonly PDB_ID = "pdb_id";
 	public static readonly REPLACE_PDB_ID = "replace_pdb_id";
-	public static readonly CONTENT_TYPE = "content_type";
 	public static readonly DB_ID = "db_id";
 	public static readonly DB_NAME = "db_name";
 	public static readonly SG_ENTRY = "SG_entry";
@@ -1010,6 +1018,9 @@ export class CoreConstants{
 	public static readonly MAX_RMSD = "max_rmsd";
 	public static readonly CLUSTER_ID = "cluster_id";
 	public static readonly IDENTITY = "identity";
+	public static readonly SOURCE_DB = "source_db";
+	public static readonly SOURCE_FILENAME = "source_filename";
+	public static readonly SOURCE_URL = "source_url";
 	public static readonly BEG_SEQ_NUM = "beg_seq_num";
 	public static readonly END_SEQ_NUM = "end_seq_num";
 	public static readonly NCBI_COMMON_NAMES = "ncbi_common_names";
@@ -1062,6 +1073,8 @@ export class CoreConstants{
 	public static readonly POLYMER_MONOMER_COUNT_MINIMUM = "polymer_monomer_count_minimum";
 	public static readonly RESOLUTION_COMBINED = "resolution_combined";
 	public static readonly SOFTWARE_PROGRAMS_COMBINED = "software_programs_combined";
+	public static readonly STRUCTURE_DETERMINATION_METHODOLOGY = "structure_determination_methodology";
+	public static readonly STRUCTURE_DETERMINATION_METHODOLOGY_PRIORITY = "structure_determination_methodology_priority";
 	public static readonly SIMILARITY_CRITERIA = "similarity_criteria";
 	public static readonly SIMILARITY_FUNCTION = "similarity_function";
 	public static readonly GROUP_MEMBER_IDS = "group_member_ids";
@@ -1093,6 +1106,9 @@ export class CoreConstants{
 	public static readonly LIGAND_IS_BOUND = "ligand_is_bound";
 	public static readonly LIGAND_MODEL_ID = "ligand_model_id";
 	public static readonly SEQ_ID = "seq_id";
+	public static readonly MA_QA_METRIC_GLOBAL = "ma_qa_metric_global";
+	public static readonly MODEL_ID = "model_id";
+	public static readonly TYPE_OTHER_DETAILS = "type_other_details";
 	public static readonly NONPOLYMER_COMP_ID = "nonpolymer_comp_id";
 	public static readonly REFERENCE_CHEMICAL_IDENTIFIERS_PROVENANCE_SOURCE = "reference_chemical_identifiers_provenance_source";
 	public static readonly REFERENCE_CHEMICAL_IDENTIFIERS_RESOURCE_ACCESSION = "reference_chemical_identifiers_resource_accession";
@@ -1355,6 +1371,10 @@ export class CoreConstants{
 	public static readonly PDBX_DESCRIPTOR = "pdbx_descriptor";
 	public static readonly PDBX_MODEL_DETAILS = "pdbx_model_details";
 	public static readonly PDBX_MODEL_TYPE_DETAILS = "pdbx_model_type_details";
+	public static readonly PDBX_PDB_ID = "pdbx_PDB_id";
+	public static readonly PDBX_ALT_ID = "pdbx_alt_id";
+	public static readonly PDBX_ORDER = "pdbx_order";
+	public static readonly PDBX_TYPE = "pdbx_type";
 	public static readonly PDBX_KEYWORDS = "pdbx_keywords";
 	public static readonly INT_TABLES_NUMBER = "Int_Tables_number";
 	public static readonly CELL_SETTING = "cell_setting";

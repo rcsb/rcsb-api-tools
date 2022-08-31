@@ -1,0 +1,42 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_filter_node_group.json",
+  "title": "Filter Query Group Node",
+  "type": "object",
+  "required": [
+    "type",
+    "logical_operator",
+    "nodes"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "group"
+      ],
+      "description": "The type of the node."
+    },
+    "logical_operator": {
+      "type": "string",
+      "enum": [
+        "or",
+        "and"
+      ],
+      "description": "Boolean operator connects and defines the relationship between the child nodes."
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "json-schema-rcsb_search_query_filter_node_terminal.json"
+          },
+          {
+            "$ref": "json-schema-rcsb_search_query_filter_node_group.json"
+          }
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

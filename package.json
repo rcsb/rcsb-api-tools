@@ -1,12 +1,14 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "4.0.6",
+  "version": "4.1.0",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
     "build"
   ],
   "scripts": {
+    "downloadDwSchemas": "ts-node src/DownloadSchemas/DwSchemas.ts",
+    "downloadSearchSchemas": "ts-node src/DownloadSchemas/SearchSchemas.ts",
     "buildDwInterface": "ts-node src/RcsbDw/Generator/GenerateInterfaces.ts",
     "buildSearchInterface": "ts-node src/RcsbSearch/Generator/GenerateInterfaces.ts && ts-node src/RcsbSearch/Generator/CompileSearchMetadata.ts",
     "buildGraphQLInterfaces": "ts-node src/RcsbGraphQL/Generator/GenerateInterfaces.ts",
@@ -34,6 +36,8 @@
     "@babel/core": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
     "@graphql-codegen/typescript": "^2.7.2",
+    "@types/command-line-args": "^5.2.0",
+    "@types/command-line-usage": "^5.0.2",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.6.3",
@@ -42,8 +46,11 @@
     "@types/react": "^18.0.15",
     "ansi-regex": "^6.0.1",
     "babel-loader": "^8.2.5",
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^6.1.3",
     "del-cli": "^5.0.0",
     "extract-zip": "^2.0.1",
+    "fast-xml-parser": "^4.0.8",
     "fs-extra": "^10.1.0",
     "graphql-tag": "^2.12.6",
     "json-schema-to-typescript": "^11.0.1",

@@ -1,0 +1,44 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_seqmotif.json",
+  "title": "Seqmotif Query Parameters",
+  "type": "object",
+  "required": [
+    "value",
+    "pattern_type"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "Protein sequence pattern"
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "pdb_protein_sequence",
+        "pdb_rna_sequence",
+        "pdb_dna_sequence"
+      ],
+      "deprecated": true,
+      "description": "Identifies a specific search scope. Deprecated since 2.1.0. Use 'sequence_type' parameter"
+    },
+    "sequence_type": {
+      "type": "string",
+      "enum": [
+        "protein",
+        "rna",
+        "dna"
+      ],
+      "description": "Indicates if the sequence is protein, DNA or RNA sequences"
+    },
+    "pattern_type": {
+      "type": "string",
+      "enum": [
+        "simple",
+        "prosite",
+        "regex"
+      ],
+      "description": "Identifies the pattern type of the value parameter"
+    }
+  },
+  "additionalProperties": false
+}

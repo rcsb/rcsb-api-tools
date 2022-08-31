@@ -1,0 +1,27 @@
+{
+  "$id": "/schema/suggest/response/json-schema-rcsb_suggest_results.json",
+  "title": "Suggester Response",
+  "type": "object",
+  "required": [
+    "suggestions"
+  ],
+  "properties": {
+    "took": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Milliseconds it took to execute the request"
+    },
+    "suggestions": {
+      "type": "object",
+      "existingJavaType": "java.util.Map<String,java.util.Set<org.rcsb.arches.auto.model.Suggestion>>",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "json-schema-rcsb_suggest_results_suggestion.json"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    }
+  }
+}

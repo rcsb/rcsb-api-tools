@@ -1,0 +1,21 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_options_paginate.json",
+  "title": "Request Options Paginate",
+  "type": "object",
+  "properties": {
+    "start": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "description": "Specifies how many matches should be skipped from the top of the search results"
+    },
+    "rows": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 0,
+      "description": "Number of matched returned in the result set"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Pagination allows returning only a portion, rather than the whole, result set. By default, only top 10 search matches"
+}

@@ -1,0 +1,50 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_facets_range.json",
+  "title": "Range Facet",
+  "type": "object",
+  "required": [
+    "name",
+    "aggregation_type",
+    "attribute",
+    "ranges"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Specifies the name of the aggregation"
+    },
+    "aggregation_type": {
+      "type": "string",
+      "enum": [
+        "range"
+      ],
+      "description": "Specifies the type of the aggregation"
+    },
+    "attribute": {
+      "type": "string",
+      "description": "Specifies the full attribute name to aggregate on"
+    },
+    "ranges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "$ref": "json-schema-rcsb_search_query_parameters_attribute_value_number.json"
+          },
+          "to": {
+            "$ref": "json-schema-rcsb_search_query_parameters_attribute_value_number.json"
+          }
+        },
+        "minProperties": 1
+      },
+      "minItems": 1,
+      "description": "A set of ranges, each representing a bucket. Note that this aggregation includes the 'from' value and excludes the 'to' value for each range"
+    },
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    }
+  },
+  "additionalProperties": false,
+  "description": "This aggregation enables to define a set of ranges - each representing a bucket. Dedicated for numeric values"
+}

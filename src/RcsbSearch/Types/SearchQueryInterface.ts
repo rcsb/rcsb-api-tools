@@ -6,6 +6,14 @@
  */
 
 /**
+ * @minItems 1
+ */
+export type ResultsContentType = ["experimental" | "computational", ...("experimental" | "computational")[]];
+/**
+ * Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service
+ */
+export type RequestOptionsResultsVerbosity = "compact" | "minimal" | "verbose";
+/**
  * Allows obtaining the aggregations relevant to the search query. When absent, aggregations are not returned. Multi-dimensional aggregations are allowed.
  *
  * @minItems 1
@@ -14,6 +22,8 @@ export type RequestOptionsFacets = [
   TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet,
   ...(TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet)[]
 ];
+export type NumericValue = number;
+export type DateValue = string;
 /**
  * Search results are ordered by the relevancy scores by default, from the most relevant matches to the least relevant matches (higher score to lower score).
  */
@@ -26,35 +36,45 @@ export type SortDirection = "asc" | "desc";
  * Sort options supported for results returned as groups
  */
 export type SortOptionGroupsSortBy = "size" | "count";
+/**
+ * Specifies the type of the returned identifiers.
+ */
+export type ReturnType =
+  | "entry"
+  | "polymer_entity"
+  | "non_polymer_entity"
+  | "polymer_instance"
+  | "assembly"
+  | "mol_definition";
 
 /**
  * Provides a generic interface to represent the RCSB Search API query language.
  */
 export interface SearchQuery {
-  /**
-   * Information about the query.
-   */
-  request_info?: {
-    /**
-     * The ID of a query is globally unique and unambiguously identifies a query.
-     */
-    query_id?: string;
-    /**
-     * The origin of the query: <br /> - 'mypdb' indicates that the query was run by the MyPDB service that allows users to have searches run periodically and have the results emailed to them; <br /> - 'system' indicates programmatic access.
-     */
-    src?: "ui" | "mypdb_service" | "mypdb_user" | "rcsb_test";
-  };
+  request_info?: RequestInfo;
   request_options?: RequestOptions;
-  /**
-   * Specifies the type of the returned identifiers.
-   */
-  return_type: "entry" | "polymer_entity" | "non_polymer_entity" | "polymer_instance" | "assembly" | "mol_definition";
+  return_type: ReturnType;
   /**
    * Any valid query string as per the Search Aggregator query syntax is permitted. A search consists of one or more groups combined.
    */
   query?: GroupNode | TerminalNode;
 }
+/**
+ * Information about the query.
+ */
+export interface RequestInfo {
+  /**
+   * The ID of a query is globally unique and unambiguously identifies a query.
+   */
+  query_id?: string;
+  /**
+   * The origin of the query: <br /> - 'mypdb' indicates that the query was run by the MyPDB service that allows users to have searches run periodically and have the results emailed to them; <br /> - 'system' indicates programmatic access.
+   */
+  src?: "ui" | "mypdb_service" | "mypdb_user" | "rcsb_test";
+}
 export interface RequestOptions {
+  results_content_type?: ResultsContentType;
+  results_verbosity?: RequestOptionsResultsVerbosity;
   facets?: RequestOptionsFacets;
   /**
    * Allows partitioning search results into groups
@@ -68,19 +88,7 @@ export interface RequestOptions {
    * @minItems 1
    */
   sort?: [SortOptionAttributes | SortOptionGroups, ...(SortOptionAttributes | SortOptionGroups)[]];
-  /**
-   * Pagination allows returning only a portion, rather than the whole, result set. By default, only top 10 search matches
-   */
-  paginate?: {
-    /**
-     * Specifies how many matches should be skipped from the top of the search results
-     */
-    start?: number;
-    /**
-     * Number of matched returned in the result set
-     */
-    rows?: number;
-  };
+  paginate?: RequestOptionsPaginate;
   /**
    * Scoring algorithm to be used for scores calculation of the final result set
    */
@@ -102,10 +110,6 @@ export interface RequestOptions {
    * Allows obtaining the counts only instead of identifiers. When undefined, search result identifiers are returned
    */
   return_counts?: boolean;
-  /**
-   * Controls the additional metadata returned with search results such as scores returned by individual services and context of the match, e.g. alignments from sequence search service
-   */
-  results_verbosity?: "compact" | "minimal" | "verbose";
   /**
    * When enabled, the search results are return with profiling information, e.g. execution timings
    */
@@ -212,25 +216,13 @@ export interface RangeFacet {
    */
   ranges: [
     {
-      /**
-       * The starting value of the range.
-       */
-      from?: number;
-      /**
-       * The end of the range.
-       */
-      to?: number;
+      from?: NumericValue;
+      to?: NumericValue;
       [k: string]: unknown;
     },
     ...{
-      /**
-       * The starting value of the range.
-       */
-      from?: number;
-      /**
-       * The end of the range.
-       */
-      to?: number;
+      from?: NumericValue;
+      to?: NumericValue;
       [k: string]: unknown;
     }[]
   ];
@@ -259,24 +251,12 @@ export interface DateRangeFacet {
    */
   ranges: [
     {
-      /**
-       * The starting value of the range.
-       */
-      from?: string;
-      /**
-       * The end of the range.
-       */
-      to?: string;
+      from?: DateValue;
+      to?: DateValue;
     },
     ...{
-      /**
-       * The starting value of the range.
-       */
-      from?: string;
-      /**
-       * The end of the range.
-       */
-      to?: string;
+      from?: DateValue;
+      to?: DateValue;
     }[]
   ];
   facets?: RequestOptionsFacets;
@@ -331,81 +311,58 @@ export interface FilterQueryTerminalNode {
    * The type of the node.
    */
   type: "terminal";
-  /**
-   * An ID that is unique within the enclosing query.
-   */
-  node_id?: number;
-  /**
-   * The search service that is responsible for running the query and retrieving the search results.
-   */
-  service: "text" | "text_chem";
-  parameters?: AttributeTextQueryParameters;
+  parameters: {
+    /**
+     * The search term(s). Can be a single or multiple words, numbers, dates, date math expressions, or ranges.
+     */
+    value?: string | number | boolean | Range | DateRange | [string | number | number, ...(string | number | number)[]];
+    /**
+     * The search field. Must exist in the current schema.
+     */
+    attribute: string;
+    /**
+     * Indicates if the operator is negated.
+     */
+    negation?: boolean;
+    /**
+     * The operator allows specifying the evaluation expression.
+     */
+    operator:
+      | "equals"
+      | "greater"
+      | "greater_or_equal"
+      | "less"
+      | "less_or_equal"
+      | "range"
+      | "exact_match"
+      | "in"
+      | "exists";
+    /**
+     * Allows case sensitive matching of the value with the indexed attribute values when set to true. Default is false which means the case insensitivity of matching.
+     */
+    case_sensitive?: boolean;
+  };
   [k: string]: unknown;
 }
-export interface AttributeTextQueryParameters {
-  /**
-   * The search term(s). Can be a single or multiple words, numbers, dates, date math expressions, or ranges.
-   */
-  value?: string | number | boolean | Range | DateRange | [string | number | number, ...(string | number | number)[]];
-  /**
-   * The search field. Must exist in the current schema.
-   */
-  attribute: string;
-  /**
-   * Indicates if the operator is negated.
-   */
-  negation?: boolean;
-  /**
-   * The operator allows specifying the evaluation expression.
-   */
-  operator:
-    | "equals"
-    | "greater"
-    | "greater_or_equal"
-    | "less"
-    | "less_or_equal"
-    | "range"
-    | "contains_words"
-    | "contains_phrase"
-    | "exact_match"
-    | "in"
-    | "exists";
-  /**
-   * Allows case sensitive matching of the value with the indexed attribute values when set to true. Default is false which means the case insensitivity of matching.
-   */
-  case_sensitive?: boolean;
-}
 export interface Range {
-  /**
-   * The starting value of the range.
-   */
-  from?: number;
+  from?: NumericValue;
   /**
    * Indicated an inclusive lower bound.
    */
   include_lower?: boolean;
-  /**
-   * The end of the range.
-   */
-  to?: number;
+  to?: NumericValue;
   /**
    * Indicated an inclusive upper bound.
    */
   include_upper?: boolean;
 }
 export interface DateRange {
-  /**
-   * The starting value of the range.
-   */
-  from?: string;
+  from?: DateValue;
   /**
    * Indicated an inclusive lower bound.
    */
   include_lower?: boolean;
-  /**
-   * The end of the range.
-   */
-  to?: string;
+  to?: DateValue;
   /**
    * Indicated an inclusive upper bound.
    */
@@ -420,6 +377,7 @@ export interface GroupByDepositID {
 }
 export interface SortOptionAttributes {
   sort_by: RelevanceScoreRankingOption | string;
+  filter?: FilterQueryGroupNode | FilterQueryTerminalNode;
   direction?: SortDirection;
 }
 export interface GroupBySequenceIdentity {
@@ -446,6 +404,19 @@ export interface UniprotAccessionGroupRankingOption {
 export interface SortOptionGroups {
   sort_by: RelevanceScoreRankingOption | SortOptionGroupsSortBy;
   direction?: SortDirection;
+}
+/**
+ * Pagination allows returning only a portion, rather than the whole, result set. By default, only top 10 search matches
+ */
+export interface RequestOptionsPaginate {
+  /**
+   * Specifies how many matches should be skipped from the top of the search results
+   */
+  start?: number;
+  /**
+   * Number of matched returned in the result set
+   */
+  rows?: number;
 }
 export interface GroupNode {
   /**
@@ -504,21 +475,58 @@ export interface FullTextQueryParameters {
    */
   value: string;
 }
+export interface AttributeTextQueryParameters {
+  /**
+   * The search term(s). Can be a single or multiple words, numbers, dates, date math expressions, or ranges.
+   */
+  value?: string | number | boolean | Range | DateRange | [string | number | number, ...(string | number | number)[]];
+  /**
+   * The search field. Must exist in the current schema.
+   */
+  attribute: string;
+  /**
+   * Indicates if the operator is negated.
+   */
+  negation?: boolean;
+  /**
+   * The operator allows specifying the evaluation expression.
+   */
+  operator:
+    | "equals"
+    | "greater"
+    | "greater_or_equal"
+    | "less"
+    | "less_or_equal"
+    | "range"
+    | "contains_words"
+    | "contains_phrase"
+    | "exact_match"
+    | "in"
+    | "exists";
+  /**
+   * Allows case sensitive matching of the value with the indexed attribute values when set to true. Default is false which means the case insensitivity of matching.
+   */
+  case_sensitive?: boolean;
+}
 export interface SequenceQueryParameters {
   /**
-   * Protein or nucleotide sequence
+   * Protein or nucleotide sequence represented in the standard IUB/IUPAC amino acid and nucleic acid 1-letter codes
    */
   value: string;
   /**
-   * Identifies a specific search scope
+   * Identifies a specific search scope. Deprecated since 2.1.0. Use 'sequence_type' parameter
    */
-  target: "pdb_protein_sequence" | "pdb_rna_sequence" | "pdb_dna_sequence";
+  target?: "pdb_protein_sequence" | "pdb_rna_sequence" | "pdb_dna_sequence";
+  /**
+   * Indicates if the sequence is protein, DNA or RNA sequences
+   */
+  sequence_type?: "protein" | "rna" | "dna";
   /**
    * Hits with sequence identity below this cutoff value are filtered out (range 0-1)
    */
   identity_cutoff?: number;
   /**
-   * Hits with e-value above this cutoff value are filtered out
+   * The expectation value (e-value) threshold measures the number of expected matches in a random database. The lower the e-value, the more likely the match is to be significant. Hits with e-value above this cutoff are filtered out
    */
   evalue_cutoff?: number;
 }
@@ -608,15 +616,19 @@ export interface ChemicalQueryDescriptorParameters {
 }
 export interface SeqmotifQueryParameters {
   /**
-   * Protein sequence pattern.
+   * Protein sequence pattern
    */
   value: string;
   /**
-   * Identifies a specific search scope.
+   * Identifies a specific search scope. Deprecated since 2.1.0. Use 'sequence_type' parameter
    */
-  target: "pdb_protein_sequence" | "pdb_rna_sequence" | "pdb_dna_sequence";
+  target?: "pdb_protein_sequence" | "pdb_rna_sequence" | "pdb_dna_sequence";
   /**
-   * Identifies the pattern type of the value parameter.
+   * Indicates if the sequence is protein, DNA or RNA sequences
+   */
+  sequence_type?: "protein" | "rna" | "dna";
+  /**
+   * Identifies the pattern type of the value parameter
    */
   pattern_type: "simple" | "prosite" | "regex";
 }
@@ -664,25 +676,29 @@ export interface StrucmotifQueryParameters {
             | "LEU"
             | "MET"
             | "ASN"
+            | "PYL"
             | "PRO"
             | "GLN"
             | "ARG"
             | "SER"
             | "THR"
+            | "SEC"
             | "VAL"
             | "TRP"
             | "TYR"
-            | "A"
-            | "C"
             | "DA"
             | "DC"
             | "DG"
+            | "DI"
+            | "DT"
+            | "DU"
+            | "A"
+            | "C"
             | "G"
-            | "T"
+            | "I"
             | "U"
             | "UNK"
             | "N"
-            | "?"
           ]
         | [
             (
@@ -698,25 +714,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -731,25 +751,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             )
           ]
         | [
@@ -766,25 +790,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -799,25 +827,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -832,25 +864,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             )
           ]
         | [
@@ -867,25 +903,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -900,25 +940,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -933,25 +977,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -966,25 +1014,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             )
           ];
     },
@@ -1008,25 +1060,29 @@ export interface StrucmotifQueryParameters {
             | "LEU"
             | "MET"
             | "ASN"
+            | "PYL"
             | "PRO"
             | "GLN"
             | "ARG"
             | "SER"
             | "THR"
+            | "SEC"
             | "VAL"
             | "TRP"
             | "TYR"
-            | "A"
-            | "C"
             | "DA"
             | "DC"
             | "DG"
+            | "DI"
+            | "DT"
+            | "DU"
+            | "A"
+            | "C"
             | "G"
-            | "T"
+            | "I"
             | "U"
             | "UNK"
             | "N"
-            | "?"
           ]
         | [
             (
@@ -1042,25 +1098,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -1075,25 +1135,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             )
           ]
         | [
@@ -1110,25 +1174,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -1143,25 +1211,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -1176,25 +1248,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             )
           ]
         | [
@@ -1211,25 +1287,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -1244,25 +1324,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -1277,25 +1361,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             ),
             (
               | "ALA"
@@ -1310,25 +1398,29 @@ export interface StrucmotifQueryParameters {
               | "LEU"
               | "MET"
               | "ASN"
+              | "PYL"
               | "PRO"
               | "GLN"
               | "ARG"
               | "SER"
               | "THR"
+              | "SEC"
               | "VAL"
               | "TRP"
               | "TYR"
-              | "A"
-              | "C"
               | "DA"
               | "DC"
               | "DG"
+              | "DI"
+              | "DT"
+              | "DU"
+              | "A"
+              | "C"
               | "G"
-              | "T"
+              | "I"
               | "U"
               | "UNK"
               | "N"
-              | "?"
             )
           ];
     }[]

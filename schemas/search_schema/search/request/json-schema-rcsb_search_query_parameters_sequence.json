@@ -1,0 +1,46 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_sequence.json",
+  "title": "Sequence Query Parameters",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "Protein or nucleotide sequence represented in the standard IUB/IUPAC amino acid and nucleic acid 1-letter codes"
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "pdb_protein_sequence",
+        "pdb_rna_sequence",
+        "pdb_dna_sequence"
+      ],
+      "deprecated": true,
+      "description": "Identifies a specific search scope. Deprecated since 2.1.0. Use 'sequence_type' parameter"
+    },
+    "sequence_type": {
+      "type": "string",
+      "enum": [
+        "protein",
+        "rna",
+        "dna"
+      ],
+      "description": "Indicates if the sequence is protein, DNA or RNA sequences"
+    },
+    "identity_cutoff": {
+      "type": "number",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Hits with sequence identity below this cutoff value are filtered out (range 0-1)"
+    },
+    "evalue_cutoff": {
+      "type": "number",
+      "default": 1000000,
+      "description": "The expectation value (e-value) threshold measures the number of expected matches in a random database. The lower the e-value, the more likely the match is to be significant. Hits with e-value above this cutoff are filtered out"
+    }
+  },
+  "additionalProperties": false
+}

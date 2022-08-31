@@ -1,0 +1,90 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_options.json",
+  "title": "Request Options",
+  "type": "object",
+  "properties": {
+    "results_content_type": {
+      "$ref": "json-schema-rcsb_search_query_request_options_results_content_type.json"
+    },
+    "results_verbosity": {
+      "$ref": "json-schema-rcsb_search_query_request_options_results_verbosity.json"
+    },
+    "facets": {
+      "$ref": "json-schema-rcsb_search_query_facets.json"
+    },
+    "group_by": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_deposit_id.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_sequence_identity.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_uniprot_accession.json"
+        }
+      ],
+      "description": "Allows partitioning search results into groups"
+    },
+    "group_by_return_type": {
+      "type": "string",
+      "enum": [
+        "groups",
+        "representatives"
+      ],
+      "default": "representatives",
+      "javaType" : "org.rcsb.arches.auto.model.GroupByReturnType",
+      "description": "Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group"
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "json-schema-rcsb_search_query_request_options_sort_attributes.json"
+          },
+          {
+            "$ref": "json-schema-rcsb_search_query_request_options_sort_groups.json"
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "paginate": {
+      "$ref": "json-schema-rcsb_search_query_request_options_paginate.json"
+    },
+    "scoring_strategy": {
+      "type": "string",
+      "enum": [
+        "combined",
+        "sequence",
+        "seqmotif",
+        "strucmotif",
+        "structure",
+        "chemical",
+        "text",
+        "text_chem",
+        "full_text"
+      ],
+      "default": "combined",
+      "description": "Scoring algorithm to be used for scores calculation of the final result set"
+    },
+    "return_all_hits": {
+      "type": "boolean",
+      "default": false,
+      "description": "When set to true, all search matches are returned. It cannot be used together with pagination or return count parameters"
+    },
+    "return_counts": {
+      "type": "boolean",
+      "default": false,
+      "description": "Allows obtaining the counts only instead of identifiers. When undefined, search result identifiers are returned"
+    },
+    "return_explain_metadata": {
+      "type": "boolean",
+      "default": false,
+      "description": "When enabled, the search results are return with profiling information, e.g. execution timings"
+    }
+  },
+  "additionalProperties": false
+}

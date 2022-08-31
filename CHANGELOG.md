@@ -2,6 +2,13 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.0] - 2022-08-31
+### Improvements
+- New methods for collecting DW and Search API schemas
+  - `src/DownloadSchemas/DwSchemas.ts`
+  - `src/DownloadSchemas/SearchSchemas.ts`
+- New configuration to generate graphql types from specific URLs
+
 ## [4.0.6] - 2022-08-01
 ### Dependency update
 - Updated several dependencies

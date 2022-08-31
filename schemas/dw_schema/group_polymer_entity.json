@@ -188,9 +188,13 @@
           "type" : "array",
           "description" : "List of alignments with core_entity canonical sequences",
           "items" : {
+            "description" : "Alignment with a core_entity canonical sequence",
             "type" : "object",
-            "required" : [ "scores", "aligned_regions" ],
+            "required" : [ "scores", "aligned_regions", "member_id" ],
             "properties" : {
+              "member_id" : {
+                "type" : "string"
+              },
               "scores" : {
                 "type" : "object",
                 "description" : "Alignment scores",
@@ -212,32 +216,20 @@
               },
               "aligned_regions" : {
                 "type" : "array",
-                "description" : "Aligned sequence regions",
+                "description" : "List of alignments with core_entity canonical sequences encoded as an array of triplets [query_begin, target_begin, length]",
                 "items" : {
-                  "type" : "object",
-                  "description" : "Aligned region",
-                  "required" : [ "target_begin", "query_begin", "length" ],
-                  "properties" : {
-                    "target_begin" : {
-                      "type" : "integer",
-                      "description" : "NCBI sequence start position"
-                    },
-                    "query_begin" : {
-                      "type" : "integer",
-                      "description" : "Entity seqeunce start position"
-                    },
-                    "length" : {
-                      "type" : "integer",
-                      "description" : "Aligned region length"
-                    }
-                  }
+                  "type" : "array",
+                  "description" : "Alignment region encoded as a triplet [query_begin, target_begin, length]",
+                  "items" : {
+                    "type" : "integer"
+                  },
+                  "maxItems" : 3,
+                  "minItems" : 3
                 }
-              },
-              "member_id" : {
-                "type" : "string"
               }
             }
-          }
+          },
+          "minItems" : 1
         }
       }
     }

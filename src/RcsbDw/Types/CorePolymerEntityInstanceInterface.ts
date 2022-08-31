@@ -359,6 +359,7 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
         | "C-MANNOSYLATION_SITE"
@@ -366,6 +367,23 @@ export interface CorePolymerEntityInstance {
         | "CIS-PEPTIDE"
         | "ECOD"
         | "HELIX_P"
+        | "HELX_LH_PP_P"
+        | "HELX_RH_3T_P"
+        | "HELX_RH_AL_P"
+        | "HELX_RH_PI_P"
+        | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
+        | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
+        | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
+        | "MA_QA_METRIC_LOCAL_TYPE_IPTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE"
+        | "MA_QA_METRIC_LOCAL_TYPE_OTHER"
+        | "MA_QA_METRIC_LOCAL_TYPE_PAE"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
         | "MOGUL_BOND_OUTLIER"
@@ -385,6 +403,8 @@ export interface CorePolymerEntityInstance {
         | "SCOP2_SUPERFAMILY"
         | "SHEET"
         | "STEREO_OUTLIER"
+        | "STRN"
+        | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"
         | "UNOBSERVED_RESIDUE_XYZ"
@@ -419,6 +439,7 @@ export interface CorePolymerEntityInstance {
           | "CATH_NAME"
           | "ECOD_DOMAIN_ID"
           | "ECOD_FAMILY_NAME"
+          | "MODELCIF_MODEL_ID"
           | "OMEGA_ANGLE"
           | "PARTNER_ASYM_ID"
           | "PARTNER_BOND_DISTANCE"
@@ -470,6 +491,7 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
         | "C-MANNOSYLATION_SITE"
@@ -477,6 +499,23 @@ export interface CorePolymerEntityInstance {
         | "CIS-PEPTIDE"
         | "ECOD"
         | "HELIX_P"
+        | "HELX_LH_PP_P"
+        | "HELX_RH_3T_P"
+        | "HELX_RH_AL_P"
+        | "HELX_RH_PI_P"
+        | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
+        | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
+        | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
+        | "MA_QA_METRIC_LOCAL_TYPE_IPTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE"
+        | "MA_QA_METRIC_LOCAL_TYPE_OTHER"
+        | "MA_QA_METRIC_LOCAL_TYPE_PAE"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
         | "MOGUL_BOND_OUTLIER"
@@ -496,6 +535,8 @@ export interface CorePolymerEntityInstance {
         | "SCOP2_SUPERFAMILY"
         | "SHEET"
         | "STEREO_OUTLIER"
+        | "STRN"
+        | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"
         | "UNOBSERVED_RESIDUE_XYZ"
@@ -530,6 +571,7 @@ export interface CorePolymerEntityInstance {
           | "CATH_NAME"
           | "ECOD_DOMAIN_ID"
           | "ECOD_FAMILY_NAME"
+          | "MODELCIF_MODEL_ID"
           | "OMEGA_ANGLE"
           | "PARTNER_ASYM_ID"
           | "PARTNER_BOND_DISTANCE"
@@ -583,6 +625,7 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
         | "C-MANNOSYLATION_SITE"
@@ -590,6 +633,23 @@ export interface CorePolymerEntityInstance {
         | "CIS-PEPTIDE"
         | "ECOD"
         | "HELIX_P"
+        | "HELX_LH_PP_P"
+        | "HELX_RH_3T_P"
+        | "HELX_RH_AL_P"
+        | "HELX_RH_PI_P"
+        | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
+        | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
+        | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
+        | "MA_QA_METRIC_LOCAL_TYPE_IPTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE"
+        | "MA_QA_METRIC_LOCAL_TYPE_OTHER"
+        | "MA_QA_METRIC_LOCAL_TYPE_PAE"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
         | "MOGUL_BOND_OUTLIER"
@@ -603,18 +663,14 @@ export interface CorePolymerEntityInstance {
         | "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS"
         | "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS"
         | "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE"
-        | "SAbDab Antibody Heavy Chain Subclass"
-        | "SAbDab Antibody Light Chain Subclass"
-        | "SAbDab Antibody Light Chain Type"
         | "SCOP"
-        | "SCOP2 Family"
-        | "SCOP2 Superfamily"
-        | "SCOP2B Superfamily"
         | "SCOP2B_SUPERFAMILY"
         | "SCOP2_FAMILY"
         | "SCOP2_SUPERFAMILY"
         | "SHEET"
         | "STEREO_OUTLIER"
+        | "STRN"
+        | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"
         | "UNOBSERVED_RESIDUE_XYZ"
@@ -653,6 +709,7 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
         | "C-MANNOSYLATION_SITE"
@@ -660,6 +717,23 @@ export interface CorePolymerEntityInstance {
         | "CIS-PEPTIDE"
         | "ECOD"
         | "HELIX_P"
+        | "HELX_LH_PP_P"
+        | "HELX_RH_3T_P"
+        | "HELX_RH_AL_P"
+        | "HELX_RH_PI_P"
+        | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
+        | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
+        | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
+        | "MA_QA_METRIC_LOCAL_TYPE_IPTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE"
+        | "MA_QA_METRIC_LOCAL_TYPE_OTHER"
+        | "MA_QA_METRIC_LOCAL_TYPE_PAE"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]"
+        | "MA_QA_METRIC_LOCAL_TYPE_PTM"
+        | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
         | "MOGUL_BOND_OUTLIER"
@@ -673,18 +747,14 @@ export interface CorePolymerEntityInstance {
         | "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS"
         | "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS"
         | "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE"
-        | "SAbDab Antibody Heavy Chain Subclass"
-        | "SAbDab Antibody Light Chain Subclass"
-        | "SAbDab Antibody Light Chain Type"
         | "SCOP"
-        | "SCOP2 Family"
-        | "SCOP2 Superfamily"
-        | "SCOP2B Superfamily"
         | "SCOP2B_SUPERFAMILY"
         | "SCOP2_FAMILY"
         | "SCOP2_SUPERFAMILY"
         | "SHEET"
         | "STEREO_OUTLIER"
+        | "STRN"
+        | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"
         | "UNOBSERVED_RESIDUE_XYZ"
@@ -1011,6 +1081,28 @@ export interface CorePolymerEntityInstance {
       };
     }[]
   ];
+  struct_asym?: {
+    /**
+     * This data item is a pointer to _atom_site.pdbx_PDB_strand_id the
+     *  ATOM_SITE category.
+     */
+    pdbx_PDB_id?: string;
+    /**
+     * This data item is a pointer to _atom_site.ndb_alias_strand_id the
+     *  ATOM_SITE category.
+     */
+    pdbx_alt_id?: string;
+    /**
+     * This data item gives the order of the structural elements in the
+     *  ATOM_SITE category.
+     */
+    pdbx_order?: number;
+    /**
+     * This data item describes the general type of the structural elements
+     *  in the ATOM_SITE category.
+     */
+    pdbx_type?: "ATOMN" | "ATOMP" | "ATOMS" | "HETAC" | "HETAD" | "HETAI" | "HETAIN" | "HETAS" | "HETIC";
+  };
   /**
    * A unique identifier for each object in this entity instance container formed by
    *  an 'dot' (.) separated concatenation of entry and entity instance identifiers.

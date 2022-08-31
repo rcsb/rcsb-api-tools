@@ -5,6 +5,7 @@ import {CoreEntry} from "../RcsbGraphQL/Types/Yosemite/CorePaths";
 import {AggregationType, Operator, ReturnType, Service, Type} from "./Types/SearchEnums";
 import {SearchRequest} from "./SearchRequest";
 import {RcsbSearchMetadata} from "./Types/SearchMetadata";
+import commandLineArgs from "command-line-args";
 
 const query: SearchQuery = {
     query: {
@@ -39,7 +40,32 @@ const query: SearchQuery = {
     },
     return_type: ReturnType.Entry
 };
-const searchRequest: SearchRequest = new SearchRequest(undefined, fetch as unknown as (input:RequestInfo,init?:RequestInit)=>Promise<Response>);
+
+type optionType = {'search-api': string; 'help': null;};
+const sections = [
+    {
+        header: 'GraphQL Test',
+        content: 'Testing graphql queries'
+    },
+    {
+        header: 'Options',
+        optionList: [
+            {
+                name: 'search-api',
+                description: 'URL or IP to the search-api'
+            }, {
+                name: 'help',
+                typeLabel: ' ',
+                description: 'Print this usage guide.'
+            }
+        ]
+    }
+];
+
+const optionDefinitions: { name: keyof optionType}[] = [{name: 'search-api'},{name: 'help'}];
+const options:  optionType = commandLineArgs(optionDefinitions) as optionType;
+
+const searchRequest: SearchRequest = new SearchRequest(options["search-api"] ??  undefined, fetch as unknown as (input:RequestInfo,init?:RequestInit)=>Promise<Response>);
 const request = async ()=>{
     const response: QueryResult|null = await searchRequest.request(query, {"Custom": "1234"});
     console.log(response);

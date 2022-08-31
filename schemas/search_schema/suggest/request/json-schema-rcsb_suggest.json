@@ -1,0 +1,38 @@
+{
+  "$id": "/schema/suggest/request/json-schema-rcsb_suggest.json",
+  "title": "Suggest Query",
+  "type": "object",
+  "required": [
+    "type",
+    "suggest"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "basic",
+        "term"
+      ]
+    },
+    "suggest": {
+      "anyOf": [
+        {
+          "$ref": "json-schema-rcsb_suggest_basic.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_suggest_term.json"
+        }
+      ]
+    },
+    "highlight": {
+      "$ref": "json-schema-rcsb_suggest_highlighter.json"
+    },
+    "results_content_type": {
+      "$ref": "../../search/request/json-schema-rcsb_search_query_request_options_results_content_type.json"
+    }
+  },
+  "additionalProperties": false
+}
