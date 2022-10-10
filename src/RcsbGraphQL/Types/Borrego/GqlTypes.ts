@@ -241,6 +241,7 @@ export interface QueryGroup_AnnotationsArgs {
   filters?: InputMaybe<Array<InputMaybe<FilterInput>>>;
   group: GroupReference;
   groupId: Scalars['String'];
+  histogram?: InputMaybe<Scalars['Boolean']>;
   sources?: InputMaybe<Array<InputMaybe<Source>>>;
 }
 
