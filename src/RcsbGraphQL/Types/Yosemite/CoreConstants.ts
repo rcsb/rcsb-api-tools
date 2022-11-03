@@ -1063,6 +1063,7 @@ export class CoreConstants{
 	public static readonly INTER_MOL_COVALENT_BOND_COUNT = "inter_mol_covalent_bond_count";
 	public static readonly INTER_MOL_METALIC_BOND_COUNT = "inter_mol_metalic_bond_count";
 	public static readonly MOLECULAR_WEIGHT = "molecular_weight";
+	public static readonly NDB_STRUCT_CONF_NA_FEATURE_COMBINED = "ndb_struct_conf_na_feature_combined";
 	public static readonly NONPOLYMER_BOUND_COMPONENTS = "nonpolymer_bound_components";
 	public static readonly NONPOLYMER_MOLECULAR_WEIGHT_MAXIMUM = "nonpolymer_molecular_weight_maximum";
 	public static readonly NONPOLYMER_MOLECULAR_WEIGHT_MINIMUM = "nonpolymer_molecular_weight_minimum";

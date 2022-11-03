@@ -6964,6 +6964,24 @@ export interface CoreEntry {
      * Nucleic acid polymer entity type categories describing the entry.
      */
     na_polymer_entity_types?: "DNA (only)" | "DNA/RNA (only)" | "NA-hybrid (only)" | "Other" | "RNA (only)";
+    ndb_struct_conf_na_feature_combined?: (
+      | "a-form double helix"
+      | "b-form double helix"
+      | "bulge loop"
+      | "double helix"
+      | "four-way junction"
+      | "hairpin loop"
+      | "internal loop"
+      | "mismatched base pair"
+      | "other right-handed double helix"
+      | "parallel strands"
+      | "quadruple helix"
+      | "tetraloop"
+      | "three-way junction"
+      | "triple helix"
+      | "two-way junction"
+      | "z-form double helix"
+    )[];
     nonpolymer_bound_components?: string[];
     /**
      * The number of distinct non-polymer entities in the structure entry exclusive of solvent.

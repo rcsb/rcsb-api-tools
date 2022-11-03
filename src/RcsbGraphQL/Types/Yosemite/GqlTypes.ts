@@ -9121,6 +9121,15 @@ export interface RcsbEntryInfo {
    *
    */
   na_polymer_entity_types?: Maybe<Scalars['String']>;
+  /**
+   * This data item identifies secondary structure
+   *  features of nucleic acids in the entry.
+   *
+   * Allowable values:
+   * a-form double helix, b-form double helix, bulge loop, double helix, four-way junction, hairpin loop, internal loop, mismatched base pair, other right-handed double helix, parallel strands, quadruple helix, tetraloop, three-way junction, triple helix, two-way junction, z-form double helix
+   *
+   */
+  ndb_struct_conf_na_feature_combined?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** Bound nonpolymer components in this entry. */
   nonpolymer_bound_components?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** The number of distinct non-polymer entities in the structure entry exclusive of solvent. */

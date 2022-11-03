@@ -1499,7 +1499,7 @@
           "type" : "string",
           "examples" : [ "Green fluorescent protein", "23S ribosomal RNA", "NAD-dependent protein deacylase sirtuin-5, mitochondrial" ],
           "description" : "A description of the polymer entity.",
-          "rcsb_search_context" : [ "full-text", "suggest" ],
+          "rcsb_search_context" : [ "exact-match", "full-text", "suggest" ],
           "rcsb_full_text_priority" : 20,
           "rcsb_description" : [ {
             "text" : "A description of the polymer entity.",
