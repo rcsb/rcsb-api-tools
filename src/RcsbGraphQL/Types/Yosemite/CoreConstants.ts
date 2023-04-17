@@ -54,13 +54,16 @@ export class CoreConstants{
 	public static readonly YEAR = "year";
 	public static readonly ASYM_ID = "asym_id";
 	public static readonly PDBX_STRUCT_OPER_LIST_IDS = "pdbx_struct_oper_list_ids";
+	public static readonly BRANCHED_ENTITY_INSTANCES = "branched_entity_instances";
 	public static readonly ENTRY = "entry";
 	public static readonly INTERFACES = "interfaces";
+	public static readonly NONPOLYMER_ENTITY_INSTANCES = "nonpolymer_entity_instances";
 	public static readonly PDBX_STRUCT_ASSEMBLY = "pdbx_struct_assembly";
 	public static readonly PDBX_STRUCT_ASSEMBLY_AUTH_EVIDENCE = "pdbx_struct_assembly_auth_evidence";
 	public static readonly PDBX_STRUCT_ASSEMBLY_GEN = "pdbx_struct_assembly_gen";
 	public static readonly PDBX_STRUCT_ASSEMBLY_PROP = "pdbx_struct_assembly_prop";
 	public static readonly PDBX_STRUCT_OPER_LIST = "pdbx_struct_oper_list";
+	public static readonly POLYMER_ENTITY_INSTANCES = "polymer_entity_instances";
 	public static readonly RCSB_ASSEMBLY_CONTAINER_IDENTIFIERS = "rcsb_assembly_container_identifiers";
 	public static readonly RCSB_ASSEMBLY_INFO = "rcsb_assembly_info";
 	public static readonly RCSB_ID = "rcsb_id";
@@ -68,7 +71,6 @@ export class CoreConstants{
 	public static readonly RCSB_STRUCT_SYMMETRY = "rcsb_struct_symmetry";
 	public static readonly RCSB_STRUCT_SYMMETRY_LINEAGE = "rcsb_struct_symmetry_lineage";
 	public static readonly RCSB_STRUCT_SYMMETRY_PROVENANCE_CODE = "rcsb_struct_symmetry_provenance_code";
-	public static readonly BRANCHED_ENTITY_INSTANCES = "branched_entity_instances";
 	public static readonly CHEM_COMP_MONOMERS = "chem_comp_monomers";
 	public static readonly PDBX_ENTITY_BRANCH = "pdbx_entity_branch";
 	public static readonly PDBX_ENTITY_BRANCH_DESCRIPTOR = "pdbx_entity_branch_descriptor";
@@ -180,6 +182,7 @@ export class CoreConstants{
 	public static readonly PDBX_DATABASE_RELATED = "pdbx_database_related";
 	public static readonly PDBX_DATABASE_STATUS = "pdbx_database_status";
 	public static readonly PDBX_DEPOSIT_GROUP = "pdbx_deposit_group";
+	public static readonly PDBX_INITIAL_REFINEMENT_MODEL = "pdbx_initial_refinement_model";
 	public static readonly PDBX_MOLECULE_FEATURES = "pdbx_molecule_features";
 	public static readonly PDBX_NMR_DETAILS = "pdbx_nmr_details";
 	public static readonly PDBX_NMR_ENSEMBLE = "pdbx_nmr_ensemble";
@@ -190,6 +193,7 @@ export class CoreConstants{
 	public static readonly PDBX_NMR_SAMPLE_DETAILS = "pdbx_nmr_sample_details";
 	public static readonly PDBX_NMR_SOFTWARE = "pdbx_nmr_software";
 	public static readonly PDBX_NMR_SPECTROMETER = "pdbx_nmr_spectrometer";
+	public static readonly PDBX_REFLNS_TWIN = "pdbx_reflns_twin";
 	public static readonly PDBX_RELATED_EXP_DATA_SET = "pdbx_related_exp_data_set";
 	public static readonly PDBX_SERIAL_CRYSTALLOGRAPHY_DATA_REDUCTION = "pdbx_serial_crystallography_data_reduction";
 	public static readonly PDBX_SERIAL_CRYSTALLOGRAPHY_MEASUREMENT = "pdbx_serial_crystallography_measurement";
@@ -226,7 +230,6 @@ export class CoreConstants{
 	public static readonly RCSB_INTERFACE_OPERATOR = "rcsb_interface_operator";
 	public static readonly RCSB_INTERFACE_PARTNER = "rcsb_interface_partner";
 	public static readonly NONPOLYMER_COMP = "nonpolymer_comp";
-	public static readonly NONPOLYMER_ENTITY_INSTANCES = "nonpolymer_entity_instances";
 	public static readonly PDBX_ENTITY_NONPOLY = "pdbx_entity_nonpoly";
 	public static readonly RCSB_NONPOLYMER_ENTITY = "rcsb_nonpolymer_entity";
 	public static readonly RCSB_NONPOLYMER_ENTITY_ANNOTATION = "rcsb_nonpolymer_entity_annotation";
@@ -258,7 +261,6 @@ export class CoreConstants{
 	public static readonly PDBX_ENTITY_SRC_SYN = "pdbx_entity_src_syn";
 	public static readonly PFAMS = "pfams";
 	public static readonly POLYMER_ENTITY_GROUPS = "polymer_entity_groups";
-	public static readonly POLYMER_ENTITY_INSTANCES = "polymer_entity_instances";
 	public static readonly RCSB_CLUSTER_FLEXIBILITY = "rcsb_cluster_flexibility";
 	public static readonly RCSB_CLUSTER_MEMBERSHIP = "rcsb_cluster_membership";
 	public static readonly RCSB_ENTITY_HOST_ORGANISM = "rcsb_entity_host_organism";
@@ -601,6 +603,8 @@ export class CoreConstants{
 	public static readonly ANNOTATOR = "annotator";
 	public static readonly FAMILY_PRD_ID = "family_prd_id";
 	public static readonly PROCESSING_SITE = "processing_site";
+	public static readonly ACCESSION_CODE = "accession_code";
+	public static readonly SOURCE_NAME = "source_name";
 	public static readonly CLASS = "class";
 	public static readonly PRD_ID = "prd_id";
 	public static readonly TEXT = "text";
@@ -676,6 +680,9 @@ export class CoreConstants{
 	public static readonly SOURCE_ORDINAL = "source_ordinal";
 	public static readonly CITATION_ID = "citation_id";
 	public static readonly DB_ACCESSION = "db_accession";
+	public static readonly DOMAIN_ID = "domain_id";
+	public static readonly FRACTION = "fraction";
+	public static readonly OPERATOR = "operator";
 	public static readonly DATA_REFERENCE = "data_reference";
 	public static readonly DATA_SET_TYPE = "data_set_type";
 	public static readonly METADATA_REFERENCE = "metadata_reference";
@@ -689,6 +696,7 @@ export class CoreConstants{
 	public static readonly FRAMES_INDEXED = "frames_indexed";
 	public static readonly FRAMES_TOTAL = "frames_total";
 	public static readonly LATTICES_INDEXED = "lattices_indexed";
+	public static readonly LATTICES_MERGED = "lattices_merged";
 	public static readonly XFEL_PULSE_EVENTS = "xfel_pulse_events";
 	public static readonly XFEL_RUN_NUMBERS = "xfel_run_numbers";
 	public static readonly COLLECTION_TIME_TOTAL = "collection_time_total";
@@ -1020,6 +1028,7 @@ export class CoreConstants{
 	public static readonly IDENTITY = "identity";
 	public static readonly SOURCE_DB = "source_db";
 	public static readonly SOURCE_FILENAME = "source_filename";
+	public static readonly SOURCE_PAE_URL = "source_pae_url";
 	public static readonly SOURCE_URL = "source_url";
 	public static readonly BEG_SEQ_NUM = "beg_seq_num";
 	public static readonly END_SEQ_NUM = "end_seq_num";

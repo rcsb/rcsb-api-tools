@@ -11,7 +11,6 @@ export interface Scalars {
   Int: number;
   Float: number;
   ObjectScalar: any;
-  UNREPRESENTABLE: any;
 }
 
 export interface AdditionalProperty {

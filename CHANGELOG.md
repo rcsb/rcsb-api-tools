@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.2] - 2023-04-17
+### Dependency update
+- audit fix
+
 ## [4.1.1] - 2022-11-03
 ### Improvements
 - New parameter `histogram: boolean` to collect group unmerged annotations from the 1d-coordinates server

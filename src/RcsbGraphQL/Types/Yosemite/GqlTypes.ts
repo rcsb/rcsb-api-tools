@@ -12,7 +12,6 @@ export interface Scalars {
   Float: number;
   Date: any;
   ObjectScalar: any;
-  UNREPRESENTABLE: any;
 }
 
 export interface AuditAuthor {
@@ -483,15 +482,21 @@ export interface ClustersMembers {
 
 export interface CoreAssembly {
   __typename?: 'CoreAssembly';
-  /** Get PDB entry that includes this assembly. */
+  /** Get a list of branched entity instances (sugars) that constitute this assembly. */
+  branched_entity_instances?: Maybe<Array<Maybe<CoreBranchedEntityInstance>>>;
+  /** Get entry that includes this assembly. */
   entry?: Maybe<CoreEntry>;
-  /** Get all pairwise polymer interfaces for this PDB assembly. */
+  /** Get all pairwise polymer interfaces for this assembly. */
   interfaces?: Maybe<Array<Maybe<CoreInterface>>>;
+  /** Get a list of non-polymer entity instances (ligands) that constitute this assembly. */
+  nonpolymer_entity_instances?: Maybe<Array<Maybe<CoreNonpolymerEntityInstance>>>;
   pdbx_struct_assembly?: Maybe<PdbxStructAssembly>;
   pdbx_struct_assembly_auth_evidence?: Maybe<Array<Maybe<PdbxStructAssemblyAuthEvidence>>>;
   pdbx_struct_assembly_gen?: Maybe<Array<Maybe<PdbxStructAssemblyGen>>>;
   pdbx_struct_assembly_prop?: Maybe<Array<Maybe<PdbxStructAssemblyProp>>>;
   pdbx_struct_oper_list?: Maybe<Array<Maybe<PdbxStructOperList>>>;
+  /** Get a list of polymer entity instances (chains) that constitute this assembly. */
+  polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
   rcsb_assembly_container_identifiers: RcsbAssemblyContainerIdentifiers;
   rcsb_assembly_info?: Maybe<RcsbAssemblyInfo>;
   /**
@@ -516,7 +521,7 @@ export interface CoreBranchedEntity {
   branched_entity_instances?: Maybe<Array<Maybe<CoreBranchedEntityInstance>>>;
   /** Get all unique monomers described in this branched entity. */
   chem_comp_monomers?: Maybe<Array<Maybe<CoreChemComp>>>;
-  /** Get PDB entry that contains this branched entity. */
+  /** Get entry that contains this branched entity. */
   entry?: Maybe<CoreEntry>;
   pdbx_entity_branch?: Maybe<PdbxEntityBranch>;
   pdbx_entity_branch_descriptor?: Maybe<Array<Maybe<PdbxEntityBranchDescriptor>>>;
@@ -643,10 +648,10 @@ export interface CoreEntityAlignmentsScores {
 
 export interface CoreEntry {
   __typename?: 'CoreEntry';
-  /** Get all assemblies for this PDB entry. */
+  /** Get all assemblies for this entry. */
   assemblies?: Maybe<Array<Maybe<CoreAssembly>>>;
   audit_author?: Maybe<Array<Maybe<AuditAuthor>>>;
-  /** Get all branched entities for this PDB entry. */
+  /** Get all branched entities for this entry. */
   branched_entities?: Maybe<Array<Maybe<CoreBranchedEntity>>>;
   cell?: Maybe<Cell>;
   citation?: Maybe<Array<Maybe<Citation>>>;
@@ -676,13 +681,13 @@ export interface CoreEntry {
   em_staining?: Maybe<Array<Maybe<EmStaining>>>;
   em_vitrification?: Maybe<Array<Maybe<EmVitrification>>>;
   entry?: Maybe<Entry>;
-  /** Get all groups for this PDB entry. */
+  /** Get all groups for this entry. */
   entry_groups?: Maybe<Array<Maybe<GroupEntry>>>;
   exptl?: Maybe<Array<Maybe<Exptl>>>;
   exptl_crystal?: Maybe<Array<Maybe<ExptlCrystal>>>;
   exptl_crystal_grow?: Maybe<Array<Maybe<ExptlCrystalGrow>>>;
   ma_data?: Maybe<Array<Maybe<MaData>>>;
-  /** Get all non-polymer (non-solvent) entities for this PDB entry. */
+  /** Get all non-polymer (non-solvent) entities for this entry. */
   nonpolymer_entities?: Maybe<Array<Maybe<CoreNonpolymerEntity>>>;
   pdbx_SG_project?: Maybe<Array<Maybe<PdbxSgProject>>>;
   pdbx_audit_revision_category?: Maybe<Array<Maybe<PdbxAuditRevisionCategory>>>;
@@ -695,6 +700,7 @@ export interface CoreEntry {
   pdbx_database_related?: Maybe<Array<Maybe<PdbxDatabaseRelated>>>;
   pdbx_database_status?: Maybe<PdbxDatabaseStatus>;
   pdbx_deposit_group?: Maybe<Array<Maybe<PdbxDepositGroup>>>;
+  pdbx_initial_refinement_model?: Maybe<Array<Maybe<PdbxInitialRefinementModel>>>;
   pdbx_molecule_features?: Maybe<Array<Maybe<PdbxMoleculeFeatures>>>;
   pdbx_nmr_details?: Maybe<PdbxNmrDetails>;
   pdbx_nmr_ensemble?: Maybe<PdbxNmrEnsemble>;
@@ -705,6 +711,7 @@ export interface CoreEntry {
   pdbx_nmr_sample_details?: Maybe<Array<Maybe<PdbxNmrSampleDetails>>>;
   pdbx_nmr_software?: Maybe<Array<Maybe<PdbxNmrSoftware>>>;
   pdbx_nmr_spectrometer?: Maybe<Array<Maybe<PdbxNmrSpectrometer>>>;
+  pdbx_reflns_twin?: Maybe<Array<Maybe<PdbxReflnsTwin>>>;
   pdbx_related_exp_data_set?: Maybe<Array<Maybe<PdbxRelatedExpDataSet>>>;
   pdbx_serial_crystallography_data_reduction?: Maybe<Array<Maybe<PdbxSerialCrystallographyDataReduction>>>;
   pdbx_serial_crystallography_measurement?: Maybe<Array<Maybe<PdbxSerialCrystallographyMeasurement>>>;
@@ -714,7 +721,7 @@ export interface CoreEntry {
   pdbx_soln_scatter?: Maybe<Array<Maybe<PdbxSolnScatter>>>;
   pdbx_soln_scatter_model?: Maybe<Array<Maybe<PdbxSolnScatterModel>>>;
   pdbx_vrpt_summary?: Maybe<PdbxVrptSummary>;
-  /** Get all polymer entities for this PDB entry. */
+  /** Get all polymer entities for this entry. */
   polymer_entities?: Maybe<Array<Maybe<CorePolymerEntity>>>;
   /** Get literature information from PubMed database. */
   pubmed?: Maybe<CorePubmed>;
@@ -762,7 +769,7 @@ export interface CoreInterface {
 
 export interface CoreNonpolymerEntity {
   __typename?: 'CoreNonpolymerEntity';
-  /** Get PDB entry that contains this non-polymer entity. */
+  /** Get entry that contains this non-polymer entity. */
   entry?: Maybe<CoreEntry>;
   /** Get a non-polymer chemical components described in this molecular entity. */
   nonpolymer_comp?: Maybe<CoreChemComp>;
@@ -875,12 +882,12 @@ export interface CorePolymerEntity {
   entity_poly?: Maybe<EntityPoly>;
   entity_src_gen?: Maybe<Array<Maybe<EntitySrcGen>>>;
   entity_src_nat?: Maybe<Array<Maybe<EntitySrcNat>>>;
-  /** Get PDB entry that contains this molecular entity. */
+  /** Get entry that contains this molecular entity. */
   entry?: Maybe<CoreEntry>;
   pdbx_entity_src_syn?: Maybe<Array<Maybe<PdbxEntitySrcSyn>>>;
   /** Get all unique Pfam annotations associated with this molecular entity. */
   pfams?: Maybe<Array<Maybe<CorePfam>>>;
-  /** Get all groups for this PDB entity. */
+  /** Get all groups for this entity. */
   polymer_entity_groups?: Maybe<Array<Maybe<GroupPolymerEntity>>>;
   /** Get all unique polymer instances (chains) for this molecular entity. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
@@ -1322,15 +1329,33 @@ export interface Em2dCrystalEntity {
   angle_gamma?: Maybe<Scalars['Float']>;
   /** Length used to sample the reciprocal lattice lines in the c-direction. */
   c_sampling_length?: Maybe<Scalars['Float']>;
-  /** Unique key for the 2d_crystal_entity category. */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category. */
   image_processing_id: Scalars['String'];
-  /** Unit-cell length a in angstroms. */
+  /**
+   * Unit-cell length a in angstroms.
+   *
+   * Examples:
+   * null
+   *
+   */
   length_a?: Maybe<Scalars['Float']>;
-  /** Unit-cell length b in angstroms. */
+  /**
+   * Unit-cell length b in angstroms.
+   *
+   * Examples:
+   * null
+   *
+   */
   length_b?: Maybe<Scalars['Float']>;
-  /** Thickness of 2D crystal */
+  /**
+   * Thickness of 2D crystal
+   *
+   * Examples:
+   * null
+   *
+   */
   length_c?: Maybe<Scalars['Float']>;
   /**
    * There are 17 plane groups classified as oblique, rectangular, square, and hexagonal.
@@ -1350,21 +1375,57 @@ export interface Em2dCrystalEntity {
 
 export interface Em3dCrystalEntity {
   __typename?: 'Em3dCrystalEntity';
-  /** Unit-cell angle alpha in degrees. */
+  /**
+   * Unit-cell angle alpha in degrees.
+   *
+   * Examples:
+   * null
+   *
+   */
   angle_alpha?: Maybe<Scalars['Float']>;
-  /** Unit-cell angle beta in degrees. */
+  /**
+   * Unit-cell angle beta in degrees.
+   *
+   * Examples:
+   * null
+   *
+   */
   angle_beta?: Maybe<Scalars['Float']>;
-  /** Unit-cell angle gamma in degrees. */
+  /**
+   * Unit-cell angle gamma in degrees.
+   *
+   * Examples:
+   * null
+   *
+   */
   angle_gamma?: Maybe<Scalars['Float']>;
-  /** Unique key for the em_3d_crystal_entity category. */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category. */
   image_processing_id: Scalars['String'];
-  /** Unit-cell length a in angstroms. */
+  /**
+   * Unit-cell length a in angstroms.
+   *
+   * Examples:
+   * null
+   *
+   */
   length_a?: Maybe<Scalars['Float']>;
-  /** Unit-cell length b in angstroms. */
+  /**
+   * Unit-cell length b in angstroms.
+   *
+   * Examples:
+   * null
+   *
+   */
   length_b?: Maybe<Scalars['Float']>;
-  /** Unit-cell length c in angstroms. */
+  /**
+   * Unit-cell length c in angstroms.
+   *
+   * Examples:
+   * null
+   *
+   */
   length_c?: Maybe<Scalars['Float']>;
   /**
    * Space group name.
@@ -1438,23 +1499,33 @@ export interface Em3dFittingList {
    *  to  _em_3d_fitting.id in the 3d_fitting category
    */
   _3d_fitting_id: Scalars['String'];
-  /** Details about the model used in fitting. */
+  /**
+   * Details about the model used in fitting.
+   *
+   * Examples:
+   * The initial model consisted of the complete biological assembly for PDB entry 2GTL.
+   *
+   */
   details?: Maybe<Scalars['String']>;
-  /** This data item is a unique identifier. */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * The ID of the biopolymer chain used for fitting, e.g., A.  Please note that
    * only one chain can be specified per instance.  If all chains of a particular
    * structure have been used for fitting, this field can be left blank.
+   *
+   * Examples:
+   * The ID of the biopolymer chain used for fitting, e.g., A. Please note that only one chain can be specified per instance. If all chains of a particular structure have been used for fitting, this field can be left blank.
+   *
    */
   pdb_chain_id?: Maybe<Scalars['String']>;
-  /** The molecular entities represented in this fitting description. */
+  /** Residue range for the identified chain. */
   pdb_chain_residue_range?: Maybe<Scalars['String']>;
   /**
    * The PDB code for the entry used in fitting.
    *
    * Examples:
-   * PDB entry 1EHZ
+   * 1EHZ
    *
    */
   pdb_entry_id?: Maybe<Scalars['String']>;
@@ -1463,14 +1534,14 @@ export interface Em3dFittingList {
 export interface Em3dReconstruction {
   __typename?: 'Em3dReconstruction';
   /**
-   * The actual pixel size of projection set of images.
+   * The actual pixel size of the projection set of images in Angstroms.
    *
    * Examples:
    * null, null
    *
    */
   actual_pixel_size?: Maybe<Scalars['Float']>;
-  /** The algorithm used project from 2D orientations to 3D map. */
+  /** The reconstruction algorithm/technique used to generate the map. */
   algorithm?: Maybe<Scalars['String']>;
   /**
    * Any additional details used in the 3d reconstruction.
@@ -1480,10 +1551,7 @@ export interface Em3dReconstruction {
    *
    */
   details?: Maybe<Scalars['String']>;
-  /**
-   * The value of _em_3d_reconstruction.id must
-   *  uniquely identify the 3d reconstruction.
-   */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** Foreign key to the EM_IMAGE_PROCESSING category */
   image_processing_id: Scalars['String'];
@@ -1504,23 +1572,19 @@ export interface Em3dReconstruction {
    */
   method?: Maybe<Scalars['String']>;
   /**
-   * The nominal pixel size of the projection set of images.
+   * The nominal pixel size of the projection set of images in Angstroms.
    *
    * Examples:
    * null, null
    *
    */
   nominal_pixel_size?: Maybe<Scalars['Float']>;
-  /**
-   * This item was correspondence to two type of em dataset
-   *  processing_emDataSet_singleParticle.numClassAverages
-   *  processing_emDataSet_icosahedral.numClassAverages
-   */
+  /** The number of classes used in the final 3d reconstruction */
   num_class_averages?: Maybe<Scalars['Int']>;
   /** The number of 2D projections or 3D subtomograms used in the 3d reconstruction */
   num_particles?: Maybe<Scalars['Int']>;
   /**
-   * type of refinement performed in order to determine map resolution
+   * Indicates details on how the half-map used for resolution determination (usually by FSC) have been generated.
    *
    * Allowable values:
    * HALF-MAPS REFINED AGAINST SAME DATA, HALF-MAPS REFINED INDEPENDENTLY, HALF-MAPS REFINED INDEPENDENTLY WITH FREQUENCY RANGE OMITTED, HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED, OTHER
@@ -1528,7 +1592,7 @@ export interface Em3dReconstruction {
    */
   refinement_type?: Maybe<Scalars['String']>;
   /**
-   * The final resolution (in angstroms)of the 3D reconstruction.
+   * The final resolution (in angstroms) of the 3D reconstruction.
    *
    * Examples:
    * null, null
@@ -1570,7 +1634,7 @@ export interface EmCtfCorrection {
   details?: Maybe<Scalars['String']>;
   /** Foreign key to the EM_IMAGE_PROCESSING category */
   em_image_processing_id?: Maybe<Scalars['String']>;
-  /** Primary key */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** Type of CTF correction applied */
   type?: Maybe<Scalars['String']>;
@@ -1578,9 +1642,14 @@ export interface EmCtfCorrection {
 
 export interface EmDiffraction {
   __typename?: 'EmDiffraction';
-  /** TODO */
+  /**
+   * The camera length (in millimeters). The camera length is the
+   *  product of the objective focal length and the combined magnification
+   *  of the intermediate and projector lenses when the microscope is
+   *  operated in the diffraction mode.
+   */
   camera_length?: Maybe<Scalars['Float']>;
-  /** Primary key */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** Foreign key to the EM_IMAGING category */
   imaging_id?: Maybe<Scalars['String']>;
@@ -1614,7 +1683,7 @@ export interface EmDiffractionShell {
    *
    */
   high_resolution?: Maybe<Scalars['Float']>;
-  /** Unique identifier for the category em_diffraction_shell */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * Low resolution limit for this shell (angstroms)
@@ -1671,7 +1740,7 @@ export interface EmDiffractionStats {
    *
    */
   high_resolution?: Maybe<Scalars['Float']>;
-  /** Identifier for this category */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** Pointer to _em_image_processing.id */
   image_processing_id?: Maybe<Scalars['String']>;
@@ -1734,7 +1803,7 @@ export interface EmEmbedding {
    *
    */
   details?: Maybe<Scalars['String']>;
-  /** This data item is the primary key of the category. */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * The embedding  material.
@@ -1744,14 +1813,14 @@ export interface EmEmbedding {
    *
    */
   material?: Maybe<Scalars['String']>;
-  /** Foreign key relationship to the EMD SPECIMEN category */
+  /** Foreign key relationship to the EM SPECIMEN category */
   specimen_id?: Maybe<Scalars['String']>;
 }
 
 export interface EmEntityAssembly {
   __typename?: 'EmEntityAssembly';
   /**
-   * Additional details about the component.
+   * Additional details about the sample or sample subcomponent.
    *
    * Examples:
    * Fab fragment generated by proteolytic cleavage of LA2 IgG antibody.
@@ -1763,13 +1832,10 @@ export interface EmEntityAssembly {
    *  as comma separated list of entity ids (integers).
    */
   entity_id_list?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /**
-   * The value of _em_entity_assembly.id identifies
-   *  one component of the complex.
-   */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
-   * Name of this component in the observed assembly.
+   * The name of the sample or sample subcomponent.
    *
    * Examples:
    * Ternary complex of alpha-tubulin with tubulin folding cofactors TBCE and TBCB, 80S Ribosome bound to emetine, messenger RNA, initiation factor 2, GroEL, antibody Fab fragment
@@ -1785,7 +1851,8 @@ export interface EmEntityAssembly {
    */
   parent_id?: Maybe<Scalars['Int']>;
   /**
-   * The assembly type.
+   * The type of source (e.g., natural source) for the component (sample or sample
+   * subcomponent)
    *
    * Allowable values:
    * MULTIPLE SOURCES, NATURAL, RECOMBINANT, SYNTHETIC
@@ -1800,10 +1867,7 @@ export interface EmEntityAssembly {
    *
    */
   synonym?: Maybe<Scalars['String']>;
-  /**
-   * A description of types of components of the
-   *  assembly of the biological structure.
-   */
+  /** The general type of the sample or sample subcomponent. */
   type?: Maybe<Scalars['String']>;
 }
 
@@ -1819,7 +1883,7 @@ export interface EmExperiment {
   aggregation_state?: Maybe<Scalars['String']>;
   /** Foreign key to the EM_ENTITY_ASSEMBLY category */
   entity_assembly_id?: Maybe<Scalars['String']>;
-  /** Placeholder ID. */
+  /** PRIMARY KEY */
   id?: Maybe<Scalars['String']>;
   /**
    * The reconstruction method used in the EM experiment.
@@ -1834,7 +1898,7 @@ export interface EmExperiment {
 export interface EmHelicalEntity {
   __typename?: 'EmHelicalEntity';
   /**
-   * The angular rotation per helical subunit in degrees.
+   * The angular rotation per helical subunit in degrees. Negative values indicate left-handed helices; positive values indicate right handed helices.
    *
    * Examples:
    * null
@@ -1865,16 +1929,9 @@ export interface EmHelicalEntity {
    *
    */
   details?: Maybe<Scalars['String']>;
-  /**
-   * The value of _em_helical_entity.id must uniquely identify
-   *  a set of the filament parameters for this assembly component.
-   */
+  /** PRIMARY KEY */
   id: Scalars['String'];
-  /**
-   * The value of _em_helical_entity.reconstruction_id identifies a particular reconstruction.
-   *
-   *  This data item is a pointer to _em_image_processing.id.
-   */
+  /** This data item is a pointer to _em_image_processing.id. */
   image_processing_id: Scalars['String'];
 }
 
@@ -1914,13 +1971,10 @@ export interface EmImageRecording {
   detector_mode?: Maybe<Scalars['String']>;
   /**
    * The detector type used for recording images.
-   *  Usually film or CCD camera.
+   *  Usually film , CCD camera or direct electron detector.
    */
   film_or_detector_model?: Maybe<Scalars['String']>;
-  /**
-   * The item _em_image_recording.id uniquely identifies
-   *  a set of recorded images.
-   */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** This data item the id of the microscopy settings used in the imaging. */
   imaging_id: Scalars['String'];
@@ -1937,7 +1991,7 @@ export interface EmImaging {
   /** A value of accelerating voltage (in kV) used for imaging. */
   accelerating_voltage?: Maybe<Scalars['Int']>;
   /**
-   * microscope alignment procedure
+   * The type of procedure used to align the microscope electron beam.
    *
    * Allowable values:
    * BASIC, COMA FREE, NONE, OTHER, ZEMLIN TABLEAU
@@ -1952,13 +2006,13 @@ export interface EmImaging {
    */
   c2_aperture_diameter?: Maybe<Scalars['Float']>;
   /**
-   * The maximum defocus value of the objective lens (in nanometers) used
-   *  to obtain the recorded images.
+   * The maximum calibrated defocus value of the objective lens (in nanometers) used
+   *  to obtain the recorded images. Negative values refer to overfocus.
    */
   calibrated_defocus_max?: Maybe<Scalars['Float']>;
   /**
-   * The minimum defocus value of the objective lens (in nanometers) used
-   *  to obtain the recorded images.
+   * The minimum calibrated defocus value of the objective lens (in nanometers) used
+   *  to obtain the recorded images. Negative values refer to overfocus.
    */
   calibrated_defocus_min?: Maybe<Scalars['Float']>;
   /**
@@ -2003,10 +2057,7 @@ export interface EmImaging {
   electron_beam_tilt_params?: Maybe<Scalars['String']>;
   /** The source of electrons. The electron gun. */
   electron_source?: Maybe<Scalars['String']>;
-  /**
-   * The value of _em_imaging.id must uniquely identify
-   *  each imaging experiment.
-   */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * The mode of illumination.
@@ -2043,12 +2094,12 @@ export interface EmImaging {
   nominal_cs?: Maybe<Scalars['Float']>;
   /**
    * The maximum defocus value of the objective lens (in nanometers) used
-   *  to obtain the recorded images.
+   *  to obtain the recorded images. Negative values refer to overfocus.
    */
   nominal_defocus_max?: Maybe<Scalars['Float']>;
   /**
    * The minimum defocus value of the objective lens (in nanometers) used
-   *  to obtain the recorded images.
+   *  to obtain the recorded images. Negative values refer to overfocus.
    */
   nominal_defocus_min?: Maybe<Scalars['Float']>;
   /** The magnification indicated by the microscope readout. */
@@ -2063,7 +2114,7 @@ export interface EmImaging {
    *  of imaging.
    */
   recording_temperature_minimum?: Maybe<Scalars['Float']>;
-  /** residual tilt of the electron beam */
+  /** Residual tilt of the electron beam (in miliradians) */
   residual_tilt?: Maybe<Scalars['Float']>;
   /**
    * The name of the model of specimen holder used during imaging.
@@ -2103,14 +2154,15 @@ export interface EmImaging {
 export interface EmParticleSelection {
   __typename?: 'EmParticleSelection';
   /**
-   * Any additional details used for selecting particles
+   * Additional detail such as description of filters used, if selection was
+   * manual or automated, and/or template details.
    *
    * Examples:
    * negative monitor contrast facilitated particle picking
    *
    */
   details?: Maybe<Scalars['String']>;
-  /** Ordinal identifier */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * The value of _em_particle_selection.image_processing_id points to
@@ -2123,7 +2175,7 @@ export interface EmParticleSelection {
 
 export interface EmSingleParticleEntity {
   __typename?: 'EmSingleParticleEntity';
-  /** Unique category label. */
+  /** PRIMARY KEY */
   id: Scalars['Int'];
   /** pointer to _em_image_processing.id. */
   image_processing_id: Scalars['String'];
@@ -2157,7 +2209,7 @@ export interface EmSoftware {
   details?: Maybe<Scalars['String']>;
   /** pointer to _em_3d_fitting.id in the EM_3D_FITTING category. */
   fitting_id?: Maybe<Scalars['String']>;
-  /** Unique identifier for each software description. */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /** pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category. */
   image_processing_id?: Maybe<Scalars['String']>;
@@ -2211,10 +2263,7 @@ export interface EmSpecimen {
   embedding_applied?: Maybe<Scalars['String']>;
   /** Pointer to _em_experiment.id. */
   experiment_id: Scalars['String'];
-  /**
-   * The item  _em_specimen.id uniquely identifies a specimen along with
-   *  its preparation methods.
-   */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * 'YES' indicates that the specimen has been shadowed.
@@ -2253,7 +2302,7 @@ export interface EmStaining {
    *
    */
   details?: Maybe<Scalars['String']>;
-  /** This data item is the primary key of the category. */
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * The staining  material.
@@ -2263,7 +2312,7 @@ export interface EmStaining {
    *
    */
   material?: Maybe<Scalars['String']>;
-  /** Foreign key relationship to the EMD SPECIMEN category */
+  /** Foreign key relationship to the EM SPECIMEN category */
   specimen_id?: Maybe<Scalars['String']>;
   /**
    * type of staining
@@ -2295,12 +2344,12 @@ export interface EmVitrification {
    *
    */
   details?: Maybe<Scalars['String']>;
-  /** The humidity (%) in the vicinity of the vitrification process. */
-  humidity?: Maybe<Scalars['Float']>;
   /**
-   * The value of _em_vitrification.id must uniquely identify
-   *  the vitrification procedure.
+   * Relative humidity (%) of air surrounding the specimen just prior to
+   * vitrification.
    */
+  humidity?: Maybe<Scalars['Float']>;
+  /** PRIMARY KEY */
   id: Scalars['String'];
   /**
    * The type of instrument used in the vitrification process.
@@ -2412,15 +2461,19 @@ export interface EntityPoly {
   pdbx_seq_one_letter_code?: Maybe<Scalars['String']>;
   /**
    * Canonical sequence of protein or nucleic acid polymer in standard
-   *  one-letter codes of amino acids or nucleotides,
-   *  corresponding to the sequence in
-   *  _entity_poly.pdbx_seq_one_letter_code. Non-standard
-   *  amino acids/nucleotides are represented by the codes of
-   *  their parents if parent is specified in
-   *  _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if
-   *  parent is not specified. Deoxynucleotides are
-   *  represented by their canonical one-letter codes of A,
-   *  C, G, or T.
+   *                one-letter codes of amino acids or nucleotides,
+   *                corresponding to the sequence in
+   *                _entity_poly.pdbx_seq_one_letter_code. Non-standard
+   *                amino acids/nucleotides are represented by the codes of
+   *                their parents if parent is specified in
+   *                _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if
+   *                parent is not specified. Deoxynucleotides are
+   *                represented by their canonical one-letter codes of A,
+   *                C, G, or T.
+   *
+   *                For modifications with several parent amino acids,
+   * 	       all corresponding parent amino acid codes will be listed
+   * 	       (ex. chromophores).
    *
    * Examples:
    * MSHHWGYGKHNGPEHWHKDFPIAKGERQSPVDIDTHTAKYDPSLKPLSVSYDQATSLRILNNGAAFNVEFD
@@ -3178,9 +3231,19 @@ export interface ExptlCrystal {
    */
   id: Scalars['String'];
   /**
-   * The of the distribution of mis-orientation angles specified in degrees
-   * of all the unit cells in the crystal. Lower mosaicity indicates better
-   * ordered crystals.
+   * Isotropic approximation of the distribution of mis-orientation angles
+   * specified in degrees of all the mosaic domain blocks in the crystal,
+   * represented as a standard deviation. Here, a mosaic block is a set of
+   * contiguous unit cells assumed to be perfectly aligned. Lower mosaicity
+   * indicates better ordered crystals. See for example:
+   *
+   * Nave, C. (1998). Acta Cryst. D54, 848-853.
+   *
+   * Note that many software packages estimate the mosaic rotation distribution
+   * differently and may combine several physical properties of the experiment
+   * into a single mosaic term. This term will help fit the modeled spots
+   * to the observed spots without necessarily being directly related to the
+   * physics of the crystal itself.
    */
   pdbx_mosaicity?: Maybe<Scalars['Float']>;
   /** The uncertainty in the mosaicity estimate for the crystal. */
@@ -3355,7 +3418,7 @@ export interface MaData {
    * The type of data held in the dataset.
    *
    * Allowable values:
-   * coevolution MSA, input structure, model coordinates, other, polymeric template library, spatial restraints, target, target-template alignment, template structure
+   * coevolution MSA, input structure, model coordinates, other, polymeric template library, reference database, spatial restraints, target, target-template alignment, template structure
    *
    */
   content_type?: Maybe<Scalars['String']>;
@@ -4039,6 +4102,37 @@ export interface PdbxFamilyPrdAudit {
    *
    */
   processing_site?: Maybe<Scalars['String']>;
+}
+
+export interface PdbxInitialRefinementModel {
+  __typename?: 'PdbxInitialRefinementModel';
+  /**
+   * This item identifies an accession code of the resource where the initial model
+   *  is used
+   */
+  accession_code?: Maybe<Scalars['String']>;
+  /** A description of special aspects of the initial model */
+  details?: Maybe<Scalars['String']>;
+  /** A comma separated list of entities reflecting the initial model used for refinement */
+  entity_id_list?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** A unique identifier for the starting model record. */
+  id: Scalars['Int'];
+  /**
+   * This item identifies the resource of initial model used for refinement
+   *
+   * Allowable values:
+   * AlphaFold, ITasser, ModelArchive, Modeller, Other, PDB, RoseTTAFold, SwissModel
+   *
+   */
+  source_name?: Maybe<Scalars['String']>;
+  /**
+   * This item describes the type of the initial model was generated
+   *
+   * Allowable values:
+   * experimental model, in silico model, integrative model, other
+   *
+   */
+  type?: Maybe<Scalars['String']>;
 }
 
 export interface PdbxMoleculeFeatures {
@@ -5214,6 +5308,76 @@ export interface PdbxReferenceMoleculeSynonyms {
   source?: Maybe<Scalars['String']>;
 }
 
+export interface PdbxReflnsTwin {
+  __typename?: 'PdbxReflnsTwin';
+  /**
+   * The crystal identifier.  A reference to
+   *  _exptl_crystal.id in category EXPTL_CRYSTAL.
+   */
+  crystal_id: Scalars['String'];
+  /**
+   * The diffraction data set identifier.  A reference to
+   *  _diffrn.id in category DIFFRN.
+   */
+  diffrn_id: Scalars['String'];
+  /** An identifier for the twin domain. */
+  domain_id?: Maybe<Scalars['String']>;
+  /**
+   * The twin fraction or twin factor represents a quantitative parameter for the
+   * crystal twinning.  The value 0 represents no twinning, < 0.5 partial twinning,
+   *  = 0.5 for perfect twinning.
+   */
+  fraction?: Maybe<Scalars['Float']>;
+  /**
+   * The possible merohedral or hemihedral twinning operators for different
+   * point groups are:
+   *
+   * True point group  	Twin operation  	hkl related to
+   * 3                      	2 along a,b             h,-h-k,-l
+   *                        	2 along a*,b*           h+k,-k,-l
+   *                         2 along c               -h,-k,l
+   * 4                       2 along a,b,a*,b*       h,-k,-l
+   * 6                       2 along a,b,a*,b*       h,-h-k,-l
+   * 321                     2 along a*,b*,c         -h,-k,l
+   * 312                     2 along a,b,c           -h,-k,l
+   * 23                      4 along a,b,c            k,-h,l
+   *
+   * References:
+   *  Yeates, T.O. (1997) Methods in Enzymology 276, 344-358. Detecting and
+   *  Overcoming Crystal Twinning.
+   *
+   *  and information from the following on-line sites:
+   *
+   *    CNS site http://cns.csb.yale.edu/v1.1/
+   *    CCP4 site http://www.ccp4.ac.uk/dist/html/detwin.html
+   *    SHELX site http://shelx.uni-ac.gwdg.de/~rherbst/twin.html
+   *
+   * Examples:
+   * h,-h-k,-l, h+k,-k,-l, -h,-k,l, h,-k,-l, h,-h-k,-l, -h,-k,l, k,-h,l
+   *
+   */
+  operator: Scalars['String'];
+  /**
+   * There are two types of twinning: merohedral or hemihedral
+   *                                  non-merohedral or epitaxial
+   *
+   * For merohedral twinning the diffraction patterns from the different domains are
+   * completely superimposable.   Hemihedral twinning is a special case of merohedral
+   * twinning. It only involves two distinct domains.  Pseudo-merohedral twinning is
+   * a subclass merohedral twinning in which lattice is coincidentally superimposable.
+   *
+   * In the case of non-merohedral or epitaxial twinning  the reciprocal
+   * lattices do not superimpose exactly. In this case the  diffraction pattern
+   * consists of two (or more) interpenetrating lattices, which can in principle
+   * be separated.
+   *
+   * Allowable values:
+   * epitaxial, hemihedral, merohedral, non-merohedral, pseudo-merohedral, tetartohedral
+   *
+   */
+  type?: Maybe<Scalars['String']>;
+}
+
 export interface PdbxRelatedExpDataSet {
   __typename?: 'PdbxRelatedExpDataSet';
   /**
@@ -5253,7 +5417,7 @@ export interface PdbxSgProject {
    * The value identifies the full name of center.
    *
    * Allowable values:
-   * Accelerated Technologies Center for Gene to 3D Structure, Assembly, Dynamics and Evolution of Cell-Cell and Cell-Matrix Adhesions, Atoms-to-Animals: The Immune Function Network, Bacterial targets at IGS-CNRS, France, Berkeley Structural Genomics Center, Center for Eukaryotic Structural Genomics, Center for High-Throughput Structural Biology, Center for Membrane Proteins of Infectious Diseases, Center for Structural Genomics of Infectious Diseases, Center for Structures of Membrane Proteins, Center for the X-ray Structure Determination of Human Transporters, Chaperone-Enabled Studies of Epigenetic Regulation Enzymes, Enzyme Discovery for Natural Product Biosynthesis, GPCR Network, Integrated Center for Structure and Function Innovation, Israel Structural Proteomics Center, Joint Center for Structural Genomics, Marseilles Structural Genomics Program @ AFMB, Medical Structural Genomics of Pathogenic Protozoa, Membrane Protein Structural Biology Consortium, Membrane Protein Structures by Solution NMR, Midwest Center for Macromolecular Research, Midwest Center for Structural Genomics, Mitochondrial Protein Partnership, Montreal-Kingston Bacterial Structural Genomics Initiative, Mycobacterium Tuberculosis Structural Proteomics Project, New York Consortium on Membrane Protein Structure, New York SGX Research Center for Structural Genomics, New York Structural GenomiX Research Consortium, New York Structural Genomics Research Consortium, Northeast Structural Genomics Consortium, Nucleocytoplasmic Transport: a Target for Cellular Control, Ontario Centre for Structural Proteomics, Oxford Protein Production Facility, Paris-Sud Yeast Structural Genomics, Partnership for Nuclear Receptor Signaling Code Biology, Partnership for Stem Cell Biology, Partnership for T-Cell Biology, Program for the Characterization of Secreted Effector Proteins, Protein Structure Factory, RIKEN Structural Genomics/Proteomics Initiative, Scottish Structural Proteomics Facility, Seattle Structural Genomics Center for Infectious Disease, South Africa Structural Targets Annotation Database, Southeast Collaboratory for Structural Genomics, Structural Genomics Consortium, Structural Genomics Consortium for Research on Gene Expression, Structural Genomics of Pathogenic Protozoa Consortium, Structural Proteomics in Europe, Structural Proteomics in Europe 2, Structure 2 Function Project, Structure, Dynamics and Activation Mechanisms of Chemokine Receptors, Structure-Function Analysis of Polymorphic CDI Toxin-Immunity Protein Complexes, Structure-Function Studies of Tight Junction Membrane Proteins, Structures of Mtb Proteins Conferring Susceptibility to Known Mtb Inhibitors, TB Structural Genomics Consortium, Transcontinental EM Initiative for Membrane Protein Structure, Transmembrane Protein Center
+   * Accelerated Technologies Center for Gene to 3D Structure, Assembly, Dynamics and Evolution of Cell-Cell and Cell-Matrix Adhesions, Atoms-to-Animals: The Immune Function Network, Bacterial targets at IGS-CNRS, France, Berkeley Structural Genomics Center, Center for Eukaryotic Structural Genomics, Center for High-Throughput Structural Biology, Center for Membrane Proteins of Infectious Diseases, Center for Structural Biology of Infectious Diseases, Center for Structural Genomics of Infectious Diseases, Center for Structures of Membrane Proteins, Center for the X-ray Structure Determination of Human Transporters, Chaperone-Enabled Studies of Epigenetic Regulation Enzymes, Enzyme Discovery for Natural Product Biosynthesis, GPCR Network, Integrated Center for Structure and Function Innovation, Israel Structural Proteomics Center, Joint Center for Structural Genomics, Marseilles Structural Genomics Program @ AFMB, Medical Structural Genomics of Pathogenic Protozoa, Membrane Protein Structural Biology Consortium, Membrane Protein Structures by Solution NMR, Midwest Center for Macromolecular Research, Midwest Center for Structural Genomics, Mitochondrial Protein Partnership, Montreal-Kingston Bacterial Structural Genomics Initiative, Mycobacterium Tuberculosis Structural Proteomics Project, New York Consortium on Membrane Protein Structure, New York SGX Research Center for Structural Genomics, New York Structural GenomiX Research Consortium, New York Structural Genomics Research Consortium, Northeast Structural Genomics Consortium, Nucleocytoplasmic Transport: a Target for Cellular Control, Ontario Centre for Structural Proteomics, Oxford Protein Production Facility, Paris-Sud Yeast Structural Genomics, Partnership for Nuclear Receptor Signaling Code Biology, Partnership for Stem Cell Biology, Partnership for T-Cell Biology, Program for the Characterization of Secreted Effector Proteins, Protein Structure Factory, RIKEN Structural Genomics/Proteomics Initiative, Scottish Structural Proteomics Facility, Seattle Structural Genomics Center for Infectious Disease, South Africa Structural Targets Annotation Database, Southeast Collaboratory for Structural Genomics, Structural Genomics Consortium, Structural Genomics Consortium for Research on Gene Expression, Structural Genomics of Pathogenic Protozoa Consortium, Structural Proteomics in Europe, Structural Proteomics in Europe 2, Structure 2 Function Project, Structure, Dynamics and Activation Mechanisms of Chemokine Receptors, Structure-Function Analysis of Polymorphic CDI Toxin-Immunity Protein Complexes, Structure-Function Studies of Tight Junction Membrane Proteins, Structures of Mtb Proteins Conferring Susceptibility to Known Mtb Inhibitors, TB Structural Genomics Consortium, Transcontinental EM Initiative for Membrane Protein Structure, Transmembrane Protein Center
    *
    */
   full_name_of_center?: Maybe<Scalars['String']>;
@@ -5269,7 +5433,7 @@ export interface PdbxSgProject {
    * The value identifies the full name of center.
    *
    * Allowable values:
-   * ATCG3D, BIGS, BSGC, BSGI, CEBS, CELLMAT, CESG, CHSAM, CHTSB, CSGID, CSMP, GPCR, IFN, ISFI, ISPC, JCSG, MCMR, MCSG, MPID, MPP, MPSBC, MPSbyNMR, MSGP, MSGPP, MTBI, NESG, NHRs, NPCXstals, NYCOMPS, NYSGRC, NYSGXRC, NatPro, OCSP, OPPF, PCSEP, PSF, RSGI, S2F, SASTAD, SECSG, SGC, SGCGES, SGPP, SPINE, SPINE-2, SSGCID, SSPF, STEMCELL, TBSGC, TCELL, TEMIMPS, TJMP, TMPC, TransportPDB, UC4CDI, XMTB, YSG
+   * ATCG3D, BIGS, BSGC, BSGI, CEBS, CELLMAT, CESG, CHSAM, CHTSB, CSBID, CSGID, CSMP, GPCR, IFN, ISFI, ISPC, JCSG, MCMR, MCSG, MPID, MPP, MPSBC, MPSbyNMR, MSGP, MSGPP, MTBI, NESG, NHRs, NPCXstals, NYCOMPS, NYSGRC, NYSGXRC, NatPro, OCSP, OPPF, PCSEP, PSF, RSGI, S2F, SASTAD, SECSG, SGC, SGCGES, SGPP, SPINE, SPINE-2, SSGCID, SSPF, STEMCELL, TBSGC, TCELL, TEMIMPS, TJMP, TMPC, TransportPDB, UC4CDI, XMTB, YSG
    *
    */
   initial_of_center?: Maybe<Scalars['String']>;
@@ -5334,6 +5498,15 @@ export interface PdbxSerialCrystallographyDataReduction {
    *  continuous stream, the total number of lattices indexed.
    */
   lattices_indexed?: Maybe<Scalars['Int']>;
+  /**
+   * For experiments in which samples are provided in a
+   *             continuous stream, the total number of crystal lattices
+   *             that were merged in the final dataset.  Can be
+   *             less than frames_indexed depending on filtering during merging or
+   * 	    can be more than frames_indexed if there are multiple lattices.
+   * 	    per frame.
+   */
+  lattices_merged?: Maybe<Scalars['Int']>;
   /** For FEL experiments, the number of pulse events in the dataset. */
   xfel_pulse_events?: Maybe<Scalars['Int']>;
   /**
@@ -5996,6 +6169,10 @@ export interface PdbxStructAssembly {
   __typename?: 'PdbxStructAssembly';
   /**
    * A description of special aspects of the macromolecular assembly.
+   *
+   *                In the PDB, 'representative helical assembly', 'complete point assembly',
+   * 	       'complete icosahedral assembly', 'software_defined_assembly', 'author_defined_assembly',
+   * 	       and 'author_and_software_defined_assembly' are considered "biologically relevant assemblies.
    *
    * Examples:
    * The icosahedral virus particle.
@@ -6987,23 +7164,23 @@ export interface Query {
   __typename?: 'Query';
   /** Get a list of assemblies given the list of ASSEMBLY IDs. Here an ASSEMBLY ID is a compound identifier that includes entry_id and assembly_id separated by '-', e.g. 1XXX-1. */
   assemblies?: Maybe<Array<Maybe<CoreAssembly>>>;
-  /** Get an assembly given the PDB ID and ASSEMBLY ID. Here ASSEMBLY ID is '1', '2', '3', etc. or 'deposited' for deposited coordinates. */
+  /** Get an assembly given the ENTRY ID and ASSEMBLY ID. Here ASSEMBLY ID is '1', '2', '3', etc. or 'deposited' for deposited coordinates. */
   assembly?: Maybe<CoreAssembly>;
-  /** Get a list of PDB branched entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
+  /** Get a list of branched entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
   branched_entities?: Maybe<Array<Maybe<CoreBranchedEntity>>>;
-  /** Get a PDB branched entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
+  /** Get a branched entity, given the ENTRY ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   branched_entity?: Maybe<CoreBranchedEntity>;
-  /** Get a PDB branched entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
+  /** Get a branched entity instance (chain), given the ENTRY ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   branched_entity_instance?: Maybe<CoreBranchedEntityInstance>;
-  /** Get a list of PDB branched entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
+  /** Get a list of branched entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   branched_entity_instances?: Maybe<Array<Maybe<CoreBranchedEntityInstance>>>;
   /** Get a chemical component given the CHEMICAL COMPONENT ID, e.g. 'CFF', 'HEM', 'FE'.For nucleic acid polymer entities, use the one-letter code for the base. */
   chem_comp?: Maybe<CoreChemComp>;
   /** Get a list of chemical components given the list of CHEMICAL COMPONENT ID, e.g. 'CFF', 'HEM', 'FE'.For nucleic acid polymer entities, use the one-letter code for the base. */
   chem_comps?: Maybe<Array<Maybe<CoreChemComp>>>;
-  /** Get a list of PDB entries given a list of PDB IDs. */
+  /** Get a list of entries given a list of IDs. */
   entries?: Maybe<Array<Maybe<CoreEntry>>>;
-  /** Get PDB entry given the PDB id. */
+  /** Get entry given the id. */
   entry?: Maybe<CoreEntry>;
   /** Given a group ID get a group object formed by aggregating individual structures that share a degree of similarity */
   entry_group?: Maybe<GroupEntry>;
@@ -7011,29 +7188,29 @@ export interface Query {
   entry_groups?: Maybe<Array<Maybe<GroupEntry>>>;
   /** Given a group provenance ID get an object that describes aggregation method used to create groups */
   group_provenance?: Maybe<GroupProvenance>;
-  /** Get a pairwise polymeric interface given the PDB ID, ASSEMBLY ID and INTERFACE ID. */
+  /** Get a pairwise polymeric interface given the ENTRY ID, ASSEMBLY ID and INTERFACE ID. */
   interface?: Maybe<CoreInterface>;
   /** Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs. Here INTERFACE ID is a compound identifier that includes entry_id, assembly_id and interface_id e.g. 1XXX-1.1. Note that the ENTRY ID part must be upper case. */
   interfaces?: Maybe<Array<Maybe<CoreInterface>>>;
-  /** Get a list of PDB non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
+  /** Get a list of non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
   nonpolymer_entities?: Maybe<Array<Maybe<CoreNonpolymerEntity>>>;
-  /** Get a PDB non-polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
+  /** Get a non-polymer entity, given the ENTRY ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   nonpolymer_entity?: Maybe<CoreNonpolymerEntity>;
-  /** Get a PDB non-polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
+  /** Get a non-polymer entity instance (chain), given the ENTRY ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   nonpolymer_entity_instance?: Maybe<CoreNonpolymerEntityInstance>;
-  /** Get a list of PDB non-polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
+  /** Get a list of non-polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   nonpolymer_entity_instances?: Maybe<Array<Maybe<CoreNonpolymerEntityInstance>>>;
-  /** Get a list of PDB polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
+  /** Get a list of polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case. */
   polymer_entities?: Maybe<Array<Maybe<CorePolymerEntity>>>;
-  /** Get a PDB polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
+  /** Get a polymer entity, given the ENTRY ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   polymer_entity?: Maybe<CorePolymerEntity>;
   /** Given a group ID get a group object formed by aggregating polymer entities that share a degree of similarity */
   polymer_entity_group?: Maybe<GroupPolymerEntity>;
   /** Given a list of group IDs get a list of group objects formed by aggregating polymer entities that share a degree of similarity */
   polymer_entity_groups?: Maybe<Array<Maybe<GroupPolymerEntity>>>;
-  /** Get a PDB polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
+  /** Get a polymer entity instance (chain), given the ENTRY ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instance?: Maybe<CorePolymerEntityInstance>;
-  /** Get a list of PDB polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
+  /** Get a list of polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
   /** Get literature information from PubMed database given the PubMed identifier. */
   pubmed?: Maybe<CorePubmed>;
@@ -7254,7 +7431,7 @@ export interface RcsbAccessionInfo {
    * The release status for the entry.
    *
    * Allowable values:
-   * AUCO, AUTH, HOLD, HPUB', POLC, PROC, REFI, REL, REPL, WAIT, WDRN
+   * AUCO, AUTH, HOLD, HPUB, POLC, PROC, REFI, REL, REPL, WAIT, WDRN
    *
    */
   status_code?: Maybe<Scalars['String']>;
@@ -8651,6 +8828,8 @@ export interface RcsbCompModelProvenance {
   source_db?: Maybe<Scalars['String']>;
   /** Source filename for the computed structure model. */
   source_filename?: Maybe<Scalars['String']>;
+  /** Source URL for computed structure model predicted aligned error (PAE) json file. */
+  source_pae_url?: Maybe<Scalars['String']>;
   /** Source URL for computed structure model file. */
   source_url?: Maybe<Scalars['String']>;
 }
@@ -8756,7 +8935,7 @@ export interface RcsbEntityHostOrganism {
    * A code indicating the provenance of the host organism.
    *
    * Allowable values:
-   * PDB Primary Data
+   * PDB Primary Data, Primary Data
    *
    */
   provenance_source?: Maybe<Scalars['String']>;
@@ -8891,10 +9070,12 @@ export interface RcsbEntitySourceOrganism {
   /** An identifier for the entity segment. */
   pdbx_src_id: Scalars['String'];
   /**
-   * A code indicating the provenance of the source organism details for the entity
+   * Reference to the provenance of the source organism details for the entity.
+   *  Primary data indicates information obtained from the same source as the structural model.
+   *  UniProt and NCBI are provided as alternate sources of provenance for organism details.
    *
    * Allowable values:
-   * PDB Primary Data, UniProt
+   * NCBI, PDB Primary Data, Primary Data, UniProt
    *
    */
   provenance_source?: Maybe<Scalars['String']>;
@@ -8918,7 +9099,7 @@ export interface RcsbEntitySourceOrganismRcsbGeneName {
    * A code indicating the provenance of the source organism details for the entity
    *
    * Allowable values:
-   * PDB Primary Data, UniProt
+   * NCBI, PDB Primary Data, Primary Data, UniProt
    *
    */
   provenance_source?: Maybe<Scalars['String']>;
@@ -9192,7 +9373,18 @@ export interface RcsbEntryInfo {
   polymer_monomer_count_maximum?: Maybe<Scalars['Int']>;
   /** The minimum monomer count of a polymer entity per deposited structure model. */
   polymer_monomer_count_minimum?: Maybe<Scalars['Int']>;
-  /** Combined estimates of experimental resolution contributing to the refined structural model. */
+  /**
+   * Combined estimates of experimental resolution contributing to the refined structural model.
+   *  Resolution reported in "refine.ls_d_res_high" is used for X-RAY DIFFRACTION, FIBER DIFFRACTION,
+   *  POWDER DIFFRACTION, ELECTRON CRYSTALLOGRAPHY, and NEUTRON DIFFRACTION as identified in
+   *  "refine.pdbx_refine_id".
+   *  Resolution reported in "em_3d_reconstruction.resolution" is used for ELECTRON MICROSCOPY.
+   *  The best value corresponding to "em_3d_reconstruction.resolution_method" == "FSC 0.143 CUT-OFF"
+   *  is used, if available. If not, the best "em_3d_reconstruction.resolution" value is used.
+   *  For structures that are not obtained from diffraction-based methods, the resolution values in
+   *  "refine.ls_d_res_high" are ignored.
+   *  Multiple values are reported only if multiple methods are used in the structure determination.
+   */
   resolution_combined?: Maybe<Array<Maybe<Scalars['Float']>>>;
   /**
    * Selected polymer entity type categories describing the entry.
@@ -10562,6 +10754,7 @@ export interface RcsbPolymerEntityAlignAlignedRegions {
 
 export interface RcsbPolymerEntityAnnotation {
   __typename?: 'RcsbPolymerEntityAnnotation';
+  additional_properties?: Maybe<Array<Maybe<RcsbPolymerEntityAnnotationAdditionalProperties>>>;
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']>;
   annotation_lineage?: Maybe<Array<Maybe<RcsbPolymerEntityAnnotationAnnotationLineage>>>;
@@ -10590,10 +10783,24 @@ export interface RcsbPolymerEntityAnnotation {
    * A type or category of the annotation.
    *
    * Allowable values:
-   * GO, GlyCosmos, GlyGen, InterPro, MemProtMD, OPM, PDBTM, Pfam, mpstruc
+   * CARD, GO, GlyCosmos, GlyGen, InterPro, MemProtMD, OPM, PDBTM, Pfam, mpstruc
    *
    */
   type?: Maybe<Scalars['String']>;
+}
+
+export interface RcsbPolymerEntityAnnotationAdditionalProperties {
+  __typename?: 'RcsbPolymerEntityAnnotationAdditionalProperties';
+  /**
+   * The additional property name.
+   *
+   * Allowable values:
+   * CARD_ARO_CATEGORY, CARD_ARO_CVTERM_ID, CARD_ARO_DRUG_CLASS, CARD_ARO_RESISTANCE_MECHANISM
+   *
+   */
+  name?: Maybe<Scalars['String']>;
+  /** The value(s) of the additional property. */
+  values?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
 }
 
 export interface RcsbPolymerEntityAnnotationAnnotationLineage {
@@ -10858,6 +11065,7 @@ export interface RcsbPolymerEntityGroupMembership {
    *
    */
   aggregation_method: Scalars['String'];
+  aligned_regions?: Maybe<Array<Maybe<RcsbPolymerEntityGroupMembershipAlignedRegions>>>;
   /**
    * A unique identifier for a group of entities
    *
@@ -10868,6 +11076,16 @@ export interface RcsbPolymerEntityGroupMembership {
   group_id: Scalars['String'];
   /** Degree of similarity expressed as a floating-point number */
   similarity_cutoff?: Maybe<Scalars['Float']>;
+}
+
+export interface RcsbPolymerEntityGroupMembershipAlignedRegions {
+  __typename?: 'RcsbPolymerEntityGroupMembershipAlignedRegions';
+  /** An identifier for the monomer in the entity sequence at which this segment of the alignment begins. */
+  entity_beg_seq_id?: Maybe<Scalars['Int']>;
+  /** An length of the this segment of the alignment. */
+  length?: Maybe<Scalars['Int']>;
+  /** An identifier for the monomer in the reference sequence at which this segment of the alignment begins. */
+  ref_beg_seq_id?: Maybe<Scalars['Int']>;
 }
 
 export interface RcsbPolymerEntityGroupSequenceAlignment {
