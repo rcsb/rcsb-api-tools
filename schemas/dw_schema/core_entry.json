@@ -989,9 +989,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "Unique key for the 2d_crystal_entity category.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Unique key for the 2d_crystal_entity category.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1005,6 +1005,7 @@
           },
           "length_a" : {
             "type" : "number",
+            "examples" : [ 62.4 ],
             "description" : "Unit-cell length a in angstroms.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
@@ -1015,6 +1016,7 @@
           },
           "length_b" : {
             "type" : "number",
+            "examples" : [ 62.4 ],
             "description" : "Unit-cell length b in angstroms.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
@@ -1025,6 +1027,7 @@
           },
           "length_c" : {
             "type" : "number",
+            "examples" : [ 62.4 ],
             "description" : "Thickness of 2D crystal",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
@@ -1108,6 +1111,7 @@
         "properties" : {
           "angle_alpha" : {
             "type" : "number",
+            "examples" : [ 1.2E+2 ],
             "description" : "Unit-cell angle alpha in degrees.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "degrees",
@@ -1118,6 +1122,7 @@
           },
           "angle_beta" : {
             "type" : "number",
+            "examples" : [ 1.2E+2 ],
             "description" : "Unit-cell angle beta in degrees.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "degrees",
@@ -1128,6 +1133,7 @@
           },
           "angle_gamma" : {
             "type" : "number",
+            "examples" : [ 1.2E+2 ],
             "description" : "Unit-cell angle gamma in degrees.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "degrees",
@@ -1138,9 +1144,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "Unique key for the em_3d_crystal_entity category.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Unique key for the em_3d_crystal_entity category.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1154,6 +1160,7 @@
           },
           "length_a" : {
             "type" : "number",
+            "examples" : [ 62.4 ],
             "description" : "Unit-cell length a in angstroms.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
@@ -1164,6 +1171,7 @@
           },
           "length_b" : {
             "type" : "number",
+            "examples" : [ 62.4 ],
             "description" : "Unit-cell length b in angstroms.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
@@ -1174,6 +1182,7 @@
           },
           "length_c" : {
             "type" : "number",
+            "examples" : [ 62.4 ],
             "description" : "Unit-cell length c in angstroms.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
@@ -1255,7 +1264,6 @@
           "ref_protocol" : {
             "type" : "string",
             "enum" : [ "AB INITIO MODEL", "BACKBONE TRACE", "FLEXIBLE FIT", "OTHER", "RIGID BODY FIT" ],
-            "examples" : [ "Local refinement, Flexible fitting" ],
             "description" : "The refinement protocol used.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
@@ -1308,6 +1316,7 @@
           },
           "details" : {
             "type" : "string",
+            "examples" : [ "The initial model consisted of the complete biological assembly for PDB entry 2GTL." ],
             "description" : "Details about the model used in fitting.",
             "rcsb_search_context" : [ "full-text" ],
             "rcsb_full_text_priority" : 1,
@@ -1318,14 +1327,15 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "This data item is a unique identifier.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "This data item is a unique identifier.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
           "pdb_chain_id" : {
             "type" : "string",
+            "examples" : [ "The ID of the biopolymer chain used for fitting, e.g., A. Please note that only one chain can be specified per instance. If all chains of a particular structure have been used for fitting, this field can be left blank." ],
             "description" : "The ID of the biopolymer chain used for fitting, e.g., A.  Please note that\nonly one chain can be specified per instance.  If all chains of a particular\nstructure have been used for fitting, this field can be left blank.",
             "rcsb_description" : [ {
               "text" : "The ID of the biopolymer chain used for fitting, e.g., A.  Please note that\nonly one chain can be specified per instance.  If all chains of a particular\nstructure have been used for fitting, this field can be left blank.",
@@ -1334,15 +1344,15 @@
           },
           "pdb_chain_residue_range" : {
             "type" : "string",
-            "description" : "The molecular entities represented in this fitting description.",
+            "description" : "Residue range for the identified chain.",
             "rcsb_description" : [ {
-              "text" : "The molecular entities represented in this fitting description.",
+              "text" : "Residue range for the identified chain.",
               "context" : "dictionary"
             } ]
           },
           "pdb_entry_id" : {
             "type" : "string",
-            "examples" : [ "PDB entry 1EHZ" ],
+            "examples" : [ "1EHZ" ],
             "description" : "The PDB code for the entry used in fitting.",
             "rcsb_description" : [ {
               "text" : "The PDB code for the entry used in fitting.",
@@ -1364,20 +1374,20 @@
           "actual_pixel_size" : {
             "type" : "number",
             "examples" : [ 2.8, 5.76 ],
-            "description" : "The actual pixel size of projection set of images.",
+            "description" : "The actual pixel size of the projection set of images in Angstroms.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_description" : [ {
-              "text" : "The actual pixel size of projection set of images.",
+              "text" : "The actual pixel size of the projection set of images in Angstroms.",
               "context" : "dictionary"
             } ]
           },
           "algorithm" : {
             "type" : "string",
-            "description" : "The algorithm used project from 2D orientations to 3D map.",
+            "description" : "The reconstruction algorithm/technique used to generate the map.",
             "rcsb_search_context" : [ "full-text" ],
             "rcsb_full_text_priority" : 1,
             "rcsb_description" : [ {
-              "text" : "The algorithm used project from 2D orientations to 3D map.",
+              "text" : "The reconstruction algorithm/technique used to generate the map.",
               "context" : "dictionary"
             } ]
           },
@@ -1392,9 +1402,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "The value of _em_3d_reconstruction.id must\n uniquely identify the 3d reconstruction.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "The value of _em_3d_reconstruction.id must\n uniquely identify the 3d reconstruction.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1429,19 +1439,19 @@
           "nominal_pixel_size" : {
             "type" : "number",
             "examples" : [ 3.11, 6.78 ],
-            "description" : "The nominal pixel size of the projection set of images.",
+            "description" : "The nominal pixel size of the projection set of images in Angstroms.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_description" : [ {
-              "text" : "The nominal pixel size of the projection set of images.",
+              "text" : "The nominal pixel size of the projection set of images in Angstroms.",
               "context" : "dictionary"
             } ]
           },
           "num_class_averages" : {
             "type" : "integer",
-            "description" : "This item was correspondence to two type of em dataset\n processing_emDataSet_singleParticle.numClassAverages\n processing_emDataSet_icosahedral.numClassAverages",
+            "description" : "The number of classes used in the final 3d reconstruction",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_description" : [ {
-              "text" : "This item was correspondence to two type of em dataset\n processing_emDataSet_singleParticle.numClassAverages\n processing_emDataSet_icosahedral.numClassAverages",
+              "text" : "The number of classes used in the final 3d reconstruction",
               "context" : "dictionary"
             } ]
           },
@@ -1457,23 +1467,22 @@
           "refinement_type" : {
             "type" : "string",
             "enum" : [ "HALF-MAPS REFINED AGAINST SAME DATA", "HALF-MAPS REFINED INDEPENDENTLY", "HALF-MAPS REFINED INDEPENDENTLY WITH FREQUENCY RANGE OMITTED", "HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED", "OTHER" ],
-            "examples" : [ "HALF-MAPS REFINED INDEPENDENTLY" ],
-            "description" : "type of refinement performed in order to determine map resolution",
+            "description" : "Indicates details on how the half-map used for resolution determination (usually by FSC) have been generated.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
-              "text" : "type of refinement performed in order to determine map resolution",
+              "text" : "Indicates details on how the half-map used for resolution determination (usually by FSC) have been generated.",
               "context" : "dictionary"
             } ]
           },
           "resolution" : {
             "type" : "number",
             "examples" : [ 8.9, 1E+1 ],
-            "description" : "The final resolution (in angstroms)of the 3D reconstruction.",
+            "description" : "The final resolution (in angstroms) of the 3D reconstruction.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
             "rcsb_description" : [ {
-              "text" : "The final resolution (in angstroms)of the 3D reconstruction.",
+              "text" : "The final resolution (in angstroms) of the 3D reconstruction.",
               "context" : "dictionary"
             }, {
               "text" : "Reconstruction Resolution",
@@ -1539,9 +1548,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "Primary key",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Primary key",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1569,19 +1578,19 @@
         "properties" : {
           "camera_length" : {
             "type" : "number",
-            "description" : "TODO",
+            "description" : "The camera length (in millimeters). The camera length is the\n product of the objective focal length and the combined magnification\n of the intermediate and projector lenses when the microscope is\n operated in the diffraction mode.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "millimetres",
             "rcsb_description" : [ {
-              "text" : "TODO",
+              "text" : "The camera length (in millimeters). The camera length is the\n product of the objective focal length and the combined magnification\n of the intermediate and projector lenses when the microscope is\n operated in the diffraction mode.",
               "context" : "dictionary"
             } ]
           },
           "id" : {
             "type" : "string",
-            "description" : "Primary key",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Primary key",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1645,9 +1654,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "Unique identifier for the category em_diffraction_shell",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Unique identifier for the category em_diffraction_shell",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1736,9 +1745,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "Identifier for this category",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Identifier for this category",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1844,9 +1853,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "This data item is the primary key of the category.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "This data item is the primary key of the category.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -1863,9 +1872,9 @@
           },
           "specimen_id" : {
             "type" : "string",
-            "description" : "Foreign key relationship to the EMD SPECIMEN category",
+            "description" : "Foreign key relationship to the EM SPECIMEN category",
             "rcsb_description" : [ {
-              "text" : "Foreign key relationship to the EMD SPECIMEN category",
+              "text" : "Foreign key relationship to the EM SPECIMEN category",
               "context" : "dictionary"
             } ]
           }
@@ -1884,9 +1893,9 @@
           "details" : {
             "type" : "string",
             "examples" : [ "Fab fragment generated by proteolytic cleavage of LA2 IgG antibody." ],
-            "description" : "Additional details about the component.",
+            "description" : "Additional details about the sample or sample subcomponent.",
             "rcsb_description" : [ {
-              "text" : "Additional details about the component.",
+              "text" : "Additional details about the sample or sample subcomponent.",
               "context" : "dictionary"
             } ]
           },
@@ -1894,6 +1903,7 @@
             "type" : "array",
             "items" : {
               "type" : "string",
+              "examples" : [ "1,2,3,4" ],
               "description" : "macromolecules associated with this component, if defined\n as comma separated list of entity ids (integers).",
               "rcsb_description" : [ {
                 "text" : "macromolecules associated with this component, if defined\n as comma separated list of entity ids (integers).",
@@ -1904,18 +1914,18 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "The value of _em_entity_assembly.id identifies\n one component of the complex.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "The value of _em_entity_assembly.id identifies\n one component of the complex.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
           "name" : {
             "type" : "string",
             "examples" : [ "Ternary complex of alpha-tubulin with tubulin folding cofactors TBCE and TBCB", "80S Ribosome bound to emetine", "messenger RNA", "initiation factor 2", "GroEL", "antibody Fab fragment" ],
-            "description" : "Name of this component in the observed assembly.",
+            "description" : "The name of the sample or sample subcomponent.",
             "rcsb_description" : [ {
-              "text" : "Name of this component in the observed assembly.",
+              "text" : "The name of the sample or sample subcomponent.",
               "context" : "dictionary"
             } ]
           },
@@ -1939,11 +1949,11 @@
           "source" : {
             "type" : "string",
             "enum" : [ "MULTIPLE SOURCES", "NATURAL", "RECOMBINANT", "SYNTHETIC" ],
-            "description" : "The assembly type.",
+            "description" : "The type of source (e.g., natural source) for the component (sample or sample\nsubcomponent)",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
-              "text" : "The assembly type.",
+              "text" : "The type of source (e.g., natural source) for the component (sample or sample\nsubcomponent)",
               "context" : "dictionary"
             } ]
           },
@@ -1958,9 +1968,9 @@
           },
           "type" : {
             "type" : "string",
-            "description" : "A description of types of components of the\n assembly of the biological structure.",
+            "description" : "The general type of the sample or sample subcomponent.",
             "rcsb_description" : [ {
-              "text" : "A description of types of components of the\n assembly of the biological structure.",
+              "text" : "The general type of the sample or sample subcomponent.",
               "context" : "dictionary"
             } ]
           }
@@ -2002,9 +2012,9 @@
         },
         "id" : {
           "type" : "string",
-          "description" : "Placeholder ID.",
+          "description" : "PRIMARY KEY",
           "rcsb_description" : [ {
-            "text" : "Placeholder ID.",
+            "text" : "PRIMARY KEY",
             "context" : "dictionary"
           } ]
         },
@@ -2037,11 +2047,11 @@
           "angular_rotation_per_subunit" : {
             "type" : "number",
             "examples" : [ -34.616 ],
-            "description" : "The angular rotation per helical subunit in degrees.",
+            "description" : "The angular rotation per helical subunit in degrees. Negative values indicate left-handed helices; positive values indicate right handed helices.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "degrees",
             "rcsb_description" : [ {
-              "text" : "The angular rotation per helical subunit in degrees.",
+              "text" : "The angular rotation per helical subunit in degrees. Negative values indicate left-handed helices; positive values indicate right handed helices.",
               "context" : "dictionary"
             } ]
           },
@@ -2078,17 +2088,17 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "The value of _em_helical_entity.id must uniquely identify\n a set of the filament parameters for this assembly component.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "The value of _em_helical_entity.id must uniquely identify\n a set of the filament parameters for this assembly component.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
           "image_processing_id" : {
             "type" : "string",
-            "description" : "The value of _em_helical_entity.reconstruction_id identifies a particular reconstruction.\n\n This data item is a pointer to _em_image_processing.id.",
+            "description" : "This data item is a pointer to _em_image_processing.id.",
             "rcsb_description" : [ {
-              "text" : "The value of _em_helical_entity.reconstruction_id identifies a particular reconstruction.\n\n This data item is a pointer to _em_image_processing.id.",
+              "text" : "This data item is a pointer to _em_image_processing.id.",
               "context" : "dictionary"
             } ]
           }
@@ -2148,11 +2158,11 @@
           },
           "film_or_detector_model" : {
             "type" : "string",
-            "description" : "The detector type used for recording images.\n Usually film or CCD camera.",
+            "description" : "The detector type used for recording images.\n Usually film , CCD camera or direct electron detector.",
             "rcsb_search_context" : [ "exact-match", "full-text" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
-              "text" : "The detector type used for recording images.\n Usually film or CCD camera.",
+              "text" : "The detector type used for recording images.\n Usually film , CCD camera or direct electron detector.",
               "context" : "dictionary"
             }, {
               "text" : "EM Imaging Detector",
@@ -2165,9 +2175,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "The item _em_image_recording.id uniquely identifies\n a set of recorded images.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "The item _em_image_recording.id uniquely identifies\n a set of recorded images.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -2238,11 +2248,11 @@
           "alignment_procedure" : {
             "type" : "string",
             "enum" : [ "BASIC", "COMA FREE", "NONE", "OTHER", "ZEMLIN TABLEAU" ],
-            "description" : "microscope alignment procedure",
+            "description" : "The type of procedure used to align the microscope electron beam.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
-              "text" : "microscope alignment procedure",
+              "text" : "The type of procedure used to align the microscope electron beam.",
               "context" : "dictionary"
             } ]
           },
@@ -2266,21 +2276,21 @@
           },
           "calibrated_defocus_max" : {
             "type" : "number",
-            "description" : "The maximum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+            "description" : "The maximum calibrated defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "nanometers",
             "rcsb_description" : [ {
-              "text" : "The maximum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+              "text" : "The maximum calibrated defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
               "context" : "dictionary"
             } ]
           },
           "calibrated_defocus_min" : {
             "type" : "number",
-            "description" : "The minimum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+            "description" : "The minimum calibrated defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "nanometers",
             "rcsb_description" : [ {
-              "text" : "The minimum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+              "text" : "The minimum calibrated defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
               "context" : "dictionary"
             } ]
           },
@@ -2352,9 +2362,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "The value of _em_imaging.id must uniquely identify\n each imaging experiment.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "The value of _em_imaging.id must uniquely identify\n each imaging experiment.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -2411,21 +2421,21 @@
           },
           "nominal_defocus_max" : {
             "type" : "number",
-            "description" : "The maximum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+            "description" : "The maximum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "nanometers",
             "rcsb_description" : [ {
-              "text" : "The maximum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+              "text" : "The maximum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
               "context" : "dictionary"
             } ]
           },
           "nominal_defocus_min" : {
             "type" : "number",
-            "description" : "The minimum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+            "description" : "The minimum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "nanometers",
             "rcsb_description" : [ {
-              "text" : "The minimum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images.",
+              "text" : "The minimum defocus value of the objective lens (in nanometers) used\n to obtain the recorded images. Negative values refer to overfocus.",
               "context" : "dictionary"
             } ]
           },
@@ -2460,11 +2470,11 @@
           },
           "residual_tilt" : {
             "type" : "number",
-            "description" : "residual tilt of the electron beam",
+            "description" : "Residual tilt of the electron beam (in miliradians)",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "milliradians",
             "rcsb_description" : [ {
-              "text" : "residual tilt of the electron beam",
+              "text" : "Residual tilt of the electron beam (in miliradians)",
               "context" : "dictionary"
             } ]
           },
@@ -2541,17 +2551,17 @@
           "details" : {
             "type" : "string",
             "examples" : [ "negative monitor contrast facilitated particle picking" ],
-            "description" : "Any additional details used for selecting particles",
+            "description" : "Additional detail such as description of filters used, if selection was\nmanual or automated, and/or template details.",
             "rcsb_description" : [ {
-              "text" : "Any additional details used for selecting particles",
+              "text" : "Additional detail such as description of filters used, if selection was\nmanual or automated, and/or template details.",
               "context" : "dictionary"
             } ]
           },
           "id" : {
             "type" : "string",
-            "description" : "Ordinal identifier",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Ordinal identifier",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -2586,9 +2596,9 @@
         "properties" : {
           "id" : {
             "type" : "integer",
-            "description" : "Unique category label.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Unique category label.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -2660,9 +2670,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "Unique identifier for each software description.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "Unique identifier for each software description.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -2760,9 +2770,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "The item  _em_specimen.id uniquely identifies a specimen along with\n its preparation methods.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "The item  _em_specimen.id uniquely identifies a specimen along with\n its preparation methods.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -2827,9 +2837,9 @@
           },
           "id" : {
             "type" : "string",
-            "description" : "This data item is the primary key of the category.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "This data item is the primary key of the category.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -2853,9 +2863,9 @@
           },
           "specimen_id" : {
             "type" : "string",
-            "description" : "Foreign key relationship to the EMD SPECIMEN category",
+            "description" : "Foreign key relationship to the EM SPECIMEN category",
             "rcsb_description" : [ {
-              "text" : "Foreign key relationship to the EMD SPECIMEN category",
+              "text" : "Foreign key relationship to the EM SPECIMEN category",
               "context" : "dictionary"
             } ]
           },
@@ -2917,18 +2927,18 @@
           },
           "humidity" : {
             "type" : "number",
-            "description" : "The humidity (%) in the vicinity of the vitrification process.",
+            "description" : "Relative humidity (%) of air surrounding the specimen just prior to\nvitrification.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_description" : [ {
-              "text" : "The humidity (%) in the vicinity of the vitrification process.",
+              "text" : "Relative humidity (%) of air surrounding the specimen just prior to\nvitrification.",
               "context" : "dictionary"
             } ]
           },
           "id" : {
             "type" : "string",
-            "description" : "The value of _em_vitrification.id must uniquely identify\n the vitrification procedure.",
+            "description" : "PRIMARY KEY",
             "rcsb_description" : [ {
-              "text" : "The value of _em_vitrification.id must uniquely identify\n the vitrification procedure.",
+              "text" : "PRIMARY KEY",
               "context" : "dictionary"
             } ]
           },
@@ -3196,11 +3206,11 @@
           },
           "pdbx_mosaicity" : {
             "type" : "number",
-            "description" : "The of the distribution of mis-orientation angles specified in degrees\nof all the unit cells in the crystal. Lower mosaicity indicates better\nordered crystals.",
+            "description" : "Isotropic approximation of the distribution of mis-orientation angles\nspecified in degrees of all the mosaic domain blocks in the crystal,\nrepresented as a standard deviation. Here, a mosaic block is a set of\ncontiguous unit cells assumed to be perfectly aligned. Lower mosaicity\nindicates better ordered crystals. See for example:\n\nNave, C. (1998). Acta Cryst. D54, 848-853.\n\nNote that many software packages estimate the mosaic rotation distribution\ndifferently and may combine several physical properties of the experiment\ninto a single mosaic term. This term will help fit the modeled spots\nto the observed spots without necessarily being directly related to the\nphysics of the crystal itself.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "degrees",
             "rcsb_description" : [ {
-              "text" : "The of the distribution of mis-orientation angles specified in degrees\nof all the unit cells in the crystal. Lower mosaicity indicates better\nordered crystals.",
+              "text" : "Isotropic approximation of the distribution of mis-orientation angles\nspecified in degrees of all the mosaic domain blocks in the crystal,\nrepresented as a standard deviation. Here, a mosaic block is a set of\ncontiguous unit cells assumed to be perfectly aligned. Lower mosaicity\nindicates better ordered crystals. See for example:\n\nNave, C. (1998). Acta Cryst. D54, 848-853.\n\nNote that many software packages estimate the mosaic rotation distribution\ndifferently and may combine several physical properties of the experiment\ninto a single mosaic term. This term will help fit the modeled spots\nto the observed spots without necessarily being directly related to the\nphysics of the crystal itself.",
               "context" : "dictionary"
             } ]
           },
@@ -3356,7 +3366,7 @@
         "properties" : {
           "content_type" : {
             "type" : "string",
-            "enum" : [ "coevolution MSA", "input structure", "model coordinates", "other", "polymeric template library", "spatial restraints", "target", "target-template alignment", "template structure" ],
+            "enum" : [ "coevolution MSA", "input structure", "model coordinates", "other", "polymeric template library", "reference database", "spatial restraints", "target", "target-template alignment", "template structure" ],
             "description" : "The type of data held in the dataset.",
             "rcsb_enum_annotated" : [ {
               "value" : "coevolution MSA",
@@ -3373,6 +3383,9 @@
             }, {
               "value" : "polymeric template library",
               "detail" : "polymeric template library"
+            }, {
+              "value" : "reference database",
+              "detail" : "reference database used"
             }, {
               "value" : "spatial restraints",
               "detail" : "spatial restraints"
@@ -3430,7 +3443,7 @@
         "properties" : {
           "full_name_of_center" : {
             "type" : "string",
-            "enum" : [ "Accelerated Technologies Center for Gene to 3D Structure", "Assembly, Dynamics and Evolution of Cell-Cell and Cell-Matrix Adhesions", "Atoms-to-Animals: The Immune Function Network", "Bacterial targets at IGS-CNRS, France", "Berkeley Structural Genomics Center", "Center for Eukaryotic Structural Genomics", "Center for High-Throughput Structural Biology", "Center for Membrane Proteins of Infectious Diseases", "Center for Structural Genomics of Infectious Diseases", "Center for Structures of Membrane Proteins", "Center for the X-ray Structure Determination of Human Transporters", "Chaperone-Enabled Studies of Epigenetic Regulation Enzymes", "Enzyme Discovery for Natural Product Biosynthesis", "GPCR Network", "Integrated Center for Structure and Function Innovation", "Israel Structural Proteomics Center", "Joint Center for Structural Genomics", "Marseilles Structural Genomics Program @ AFMB", "Medical Structural Genomics of Pathogenic Protozoa", "Membrane Protein Structural Biology Consortium", "Membrane Protein Structures by Solution NMR", "Midwest Center for Macromolecular Research", "Midwest Center for Structural Genomics", "Mitochondrial Protein Partnership", "Montreal-Kingston Bacterial Structural Genomics Initiative", "Mycobacterium Tuberculosis Structural Proteomics Project", "New York Consortium on Membrane Protein Structure", "New York SGX Research Center for Structural Genomics", "New York Structural GenomiX Research Consortium", "New York Structural Genomics Research Consortium", "Northeast Structural Genomics Consortium", "Nucleocytoplasmic Transport: a Target for Cellular Control", "Ontario Centre for Structural Proteomics", "Oxford Protein Production Facility", "Paris-Sud Yeast Structural Genomics", "Partnership for Nuclear Receptor Signaling Code Biology", "Partnership for Stem Cell Biology", "Partnership for T-Cell Biology", "Program for the Characterization of Secreted Effector Proteins", "Protein Structure Factory", "RIKEN Structural Genomics/Proteomics Initiative", "Scottish Structural Proteomics Facility", "Seattle Structural Genomics Center for Infectious Disease", "South Africa Structural Targets Annotation Database", "Southeast Collaboratory for Structural Genomics", "Structural Genomics Consortium", "Structural Genomics Consortium for Research on Gene Expression", "Structural Genomics of Pathogenic Protozoa Consortium", "Structural Proteomics in Europe", "Structural Proteomics in Europe 2", "Structure 2 Function Project", "Structure, Dynamics and Activation Mechanisms of Chemokine Receptors", "Structure-Function Analysis of Polymorphic CDI Toxin-Immunity Protein Complexes", "Structure-Function Studies of Tight Junction Membrane Proteins", "Structures of Mtb Proteins Conferring Susceptibility to Known Mtb Inhibitors", "TB Structural Genomics Consortium", "Transcontinental EM Initiative for Membrane Protein Structure", "Transmembrane Protein Center" ],
+            "enum" : [ "Accelerated Technologies Center for Gene to 3D Structure", "Assembly, Dynamics and Evolution of Cell-Cell and Cell-Matrix Adhesions", "Atoms-to-Animals: The Immune Function Network", "Bacterial targets at IGS-CNRS, France", "Berkeley Structural Genomics Center", "Center for Eukaryotic Structural Genomics", "Center for High-Throughput Structural Biology", "Center for Membrane Proteins of Infectious Diseases", "Center for Structural Biology of Infectious Diseases", "Center for Structural Genomics of Infectious Diseases", "Center for Structures of Membrane Proteins", "Center for the X-ray Structure Determination of Human Transporters", "Chaperone-Enabled Studies of Epigenetic Regulation Enzymes", "Enzyme Discovery for Natural Product Biosynthesis", "GPCR Network", "Integrated Center for Structure and Function Innovation", "Israel Structural Proteomics Center", "Joint Center for Structural Genomics", "Marseilles Structural Genomics Program @ AFMB", "Medical Structural Genomics of Pathogenic Protozoa", "Membrane Protein Structural Biology Consortium", "Membrane Protein Structures by Solution NMR", "Midwest Center for Macromolecular Research", "Midwest Center for Structural Genomics", "Mitochondrial Protein Partnership", "Montreal-Kingston Bacterial Structural Genomics Initiative", "Mycobacterium Tuberculosis Structural Proteomics Project", "New York Consortium on Membrane Protein Structure", "New York SGX Research Center for Structural Genomics", "New York Structural GenomiX Research Consortium", "New York Structural Genomics Research Consortium", "Northeast Structural Genomics Consortium", "Nucleocytoplasmic Transport: a Target for Cellular Control", "Ontario Centre for Structural Proteomics", "Oxford Protein Production Facility", "Paris-Sud Yeast Structural Genomics", "Partnership for Nuclear Receptor Signaling Code Biology", "Partnership for Stem Cell Biology", "Partnership for T-Cell Biology", "Program for the Characterization of Secreted Effector Proteins", "Protein Structure Factory", "RIKEN Structural Genomics/Proteomics Initiative", "Scottish Structural Proteomics Facility", "Seattle Structural Genomics Center for Infectious Disease", "South Africa Structural Targets Annotation Database", "Southeast Collaboratory for Structural Genomics", "Structural Genomics Consortium", "Structural Genomics Consortium for Research on Gene Expression", "Structural Genomics of Pathogenic Protozoa Consortium", "Structural Proteomics in Europe", "Structural Proteomics in Europe 2", "Structure 2 Function Project", "Structure, Dynamics and Activation Mechanisms of Chemokine Receptors", "Structure-Function Analysis of Polymorphic CDI Toxin-Immunity Protein Complexes", "Structure-Function Studies of Tight Junction Membrane Proteins", "Structures of Mtb Proteins Conferring Susceptibility to Known Mtb Inhibitors", "TB Structural Genomics Consortium", "Transcontinental EM Initiative for Membrane Protein Structure", "Transmembrane Protein Center" ],
             "examples" : [ "Midwest Center for Structural Genomics" ],
             "description" : "The value identifies the full name of center.",
             "rcsb_search_context" : [ "exact-match" ],
@@ -3459,6 +3472,9 @@
             }, {
               "value" : "Center for Membrane Proteins of Infectious Diseases",
               "detail" : "MPID"
+            }, {
+              "value" : "Center for Structural Biology of Infectious Diseases",
+              "detail" : "CSBID"
             }, {
               "value" : "Center for Structural Genomics of Infectious Diseases",
               "detail" : "CSGID"
@@ -3636,7 +3652,7 @@
           },
           "initial_of_center" : {
             "type" : "string",
-            "enum" : [ "ATCG3D", "BIGS", "BSGC", "BSGI", "CEBS", "CELLMAT", "CESG", "CHSAM", "CHTSB", "CSGID", "CSMP", "GPCR", "IFN", "ISFI", "ISPC", "JCSG", "MCMR", "MCSG", "MPID", "MPP", "MPSBC", "MPSbyNMR", "MSGP", "MSGPP", "MTBI", "NESG", "NHRs", "NPCXstals", "NYCOMPS", "NYSGRC", "NYSGXRC", "NatPro", "OCSP", "OPPF", "PCSEP", "PSF", "RSGI", "S2F", "SASTAD", "SECSG", "SGC", "SGCGES", "SGPP", "SPINE", "SPINE-2", "SSGCID", "SSPF", "STEMCELL", "TBSGC", "TCELL", "TEMIMPS", "TJMP", "TMPC", "TransportPDB", "UC4CDI", "XMTB", "YSG" ],
+            "enum" : [ "ATCG3D", "BIGS", "BSGC", "BSGI", "CEBS", "CELLMAT", "CESG", "CHSAM", "CHTSB", "CSBID", "CSGID", "CSMP", "GPCR", "IFN", "ISFI", "ISPC", "JCSG", "MCMR", "MCSG", "MPID", "MPP", "MPSBC", "MPSbyNMR", "MSGP", "MSGPP", "MTBI", "NESG", "NHRs", "NPCXstals", "NYCOMPS", "NYSGRC", "NYSGXRC", "NatPro", "OCSP", "OPPF", "PCSEP", "PSF", "RSGI", "S2F", "SASTAD", "SECSG", "SGC", "SGCGES", "SGPP", "SPINE", "SPINE-2", "SSGCID", "SSPF", "STEMCELL", "TBSGC", "TCELL", "TEMIMPS", "TJMP", "TMPC", "TransportPDB", "UC4CDI", "XMTB", "YSG" ],
             "examples" : [ "JCSG" ],
             "description" : "The value identifies the full name of center.",
             "rcsb_search_context" : [ "exact-match" ],
@@ -3668,6 +3684,9 @@
             }, {
               "value" : "CHTSB",
               "detail" : "Center for High-Throughput Structural Biology"
+            }, {
+              "value" : "CSBID",
+              "detail" : "Center for Structural Biology of Infectious Diseases"
             }, {
               "value" : "CSGID",
               "detail" : "Center for Structural Genomics of Infectious Diseases"
@@ -4825,6 +4844,99 @@
       "minItems" : 1,
       "uniqueItems" : true
     },
+    "pdbx_initial_refinement_model" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "accession_code" : {
+            "type" : "string",
+            "description" : "This item identifies an accession code of the resource where the initial model\n is used",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "This item identifies an accession code of the resource where the initial model\n is used",
+              "context" : "dictionary"
+            }, {
+              "text" : "Starting Model Accession",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Methods",
+              "priority_order" : 40
+            } ]
+          },
+          "details" : {
+            "type" : "string",
+            "description" : "A description of special aspects of the initial model",
+            "rcsb_description" : [ {
+              "text" : "A description of special aspects of the initial model",
+              "context" : "dictionary"
+            } ]
+          },
+          "entity_id_list" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "description" : "A comma separated list of entities reflecting the initial model used for refinement",
+              "rcsb_description" : [ {
+                "text" : "A comma separated list of entities reflecting the initial model used for refinement",
+                "context" : "dictionary"
+              } ]
+            },
+            "uniqueItems" : false
+          },
+          "id" : {
+            "type" : "integer",
+            "description" : "A unique identifier for the starting model record.",
+            "rcsb_description" : [ {
+              "text" : "A unique identifier for the starting model record.",
+              "context" : "dictionary"
+            } ]
+          },
+          "source_name" : {
+            "type" : "string",
+            "enum" : [ "AlphaFold", "ITasser", "ModelArchive", "Modeller", "Other", "PDB", "RoseTTAFold", "SwissModel" ],
+            "description" : "This item identifies the resource of initial model used for refinement",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "This item identifies the resource of initial model used for refinement",
+              "context" : "dictionary"
+            }, {
+              "text" : "Starting Model Source",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Methods",
+              "priority_order" : 35
+            } ]
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "experimental model", "in silico model", "integrative model", "other" ],
+            "description" : "This item describes the type of the initial model was generated",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "This item describes the type of the initial model was generated",
+              "context" : "dictionary"
+            }, {
+              "text" : "Starting Model Type",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Methods",
+              "priority_order" : 30
+            } ]
+          }
+        },
+        "additionalProperties" : false,
+        "required" : [ "id" ]
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    },
     "pdbx_molecule_features" : {
       "type" : "array",
       "items" : {
@@ -5674,6 +5786,77 @@
       "minItems" : 1,
       "uniqueItems" : true
     },
+    "pdbx_reflns_twin" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "crystal_id" : {
+            "type" : "string",
+            "description" : "The crystal identifier.  A reference to\n _exptl_crystal.id in category EXPTL_CRYSTAL.",
+            "rcsb_description" : [ {
+              "text" : "The crystal identifier.  A reference to\n _exptl_crystal.id in category EXPTL_CRYSTAL.",
+              "context" : "dictionary"
+            } ]
+          },
+          "diffrn_id" : {
+            "type" : "string",
+            "description" : "The diffraction data set identifier.  A reference to\n _diffrn.id in category DIFFRN.",
+            "rcsb_description" : [ {
+              "text" : "The diffraction data set identifier.  A reference to\n _diffrn.id in category DIFFRN.",
+              "context" : "dictionary"
+            } ]
+          },
+          "domain_id" : {
+            "type" : "string",
+            "description" : "An identifier for the twin domain.",
+            "rcsb_description" : [ {
+              "text" : "An identifier for the twin domain.",
+              "context" : "dictionary"
+            } ]
+          },
+          "fraction" : {
+            "type" : "number",
+            "description" : "The twin fraction or twin factor represents a quantitative parameter for the\ncrystal twinning.  The value 0 represents no twinning, < 0.5 partial twinning,\n = 0.5 for perfect twinning.",
+            "rcsb_description" : [ {
+              "text" : "The twin fraction or twin factor represents a quantitative parameter for the\ncrystal twinning.  The value 0 represents no twinning, < 0.5 partial twinning,\n = 0.5 for perfect twinning.",
+              "context" : "dictionary"
+            } ]
+          },
+          "operator" : {
+            "type" : "string",
+            "examples" : [ "h,-h-k,-l", "h+k,-k,-l", "-h,-k,l", "h,-k,-l", "h,-h-k,-l", "-h,-k,l", "k,-h,l" ],
+            "description" : "The possible merohedral or hemihedral twinning operators for different\npoint groups are:\n\nTrue point group  \tTwin operation  \thkl related to\n3                      \t2 along a,b             h,-h-k,-l\n                       \t2 along a*,b*           h+k,-k,-l\n                        2 along c               -h,-k,l\n4                       2 along a,b,a*,b*       h,-k,-l\n6                       2 along a,b,a*,b*       h,-h-k,-l\n321                     2 along a*,b*,c         -h,-k,l\n312                     2 along a,b,c           -h,-k,l\n23                      4 along a,b,c            k,-h,l\n\nReferences:\n Yeates, T.O. (1997) Methods in Enzymology 276, 344-358. Detecting and\n Overcoming Crystal Twinning.\n\n and information from the following on-line sites:\n\n   CNS site http://cns.csb.yale.edu/v1.1/\n   CCP4 site http://www.ccp4.ac.uk/dist/html/detwin.html\n   SHELX site http://shelx.uni-ac.gwdg.de/~rherbst/twin.html",
+            "rcsb_description" : [ {
+              "text" : "The possible merohedral or hemihedral twinning operators for different\npoint groups are:\n\nTrue point group  \tTwin operation  \thkl related to\n3                      \t2 along a,b             h,-h-k,-l\n                       \t2 along a*,b*           h+k,-k,-l\n                        2 along c               -h,-k,l\n4                       2 along a,b,a*,b*       h,-k,-l\n6                       2 along a,b,a*,b*       h,-h-k,-l\n321                     2 along a*,b*,c         -h,-k,l\n312                     2 along a,b,c           -h,-k,l\n23                      4 along a,b,c            k,-h,l\n\nReferences:\n Yeates, T.O. (1997) Methods in Enzymology 276, 344-358. Detecting and\n Overcoming Crystal Twinning.\n\n and information from the following on-line sites:\n\n   CNS site http://cns.csb.yale.edu/v1.1/\n   CCP4 site http://www.ccp4.ac.uk/dist/html/detwin.html\n   SHELX site http://shelx.uni-ac.gwdg.de/~rherbst/twin.html",
+              "context" : "dictionary"
+            } ]
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "epitaxial", "hemihedral", "merohedral", "non-merohedral", "pseudo-merohedral", "tetartohedral" ],
+            "description" : "There are two types of twinning: merohedral or hemihedral\n                                 non-merohedral or epitaxial\n\nFor merohedral twinning the diffraction patterns from the different domains are\ncompletely superimposable.   Hemihedral twinning is a special case of merohedral\ntwinning. It only involves two distinct domains.  Pseudo-merohedral twinning is\na subclass merohedral twinning in which lattice is coincidentally superimposable.\n\nIn the case of non-merohedral or epitaxial twinning  the reciprocal\nlattices do not superimpose exactly. In this case the  diffraction pattern\nconsists of two (or more) interpenetrating lattices, which can in principle\nbe separated.",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_description" : [ {
+              "text" : "There are two types of twinning: merohedral or hemihedral\n                                 non-merohedral or epitaxial\n\nFor merohedral twinning the diffraction patterns from the different domains are\ncompletely superimposable.   Hemihedral twinning is a special case of merohedral\ntwinning. It only involves two distinct domains.  Pseudo-merohedral twinning is\na subclass merohedral twinning in which lattice is coincidentally superimposable.\n\nIn the case of non-merohedral or epitaxial twinning  the reciprocal\nlattices do not superimpose exactly. In this case the  diffraction pattern\nconsists of two (or more) interpenetrating lattices, which can in principle\nbe separated.",
+              "context" : "dictionary"
+            }, {
+              "text" : "Type of Twinning",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Crystal Properties",
+              "priority_order" : 35
+            } ]
+          }
+        },
+        "additionalProperties" : false,
+        "required" : [ "crystal_id", "diffrn_id", "operator" ]
+      },
+      "minItems" : 1,
+      "uniqueItems" : true
+    },
     "pdbx_related_exp_data_set" : {
       "type" : "array",
       "items" : {
@@ -5787,6 +5970,14 @@
             "description" : "For experiments in which samples are provided in a\n continuous stream, the total number of lattices indexed.",
             "rcsb_description" : [ {
               "text" : "For experiments in which samples are provided in a\n continuous stream, the total number of lattices indexed.",
+              "context" : "dictionary"
+            } ]
+          },
+          "lattices_merged" : {
+            "type" : "integer",
+            "description" : "For experiments in which samples are provided in a\n            continuous stream, the total number of crystal lattices\n            that were merged in the final dataset.  Can be\n            less than frames_indexed depending on filtering during merging or\n\t    can be more than frames_indexed if there are multiple lattices.\n\t    per frame.",
+            "rcsb_description" : [ {
+              "text" : "For experiments in which samples are provided in a\n            continuous stream, the total number of crystal lattices\n            that were merged in the final dataset.  Can be\n            less than frames_indexed depending on filtering during merging or\n\t    can be more than frames_indexed if there are multiple lattices.\n\t    per frame.",
               "context" : "dictionary"
             } ]
           },
@@ -7742,7 +7933,7 @@
         },
         "status_code" : {
           "type" : "string",
-          "enum" : [ "AUCO", "AUTH", "HOLD", "HPUB'", "POLC", "PROC", "REFI", "REL", "REPL", "WAIT", "WDRN" ],
+          "enum" : [ "AUCO", "AUTH", "HOLD", "HPUB", "POLC", "PROC", "REFI", "REL", "REPL", "WAIT", "WDRN" ],
           "examples" : [ "REL" ],
           "description" : "The release status for the entry.",
           "rcsb_description" : [ {
@@ -7804,6 +7995,14 @@
           "description" : "Source filename for the computed structure model.",
           "rcsb_description" : [ {
             "text" : "Source filename for the computed structure model.",
+            "context" : "dictionary"
+          } ]
+        },
+        "source_pae_url" : {
+          "type" : "string",
+          "description" : "Source URL for computed structure model predicted aligned error (PAE) json file.",
+          "rcsb_description" : [ {
+            "text" : "Source URL for computed structure model predicted aligned error (PAE) json file.",
             "context" : "dictionary"
           } ]
         },
@@ -7997,6 +8196,13 @@
           "rcsb_description" : [ {
             "text" : "The number of assemblies defined for this entry including the deposited assembly.",
             "context" : "dictionary"
+          }, {
+            "text" : "Number of Assemblies",
+            "context" : "brief"
+          } ],
+          "rcsb_search_group" : [ {
+            "group_name" : "Entry Features",
+            "priority_order" : 20
           } ]
         },
         "branched_entity_count" : {
@@ -8050,7 +8256,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 65
+            "priority_order" : 70
           } ]
         },
         "deposited_hydrogen_atom_count" : {
@@ -8066,7 +8272,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 70
+            "priority_order" : 75
           } ]
         },
         "deposited_model_count" : {
@@ -8082,7 +8288,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 80
+            "priority_order" : 85
           } ]
         },
         "deposited_modeled_polymer_monomer_count" : {
@@ -8107,7 +8313,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 55
+            "priority_order" : 60
           } ]
         },
         "deposited_polymer_entity_instance_count" : {
@@ -8123,7 +8329,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 50
+            "priority_order" : 55
           } ]
         },
         "deposited_polymer_monomer_count" : {
@@ -8139,7 +8345,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 60
+            "priority_order" : 65
           } ]
         },
         "deposited_solvent_atom_count" : {
@@ -8155,7 +8361,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 75
+            "priority_order" : 80
           } ]
         },
         "deposited_unmodeled_polymer_monomer_count" : {
@@ -8214,7 +8420,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 85
+            "priority_order" : 90
           } ]
         },
         "entity_count" : {
@@ -8230,7 +8436,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 20
+            "priority_order" : 25
           } ]
         },
         "experimental_method" : {
@@ -8390,7 +8596,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 25
+            "priority_order" : 30
           } ]
         },
         "nonpolymer_molecular_weight_maximum" : {
@@ -8499,7 +8705,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 40
+            "priority_order" : 45
           } ]
         },
         "polymer_entity_count_RNA" : {
@@ -8515,7 +8721,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 35
+            "priority_order" : 40
           } ]
         },
         "polymer_entity_count_nucleic_acid" : {
@@ -8540,7 +8746,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 45
+            "priority_order" : 50
           } ]
         },
         "polymer_entity_count_protein" : {
@@ -8556,7 +8762,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Entry Features",
-            "priority_order" : 30
+            "priority_order" : 35
           } ]
         },
         "polymer_entity_taxonomy_count" : {
@@ -8616,11 +8822,11 @@
           "items" : {
             "type" : "number",
             "examples" : [ 1.11, 2.05 ],
-            "description" : "Combined estimates of experimental resolution contributing to the refined structural model.",
+            "description" : "Combined estimates of experimental resolution contributing to the refined structural model.\n Resolution reported in \"refine.ls_d_res_high\" is used for X-RAY DIFFRACTION, FIBER DIFFRACTION, \n POWDER DIFFRACTION, ELECTRON CRYSTALLOGRAPHY, and NEUTRON DIFFRACTION as identified in\n \"refine.pdbx_refine_id\". \n Resolution reported in \"em_3d_reconstruction.resolution\" is used for ELECTRON MICROSCOPY. \n The best value corresponding to \"em_3d_reconstruction.resolution_method\" == \"FSC 0.143 CUT-OFF\" \n is used, if available. If not, the best \"em_3d_reconstruction.resolution\" value is used. \n For structures that are not obtained from diffraction-based methods, the resolution values in \n \"refine.ls_d_res_high\" are ignored.\n Multiple values are reported only if multiple methods are used in the structure determination.",
             "rcsb_search_context" : [ "default-match" ],
             "rcsb_units" : "angstroms",
             "rcsb_description" : [ {
-              "text" : "Combined estimates of experimental resolution contributing to the refined structural model.",
+              "text" : "Combined estimates of experimental resolution contributing to the refined structural model.\n Resolution reported in \"refine.ls_d_res_high\" is used for X-RAY DIFFRACTION, FIBER DIFFRACTION, \n POWDER DIFFRACTION, ELECTRON CRYSTALLOGRAPHY, and NEUTRON DIFFRACTION as identified in\n \"refine.pdbx_refine_id\". \n Resolution reported in \"em_3d_reconstruction.resolution\" is used for ELECTRON MICROSCOPY. \n The best value corresponding to \"em_3d_reconstruction.resolution_method\" == \"FSC 0.143 CUT-OFF\" \n is used, if available. If not, the best \"em_3d_reconstruction.resolution\" value is used. \n For structures that are not obtained from diffraction-based methods, the resolution values in \n \"refine.ls_d_res_high\" are ignored.\n Multiple values are reported only if multiple methods are used in the structure determination.",
               "context" : "dictionary"
             }, {
               "text" : "Refinement Resolution",
@@ -11646,5 +11852,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Entry",
   "description" : "JSON schema for entry level core data. Combines Exchange DB schema: json-schema-min-pdbx_core_entry.json and RCSB Data Warehouse schema: json-schema-core_entry.json",
-  "$comment" : "schema_version: 9.0.0"
+  "$comment" : "schema_version: 9.0.1"
 }

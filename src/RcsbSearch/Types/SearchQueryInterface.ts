@@ -531,11 +531,19 @@ export interface SequenceQueryParameters {
   evalue_cutoff?: number;
 }
 export interface StructureQueryParameters {
-  value: StructureQueryChainParameters | StructureQueryAssemblyParameters | StructureQueryFileParameters;
+  value:
+    | StructureQueryChainParameters
+    | StructureQueryAssemblyParameters
+    | StructureQueryFileParameters
+    | StructureQueryURLParameters;
   /**
    * The operator allows specifying the evaluation expression.
    */
   operator?: "strict_shape_match" | "relaxed_shape_match";
+  /**
+   * Controls what are the target objects (assemblies or polymer instances) against which the query will be compared for shape similarity. If not provided, queries based on assembly identifiers are matched to assemblies, queries based on chain identifiers are match to chains (polymer entity instances), and queries based on URLs or files are matched to chains. Note that this parameter is independent of whether the input is a chain or an assembly. For instance a chain can be compared to all assemblies.
+   */
+  target_search_space?: "assembly" | "polymer_entity_instance";
 }
 /**
  * Compound structure identifier that includes PDB code and chain identifier.
@@ -564,13 +572,23 @@ export interface StructureQueryAssemblyParameters {
   assembly_id: string;
 }
 /**
- * Upload Base64-encoded file in one of the following formats: cif, bcif, pdb
+ * Upload Base64-encoded file in one of the following formats: cif, bcif, pdb.
  */
 export interface StructureQueryFileParameters {
   /**
-   * File content converted to a Base64 string
+   * File content converted to a Base64 string.
    */
   data: string;
+  format: "cif" | "bcif" | "pdb";
+}
+/**
+ * Fetch structure file from a URL in one of the following formats: cif, bcif, pdb. Content can be gzipped.
+ */
+export interface StructureQueryURLParameters {
+  /**
+   * URL to a publicly available file with structure data.
+   */
+  url: string;
   format: "cif" | "bcif" | "pdb";
 }
 export interface ChemicalQueryFormulaParameters {
@@ -633,7 +651,7 @@ export interface SeqmotifQueryParameters {
   pattern_type: "simple" | "prosite" | "regex";
 }
 export interface StrucmotifQueryParameters {
-  value: StrucmotifQueryEntryParameters | StrucmotifQueryFileParameters;
+  value: StrucmotifQueryEntryParameters | StrucmotifQueryFileParameters | StrucmotifQueryURLParameters;
   /**
    * Allowed backbone distance tolerance in Angstrom.
    */
@@ -1528,7 +1546,7 @@ export interface ResidueIdentifier {
   label_seq_id: number;
 }
 /**
- * Upload Base64-encoded file in one of the following formats: cif, bcif
+ * Upload Base64-encoded file in one of the following formats: cif, bcif.
  */
 export interface StrucmotifQueryFileParameters {
   /**
@@ -1537,7 +1555,71 @@ export interface StrucmotifQueryFileParameters {
   data: string;
   format: "cif" | "bcif";
   /**
-   * Provides the set of residue identifiers that define the query. Can be undefined if the submitted file property contains an extracted motif
+   * Provides the set of residue identifiers that defines the query. Can be undefined if the submitted file property contains an extracted motif.
+   *
+   * @minItems 2
+   * @maxItems 10
+   */
+  residue_ids?:
+    | [ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier, ResidueIdentifier]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ]
+    | [
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier,
+        ResidueIdentifier
+      ];
+}
+/**
+ * Fetch structure file from a URL in one of the following formats: cif, bcif. Content can be gzipped.
+ */
+export interface StrucmotifQueryURLParameters {
+  /**
+   * URL to a publicly available file with structure data.
+   */
+  url: string;
+  format: "cif" | "bcif";
+  /**
+   * Provides the set of residue identifiers that defines the query. Can be undefined if the submitted file property contains an extracted motif.
    *
    * @minItems 2
    * @maxItems 10

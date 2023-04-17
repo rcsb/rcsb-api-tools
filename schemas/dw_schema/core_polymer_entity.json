@@ -98,9 +98,9 @@
         "pdbx_seq_one_letter_code_can" : {
           "type" : "string",
           "examples" : [ "MSHHWGYGKHNGPEHWHKDFPIAKGERQSPVDIDTHTAKYDPSLKPLSVSYDQATSLRILNNGAAFNVEFD" ],
-          "description" : "Canonical sequence of protein or nucleic acid polymer in standard\n one-letter codes of amino acids or nucleotides,\n corresponding to the sequence in\n _entity_poly.pdbx_seq_one_letter_code. Non-standard\n amino acids/nucleotides are represented by the codes of\n their parents if parent is specified in\n _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if\n parent is not specified. Deoxynucleotides are\n represented by their canonical one-letter codes of A,\n C, G, or T.",
+          "description" : "Canonical sequence of protein or nucleic acid polymer in standard\n               one-letter codes of amino acids or nucleotides,\n               corresponding to the sequence in\n               _entity_poly.pdbx_seq_one_letter_code. Non-standard\n               amino acids/nucleotides are represented by the codes of\n               their parents if parent is specified in\n               _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if\n               parent is not specified. Deoxynucleotides are\n               represented by their canonical one-letter codes of A,\n               C, G, or T.\n\n               For modifications with several parent amino acids,\n\t       all corresponding parent amino acid codes will be listed\n\t       (ex. chromophores).",
           "rcsb_description" : [ {
-            "text" : "Canonical sequence of protein or nucleic acid polymer in standard\n one-letter codes of amino acids or nucleotides,\n corresponding to the sequence in\n _entity_poly.pdbx_seq_one_letter_code. Non-standard\n amino acids/nucleotides are represented by the codes of\n their parents if parent is specified in\n _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if\n parent is not specified. Deoxynucleotides are\n represented by their canonical one-letter codes of A,\n C, G, or T.",
+            "text" : "Canonical sequence of protein or nucleic acid polymer in standard\n               one-letter codes of amino acids or nucleotides,\n               corresponding to the sequence in\n               _entity_poly.pdbx_seq_one_letter_code. Non-standard\n               amino acids/nucleotides are represented by the codes of\n               their parents if parent is specified in\n               _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if\n               parent is not specified. Deoxynucleotides are\n               represented by their canonical one-letter codes of A,\n               C, G, or T.\n\n               For modifications with several parent amino acids,\n\t       all corresponding parent amino acid codes will be listed\n\t       (ex. chromophores).",
             "context" : "dictionary"
           } ]
         },
@@ -1151,7 +1151,7 @@
           },
           "provenance_source" : {
             "type" : "string",
-            "enum" : [ "PDB Primary Data" ],
+            "enum" : [ "PDB Primary Data", "Primary Data" ],
             "description" : "A code indicating the provenance of the host organism.",
             "rcsb_description" : [ {
               "text" : "A code indicating the provenance of the host organism.",
@@ -1332,10 +1332,10 @@
           },
           "provenance_source" : {
             "type" : "string",
-            "enum" : [ "PDB Primary Data", "UniProt" ],
-            "description" : "A code indicating the provenance of the source organism details for the entity",
+            "enum" : [ "NCBI", "PDB Primary Data", "Primary Data", "UniProt" ],
+            "description" : "Reference to the provenance of the source organism details for the entity. \n Primary data indicates information obtained from the same source as the structural model.\n UniProt and NCBI are provided as alternate sources of provenance for organism details.",
             "rcsb_description" : [ {
-              "text" : "A code indicating the provenance of the source organism details for the entity",
+              "text" : "Reference to the provenance of the source organism details for the entity. \n Primary data indicates information obtained from the same source as the structural model.\n UniProt and NCBI are provided as alternate sources of provenance for organism details.",
               "context" : "dictionary"
             } ]
           },
@@ -1429,7 +1429,7 @@
               "properties" : {
                 "provenance_source" : {
                   "type" : "string",
-                  "enum" : [ "PDB Primary Data", "UniProt" ],
+                  "enum" : [ "NCBI", "PDB Primary Data", "Primary Data", "UniProt" ],
                   "description" : "A code indicating the provenance of the source organism details for the entity",
                   "rcsb_description" : [ {
                     "text" : "A code indicating the provenance of the source organism details for the entity",
@@ -1953,12 +1953,16 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "GO", "GlyCosmos", "GlyGen", "InterPro", "MemProtMD", "OPM", "PDBTM", "Pfam", "mpstruc" ],
+            "enum" : [ "CARD", "GO", "GlyCosmos", "GlyGen", "InterPro", "MemProtMD", "OPM", "PDBTM", "Pfam", "mpstruc" ],
             "examples" : [ "GO", "Pfam" ],
             "description" : "A type or category of the annotation.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_enum_annotated" : [ {
+              "value" : "CARD",
+              "detail" : "Comprehensive Antibiotic Resistance Database",
+              "name" : "CARD"
+            }, {
               "value" : "GO",
               "detail" : "Gene Ontology",
               "name" : "Gene Ontology"
@@ -2059,6 +2063,58 @@
             },
             "uniqueItems" : false,
             "rcsb_nested_indexing" : true
+          },
+          "additional_properties" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "name" : {
+                  "type" : "string",
+                  "enum" : [ "CARD_ARO_CATEGORY", "CARD_ARO_CVTERM_ID", "CARD_ARO_DRUG_CLASS", "CARD_ARO_RESISTANCE_MECHANISM" ],
+                  "examples" : [ "CARD_ARO_CATEGORY" ],
+                  "description" : "The additional property name.",
+                  "rcsb_enum_annotated" : [ {
+                    "value" : "CARD_ARO_CATEGORY",
+                    "detail" : "Ontological level of a given CARD annotation (either AMR Gene Family or AMR Gene)"
+                  }, {
+                    "value" : "CARD_ARO_CVTERM_ID",
+                    "detail" : "ID to locate a given ARO term on the CARD website"
+                  }, {
+                    "value" : "CARD_ARO_DRUG_CLASS",
+                    "detail" : "Target drug class"
+                  }, {
+                    "value" : "CARD_ARO_RESISTANCE_MECHANISM",
+                    "detail" : "Mechanism of resistance"
+                  } ],
+                  "rcsb_description" : [ {
+                    "text" : "The additional property name.",
+                    "context" : "dictionary"
+                  } ]
+                },
+                "values" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [ {
+                      "type" : "string"
+                    }, {
+                      "type" : "integer"
+                    }, {
+                      "type" : "number"
+                    } ],
+                    "examples" : [ "AMR Gene Family" ],
+                    "description" : "The value(s) of the additional property.",
+                    "rcsb_description" : [ {
+                      "text" : "The value(s) of the additional property.",
+                      "context" : "dictionary"
+                    } ]
+                  },
+                  "uniqueItems" : false
+                }
+              },
+              "additionalProperties" : false
+            },
+            "uniqueItems" : false
           }
         },
         "additionalProperties" : false
@@ -2095,6 +2151,15 @@
           }, {
             "examples" : [ "Insulin/IGF/Relaxin family (Insulin)", "Acyl-CoA dehydrogenase, C-terminal domain (Acyl-CoA_dh_1)" ],
             "path" : "rcsb_polymer_entity_annotation.name"
+          } ]
+        }, {
+          "context_value" : "CARD",
+          "attributes" : [ {
+            "examples" : [ "ARO:3001059", "ARO:3000015" ],
+            "path" : "rcsb_polymer_entity_annotation.annotation_lineage.id"
+          }, {
+            "examples" : [ "SHV-1", "SHV beta-lactamase" ],
+            "path" : "rcsb_polymer_entity_annotation.annotation_lineage.name"
           } ]
         }, {
           "context_value" : "mpstruc",
@@ -3215,6 +3280,40 @@
             "type" : "number",
             "rcsb_search_context" : [ "default-match" ],
             "description" : "Degree of similarity expressed as a floating-point number"
+          },
+          "aligned_regions" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "entity_beg_seq_id" : {
+                  "type" : "integer",
+                  "description" : "An identifier for the monomer in the entity sequence at which this segment of the alignment begins.",
+                  "rcsb_description" : [ {
+                    "text" : "An identifier for the monomer in the entity sequence at which this segment of the alignment begins.",
+                    "context" : "dictionary"
+                  } ]
+                },
+                "length" : {
+                  "type" : "integer",
+                  "description" : "An length of the this segment of the alignment.",
+                  "rcsb_description" : [ {
+                    "text" : "An length of the this segment of the alignment.",
+                    "context" : "dictionary"
+                  } ]
+                },
+                "ref_beg_seq_id" : {
+                  "type" : "integer",
+                  "description" : "An identifier for the monomer in the reference sequence at which this segment of the alignment begins.",
+                  "rcsb_description" : [ {
+                    "text" : "An identifier for the monomer in the reference sequence at which this segment of the alignment begins.",
+                    "context" : "dictionary"
+                  } ]
+                }
+              },
+              "additionalProperties" : false
+            },
+            "uniqueItems" : false
           }
         },
         "additionalProperties" : false
@@ -3341,8 +3440,8 @@
   },
   "additionalProperties" : false,
   "description" : "JSON schema for polymer entity core.",
-  "$comment" : "schema_version: 10.0.0",
+  "$comment" : "schema_version: 10.0.2",
   "required" : [ "rcsb_id", "rcsb_polymer_entity_container_identifiers" ],
-  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
   "title" : "Core Polymer Entity"
 }

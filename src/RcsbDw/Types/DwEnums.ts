@@ -434,6 +434,7 @@ export enum InitialOfCenter {
     Cesg = "CESG",
     Chsam = "CHSAM",
     Chtsb = "CHTSB",
+    Csbid = "CSBID",
     Csgid = "CSGID",
     Csmp = "CSMP",
     Gpcr = "GPCR",
@@ -585,6 +586,17 @@ export enum GroupType {
     Changedstate = "changedstate",
     Groundstate = "groundstate",
     Undefined = "undefined"
+}
+
+export enum SourceName {
+    AlphaFold = "AlphaFold",
+    ITasser = "ITasser",
+    ModelArchive = "ModelArchive",
+    Modeller = "Modeller",
+    Other = "Other",
+    Pdb = "PDB",
+    RoseTtaFold = "RoseTTAFold",
+    SwissModel = "SwissModel"
 }
 
 export enum SampleState {

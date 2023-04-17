@@ -62,6 +62,13 @@
             "rcsb_description" : [ {
               "text" : "DrugBank drug brand names.",
               "context" : "dictionary"
+            }, {
+              "text" : "Drug Brand Name",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Chemical Components",
+              "priority_order" : 35
             } ]
           },
           "uniqueItems" : false
@@ -282,7 +289,7 @@
   },
   "additionalProperties" : false,
   "$schema" : "http://json-schema.org/draft-04/schema#",
-  "title" : "schema: drugbank_core collection: drugbank_core version: 1.3.1",
-  "description" : "RCSB Exchange Database JSON schema derived from the drugbank_core content type schema. This schema supports collection drugbank_core version 1.3.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-drugbank_core.json and follows JSON schema specification version 4",
-  "$comment" : "schema_version: 1.3.1"
+  "title" : "schema: drugbank_core collection: drugbank_core version: 1.3.2",
+  "description" : "RCSB Exchange Database JSON schema derived from the drugbank_core content type schema. This schema supports collection drugbank_core version 1.3.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-drugbank_core.json and follows JSON schema specification version 4",
+  "$comment" : "schema_version: 1.3.2"
 }

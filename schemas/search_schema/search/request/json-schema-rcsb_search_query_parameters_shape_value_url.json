@@ -1,0 +1,26 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_shape_value_url.json",
+  "title": "Structure Query URL Parameters",
+  "type": "object",
+  "required": [
+    "url",
+    "format"
+  ],
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "URL to a publicly available file with structure data.",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "cif",
+        "bcif",
+        "pdb"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "description": "Fetch structure file from a URL in one of the following formats: cif, bcif, pdb. Content can be gzipped."
+}

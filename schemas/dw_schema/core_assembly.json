@@ -7,11 +7,11 @@
         "details" : {
           "type" : "string",
           "examples" : [ "The icosahedral virus particle." ],
-          "description" : "A description of special aspects of the macromolecular assembly.",
+          "description" : "A description of special aspects of the macromolecular assembly.\n\n               In the PDB, 'representative helical assembly', 'complete point assembly',\n\t       'complete icosahedral assembly', 'software_defined_assembly', 'author_defined_assembly',\n\t       and 'author_and_software_defined_assembly' are considered \"biologically relevant assemblies.",
           "rcsb_search_context" : [ "full-text" ],
           "rcsb_full_text_priority" : 1,
           "rcsb_description" : [ {
-            "text" : "A description of special aspects of the macromolecular assembly.",
+            "text" : "A description of special aspects of the macromolecular assembly.\n\n               In the PDB, 'representative helical assembly', 'complete point assembly',\n\t       'complete icosahedral assembly', 'software_defined_assembly', 'author_defined_assembly',\n\t       and 'author_and_software_defined_assembly' are considered \"biologically relevant assemblies.",
             "context" : "dictionary"
           } ]
         },

@@ -12,6 +12,10 @@ export interface CoreAssembly {
   pdbx_struct_assembly?: {
     /**
      * A description of special aspects of the macromolecular assembly.
+     *
+     *                In the PDB, 'representative helical assembly', 'complete point assembly',
+     * 	       'complete icosahedral assembly', 'software_defined_assembly', 'author_defined_assembly',
+     * 	       and 'author_and_software_defined_assembly' are considered "biologically relevant assemblies.
      */
     details?: string;
     /**

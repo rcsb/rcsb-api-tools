@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the drugbank_core content type schema. This schema supports collection drugbank_core version 1.3.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-drugbank_core.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the drugbank_core content type schema. This schema supports collection drugbank_core version 1.3.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-drugbank_core.json and follows JSON schema specification version 4
  */
-export interface SchemaDrugbankCoreCollectionDrugbankCoreVersion131 {
+export interface SchemaDrugbankCoreCollectionDrugbankCoreVersion132 {
   drugbank_container_identifiers?: {
     /**
      * The DrugBank accession code

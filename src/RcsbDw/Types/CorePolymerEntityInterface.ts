@@ -82,15 +82,19 @@ export interface CorePolymerEntity {
     pdbx_seq_one_letter_code?: string;
     /**
      * Canonical sequence of protein or nucleic acid polymer in standard
-     *  one-letter codes of amino acids or nucleotides,
-     *  corresponding to the sequence in
-     *  _entity_poly.pdbx_seq_one_letter_code. Non-standard
-     *  amino acids/nucleotides are represented by the codes of
-     *  their parents if parent is specified in
-     *  _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if
-     *  parent is not specified. Deoxynucleotides are
-     *  represented by their canonical one-letter codes of A,
-     *  C, G, or T.
+     *                one-letter codes of amino acids or nucleotides,
+     *                corresponding to the sequence in
+     *                _entity_poly.pdbx_seq_one_letter_code. Non-standard
+     *                amino acids/nucleotides are represented by the codes of
+     *                their parents if parent is specified in
+     *                _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if
+     *                parent is not specified. Deoxynucleotides are
+     *                represented by their canonical one-letter codes of A,
+     *                C, G, or T.
+     *
+     *                For modifications with several parent amino acids,
+     * 	       all corresponding parent amino acid codes will be listed
+     * 	       (ex. chromophores).
      */
     pdbx_seq_one_letter_code_can?: string;
     /**
@@ -1148,7 +1152,7 @@ export interface CorePolymerEntity {
       /**
        * A code indicating the provenance of the host organism.
        */
-      provenance_source?: "PDB Primary Data";
+      provenance_source?: "PDB Primary Data" | "Primary Data";
       /**
        * The scientific name of the host organism
        */
@@ -1251,7 +1255,7 @@ export interface CorePolymerEntity {
       /**
        * A code indicating the provenance of the host organism.
        */
-      provenance_source?: "PDB Primary Data";
+      provenance_source?: "PDB Primary Data" | "Primary Data";
       /**
        * The scientific name of the host organism
        */
@@ -1359,9 +1363,11 @@ export interface CorePolymerEntity {
        */
       pdbx_src_id: string;
       /**
-       * A code indicating the provenance of the source organism details for the entity
+       * Reference to the provenance of the source organism details for the entity.
+       *  Primary data indicates information obtained from the same source as the structural model.
+       *  UniProt and NCBI are provided as alternate sources of provenance for organism details.
        */
-      provenance_source?: "PDB Primary Data" | "UniProt";
+      provenance_source?: "NCBI" | "PDB Primary Data" | "Primary Data" | "UniProt";
       /**
        * The scientific name of the source organism assigned by the PDB depositor.
        */
@@ -1388,7 +1394,7 @@ export interface CorePolymerEntity {
         /**
          * A code indicating the provenance of the source organism details for the entity
          */
-        provenance_source?: "PDB Primary Data" | "UniProt";
+        provenance_source?: "NCBI" | "PDB Primary Data" | "Primary Data" | "UniProt";
         /**
          * Gene name.
          */
@@ -1478,9 +1484,11 @@ export interface CorePolymerEntity {
        */
       pdbx_src_id: string;
       /**
-       * A code indicating the provenance of the source organism details for the entity
+       * Reference to the provenance of the source organism details for the entity.
+       *  Primary data indicates information obtained from the same source as the structural model.
+       *  UniProt and NCBI are provided as alternate sources of provenance for organism details.
        */
-      provenance_source?: "PDB Primary Data" | "UniProt";
+      provenance_source?: "NCBI" | "PDB Primary Data" | "Primary Data" | "UniProt";
       /**
        * The scientific name of the source organism assigned by the PDB depositor.
        */
@@ -1507,7 +1515,7 @@ export interface CorePolymerEntity {
         /**
          * A code indicating the provenance of the source organism details for the entity
          */
-        provenance_source?: "PDB Primary Data" | "UniProt";
+        provenance_source?: "NCBI" | "PDB Primary Data" | "Primary Data" | "UniProt";
         /**
          * Gene name.
          */
@@ -1719,7 +1727,7 @@ export interface CorePolymerEntity {
       /**
        * A type or category of the annotation.
        */
-      type?: "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
+      type?: "CARD" | "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -1733,6 +1741,13 @@ export interface CorePolymerEntity {
          * Members of the annotation lineage as parent class names.
          */
         name?: string;
+      }[];
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "CARD_ARO_CATEGORY" | "CARD_ARO_CVTERM_ID" | "CARD_ARO_DRUG_CLASS" | "CARD_ARO_RESISTANCE_MECHANISM";
+        values?: (string | number | number)[];
       }[];
     },
     ...{
@@ -1760,7 +1775,7 @@ export interface CorePolymerEntity {
       /**
        * A type or category of the annotation.
        */
-      type?: "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
+      type?: "CARD" | "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -1774,6 +1789,13 @@ export interface CorePolymerEntity {
          * Members of the annotation lineage as parent class names.
          */
         name?: string;
+      }[];
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "CARD_ARO_CATEGORY" | "CARD_ARO_CVTERM_ID" | "CARD_ARO_DRUG_CLASS" | "CARD_ARO_RESISTANCE_MECHANISM";
+        values?: (string | number | number)[];
       }[];
     }[]
   ];
@@ -2392,6 +2414,20 @@ export interface CorePolymerEntity {
        * Degree of similarity expressed as a floating-point number
        */
       similarity_cutoff?: number;
+      aligned_regions?: {
+        /**
+         * An identifier for the monomer in the entity sequence at which this segment of the alignment begins.
+         */
+        entity_beg_seq_id?: number;
+        /**
+         * An length of the this segment of the alignment.
+         */
+        length?: number;
+        /**
+         * An identifier for the monomer in the reference sequence at which this segment of the alignment begins.
+         */
+        ref_beg_seq_id?: number;
+      }[];
     },
     ...{
       /**
@@ -2406,6 +2442,20 @@ export interface CorePolymerEntity {
        * Degree of similarity expressed as a floating-point number
        */
       similarity_cutoff?: number;
+      aligned_regions?: {
+        /**
+         * An identifier for the monomer in the entity sequence at which this segment of the alignment begins.
+         */
+        entity_beg_seq_id?: number;
+        /**
+         * An length of the this segment of the alignment.
+         */
+        length?: number;
+        /**
+         * An identifier for the monomer in the reference sequence at which this segment of the alignment begins.
+         */
+        ref_beg_seq_id?: number;
+      }[];
     }[]
   ];
   /**

@@ -458,7 +458,7 @@
             "examples" : [ "2.30.30.40", "3.30.420.40" ],
             "path" : "rcsb_polymer_instance_annotation.annotation_lineage.id"
           }, {
-            "examples" : [ "SH3 Domains", "ATPase, nucleotide binding domain" ],
+            "examples" : [ "SH3 Domains", "ATP Synthase" ],
             "path" : "rcsb_polymer_instance_annotation.annotation_lineage.name"
           } ]
         }, {
@@ -473,19 +473,19 @@
         }, {
           "context_value" : "SCOP2",
           "attributes" : [ {
-            "examples" : [ 8093789, 8084640, 8084641, 8093790 ],
+            "examples" : [ 3001607, 4000551, 2000122, 1000001 ],
             "path" : "rcsb_polymer_instance_annotation.annotation_lineage.id"
           }, {
-            "examples" : [ "Sialidases (neuraminidases)", "FAD-dependent thiol oxidase", "FAD-dependent thiol oxidase", "Sialidases" ],
+            "examples" : [ "Sialidases (neuraminidases)", "FAD-dependent thiol oxidase", "Globin-like", "Sialidases" ],
             "path" : "rcsb_polymer_instance_annotation.annotation_lineage.name"
           } ]
         }, {
           "context_value" : "ECOD",
           "attributes" : [ {
-            "examples" : [ "e3mbgA1", "e6lu7A2" ],
+            "examples" : [ 100001, 300013 ],
             "path" : "rcsb_polymer_instance_annotation.annotation_lineage.id"
           }, {
-            "examples" : [ "Evr1_Alr", "Peptidase_C30_C" ],
+            "examples" : [ "F: Evr1_Alr", "F: Peptidase_C30_C" ],
             "path" : "rcsb_polymer_instance_annotation.annotation_lineage.name"
           } ]
         } ]

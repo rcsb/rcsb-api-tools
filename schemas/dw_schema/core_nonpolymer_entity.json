@@ -132,7 +132,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "Nonpolymer Molecular Features",
-              "priority_order" : 5
+              "priority_order" : 10
             } ]
           },
           "description" : {
@@ -327,6 +327,13 @@
           "rcsb_description" : [ {
             "text" : "Non-polymer(ligand) chemical component identifier for the entity in this container.",
             "context" : "dictionary"
+          }, {
+            "text" : "Component Identifier",
+            "context" : "brief"
+          } ],
+          "rcsb_search_group" : [ {
+            "group_name" : "Nonpolymer Molecular Features",
+            "priority_order" : 5
           } ]
         },
         "prd_id" : {

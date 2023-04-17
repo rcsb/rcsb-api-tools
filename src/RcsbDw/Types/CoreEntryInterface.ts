@@ -718,7 +718,7 @@ export interface CoreEntry {
        */
       c_sampling_length?: number;
       /**
-       * Unique key for the 2d_crystal_entity category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -775,7 +775,7 @@ export interface CoreEntry {
        */
       c_sampling_length?: number;
       /**
-       * Unique key for the 2d_crystal_entity category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -841,7 +841,7 @@ export interface CoreEntry {
        */
       angle_gamma?: number;
       /**
-       * Unique key for the em_3d_crystal_entity category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -883,7 +883,7 @@ export interface CoreEntry {
        */
       angle_gamma?: number;
       /**
-       * Unique key for the em_3d_crystal_entity category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1006,7 +1006,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * This data item is a unique identifier.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1016,7 +1016,7 @@ export interface CoreEntry {
        */
       pdb_chain_id?: string;
       /**
-       * The molecular entities represented in this fitting description.
+       * Residue range for the identified chain.
        */
       pdb_chain_residue_range?: string;
       /**
@@ -1035,7 +1035,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * This data item is a unique identifier.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1045,7 +1045,7 @@ export interface CoreEntry {
        */
       pdb_chain_id?: string;
       /**
-       * The molecular entities represented in this fitting description.
+       * Residue range for the identified chain.
        */
       pdb_chain_residue_range?: string;
       /**
@@ -1060,11 +1060,11 @@ export interface CoreEntry {
   em_3d_reconstruction?: [
     {
       /**
-       * The actual pixel size of projection set of images.
+       * The actual pixel size of the projection set of images in Angstroms.
        */
       actual_pixel_size?: number;
       /**
-       * The algorithm used project from 2D orientations to 3D map.
+       * The reconstruction algorithm/technique used to generate the map.
        */
       algorithm?: string;
       /**
@@ -1072,8 +1072,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * The value of _em_3d_reconstruction.id must
-       *  uniquely identify the 3d reconstruction.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1089,13 +1088,11 @@ export interface CoreEntry {
        */
       method?: string;
       /**
-       * The nominal pixel size of the projection set of images.
+       * The nominal pixel size of the projection set of images in Angstroms.
        */
       nominal_pixel_size?: number;
       /**
-       * This item was correspondence to two type of em dataset
-       *  processing_emDataSet_singleParticle.numClassAverages
-       *  processing_emDataSet_icosahedral.numClassAverages
+       * The number of classes used in the final 3d reconstruction
        */
       num_class_averages?: number;
       /**
@@ -1103,7 +1100,7 @@ export interface CoreEntry {
        */
       num_particles?: number;
       /**
-       * type of refinement performed in order to determine map resolution
+       * Indicates details on how the half-map used for resolution determination (usually by FSC) have been generated.
        */
       refinement_type?:
         | "HALF-MAPS REFINED AGAINST SAME DATA"
@@ -1112,7 +1109,7 @@ export interface CoreEntry {
         | "HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED"
         | "OTHER";
       /**
-       * The final resolution (in angstroms)of the 3D reconstruction.
+       * The final resolution (in angstroms) of the 3D reconstruction.
        */
       resolution?: number;
       /**
@@ -1131,11 +1128,11 @@ export interface CoreEntry {
     },
     ...{
       /**
-       * The actual pixel size of projection set of images.
+       * The actual pixel size of the projection set of images in Angstroms.
        */
       actual_pixel_size?: number;
       /**
-       * The algorithm used project from 2D orientations to 3D map.
+       * The reconstruction algorithm/technique used to generate the map.
        */
       algorithm?: string;
       /**
@@ -1143,8 +1140,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * The value of _em_3d_reconstruction.id must
-       *  uniquely identify the 3d reconstruction.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1160,13 +1156,11 @@ export interface CoreEntry {
        */
       method?: string;
       /**
-       * The nominal pixel size of the projection set of images.
+       * The nominal pixel size of the projection set of images in Angstroms.
        */
       nominal_pixel_size?: number;
       /**
-       * This item was correspondence to two type of em dataset
-       *  processing_emDataSet_singleParticle.numClassAverages
-       *  processing_emDataSet_icosahedral.numClassAverages
+       * The number of classes used in the final 3d reconstruction
        */
       num_class_averages?: number;
       /**
@@ -1174,7 +1168,7 @@ export interface CoreEntry {
        */
       num_particles?: number;
       /**
-       * type of refinement performed in order to determine map resolution
+       * Indicates details on how the half-map used for resolution determination (usually by FSC) have been generated.
        */
       refinement_type?:
         | "HALF-MAPS REFINED AGAINST SAME DATA"
@@ -1183,7 +1177,7 @@ export interface CoreEntry {
         | "HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED"
         | "OTHER";
       /**
-       * The final resolution (in angstroms)of the 3D reconstruction.
+       * The final resolution (in angstroms) of the 3D reconstruction.
        */
       resolution?: number;
       /**
@@ -1215,7 +1209,7 @@ export interface CoreEntry {
        */
       em_image_processing_id?: string;
       /**
-       * Primary key
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1233,7 +1227,7 @@ export interface CoreEntry {
        */
       em_image_processing_id?: string;
       /**
-       * Primary key
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1248,11 +1242,14 @@ export interface CoreEntry {
   em_diffraction?: [
     {
       /**
-       * TODO
+       * The camera length (in millimeters). The camera length is the
+       *  product of the objective focal length and the combined magnification
+       *  of the intermediate and projector lenses when the microscope is
+       *  operated in the diffraction mode.
        */
       camera_length?: number;
       /**
-       * Primary key
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1266,11 +1263,14 @@ export interface CoreEntry {
     },
     ...{
       /**
-       * TODO
+       * The camera length (in millimeters). The camera length is the
+       *  product of the objective focal length and the combined magnification
+       *  of the intermediate and projector lenses when the microscope is
+       *  operated in the diffraction mode.
        */
       camera_length?: number;
       /**
-       * Primary key
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1301,7 +1301,7 @@ export interface CoreEntry {
        */
       high_resolution?: number;
       /**
-       * Unique identifier for the category em_diffraction_shell
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1335,7 +1335,7 @@ export interface CoreEntry {
        */
       high_resolution?: number;
       /**
-       * Unique identifier for the category em_diffraction_shell
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1375,7 +1375,7 @@ export interface CoreEntry {
        */
       high_resolution?: number;
       /**
-       * Identifier for this category
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1426,7 +1426,7 @@ export interface CoreEntry {
        */
       high_resolution?: number;
       /**
-       * Identifier for this category
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1473,7 +1473,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * This data item is the primary key of the category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1481,7 +1481,7 @@ export interface CoreEntry {
        */
       material?: string;
       /**
-       * Foreign key relationship to the EMD SPECIMEN category
+       * Foreign key relationship to the EM SPECIMEN category
        */
       specimen_id?: string;
     },
@@ -1491,7 +1491,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * This data item is the primary key of the category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1499,7 +1499,7 @@ export interface CoreEntry {
        */
       material?: string;
       /**
-       * Foreign key relationship to the EMD SPECIMEN category
+       * Foreign key relationship to the EM SPECIMEN category
        */
       specimen_id?: string;
     }[]
@@ -1510,17 +1510,16 @@ export interface CoreEntry {
   em_entity_assembly?: [
     {
       /**
-       * Additional details about the component.
+       * Additional details about the sample or sample subcomponent.
        */
       details?: string;
       entity_id_list?: string[];
       /**
-       * The value of _em_entity_assembly.id identifies
-       *  one component of the complex.
+       * PRIMARY KEY
        */
       id: string;
       /**
-       * Name of this component in the observed assembly.
+       * The name of the sample or sample subcomponent.
        */
       name?: string;
       /**
@@ -1534,7 +1533,8 @@ export interface CoreEntry {
        */
       parent_id?: number;
       /**
-       * The assembly type.
+       * The type of source (e.g., natural source) for the component (sample or sample
+       * subcomponent)
        */
       source?: "MULTIPLE SOURCES" | "NATURAL" | "RECOMBINANT" | "SYNTHETIC";
       /**
@@ -1542,24 +1542,22 @@ export interface CoreEntry {
        */
       synonym?: string;
       /**
-       * A description of types of components of the
-       *  assembly of the biological structure.
+       * The general type of the sample or sample subcomponent.
        */
       type?: string;
     },
     ...{
       /**
-       * Additional details about the component.
+       * Additional details about the sample or sample subcomponent.
        */
       details?: string;
       entity_id_list?: string[];
       /**
-       * The value of _em_entity_assembly.id identifies
-       *  one component of the complex.
+       * PRIMARY KEY
        */
       id: string;
       /**
-       * Name of this component in the observed assembly.
+       * The name of the sample or sample subcomponent.
        */
       name?: string;
       /**
@@ -1573,7 +1571,8 @@ export interface CoreEntry {
        */
       parent_id?: number;
       /**
-       * The assembly type.
+       * The type of source (e.g., natural source) for the component (sample or sample
+       * subcomponent)
        */
       source?: "MULTIPLE SOURCES" | "NATURAL" | "RECOMBINANT" | "SYNTHETIC";
       /**
@@ -1581,8 +1580,7 @@ export interface CoreEntry {
        */
       synonym?: string;
       /**
-       * A description of types of components of the
-       *  assembly of the biological structure.
+       * The general type of the sample or sample subcomponent.
        */
       type?: string;
     }[]
@@ -1597,7 +1595,7 @@ export interface CoreEntry {
      */
     entity_assembly_id?: string;
     /**
-     * Placeholder ID.
+     * PRIMARY KEY
      */
     id?: string;
     /**
@@ -1611,7 +1609,7 @@ export interface CoreEntry {
   em_helical_entity?: [
     {
       /**
-       * The angular rotation per helical subunit in degrees.
+       * The angular rotation per helical subunit in degrees. Negative values indicate left-handed helices; positive values indicate right handed helices.
        */
       angular_rotation_per_subunit?: number;
       /**
@@ -1627,20 +1625,17 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * The value of _em_helical_entity.id must uniquely identify
-       *  a set of the filament parameters for this assembly component.
+       * PRIMARY KEY
        */
       id: string;
       /**
-       * The value of _em_helical_entity.reconstruction_id identifies a particular reconstruction.
-       *
-       *  This data item is a pointer to _em_image_processing.id.
+       * This data item is a pointer to _em_image_processing.id.
        */
       image_processing_id: string;
     },
     ...{
       /**
-       * The angular rotation per helical subunit in degrees.
+       * The angular rotation per helical subunit in degrees. Negative values indicate left-handed helices; positive values indicate right handed helices.
        */
       angular_rotation_per_subunit?: number;
       /**
@@ -1656,14 +1651,11 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * The value of _em_helical_entity.id must uniquely identify
-       *  a set of the filament parameters for this assembly component.
+       * PRIMARY KEY
        */
       id: string;
       /**
-       * The value of _em_helical_entity.reconstruction_id identifies a particular reconstruction.
-       *
-       *  This data item is a pointer to _em_image_processing.id.
+       * This data item is a pointer to _em_image_processing.id.
        */
       image_processing_id: string;
     }[]
@@ -1691,12 +1683,11 @@ export interface CoreEntry {
       detector_mode?: "COUNTING" | "INTEGRATING" | "OTHER" | "SUPER-RESOLUTION";
       /**
        * The detector type used for recording images.
-       *  Usually film or CCD camera.
+       *  Usually film , CCD camera or direct electron detector.
        */
       film_or_detector_model?: string;
       /**
-       * The item _em_image_recording.id uniquely identifies
-       *  a set of recorded images.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1735,12 +1726,11 @@ export interface CoreEntry {
       detector_mode?: "COUNTING" | "INTEGRATING" | "OTHER" | "SUPER-RESOLUTION";
       /**
        * The detector type used for recording images.
-       *  Usually film or CCD camera.
+       *  Usually film , CCD camera or direct electron detector.
        */
       film_or_detector_model?: string;
       /**
-       * The item _em_image_recording.id uniquely identifies
-       *  a set of recorded images.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1771,7 +1761,7 @@ export interface CoreEntry {
        */
       accelerating_voltage?: number;
       /**
-       * microscope alignment procedure
+       * The type of procedure used to align the microscope electron beam.
        */
       alignment_procedure?: "BASIC" | "COMA FREE" | "NONE" | "OTHER" | "ZEMLIN TABLEAU";
       /**
@@ -1784,13 +1774,13 @@ export interface CoreEntry {
        */
       c2_aperture_diameter?: number;
       /**
-       * The maximum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       * The maximum calibrated defocus value of the objective lens (in nanometers) used
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_max?: number;
       /**
-       * The minimum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       * The minimum calibrated defocus value of the objective lens (in nanometers) used
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_min?: number;
       /**
@@ -1828,8 +1818,7 @@ export interface CoreEntry {
        */
       electron_source?: string;
       /**
-       * The value of _em_imaging.id must uniquely identify
-       *  each imaging experiment.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -1924,12 +1913,12 @@ export interface CoreEntry {
       nominal_cs?: number;
       /**
        * The maximum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_max?: number;
       /**
        * The minimum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_min?: number;
       /**
@@ -1947,7 +1936,7 @@ export interface CoreEntry {
        */
       recording_temperature_minimum?: number;
       /**
-       * residual tilt of the electron beam
+       * Residual tilt of the electron beam (in miliradians)
        */
       residual_tilt?: number;
       /**
@@ -2010,7 +1999,7 @@ export interface CoreEntry {
        */
       accelerating_voltage?: number;
       /**
-       * microscope alignment procedure
+       * The type of procedure used to align the microscope electron beam.
        */
       alignment_procedure?: "BASIC" | "COMA FREE" | "NONE" | "OTHER" | "ZEMLIN TABLEAU";
       /**
@@ -2023,13 +2012,13 @@ export interface CoreEntry {
        */
       c2_aperture_diameter?: number;
       /**
-       * The maximum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       * The maximum calibrated defocus value of the objective lens (in nanometers) used
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_max?: number;
       /**
-       * The minimum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       * The minimum calibrated defocus value of the objective lens (in nanometers) used
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_min?: number;
       /**
@@ -2067,8 +2056,7 @@ export interface CoreEntry {
        */
       electron_source?: string;
       /**
-       * The value of _em_imaging.id must uniquely identify
-       *  each imaging experiment.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2163,12 +2151,12 @@ export interface CoreEntry {
       nominal_cs?: number;
       /**
        * The maximum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_max?: number;
       /**
        * The minimum defocus value of the objective lens (in nanometers) used
-       *  to obtain the recorded images.
+       *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_min?: number;
       /**
@@ -2186,7 +2174,7 @@ export interface CoreEntry {
        */
       recording_temperature_minimum?: number;
       /**
-       * residual tilt of the electron beam
+       * Residual tilt of the electron beam (in miliradians)
        */
       residual_tilt?: number;
       /**
@@ -2250,11 +2238,12 @@ export interface CoreEntry {
   em_particle_selection?: [
     {
       /**
-       * Any additional details used for selecting particles
+       * Additional detail such as description of filters used, if selection was
+       * manual or automated, and/or template details.
        */
       details?: string;
       /**
-       * Ordinal identifier
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2269,11 +2258,12 @@ export interface CoreEntry {
     },
     ...{
       /**
-       * Any additional details used for selecting particles
+       * Additional detail such as description of filters used, if selection was
+       * manual or automated, and/or template details.
        */
       details?: string;
       /**
-       * Ordinal identifier
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2293,7 +2283,7 @@ export interface CoreEntry {
   em_single_particle_entity?: [
     {
       /**
-       * Unique category label.
+       * PRIMARY KEY
        */
       id: number;
       /**
@@ -2307,7 +2297,7 @@ export interface CoreEntry {
     },
     ...{
       /**
-       * Unique category label.
+       * PRIMARY KEY
        */
       id: number;
       /**
@@ -2357,7 +2347,7 @@ export interface CoreEntry {
        */
       fitting_id?: string;
       /**
-       * Unique identifier for each software description.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2411,7 +2401,7 @@ export interface CoreEntry {
        */
       fitting_id?: string;
       /**
-       * Unique identifier for each software description.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2456,8 +2446,7 @@ export interface CoreEntry {
        */
       experiment_id: string;
       /**
-       * The item  _em_specimen.id uniquely identifies a specimen along with
-       *  its preparation methods.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2492,8 +2481,7 @@ export interface CoreEntry {
        */
       experiment_id: string;
       /**
-       * The item  _em_specimen.id uniquely identifies a specimen along with
-       *  its preparation methods.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2520,7 +2508,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * This data item is the primary key of the category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2528,7 +2516,7 @@ export interface CoreEntry {
        */
       material?: string;
       /**
-       * Foreign key relationship to the EMD SPECIMEN category
+       * Foreign key relationship to the EM SPECIMEN category
        */
       specimen_id?: string;
       /**
@@ -2542,7 +2530,7 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * This data item is the primary key of the category.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2550,7 +2538,7 @@ export interface CoreEntry {
        */
       material?: string;
       /**
-       * Foreign key relationship to the EMD SPECIMEN category
+       * Foreign key relationship to the EM SPECIMEN category
        */
       specimen_id?: string;
       /**
@@ -2586,12 +2574,12 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * The humidity (%) in the vicinity of the vitrification process.
+       * Relative humidity (%) of air surrounding the specimen just prior to
+       * vitrification.
        */
       humidity?: number;
       /**
-       * The value of _em_vitrification.id must uniquely identify
-       *  the vitrification procedure.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2654,12 +2642,12 @@ export interface CoreEntry {
        */
       details?: string;
       /**
-       * The humidity (%) in the vicinity of the vitrification process.
+       * Relative humidity (%) of air surrounding the specimen just prior to
+       * vitrification.
        */
       humidity?: number;
       /**
-       * The value of _em_vitrification.id must uniquely identify
-       *  the vitrification procedure.
+       * PRIMARY KEY
        */
       id: string;
       /**
@@ -2844,9 +2832,19 @@ export interface CoreEntry {
        */
       id: string;
       /**
-       * The of the distribution of mis-orientation angles specified in degrees
-       * of all the unit cells in the crystal. Lower mosaicity indicates better
-       * ordered crystals.
+       * Isotropic approximation of the distribution of mis-orientation angles
+       * specified in degrees of all the mosaic domain blocks in the crystal,
+       * represented as a standard deviation. Here, a mosaic block is a set of
+       * contiguous unit cells assumed to be perfectly aligned. Lower mosaicity
+       * indicates better ordered crystals. See for example:
+       *
+       * Nave, C. (1998). Acta Cryst. D54, 848-853.
+       *
+       * Note that many software packages estimate the mosaic rotation distribution
+       * differently and may combine several physical properties of the experiment
+       * into a single mosaic term. This term will help fit the modeled spots
+       * to the observed spots without necessarily being directly related to the
+       * physics of the crystal itself.
        */
       pdbx_mosaicity?: number;
       /**
@@ -2915,9 +2913,19 @@ export interface CoreEntry {
        */
       id: string;
       /**
-       * The of the distribution of mis-orientation angles specified in degrees
-       * of all the unit cells in the crystal. Lower mosaicity indicates better
-       * ordered crystals.
+       * Isotropic approximation of the distribution of mis-orientation angles
+       * specified in degrees of all the mosaic domain blocks in the crystal,
+       * represented as a standard deviation. Here, a mosaic block is a set of
+       * contiguous unit cells assumed to be perfectly aligned. Lower mosaicity
+       * indicates better ordered crystals. See for example:
+       *
+       * Nave, C. (1998). Acta Cryst. D54, 848-853.
+       *
+       * Note that many software packages estimate the mosaic rotation distribution
+       * differently and may combine several physical properties of the experiment
+       * into a single mosaic term. This term will help fit the modeled spots
+       * to the observed spots without necessarily being directly related to the
+       * physics of the crystal itself.
        */
       pdbx_mosaicity?: number;
       /**
@@ -3038,6 +3046,7 @@ export interface CoreEntry {
         | "model coordinates"
         | "other"
         | "polymeric template library"
+        | "reference database"
         | "spatial restraints"
         | "target"
         | "target-template alignment"
@@ -3065,6 +3074,7 @@ export interface CoreEntry {
         | "model coordinates"
         | "other"
         | "polymeric template library"
+        | "reference database"
         | "spatial restraints"
         | "target"
         | "target-template alignment"
@@ -3100,6 +3110,7 @@ export interface CoreEntry {
         | "Center for Eukaryotic Structural Genomics"
         | "Center for High-Throughput Structural Biology"
         | "Center for Membrane Proteins of Infectious Diseases"
+        | "Center for Structural Biology of Infectious Diseases"
         | "Center for Structural Genomics of Infectious Diseases"
         | "Center for Structures of Membrane Proteins"
         | "Center for the X-ray Structure Determination of Human Transporters"
@@ -3167,6 +3178,7 @@ export interface CoreEntry {
         | "CESG"
         | "CHSAM"
         | "CHTSB"
+        | "CSBID"
         | "CSGID"
         | "CSMP"
         | "GPCR"
@@ -3238,6 +3250,7 @@ export interface CoreEntry {
         | "Center for Eukaryotic Structural Genomics"
         | "Center for High-Throughput Structural Biology"
         | "Center for Membrane Proteins of Infectious Diseases"
+        | "Center for Structural Biology of Infectious Diseases"
         | "Center for Structural Genomics of Infectious Diseases"
         | "Center for Structures of Membrane Proteins"
         | "Center for the X-ray Structure Determination of Human Transporters"
@@ -3305,6 +3318,7 @@ export interface CoreEntry {
         | "CESG"
         | "CHSAM"
         | "CHTSB"
+        | "CSBID"
         | "CSGID"
         | "CSMP"
         | "GPCR"
@@ -3983,6 +3997,75 @@ export interface CoreEntry {
        * Text to describe a grouping of entries in multiple collections
        */
       group_type?: "changed state" | "ground state" | "undefined";
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  pdbx_initial_refinement_model?: [
+    {
+      /**
+       * This item identifies an accession code of the resource where the initial model
+       *  is used
+       */
+      accession_code?: string;
+      /**
+       * A description of special aspects of the initial model
+       */
+      details?: string;
+      entity_id_list?: string[];
+      /**
+       * A unique identifier for the starting model record.
+       */
+      id: number;
+      /**
+       * This item identifies the resource of initial model used for refinement
+       */
+      source_name?:
+        | "AlphaFold"
+        | "ITasser"
+        | "ModelArchive"
+        | "Modeller"
+        | "Other"
+        | "PDB"
+        | "RoseTTAFold"
+        | "SwissModel";
+      /**
+       * This item describes the type of the initial model was generated
+       */
+      type?: "experimental model" | "in silico model" | "integrative model" | "other";
+    },
+    ...{
+      /**
+       * This item identifies an accession code of the resource where the initial model
+       *  is used
+       */
+      accession_code?: string;
+      /**
+       * A description of special aspects of the initial model
+       */
+      details?: string;
+      entity_id_list?: string[];
+      /**
+       * A unique identifier for the starting model record.
+       */
+      id: number;
+      /**
+       * This item identifies the resource of initial model used for refinement
+       */
+      source_name?:
+        | "AlphaFold"
+        | "ITasser"
+        | "ModelArchive"
+        | "Modeller"
+        | "Other"
+        | "PDB"
+        | "RoseTTAFold"
+        | "SwissModel";
+      /**
+       * This item describes the type of the initial model was generated
+       */
+      type?: "experimental model" | "in silico model" | "integrative model" | "other";
     }[]
   ];
   /**
@@ -4743,6 +4826,135 @@ export interface CoreEntry {
   /**
    * @minItems 1
    */
+  pdbx_reflns_twin?: [
+    {
+      /**
+       * The crystal identifier.  A reference to
+       *  _exptl_crystal.id in category EXPTL_CRYSTAL.
+       */
+      crystal_id: string;
+      /**
+       * The diffraction data set identifier.  A reference to
+       *  _diffrn.id in category DIFFRN.
+       */
+      diffrn_id: string;
+      /**
+       * An identifier for the twin domain.
+       */
+      domain_id?: string;
+      /**
+       * The twin fraction or twin factor represents a quantitative parameter for the
+       * crystal twinning.  The value 0 represents no twinning, < 0.5 partial twinning,
+       *  = 0.5 for perfect twinning.
+       */
+      fraction?: number;
+      /**
+       * The possible merohedral or hemihedral twinning operators for different
+       * point groups are:
+       *
+       * True point group  	Twin operation  	hkl related to
+       * 3                      	2 along a,b             h,-h-k,-l
+       *                        	2 along a*,b*           h+k,-k,-l
+       *                         2 along c               -h,-k,l
+       * 4                       2 along a,b,a*,b*       h,-k,-l
+       * 6                       2 along a,b,a*,b*       h,-h-k,-l
+       * 321                     2 along a*,b*,c         -h,-k,l
+       * 312                     2 along a,b,c           -h,-k,l
+       * 23                      4 along a,b,c            k,-h,l
+       *
+       * References:
+       *  Yeates, T.O. (1997) Methods in Enzymology 276, 344-358. Detecting and
+       *  Overcoming Crystal Twinning.
+       *
+       *  and information from the following on-line sites:
+       *
+       *    CNS site http://cns.csb.yale.edu/v1.1/
+       *    CCP4 site http://www.ccp4.ac.uk/dist/html/detwin.html
+       *    SHELX site http://shelx.uni-ac.gwdg.de/~rherbst/twin.html
+       */
+      operator: string;
+      /**
+       * There are two types of twinning: merohedral or hemihedral
+       *                                  non-merohedral or epitaxial
+       *
+       * For merohedral twinning the diffraction patterns from the different domains are
+       * completely superimposable.   Hemihedral twinning is a special case of merohedral
+       * twinning. It only involves two distinct domains.  Pseudo-merohedral twinning is
+       * a subclass merohedral twinning in which lattice is coincidentally superimposable.
+       *
+       * In the case of non-merohedral or epitaxial twinning  the reciprocal
+       * lattices do not superimpose exactly. In this case the  diffraction pattern
+       * consists of two (or more) interpenetrating lattices, which can in principle
+       * be separated.
+       */
+      type?: "epitaxial" | "hemihedral" | "merohedral" | "non-merohedral" | "pseudo-merohedral" | "tetartohedral";
+    },
+    ...{
+      /**
+       * The crystal identifier.  A reference to
+       *  _exptl_crystal.id in category EXPTL_CRYSTAL.
+       */
+      crystal_id: string;
+      /**
+       * The diffraction data set identifier.  A reference to
+       *  _diffrn.id in category DIFFRN.
+       */
+      diffrn_id: string;
+      /**
+       * An identifier for the twin domain.
+       */
+      domain_id?: string;
+      /**
+       * The twin fraction or twin factor represents a quantitative parameter for the
+       * crystal twinning.  The value 0 represents no twinning, < 0.5 partial twinning,
+       *  = 0.5 for perfect twinning.
+       */
+      fraction?: number;
+      /**
+       * The possible merohedral or hemihedral twinning operators for different
+       * point groups are:
+       *
+       * True point group  	Twin operation  	hkl related to
+       * 3                      	2 along a,b             h,-h-k,-l
+       *                        	2 along a*,b*           h+k,-k,-l
+       *                         2 along c               -h,-k,l
+       * 4                       2 along a,b,a*,b*       h,-k,-l
+       * 6                       2 along a,b,a*,b*       h,-h-k,-l
+       * 321                     2 along a*,b*,c         -h,-k,l
+       * 312                     2 along a,b,c           -h,-k,l
+       * 23                      4 along a,b,c            k,-h,l
+       *
+       * References:
+       *  Yeates, T.O. (1997) Methods in Enzymology 276, 344-358. Detecting and
+       *  Overcoming Crystal Twinning.
+       *
+       *  and information from the following on-line sites:
+       *
+       *    CNS site http://cns.csb.yale.edu/v1.1/
+       *    CCP4 site http://www.ccp4.ac.uk/dist/html/detwin.html
+       *    SHELX site http://shelx.uni-ac.gwdg.de/~rherbst/twin.html
+       */
+      operator: string;
+      /**
+       * There are two types of twinning: merohedral or hemihedral
+       *                                  non-merohedral or epitaxial
+       *
+       * For merohedral twinning the diffraction patterns from the different domains are
+       * completely superimposable.   Hemihedral twinning is a special case of merohedral
+       * twinning. It only involves two distinct domains.  Pseudo-merohedral twinning is
+       * a subclass merohedral twinning in which lattice is coincidentally superimposable.
+       *
+       * In the case of non-merohedral or epitaxial twinning  the reciprocal
+       * lattices do not superimpose exactly. In this case the  diffraction pattern
+       * consists of two (or more) interpenetrating lattices, which can in principle
+       * be separated.
+       */
+      type?: "epitaxial" | "hemihedral" | "merohedral" | "non-merohedral" | "pseudo-merohedral" | "tetartohedral";
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
   pdbx_related_exp_data_set?: [
     {
       /**
@@ -4834,6 +5046,15 @@ export interface CoreEntry {
        */
       lattices_indexed?: number;
       /**
+       * For experiments in which samples are provided in a
+       *             continuous stream, the total number of crystal lattices
+       *             that were merged in the final dataset.  Can be
+       *             less than frames_indexed depending on filtering during merging or
+       * 	    can be more than frames_indexed if there are multiple lattices.
+       * 	    per frame.
+       */
+      lattices_merged?: number;
+      /**
        * For FEL experiments, the number of pulse events in the dataset.
        */
       xfel_pulse_events?: number;
@@ -4890,6 +5111,15 @@ export interface CoreEntry {
        *  continuous stream, the total number of lattices indexed.
        */
       lattices_indexed?: number;
+      /**
+       * For experiments in which samples are provided in a
+       *             continuous stream, the total number of crystal lattices
+       *             that were merged in the final dataset.  Can be
+       *             less than frames_indexed depending on filtering during merging or
+       * 	    can be more than frames_indexed if there are multiple lattices.
+       * 	    per frame.
+       */
+      lattices_merged?: number;
       /**
        * For FEL experiments, the number of pulse events in the dataset.
        */
@@ -6814,7 +7044,7 @@ export interface CoreEntry {
     /**
      * The release status for the entry.
      */
-    status_code?: "AUCO" | "AUTH" | "HOLD" | "HPUB'" | "POLC" | "PROC" | "REFI" | "REL" | "REPL" | "WAIT" | "WDRN";
+    status_code?: "AUCO" | "AUTH" | "HOLD" | "HPUB" | "POLC" | "PROC" | "REFI" | "REL" | "REPL" | "WAIT" | "WDRN";
   };
   rcsb_comp_model_provenance?: {
     /**
@@ -6829,6 +7059,10 @@ export interface CoreEntry {
      * Source filename for the computed structure model.
      */
     source_filename?: string;
+    /**
+     * Source URL for computed structure model predicted aligned error (PAE) json file.
+     */
+    source_pae_url?: string;
     /**
      * Source URL for computed structure model file.
      */

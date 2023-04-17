@@ -1,16 +1,16 @@
 {
-  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_strucmotif_value_file.json",
-  "title": "Strucmotif Query File Parameters",
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_strucmotif_value_url.json",
+  "title": "Strucmotif Query URL Parameters",
   "type": "object",
   "required": [
-    "data",
+    "url",
     "format"
   ],
   "properties": {
-    "data": {
+    "url": {
       "type": "string",
-      "description": "File content converted to a Base64 string",
-      "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+      "description": "URL to a publicly available file with structure data.",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
     },
     "format": {
       "type": "string",
@@ -30,5 +30,5 @@
     }
   },
   "additionalProperties": false,
-  "description": "Upload Base64-encoded file in one of the following formats: cif, bcif."
+  "description": "Fetch structure file from a URL in one of the following formats: cif, bcif. Content can be gzipped."
 }
