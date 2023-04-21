@@ -1,5 +1,5 @@
 {
-  "schema": "https://data.rcsb.org/graphql",
+  "schema": "https://clustrelax-data-dev.rcsb.org/graphql",
   "documents": "src/RcsbGraphQL/Queries/Yosemite/*.graphql",
   "interfaceOutputFile": "src/RcsbGraphQL/Types/Yosemite/GqlTypes.ts",
   "pluginFile": [{
