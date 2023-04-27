@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.4] - 2023-04-27
+### Dependency update
+- audit fix
+
 ## [4.1.3] - 2023-04-19
 ### Improvements
 - Added new util class `TagDelimiter` to parse rcsb ids 
