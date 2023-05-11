@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
-import {HistogramFacet, SearchQuery, TermsFacet} from "./Types/SearchQueryInterface";
+import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
-import {CoreEntry} from "../RcsbGraphQL/Types/Yosemite/CorePaths";
 import {AggregationType, Operator, ReturnType, Service, Type} from "./Types/SearchEnums";
 import {SearchRequest} from "./SearchRequest";
 import {RcsbSearchMetadata} from "./Types/SearchMetadata";
@@ -14,7 +13,7 @@ const query: SearchQuery = {
         parameters: {
             operator: Operator.Greater,
             value: "1900-01-01",
-            attribute: CoreEntry.RcsbAccessionInfo.DepositDate
+            attribute: RcsbSearchMetadata.RcsbAccessionInfo.DepositDate.path
         }
     },
     request_options: {

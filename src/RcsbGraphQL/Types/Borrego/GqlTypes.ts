@@ -50,6 +50,7 @@ export interface AlignmentResponse {
   __typename?: 'AlignmentResponse';
   /** Length of the alignment */
   alignment_length?: Maybe<Scalars['Int']>;
+  /** Multiple sequence alignment of group members. */
   alignment_logo?: Maybe<Array<Maybe<Array<Maybe<AlignmentLogo>>>>>;
   /** Full sequence of the query */
   query_sequence?: Maybe<Scalars['String']>;

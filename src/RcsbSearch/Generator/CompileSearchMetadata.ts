@@ -13,12 +13,12 @@ const operators_dict: any = {
     "default-match":["equals", "greater", "less", "greater_or_equal", "less_or_equal", "range", "range_closed"]
 };
 
-function parseMetadata(json: any, nodeName: string, path: string[], root:{}): void{
+function parseMetadata(json: any, nodeName: string, path: string[], root:{}, fullPaths: string[]): void{
     if(json.type){
         if(json.type === "array"){
             if(json.items.type === "object"){
                 for(const p in json.items.properties){
-                    parseMetadata(json.items.properties[p], p, path.concat(p), root);
+                    parseMetadata(json.items.properties[p], p, path.concat(p), root, fullPaths);
                 }
             }else{
                 if(json.items.rcsb_search_context) {
@@ -33,6 +33,7 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}): vo
                         }
                     });
                     a["path"] =  path.join(".")
+                    fullPaths.push(a["path"])
                     a["operator"] = {};
                     for(const op of json.items.rcsb_search_context){
                         if(operators_dict[op])
@@ -44,7 +45,7 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}): vo
             }
         }else if(json.type === "object"){
             for(const p in json.properties){
-                parseMetadata(json.properties[p], p, path.concat(p), root);
+                parseMetadata(json.properties[p], p, path.concat(p), root, fullPaths);
             }
         }else if(json.type === "integer" || json.type === "string" || json.type === "number"){
             if(json.rcsb_search_context) {
@@ -59,6 +60,7 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}): vo
                     }
                 });
                 a["path"] =  path.join(".")
+                fullPaths.push(a["path"])
                 a["operator"] = {};
                 for(const op of json.rcsb_search_context){
                     if(operators_dict[op])
@@ -80,11 +82,16 @@ fetch(configSearch.schema)
         metadata.json()
             .then(json=>{
                 const root = {};
-                parseMetadata(json, "root", [], root);
+                const fullPaths: string[] = []
+                parseMetadata(json, "root", [], root, fullPaths);
                 fetch(configChemicalSearch.schema).then(chemicalMetadata=>{
                     chemicalMetadata.json().then(json=>{
-                        parseMetadata(json, "root", [], root);
-                        fs.writeFileSync("src/RcsbSearch/Types/SearchMetadata.ts", "export const RcsbSearchMetadata: "+JSON.stringify(root)+" = "+JSON.stringify(root));
+                        parseMetadata(json, "root", [], root, fullPaths);
+                        fs.writeFileSync(
+                            "src/RcsbSearch/Types/SearchMetadata.ts",
+                            `export const RcsbSearchMetadata: ${JSON.stringify(root)} = ${JSON.stringify(root)};\n`
+                            + `export type RcsbSearchAttributeType = \n"${fullPaths.join("\"\n| \"")}";\n`
+                        );
                     })
                 })
             })

@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.5] - 2023-05-11
+### Improvement
+- `RcsbSearchAttributeType` new type for defining search attributes
+
 ## [4.1.4] - 2023-04-27
 ### Dependency update
 - audit fix
