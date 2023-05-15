@@ -36,7 +36,8 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                     fullPaths.push(a["path"])
                     a["operator"] = {};
                     a["type"] = json.type;
-                    a["enum"] = json.enum;
+                    if(json.enum)
+                        a["enum"] = json.enum.reduce( (dict: {[k:string]:string}, value: string) => {dict[value]=value; return dict;}, {});
                     a["description"] = json.description;
                     a["rcsb_search_context"] = json.rcsb_search_context;
                     a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
@@ -73,7 +74,8 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                 fullPaths.push(a["path"])
                 a["operator"] = {};
                 a["type"] = json.type;
-                a["enum"] = json.enum;
+                if(json.enum)
+                    a["enum"] = json.enum.reduce( (dict: {[k:string]:string}, value: string) => {dict[value]=value; return dict;}, {});
                 a["description"] = json.description;
                 a["rcsb_search_context"] = json.rcsb_search_context;
                 a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
@@ -112,7 +114,7 @@ fetch(configSearch.schema)
                             "src/RcsbSearch/Types/SearchMetadata.ts",
                             `export const RcsbSearchMetadata: ${JSON.stringify(root)} = ${JSON.stringify(root)};\n`
                             + `export type RcsbSearchAttributeType = \n"${fullPaths.join("\"\n| \"")}";\n`
-                            + `export const RcsbSearchAttributeList = ${JSON.stringify(attributeList)};\n`
+                            + `export const RcsbSearchAttributeList: {path:RcsbSearchAttributeType;[k:string]:any;}[] = ${JSON.stringify(attributeList)};\n`
                         );
                     })
                 })

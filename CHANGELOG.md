@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.8] - 2023-05-15
+### Improvement
+- `RcsbSearchMetadata` field `enum` is a dict 
+
 ## [4.1.7] - 2023-05-15
 ### Improvement
 - `RcsbSearchMetadata` includes `enum` and `descritpion`
