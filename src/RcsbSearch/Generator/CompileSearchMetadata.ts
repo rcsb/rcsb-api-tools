@@ -13,12 +13,12 @@ const operators_dict: any = {
     "default-match":["equals", "greater", "less", "greater_or_equal", "less_or_equal", "range", "range_closed"]
 };
 
-function parseMetadata(json: any, nodeName: string, path: string[], root:{}, fullPaths: string[]): void{
+function parseMetadata(json: any, nodeName: string, path: string[], root:{}, fullPaths: string[], attributeList: {}[]): void{
     if(json.type){
         if(json.type === "array"){
             if(json.items.type === "object"){
                 for(const p in json.items.properties){
-                    parseMetadata(json.items.properties[p], p, path.concat(p), root, fullPaths);
+                    parseMetadata(json.items.properties[p], p, path.concat(p), root, fullPaths ,attributeList);
                 }
             }else{
                 if(json.items.rcsb_search_context) {
@@ -35,6 +35,13 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                     a["path"] =  path.join(".")
                     fullPaths.push(a["path"])
                     a["operator"] = {};
+                    a["rcsb_search_context"] = json.rcsb_search_context;
+                    a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
+                    a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
+                    a["rcsb_description"] = json.rcsb_description;
+                    a["rcsb_nested_indexing"] = json.rcsb_description;
+                    a["rcsb_nested_indexing_context"] = json.rcsb_nested_indexing_context;
+                    attributeList.push(a);
                     for(const op of json.items.rcsb_search_context){
                         if(operators_dict[op])
                             for(const opName of operators_dict[op]){
@@ -45,7 +52,7 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
             }
         }else if(json.type === "object"){
             for(const p in json.properties){
-                parseMetadata(json.properties[p], p, path.concat(p), root, fullPaths);
+                parseMetadata(json.properties[p], p, path.concat(p), root, fullPaths, attributeList);
             }
         }else if(json.type === "integer" || json.type === "string" || json.type === "number"){
             if(json.rcsb_search_context) {
@@ -62,6 +69,13 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                 a["path"] =  path.join(".")
                 fullPaths.push(a["path"])
                 a["operator"] = {};
+                a["rcsb_search_context"] = json.rcsb_search_context;
+                a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
+                a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
+                a["rcsb_description"] = json.rcsb_description;
+                a["rcsb_nested_indexing"] = json.rcsb_description;
+                a["rcsb_nested_indexing_context"] = json.rcsb_nested_indexing_context;
+                attributeList.push(a);
                 for(const op of json.rcsb_search_context){
                     if(operators_dict[op])
                         for(const opName of operators_dict[op]){
@@ -82,15 +96,17 @@ fetch(configSearch.schema)
         metadata.json()
             .then(json=>{
                 const root = {};
-                const fullPaths: string[] = []
-                parseMetadata(json, "root", [], root, fullPaths);
+                const fullPaths: string[] = [];
+                const attributeList: {}[] = [];
+                parseMetadata(json, "root", [], root, fullPaths, attributeList);
                 fetch(configChemicalSearch.schema).then(chemicalMetadata=>{
                     chemicalMetadata.json().then(json=>{
-                        parseMetadata(json, "root", [], root, fullPaths);
+                        parseMetadata(json, "root", [], root, fullPaths, attributeList);
                         fs.writeFileSync(
                             "src/RcsbSearch/Types/SearchMetadata.ts",
                             `export const RcsbSearchMetadata: ${JSON.stringify(root)} = ${JSON.stringify(root)};\n`
                             + `export type RcsbSearchAttributeType = \n"${fullPaths.join("\"\n| \"")}";\n`
+                            + `export const RcsbSearchAttributeList = ${JSON.stringify(attributeList)};\n`
                         );
                     })
                 })
