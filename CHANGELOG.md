@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.7] - 2023-05-15
+### Improvement
+- `RcsbSearchMetadata` includes `enum` and `descritpion`
+
 ## [4.1.6] - 2023-05-15
 ### Improvement
 - `RcsbSearchMetadata` includes rcsb schema metadata (e.g. `rcsb_search_context`, `rcsb_description`)

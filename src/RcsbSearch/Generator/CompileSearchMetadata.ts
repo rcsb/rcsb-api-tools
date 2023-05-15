@@ -35,6 +35,9 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                     a["path"] =  path.join(".")
                     fullPaths.push(a["path"])
                     a["operator"] = {};
+                    a["type"] = json.type;
+                    a["enum"] = json.enum;
+                    a["description"] = json.description;
                     a["rcsb_search_context"] = json.rcsb_search_context;
                     a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
                     a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
@@ -69,6 +72,9 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                 a["path"] =  path.join(".")
                 fullPaths.push(a["path"])
                 a["operator"] = {};
+                a["type"] = json.type;
+                a["enum"] = json.enum;
+                a["description"] = json.description;
                 a["rcsb_search_context"] = json.rcsb_search_context;
                 a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
                 a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
