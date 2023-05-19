@@ -35,15 +35,15 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                     a["path"] =  path.join(".")
                     fullPaths.push(a["path"])
                     a["operator"] = {};
-                    a["type"] = json.type;
                     if(json.enum)
                         a["enum"] = json.enum.reduce( (dict: {[k:string]:string}, value: string) => {dict[value]=value; return dict;}, {});
+                    a["type"] = json.type;
                     a["description"] = json.description;
                     a["rcsb_search_context"] = json.rcsb_search_context;
                     a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
                     a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
                     a["rcsb_description"] = json.rcsb_description;
-                    a["rcsb_nested_indexing"] = json.rcsb_description;
+                    a["rcsb_nested_indexing"] = json.rcsb_nested_indexing;
                     a["rcsb_nested_indexing_context"] = json.rcsb_nested_indexing_context;
                     attributeList.push(a);
                     for(const op of json.items.rcsb_search_context){
@@ -73,15 +73,15 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                 a["path"] =  path.join(".")
                 fullPaths.push(a["path"])
                 a["operator"] = {};
-                a["type"] = json.type;
                 if(json.enum)
                     a["enum"] = json.enum.reduce( (dict: {[k:string]:string}, value: string) => {dict[value]=value; return dict;}, {});
+                a["type"] = json.type;
                 a["description"] = json.description;
                 a["rcsb_search_context"] = json.rcsb_search_context;
                 a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
                 a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
                 a["rcsb_description"] = json.rcsb_description;
-                a["rcsb_nested_indexing"] = json.rcsb_description;
+                a["rcsb_nested_indexing"] = json.rcsb_nested_indexing;
                 a["rcsb_nested_indexing_context"] = json.rcsb_nested_indexing_context;
                 attributeList.push(a);
                 for(const op of json.rcsb_search_context){
