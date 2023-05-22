@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.10] - 2023-05-19
+### Bug fix
+- `rcsb_nested_indexing_context` bug fix
+
 ## [4.1.9] - 2023-05-19
 ### Bug fix
 - `rcsb_nested_indexing_context` bug fix
@@ -17,7 +21,6 @@
 ## [4.1.6] - 2023-05-15
 ### Improvement
 - `RcsbSearchMetadata` includes rcsb schema metadata (e.g. `rcsb_search_context`, `rcsb_description`)
-- `RcsbSearchAttributeList` list of all search attribute objects
 
 ## [4.1.5] - 2023-05-11
 ### Improvement
