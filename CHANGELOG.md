@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.11] - 2023-05-22
+### Improvement
+- Added search metadata
+
 ## [4.1.10] - 2023-05-22
 ### Bug fix
 - `rcsb_nested_indexing_context` bug fix

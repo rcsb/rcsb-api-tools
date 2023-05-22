@@ -38,25 +38,8 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                             a["rcsb_nested_indexing_context"] = indexContex[q];
                         }
                     });
-                    a["path"] =  path.join(".")
+                    fillNode(a, json, path);
                     fullPaths.push(a["path"])
-                    a["operator"] = {};
-                    if(json.enum)
-                        a["enum"] = json.enum.reduce( (dict: {[k:string]:string}, value: string) => {dict[value]=value; return dict;}, {});
-                    a["type"] = json.type;
-                    a["description"] = json.description;
-                    a["rcsb_search_context"] = json.rcsb_search_context;
-                    a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
-                    a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
-                    a["rcsb_description"] = json.rcsb_description;
-                    a["rcsb_nested_indexing"] = json.rcsb_nested_indexing;
-                    a["rcsb_nested_indexing_context"] = json.rcsb_nested_indexing_context;
-                    for(const op of json.items.rcsb_search_context){
-                        if(operators_dict[op])
-                            for(const opName of operators_dict[op]){
-                                a["operator"][camelCase(opName)] = opName
-                            }
-                    }
                 }
             }
         }else if(json.type === "object"){
@@ -78,29 +61,37 @@ function parseMetadata(json: any, nodeName: string, path: string[], root:{}, ful
                         a["rcsb_nested_indexing_context"] = indexContex[q];
                     }
                 });
-                a["path"] =  path.join(".")
+                fillNode(a, json, path);
                 fullPaths.push(a["path"])
-                a["operator"] = {};
-                if(json.enum)
-                    a["enum"] = json.enum.reduce( (dict: {[k:string]:string}, value: string) => {dict[value]=value; return dict;}, {});
-                a["type"] = json.type;
-                a["description"] = json.description;
-                a["rcsb_search_context"] = json.rcsb_search_context;
-                a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
-                a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
-                a["rcsb_description"] = json.rcsb_description;
-                a["rcsb_nested_indexing"] = json.rcsb_nested_indexing;
-                a["rcsb_nested_indexing_context"] = json.rcsb_nested_indexing_context;
-                for(const op of json.rcsb_search_context){
-                    if(operators_dict[op])
-                        for(const opName of operators_dict[op]){
-                            a["operator"][camelCase(opName)] = opName
-                        }
-                }
             }
         }
     }else{
         throw "ERROR: No type found"
+    }
+}
+
+function fillNode(a: any, json: any, path: string[]): void {
+    a["path"] =  path.join(".")
+    a["type"] = json.type;
+    a["format"] = json.format;
+    a["description"] = json.description;
+    a["rcsb_search_context"] = json.rcsb_search_context;
+    a["rcsb_enum_annotated"] = json.rcsb_enum_annotated;
+    a["rcsb_full_text_priority"] = json.rcsb_full_text_priority;
+    a["rcsb_description"] = json.rcsb_description;
+    a["rcsb_nested_indexing"] = json.rcsb_nested_indexing;
+    a["rcsb_nested_indexing_context"] = json.rcsb_nested_indexing_context;
+    a["rcsb_search_group"] = json.rcsb_search_group;
+    a["rcsb_current_maximum_value"] = json.rcsb_current_maximum_value;
+    a["rcsb_current_minimum_value"] = json.rcsb_current_minimum_value;
+    if(json.enum)
+        a["enum"] = json.enum.reduce( (dict: {[k:string]:string}, value: string) => {dict[value]=value; return dict;}, {});
+    a["operator"] = {};
+    for(const op of (json.rcsb_search_context ?? json.items.rcsb_search_context)){
+        if(operators_dict[op])
+            for(const opName of operators_dict[op]){
+                a["operator"][camelCase(opName)] = opName
+            }
     }
 }
 
