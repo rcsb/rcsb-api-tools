@@ -1,16 +1,17 @@
 import { GraphQLClient } from 'graphql-request'
-import {RequestInit} from "graphql-request/src/types.dom";
+import { RequestConfig } from 'graphql-request/src/types'
 
 import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
 import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
 import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools"
+import {Variables} from "graphql-request/src/types";
 
 
 export class GraphQLRequest {
 
     private readonly client: GraphQLClient;
 
-    constructor(api: "data-api" | "1d-coordinates" | string, config?: RequestInit) {
+    constructor(api: "data-api" | "1d-coordinates" | string, config?: RequestConfig) {
         switch (api){
             case "data-api":
                 this.client = new GraphQLClient(configYosemiteGraphQL.schema, config);
@@ -24,7 +25,7 @@ export class GraphQLRequest {
         }
     }
 
-    public async request<Q,R>(requestConfig: Q, query: string, headers?: HeadersInit): Promise<R> {
+    public async request<Q extends Variables,R>(requestConfig: Q, query: string, headers?: HeadersInit): Promise<R> {
         const localObj: R | null = LST.getItem<{query:string;requestConfig:Q},R>({query,requestConfig});
         if(localObj)
             return localObj;

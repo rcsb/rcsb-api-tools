@@ -406,6 +406,19 @@
                 "value" : {
                   "type" : "number",
                   "description" : "The value for the feature over this monomer segment."
+                },
+                "values" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "number",
+                    "examples" : [ 5, 0.25 ],
+                    "description" : "The value(s) for the feature over this monomer segment.",
+                    "rcsb_description" : [ {
+                      "text" : "The value(s) for the feature over this monomer segment.",
+                      "context" : "dictionary"
+                    } ]
+                  },
+                  "uniqueItems" : false
                 }
               },
               "additionalProperties" : false,
@@ -467,7 +480,7 @@
             "rcsb_search_context" : [ "exact-match", "full-text" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
-              "text" : "UniProt Annotation Name",
+              "text" : "Annotation Name",
               "context" : "brief"
             } ]
           },
@@ -475,7 +488,7 @@
             "type" : "string",
             "description" : "Code identifying the individual, organization or program that\n assigned the annotation.",
             "rcsb_description" : [ {
-              "text" : "UniProt Annotation Source",
+              "text" : "Annotation Source",
               "context" : "brief"
             } ]
           },
@@ -485,8 +498,20 @@
             "description" : "A type or category of the annotation.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
+            "rcsb_enum_annotated" : [ {
+              "value" : "disease",
+              "detail" : "Disease data from OMIM and Disease Ontology represented in Pharos",
+              "name" : "Disease"
+            }, {
+              "value" : "phenotype",
+              "detail" : "Phenotypic data including mouse phenotypes, mouse/human orthologs and GWAS results represented in Pharos",
+              "name" : "Phenotype"
+            } ],
             "rcsb_description" : [ {
-              "text" : "UniProt Annotation Type",
+              "text" : "A type or category of the annotation.",
+              "context" : "dictionary"
+            }, {
+              "text" : "Annotation Type",
               "context" : "brief"
             } ]
           },

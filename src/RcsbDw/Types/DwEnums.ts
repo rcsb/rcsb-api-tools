@@ -628,27 +628,6 @@ export enum Method {
     Injection = "injection"
 }
 
-export enum BFactorType {
-    Full = "FULL",
-    Partial = "PARTIAL"
-}
-
-export enum CaOnly {
-    Yes = "yes"
-}
-
-export enum LigandsForBusterReport {
-    Yes = "yes"
-}
-
-export enum NoLigandsForBusterReport {
-    Yes = "yes"
-}
-
-export enum NoLigandsForMogul {
-    Yes = "yes"
-}
-
 export enum HasReleasedExperimentalData {
     N = "N",
     Y = "Y"

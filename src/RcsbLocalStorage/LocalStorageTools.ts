@@ -60,6 +60,8 @@ export class LocalStorageTools {
     }
 
     private static objToKey<Q>(obj:Q): string {
+        if(!obj)
+            throw new Error("Object is undefined");
         return sha1(obj);
     }
 }

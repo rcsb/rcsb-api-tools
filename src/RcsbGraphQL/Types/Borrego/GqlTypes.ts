@@ -3,14 +3,16 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  ObjectScalar: any;
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  ObjectScalar: { input: any; output: any; }
 }
 
 export interface AdditionalProperty {
@@ -23,37 +25,37 @@ export interface AdditionalProperty {
    *
    */
   property_name?: Maybe<PropertyName>;
-  property_value?: Maybe<Array<Maybe<Scalars['ObjectScalar']>>>;
+  property_value?: Maybe<Array<Maybe<Scalars['ObjectScalar']['output']>>>;
 }
 
 export interface AlignedRegion {
   __typename?: 'AlignedRegion';
   /** List of genomic indexes that are needed to complete the last nucleotide triad of a genome-protein sequence alignment */
-  exon_shift?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  exon_shift?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
   /** Query sequence start position */
-  query_begin: Scalars['Int'];
+  query_begin: Scalars['Int']['output'];
   /** Query sequence end position */
-  query_end: Scalars['Int'];
+  query_end: Scalars['Int']['output'];
   /** Target sequence start position */
-  target_begin: Scalars['Int'];
+  target_begin: Scalars['Int']['output'];
   /** Target sequence start position */
-  target_end: Scalars['Int'];
+  target_end: Scalars['Int']['output'];
 }
 
 export interface AlignmentLogo {
   __typename?: 'AlignmentLogo';
-  symbol?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['Int']>;
+  symbol?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['Int']['output']>;
 }
 
 export interface AlignmentResponse {
   __typename?: 'AlignmentResponse';
   /** Length of the alignment */
-  alignment_length?: Maybe<Scalars['Int']>;
+  alignment_length?: Maybe<Scalars['Int']['output']>;
   /** Multiple sequence alignment of group members. */
   alignment_logo?: Maybe<Array<Maybe<Array<Maybe<AlignmentLogo>>>>>;
   /** Full sequence of the query */
-  query_sequence?: Maybe<Scalars['String']>;
+  query_sequence?: Maybe<Scalars['String']['output']>;
   /** JSON schema that describes the different alignments between the query sequence and targets */
   target_alignment?: Maybe<Array<Maybe<TargetAlignment>>>;
   /** Multiple sequence alignment of group members. */
@@ -62,8 +64,8 @@ export interface AlignmentResponse {
 
 
 export interface AlignmentResponseTarget_Alignment_SubsetArgs {
-  after?: InputMaybe<Scalars['String']>;
-  first: Scalars['Int'];
+  after?: InputMaybe<Scalars['String']['input']>;
+  first: Scalars['Int']['input'];
 }
 
 export interface AnnotationFeatures {
@@ -73,35 +75,35 @@ export interface AnnotationFeatures {
   /** Enumerated value that identifies the provenance type of the positional features */
   source?: Maybe<Source>;
   /** Database source entry identifier associated to the positional features */
-  target_id?: Maybe<Scalars['String']>;
+  target_id?: Maybe<Scalars['String']['output']>;
   target_identifiers?: Maybe<TargetIdentifiers>;
 }
 
 export interface Coverage {
   __typename?: 'Coverage';
   /** Percentage of the query sequence covered byt the alignment */
-  query_coverage?: Maybe<Scalars['Int']>;
+  query_coverage?: Maybe<Scalars['Int']['output']>;
   /** Length of the full query sequence */
-  query_length?: Maybe<Scalars['Int']>;
+  query_length?: Maybe<Scalars['Int']['output']>;
   /** Percentage of the target sequence covered byt the alignment */
-  target_coverage?: Maybe<Scalars['Int']>;
+  target_coverage?: Maybe<Scalars['Int']['output']>;
   /** Length of the full target sequence */
-  target_length?: Maybe<Scalars['Int']>;
+  target_length?: Maybe<Scalars['Int']['output']>;
 }
 
 export interface Feature {
   __typename?: 'Feature';
   additional_properties?: Maybe<Array<Maybe<AdditionalProperty>>>;
   /** Free-form text describing the feature */
-  description?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']['output']>;
   /** Identifier of the feature */
-  feature_id?: Maybe<Scalars['String']>;
+  feature_id?: Maybe<Scalars['String']['output']>;
   /**  List of documents that describes the location of the feature */
   feature_positions?: Maybe<Array<Maybe<FeaturePosition>>>;
   /** Name associated to the feature */
-  name?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']['output']>;
   /** Original database or software name used to obtain the feature */
-  provenance_source?: Maybe<Scalars['String']>;
+  provenance_source?: Maybe<Scalars['String']['output']>;
   /**
    * The connection type.
    *
@@ -111,36 +113,36 @@ export interface Feature {
    */
   type?: Maybe<Type>;
   /** Numerical value associated with the feature */
-  value?: Maybe<Scalars['Float']>;
+  value?: Maybe<Scalars['Float']['output']>;
 }
 
 export interface FeaturePosition {
   __typename?: 'FeaturePosition';
   /** Index at which this segment of the feature begins on the original provenance_source. When reference and source point to the same reference system this file will be null */
-  beg_ori_id?: Maybe<Scalars['Int']>;
+  beg_ori_id?: Maybe<Scalars['Int']['output']>;
   /** Index at which this segment of the feature begins */
-  beg_seq_id?: Maybe<Scalars['Int']>;
+  beg_seq_id?: Maybe<Scalars['Int']['output']>;
   /** Index at which this segment of the feature ends on the original provenance_source. If the positional feature maps to a single residue this field will be null. When reference and source point to the same reference system this file will be null */
-  end_ori_id?: Maybe<Scalars['Int']>;
+  end_ori_id?: Maybe<Scalars['Int']['output']>;
   /** Index at which this segment of the feature ends. If the positional feature maps to a single residue this field will be null */
-  end_seq_id?: Maybe<Scalars['Int']>;
+  end_seq_id?: Maybe<Scalars['Int']['output']>;
   /** Flag that indicates the feature begins before the feature index begin */
-  open_begin?: Maybe<Scalars['Boolean']>;
+  open_begin?: Maybe<Scalars['Boolean']['output']>;
   /** Flag that indicates the feature end after the feature index end */
-  open_end?: Maybe<Scalars['Boolean']>;
+  open_end?: Maybe<Scalars['Boolean']['output']>;
   /** Fragment identifier that groups a set of ranges resulting from gaps */
-  range_id?: Maybe<Scalars['String']>;
+  range_id?: Maybe<Scalars['String']['output']>;
   /** The value for the feature at this region */
-  value?: Maybe<Scalars['Float']>;
+  value?: Maybe<Scalars['Float']['output']>;
   /** The value(s) for the feature at this region */
-  values?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  values?: Maybe<Array<Maybe<Scalars['Float']['output']>>>;
 }
 
 export interface FilterInput {
   field?: InputMaybe<FieldName>;
   operation?: InputMaybe<OperationType>;
   source?: InputMaybe<Source>;
-  values?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  values?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 export enum GroupReference {
@@ -152,13 +154,13 @@ export enum GroupReference {
 export interface PageInfo {
   __typename?: 'PageInfo';
   /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
+  endCursor?: Maybe<Scalars['String']['output']>;
   /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
+  hasNextPage: Scalars['Boolean']['output'];
   /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
+  hasPreviousPage: Scalars['Boolean']['output'];
   /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
+  startCursor?: Maybe<Scalars['String']['output']>;
 }
 
 export enum PropertyName {
@@ -212,8 +214,8 @@ export interface Query {
 /** Query root */
 export interface QueryAlignmentArgs {
   from?: InputMaybe<SequenceReference>;
-  queryId: Scalars['String'];
-  range?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  queryId: Scalars['String']['input'];
+  range?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   to?: InputMaybe<SequenceReference>;
 }
 
@@ -221,8 +223,8 @@ export interface QueryAlignmentArgs {
 /** Query root */
 export interface QueryAnnotationsArgs {
   filters?: InputMaybe<Array<InputMaybe<FilterInput>>>;
-  queryId: Scalars['String'];
-  range?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  queryId: Scalars['String']['input'];
+  range?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   reference?: InputMaybe<SequenceReference>;
   sources?: InputMaybe<Array<InputMaybe<Source>>>;
 }
@@ -230,9 +232,9 @@ export interface QueryAnnotationsArgs {
 
 /** Query root */
 export interface QueryGroup_AlignmentArgs {
-  filter?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   group: GroupReference;
-  groupId?: InputMaybe<Scalars['String']>;
+  groupId?: InputMaybe<Scalars['String']['input']>;
 }
 
 
@@ -240,8 +242,8 @@ export interface QueryGroup_AlignmentArgs {
 export interface QueryGroup_AnnotationsArgs {
   filters?: InputMaybe<Array<InputMaybe<FilterInput>>>;
   group: GroupReference;
-  groupId: Scalars['String'];
-  histogram?: InputMaybe<Scalars['Boolean']>;
+  groupId: Scalars['String']['input'];
+  histogram?: InputMaybe<Scalars['Boolean']['input']>;
   sources?: InputMaybe<Array<InputMaybe<Source>>>;
 }
 
@@ -267,11 +269,11 @@ export interface TargetAlignment {
   /** Alignment scores */
   coverage?: Maybe<Coverage>;
   /** integer that identifies the DNA strand of genome alignments (1 positive strand / -1 negative strand) */
-  orientation?: Maybe<Scalars['Int']>;
+  orientation?: Maybe<Scalars['Int']['output']>;
   /** Database identifier of the target */
-  target_id?: Maybe<Scalars['String']>;
+  target_id?: Maybe<Scalars['String']['output']>;
   /** Full sequence of the target */
-  target_sequence?: Maybe<Scalars['String']>;
+  target_sequence?: Maybe<Scalars['String']['output']>;
 }
 
 /** A connection to a list of items. */
@@ -287,21 +289,21 @@ export interface TargetAlignmentConnection {
 export interface TargetAlignmentEdge {
   __typename?: 'TargetAlignmentEdge';
   /** cursor marks a unique position or index into the connection */
-  cursor: Scalars['String'];
+  cursor: Scalars['String']['output'];
   /** The item at the end of the edge */
   node?: Maybe<TargetAlignment>;
 }
 
 export interface TargetIdentifiers {
   __typename?: 'TargetIdentifiers';
-  assembly_id?: Maybe<Scalars['String']>;
-  asym_id?: Maybe<Scalars['String']>;
-  entity_id?: Maybe<Scalars['String']>;
-  entry_id?: Maybe<Scalars['String']>;
-  interface_id?: Maybe<Scalars['String']>;
-  interface_partner_index?: Maybe<Scalars['Int']>;
-  target_id?: Maybe<Scalars['String']>;
-  uniprot_id?: Maybe<Scalars['String']>;
+  assembly_id?: Maybe<Scalars['String']['output']>;
+  asym_id?: Maybe<Scalars['String']['output']>;
+  entity_id?: Maybe<Scalars['String']['output']>;
+  entry_id?: Maybe<Scalars['String']['output']>;
+  interface_id?: Maybe<Scalars['String']['output']>;
+  interface_partner_index?: Maybe<Scalars['Int']['output']>;
+  target_id?: Maybe<Scalars['String']['output']>;
+  uniprot_id?: Maybe<Scalars['String']['output']>;
 }
 
 export enum Type {

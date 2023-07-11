@@ -2,6 +2,16 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.12] - 2023-05-22
+### Schemas update
+- Search schemas update
+- DW schemas update
+
+### Dependency update
+- Updated several dependencies
+- audit fix
+
+
 ## [4.1.11] - 2023-05-22
 ### Improvement
 - Added search metadata
