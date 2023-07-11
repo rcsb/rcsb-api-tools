@@ -2,8 +2,12 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.1.13] - 2023-05-22
+### Code refactoring
+- `GraphQLRequest::request` generic type extension removed 
+
 ## [4.1.12] - 2023-05-22
-### Schemas update
+### Schema update
 - Search schemas update
 - DW schemas update
 

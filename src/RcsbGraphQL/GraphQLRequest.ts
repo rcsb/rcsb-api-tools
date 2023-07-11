@@ -25,14 +25,14 @@ export class GraphQLRequest {
         }
     }
 
-    public async request<Q extends Variables,R>(requestConfig: Q, query: string, headers?: HeadersInit): Promise<R> {
+    public async request<Q,R>(requestConfig: Q, query: string, headers?: HeadersInit): Promise<R> {
         const localObj: R | null = LST.getItem<{query:string;requestConfig:Q},R>({query,requestConfig});
         if(localObj)
             return localObj;
         try {
             const result: R = await this.client.request<R>(
                 query,
-                requestConfig,
+                requestConfig as Variables,
                 headers
             );
             LST.setItem<{query:string;requestConfig:Q},R>({query,requestConfig},result);
