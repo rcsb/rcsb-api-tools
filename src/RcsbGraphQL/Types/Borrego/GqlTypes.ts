@@ -22,14 +22,13 @@ export interface AdditionalProperty {
    *
    * Examples:
    * PARENT_COMP_ID, CATH_NAME, PARTNER_BOND_DISTANCE
-   *
    */
   property_name?: Maybe<PropertyName>;
   property_value?: Maybe<Array<Maybe<Scalars['ObjectScalar']['output']>>>;
 }
 
-export interface AlignedRegion {
-  __typename?: 'AlignedRegion';
+export interface AlignedRegions {
+  __typename?: 'AlignedRegions';
   /** List of genomic indexes that are needed to complete the last nucleotide triad of a genome-protein sequence alignment */
   exon_shift?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
   /** Query sequence start position */
@@ -42,53 +41,30 @@ export interface AlignedRegion {
   target_end: Scalars['Int']['output'];
 }
 
-export interface AlignmentLogo {
-  __typename?: 'AlignmentLogo';
-  symbol?: Maybe<Scalars['String']['output']>;
-  value?: Maybe<Scalars['Int']['output']>;
+export interface AnnotationFilterInput {
+  field: FieldName;
+  operation: OperationType;
+  source?: InputMaybe<AnnotationReference>;
+  values: Array<Scalars['String']['input']>;
 }
 
-export interface AlignmentResponse {
-  __typename?: 'AlignmentResponse';
-  /** Length of the alignment */
-  alignment_length?: Maybe<Scalars['Int']['output']>;
-  /** Multiple sequence alignment of group members. */
-  alignment_logo?: Maybe<Array<Maybe<Array<Maybe<AlignmentLogo>>>>>;
-  /** Full sequence of the query */
-  query_sequence?: Maybe<Scalars['String']['output']>;
-  /** JSON schema that describes the different alignments between the query sequence and targets */
-  target_alignment?: Maybe<Array<Maybe<TargetAlignment>>>;
-  /** Multiple sequence alignment of group members. */
-  target_alignment_subset?: Maybe<TargetAlignmentConnection>;
-}
-
-
-export interface AlignmentResponseTarget_Alignment_SubsetArgs {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first: Scalars['Int']['input'];
-}
-
-export interface AnnotationFeatures {
-  __typename?: 'AnnotationFeatures';
-  /** List of positional features */
-  features?: Maybe<Array<Maybe<Feature>>>;
-  /** Enumerated value that identifies the provenance type of the positional features */
-  source?: Maybe<Source>;
-  /** Database source entry identifier associated to the positional features */
-  target_id?: Maybe<Scalars['String']['output']>;
-  target_identifiers?: Maybe<TargetIdentifiers>;
+export enum AnnotationReference {
+  PdbEntity = 'PDB_ENTITY',
+  PdbInstance = 'PDB_INSTANCE',
+  PdbInterface = 'PDB_INTERFACE',
+  Uniprot = 'UNIPROT'
 }
 
 export interface Coverage {
   __typename?: 'Coverage';
   /** Percentage of the query sequence covered byt the alignment */
-  query_coverage?: Maybe<Scalars['Int']['output']>;
+  query_coverage: Scalars['Float']['output'];
   /** Length of the full query sequence */
-  query_length?: Maybe<Scalars['Int']['output']>;
+  query_length: Scalars['Int']['output'];
   /** Percentage of the target sequence covered byt the alignment */
-  target_coverage?: Maybe<Scalars['Int']['output']>;
+  target_coverage: Scalars['Float']['output'];
   /** Length of the full target sequence */
-  target_length?: Maybe<Scalars['Int']['output']>;
+  target_length: Scalars['Int']['output'];
 }
 
 export interface Feature {
@@ -109,7 +85,6 @@ export interface Feature {
    *
    * Examples:
    * ASA_UNBOUND, BINDING_SITE, mutation, artifact, CATH, SCOP
-   *
    */
   type?: Maybe<Type>;
   /** Numerical value associated with the feature */
@@ -138,29 +113,19 @@ export interface FeaturePosition {
   values?: Maybe<Array<Maybe<Scalars['Float']['output']>>>;
 }
 
-export interface FilterInput {
-  field?: InputMaybe<FieldName>;
-  operation?: InputMaybe<OperationType>;
-  source?: InputMaybe<Source>;
-  values?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+export enum FieldName {
+  TargetId = 'TARGET_ID',
+  Type = 'TYPE'
 }
 
 export enum GroupReference {
-  MatchingUniprotAccession = 'matching_uniprot_accession',
-  SequenceIdentity = 'sequence_identity'
+  MatchingUniprotAccession = 'MATCHING_UNIPROT_ACCESSION',
+  SequenceIdentity = 'SEQUENCE_IDENTITY'
 }
 
-/** Information about pagination in a connection. */
-export interface PageInfo {
-  __typename?: 'PageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']['output']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']['output'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']['output']>;
+export enum OperationType {
+  Contains = 'CONTAINS',
+  Equals = 'EQUALS'
 }
 
 export enum PropertyName {
@@ -201,50 +166,65 @@ export enum PropertyName {
 export interface Query {
   __typename?: 'Query';
   /** Get sequence alignments */
-  alignment?: Maybe<AlignmentResponse>;
-  /** Get positional features */
-  annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
-  /** Get group sequence alignments */
-  group_alignment?: Maybe<AlignmentResponse>;
-  /** Get group positional features */
-  group_annotations?: Maybe<Array<Maybe<AnnotationFeatures>>>;
+  alignment?: Maybe<SequenceAlignments>;
+  /** Get sequence annotations */
+  annotations?: Maybe<Array<Maybe<SequenceAnnotations>>>;
+  /** Get group alignments */
+  group_alignment?: Maybe<SequenceAlignments>;
+  /** Get group annotations */
+  group_annotations?: Maybe<Array<Maybe<SequenceAnnotations>>>;
 }
 
 
 /** Query root */
 export interface QueryAlignmentArgs {
-  from?: InputMaybe<SequenceReference>;
+  from: SequenceReference;
   queryId: Scalars['String']['input'];
-  range?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-  to?: InputMaybe<SequenceReference>;
+  range?: InputMaybe<Array<Scalars['Int']['input']>>;
+  to: SequenceReference;
 }
 
 
 /** Query root */
 export interface QueryAnnotationsArgs {
-  filters?: InputMaybe<Array<InputMaybe<FilterInput>>>;
+  filters?: InputMaybe<Array<AnnotationFilterInput>>;
   queryId: Scalars['String']['input'];
-  range?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-  reference?: InputMaybe<SequenceReference>;
-  sources?: InputMaybe<Array<InputMaybe<Source>>>;
+  range?: InputMaybe<Array<Scalars['Int']['input']>>;
+  reference: SequenceReference;
+  sources: Array<InputMaybe<AnnotationReference>>;
 }
 
 
 /** Query root */
 export interface QueryGroup_AlignmentArgs {
-  filter?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<Scalars['String']['input']>>;
   group: GroupReference;
-  groupId?: InputMaybe<Scalars['String']['input']>;
+  groupId: Scalars['String']['input'];
 }
 
 
 /** Query root */
 export interface QueryGroup_AnnotationsArgs {
-  filters?: InputMaybe<Array<InputMaybe<FilterInput>>>;
+  filters?: InputMaybe<Array<AnnotationFilterInput>>;
   group: GroupReference;
   groupId: Scalars['String']['input'];
-  histogram?: InputMaybe<Scalars['Boolean']['input']>;
-  sources?: InputMaybe<Array<InputMaybe<Source>>>;
+  sources: Array<InputMaybe<AnnotationReference>>;
+}
+
+export interface SequenceAlignments {
+  __typename?: 'SequenceAlignments';
+  query_sequence?: Maybe<Scalars['String']['output']>;
+  target_alignment?: Maybe<Array<Maybe<TargetAlignment>>>;
+}
+
+export interface SequenceAnnotations {
+  __typename?: 'SequenceAnnotations';
+  /** List of positional features */
+  features?: Maybe<Array<Maybe<Feature>>>;
+  source?: Maybe<AnnotationReference>;
+  /** Database source entry identifier associated to the positional features */
+  target_id?: Maybe<Scalars['String']['output']>;
+  target_identifiers?: Maybe<TargetIdentifiers>;
 }
 
 export enum SequenceReference {
@@ -255,43 +235,61 @@ export enum SequenceReference {
   Uniprot = 'UNIPROT'
 }
 
-export enum Source {
-  PdbEntity = 'PDB_ENTITY',
-  PdbInstance = 'PDB_INSTANCE',
-  PdbInterface = 'PDB_INTERFACE',
-  Uniprot = 'UNIPROT'
+/** Subscription root */
+export interface Subscription {
+  __typename?: 'Subscription';
+  /** Get sequence alignments */
+  alignment_subscription?: Maybe<TargetAlignment>;
+  /** Get sequence annotations */
+  annotations_subscription?: Maybe<SequenceAnnotations>;
+  /** Get group alignments */
+  group_alignment_subscription?: Maybe<TargetAlignment>;
+  /** Get group annotations */
+  group_annotations_subscription?: Maybe<SequenceAnnotations>;
+}
+
+
+/** Subscription root */
+export interface SubscriptionAlignment_SubscriptionArgs {
+  from: SequenceReference;
+  queryId: Scalars['String']['input'];
+  range?: InputMaybe<Array<Scalars['Int']['input']>>;
+  to: SequenceReference;
+}
+
+
+/** Subscription root */
+export interface SubscriptionAnnotations_SubscriptionArgs {
+  filters?: InputMaybe<Array<AnnotationFilterInput>>;
+  queryId: Scalars['String']['input'];
+  range?: InputMaybe<Array<Scalars['Int']['input']>>;
+  reference: SequenceReference;
+  sources: Array<InputMaybe<AnnotationReference>>;
+}
+
+
+/** Subscription root */
+export interface SubscriptionGroup_Alignment_SubscriptionArgs {
+  filter?: InputMaybe<Array<Scalars['String']['input']>>;
+  group: GroupReference;
+  groupId: Scalars['String']['input'];
+}
+
+
+/** Subscription root */
+export interface SubscriptionGroup_Annotations_SubscriptionArgs {
+  filters?: InputMaybe<Array<AnnotationFilterInput>>;
+  group: GroupReference;
+  groupId: Scalars['String']['input'];
+  sources: Array<InputMaybe<AnnotationReference>>;
 }
 
 export interface TargetAlignment {
   __typename?: 'TargetAlignment';
-  /** Aligned region */
-  aligned_regions?: Maybe<Array<Maybe<AlignedRegion>>>;
-  /** Alignment scores */
+  aligned_regions?: Maybe<Array<Maybe<AlignedRegions>>>;
   coverage?: Maybe<Coverage>;
-  /** integer that identifies the DNA strand of genome alignments (1 positive strand / -1 negative strand) */
-  orientation?: Maybe<Scalars['Int']['output']>;
-  /** Database identifier of the target */
   target_id?: Maybe<Scalars['String']['output']>;
-  /** Full sequence of the target */
   target_sequence?: Maybe<Scalars['String']['output']>;
-}
-
-/** A connection to a list of items. */
-export interface TargetAlignmentConnection {
-  __typename?: 'TargetAlignmentConnection';
-  /** a list of edges */
-  edges?: Maybe<Array<Maybe<TargetAlignmentEdge>>>;
-  /** details about this specific page */
-  pageInfo: PageInfo;
-}
-
-/** An edge in a connection */
-export interface TargetAlignmentEdge {
-  __typename?: 'TargetAlignmentEdge';
-  /** cursor marks a unique position or index into the connection */
-  cursor: Scalars['String']['output'];
-  /** The item at the end of the edge */
-  node?: Maybe<TargetAlignment>;
 }
 
 export interface TargetIdentifiers {
@@ -424,14 +422,4 @@ export enum Type {
   ZeroOccupancyAtomXyz = 'ZERO_OCCUPANCY_ATOM_XYZ',
   ZeroOccupancyResidueXyz = 'ZERO_OCCUPANCY_RESIDUE_XYZ',
   ZincFingerRegion = 'ZINC_FINGER_REGION'
-}
-
-export enum FieldName {
-  TargetId = 'target_id',
-  Type = 'type'
-}
-
-export enum OperationType {
-  Contains = 'contains',
-  Equals = 'equals'
 }

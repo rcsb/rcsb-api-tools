@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "4.1.14",
+  "version": "4.1.14.dev-js-sequence-coordinates.1",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
@@ -19,7 +19,7 @@
     "build": "webpack --config webpack.config.js",
     "tsc": "tsc",
     "buildApp": "npm run clean && npm run buildSources && npm run testServices && npm run tsc && npm run build",
-    "publishApp": "npm publish",
+    "publishApp": "npm publish --tag dev-js-sequence-coordinates",
     "clean": "del-cli build/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

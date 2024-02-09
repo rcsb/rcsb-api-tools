@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import {GraphQLRequest} from "./GraphQLRequest";
 import {CoreEntry} from "./Types/Yosemite/GqlTypes";
 import fs from "fs";
-import {AlignmentResponse, SequenceReference} from "./Types/Borrego/GqlTypes";
+import {SequenceAlignments, SequenceReference} from "./Types/Borrego/GqlTypes";
 import commandLineArgs from "command-line-args";
 import commandLineUsage from "command-line-usage";
 
@@ -53,7 +53,7 @@ const yoemiteRequest = async ()=>{
 const borregoClient: GraphQLRequest = new GraphQLRequest(options["1d-service"] ?? "1d-coordinates" , {fetch: fetch as any});
 const borregoQuery = fs.readFileSync(__dirname+"/Queries/Borrego/QueryAlignments.graphql", "utf-8");
 const borregoRequest = async ()=>{
-    const response = await borregoClient.request<{queryId: string; from: SequenceReference, to:SequenceReference},{alignment:AlignmentResponse}>(
+    const response = await borregoClient.request<{queryId: string; from: SequenceReference, to:SequenceReference},{alignment:SequenceAlignments}>(
         {
             queryId: "4HHB_1",
             from: SequenceReference.PdbEntity,
