@@ -13,6 +13,7 @@
       "type": "integer",
       "default": 10,
       "minimum": 0,
+      "maximum": 10000,
       "description": "Number of matched returned in the result set"
     }
   },

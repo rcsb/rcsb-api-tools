@@ -1839,9 +1839,17 @@ export interface CorePolymerEntity {
        */
       database_name?: "EMBL" | "GenBank" | "NDB" | "NORINE" | "PDB" | "PIR" | "PRF" | "RefSeq" | "UniProt";
       /**
+       * Indicates what fraction of this polymer entity sequence is covered by the reference sequence.
+       */
+      entity_sequence_coverage?: number;
+      /**
        * Source of the reference database assignment
        */
       provenance_source?: "PDB" | "RCSB" | "SIFTS" | "UniProt";
+      /**
+       * Indicates what fraction of the reference sequence is covered by this polymer entity sequence.
+       */
+      reference_sequence_coverage?: number;
     }[];
     /**
      * @minItems 1

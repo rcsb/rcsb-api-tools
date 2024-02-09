@@ -1871,6 +1871,7 @@ export interface CoreEntry {
         | "JEOL 1200EXII"
         | "JEOL 1230"
         | "JEOL 1400"
+        | "JEOL 1400/HR + YPS FEG"
         | "JEOL 2000EX"
         | "JEOL 2000EXII"
         | "JEOL 2010"
@@ -2109,6 +2110,7 @@ export interface CoreEntry {
         | "JEOL 1200EXII"
         | "JEOL 1230"
         | "JEOL 1400"
+        | "JEOL 1400/HR + YPS FEG"
         | "JEOL 2000EX"
         | "JEOL 2000EXII"
         | "JEOL 2010"
@@ -2323,6 +2325,7 @@ export interface CoreEntry {
         | "CRYSTALLOGRAPHY MERGING"
         | "CTF CORRECTION"
         | "DIFFRACTION INDEXING"
+        | "EWALD SPHERE CORRECTION"
         | "FINAL EULER ASSIGNMENT"
         | "IMAGE ACQUISITION"
         | "INITIAL EULER ASSIGNMENT"
@@ -2377,6 +2380,7 @@ export interface CoreEntry {
         | "CRYSTALLOGRAPHY MERGING"
         | "CTF CORRECTION"
         | "DIFFRACTION INDEXING"
+        | "EWALD SPHERE CORRECTION"
         | "FINAL EULER ASSIGNMENT"
         | "IMAGE ACQUISITION"
         | "INITIAL EULER ASSIGNMENT"
@@ -2586,6 +2590,7 @@ export interface CoreEntry {
        * The type of instrument used in the vitrification process.
        */
       instrument?:
+        | "CRYOSOL VITROJET"
         | "EMS-002 RAPID IMMERSION FREEZER"
         | "FEI VITROBOT MARK I"
         | "FEI VITROBOT MARK II"
@@ -2654,6 +2659,7 @@ export interface CoreEntry {
        * The type of instrument used in the vitrification process.
        */
       instrument?:
+        | "CRYOSOL VITROJET"
         | "EMS-002 RAPID IMMERSION FREEZER"
         | "FEI VITROBOT MARK I"
         | "FEI VITROBOT MARK II"
@@ -3809,8 +3815,10 @@ export interface CoreEntry {
         | "associated SAS data"
         | "associated structure factors"
         | "complete structure"
+        | "consensus EM volume"
         | "derivative structure"
         | "ensemble"
+        | "focused EM volume"
         | "minimized average structure"
         | "native structure"
         | "other"
@@ -3827,7 +3835,7 @@ export interface CoreEntry {
       /**
        * The name of the database containing the related entry.
        */
-      db_name: string;
+      db_name: "BIOISIS" | "BMCD" | "BMRB" | "EMDB" | "NDB" | "PDB" | "PDB-Dev" | "SASBDB" | "TargetDB" | "TargetTrack";
       /**
        * A description of the related entry.
        */
@@ -3843,8 +3851,10 @@ export interface CoreEntry {
         | "associated SAS data"
         | "associated structure factors"
         | "complete structure"
+        | "consensus EM volume"
         | "derivative structure"
         | "ensemble"
+        | "focused EM volume"
         | "minimized average structure"
         | "native structure"
         | "other"
@@ -3861,7 +3871,7 @@ export interface CoreEntry {
       /**
        * The name of the database containing the related entry.
        */
-      db_name: string;
+      db_name: "BIOISIS" | "BMCD" | "BMRB" | "EMDB" | "NDB" | "PDB" | "PDB-Dev" | "SASBDB" | "TargetDB" | "TargetTrack";
       /**
        * A description of the related entry.
        */
@@ -4028,6 +4038,7 @@ export interface CoreEntry {
         | "Modeller"
         | "Other"
         | "PDB"
+        | "PDB-Dev"
         | "RoseTTAFold"
         | "SwissModel";
       /**
@@ -4060,6 +4071,7 @@ export interface CoreEntry {
         | "Modeller"
         | "Other"
         | "PDB"
+        | "PDB-Dev"
         | "RoseTTAFold"
         | "SwissModel";
       /**
@@ -6356,6 +6368,10 @@ export interface CoreEntry {
      * The number of heavy atom coordinates records per deposited structure model.
      */
     deposited_atom_count?: number;
+    /**
+     * The number of deuterated water molecules per deposited structure model.
+     */
+    deposited_deuterated_water_count?: number;
     /**
      * The number of hydrogen atom coordinates records per deposited structure model.
      */

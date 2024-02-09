@@ -1302,6 +1302,18 @@
             "examples" : [ 1, 10 ],
             "path" : "rcsb_polymer_instance_feature_summary.count"
           } ]
+        }, {
+          "context_value" : "UNOBSERVED_RESIDUE_XYZ",
+          "attributes" : [ {
+            "examples" : [ 0.15, 0.45 ],
+            "path" : "rcsb_polymer_instance_feature_summary.coverage"
+          } ]
+        }, {
+          "context_value" : "UNOBSERVED_ATOM_XYZ",
+          "attributes" : [ {
+            "examples" : [ 0.15, 0.45 ],
+            "path" : "rcsb_polymer_instance_feature_summary.coverage"
+          } ]
         } ]
       } ]
     },

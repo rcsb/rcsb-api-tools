@@ -6,7 +6,7 @@
  */
 
 /**
- * JSON schema for entity level core data. Combines RCSB Exchange Database schema: json-schema-min-pdbx_core_assembly.json and RCSB Data Warehouse schema: json-schema-core_assembly.json
+ * JSON schema for assembly level core data. Combines RCSB Exchange Database schema: json-schema-min-pdbx_core_assembly.json and RCSB Data Warehouse schema: json-schema-core_assembly.json
  */
 export interface CoreAssembly {
   pdbx_struct_assembly?: {
@@ -468,6 +468,10 @@ export interface CoreAssembly {
      *  This is the total count of branched entity instances generated in the assembly coordinate data.
      */
     branched_entity_instance_count?: number;
+    /**
+     * The assembly deuterated water molecule count.
+     */
+    deuterated_water_count?: number;
     /**
      * The PDB entry accession code.
      */
@@ -990,6 +994,196 @@ export interface CoreAssembly {
        * Hierarchy depth.
        */
       depth?: number;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  rcsb_assembly_feature?: [
+    {
+      /**
+       * Identifies the version of the feature assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the feature.
+       */
+      description?: string;
+      /**
+       * An identifier for the feature.
+       */
+      feature_id?: string;
+      /**
+       * A name for the feature.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that
+       *  assigned the feature.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the feature.
+       */
+      type?: "MCSA";
+      /**
+       * This container groups together chain-level identifiers of the assigned features.
+       */
+      feature_positions?: {
+        /**
+         * An identifier for the monomer at which this segment of the feature begins.
+         */
+        beg_seq_id: number;
+        /**
+         * An identifier for the monomer at which this segment of the feature ends.
+         */
+        end_seq_id?: number;
+        values?: number[];
+        /**
+         * An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
+         */
+        asym_id: string;
+        /**
+         * pdbx_struct_oper_list_ids of the chain instance.
+         */
+        struct_oper_list: string[];
+      }[];
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
+    },
+    ...{
+      /**
+       * Identifies the version of the feature assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the feature.
+       */
+      description?: string;
+      /**
+       * An identifier for the feature.
+       */
+      feature_id?: string;
+      /**
+       * A name for the feature.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that
+       *  assigned the feature.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the feature.
+       */
+      type?: "MCSA";
+      /**
+       * This container groups together chain-level identifiers of the assigned features.
+       */
+      feature_positions?: {
+        /**
+         * An identifier for the monomer at which this segment of the feature begins.
+         */
+        beg_seq_id: number;
+        /**
+         * An identifier for the monomer at which this segment of the feature ends.
+         */
+        end_seq_id?: number;
+        values?: number[];
+        /**
+         * An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
+         */
+        asym_id: string;
+        /**
+         * pdbx_struct_oper_list_ids of the chain instance.
+         */
+        struct_oper_list: string[];
+      }[];
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  rcsb_assembly_annotation?: [
+    {
+      /**
+       * An identifier for the annotation.
+       */
+      annotation_id?: string;
+      /**
+       * Identifies the version of the annotation assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the annotation.
+       */
+      description?: string;
+      /**
+       * A name for the annotation.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that
+       *  assigned the annotation.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the annotation.
+       */
+      type?: "MCSA";
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
+    },
+    ...{
+      /**
+       * An identifier for the annotation.
+       */
+      annotation_id?: string;
+      /**
+       * Identifies the version of the annotation assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the annotation.
+       */
+      description?: string;
+      /**
+       * A name for the annotation.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that
+       *  assigned the annotation.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the annotation.
+       */
+      type?: "MCSA";
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
     }[]
   ];
   rcsb_latest_revision?: {

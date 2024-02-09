@@ -499,7 +499,9 @@ export interface CoreAssembly {
   pdbx_struct_oper_list?: Maybe<Array<Maybe<PdbxStructOperList>>>;
   /** Get a list of polymer entity instances (chains) that constitute this assembly. */
   polymer_entity_instances?: Maybe<Array<Maybe<CorePolymerEntityInstance>>>;
+  rcsb_assembly_annotation?: Maybe<Array<Maybe<RcsbAssemblyAnnotation>>>;
   rcsb_assembly_container_identifiers: RcsbAssemblyContainerIdentifiers;
+  rcsb_assembly_feature?: Maybe<Array<Maybe<RcsbAssemblyFeature>>>;
   rcsb_assembly_info?: Maybe<RcsbAssemblyInfo>;
   /**
    * A unique identifier for each object in this assembly container formed by
@@ -1249,8 +1251,15 @@ export interface DrugbankInfo {
   description?: Maybe<Scalars['String']['output']>;
   /** The DrugBank drug categories. */
   drug_categories?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The DrugBank drug drug groups. */
+  /**
+   * The DrugBank drug groups determine their drug development status.
+   *
+   * Allowable values:
+   * approved, experimental, illicit, investigational, nutraceutical, vet_approved, withdrawn
+   *
+   */
   drug_groups?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  drug_products?: Maybe<Array<Maybe<DrugbankInfoDrugProducts>>>;
   /** The DrugBank accession code */
   drugbank_id: Scalars['String']['output'];
   /**
@@ -1281,6 +1290,58 @@ export interface DrugbankInfo {
   pharmacology?: Maybe<Scalars['String']['output']>;
   /** DrugBank drug name synonyms. */
   synonyms?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+}
+
+export interface DrugbankInfoDrugProducts {
+  __typename?: 'DrugbankInfoDrugProducts';
+  /**
+   * Indicates whether this drug has been approved by the regulating government.
+   *
+   * Allowable values:
+   * N, Y
+   *
+   */
+  approved?: Maybe<Scalars['String']['output']>;
+  /**
+   * The country where this commercially available drug has been approved.
+   *
+   * Allowable values:
+   * Canada, EU, US
+   *
+   */
+  country?: Maybe<Scalars['String']['output']>;
+  /**
+   * The ending date for market approval.
+   *
+   * Examples:
+   * 2003-07-30
+   *
+   */
+  ended_marketing_on?: Maybe<Scalars['Date']['output']>;
+  /**
+   * The proprietary name(s) provided by the manufacturer for any commercially available products containing this drug.
+   *
+   * Examples:
+   * Hivid Tab 0.375mg
+   *
+   */
+  name?: Maybe<Scalars['String']['output']>;
+  /**
+   * Source of this product information. For example, a value of DPD indicates this information was retrieved from the Canadian Drug Product Database.
+   *
+   * Allowable values:
+   * DPD, EMA, FDA NDC
+   *
+   */
+  source?: Maybe<Scalars['String']['output']>;
+  /**
+   * The starting date for market approval.
+   *
+   * Examples:
+   * 1992-12-31
+   *
+   */
+  started_marketing_on?: Maybe<Scalars['Date']['output']>;
 }
 
 export interface DrugbankTarget {
@@ -2072,7 +2133,7 @@ export interface EmImaging {
    * The name of the model of microscope.
    *
    * Allowable values:
-   * FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
+   * FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 1400/HR + YPS FEG, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
    *
    */
   microscope_model?: Maybe<Scalars['String']['output']>;
@@ -2196,7 +2257,7 @@ export interface EmSoftware {
    * The purpose of the software.
    *
    * Allowable values:
-   * CLASSIFICATION, CRYSTALLOGRAPHY MERGING, CTF CORRECTION, DIFFRACTION INDEXING, FINAL EULER ASSIGNMENT, IMAGE ACQUISITION, INITIAL EULER ASSIGNMENT, LATTICE DISTORTION CORRECTION, LAYERLINE INDEXING, MASKING, MODEL FITTING, MODEL REFINEMENT, MOLECULAR REPLACEMENT, OTHER, PARTICLE SELECTION, RECONSTRUCTION, SERIES ALIGNMENT, SYMMETRY DETERMINATION, VOLUME SELECTION
+   * CLASSIFICATION, CRYSTALLOGRAPHY MERGING, CTF CORRECTION, DIFFRACTION INDEXING, EWALD SPHERE CORRECTION, FINAL EULER ASSIGNMENT, IMAGE ACQUISITION, INITIAL EULER ASSIGNMENT, LATTICE DISTORTION CORRECTION, LAYERLINE INDEXING, MASKING, MODEL FITTING, MODEL REFINEMENT, MOLECULAR REPLACEMENT, OTHER, PARTICLE SELECTION, RECONSTRUCTION, SERIES ALIGNMENT, SYMMETRY DETERMINATION, VOLUME SELECTION
    *
    */
   category?: Maybe<Scalars['String']['output']>;
@@ -2356,7 +2417,7 @@ export interface EmVitrification {
    * The type of instrument used in the vitrification process.
    *
    * Allowable values:
-   * EMS-002 RAPID IMMERSION FREEZER, FEI VITROBOT MARK I, FEI VITROBOT MARK II, FEI VITROBOT MARK III, FEI VITROBOT MARK IV, GATAN CRYOPLUNGE 3, HOMEMADE PLUNGER, LEICA EM CPC, LEICA EM GP, LEICA KF80, LEICA PLUNGER, REICHERT-JUNG PLUNGER, SPOTITON, ZEISS PLUNGE FREEZER CRYOBOX
+   * CRYOSOL VITROJET, EMS-002 RAPID IMMERSION FREEZER, FEI VITROBOT MARK I, FEI VITROBOT MARK II, FEI VITROBOT MARK III, FEI VITROBOT MARK IV, GATAN CRYOPLUNGE 3, HOMEMADE PLUNGER, LEICA EM CPC, LEICA EM GP, LEICA KF80, LEICA PLUNGER, REICHERT-JUNG PLUNGER, SPOTITON, ZEISS PLUNGE FREEZER CRYOBOX
    *
    */
   instrument?: Maybe<Scalars['String']['output']>;
@@ -3612,7 +3673,7 @@ export interface PdbxChemCompAudit {
    * The action associated with this audit record.
    *
    * Allowable values:
-   * Create component, Initial release, Modify aromatic_flag, Modify atom id, Modify charge, Modify component atom id, Modify component comp_id, Modify coordinates, Modify descriptor, Modify formal charge, Modify formula, Modify identifier, Modify internal type, Modify leaving atom flag, Modify linking type, Modify model coordinates code, Modify name, Modify one letter code, Modify parent residue, Modify processing site, Modify subcomponent list, Modify synonyms, Modify value order, Obsolete component, Other modification
+   * Create component, Initial release, Modify aromatic_flag, Modify atom id, Modify backbone, Modify charge, Modify component atom id, Modify component comp_id, Modify coordinates, Modify descriptor, Modify formal charge, Modify formula, Modify identifier, Modify internal type, Modify leaving atom flag, Modify linking type, Modify model coordinates code, Modify name, Modify one letter code, Modify parent residue, Modify processing site, Modify subcomponent list, Modify synonyms, Modify value order, Obsolete component, Other modification
    *
    */
   action_type?: Maybe<Scalars['String']['output']>;
@@ -3784,7 +3845,7 @@ export interface PdbxDatabaseRelated {
    * The identifying content type of the related entry.
    *
    * Allowable values:
-   * associated EM volume, associated NMR restraints, associated SAS data, associated structure factors, complete structure, derivative structure, ensemble, minimized average structure, native structure, other, other EM volume, protein target sequence and/or protocol data, re-refinement, representative structure, split, unspecified
+   * associated EM volume, associated NMR restraints, associated SAS data, associated structure factors, complete structure, consensus EM volume, derivative structure, ensemble, focused EM volume, minimized average structure, native structure, other, other EM volume, protein target sequence and/or protocol data, re-refinement, representative structure, split, unspecified
    *
    */
   content_type: Scalars['String']['output'];
@@ -4122,7 +4183,7 @@ export interface PdbxInitialRefinementModel {
    * This item identifies the resource of initial model used for refinement
    *
    * Allowable values:
-   * AlphaFold, ITasser, ModelArchive, Modeller, Other, PDB, RoseTTAFold, SwissModel
+   * AlphaFold, ITasser, ModelArchive, Modeller, Other, PDB, PDB-Dev, RoseTTAFold, SwissModel
    *
    */
   source_name?: Maybe<Scalars['String']['output']>;
@@ -6718,6 +6779,50 @@ export interface RcsbAccessionInfo {
   status_code?: Maybe<Scalars['String']['output']>;
 }
 
+export interface RcsbAssemblyAnnotation {
+  __typename?: 'RcsbAssemblyAnnotation';
+  additional_properties?: Maybe<Array<Maybe<RcsbAssemblyAnnotationAdditionalProperties>>>;
+  /** An identifier for the annotation. */
+  annotation_id?: Maybe<Scalars['String']['output']>;
+  /** Identifies the version of the annotation assignment. */
+  assignment_version?: Maybe<Scalars['String']['output']>;
+  /** A description for the annotation. */
+  description?: Maybe<Scalars['String']['output']>;
+  /** A name for the annotation. */
+  name?: Maybe<Scalars['String']['output']>;
+  /**
+   * Code identifying the individual, organization or program that
+   *  assigned the annotation.
+   *
+   * Examples:
+   * MCSA
+   *
+   */
+  provenance_source?: Maybe<Scalars['String']['output']>;
+  /**
+   * A type or category of the annotation.
+   *
+   * Allowable values:
+   * MCSA
+   *
+   */
+  type?: Maybe<Scalars['String']['output']>;
+}
+
+export interface RcsbAssemblyAnnotationAdditionalProperties {
+  __typename?: 'RcsbAssemblyAnnotationAdditionalProperties';
+  /**
+   * The additional property name.
+   *
+   * Allowable values:
+   * MCSA_MOTIF_COMPATIBILITY
+   *
+   */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The value(s) of the additional property. */
+  values?: Maybe<Array<Maybe<Scalars['ObjectScalar']['output']>>>;
+}
+
 export interface RcsbAssemblyContainerIdentifiers {
   __typename?: 'RcsbAssemblyContainerIdentifiers';
   /**
@@ -6741,6 +6846,72 @@ export interface RcsbAssemblyContainerIdentifiers {
    *
    */
   rcsb_id?: Maybe<Scalars['String']['output']>;
+}
+
+export interface RcsbAssemblyFeature {
+  __typename?: 'RcsbAssemblyFeature';
+  additional_properties?: Maybe<Array<Maybe<RcsbAssemblyFeatureAdditionalProperties>>>;
+  /** Identifies the version of the feature assignment. */
+  assignment_version?: Maybe<Scalars['String']['output']>;
+  /** A description for the feature. */
+  description?: Maybe<Scalars['String']['output']>;
+  /** An identifier for the feature. */
+  feature_id?: Maybe<Scalars['String']['output']>;
+  /** This container groups together chain-level identifiers of the assigned features. */
+  feature_positions?: Maybe<Array<Maybe<RcsbAssemblyFeatureFeaturePositions>>>;
+  /** A name for the feature. */
+  name?: Maybe<Scalars['String']['output']>;
+  /**
+   * Code identifying the individual, organization or program that
+   *  assigned the feature.
+   *
+   * Examples:
+   * MCSA
+   *
+   */
+  provenance_source?: Maybe<Scalars['String']['output']>;
+  /**
+   * A type or category of the feature.
+   *
+   * Allowable values:
+   * MCSA
+   *
+   */
+  type?: Maybe<Scalars['String']['output']>;
+}
+
+export interface RcsbAssemblyFeatureAdditionalProperties {
+  __typename?: 'RcsbAssemblyFeatureAdditionalProperties';
+  /**
+   * The additional property name.
+   *
+   * Allowable values:
+   * MCSA_MOTIF_COMPATIBILITY
+   *
+   */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The value(s) of the additional property. */
+  values?: Maybe<Array<Maybe<Scalars['ObjectScalar']['output']>>>;
+}
+
+export interface RcsbAssemblyFeatureFeaturePositions {
+  __typename?: 'RcsbAssemblyFeatureFeaturePositions';
+  /**
+   * An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
+   *
+   * Examples:
+   * A, B
+   *
+   */
+  asym_id: Scalars['String']['output'];
+  /** An identifier for the monomer at which this segment of the feature begins. */
+  beg_seq_id: Scalars['Int']['output'];
+  /** An identifier for the monomer at which this segment of the feature ends. */
+  end_seq_id?: Maybe<Scalars['Int']['output']>;
+  /** Identifies the list of operations from the category pdbx_struct_oper_list. One item in array per operator applied. The order follows how operators are applied. */
+  struct_oper_list: Array<Maybe<Scalars['String']['output']>>;
+  /** The value(s) of the feature over the monomer segment. */
+  values?: Maybe<Array<Maybe<Scalars['Float']['output']>>>;
 }
 
 export interface RcsbAssemblyInfo {
@@ -7982,7 +8153,7 @@ export interface RcsbChemCompRelated {
    * The resource name for the related chemical reference.
    *
    * Allowable values:
-   * CAS, CCDC/CSD, ChEBI, ChEMBL, DrugBank, Pharos, PubChem, RESID
+   * CAS, CCDC/CSD, COD, ChEBI, ChEMBL, DrugBank, Pharos, PubChem, RESID
    *
    */
   resource_name?: Maybe<Scalars['String']['output']>;
@@ -10176,6 +10347,14 @@ export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifie
    */
   database_name?: Maybe<Scalars['String']['output']>;
   /**
+   * Indicates what fraction of this polymer entity sequence is covered by the reference sequence.
+   *
+   * Examples:
+   * null, null
+   *
+   */
+  entity_sequence_coverage?: Maybe<Scalars['Float']['output']>;
+  /**
    * Source of the reference database assignment
    *
    * Allowable values:
@@ -10183,6 +10362,14 @@ export interface RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifie
    *
    */
   provenance_source?: Maybe<Scalars['String']['output']>;
+  /**
+   * Indicates what fraction of the reference sequence is covered by this polymer entity sequence.
+   *
+   * Examples:
+   * null, null
+   *
+   */
+  reference_sequence_coverage?: Maybe<Scalars['Float']['output']>;
 }
 
 export interface RcsbPolymerEntityFeature {
@@ -11497,6 +11684,7 @@ export interface RcsbUniprotAlignmentsCoreEntityAlignments {
 
 export interface RcsbUniprotAnnotation {
   __typename?: 'RcsbUniprotAnnotation';
+  additional_properties?: Maybe<Array<Maybe<RcsbUniprotAnnotationAdditionalProperties>>>;
   /** An identifier for the annotation. */
   annotation_id?: Maybe<Scalars['String']['output']>;
   annotation_lineage?: Maybe<Array<Maybe<RcsbUniprotAnnotationAnnotationLineage>>>;
@@ -11515,10 +11703,24 @@ export interface RcsbUniprotAnnotation {
    * A type or category of the annotation.
    *
    * Allowable values:
-   * disease, phenotype
+   * disease, phenotype, GO, InterPro
    *
    */
   type?: Maybe<Scalars['String']['output']>;
+}
+
+export interface RcsbUniprotAnnotationAdditionalProperties {
+  __typename?: 'RcsbUniprotAnnotationAdditionalProperties';
+  /**
+   * The additional property name
+   *
+   * Allowable values:
+   * INTERPRO_TYPE
+   *
+   */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The value(s) of the additional property */
+  values?: Maybe<Array<Maybe<Scalars['ObjectScalar']['output']>>>;
 }
 
 export interface RcsbUniprotAnnotationAnnotationLineage {

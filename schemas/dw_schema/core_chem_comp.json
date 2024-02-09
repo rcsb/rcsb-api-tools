@@ -31,7 +31,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Chemical Components",
-            "priority_order" : 45
+            "priority_order" : 70
           } ]
         },
         "id" : {
@@ -281,7 +281,7 @@
         "properties" : {
           "action_type" : {
             "type" : "string",
-            "enum" : [ "Create component", "Initial release", "Modify aromatic_flag", "Modify atom id", "Modify charge", "Modify component atom id", "Modify component comp_id", "Modify coordinates", "Modify descriptor", "Modify formal charge", "Modify formula", "Modify identifier", "Modify internal type", "Modify leaving atom flag", "Modify linking type", "Modify model coordinates code", "Modify name", "Modify one letter code", "Modify parent residue", "Modify processing site", "Modify subcomponent list", "Modify synonyms", "Modify value order", "Obsolete component", "Other modification" ],
+            "enum" : [ "Create component", "Initial release", "Modify aromatic_flag", "Modify atom id", "Modify backbone", "Modify charge", "Modify component atom id", "Modify component comp_id", "Modify coordinates", "Modify descriptor", "Modify formal charge", "Modify formula", "Modify identifier", "Modify internal type", "Modify leaving atom flag", "Modify linking type", "Modify model coordinates code", "Modify name", "Modify one letter code", "Modify parent residue", "Modify processing site", "Modify subcomponent list", "Modify synonyms", "Modify value order", "Obsolete component", "Other modification" ],
             "description" : "The action associated with this audit record.",
             "rcsb_description" : [ {
               "text" : "The action associated with this audit record.",
@@ -1953,7 +1953,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "Chemical Components",
-              "priority_order" : 75
+              "priority_order" : 100
             } ]
           },
           "provenance_source" : {
@@ -2047,7 +2047,7 @@
                   } ],
                   "rcsb_search_group" : [ {
                     "group_name" : "Chemical Components",
-                    "priority_order" : 85
+                    "priority_order" : 110
                   } ]
                 },
                 "name" : {
@@ -2064,7 +2064,7 @@
                   } ],
                   "rcsb_search_group" : [ {
                     "group_name" : "Chemical Components",
-                    "priority_order" : 80
+                    "priority_order" : 105
                   } ]
                 }
               },
@@ -2254,7 +2254,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Chemical Components",
-            "priority_order" : 40
+            "priority_order" : 65
           } ]
         },
         "SMILES" : {
@@ -2311,7 +2311,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Chemical Components",
-            "priority_order" : 55
+            "priority_order" : 80
           } ]
         },
         "atom_count_heavy" : {
@@ -2327,7 +2327,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Chemical Components",
-            "priority_order" : 50
+            "priority_order" : 75
           } ]
         },
         "bond_count" : {
@@ -2343,7 +2343,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Chemical Components",
-            "priority_order" : 60
+            "priority_order" : 85
           } ]
         },
         "bond_count_aromatic" : {
@@ -2359,7 +2359,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Chemical Components",
-            "priority_order" : 65
+            "priority_order" : 90
           } ]
         },
         "comp_id" : {
@@ -2516,12 +2516,12 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "Chemical Components",
-              "priority_order" : 70
+              "priority_order" : 95
             } ]
           },
           "resource_name" : {
             "type" : "string",
-            "enum" : [ "CAS", "CCDC/CSD", "ChEBI", "ChEMBL", "DrugBank", "Pharos", "PubChem", "RESID" ],
+            "enum" : [ "CAS", "CCDC/CSD", "COD", "ChEBI", "ChEMBL", "DrugBank", "Pharos", "PubChem", "RESID" ],
             "examples" : [ "CCDC/CSD" ],
             "description" : "The resource name for the related chemical reference.",
             "rcsb_search_context" : [ "exact-match" ],
@@ -2534,6 +2534,10 @@
               "value" : "CCDC/CSD",
               "detail" : "Cambridge Crystallographic Data Center",
               "name" : "CCDC/CSD"
+            }, {
+              "value" : "COD",
+              "detail" : "Crystallography Open Database",
+              "name" : "COD"
             }, {
               "value" : "ChEBI",
               "detail" : "Chemical Entities of Biological Interest (ChEBI)",
@@ -2587,6 +2591,12 @@
           "context_value" : "CCDC/CSD",
           "attributes" : [ {
             "examples" : [ "QAXDEZ", "XEGJEA" ],
+            "path" : "rcsb_chem_comp_related.resource_accession_code"
+          } ]
+        }, {
+          "context_value" : "COD",
+          "attributes" : [ {
+            "examples" : [ 2236573, 7229993 ],
             "path" : "rcsb_chem_comp_related.resource_accession_code"
           } ]
         }, {

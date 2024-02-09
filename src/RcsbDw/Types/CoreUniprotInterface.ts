@@ -327,7 +327,7 @@ export interface CoreUniProt {
       /**
        * A type or category of the annotation.
        */
-      type?: "disease" | "phenotype";
+      type?: "disease" | "phenotype" | "GO" | "InterPro";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -341,6 +341,13 @@ export interface CoreUniProt {
          * Members of the annotation lineage as parent class names.
          */
         name?: string;
+      }[];
+      additional_properties?: {
+        /**
+         * The additional property name
+         */
+        name?: "INTERPRO_TYPE";
+        values?: (string | number | number)[];
       }[];
     },
     ...{
@@ -368,7 +375,7 @@ export interface CoreUniProt {
       /**
        * A type or category of the annotation.
        */
-      type?: "disease" | "phenotype";
+      type?: "disease" | "phenotype" | "GO" | "InterPro";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -382,6 +389,13 @@ export interface CoreUniProt {
          * Members of the annotation lineage as parent class names.
          */
         name?: string;
+      }[];
+      additional_properties?: {
+        /**
+         * The additional property name
+         */
+        name?: "INTERPRO_TYPE";
+        values?: (string | number | number)[];
       }[];
     }[]
   ];

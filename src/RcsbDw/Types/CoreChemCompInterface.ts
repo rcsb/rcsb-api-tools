@@ -166,6 +166,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion713 {
         | "Initial release"
         | "Modify aromatic_flag"
         | "Modify atom id"
+        | "Modify backbone"
         | "Modify charge"
         | "Modify component atom id"
         | "Modify component comp_id"
@@ -215,6 +216,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion713 {
         | "Initial release"
         | "Modify aromatic_flag"
         | "Modify atom id"
+        | "Modify backbone"
         | "Modify charge"
         | "Modify component atom id"
         | "Modify component comp_id"
@@ -2048,7 +2050,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion713 {
       /**
        * The resource name for the related chemical reference.
        */
-      resource_name?: "CAS" | "CCDC/CSD" | "ChEBI" | "ChEMBL" | "DrugBank" | "Pharos" | "PubChem" | "RESID";
+      resource_name?: "CAS" | "CCDC/CSD" | "COD" | "ChEBI" | "ChEMBL" | "DrugBank" | "Pharos" | "PubChem" | "RESID";
     },
     ...{
       /**
@@ -2080,7 +2082,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion713 {
       /**
        * The resource name for the related chemical reference.
        */
-      resource_name?: "CAS" | "CCDC/CSD" | "ChEBI" | "ChEMBL" | "DrugBank" | "Pharos" | "PubChem" | "RESID";
+      resource_name?: "CAS" | "CCDC/CSD" | "COD" | "ChEBI" | "ChEMBL" | "DrugBank" | "Pharos" | "PubChem" | "RESID";
     }[]
   ];
   /**

@@ -125,6 +125,11 @@ export enum SequenceType {
     Dna = "dna"
 }
 
+export enum TargetSearchSpace {
+    Assembly = "assembly",
+    PolymerEntityInstance = "polymer_entity_instance"
+}
+
 export enum Format {
     Cif = "cif",
     Bcif = "bcif",

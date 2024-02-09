@@ -441,12 +441,11 @@
             "type" : "string",
             "description" : "An identifier for the annotation.",
             "rcsb_search_context" : [ "exact-match" ],
-            "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
               "text" : "An identifier for the annotation.",
               "context" : "dictionary"
             }, {
-              "text" : "Annotation identifier",
+              "text" : "Identifier",
               "context" : "brief"
             } ]
           },
@@ -480,8 +479,12 @@
             "rcsb_search_context" : [ "exact-match", "full-text" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
-              "text" : "Annotation Name",
+              "text" : "Name",
               "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Polymer Molecular Features",
+              "priority_order" : 108
             } ]
           },
           "provenance_source" : {
@@ -494,18 +497,25 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "disease", "phenotype" ],
+            "enum" : [ "disease", "phenotype", "GO", "InterPro" ],
             "description" : "A type or category of the annotation.",
             "rcsb_search_context" : [ "exact-match" ],
-            "rcsb_full_text_priority" : 10,
             "rcsb_enum_annotated" : [ {
               "value" : "disease",
               "detail" : "Disease data from OMIM and Disease Ontology represented in Pharos",
-              "name" : "Disease"
+              "name" : "Pharos Disease"
             }, {
               "value" : "phenotype",
-              "detail" : "Phenotypic data including mouse phenotypes, mouse/human orthologs and GWAS results represented in Pharos",
-              "name" : "Phenotype"
+              "detail" : "Phenotypic data including mouse phenotypes, mouse/human orthologs and GWAS results represented in IMPC",
+              "name" : "IMPC Phenotype"
+            }, {
+              "value" : "InterPro",
+              "detail" : "InterPro Protein Family",
+              "name" : "InterPro Protein Family"
+            }, {
+              "value" : "GO",
+              "detail" : "Gene Ontology",
+              "name" : "Gene Ontology"
             } ],
             "rcsb_description" : [ {
               "text" : "A type or category of the annotation.",
@@ -525,7 +535,7 @@
                   "description" : "Members of the annotation lineage as parent lineage depth (1-N)",
                   "rcsb_search_context" : [ "default-match" ],
                   "rcsb_description" : [ {
-                    "text" : "UniProt Annotation Lineage Depth",
+                    "text" : "Lineage Depth",
                     "context" : "brief"
                   } ]
                 },
@@ -535,8 +545,12 @@
                   "rcsb_search_context" : [ "exact-match" ],
                   "rcsb_full_text_priority" : 10,
                   "rcsb_description" : [ {
-                    "text" : "UniProt Annotation Lineage Identifier",
+                    "text" : "Lineage Identifier",
                     "context" : "brief"
+                  } ],
+                  "rcsb_search_group" : [ {
+                    "group_name" : "Polymer Molecular Features",
+                    "priority_order" : 111
                   } ]
                 },
                 "name" : {
@@ -545,8 +559,12 @@
                   "rcsb_search_context" : [ "exact-match", "full-text" ],
                   "rcsb_full_text_priority" : 10,
                   "rcsb_description" : [ {
-                    "text" : "UniProt Annotation Lineage Name",
+                    "text" : "Lineage Name",
                     "context" : "brief"
+                  } ],
+                  "rcsb_search_group" : [ {
+                    "group_name" : "Polymer Molecular Features",
+                    "priority_order" : 116
                   } ]
                 }
               },
@@ -554,6 +572,48 @@
             },
             "uniqueItems" : false,
             "rcsb_nested_indexing" : true
+          },
+          "additional_properties" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "name" : {
+                  "type" : "string",
+                  "enum" : [ "INTERPRO_TYPE" ],
+                  "examples" : [ "INTERPRO_TYPE" ],
+                  "description" : "The additional property name",
+                  "rcsb_enum_annotated" : [ {
+                    "value" : "INTERPRO_TYPE",
+                    "detail" : "Describes the type of InterPro annotations: annotations for individual protein families, domains, important sites, etc."
+                  } ],
+                  "rcsb_description" : [ {
+                    "text" : "The additional property name",
+                    "context" : "dictionary"
+                  } ]
+                },
+                "values" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [ {
+                      "type" : "string"
+                    }, {
+                      "type" : "integer"
+                    }, {
+                      "type" : "number"
+                    } ],
+                    "description" : "The value(s) of the additional property",
+                    "rcsb_description" : [ {
+                      "text" : "The value(s) of the additional property",
+                      "context" : "dictionary"
+                    } ]
+                  },
+                  "uniqueItems" : false
+                }
+              },
+              "additionalProperties" : false
+            },
+            "uniqueItems" : false
           }
         },
         "additionalProperties" : false
@@ -563,7 +623,41 @@
       "rcsb_nested_indexing" : true,
       "rcsb_nested_indexing_context" : [ {
         "category_name" : "annotation_type",
-        "category_path" : "rcsb_uniprot_annotation.type"
+        "category_path" : "rcsb_uniprot_annotation.type",
+        "context_attributes" : [ {
+          "context_value" : "disease",
+          "attributes" : [ {
+            "examples" : [ "MONDO:0100118", "MONDO:0002051" ],
+            "path" : "rcsb_uniprot_annotation.annotation_lineage.id"
+          }, {
+            "examples" : [ "hepatocellular carcinoma", "tuberculosis" ],
+            "path" : "rcsb_uniprot_annotation.annotation_lineage.name"
+          } ]
+        }, {
+          "context_value" : "phenotype",
+          "attributes" : [ {
+            "examples" : [ "immune system phenotype", "mortality/aging" ],
+            "path" : "rcsb_uniprot_annotation.name"
+          } ]
+        }, {
+          "context_value" : "GO",
+          "attributes" : [ {
+            "examples" : [ "GO:0005575", "GO:0005622" ],
+            "path" : "rcsb_uniprot_annotation.annotation_lineage.id"
+          }, {
+            "examples" : [ "cellular_component", "intracellular" ],
+            "path" : "rcsb_uniprot_annotation.annotation_lineage.name"
+          } ]
+        }, {
+          "context_value" : "InterPro",
+          "attributes" : [ {
+            "examples" : [ "IPR022352", "IPR004825" ],
+            "path" : "rcsb_uniprot_annotation.annotation_lineage.id"
+          }, {
+            "examples" : [ "Insulin family", "Insulin" ],
+            "path" : "rcsb_uniprot_annotation.annotation_lineage.name"
+          } ]
+        } ]
       } ]
     },
     "rcsb_uniprot_external_reference" : {

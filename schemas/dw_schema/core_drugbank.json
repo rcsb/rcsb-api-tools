@@ -113,16 +113,54 @@
           "type" : "array",
           "items" : {
             "type" : "string",
-            "examples" : [ "approved;nutraceutical" ],
-            "description" : "The DrugBank drug drug groups.",
-            "rcsb_search_context" : [ "full-text" ],
-            "rcsb_full_text_priority" : 1,
+            "enum" : [ "approved", "experimental", "illicit", "investigational", "nutraceutical", "vet_approved", "withdrawn" ],
+            "examples" : [ "approved", "nutraceutical" ],
+            "description" : "The DrugBank drug groups determine their drug development status.",
+            "rcsb_search_context" : [ "exact-match" ],
+            "rcsb_full_text_priority" : 10,
+            "rcsb_enum_annotated" : [ {
+              "value" : "approved",
+              "detail" : "A drug that has been approved in at least one jurisdiction, at some point in time",
+              "name" : "Approved"
+            }, {
+              "value" : "experimental",
+              "detail" : "A compound that has been shown experimentally to bind specific proteins in mammals, bacteria, viruses, fungi, or parasites",
+              "name" : "Experimental"
+            }, {
+              "value" : "illicit",
+              "detail" : "A drug that is scheduled in at least one jurisdiction, at some point in time",
+              "name" : "Illicit"
+            }, {
+              "value" : "investigational",
+              "detail" : "A drug that is in some phase of the drug approval process in at least one jurisdiction",
+              "name" : "Investigational"
+            }, {
+              "value" : "nutraceutical",
+              "detail" : "A drug that is a pharmaceutical-grade and standardized nutrient (with confirmed or unconfirmed health benefits)",
+              "name" : "Nutraceutical"
+            }, {
+              "value" : "vet_approved",
+              "detail" : "A drug that has been approved in at least one jurisdiction, at some point in time for the treatment of animals",
+              "name" : "Vet Approved"
+            }, {
+              "value" : "withdrawn",
+              "detail" : "A previously approved drug that has been withdrawn from the market in at least one jurisdiction, at some point in time",
+              "name" : "Withdrawn"
+            } ],
             "rcsb_description" : [ {
-              "text" : "The DrugBank drug drug groups.",
+              "text" : "The DrugBank drug groups determine their drug development status.",
               "context" : "dictionary"
+            }, {
+              "text" : "Drug Groups",
+              "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Chemical Components",
+              "priority_order" : 40
             } ]
           },
-          "uniqueItems" : false
+          "minItems" : 1,
+          "uniqueItems" : true
         },
         "drugbank_id" : {
           "type" : "string",
@@ -189,6 +227,120 @@
             } ]
           },
           "uniqueItems" : false
+        },
+        "drug_products" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "approved" : {
+                "type" : "string",
+                "enum" : [ "N", "Y" ],
+                "description" : "Indicates whether this drug has been approved by the regulating government.",
+                "rcsb_search_context" : [ "exact-match" ],
+                "rcsb_full_text_priority" : 10,
+                "rcsb_description" : [ {
+                  "text" : "Indicates whether this drug has been approved by the regulating government.",
+                  "context" : "dictionary"
+                }, {
+                  "text" : "Drug Is Approved",
+                  "context" : "brief"
+                } ],
+                "rcsb_search_group" : [ {
+                  "group_name" : "Chemical Components",
+                  "priority_order" : 45
+                } ]
+              },
+              "country" : {
+                "type" : "string",
+                "enum" : [ "Canada", "EU", "US" ],
+                "examples" : [ "Canada" ],
+                "description" : "The country where this commercially available drug has been approved.",
+                "rcsb_search_context" : [ "exact-match" ],
+                "rcsb_full_text_priority" : 10,
+                "rcsb_description" : [ {
+                  "text" : "The country where this commercially available drug has been approved.",
+                  "context" : "dictionary"
+                }, {
+                  "text" : "Drug Market Availability",
+                  "context" : "brief"
+                } ],
+                "rcsb_search_group" : [ {
+                  "group_name" : "Chemical Components",
+                  "priority_order" : 60
+                } ]
+              },
+              "ended_marketing_on" : {
+                "type" : "string",
+                "format" : "date",
+                "examples" : [ "2003-07-30" ],
+                "description" : "The ending date for market approval.",
+                "rcsb_search_context" : [ "default-match" ],
+                "rcsb_description" : [ {
+                  "text" : "The ending date for market approval.",
+                  "context" : "dictionary"
+                }, {
+                  "text" : "Drug Marketing End",
+                  "context" : "brief"
+                } ],
+                "rcsb_search_group" : [ {
+                  "group_name" : "Chemical Components",
+                  "priority_order" : 55
+                } ]
+              },
+              "name" : {
+                "type" : "string",
+                "examples" : [ "Hivid Tab 0.375mg" ],
+                "description" : "The proprietary name(s) provided by the manufacturer for any commercially available products containing this drug.",
+                "rcsb_description" : [ {
+                  "text" : "The proprietary name(s) provided by the manufacturer for any commercially available products containing this drug.",
+                  "context" : "dictionary"
+                } ]
+              },
+              "source" : {
+                "type" : "string",
+                "enum" : [ "DPD", "EMA", "FDA NDC" ],
+                "examples" : [ "DPD" ],
+                "description" : "Source of this product information. For example, a value of DPD indicates this information was retrieved from the Canadian Drug Product Database.",
+                "rcsb_enum_annotated" : [ {
+                  "value" : "DPD",
+                  "detail" : "Canadian Drug Product Database"
+                }, {
+                  "value" : "EMA",
+                  "detail" : "European Medcines Agency"
+                }, {
+                  "value" : "FDA NDC",
+                  "detail" : "United States Food and Drug Administration National Drug Code"
+                } ],
+                "rcsb_description" : [ {
+                  "text" : "Source of this product information. For example, a value of DPD indicates this information was retrieved from the Canadian Drug Product Database.",
+                  "context" : "dictionary"
+                } ]
+              },
+              "started_marketing_on" : {
+                "type" : "string",
+                "format" : "date",
+                "examples" : [ "1992-12-31" ],
+                "description" : "The starting date for market approval.",
+                "rcsb_search_context" : [ "default-match" ],
+                "rcsb_description" : [ {
+                  "text" : "The starting date for market approval.",
+                  "context" : "dictionary"
+                }, {
+                  "text" : "Drug Marketing Start",
+                  "context" : "brief"
+                } ],
+                "rcsb_search_group" : [ {
+                  "group_name" : "Chemical Components",
+                  "priority_order" : 50
+                } ]
+              }
+            },
+            "additionalProperties" : false
+          },
+          "minItems" : 1,
+          "uniqueItems" : true,
+          "rcsb_nested_indexing" : true
         }
       },
       "additionalProperties" : false,

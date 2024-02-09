@@ -26,7 +26,7 @@ const query_params = {
 
 ##### query_string
 ```graphql
-query QueryAlignment($queryId: String!, $from: String!, $to: String!){
+query QueryAlignment($queryId: String!, $from: String!, $to: String!, $range:[Int!]){
      alignment(
          queryId:$queryId
          from:$from

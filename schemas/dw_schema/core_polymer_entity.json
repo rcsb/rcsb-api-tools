@@ -1937,6 +1937,10 @@
             }, {
               "text" : "Name",
               "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Polymer Molecular Features",
+              "priority_order" : 105
             } ]
           },
           "provenance_source" : {
@@ -2038,7 +2042,7 @@
                   } ],
                   "rcsb_search_group" : [ {
                     "group_name" : "Polymer Molecular Features",
-                    "priority_order" : 105
+                    "priority_order" : 110
                   } ]
                 },
                 "name" : {
@@ -2055,7 +2059,7 @@
                   } ],
                   "rcsb_search_group" : [ {
                     "group_name" : "Polymer Molecular Features",
-                    "priority_order" : 110
+                    "priority_order" : 115
                   } ]
                 }
               },
@@ -2126,24 +2130,6 @@
         "category_name" : "annotation_type",
         "category_path" : "rcsb_polymer_entity_annotation.type",
         "context_attributes" : [ {
-          "context_value" : "GO",
-          "attributes" : [ {
-            "examples" : [ "GO:0005575", "GO:0005622" ],
-            "path" : "rcsb_polymer_entity_annotation.annotation_lineage.id"
-          }, {
-            "examples" : [ "cellular_component", "intracellular" ],
-            "path" : "rcsb_polymer_entity_annotation.annotation_lineage.name"
-          } ]
-        }, {
-          "context_value" : "InterPro",
-          "attributes" : [ {
-            "examples" : [ "IPR022352", "IPR004825" ],
-            "path" : "rcsb_polymer_entity_annotation.annotation_id"
-          }, {
-            "examples" : [ "Insulin family", "Insulin" ],
-            "path" : "rcsb_polymer_entity_annotation.name"
-          } ]
-        }, {
           "context_value" : "Pfam",
           "attributes" : [ {
             "examples" : [ "PF00049", "PF00441" ],
@@ -2369,6 +2355,23 @@
                   "context" : "brief"
                 } ]
               },
+              "entity_sequence_coverage" : {
+                "type" : "number",
+                "examples" : [ 0.75, 0.25 ],
+                "description" : "Indicates what fraction of this polymer entity sequence is covered by the reference sequence.",
+                "rcsb_search_context" : [ "default-match" ],
+                "rcsb_description" : [ {
+                  "text" : "Indicates what fraction of this polymer entity sequence is covered by the reference sequence.",
+                  "context" : "dictionary"
+                }, {
+                  "text" : "Entity Sequence Coverage",
+                  "context" : "brief"
+                } ],
+                "rcsb_search_group" : [ {
+                  "group_name" : "Polymer Molecular Features",
+                  "priority_order" : 135
+                } ]
+              },
               "provenance_source" : {
                 "type" : "string",
                 "enum" : [ "PDB", "RCSB", "SIFTS", "UniProt" ],
@@ -2377,6 +2380,23 @@
                 "rcsb_description" : [ {
                   "text" : "Source of the reference database assignment",
                   "context" : "dictionary"
+                } ]
+              },
+              "reference_sequence_coverage" : {
+                "type" : "number",
+                "examples" : [ 0.75, 0.25 ],
+                "description" : "Indicates what fraction of the reference sequence is covered by this polymer entity sequence.",
+                "rcsb_search_context" : [ "default-match" ],
+                "rcsb_description" : [ {
+                  "text" : "Indicates what fraction of the reference sequence is covered by this polymer entity sequence.",
+                  "context" : "dictionary"
+                }, {
+                  "text" : "Reference Sequence Coverage",
+                  "context" : "brief"
+                } ],
+                "rcsb_search_group" : [ {
+                  "group_name" : "Polymer Molecular Features",
+                  "priority_order" : 130
                 } ]
               }
             },
@@ -2392,6 +2412,12 @@
               "attributes" : [ {
                 "examples" : [ "P01308", "P0CX43" ],
                 "path" : "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers.database_accession"
+              }, {
+                "examples" : [ 0.25, 0.75 ],
+                "path" : "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers.reference_sequence_coverage"
+              }, {
+                "examples" : [ 0.25, 0.75 ],
+                "path" : "rcsb_polymer_entity_container_identifiers.reference_sequence_identifiers.entity_sequence_coverage"
               } ]
             }, {
               "context_value" : "GenBank",
@@ -2704,7 +2730,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "Polymer Molecular Features",
-              "priority_order" : 115
+              "priority_order" : 120
             } ]
           },
           "coverage" : {
@@ -2721,7 +2747,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "Polymer Molecular Features",
-              "priority_order" : 120
+              "priority_order" : 125
             } ]
           },
           "maximum_length" : {
@@ -3440,7 +3466,7 @@
   },
   "additionalProperties" : false,
   "description" : "JSON schema for polymer entity core.",
-  "$comment" : "schema_version: 10.0.2",
+  "$comment" : "schema_version: 10.0.3",
   "required" : [ "rcsb_id", "rcsb_polymer_entity_container_identifiers" ],
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "title" : "Core Polymer Entity"

@@ -540,6 +540,10 @@ export interface StructureQueryParameters {
    * The operator allows specifying the evaluation expression.
    */
   operator?: "strict_shape_match" | "relaxed_shape_match";
+  /**
+   * Controls what are the target objects (assemblies or polymer instances) against which the query will be compared for shape similarity. If not provided, queries based on assembly identifiers are matched to assemblies, queries based on chain identifiers are match to chains (polymer entity instances), and queries based on URLs or files are matched to chains. Note that this parameter is independent of whether the input is a chain or an assembly. For instance a chain can be compared to all assemblies.
+   */
+  target_search_space?: "assembly" | "polymer_entity_instance";
 }
 /**
  * Compound structure identifier that includes PDB code and chain identifier.

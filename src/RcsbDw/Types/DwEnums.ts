@@ -173,6 +173,10 @@ export enum Kind {
     LocalSymmetry = "LocalSymmetry"
 }
 
+export enum Name {
+    McsaMotifCompatibility = "MCSA_MOTIF_COMPATIBILITY"
+}
+
 export enum ProvenanceSource {
     Pdb = "PDB",
     Rcsb = "RCSB"
@@ -288,6 +292,22 @@ export enum ReferenceDatabaseName {
     UniProt = "UniProt"
 }
 
+export enum Approved {
+    N = "N",
+    Y = "Y"
+}
+
+export enum Country {
+    Canada = "Canada",
+    Eu = "EU",
+    Us = "US"
+}
+
+export enum Source {
+    Dpd = "DPD",
+    Ema = "EMA",
+    Fdandc = "FDANDC"
+}
 
 export enum CoordinateLinkage {
     N = "n",
@@ -335,13 +355,6 @@ export enum SymmetryType {
     _3Dcrystal = "3DCRYSTAL",
     Helical = "HELICAL",
     Point = "POINT"
-}
-
-export enum Source {
-    Multiplesources = "MULTIPLESOURCES",
-    Natural = "NATURAL",
-    Recombinant = "RECOMBINANT",
-    Synthetic = "SYNTHETIC"
 }
 
 export enum AggregationState {
@@ -499,6 +512,19 @@ export enum Id {
     Sprsde = "SPRSDE"
 }
 
+export enum DbName {
+    Bioisis = "BIOISIS",
+    Bmcd = "BMCD",
+    Bmrb = "BMRB",
+    Emdb = "EMDB",
+    Ndb = "NDB",
+    Pdb = "PDB",
+    PdbDev_ = "PDB-Dev",
+    Sasbdb = "SASBDB",
+    TargetDb = "TargetDB",
+    TargetTrack = "TargetTrack"
+}
+
 export enum SgEntry {
     N = "N",
     Y = "Y"
@@ -595,6 +621,7 @@ export enum SourceName {
     Modeller = "Modeller",
     Other = "Other",
     Pdb = "PDB",
+    PdbDev_ = "PDB-Dev",
     RoseTtaFold = "RoseTTAFold",
     SwissModel = "SwissModel"
 }
@@ -697,10 +724,6 @@ export enum ProvenanceCode {
     PdbBind = "PDBBind",
     BindingMoad = "BindingMOAD",
     BindingDb = "BindingDB"
-}
-
-export enum Name {
-    ToBeDefined = "TO_BE_DEFINED"
 }
 
 export enum InterfaceCharacter {

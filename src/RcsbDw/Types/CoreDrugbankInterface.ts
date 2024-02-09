@@ -28,7 +28,21 @@ export interface SchemaDrugbankCoreCollectionDrugbankCoreVersion132 {
      */
     description?: string;
     drug_categories?: string[];
-    drug_groups?: string[];
+    /**
+     * @minItems 1
+     */
+    drug_groups?: [
+      "approved" | "experimental" | "illicit" | "investigational" | "nutraceutical" | "vet_approved" | "withdrawn",
+      ...(
+        | "approved"
+        | "experimental"
+        | "illicit"
+        | "investigational"
+        | "nutraceutical"
+        | "vet_approved"
+        | "withdrawn"
+      )[]
+    ];
     /**
      * The DrugBank accession code
      */
@@ -50,6 +64,63 @@ export interface SchemaDrugbankCoreCollectionDrugbankCoreVersion132 {
      */
     pharmacology?: string;
     synonyms?: string[];
+    /**
+     * @minItems 1
+     */
+    drug_products?: [
+      {
+        /**
+         * Indicates whether this drug has been approved by the regulating government.
+         */
+        approved?: "N" | "Y";
+        /**
+         * The country where this commercially available drug has been approved.
+         */
+        country?: "Canada" | "EU" | "US";
+        /**
+         * The ending date for market approval.
+         */
+        ended_marketing_on?: string;
+        /**
+         * The proprietary name(s) provided by the manufacturer for any commercially available products containing this drug.
+         */
+        name?: string;
+        /**
+         * Source of this product information. For example, a value of DPD indicates this information was retrieved from the Canadian Drug Product Database.
+         */
+        source?: "DPD" | "EMA" | "FDA NDC";
+        /**
+         * The starting date for market approval.
+         */
+        started_marketing_on?: string;
+      },
+      ...{
+        /**
+         * Indicates whether this drug has been approved by the regulating government.
+         */
+        approved?: "N" | "Y";
+        /**
+         * The country where this commercially available drug has been approved.
+         */
+        country?: "Canada" | "EU" | "US";
+        /**
+         * The ending date for market approval.
+         */
+        ended_marketing_on?: string;
+        /**
+         * The proprietary name(s) provided by the manufacturer for any commercially available products containing this drug.
+         */
+        name?: string;
+        /**
+         * Source of this product information. For example, a value of DPD indicates this information was retrieved from the Canadian Drug Product Database.
+         */
+        source?: "DPD" | "EMA" | "FDA NDC";
+        /**
+         * The starting date for market approval.
+         */
+        started_marketing_on?: string;
+      }[]
+    ];
   };
   /**
    * @minItems 1
