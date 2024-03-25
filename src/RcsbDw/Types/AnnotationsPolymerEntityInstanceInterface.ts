@@ -44,7 +44,7 @@ export interface EntityAnnotations {
       /**
        * The connection type.
        */
-      type?:
+      type:
         | "ASA"
         | "ASA_UNBOUND"
         | "ASA_BOUND"
@@ -180,6 +180,7 @@ export interface EntityAnnotations {
           | "DISEASE_TYPE"
           | "STRAIN_ID"
           | "SUBTYPE"
+          | "TARGET_ID"
           | "CARD_MODEL_DESCRIPTION"
           | "CARD_MODEL_ORGANISM"
           | "PARENT_COMP_ID"
@@ -204,7 +205,7 @@ export interface EntityAnnotations {
         property_value?: (string | number | number)[];
         [k: string]: unknown;
       }[];
-      feature_positions?: {
+      feature_positions: {
         /**
          * An identifier for the monomer at which this segment of the feature begins.
          */
@@ -243,7 +244,7 @@ export interface EntityAnnotations {
       /**
        * The connection type.
        */
-      type?:
+      type:
         | "ASA"
         | "ASA_UNBOUND"
         | "ASA_BOUND"
@@ -379,6 +380,7 @@ export interface EntityAnnotations {
           | "DISEASE_TYPE"
           | "STRAIN_ID"
           | "SUBTYPE"
+          | "TARGET_ID"
           | "CARD_MODEL_DESCRIPTION"
           | "CARD_MODEL_ORGANISM"
           | "PARENT_COMP_ID"
@@ -403,7 +405,7 @@ export interface EntityAnnotations {
         property_value?: (string | number | number)[];
         [k: string]: unknown;
       }[];
-      feature_positions?: {
+      feature_positions: {
         /**
          * An identifier for the monomer at which this segment of the feature begins.
          */

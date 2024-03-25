@@ -38,6 +38,7 @@
       "type" : "array",
       "items" : {
         "type" : "object",
+        "required" : [ "type", "feature_positions" ],
         "properties" : {
           "description" : {
             "type" : "string",
@@ -489,7 +490,7 @@
               "properties" : {
                 "property_name" : {
                   "type" : "string",
-                  "enum" : [ "LINK", "WILD_TYPE", "MUTATED_TYPE", "CONSEQUENCE_TYPE", "PREDICTED_IMPACT", "CLINICAL_SIGNIFICANCE", "EVIDENCE", "DISEASE_TYPE", "STRAIN_ID", "SUBTYPE", "CARD_MODEL_DESCRIPTION", "CARD_MODEL_ORGANISM", "PARENT_COMP_ID", "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "MODELCIF_MODEL_ID", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
+                  "enum" : [ "LINK", "WILD_TYPE", "MUTATED_TYPE", "CONSEQUENCE_TYPE", "PREDICTED_IMPACT", "CLINICAL_SIGNIFICANCE", "EVIDENCE", "DISEASE_TYPE", "STRAIN_ID", "SUBTYPE", "TARGET_ID", "CARD_MODEL_DESCRIPTION", "CARD_MODEL_ORGANISM", "PARENT_COMP_ID", "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "MODELCIF_MODEL_ID", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
                   "examples" : [ "PARENT_COMP_ID", "CATH_NAME", "PARTNER_BOND_DISTANCE" ],
                   "description" : "The additional property name.",
                   "rcsb_enum_annotated" : [ {

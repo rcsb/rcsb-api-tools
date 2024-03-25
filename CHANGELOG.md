@@ -2,6 +2,14 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [4.2.0] - 2024-03-25
+### Schema update
+- Search schemas update
+- DW schemas update
+### Dependency update
+- audit fix
+- Using node native fetch 
+
 ## [4.1.14] - 2024-02-09
 ### Schema update
 - Search schemas update

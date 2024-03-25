@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
 import {AggregationType, Operator, ReturnType, Service, Type} from "./Types/SearchEnums";

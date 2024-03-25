@@ -88,6 +88,7 @@ export enum PropertyName {
     DiseaseType = "DISEASE_TYPE",
     StrainId = "STRAIN_ID",
     Subtype = "SUBTYPE",
+    TargetId = "TARGET_ID",
     CardModelDescription = "CARD_MODEL_DESCRIPTION",
     CardModelOrganism = "CARD_MODEL_ORGANISM",
     ParentCompId = "PARENT_COMP_ID",

@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import {GraphQLRequest} from "./GraphQLRequest";
 import {CoreEntry} from "./Types/Yosemite/GqlTypes";
 import fs from "fs";

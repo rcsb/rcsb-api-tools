@@ -807,6 +807,7 @@ export class CoreConstants{
 	public static readonly BRANCHED_ATOM_COUNT = "branched_atom_count";
 	public static readonly BRANCHED_ENTITY_COUNT = "branched_entity_count";
 	public static readonly BRANCHED_ENTITY_INSTANCE_COUNT = "branched_entity_instance_count";
+	public static readonly DEUTERATED_WATER_COUNT = "deuterated_water_count";
 	public static readonly HYDROGEN_ATOM_COUNT = "hydrogen_atom_count";
 	public static readonly MODELED_POLYMER_MONOMER_COUNT = "modeled_polymer_monomer_count";
 	public static readonly NA_POLYMER_ENTITY_TYPES = "na_polymer_entity_types";
@@ -926,6 +927,7 @@ export class CoreConstants{
 	public static readonly BRANCHED_MOLECULAR_WEIGHT_MINIMUM = "branched_molecular_weight_minimum";
 	public static readonly CIS_PEPTIDE_COUNT = "cis_peptide_count";
 	public static readonly DEPOSITED_ATOM_COUNT = "deposited_atom_count";
+	public static readonly DEPOSITED_DEUTERATED_WATER_COUNT = "deposited_deuterated_water_count";
 	public static readonly DEPOSITED_HYDROGEN_ATOM_COUNT = "deposited_hydrogen_atom_count";
 	public static readonly DEPOSITED_MODEL_COUNT = "deposited_model_count";
 	public static readonly DEPOSITED_MODELED_POLYMER_MONOMER_COUNT = "deposited_modeled_polymer_monomer_count";

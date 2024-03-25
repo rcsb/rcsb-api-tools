@@ -3,8 +3,6 @@ import extract from "extract-zip";
 import Downloader from "nodejs-file-downloader";
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
-import {Response} from "node-fetch";
-import fetch from "node-fetch";
 import { XMLParser, XMLBuilder, XMLValidator} from "fast-xml-parser";
 
 

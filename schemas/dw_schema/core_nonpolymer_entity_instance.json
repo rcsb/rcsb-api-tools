@@ -162,15 +162,19 @@
           "comp_id" : {
             "type" : "string",
             "examples" : [ "ATP" ],
-            "description" : "Chemical component identifier.",
+            "description" : "Non-polymer (ligand) chemical component identifier.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
-              "text" : "Chemical component identifier.",
+              "text" : "Non-polymer (ligand) chemical component identifier.",
               "context" : "dictionary"
             }, {
               "text" : "Component Identifier",
               "context" : "brief"
+            } ],
+            "rcsb_search_group" : [ {
+              "group_name" : "Nonpolymer Molecular Features",
+              "priority_order" : 15
             } ]
           },
           "description" : {
@@ -221,17 +225,23 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "HAS_COVALENT_LINKAGE", "HAS_METAL_COORDINATION_LINKAGE" ],
+            "enum" : [ "HAS_COVALENT_LINKAGE", "HAS_METAL_COORDINATION_LINKAGE", "HAS_NO_COVALENT_LINKAGE" ],
             "examples" : [ "HAS_COVALENT_LINKAGE" ],
             "description" : "A type or category of the annotation.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
             "rcsb_enum_annotated" : [ {
               "value" : "HAS_COVALENT_LINKAGE",
-              "detail" : "Has a covalent attachment"
+              "detail" : "Ligands with inter-molecular covalent interactions involving non-metal elements such as Carbon, Nitrogen, Oxygen, Phosphorus, and Sulfur",
+              "name" : "Has Covalent Linkage"
             }, {
               "value" : "HAS_METAL_COORDINATION_LINKAGE",
-              "detail" : "Has a metal coordination attachment"
+              "detail" : "Ligands involved in metal coordination",
+              "name" : "Has Metal Coordination"
+            }, {
+              "value" : "HAS_NO_COVALENT_LINKAGE",
+              "detail" : "Ligands with no inter-molecular covalent interactions, but may be involved in metal coordination or other non-bonded interactions",
+              "name" : "Has No Covalent Linkage"
             } ],
             "rcsb_description" : [ {
               "text" : "A type or category of the annotation.",
@@ -299,7 +309,26 @@
       "rcsb_nested_indexing" : true,
       "rcsb_nested_indexing_context" : [ {
         "category_name" : "annotation_type",
-        "category_path" : "rcsb_nonpolymer_instance_annotation.type"
+        "category_path" : "rcsb_nonpolymer_instance_annotation.type",
+        "context_attributes" : [ {
+          "context_value" : "HAS_COVALENT_LINKAGE",
+          "attributes" : [ {
+            "examples" : [ "BMZ", "ATP" ],
+            "path" : "rcsb_nonpolymer_instance_annotation.comp_id"
+          } ]
+        }, {
+          "context_value" : "HAS_METAL_COORDINATION_LINKAGE",
+          "attributes" : [ {
+            "examples" : [ "SF4", "HEM" ],
+            "path" : "rcsb_nonpolymer_instance_annotation.comp_id"
+          } ]
+        }, {
+          "context_value" : "HAS_NO_COVALENT_LINKAGE",
+          "attributes" : [ {
+            "examples" : [ "J5C", "DID" ],
+            "path" : "rcsb_nonpolymer_instance_annotation.comp_id"
+          } ]
+        } ]
       } ]
     },
     "rcsb_nonpolymer_instance_feature" : {

@@ -133,7 +133,7 @@ export interface CoreNonpolymerEntityInstance {
        */
       assignment_version?: string;
       /**
-       * Chemical component identifier.
+       * Non-polymer (ligand) chemical component identifier.
        */
       comp_id?: string;
       /**
@@ -156,7 +156,7 @@ export interface CoreNonpolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "HAS_COVALENT_LINKAGE" | "HAS_METAL_COORDINATION_LINKAGE";
+      type?: "HAS_COVALENT_LINKAGE" | "HAS_METAL_COORDINATION_LINKAGE" | "HAS_NO_COVALENT_LINKAGE";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -182,7 +182,7 @@ export interface CoreNonpolymerEntityInstance {
        */
       assignment_version?: string;
       /**
-       * Chemical component identifier.
+       * Non-polymer (ligand) chemical component identifier.
        */
       comp_id?: string;
       /**
@@ -205,7 +205,7 @@ export interface CoreNonpolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "HAS_COVALENT_LINKAGE" | "HAS_METAL_COORDINATION_LINKAGE";
+      type?: "HAS_COVALENT_LINKAGE" | "HAS_METAL_COORDINATION_LINKAGE" | "HAS_NO_COVALENT_LINKAGE";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)

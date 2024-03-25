@@ -442,8 +442,8 @@
             "type" : "string",
             "examples" : [ "HELA CELLS" ],
             "description" : "The specific line of cells.",
-            "rcsb_search_context" : [ "full-text" ],
-            "rcsb_full_text_priority" : 1,
+            "rcsb_search_context" : [ "exact-match", "full-text" ],
+            "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
               "text" : "The specific line of cells.",
               "context" : "dictionary"
@@ -1142,7 +1142,7 @@
             } ]
           },
           "pdbx_src_id" : {
-            "type" : "string",
+            "type" : "integer",
             "description" : "An identifier for an entity segment.",
             "rcsb_description" : [ {
               "text" : "An identifier for an entity segment.",
@@ -1323,7 +1323,7 @@
             } ]
           },
           "pdbx_src_id" : {
-            "type" : "string",
+            "type" : "integer",
             "description" : "An identifier for the entity segment.",
             "rcsb_description" : [ {
               "text" : "An identifier for the entity segment.",
@@ -3466,7 +3466,7 @@
   },
   "additionalProperties" : false,
   "description" : "JSON schema for polymer entity core.",
-  "$comment" : "schema_version: 10.0.3",
+  "$comment" : "schema_version: 10.0.4",
   "required" : [ "rcsb_id", "rcsb_polymer_entity_container_identifiers" ],
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "title" : "Core Polymer Entity"

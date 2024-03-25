@@ -3860,14 +3860,8 @@ export interface PdbxDatabaseRelated {
   /**
    * The name of the database containing the related entry.
    *
-   * Examples:
-   * PDB  - Protein Databank
-   * NDB  - Nucleic Acid Database
-   * BMRB - BioMagResBank
-   * EMDB - Electron Microscopy Database
-   * BMCD - Biological Macromolecule Crystallization Database
-   * TargetTrack - Target Registration and Protocol Database
-   * SASBDB - Small Angle Scattering Biological Data Bank
+   * Allowable values:
+   * BIOISIS, BMCD, BMRB, EMDB, NDB, PDB, PDB-Dev, SASBDB, TargetDB, TargetTrack
    *
    */
   db_name: Scalars['String']['output'];
@@ -6929,6 +6923,8 @@ export interface RcsbAssemblyInfo {
    *  This is the total count of branched entity instances generated in the assembly coordinate data.
    */
   branched_entity_instance_count?: Maybe<Scalars['Int']['output']>;
+  /** The assembly deuterated water molecule count. */
+  deuterated_water_count?: Maybe<Scalars['Int']['output']>;
   /**
    * The PDB entry accession code.
    *
@@ -8679,6 +8675,8 @@ export interface RcsbEntryInfo {
   cis_peptide_count?: Maybe<Scalars['Int']['output']>;
   /** The number of heavy atom coordinates records per deposited structure model. */
   deposited_atom_count?: Maybe<Scalars['Int']['output']>;
+  /** The number of deuterated water molecules per deposited structure model. */
+  deposited_deuterated_water_count?: Maybe<Scalars['Int']['output']>;
   /** The number of hydrogen atom coordinates records per deposited structure model. */
   deposited_hydrogen_atom_count?: Maybe<Scalars['Int']['output']>;
   /** The number of model structures deposited. */
@@ -9572,7 +9570,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    */
   assignment_version?: Maybe<Scalars['String']['output']>;
   /**
-   * Chemical component identifier.
+   * Non-polymer (ligand) chemical component identifier.
    *
    * Examples:
    * ATP
@@ -9598,7 +9596,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    * A type or category of the annotation.
    *
    * Allowable values:
-   * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE
+   * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE, HAS_NO_COVALENT_LINKAGE
    *
    */
   type?: Maybe<Scalars['String']['output']>;

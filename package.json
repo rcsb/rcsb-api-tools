@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "4.1.14",
+  "version": "4.2.0",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
@@ -56,7 +56,6 @@
     "graphql-tag": "^2.12.6",
     "json-schema-to-typescript": "^13.0.2",
     "lodash": "^4.17.21",
-    "node-fetch": "^2.6.7",
     "nodejs-file-downloader": "^4.12.1",
     "react": "^18.2.0",
     "simple-git": "^3.19.1",

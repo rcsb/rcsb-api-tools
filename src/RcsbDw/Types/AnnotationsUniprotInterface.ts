@@ -40,7 +40,7 @@ export interface UniProtAnnotations {
       /**
        * The connection type.
        */
-      type?:
+      type:
         | "ASA"
         | "ASA_UNBOUND"
         | "ASA_BOUND"
@@ -176,6 +176,7 @@ export interface UniProtAnnotations {
           | "DISEASE_TYPE"
           | "STRAIN_ID"
           | "SUBTYPE"
+          | "TARGET_ID"
           | "CARD_MODEL_DESCRIPTION"
           | "CARD_MODEL_ORGANISM"
           | "PARENT_COMP_ID"
@@ -200,7 +201,7 @@ export interface UniProtAnnotations {
         property_value?: (string | number | number)[];
         [k: string]: unknown;
       }[];
-      feature_positions?: {
+      feature_positions: {
         /**
          * An identifier for the monomer at which this segment of the feature begins.
          */
@@ -239,7 +240,7 @@ export interface UniProtAnnotations {
       /**
        * The connection type.
        */
-      type?:
+      type:
         | "ASA"
         | "ASA_UNBOUND"
         | "ASA_BOUND"
@@ -375,6 +376,7 @@ export interface UniProtAnnotations {
           | "DISEASE_TYPE"
           | "STRAIN_ID"
           | "SUBTYPE"
+          | "TARGET_ID"
           | "CARD_MODEL_DESCRIPTION"
           | "CARD_MODEL_ORGANISM"
           | "PARENT_COMP_ID"
@@ -399,7 +401,7 @@ export interface UniProtAnnotations {
         property_value?: (string | number | number)[];
         [k: string]: unknown;
       }[];
-      feature_positions?: {
+      feature_positions: {
         /**
          * An identifier for the monomer at which this segment of the feature begins.
          */
