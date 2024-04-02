@@ -49,6 +49,7 @@ if(!options["schema-version"]){
 }
 
 async function getMavenPath(schemaVersion: string): Promise<{url:string;version:string;}> {
+    // TODO fix this to use a public snapshot repo. Right now we don't publish snapshots, so we can't do it yet - JD 2024-04-02
     const metadataPath: string = `https://nexus.rcsb.org/repository/maven-public/org/rcsb/rcsb-mojave-model/${schemaVersion}/maven-metadata.xml`;
     const response:Response = await fetch(metadataPath);
     const xml: string = await response.text();
@@ -66,7 +67,7 @@ async function getJarPath(schemaVersion: string): Promise<{url:string;version:st
     if(schemaVersion.includes("SNAPSHOT")){
         return await getMavenPath(schemaVersion);
     }else{
-        return {url:`https://nexus.rcsb.org/repository/maven-releases/org/rcsb/rcsb-mojave-model/${schemaVersion}/rcsb-mojave-model-${schemaVersion}.jar`, version:schemaVersion};    }
+        return {url:`https://repo1.maven.org/maven2/org/rcsb/rcsb-mojave-model//${schemaVersion}/rcsb-mojave-model-${schemaVersion}.jar`, version:schemaVersion};    }
 }
 
 async function exec(schemaVersion: string): Promise<void>{
