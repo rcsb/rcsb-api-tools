@@ -67,7 +67,7 @@ async function getJarPath(schemaVersion: string): Promise<{url:string;version:st
     if(schemaVersion.includes("SNAPSHOT")){
         return await getMavenPath(schemaVersion);
     }else{
-        return {url:`https://repo1.maven.org/maven2/org/rcsb/rcsb-mojave-model//${schemaVersion}/rcsb-mojave-model-${schemaVersion}.jar`, version:schemaVersion};    }
+        return {url:`https://repo1.maven.org/maven2/org/rcsb/rcsb-mojave-model/${schemaVersion}/rcsb-mojave-model-${schemaVersion}.jar`, version:schemaVersion};    }
 }
 
 async function exec(schemaVersion: string): Promise<void>{
