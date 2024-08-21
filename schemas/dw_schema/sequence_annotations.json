@@ -1,48 +1,85 @@
 {
-  "$schema" : "https://json-schema.org/draft-07/schema#",
-  "title" : "UniProt Annotations",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "object",
-  "required" : [ "annotations_uniprot_container_identifiers", "sequence" ],
+  "title" : "sequence_positional_annotations",
+  "description" : "JSON schema to store sequence annotations for the 1D coordinate service",
   "properties" : {
-    "annotations_uniprot_container_identifiers" : {
+    "target_id" : {
+      "examples" : [ "101M_1", "2UZI.C", "P01112" ],
+      "type" : "string",
+      "description" : "Database identifier associated to the annotation"
+    },
+    "target_identifiers" : {
       "type" : "object",
       "properties" : {
+        "target_id" : {
+          "examples" : [ "101M_1", "2UZI.C", "P01112" ],
+          "type" : "string",
+          "description" : "Database identifier associated to the annotation"
+        },
+        "entry_id" : {
+          "type" : "string",
+          "description" : "This item references an entry in core_entry",
+          "examples" : [ "101M", "1ACB" ]
+        },
+        "assembly_id" : {
+          "type" : "string",
+          "description" : "This item references an assembly in core_assembly",
+          "examples" : [ "1", "2" ]
+        },
+        "entity_id" : {
+          "type" : "string",
+          "description" : "This item references an entity in core_polymer_entity",
+          "examples" : [ "1", "2" ]
+        },
+        "asym_id" : {
+          "type" : "string",
+          "description" : "This item references an instance in core_polymer_entity_instance",
+          "examples" : [ "A", "B", "1", "2" ]
+        },
         "uniprot_id" : {
           "type" : "string",
-          "description" : "Primary accession number of a given UniProtKB entry."
+          "description" : "This item references a UniProt document in core_uniprot",
+          "examples" : [ "P01112" ]
+        },
+        "interface_id" : {
+          "type" : "string",
+          "description" : "This item references an interface in core_interface",
+          "examples" : [ "1", "2" ]
+        },
+        "interface_partner_index" : {
+          "type" : "integer",
+          "description" : "This item references a partner of an interface in core_interface",
+          "examples" : [ 0, 1 ]
         }
       },
       "additionalProperties" : false
     },
-    "sequence" : {
-      "type" : "string",
-      "description" : "Protein sequence data for canonical protein sequence."
-    },
-    "annotations" : {
+    "features" : {
       "type" : "array",
       "items" : {
         "type" : "object",
-        "required" : [ "type", "feature_positions" ],
+        "title" : "feature",
+        "description" : "List of positional features",
         "properties" : {
           "description" : {
             "type" : "string",
-            "description" : "A description for the feature."
+            "description" : "Free-form text describing the feature",
+            "examples" : [ "Software generated binding site for ligand entity 2 component HEM instance C chain A" ]
           },
           "feature_id" : {
             "type" : "string",
-            "description" : "An identifier for the feature."
+            "description" : "Identifier of the feature",
+            "examples" : [ "HELX_P11", "AC1" ]
           },
           "name" : {
             "type" : "string",
-            "description" : "A name for the feature."
-          },
-          "provenance_source" : {
-            "type" : "string",
-            "description" : "A name for the provenance source."
+            "description" : "Name associated to the feature",
+            "examples" : [ "ligand HEM" ]
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ASA", "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "hydropathy", "disorder", "disorder_binding", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "modified_monomer", "mutation", "ANGLE_OUTLIER", "BEND", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs" ],
+            "enum" : [ "ASA", "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "hydropathy", "disorder", "disorder_binding", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "modified_monomer", "mutation", "ANGLE_OUTLIER", "BEND", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs", "PROTEIN_BINDING" ],
             "examples" : [ "ASA_UNBOUND", "BINDING_SITE", "mutation", "artifact", "CATH", "SCOP" ],
             "description" : "The connection type.",
             "rcsb_enum_annotated" : [ {
@@ -475,12 +512,77 @@
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10
           },
+          "provenance_source" : {
+            "type" : "string",
+            "description" : "Original database or software name used to obtain the feature",
+            "examples" : [ "PDB", "UNIPROT" ]
+          },
           "value" : {
             "type" : "number",
-            "description" : "The value for the feature."
+            "description" : "Numerical value associated with the feature",
+            "examples" : [ 2, 3.14 ]
+          },
+          "feature_positions" : {
+            "type" : "array",
+            "description" : "List of documents that describes the location of the feature",
+            "items" : {
+              "type" : "object",
+              "title" : "feature_position",
+              "properties" : {
+                "beg_seq_id" : {
+                  "type" : "integer",
+                  "description" : "Index at which this segment of the feature begins",
+                  "examples" : [ 1, 45 ]
+                },
+                "end_seq_id" : {
+                  "type" : "integer",
+                  "description" : "Index at which this segment of the feature ends. If the positional feature maps to a single residue this field will be null",
+                  "examples" : [ 100, 500 ]
+                },
+                "beg_ori_id" : {
+                  "type" : "integer",
+                  "description" : "Index at which this segment of the feature begins on the original provenance_source. When reference and source point to the same reference system this file will be null",
+                  "examples" : [ 10, 435 ]
+                },
+                "end_ori_id" : {
+                  "type" : "integer",
+                  "description" : "Index at which this segment of the feature ends on the original provenance_source. If the positional feature maps to a single residue this field will be null. When reference and source point to the same reference system this file will be null",
+                  "examples" : [ 150, 540 ]
+                },
+                "range_id" : {
+                  "type" : "string",
+                  "description" : "Fragment identifier that groups a set of ranges resulting from gaps",
+                  "examples" : [ "range-1", "range-2" ]
+                },
+                "open_begin" : {
+                  "description" : "Flag that indicates the feature begins before the feature index begin",
+                  "type" : "boolean",
+                  "examples" : [ true, false ]
+                },
+                "open_end" : {
+                  "description" : "Flag that indicates the feature end after the feature index end",
+                  "type" : "boolean",
+                  "examples" : [ true, false ]
+                },
+                "value" : {
+                  "type" : "number",
+                  "description" : "The value for the feature at this region",
+                  "examples" : [ 1, 2, 56 ]
+                },
+                "values" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "number"
+                  },
+                  "description" : "The value(s) for the feature at this region"
+                }
+              },
+              "additionalProperties" : false
+            }
           },
           "additional_properties" : {
             "type" : "array",
+            "description" : "Attribute/Value list",
             "items" : {
               "type" : "object",
               "properties" : {
@@ -572,35 +674,6 @@
                 }
               }
             }
-          },
-          "feature_positions" : {
-            "type" : "array",
-            "items" : {
-              "type" : "object",
-              "properties" : {
-                "beg_seq_id" : {
-                  "type" : "integer",
-                  "description" : "An identifier for the monomer at which this segment of the feature begins."
-                },
-                "end_seq_id" : {
-                  "type" : "integer",
-                  "description" : "An identifier for the monomer at which this segment of the feature ends."
-                },
-                "value" : {
-                  "type" : "number",
-                  "description" : "The value for the feature over this monomer segment."
-                },
-                "values" : {
-                  "description" : "The value(s) for the feature over this monomer segment.",
-                  "type" : "array",
-                  "items" : {
-                    "type" : "number"
-                  }
-                }
-              },
-              "additionalProperties" : false
-            },
-            "uniqueItems" : false
           }
         },
         "additionalProperties" : false

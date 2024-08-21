@@ -514,6 +514,7 @@ export interface SequenceQueryParameters {
    */
   value: string;
   /**
+   * @deprecated
    * Identifies a specific search scope. Deprecated since 2.1.0. Use 'sequence_type' parameter
    */
   target?: "pdb_protein_sequence" | "pdb_rna_sequence" | "pdb_dna_sequence";
@@ -638,6 +639,7 @@ export interface SeqmotifQueryParameters {
    */
   value: string;
   /**
+   * @deprecated
    * Identifies a specific search scope. Deprecated since 2.1.0. Use 'sequence_type' parameter
    */
   target?: "pdb_protein_sequence" | "pdb_rna_sequence" | "pdb_dna_sequence";

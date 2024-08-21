@@ -1906,7 +1906,7 @@ export interface CoreEntry {
       /**
        * The mode of imaging.
        */
-      mode?: "BRIGHT FIELD" | "DARK FIELD" | "DIFFRACTION" | "OTHER";
+      mode?: "4D-STEM" | "BRIGHT FIELD" | "DARK FIELD" | "DIFFRACTION" | "OTHER";
       /**
        * The spherical aberration coefficient (Cs) in millimeters,
        *  of the objective lens.
@@ -2145,7 +2145,7 @@ export interface CoreEntry {
       /**
        * The mode of imaging.
        */
-      mode?: "BRIGHT FIELD" | "DARK FIELD" | "DIFFRACTION" | "OTHER";
+      mode?: "4D-STEM" | "BRIGHT FIELD" | "DARK FIELD" | "DIFFRACTION" | "OTHER";
       /**
        * The spherical aberration coefficient (Cs) in millimeters,
        *  of the objective lens.
@@ -4034,11 +4034,14 @@ export interface CoreEntry {
       source_name?:
         | "AlphaFold"
         | "ITasser"
+        | "InsightII"
         | "ModelArchive"
         | "Modeller"
         | "Other"
         | "PDB"
         | "PDB-Dev"
+        | "PHYRE"
+        | "Robetta"
         | "RoseTTAFold"
         | "SwissModel";
       /**
@@ -4067,11 +4070,14 @@ export interface CoreEntry {
       source_name?:
         | "AlphaFold"
         | "ITasser"
+        | "InsightII"
         | "ModelArchive"
         | "Modeller"
         | "Other"
         | "PDB"
         | "PDB-Dev"
+        | "PHYRE"
+        | "Robetta"
         | "RoseTTAFold"
         | "SwissModel";
       /**

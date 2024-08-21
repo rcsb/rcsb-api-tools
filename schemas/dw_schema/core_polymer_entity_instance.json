@@ -355,7 +355,7 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "CATH", "ECOD", "SCOP", "SCOP2" ],
+            "enum" : [ "CATH", "ECOD", "GlyGen", "SCOP", "SCOP2" ],
             "examples" : [ "CATH", "SCOP" ],
             "description" : "A type or category of the annotation.",
             "rcsb_search_context" : [ "exact-match" ],
@@ -368,6 +368,10 @@
               "value" : "ECOD",
               "detail" : "ECOD - An Evolutionary Classification of Protein Domains",
               "name" : "ECOD"
+            }, {
+              "value" : "GlyGen",
+              "detail" : "GlyGen - Computational and Informatics Resources for Glycoscience",
+              "name" : "GlyGen"
             }, {
               "value" : "SCOP",
               "detail" : "SCOP - Structural Classification of Proteins",
@@ -583,7 +587,7 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ANGLE_OUTLIER", "BEND", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "ASA" ],
+            "enum" : [ "ANGLE_OUTLIER", "BEND", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "ASA" ],
             "examples" : [ "CATH", "SCOP" ],
             "description" : "A type or category of the feature.",
             "rcsb_enum_annotated" : [ {
@@ -638,6 +642,18 @@
               "value" : "HELX_RH_PI_P",
               "detail" : "Right-handed pi helix (protein)",
               "name" : "Right-handed pi helix (protein)"
+            }, {
+              "value" : "LIGAND_COVALENT_LINKAGE",
+              "detail" : "Covalent ligand linkages with macromolecular target",
+              "name" : "Covalent Ligand Linkages"
+            }, {
+              "value" : "LIGAND_INTERACTION",
+              "detail" : "Ligand interactions with macromolecular target (includes covalent, metal coordination, and non-bonded interactions)",
+              "name" : "Ligand Interactions"
+            }, {
+              "value" : "LIGAND_METAL_COORDINATION_LINKAGE",
+              "detail" : "Metal coordination ligand linkages with macromolecular target",
+              "name" : "Metal Coordination Ligand Linkages"
             }, {
               "value" : "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY",
               "detail" : "the contact probability of a pairwise interaction",
@@ -1038,7 +1054,7 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ANGLE_OUTLIER", "BEND", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ" ],
+            "enum" : [ "ANGLE_OUTLIER", "BEND", "BINDING_SITE", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ" ],
             "examples" : [ "CATH", "SCOP" ],
             "description" : "Type or category of the feature.",
             "rcsb_search_context" : [ "exact-match" ],
@@ -1095,6 +1111,18 @@
               "value" : "HELX_RH_PI_P",
               "detail" : "Right-handed pi helix (protein)",
               "name" : "Right-handed pi helix (protein)"
+            }, {
+              "value" : "LIGAND_COVALENT_LINKAGE",
+              "detail" : "Covalent ligand linkages with macromolecular target",
+              "name" : "Covalent Ligand Linkages"
+            }, {
+              "value" : "LIGAND_INTERACTION",
+              "detail" : "Ligand interactions with macromolecular target (includes covalent, metal coordination, and non-bonded interactions)",
+              "name" : "Ligand Interactions"
+            }, {
+              "value" : "LIGAND_METAL_COORDINATION_LINKAGE",
+              "detail" : "Metal coordination ligand linkages with macromolecular target",
+              "name" : "Metal Coordination Ligand Linkages"
             }, {
               "value" : "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY",
               "detail" : "the contact probability of a pairwise interaction",
@@ -1648,5 +1676,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Polymer Entity Instance",
   "description" : "JSON schema for entity instance core data.",
-  "$comment" : "schema_version: 10.0.0"
+  "$comment" : "schema_version: 10.0.2"
 }

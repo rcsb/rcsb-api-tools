@@ -1,10 +1,9 @@
-import { GraphQLClient } from 'graphql-request'
-import { RequestConfig } from 'graphql-request/src/types'
+import {GraphQLClient, Variables} from 'graphql-request'
 
 import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
 import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
 import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools"
-import {Variables} from "graphql-request/src/types";
+import {RequestConfig} from "graphql-request/build/esm/types";
 
 
 export class GraphQLRequest {

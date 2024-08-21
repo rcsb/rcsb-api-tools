@@ -258,7 +258,7 @@ export interface CorePolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "CATH" | "ECOD" | "SCOP" | "SCOP2";
+      type?: "CATH" | "ECOD" | "GlyGen" | "SCOP" | "SCOP2";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -303,7 +303,7 @@ export interface CorePolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "CATH" | "ECOD" | "SCOP" | "SCOP2";
+      type?: "CATH" | "ECOD" | "GlyGen" | "SCOP" | "SCOP2";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -371,6 +371,9 @@ export interface CorePolymerEntityInstance {
         | "HELX_RH_3T_P"
         | "HELX_RH_AL_P"
         | "HELX_RH_PI_P"
+        | "LIGAND_COVALENT_LINKAGE"
+        | "LIGAND_INTERACTION"
+        | "LIGAND_METAL_COORDINATION_LINKAGE"
         | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
         | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
         | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
@@ -503,6 +506,9 @@ export interface CorePolymerEntityInstance {
         | "HELX_RH_3T_P"
         | "HELX_RH_AL_P"
         | "HELX_RH_PI_P"
+        | "LIGAND_COVALENT_LINKAGE"
+        | "LIGAND_INTERACTION"
+        | "LIGAND_METAL_COORDINATION_LINKAGE"
         | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
         | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
         | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
@@ -637,6 +643,9 @@ export interface CorePolymerEntityInstance {
         | "HELX_RH_3T_P"
         | "HELX_RH_AL_P"
         | "HELX_RH_PI_P"
+        | "LIGAND_COVALENT_LINKAGE"
+        | "LIGAND_INTERACTION"
+        | "LIGAND_METAL_COORDINATION_LINKAGE"
         | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
         | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
         | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
@@ -721,6 +730,9 @@ export interface CorePolymerEntityInstance {
         | "HELX_RH_3T_P"
         | "HELX_RH_AL_P"
         | "HELX_RH_PI_P"
+        | "LIGAND_COVALENT_LINKAGE"
+        | "LIGAND_INTERACTION"
+        | "LIGAND_METAL_COORDINATION_LINKAGE"
         | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
         | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
         | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"

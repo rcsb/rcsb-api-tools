@@ -7,11 +7,10 @@ module.exports = {
         const fields = new Set();
         const printedSchema = printSchema(schema); // Returns a string representation of the schema
         const astNode = parse(printedSchema); // Transforms the string into ASTNode
-        const visitor = {
-            FieldDefinition: (node) => {
-                fields.add(node.name.value)
+        const visitor =  (node) => {
+                if(node.kind === "FieldDefinition")
+                    fields.add(node.name.value)
                 return node;
-            }
         };
         visit(astNode, { leave: visitor });
         const out = ["export class CoreConstants{"];

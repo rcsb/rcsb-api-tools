@@ -2399,7 +2399,7 @@
           },
           "mode" : {
             "type" : "string",
-            "enum" : [ "BRIGHT FIELD", "DARK FIELD", "DIFFRACTION", "OTHER" ],
+            "enum" : [ "4D-STEM", "BRIGHT FIELD", "DARK FIELD", "DIFFRACTION", "OTHER" ],
             "description" : "The mode of imaging.",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
@@ -4883,6 +4883,9 @@
               "rcsb_description" : [ {
                 "text" : "A comma separated list of entities reflecting the initial model used for refinement",
                 "context" : "dictionary"
+              }, {
+                "text" : "A comma separated list of macromolecule entities in the current entry for which the specified initial refinement model was used.",
+                "context" : "deposition"
               } ]
             },
             "uniqueItems" : false
@@ -4897,7 +4900,7 @@
           },
           "source_name" : {
             "type" : "string",
-            "enum" : [ "AlphaFold", "ITasser", "ModelArchive", "Modeller", "Other", "PDB", "PDB-Dev", "RoseTTAFold", "SwissModel" ],
+            "enum" : [ "AlphaFold", "ITasser", "InsightII", "ModelArchive", "Modeller", "Other", "PDB", "PDB-Dev", "PHYRE", "Robetta", "RoseTTAFold", "SwissModel" ],
             "description" : "This item identifies the resource of initial model used for refinement",
             "rcsb_search_context" : [ "exact-match" ],
             "rcsb_full_text_priority" : 10,
@@ -10780,5 +10783,5 @@
   "$schema" : "http://json-schema.org/draft-04/schema#",
   "title" : "Core Entry",
   "description" : "JSON schema for entry level core data. Combines Exchange DB schema: json-schema-min-pdbx_core_entry.json and RCSB Data Warehouse schema: json-schema-core_entry.json",
-  "$comment" : "schema_version: 9.0.1"
+  "$comment" : "schema_version: 9.0.2"
 }

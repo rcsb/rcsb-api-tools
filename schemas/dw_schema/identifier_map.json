@@ -1,0 +1,40 @@
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "title" : "sequence_positional_annotations",
+  "description" : "JSON schema for identifier mapping in the 1D coordinate service",
+  "required" : [ "entry_id", "entity_id" ],
+  "properties" : {
+    "entry_id" : {
+      "type" : "string",
+      "description" : "This item references an entry in core_entry",
+      "examples" : [ "101M", "1ACB" ]
+    },
+    "assembly_id" : {
+      "type" : "string",
+      "description" : "This item references an assembly in core_assembly",
+      "examples" : [ "1", "2" ]
+    },
+    "entity_id" : {
+      "type" : "string",
+      "description" : "This item references an entity in core_polymer_entity",
+      "examples" : [ "1", "2" ]
+    },
+    "asym_id" : {
+      "type" : "string",
+      "description" : "This item references an instance in core_polymer_entity_instance",
+      "examples" : [ "A", "B", "1", "2" ]
+    },
+    "interface_id" : {
+      "type" : "string",
+      "description" : "This item references an interface in core_interface",
+      "examples" : [ "1", "2" ]
+    },
+    "interface_partner_index" : {
+      "type" : "integer",
+      "description" : "This item references a partner of an interface in core_interface",
+      "examples" : [ 0, 1 ]
+    }
+  },
+  "additionalProperties" : false
+}

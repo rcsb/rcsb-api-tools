@@ -39,24 +39,23 @@ module.exports = {
         const printedSchema = printSchema(schema); // Returns a string representation of the schema
         const astNode = parse(printedSchema); // Transforms the string into ASTNode
         const graphQLtypes = [];
-        const visitorEnter = {
-            ObjectTypeDefinition(node){
-                graphQLtypes.push({name:node.name.value, fields:node.fields.map(node=>{
-                            let type;
-                            if(node.type.type && node.type.type.name && node.type.type.name.value)
-                                type = node.type.type.name.value;
-                            else if(node.type.type && node.type.type.type && node.type.type.type.name && node.type.type.type.name.value)
-                                type = node.type.type.type.name.value;
-                            else if(node.type && node.type.name)
-                                type = node.type.name.value;
-                        return {
-                            name: node.name.value,
-                            type: type
+        const visitorEnter = (node) => {
+                if(node.kind === "ObjectTypeDefinition")
+                    graphQLtypes.push({name:node.name.value, fields:node.fields.map(node=>{
+                                let type;
+                                if(node.type.type && node.type.type.name && node.type.type.name.value)
+                                    type = node.type.type.name.value;
+                                else if(node.type.type && node.type.type.type && node.type.type.type.name && node.type.type.type.name.value)
+                                    type = node.type.type.type.name.value;
+                                else if(node.type && node.type.name)
+                                    type = node.type.name.value;
+                            return {
+                                name: node.name.value,
+                                type: type
+                            }
                         }
-                    }
                     )});
                 return undefined;
-            }
         };
         visit(astNode, { enter:visitorEnter });
         const root = graphQLtypes.filter(t=>(t.name === 'Query'))[0];
