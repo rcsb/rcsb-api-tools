@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDirs": ["src", "test"],
     "outDir": "./build",
     "noImplicitAny": true,
     "target": "es6",
@@ -14,7 +14,8 @@
     "allowJs": true,
     "strictFunctionTypes": true,
     "declarationDir": "./build",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": [ "src/*", "src/**/*", "src/**/**/*", "src/**/**/**/*" ],
   "exclude": [

@@ -2,6 +2,7 @@ query QueryMultipleEntityInstances($entityIds: [String!]!){
     polymer_entities(
         entity_ids:$entityIds
     ){
+        rcsb_id
         polymer_entity_instances{
             rcsb_id
             polymer_entity{
@@ -16,6 +17,7 @@ query QueryMultipleEntityInstances($entityIds: [String!]!){
                 }
             }
             rcsb_polymer_entity_instance_container_identifiers{
+                rcsb_id
                 asym_id
                 auth_asym_id
                 entry_id

@@ -1,4 +1,4 @@
-# This file was generated based on ".graphqlconfig". Do not edit manually.
+# This file was generated. Do not edit manually.
 
 schema {
     query: Query
@@ -487,16 +487,24 @@ type ClustersMembers {
 }
 
 type CoreAssembly {
-    "Get PDB entry that includes this assembly."
+    "Get a list of branched entity instances (sugars) that constitute this assembly."
+    branched_entity_instances: [CoreBranchedEntityInstance]
+    "Get entry that includes this assembly."
     entry: CoreEntry
-    "Get all pairwise polymer interfaces for this PDB assembly."
+    "Get all pairwise polymer interfaces for this assembly."
     interfaces: [CoreInterface]
+    "Get a list of non-polymer entity instances (ligands) that constitute this assembly."
+    nonpolymer_entity_instances: [CoreNonpolymerEntityInstance]
     pdbx_struct_assembly: PdbxStructAssembly
     pdbx_struct_assembly_auth_evidence: [PdbxStructAssemblyAuthEvidence]
     pdbx_struct_assembly_gen: [PdbxStructAssemblyGen]
     pdbx_struct_assembly_prop: [PdbxStructAssemblyProp]
     pdbx_struct_oper_list: [PdbxStructOperList]
+    "Get a list of polymer entity instances (chains) that constitute this assembly."
+    polymer_entity_instances: [CorePolymerEntityInstance]
+    rcsb_assembly_annotation: [RcsbAssemblyAnnotation]
     rcsb_assembly_container_identifiers: RcsbAssemblyContainerIdentifiers!
+    rcsb_assembly_feature: [RcsbAssemblyFeature]
     rcsb_assembly_info: RcsbAssemblyInfo
     """
 
@@ -519,7 +527,7 @@ type CoreBranchedEntity {
     branched_entity_instances: [CoreBranchedEntityInstance]
     "Get all unique monomers described in this branched entity."
     chem_comp_monomers: [CoreChemComp]
-    "Get PDB entry that contains this branched entity."
+    "Get entry that contains this branched entity."
     entry: CoreEntry
     pdbx_entity_branch: PdbxEntityBranch
     pdbx_entity_branch_descriptor: [PdbxEntityBranchDescriptor]
@@ -639,14 +647,13 @@ type CoreEntityAlignmentsScores {
 }
 
 type CoreEntry {
-    "Get all assemblies for this PDB entry."
+    "Get all assemblies for this entry."
     assemblies: [CoreAssembly]
     audit_author: [AuditAuthor]
-    "Get all branched entities for this PDB entry."
+    "Get all branched entities for this entry."
     branched_entities: [CoreBranchedEntity]
     cell: Cell
     citation: [Citation]
-    database_2: [Database2]
     diffrn: [Diffrn]
     diffrn_detector: [DiffrnDetector]
     diffrn_radiation: [DiffrnRadiation]
@@ -673,13 +680,13 @@ type CoreEntry {
     em_staining: [EmStaining]
     em_vitrification: [EmVitrification]
     entry: Entry
-    "Get all groups for this PDB entry."
+    "Get all groups for this entry."
     entry_groups: [GroupEntry]
     exptl: [Exptl]
     exptl_crystal: [ExptlCrystal]
     exptl_crystal_grow: [ExptlCrystalGrow]
     ma_data: [MaData]
-    "Get all non-polymer (non-solvent) entities for this PDB entry."
+    "Get all non-polymer (non-solvent) entities for this entry."
     nonpolymer_entities: [CoreNonpolymerEntity]
     pdbx_SG_project: [PdbxSGProject]
     pdbx_audit_revision_category: [PdbxAuditRevisionCategory]
@@ -692,6 +699,7 @@ type CoreEntry {
     pdbx_database_related: [PdbxDatabaseRelated]
     pdbx_database_status: PdbxDatabaseStatus
     pdbx_deposit_group: [PdbxDepositGroup]
+    pdbx_initial_refinement_model: [PdbxInitialRefinementModel]
     pdbx_molecule_features: [PdbxMoleculeFeatures]
     pdbx_nmr_details: PdbxNmrDetails
     pdbx_nmr_ensemble: PdbxNmrEnsemble
@@ -702,6 +710,7 @@ type CoreEntry {
     pdbx_nmr_sample_details: [PdbxNmrSampleDetails]
     pdbx_nmr_software: [PdbxNmrSoftware]
     pdbx_nmr_spectrometer: [PdbxNmrSpectrometer]
+    pdbx_reflns_twin: [PdbxReflnsTwin]
     pdbx_related_exp_data_set: [PdbxRelatedExpDataSet]
     pdbx_serial_crystallography_data_reduction: [PdbxSerialCrystallographyDataReduction]
     pdbx_serial_crystallography_measurement: [PdbxSerialCrystallographyMeasurement]
@@ -710,8 +719,7 @@ type CoreEntry {
     pdbx_serial_crystallography_sample_delivery_injection: [PdbxSerialCrystallographySampleDeliveryInjection]
     pdbx_soln_scatter: [PdbxSolnScatter]
     pdbx_soln_scatter_model: [PdbxSolnScatterModel]
-    pdbx_vrpt_summary: PdbxVrptSummary
-    "Get all polymer entities for this PDB entry."
+    "Get all polymer entities for this entry."
     polymer_entities: [CorePolymerEntity]
     "Get literature information from PubMed database."
     pubmed: CorePubmed
@@ -757,7 +765,7 @@ type CoreInterface {
 }
 
 type CoreNonpolymerEntity {
-    "Get PDB entry that contains this non-polymer entity."
+    "Get entry that contains this non-polymer entity."
     entry: CoreEntry
     "Get a non-polymer chemical components described in this molecular entity."
     nonpolymer_comp: CoreChemComp
@@ -867,12 +875,12 @@ type CorePolymerEntity {
     entity_poly: EntityPoly
     entity_src_gen: [EntitySrcGen]
     entity_src_nat: [EntitySrcNat]
-    "Get PDB entry that contains this molecular entity."
+    "Get entry that contains this molecular entity."
     entry: CoreEntry
     pdbx_entity_src_syn: [PdbxEntitySrcSyn]
     "Get all unique Pfam annotations associated with this molecular entity."
     pfams: [CorePfam]
-    "Get all groups for this PDB entity."
+    "Get all groups for this entity."
     polymer_entity_groups: [GroupPolymerEntity]
     "Get all unique polymer instances (chains) for this molecular entity."
     polymer_entity_instances: [CorePolymerEntityInstance]
@@ -990,26 +998,6 @@ type CurrentEntry {
     rcsb_id: String!
     rcsb_repository_holdings_current: RcsbRepositoryHoldingsCurrent
     rcsb_repository_holdings_current_entry_container_identifiers: RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers
-}
-
-type Database2 {
-    """
-
-    The code assigned by the database identified in
-    _database_2.database_id.
-
-    Examples:
-    1ABC, ABCDEF
-    """
-    database_code: String!
-    """
-
-    An abbreviation that identifies the database.
-
-    Allowable values:
-    AF, BMRB, CAS, CSD, EBI, EMDB, ICSD, MA, MDF, MODBASE, NBS, NDB, PDB, PDBE, PDB_ACC, PDF, RCSB, SMR, WWPDB
-    """
-    database_id: String!
 }
 
 type Diffrn {
@@ -1253,8 +1241,15 @@ type DrugbankInfo {
     description: String
     "The DrugBank drug categories."
     drug_categories: [String]
-    "The DrugBank drug drug groups."
+    """
+
+    The DrugBank drug groups determine their drug development status.
+
+    Allowable values:
+    approved, experimental, illicit, investigational, nutraceutical, vet_approved, withdrawn
+    """
     drug_groups: [String]
+    drug_products: [DrugbankInfoDrugProducts]
     "The DrugBank accession code"
     drugbank_id: String!
     """
@@ -1285,6 +1280,57 @@ type DrugbankInfo {
     pharmacology: String
     "DrugBank drug name synonyms."
     synonyms: [String]
+}
+
+type DrugbankInfoDrugProducts {
+    """
+
+    Indicates whether this drug has been approved by the regulating government.
+
+    Allowable values:
+    N, Y
+    """
+    approved: String
+    """
+
+    The country where this commercially available drug has been approved.
+
+    Allowable values:
+    Canada, EU, US
+    """
+    country: String
+    """
+
+    The ending date for market approval.
+
+    Examples:
+    2003-07-30
+    """
+    ended_marketing_on: Date
+    """
+
+    The proprietary name(s) provided by the manufacturer for any commercially available products containing this drug.
+
+    Examples:
+    Hivid Tab 0.375mg
+    """
+    name: String
+    """
+
+    Source of this product information. For example, a value of DPD indicates this information was retrieved from the Canadian Drug Product Database.
+
+    Allowable values:
+    DPD, EMA, FDA NDC
+    """
+    source: String
+    """
+
+    The starting date for market approval.
+
+    Examples:
+    1992-12-31
+    """
+    started_marketing_on: Date
 }
 
 type DrugbankTarget {
@@ -1333,15 +1379,33 @@ type Em2dCrystalEntity {
     angle_gamma: Float
     "Length used to sample the reciprocal lattice lines in the c-direction."
     c_sampling_length: Float
-    "Unique key for the 2d_crystal_entity category."
+    "PRIMARY KEY"
     id: String!
     "pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category."
     image_processing_id: String!
-    "Unit-cell length a in angstroms."
+    """
+
+    Unit-cell length a in angstroms.
+
+    Examples:
+    null
+    """
     length_a: Float
-    "Unit-cell length b in angstroms."
+    """
+
+    Unit-cell length b in angstroms.
+
+    Examples:
+    null
+    """
     length_b: Float
-    "Thickness of 2D crystal"
+    """
+
+    Thickness of 2D crystal
+
+    Examples:
+    null
+    """
     length_c: Float
     """
 
@@ -1360,21 +1424,57 @@ type Em2dCrystalEntity {
 }
 
 type Em3dCrystalEntity {
-    "Unit-cell angle alpha in degrees."
+    """
+
+    Unit-cell angle alpha in degrees.
+
+    Examples:
+    null
+    """
     angle_alpha: Float
-    "Unit-cell angle beta in degrees."
+    """
+
+    Unit-cell angle beta in degrees.
+
+    Examples:
+    null
+    """
     angle_beta: Float
-    "Unit-cell angle gamma in degrees."
+    """
+
+    Unit-cell angle gamma in degrees.
+
+    Examples:
+    null
+    """
     angle_gamma: Float
-    "Unique key for the em_3d_crystal_entity category."
+    "PRIMARY KEY"
     id: String!
     "pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category."
     image_processing_id: String!
-    "Unit-cell length a in angstroms."
+    """
+
+    Unit-cell length a in angstroms.
+
+    Examples:
+    null
+    """
     length_a: Float
-    "Unit-cell length b in angstroms."
+    """
+
+    Unit-cell length b in angstroms.
+
+    Examples:
+    null
+    """
     length_b: Float
-    "Unit-cell length c in angstroms."
+    """
+
+    Unit-cell length c in angstroms.
+
+    Examples:
+    null
+    """
     length_c: Float
     """
 
@@ -1449,25 +1549,34 @@ type Em3dFittingList {
     to  _em_3d_fitting.id in the 3d_fitting category
     """
     _3d_fitting_id: String!
-    "Details about the model used in fitting."
+    """
+
+    Details about the model used in fitting.
+
+    Examples:
+    The initial model consisted of the complete biological assembly for PDB entry 2GTL.
+    """
     details: String
-    "This data item is a unique identifier."
+    "PRIMARY KEY"
     id: String!
     """
 
     The ID of the biopolymer chain used for fitting, e.g., A.  Please note that
     only one chain can be specified per instance.  If all chains of a particular
     structure have been used for fitting, this field can be left blank.
+
+    Examples:
+    The ID of the biopolymer chain used for fitting, e.g., A. Please note that only one chain can be specified per instance. If all chains of a particular structure have been used for fitting, this field can be left blank.
     """
     pdb_chain_id: String
-    "The molecular entities represented in this fitting description."
+    "Residue range for the identified chain."
     pdb_chain_residue_range: String
     """
 
     The PDB code for the entry used in fitting.
 
     Examples:
-    PDB entry 1EHZ
+    1EHZ
     """
     pdb_entry_id: String
 }
@@ -1475,13 +1584,13 @@ type Em3dFittingList {
 type Em3dReconstruction {
     """
 
-    The actual pixel size of projection set of images.
+    The actual pixel size of the projection set of images in Angstroms.
 
     Examples:
     null, null
     """
     actual_pixel_size: Float
-    "The algorithm used project from 2D orientations to 3D map."
+    "The reconstruction algorithm/technique used to generate the map."
     algorithm: String
     """
 
@@ -1491,11 +1600,7 @@ type Em3dReconstruction {
     a modified version of SPIDER program was used for the reconstruction
     """
     details: String
-    """
-
-    The value of _em_3d_reconstruction.id must
-    uniquely identify the 3d reconstruction.
-    """
+    "PRIMARY KEY"
     id: String!
     "Foreign key to the EM_IMAGE_PROCESSING category"
     image_processing_id: String!
@@ -1517,24 +1622,19 @@ type Em3dReconstruction {
     method: String
     """
 
-    The nominal pixel size of the projection set of images.
+    The nominal pixel size of the projection set of images in Angstroms.
 
     Examples:
     null, null
     """
     nominal_pixel_size: Float
-    """
-
-    This item was correspondence to two type of em dataset
-    processing_emDataSet_singleParticle.numClassAverages
-    processing_emDataSet_icosahedral.numClassAverages
-    """
+    "The number of classes used in the final 3d reconstruction"
     num_class_averages: Int
     "The number of 2D projections or 3D subtomograms used in the 3d reconstruction"
     num_particles: Int
     """
 
-    type of refinement performed in order to determine map resolution
+    Indicates details on how the half-map used for resolution determination (usually by FSC) have been generated.
 
     Allowable values:
     HALF-MAPS REFINED AGAINST SAME DATA, HALF-MAPS REFINED INDEPENDENTLY, HALF-MAPS REFINED INDEPENDENTLY WITH FREQUENCY RANGE OMITTED, HALF-MAPS REFINED WITH FREQUENCY RANGE OMITTED, OTHER
@@ -1542,7 +1642,7 @@ type Em3dReconstruction {
     refinement_type: String
     """
 
-    The final resolution (in angstroms)of the 3D reconstruction.
+    The final resolution (in angstroms) of the 3D reconstruction.
 
     Examples:
     null, null
@@ -1582,16 +1682,22 @@ type EmCtfCorrection {
     details: String
     "Foreign key to the EM_IMAGE_PROCESSING category"
     em_image_processing_id: String
-    "Primary key"
+    "PRIMARY KEY"
     id: String!
     "Type of CTF correction applied"
     type: String
 }
 
 type EmDiffraction {
-    "TODO"
+    """
+
+    The camera length (in millimeters). The camera length is the
+    product of the objective focal length and the combined magnification
+    of the intermediate and projector lenses when the microscope is
+    operated in the diffraction mode.
+    """
     camera_length: Float
-    "Primary key"
+    "PRIMARY KEY"
     id: String!
     "Foreign key to the EM_IMAGING category"
     imaging_id: String
@@ -1624,7 +1730,7 @@ type EmDiffractionShell {
     null
     """
     high_resolution: Float
-    "Unique identifier for the category em_diffraction_shell"
+    "PRIMARY KEY"
     id: String!
     """
 
@@ -1680,7 +1786,7 @@ type EmDiffractionStats {
     null
     """
     high_resolution: Float
-    "Identifier for this category"
+    "PRIMARY KEY"
     id: String!
     "Pointer to _em_image_processing.id"
     image_processing_id: String
@@ -1742,7 +1848,7 @@ type EmEmbedding {
     was then blotted, air dried, and frozen in LN2.
     """
     details: String
-    "This data item is the primary key of the category."
+    "PRIMARY KEY"
     id: String!
     """
 
@@ -1752,14 +1858,14 @@ type EmEmbedding {
     tannin and glucose
     """
     material: String
-    "Foreign key relationship to the EMD SPECIMEN category"
+    "Foreign key relationship to the EM SPECIMEN category"
     specimen_id: String
 }
 
 type EmEntityAssembly {
     """
 
-    Additional details about the component.
+    Additional details about the sample or sample subcomponent.
 
     Examples:
     Fab fragment generated by proteolytic cleavage of LA2 IgG antibody.
@@ -1771,15 +1877,11 @@ type EmEntityAssembly {
     as comma separated list of entity ids (integers).
     """
     entity_id_list: [String]
-    """
-
-    The value of _em_entity_assembly.id identifies
-    one component of the complex.
-    """
+    "PRIMARY KEY"
     id: String!
     """
 
-    Name of this component in the observed assembly.
+    The name of the sample or sample subcomponent.
 
     Examples:
     Ternary complex of alpha-tubulin with tubulin folding cofactors TBCE and TBCB, 80S Ribosome bound to emetine, messenger RNA, initiation factor 2, GroEL, antibody Fab fragment
@@ -1796,7 +1898,8 @@ type EmEntityAssembly {
     parent_id: Int
     """
 
-    The assembly type.
+    The type of source (e.g., natural source) for the component (sample or sample
+    subcomponent)
 
     Allowable values:
     MULTIPLE SOURCES, NATURAL, RECOMBINANT, SYNTHETIC
@@ -1810,11 +1913,7 @@ type EmEntityAssembly {
     FADV-1
     """
     synonym: String
-    """
-
-    A description of types of components of the
-    assembly of the biological structure.
-    """
+    "The general type of the sample or sample subcomponent."
     type: String
 }
 
@@ -1829,7 +1928,7 @@ type EmExperiment {
     aggregation_state: String
     "Foreign key to the EM_ENTITY_ASSEMBLY category"
     entity_assembly_id: String
-    "Placeholder ID."
+    "PRIMARY KEY"
     id: String
     """
 
@@ -1844,7 +1943,7 @@ type EmExperiment {
 type EmHelicalEntity {
     """
 
-    The angular rotation per helical subunit in degrees.
+    The angular rotation per helical subunit in degrees. Negative values indicate left-handed helices; positive values indicate right handed helices.
 
     Examples:
     null
@@ -1874,18 +1973,9 @@ type EmHelicalEntity {
     Dihedral symmetry
     """
     details: String
-    """
-
-    The value of _em_helical_entity.id must uniquely identify
-    a set of the filament parameters for this assembly component.
-    """
+    "PRIMARY KEY"
     id: String!
-    """
-
-    The value of _em_helical_entity.reconstruction_id identifies a particular reconstruction.
-
-    This data item is a pointer to _em_image_processing.id.
-    """
+    "This data item is a pointer to _em_image_processing.id."
     image_processing_id: String!
 }
 
@@ -1925,14 +2015,10 @@ type EmImageRecording {
     """
 
     The detector type used for recording images.
-    Usually film or CCD camera.
+    Usually film , CCD camera or direct electron detector.
     """
     film_or_detector_model: String
-    """
-
-    The item _em_image_recording.id uniquely identifies
-    a set of recorded images.
-    """
+    "PRIMARY KEY"
     id: String!
     "This data item the id of the microscopy settings used in the imaging."
     imaging_id: String!
@@ -1949,7 +2035,7 @@ type EmImaging {
     accelerating_voltage: Int
     """
 
-    microscope alignment procedure
+    The type of procedure used to align the microscope electron beam.
 
     Allowable values:
     BASIC, COMA FREE, NONE, OTHER, ZEMLIN TABLEAU
@@ -1965,14 +2051,14 @@ type EmImaging {
     c2_aperture_diameter: Float
     """
 
-    The maximum defocus value of the objective lens (in nanometers) used
-    to obtain the recorded images.
+    The maximum calibrated defocus value of the objective lens (in nanometers) used
+    to obtain the recorded images. Negative values refer to overfocus.
     """
     calibrated_defocus_max: Float
     """
 
-    The minimum defocus value of the objective lens (in nanometers) used
-    to obtain the recorded images.
+    The minimum calibrated defocus value of the objective lens (in nanometers) used
+    to obtain the recorded images. Negative values refer to overfocus.
     """
     calibrated_defocus_min: Float
     """
@@ -2019,11 +2105,7 @@ type EmImaging {
     electron_beam_tilt_params: String
     "The source of electrons. The electron gun."
     electron_source: String
-    """
-
-    The value of _em_imaging.id must uniquely identify
-    each imaging experiment.
-    """
+    "PRIMARY KEY"
     id: String!
     """
 
@@ -2038,7 +2120,7 @@ type EmImaging {
     The name of the model of microscope.
 
     Allowable values:
-    FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
+    FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 1400/HR + YPS FEG, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
     """
     microscope_model: String
     """
@@ -2046,7 +2128,7 @@ type EmImaging {
     The mode of imaging.
 
     Allowable values:
-    BRIGHT FIELD, DARK FIELD, DIFFRACTION, OTHER
+    4D-STEM, BRIGHT FIELD, DARK FIELD, DIFFRACTION, OTHER
     """
     mode: String
     """
@@ -2061,13 +2143,13 @@ type EmImaging {
     """
 
     The maximum defocus value of the objective lens (in nanometers) used
-    to obtain the recorded images.
+    to obtain the recorded images. Negative values refer to overfocus.
     """
     nominal_defocus_max: Float
     """
 
     The minimum defocus value of the objective lens (in nanometers) used
-    to obtain the recorded images.
+    to obtain the recorded images. Negative values refer to overfocus.
     """
     nominal_defocus_min: Float
     "The magnification indicated by the microscope readout."
@@ -2084,7 +2166,7 @@ type EmImaging {
     of imaging.
     """
     recording_temperature_minimum: Float
-    "residual tilt of the electron beam"
+    "Residual tilt of the electron beam (in miliradians)"
     residual_tilt: Float
     """
 
@@ -2127,13 +2209,14 @@ type EmImaging {
 type EmParticleSelection {
     """
 
-    Any additional details used for selecting particles
+    Additional detail such as description of filters used, if selection was
+    manual or automated, and/or template details.
 
     Examples:
     negative monitor contrast facilitated particle picking
     """
     details: String
-    "Ordinal identifier"
+    "PRIMARY KEY"
     id: String!
     """
 
@@ -2146,7 +2229,7 @@ type EmParticleSelection {
 }
 
 type EmSingleParticleEntity {
-    "Unique category label."
+    "PRIMARY KEY"
     id: Int!
     "pointer to _em_image_processing.id."
     image_processing_id: String!
@@ -2166,7 +2249,7 @@ type EmSoftware {
     The purpose of the software.
 
     Allowable values:
-    CLASSIFICATION, CRYSTALLOGRAPHY MERGING, CTF CORRECTION, DIFFRACTION INDEXING, FINAL EULER ASSIGNMENT, IMAGE ACQUISITION, INITIAL EULER ASSIGNMENT, LATTICE DISTORTION CORRECTION, LAYERLINE INDEXING, MASKING, MODEL FITTING, MODEL REFINEMENT, MOLECULAR REPLACEMENT, OTHER, PARTICLE SELECTION, RECONSTRUCTION, SERIES ALIGNMENT, SYMMETRY DETERMINATION, VOLUME SELECTION
+    CLASSIFICATION, CRYSTALLOGRAPHY MERGING, CTF CORRECTION, DIFFRACTION INDEXING, EWALD SPHERE CORRECTION, FINAL EULER ASSIGNMENT, IMAGE ACQUISITION, INITIAL EULER ASSIGNMENT, LATTICE DISTORTION CORRECTION, LAYERLINE INDEXING, MASKING, MODEL FITTING, MODEL REFINEMENT, MOLECULAR REPLACEMENT, OTHER, PARTICLE SELECTION, RECONSTRUCTION, SERIES ALIGNMENT, SYMMETRY DETERMINATION, VOLUME SELECTION
     """
     category: String
     """
@@ -2179,7 +2262,7 @@ type EmSoftware {
     details: String
     "pointer to _em_3d_fitting.id in the EM_3D_FITTING category."
     fitting_id: String
-    "Unique identifier for each software description."
+    "PRIMARY KEY"
     id: String!
     "pointer to _em_image_processing.id in the EM_IMAGE_PROCESSING category."
     image_processing_id: String
@@ -2232,11 +2315,7 @@ type EmSpecimen {
     embedding_applied: String
     "Pointer to _em_experiment.id."
     experiment_id: String!
-    """
-
-    The item  _em_specimen.id uniquely identifies a specimen along with
-    its preparation methods.
-    """
+    "PRIMARY KEY"
     id: String!
     """
 
@@ -2274,7 +2353,7 @@ type EmStaining {
     and uranyl-formate stain.
     """
     details: String
-    "This data item is the primary key of the category."
+    "PRIMARY KEY"
     id: String!
     """
 
@@ -2284,7 +2363,7 @@ type EmStaining {
     Uranyl Acetate
     """
     material: String
-    "Foreign key relationship to the EMD SPECIMEN category"
+    "Foreign key relationship to the EM SPECIMEN category"
     specimen_id: String
     """
 
@@ -2315,20 +2394,20 @@ type EmVitrification {
     Vitrification carried out in argon atmosphere.
     """
     details: String
-    "The humidity (%) in the vicinity of the vitrification process."
-    humidity: Float
     """
 
-    The value of _em_vitrification.id must uniquely identify
-    the vitrification procedure.
+    Relative humidity (%) of air surrounding the specimen just prior to
+    vitrification.
     """
+    humidity: Float
+    "PRIMARY KEY"
     id: String!
     """
 
     The type of instrument used in the vitrification process.
 
     Allowable values:
-    EMS-002 RAPID IMMERSION FREEZER, FEI VITROBOT MARK I, FEI VITROBOT MARK II, FEI VITROBOT MARK III, FEI VITROBOT MARK IV, GATAN CRYOPLUNGE 3, HOMEMADE PLUNGER, LEICA EM CPC, LEICA EM GP, LEICA KF80, LEICA PLUNGER, REICHERT-JUNG PLUNGER, SPOTITON, ZEISS PLUNGE FREEZER CRYOBOX
+    CRYOSOL VITROJET, EMS-002 RAPID IMMERSION FREEZER, FEI VITROBOT MARK I, FEI VITROBOT MARK II, FEI VITROBOT MARK III, FEI VITROBOT MARK IV, GATAN CRYOPLUNGE 3, HOMEMADE PLUNGER, LEICA EM CPC, LEICA EM GP, LEICA KF80, LEICA PLUNGER, REICHERT-JUNG PLUNGER, SPOTITON, ZEISS PLUNGE FREEZER CRYOBOX
     """
     instrument: String
     """
@@ -2420,7 +2499,7 @@ type EntityPoly {
     (DT) for Thymidine-5'-monophosphate
     (MSE) for Selenomethionine
     (SEP) for Phosphoserine
-    (PTO) for Phosphothreonine
+    (TPO) for Phosphothreonine
     (PTR) for Phosphotyrosine
     (PCA) for Pyroglutamic acid
     (UNK) for Unknown amino acid
@@ -2443,6 +2522,10 @@ type EntityPoly {
     parent is not specified. Deoxynucleotides are
     represented by their canonical one-letter codes of A,
     C, G, or T.
+
+    For modifications with several parent amino acids,
+    all corresponding parent amino acid codes will be listed
+    (ex. chromophores).
 
     Examples:
     MSHHWGYGKHNGPEHWHKDFPIAKGERQSPVDIDTHTAKYDPSLKPLSVSYDQATSLRILNNGAAFNVEFD
@@ -3217,9 +3300,19 @@ type ExptlCrystal {
     id: String!
     """
 
-    The of the distribution of mis-orientation angles specified in degrees
-    of all the unit cells in the crystal. Lower mosaicity indicates better
-    ordered crystals.
+    Isotropic approximation of the distribution of mis-orientation angles
+    specified in degrees of all the mosaic domain blocks in the crystal,
+    represented as a standard deviation. Here, a mosaic block is a set of
+    contiguous unit cells assumed to be perfectly aligned. Lower mosaicity
+    indicates better ordered crystals. See for example:
+
+    Nave, C. (1998). Acta Cryst. D54, 848-853.
+
+    Note that many software packages estimate the mosaic rotation distribution
+    differently and may combine several physical properties of the experiment
+    into a single mosaic term. This term will help fit the modeled spots
+    to the observed spots without necessarily being directly related to the
+    physics of the crystal itself.
     """
     pdbx_mosaicity: Float
     "The uncertainty in the mosaicity estimate for the crystal."
@@ -3389,7 +3482,7 @@ type MaData {
     The type of data held in the dataset.
 
     Allowable values:
-    coevolution MSA, input structure, model coordinates, other, polymeric template library, spatial restraints, target, target-template alignment, template structure
+    coevolution MSA, input structure, model coordinates, other, polymeric template library, reference database, spatial restraints, target, target-template alignment, template structure
     """
     content_type: String
     "Details for other content types."
@@ -3575,7 +3668,7 @@ type PdbxChemCompAudit {
     The action associated with this audit record.
 
     Allowable values:
-    Create component, Initial release, Modify aromatic_flag, Modify atom id, Modify charge, Modify component atom id, Modify component comp_id, Modify coordinates, Modify descriptor, Modify formal charge, Modify formula, Modify identifier, Modify internal type, Modify leaving atom flag, Modify linking type, Modify model coordinates code, Modify name, Modify one letter code, Modify parent residue, Modify processing site, Modify subcomponent list, Modify synonyms, Modify value order, Obsolete component, Other modification
+    Create component, Initial release, Modify aromatic_flag, Modify atom id, Modify backbone, Modify charge, Modify component atom id, Modify component comp_id, Modify coordinates, Modify descriptor, Modify formal charge, Modify formula, Modify identifier, Modify internal type, Modify leaving atom flag, Modify linking type, Modify model coordinates code, Modify name, Modify one letter code, Modify parent residue, Modify processing site, Modify subcomponent list, Modify synonyms, Modify value order, Obsolete component, Other modification
     """
     action_type: String
     """
@@ -3750,7 +3843,7 @@ type PdbxDatabaseRelated {
     The identifying content type of the related entry.
 
     Allowable values:
-    associated EM volume, associated NMR restraints, associated SAS data, associated structure factors, complete structure, derivative structure, ensemble, minimized average structure, native structure, other, other EM volume, protein target sequence and/or protocol data, re-refinement, representative structure, split, unspecified
+    associated EM volume, associated NMR restraints, associated SAS data, associated structure factors, complete structure, consensus EM volume, derivative structure, ensemble, focused EM volume, minimized average structure, native structure, other, other EM volume, protein target sequence and/or protocol data, re-refinement, representative structure, split, unspecified
     """
     content_type: String!
     """
@@ -3765,14 +3858,8 @@ type PdbxDatabaseRelated {
 
     The name of the database containing the related entry.
 
-    Examples:
-    PDB  - Protein Databank
-    NDB  - Nucleic Acid Database
-    BMRB - BioMagResBank
-    EMDB - Electron Microscopy Database
-    BMCD - Biological Macromolecule Crystallization Database
-    TargetTrack - Target Registration and Protocol Database
-    SASBDB - Small Angle Scattering Biological Data Bank
+    Allowable values:
+    BIOISIS, BMCD, BMRB, EMDB, NDB, PDB, PDB-Dev, SASBDB, TargetDB, TargetTrack
     """
     db_name: String!
     """
@@ -4067,6 +4154,37 @@ type PdbxFamilyPrdAudit {
     RCSB, PDBE, PDBJ, BMRB, PDBC
     """
     processing_site: String
+}
+
+type PdbxInitialRefinementModel {
+    """
+
+    This item identifies an accession code of the resource where the initial model
+    is used
+    """
+    accession_code: String
+    "A description of special aspects of the initial model"
+    details: String
+    "A comma separated list of entities reflecting the initial model used for refinement"
+    entity_id_list: [String]
+    "A unique identifier for the starting model record."
+    id: Int!
+    """
+
+    This item identifies the resource of initial model used for refinement
+
+    Allowable values:
+    AlphaFold, ITasser, InsightII, ModelArchive, Modeller, Other, PDB, PDB-Dev, PHYRE, Robetta, RoseTTAFold, SwissModel
+    """
+    source_name: String
+    """
+
+    This item describes the type of the initial model was generated
+
+    Allowable values:
+    experimental model, in silico model, integrative model, other
+    """
+    type: String
 }
 
 type PdbxMoleculeFeatures {
@@ -5260,6 +5378,78 @@ type PdbxReferenceMoleculeSynonyms {
     source: String
 }
 
+type PdbxReflnsTwin {
+    """
+
+    The crystal identifier.  A reference to
+    _exptl_crystal.id in category EXPTL_CRYSTAL.
+    """
+    crystal_id: String!
+    """
+
+    The diffraction data set identifier.  A reference to
+    _diffrn.id in category DIFFRN.
+    """
+    diffrn_id: String!
+    "An identifier for the twin domain."
+    domain_id: String
+    """
+
+    The twin fraction or twin factor represents a quantitative parameter for the
+    crystal twinning.  The value 0 represents no twinning, < 0.5 partial twinning,
+    = 0.5 for perfect twinning.
+    """
+    fraction: Float
+    """
+
+    The possible merohedral or hemihedral twinning operators for different
+    point groups are:
+
+    True point group    Twin operation    hkl related to
+    3                        2 along a,b             h,-h-k,-l
+    2 along a*,b*           h+k,-k,-l
+    2 along c               -h,-k,l
+    4                       2 along a,b,a*,b*       h,-k,-l
+    6                       2 along a,b,a*,b*       h,-h-k,-l
+    321                     2 along a*,b*,c         -h,-k,l
+    312                     2 along a,b,c           -h,-k,l
+    23                      4 along a,b,c            k,-h,l
+
+    References:
+    Yeates, T.O. (1997) Methods in Enzymology 276, 344-358. Detecting and
+    Overcoming Crystal Twinning.
+
+    and information from the following on-line sites:
+
+    CNS site http://cns.csb.yale.edu/v1.1/
+    CCP4 site http://www.ccp4.ac.uk/dist/html/detwin.html
+    SHELX site http://shelx.uni-ac.gwdg.de/~rherbst/twin.html
+
+    Examples:
+    h,-h-k,-l, h+k,-k,-l, -h,-k,l, h,-k,-l, h,-h-k,-l, -h,-k,l, k,-h,l
+    """
+    operator: String!
+    """
+
+    There are two types of twinning: merohedral or hemihedral
+    non-merohedral or epitaxial
+
+    For merohedral twinning the diffraction patterns from the different domains are
+    completely superimposable.   Hemihedral twinning is a special case of merohedral
+    twinning. It only involves two distinct domains.  Pseudo-merohedral twinning is
+    a subclass merohedral twinning in which lattice is coincidentally superimposable.
+
+    In the case of non-merohedral or epitaxial twinning  the reciprocal
+    lattices do not superimpose exactly. In this case the  diffraction pattern
+    consists of two (or more) interpenetrating lattices, which can in principle
+    be separated.
+
+    Allowable values:
+    epitaxial, hemihedral, merohedral, non-merohedral, pseudo-merohedral, tetartohedral
+    """
+    type: String
+}
+
 type PdbxRelatedExpDataSet {
     """
 
@@ -5299,7 +5489,7 @@ type PdbxSGProject {
     The value identifies the full name of center.
 
     Allowable values:
-    Accelerated Technologies Center for Gene to 3D Structure, Assembly, Dynamics and Evolution of Cell-Cell and Cell-Matrix Adhesions, Atoms-to-Animals: The Immune Function Network, Bacterial targets at IGS-CNRS, France, Berkeley Structural Genomics Center, Center for Eukaryotic Structural Genomics, Center for High-Throughput Structural Biology, Center for Membrane Proteins of Infectious Diseases, Center for Structural Genomics of Infectious Diseases, Center for Structures of Membrane Proteins, Center for the X-ray Structure Determination of Human Transporters, Chaperone-Enabled Studies of Epigenetic Regulation Enzymes, Enzyme Discovery for Natural Product Biosynthesis, GPCR Network, Integrated Center for Structure and Function Innovation, Israel Structural Proteomics Center, Joint Center for Structural Genomics, Marseilles Structural Genomics Program @ AFMB, Medical Structural Genomics of Pathogenic Protozoa, Membrane Protein Structural Biology Consortium, Membrane Protein Structures by Solution NMR, Midwest Center for Macromolecular Research, Midwest Center for Structural Genomics, Mitochondrial Protein Partnership, Montreal-Kingston Bacterial Structural Genomics Initiative, Mycobacterium Tuberculosis Structural Proteomics Project, New York Consortium on Membrane Protein Structure, New York SGX Research Center for Structural Genomics, New York Structural GenomiX Research Consortium, New York Structural Genomics Research Consortium, Northeast Structural Genomics Consortium, Nucleocytoplasmic Transport: a Target for Cellular Control, Ontario Centre for Structural Proteomics, Oxford Protein Production Facility, Paris-Sud Yeast Structural Genomics, Partnership for Nuclear Receptor Signaling Code Biology, Partnership for Stem Cell Biology, Partnership for T-Cell Biology, Program for the Characterization of Secreted Effector Proteins, Protein Structure Factory, RIKEN Structural Genomics/Proteomics Initiative, Scottish Structural Proteomics Facility, Seattle Structural Genomics Center for Infectious Disease, South Africa Structural Targets Annotation Database, Southeast Collaboratory for Structural Genomics, Structural Genomics Consortium, Structural Genomics Consortium for Research on Gene Expression, Structural Genomics of Pathogenic Protozoa Consortium, Structural Proteomics in Europe, Structural Proteomics in Europe 2, Structure 2 Function Project, Structure, Dynamics and Activation Mechanisms of Chemokine Receptors, Structure-Function Analysis of Polymorphic CDI Toxin-Immunity Protein Complexes, Structure-Function Studies of Tight Junction Membrane Proteins, Structures of Mtb Proteins Conferring Susceptibility to Known Mtb Inhibitors, TB Structural Genomics Consortium, Transcontinental EM Initiative for Membrane Protein Structure, Transmembrane Protein Center
+    Accelerated Technologies Center for Gene to 3D Structure, Assembly, Dynamics and Evolution of Cell-Cell and Cell-Matrix Adhesions, Atoms-to-Animals: The Immune Function Network, Bacterial targets at IGS-CNRS, France, Berkeley Structural Genomics Center, Center for Eukaryotic Structural Genomics, Center for High-Throughput Structural Biology, Center for Membrane Proteins of Infectious Diseases, Center for Structural Biology of Infectious Diseases, Center for Structural Genomics of Infectious Diseases, Center for Structures of Membrane Proteins, Center for the X-ray Structure Determination of Human Transporters, Chaperone-Enabled Studies of Epigenetic Regulation Enzymes, Enzyme Discovery for Natural Product Biosynthesis, GPCR Network, Integrated Center for Structure and Function Innovation, Israel Structural Proteomics Center, Joint Center for Structural Genomics, Marseilles Structural Genomics Program @ AFMB, Medical Structural Genomics of Pathogenic Protozoa, Membrane Protein Structural Biology Consortium, Membrane Protein Structures by Solution NMR, Midwest Center for Macromolecular Research, Midwest Center for Structural Genomics, Mitochondrial Protein Partnership, Montreal-Kingston Bacterial Structural Genomics Initiative, Mycobacterium Tuberculosis Structural Proteomics Project, New York Consortium on Membrane Protein Structure, New York SGX Research Center for Structural Genomics, New York Structural GenomiX Research Consortium, New York Structural Genomics Research Consortium, Northeast Structural Genomics Consortium, Nucleocytoplasmic Transport: a Target for Cellular Control, Ontario Centre for Structural Proteomics, Oxford Protein Production Facility, Paris-Sud Yeast Structural Genomics, Partnership for Nuclear Receptor Signaling Code Biology, Partnership for Stem Cell Biology, Partnership for T-Cell Biology, Program for the Characterization of Secreted Effector Proteins, Protein Structure Factory, RIKEN Structural Genomics/Proteomics Initiative, Scottish Structural Proteomics Facility, Seattle Structural Genomics Center for Infectious Disease, South Africa Structural Targets Annotation Database, Southeast Collaboratory for Structural Genomics, Structural Genomics Consortium, Structural Genomics Consortium for Research on Gene Expression, Structural Genomics of Pathogenic Protozoa Consortium, Structural Proteomics in Europe, Structural Proteomics in Europe 2, Structure 2 Function Project, Structure, Dynamics and Activation Mechanisms of Chemokine Receptors, Structure-Function Analysis of Polymorphic CDI Toxin-Immunity Protein Complexes, Structure-Function Studies of Tight Junction Membrane Proteins, Structures of Mtb Proteins Conferring Susceptibility to Known Mtb Inhibitors, TB Structural Genomics Consortium, Transcontinental EM Initiative for Membrane Protein Structure, Transmembrane Protein Center
     """
     full_name_of_center: String
     """
@@ -5315,7 +5505,7 @@ type PdbxSGProject {
     The value identifies the full name of center.
 
     Allowable values:
-    ATCG3D, BIGS, BSGC, BSGI, CEBS, CELLMAT, CESG, CHSAM, CHTSB, CSGID, CSMP, GPCR, IFN, ISFI, ISPC, JCSG, MCMR, MCSG, MPID, MPP, MPSBC, MPSbyNMR, MSGP, MSGPP, MTBI, NESG, NHRs, NPCXstals, NYCOMPS, NYSGRC, NYSGXRC, NatPro, OCSP, OPPF, PCSEP, PSF, RSGI, S2F, SASTAD, SECSG, SGC, SGCGES, SGPP, SPINE, SPINE-2, SSGCID, SSPF, STEMCELL, TBSGC, TCELL, TEMIMPS, TJMP, TMPC, TransportPDB, UC4CDI, XMTB, YSG
+    ATCG3D, BIGS, BSGC, BSGI, CEBS, CELLMAT, CESG, CHSAM, CHTSB, CSBID, CSGID, CSMP, GPCR, IFN, ISFI, ISPC, JCSG, MCMR, MCSG, MPID, MPP, MPSBC, MPSbyNMR, MSGP, MSGPP, MTBI, NESG, NHRs, NPCXstals, NYCOMPS, NYSGRC, NYSGXRC, NatPro, OCSP, OPPF, PCSEP, PSF, RSGI, S2F, SASTAD, SECSG, SGC, SGCGES, SGPP, SPINE, SPINE-2, SSGCID, SSPF, STEMCELL, TBSGC, TCELL, TEMIMPS, TJMP, TMPC, TransportPDB, UC4CDI, XMTB, YSG
     """
     initial_of_center: String
     """
@@ -5385,6 +5575,16 @@ type PdbxSerialCrystallographyDataReduction {
     continuous stream, the total number of lattices indexed.
     """
     lattices_indexed: Int
+    """
+
+    For experiments in which samples are provided in a
+    continuous stream, the total number of crystal lattices
+    that were merged in the final dataset.  Can be
+    less than frames_indexed depending on filtering during merging or
+    can be more than frames_indexed if there are multiple lattices.
+    per frame.
+    """
+    lattices_merged: Int
     "For FEL experiments, the number of pulse events in the dataset."
     xfel_pulse_events: Int
     """
@@ -6062,6 +6262,10 @@ type PdbxStructAssembly {
 
     A description of special aspects of the macromolecular assembly.
 
+    In the PDB, 'representative helical assembly', 'complete point assembly',
+    'complete icosahedral assembly', 'software_defined_assembly', 'author_defined_assembly',
+    and 'author_and_software_defined_assembly' are considered "biologically relevant assemblies.
+
     Examples:
     The icosahedral virus particle.
     """
@@ -6344,816 +6548,6 @@ type PdbxStructSpecialSymmetry {
     label_comp_id: String
 }
 
-type PdbxVrptSummary {
-    """
-
-    String for B_factor_type either "PARTIAL" or "FULL".
-
-    Allowable values:
-    FULL, PARTIAL
-    """
-    B_factor_type: String
-    """
-
-    REFMAC scaling parameter as reported in log output line starting 'bulk solvent: scale'.
-    Example:            X-ray entry specific, obtained in the eds step from REFMAC calculation.
-    """
-    Babinet_b: Float
-    """
-
-    REFMAC scaling parameter as reported in log output line starting 'bulk solvent: scale'.
-    Example:            X-ray entry specific, obtained in the eds step from REFMAC calculation.
-    """
-    Babinet_k: Float
-    """
-
-    The string "yes".
-
-    Allowable values:
-    yes
-    """
-    CA_ONLY: String
-    """
-
-    The overall R-factor from a DCC recalculation of an electron density map.
-    Example:            Currently value is rounded to 2 decimal places.
-    X-ray entry specific, obtained from the DCC program.
-    """
-    DCC_R: Float
-    "Either a decimal number or the string \"NotAvailable\"."
-    DCC_Rfree: Float
-    """
-
-    The pdbx_vrpt_software used by DCC to perform the recaluclation of the electron density maps.
-    &#160;Currently one of "CNS", "REFMAC" or "PHENIX".
-    Example:            X-ray entry specific, obtained from the DCC program.
-    """
-    DCC_refinement_program: String
-    """
-
-    The overall R factor from the EDS REFMAC calculation (no free set is used in this).
-    Example:            Currently value is rounded to 2 decimal places.
-    X-ray entry specific, obtained in the eds step from REFMAC calculation.
-    """
-    EDS_R: Float
-    """
-
-    The data high resolution diffraction limit, in Angstroms, found in the input structure factor file.
-    Example:            X-ray entry specific, obtained in the eds step.
-    """
-    EDS_resolution: Float
-    """
-
-    The data low resolution diffraction limit, in Angstroms, found in the input structure factor file.
-    Example:            X-ray entry specific, obtained in the eds step.
-    """
-    EDS_resolution_low: Float
-    """
-
-    Date in yyyy-mm-dd format when map was deposited to the EMDB.
-    Reports produced by the validation server or during the initial deposition process should not have this item.
-    If there is a difficulty parsing the item then "unknown" will be given.
-    """
-    EMDB_deposition_date: Date
-    "Either a decimal number or the string \"NotAvailable\"."
-    EMDB_resolution: Float
-    """
-
-    Fo,Fc correlation: The difference between the observed structure factors (Fo) and the
-    calculated structure factors (Fc) measures the correlation between the PDB_model_num and the i
-    experimental data.
-    Example:            X-ray entry specific, obtained in the eds step from REFMAC calculation.
-    """
-    Fo_Fc_correlation: Float
-    """
-
-    Each reflection has an intensity (I) and an uncertainty in measurement
-    (sigma(I)), so I/sigma(I) is the signal-to-noise ratio. This
-    ratio decreases at higher resolution. <I/sigma(I)> is the mean of individual I/sigma(I)
-    values. Value for outer resolution shell is given in parentheses. In case
-    structure factor amplitudes are deposited, Xtriage estimates the intensities
-    first and then calculates this metric. When intensities are available in the
-    deposited file, these are converted to amplitudes and then back to intensity
-    estimate before calculating the metric.
-    Example            X-ray entry specific, calculated by Phenix Xtriage program.
-    """
-    I_over_sigma: String
-    "Either a decimal number or the string \"NotAvailable\"."
-    PDB_R: Float
-    "Either a decimal number or the string \"NotAvailable\"."
-    PDB_Rfree: Float
-    """
-
-    Date in yyyy-mm-dd format when structure was deposited to the PDB.
-    Obtained from mmCIF table _database_PDB_rev item _database_PDB_rev.date_original
-    Reports produced by the validation server or during the initial deposition process should not have this item.
-    If there is a difficulty parsing the item then "unknown" will be given.
-    """
-    PDB_deposition_date: Date
-    "Either a decimal number or the string \"NotAvailable\"."
-    PDB_resolution: Float
-    "Either a decimal number or the string \"NotAvailable\"."
-    PDB_resolution_low: Float
-    """
-
-    Date in yyyy-mm-dd format when the structure was last revised by PDB.
-    Obtained from mmCIF table _database_PDB_rev item _database_PDB_rev.date
-    Reports produced by the validation server or during the initial depositon process should not have this item.
-    If there is a difficulty parsing the item then "unknown" will be given.
-    """
-    PDB_revision_date: Date
-    """
-
-    The last highest number that appears in mmCIF item _database_PDB_rev.num.
-    Data items in the DATABASE_PDB_REV category record details about the history of the data block as archived by the Protein Data Bank (PDB).
-    If the input mmCIF coordinate file lacks the information then a value of -1 is supplied.
-    """
-    PDB_revision_number: Float
-    """
-
-    The MolProbity conformer-match quality parameter for RNA structures.
-    Low values are worse.
-    Example:           Specific to structures that contain RNA polymers.
-    """
-    RNA_suiteness: Float
-    """
-
-    Result of absolute likelihood based Wilson scaling,
-    The anisotropic B value of the data is determined using a likelihood based approach.
-    The resulting B tensor is reported, the 3 diagonal values are given first, followed
-    by the 3 off diagonal values.
-    A large spread in (especially the diagonal) values indicates anisotropy.
-    Example:            X-ray entry specific, calculated by Phenix Xtriage program.
-    """
-    Wilson_B_aniso: String
-    """
-
-    An estimate of the overall B-value of the structure, calculated from the diffraction data.
-    Units Angstroms squared.
-    It serves as an indicator of the degree of order in the crystal and the value is usually
-    not hugely different from the average B-value calculated from the model.
-    Example:            X-ray entry specific, calculated by Phenix Xtriage program.
-    """
-    Wilson_B_estimate: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    absolute_percentile_DCC_Rfree: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    absolute_percentile_RNA_suiteness: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    absolute_percentile_clashscore: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    absolute_percentile_percent_RSRZ_outliers: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    absolute_percentile_percent_ramachandran_outliers: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    absolute_percentile_percent_rotamer_outliers: Float
-    """
-
-    The number of acentric reflections that Xtriage identifies as outliers on the basis
-    of Wilson statistics. Note that if pseudo translational symmetry is present,
-    a large number of 'outliers' will be present.
-    Example:            X-ray entry specific, calculated by Phenix Xtriage program.
-    """
-    acentric_outliers: Int
-    """
-
-    The overall root mean square of the Z-score for deviations of bond angles in comparison to
-    "standard geometry" made using the MolProbity dangle program.
-    Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
-    This value is for all chains in the structure.
-    """
-    angles_RMSZ: Float
-    "The proportion of all non hydrogen atoms within density."
-    atom_inclusion_all_atoms: Float
-    "The proportion of backbone atoms within density."
-    atom_inclusion_backbone: Float
-    """
-
-    The steps that were attempted by the validation pipeline software.
-    A step typically involves running a 3rd party validation tool, for instance "mogul"
-    Each step that was successfully completed will result in a pdbx_vrpt_software element in the pdbx_vrpt_sotfware_notused list.
-    """
-    attempted_validation_steps: String
-    "The resolution from the intersection of the author provided fsc and the indicator curve halfbit."
-    author_provided_fsc_resolution_by_cutoff_halfbit: Float
-    "The resolution from the intersection of the author provided fsc and the indicator curve onebit."
-    author_provided_fsc_resolution_by_cutoff_onebit: Float
-    "The resolution from the intersection of the author provided fsc and the indicator curve 0.143."
-    author_provided_fsc_resolution_by_cutoff_pt_143: Float
-    "The resolution from the intersection of the author provided fsc and the indicator curve 0.333."
-    author_provided_fsc_resolution_by_cutoff_pt_333: Float
-    "The resolution from the intersection of the author provided fsc and the indicator curve 0.5."
-    author_provided_fsc_resolution_by_cutoff_pt_5: Float
-    "The resolution from the intersection of the author provided fsc and the indicator curve threesigma."
-    author_provided_fsc_resolution_by_cutoff_threesigma: Float
-    """
-
-    The overall root mean square of the Z-score for deviations of bond lengths in comparison to
-    "standard geometry" made using the MolProbity dangle program.
-    Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
-    This value is for all chains in the structure.
-    """
-    bonds_RMSZ: Float
-    """
-
-    REFMAC scaling parameter as reported in log output line starting
-    'Partial structure    1: scale.'
-    Example:            X-ray entry specific, obtained in the eds step from REFMAC calculation.
-    """
-    bulk_solvent_b: Float
-    """
-
-    REFMAC scaling parameter as reported in log output line starting
-    'Partial structure    1: scale.'
-    Example:            X-ray entry specific, obtained in the eds step from REFMAC calculation.
-    """
-    bulk_solvent_k: Float
-    "The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve halfbit."
-    calculated_fsc_resolution_by_cutoff_halfbit: Float
-    "The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve onebit."
-    calculated_fsc_resolution_by_cutoff_onebit: Float
-    "The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.143."
-    calculated_fsc_resolution_by_cutoff_pt_143: Float
-    "The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.333."
-    calculated_fsc_resolution_by_cutoff_pt_333: Float
-    "The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.5."
-    calculated_fsc_resolution_by_cutoff_pt_5: Float
-    "The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve threesigma."
-    calculated_fsc_resolution_by_cutoff_threesigma: Float
-    """
-
-    The version of CCP4 suite pdbx_vrpt_sotfware_notused used in the analysis.
-    Example:            X-ray entry specific, obtained from the eds step.
-    """
-    ccp4version: String
-    """
-
-    The number of centric reflections that Xtriage identifies as outliers.
-    Example:            X-ray entry specific, calculated by Phenix Xtriage program.
-    """
-    centric_outliers: Float
-    """
-
-    Overall completeness of the chemical shift assignments for the well-defined
-    regions of the structure.
-    """
-    chemical_shift_completeness: Float
-    """
-
-    Overall completeness of the chemical shift assignments for the full
-    macromolecule or complex as suggested by the molecular description of an entry
-    (whether some portion of it is modelled or not).
-    """
-    chemical_shift_completeness_full_length: Float
-    """
-
-    The filename for the input chemical shifts file given to the validation pipeline.
-    Not reported for runs at the annotation or release stage.
-    """
-    chemical_shifts_input_filename: String
-    """
-
-    This score is derived from the number of pairs of atoms in the PDB_model_num that are unusually close to each other.
-    It is calculated by the MolProbity pdbx_vrpt_software and expressed as the number or such clashes per thousand atoms.
-    For structures determined by NMR the clashscore value here will only consider label_atom_id pairs in the
-    well-defined (core) residues from ensemble analysis.
-    """
-    clashscore: Float
-    "Only given for structures determined by NMR. The MolProbity pdbx_vrpt_clashes score for all label_atom_id pairs."
-    clashscore_full_length: Float
-    "The recommended contour level for the primary map of this deposition."
-    contour_level_primary_map: String
-    """
-
-    The filename for the input mmCIF coordinate file given to the validation pipeline.
-    Not reported for runs at the annotation or release stage.
-    """
-    coordinates_input_filename: String
-    """
-
-    Diagnostic message from the wrapper of Cyrange software which identifies the
-    well-defined cores (domains) of NMR protein structures.
-    """
-    cyrange_error: String
-    "Total number of well-defined cores (domains) identified by Cyrange"
-    cyrange_number_of_domains: Int
-    "Reference for the Cyrange software."
-    cyrange_version: String
-    """
-
-    The ratio (Bmax &#8209; Bmin) / Bmean where Bmax, Bmin and Bmean are computed from the B-values
-    associated with the principal axes of the anisotropic thermal ellipsoid.
-    This ratio is usually less than 0.5; for only 1% of PDB entries it is more than 1.0 (Read et al., 2011).
-    Example:            X-ray entry specific, obtained from the Xtriage program.
-    """
-    data_anisotropy: Float
-    "A percentage, Normally percent proportion of the total number. Between 0% and 100%."
-    data_completeness: Float
-    """
-
-    An identifier for the map
-    For released or annotated structures this will be the EMDB ID EMD-\d{4-5} eg "EMD-1001", "EMD-12325"
-    """
-    emdb_id: String
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-DCC_Rfree".
-    Note that the "high_resol_relative_percentile_DCC_Rfree" value is numerically smaller than the
-    corresponding low-* value.
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    high_resol_relative_percentile_DCC_Rfree: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-RNAsuiteness".
-    Note that the "high_resol_relative_percentile_RNA_suiteness" value is numerically smaller than the
-    corresponding low value.
-    Example:            Specific to entries that contain RNA polymers (and have a RNA_suiteness attribute),
-    and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    high_resol_relative_percentile_RNA_suiteness: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-clashscore".
-    Note that the "high_resol_relative_percentile_clashscore" value is numerically smaller than the
-    corresponding low value.
-    Example:            Specific to that have a clashscore attribute and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    high_resol_relative_percentile_clashscore: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-percent-RSRZ-outliers".
-    Note that the "high_resol_relative_percentile_percent_RSRZ_outliers" value is numerically smaller than the
-    corresponding low-* value.
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    high_resol_relative_percentile_percent_RSRZ_outliers: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-percent-rama-outliers".
-    Note that the "high_resol_relative_percentile_percent_ramachandran_outliers" value is numerically smaller than the
-    corresponding low value.
-    Example:            Specific to structures that have a percent_ramachandran_outliers attribute and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    high_resol_relative_percentile_percent_ramachandran_outliers: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-percent-rota-outliers".
-    Note that the "high_resol_relative_percentile_percent_rotamer_outliers" value is numerically smaller than the
-    corresponding low value.
-    Example:            Specific to that have a percent_rotamer_outliers attribute and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    high_resol_relative_percentile_percent_rotamer_outliers: Float
-    """
-
-    The string "yes".
-
-    Allowable values:
-    yes
-    """
-    ligands_for_buster_report: String
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-DCC_Rfree".
-    Note that the "low_resol_relative_percentile_DCC_Rfree" value is numerically greater than the
-    corresponding high value.
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    low_resol_relative_percentile_DCC_Rfree: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-RNAsuiteness".
-    Note that the "low_resol_relative_percentile_RNA_suiteness" value is numerically greater than the
-    corresponding high value.
-    Example:            Specific to entries that contain RNA polymers (and have a RNA_suiteness attribute),
-    and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    low_resol_relative_percentile_RNA_suiteness: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-clashscore".
-    Note that the "low_resol_relative_percentile_clashscore" value is numerically greater than the
-    corresponding high value.
-    Example:            Specific to that have a clashscore attribute and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    low_resol_relative_percentile_clashscore: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-percent-RSRZ-outliers".
-    Note that the "low_resol_relative_percentile_percent_RSRZ_outliers" value is numerically greater than the
-    corresponding high value.
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    low_resol_relative_percentile_percent_RSRZ_outliers: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-percent-rama-outliers".
-    Note that the "low_resol_relative_percentile_percent_ramachandran_outliers" value is numerically greater than the
-    corresponding high value.
-    Example:            Specific to that have a percent_ramachandran_outliers attribute and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    low_resol_relative_percentile_percent_ramachandran_outliers: Float
-    """
-
-    The resolution bin limit in Angstroms for PDB depositions used in the comparison when calculating
-    the attribute "relative-percentile-percent-rota-outliers".
-    Note that the "low_resol_relative_percentile_percent_rotamer_outliers" value is numerically greater than the
-    corresponding high value.
-    Example:            Specific to that have a percent_rotamer_outliers attribute and have been determined by X-ray crystallography.
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    low_resol_relative_percentile_percent_rotamer_outliers: Float
-    """
-
-    For each Cyrange well-defined core ("cyrange_domain") the id of the PDB_model_num which is most
-    similar to other models as measured by pairwise RMSDs over the domain.
-    For the whole entry ("Entry"), the medoid PDB_model_num of the largest core is taken as an overall
-    representative of the structure.
-    """
-    medoid_model: Int
-    """
-
-    A flag indicating if all models in the NMR ensemble contain the exact
-    same atoms ("True") or if the models differ in this respect ("False").
-    """
-    nmr_models_consistency_flag: String
-    "Diagnostic message from the wrapper of NMRClust software which clusters NMR models."
-    nmrclust_error: String
-    "Total number of clusters in the NMR ensemble identified by NMRClust."
-    nmrclust_number_of_clusters: Int
-    """
-
-    Number of models analysed by NMRClust - should in almost all cases be the
-    same as the number of models in the NMR ensemble.
-    """
-    nmrclust_number_of_models: Int
-    "Number of models that do not belong to any cluster as deemed by NMRClust."
-    nmrclust_number_of_outliers: Int
-    "Overall representative PDB_model_num of the NMR ensemble as identified by NMRClust."
-    nmrclust_representative_model: Int
-    "Reference for the NMRClust software."
-    nmrclust_version: String
-    """
-
-    The string "yes".
-
-    Allowable values:
-    yes
-    """
-    no_ligands_for_buster_report: String
-    """
-
-    The string "yes".
-
-    Allowable values:
-    yes
-    """
-    no_ligands_for_mogul: String
-    """
-
-    Will be set to "true" if no property was found to do percentile analysis on.
-    Please note that currently due to a bug that this attribute is "true" erronously for NMR structures.
-    """
-    no_percentile_property: String
-    """
-
-    This is the number of hydrogen atoms added and optimized by the MolProbity reduce pdbx_vrpt_software as part of the
-    all-atom clashscore.
-    """
-    num_H_reduce: Float
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "absolute-percentile-DCC_Rfree".
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_absolute_percentile_DCC_Rfree: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "absolute-percentile-RNAsuiteness".
-    Example:            Specific to entries that contain RNA polymers (and have a RNA_suiteness attribute).
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_absolute_percentile_RNA_suiteness: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "absolute-percentile-clashscore"
-    Example:             Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_absolute_percentile_clashscore: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "absolute-percentile-percent-RSRZ-outliers".
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_absolute_percentile_percent_RSRZ_outliers: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "absolute-percentile-percent-rama-outliers"
-    Example:            Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_absolute_percentile_percent_ramachandran_outliers: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "absolute-percentile-percent-rota-outliers"
-    Example:             Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_absolute_percentile_percent_rotamer_outliers: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "relative-percentile-DCC_Rfree".
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_relative_percentile_DCC_Rfree: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "relative-percentile-RNAsuiteness".
-    Example:            Specific to entries that contain RNA polymers (and have a RNA_suiteness attribute).
-    Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_relative_percentile_RNA_suiteness: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "relative-percentile-clashscore"
-    Example:            Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_relative_percentile_clashscore: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "relative-percentile-percent-RSRZ-outliers".
-    Example:            X-ray entry specific, produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_relative_percentile_percent_RSRZ_outliers: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "relative-percentile-percent-rama-outliers"
-    Example:            Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_relative_percentile_percent_ramachandran_outliers: Int
-    """
-
-    The number of PDB depositions used in the comparison when calculating the attribute
-    "relative-percentile-percent-rota-outliers"
-    Example:            Produced by the percentiles step of the validation pipeline software.
-    """
-    num_PDBids_relative_percentile_percent_rotamer_outliers: Int
-    """
-
-    The number of bond angless compared to "standard geometry" made using the MolProbity dangle program.
-    Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
-    This value is for all chains in the structure.
-    """
-    num_angles_RMSZ: Int
-    """
-
-    The number of bond lengths compared to "standard geometry" made using the MolProbity dangle program.
-    Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
-    This value is for all chains in the structure.
-    """
-    num_bonds_RMSZ: Int
-    """
-
-    The number of reflections in the free set as defined in the input structure factor file supplied to the validation pipeline.
-    example:            X-ray entry specific, obtained from the DCC program.
-    """
-    num_free_reflections: Int
-    """
-
-    The number of Miller Indices reported by the Xtriage program. This should be the same as the
-    number of _refln in the input structure factor file.
-    Example:            X-ray entry specific, calculated by Phenix Xtriage program.
-    """
-    num_miller_indices: Int
-    "Reference for the PANAV software."
-    panav_version: String
-    "A percentage, Normally percent proportion of the total number. Between 0% and 100%."
-    percent_RSRZ_outliers: Float
-    "A percentage, Normally percent proportion of the total number. Between 0% and 100%."
-    percent_free_reflections: Float
-    "A percentage, Normally percent proportion of the total number. Between 0% and 100%."
-    percent_ramachandran_outliers: Float
-    "A percentage, Normally percent proportion of the total number. Between 0% and 100%."
-    percent_ramachandran_outliers_full_length: Float
-    "A percentage, Normally percent proportion of the total number. Between 0% and 100%."
-    percent_rotamer_outliers: Float
-    "A percentage, Normally percent proportion of the total number. Between 0% and 100%."
-    percent_rotamer_outliers_full_length: Float
-    """
-
-    The percentile bins that this structure would contribute to in a recalculation of
-    percentile. The string is a comma separated list.
-    Example: An X-ray entry with a resolution of 1.8 Angstroms,
-    that would contribute to bins all structures, what ever bin 1.8 Angstrom resolution is in and
-    the all xray bin.
-    Example #2: An EM entry that would contribute to all and em structures bins.
-    Example #3: A NMR entry hat would contribute to all and nmr structures bins.
-    """
-    percentilebins: [String]
-    """
-
-    Comma separated list of the _entity.id's for the molecular entities that are present in the structure
-    and have _entity_poly.type indicating that they are protein, RNA or DNA: that is in the list
-    'polypeptide(L)', 'polypeptide(D)', 'polyribonucleotide, 'polydeoxyribonucleotide'  or
-    'polydeoxyribonucleotide/polyribonucleotide hybrid'.
-    Normally the entity.id's are integer numbers but not necessarily so.
-    Example
-    """
-    protein_DNA_RNA_entities: String
-    "Version and reference of the RCI software"
-    rci_version: String
-    """
-
-    The filename for the input mmCIF format reflection file given to the validation pipeline.
-    Not reported for runs at the annotation or release stage.
-    """
-    reflections_input_filename: String
-    """
-
-    Version of the REFMAC pdbx_vrpt_software used in the EDS step.
-    Example:           X-ray entry specific, obtained in the eds step from REFMAC calculation.
-    """
-    refmac_version: String
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    relative_percentile_DCC_Rfree: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    relative_percentile_RNA_suiteness: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    relative_percentile_clashscore: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    relative_percentile_percent_RSRZ_outliers: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    relative_percentile_percent_ramachandran_outliers: Float
-    """
-
-    Structures are judged in comparison to previously deposited PDB entries.
-    The comparison is carried out by calculation of the percentile rank, i.e. the percentage of entries
-    that are equal or poorer than this structure in terms of a quality indicator.
-    Percentile ranks range from 0 (the worst) to 100 (the best).
-    """
-    relative_percentile_percent_rotamer_outliers: Float
-    """
-
-    The date, time and time-zone that the validation XML file was created.
-    The string will be formatted like "Feb  7, 2017 -- 12:32 pm GMT".
-    """
-    report_creation_date: String
-    """
-
-    The data high resolution diffraction limit, in Angstroms, obtained from cif item
-    _reflns.d_resolution_high.
-    X-ray entry specific.
-    """
-    resol_high_from_reflectionsfile: Float
-    """
-
-    The data low resolution diffraction limit, in Angstroms, obtained from cif item
-    _reflns.d_resolution_low.
-    X-ray entry specific.
-    """
-    resol_low_from_reflectionsfile: Float
-    """
-
-    This is a comma separated list of the residue types whose bond lengths and bond angles have
-    not been checked against "standard geometry" using the MolProbity dangle program.
-    Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996)
-    """
-    restypes_notchecked_for_bond_angle_geometry: [String]
-    """
-
-    Version of the software for chemical shift outlier detection - currently
-    same as revision number of the validation pipeline.
-    """
-    shiftchecker_version: String
-    """
-
-    A sentence giving the result of Xtriage&#8217;s analysis on translational NCS.
-    Example: largest off-origin peak in the Patterson function is 8.82% of the height of the origin peak. No significant pseudotranslation is detected."
-    X-ray entry specific, obtained from the Xtriage program.
-    """
-    trans_NSC: String
-    """
-
-    Padilla and Yeates twinning parameter <|L|>.
-    Theoretical values is 0.5 in the untwinned case, and 0.375 in the perfectly twinned case.
-    Example:            X-ray entry specific, obtained from the Xtriage program.
-    """
-    twin_L: Float
-    """
-
-    Padilla and Yeates twinning parameter <|L**2|>.
-    Theoretical values is 0.333 in the untwinned case, and 0.2 in the perfectly twinned case.
-    Example:            X-ray entry specific, obtained from the Xtriage program.
-    """
-    twin_L2: Float
-    """
-
-    Estimated twinning fraction for operators as identified by Xtriage. A semicolon separated
-    list of operators with fractions is givens
-    Example:            X-ray entry specific, obtained from the Xtriage program.
-    """
-    twin_fraction: String
-    """
-
-    The mmCIF item names of the _refln columns used as input to the Xtriage program.
-    Example            X-ray entry specific, calculated by Phenix Xtriage program.
-    """
-    xtriage_input_columns: String
-}
-
 "Query root"
 type Query {
     "Get a list of assemblies given the list of ASSEMBLY IDs. Here an ASSEMBLY ID is a compound identifier that includes entry_id and assembly_id separated by '-', e.g. 1XXX-1."
@@ -7161,33 +6555,33 @@ type Query {
         "List of compound identifiers each includes entry_id and assembly_id separated by '-', e.g. 1XXX-1"
         assembly_ids: [String]!
     ): [CoreAssembly]
-    "Get an assembly given the PDB ID and ASSEMBLY ID. Here ASSEMBLY ID is '1', '2', '3', etc. or 'deposited' for deposited coordinates."
+    "Get an assembly given the ENTRY ID and ASSEMBLY ID. Here ASSEMBLY ID is '1', '2', '3', etc. or 'deposited' for deposited coordinates."
     assembly(
         "ASSEMBLY ID, e.g. '1', '2' or 'deposited' for deposited coordinates"
         assembly_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!
     ): CoreAssembly
-    "Get a list of PDB branched entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1."
+    "Get a list of branched entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case."
     branched_entities(
         "List of compound identifiers each includes entry_id and entity_id separated by '_', e.g. 1XXX_1"
         entity_ids: [String!]!
     ): [CoreBranchedEntity]
-    "Get a PDB branched entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc."
+    "Get a branched entity, given the ENTRY ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc."
     branched_entity(
         "ENTITY ID, e.g. '1', '2', '3', etc."
         entity_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!
     ): CoreBranchedEntity
-    "Get a PDB branched entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
+    "Get a branched entity instance (chain), given the ENTRY ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
     branched_entity_instance(
         "ENTITY INSTANCE ID, e.g. 'A', 'B'. Identifies structural element in the asymmetric unit (_struct_asym.id)"
         asym_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!
     ): CoreBranchedEntityInstance
-    "Get a list of PDB branched entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
+    "Get a list of branched entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
     branched_entity_instances(
         "List of compound identifiers each includes entry_id and asym_id separated by '.', e.g. 1XXX.A"
         instance_ids: [String]!
@@ -7202,12 +6596,12 @@ type Query {
         "List of CHEMICAL COMPONENT ID, e.g. 'CFF', 'HEM', 'FE'"
         comp_ids: [String]!
     ): [CoreChemComp]
-    "Get a list of PDB entries given a list of PDB IDs."
+    "Get a list of entries given a list of IDs."
     entries(
-        "List of PDB IDs"
+        "List of IDs"
         entry_ids: [String!]!
     ): [CoreEntry]
-    "Get PDB entry given the PDB id."
+    "Get entry given the id."
     entry(entry_id: String!): CoreEntry
     "Given a group ID get a group object formed by aggregating individual structures that share a degree of similarity"
     entry_group(
@@ -7224,54 +6618,54 @@ type Query {
         "Group provenance ID"
         group_provenance_id: String!
     ): GroupProvenance
-    "Get a pairwise polymeric interface given the PDB ID, ASSEMBLY ID and INTERFACE ID."
+    "Get a pairwise polymeric interface given the ENTRY ID, ASSEMBLY ID and INTERFACE ID."
     interface(
         "ASSEMBLY ID, e.g. '1', '2'"
         assembly_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!,
         "INTERFACE ID, e.g. '1'"
         interface_id: String!
     ): CoreInterface
-    "Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs. Here INTERFACE ID is a compound identifier that includes entry_id, assembly_id and interface_id e.g. 1XXX-1.1."
+    "Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs. Here INTERFACE ID is a compound identifier that includes entry_id, assembly_id and interface_id e.g. 1XXX-1.1. Note that the ENTRY ID part must be upper case."
     interfaces(
         "List of compound identifiers each includes entry_id, assembly_id and interface_id, e.g. 1XXX-1.1"
         interface_ids: [String!]!
     ): [CoreInterface]
-    "Get a list of PDB non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1."
+    "Get a list of non-polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case."
     nonpolymer_entities(
         "List of compound identifiers each includes entry_id and entity_id separated by '_', e.g. 1XXX_1"
         entity_ids: [String!]!
     ): [CoreNonpolymerEntity]
-    "Get a PDB non-polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc."
+    "Get a non-polymer entity, given the ENTRY ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc."
     nonpolymer_entity(
         "ENTITY ID, e.g. '1', '2', '3', etc."
         entity_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!
     ): CoreNonpolymerEntity
-    "Get a PDB non-polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
+    "Get a non-polymer entity instance (chain), given the ENTRY ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
     nonpolymer_entity_instance(
         "ENTITY INSTANCE ID, e.g. 'A', 'B'. Identifies structural element in the asymmetric unit (_struct_asym.id)"
         asym_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!
     ): CoreNonpolymerEntityInstance
-    "Get a list of PDB non-polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
+    "Get a list of non-polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
     nonpolymer_entity_instances(
         "List of compound identifiers each includes entry_id and asym_id separated by '.', e.g. 1XXX.A"
         instance_ids: [String]!
     ): [CoreNonpolymerEntityInstance]
-    "Get a list of PDB polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1."
+    "Get a list of polymer entities given a list of ENTITY IDs. Here ENTITY ID is a compound identifier that includes entry_id and entity_id separated by '_', e.g. 1XXX_1. Note that the ENTRY ID part must be upper case."
     polymer_entities(
         "List of compound identifiers each includes entry_id and entity_id separated by '_', e.g. 1XXX_1"
         entity_ids: [String!]!
     ): [CorePolymerEntity]
-    "Get a PDB polymer entity, given the PDB ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc."
+    "Get a polymer entity, given the ENTRY ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc."
     polymer_entity(
         "ENTITY ID, e.g. '1', '2', '3', etc."
         entity_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!
     ): CorePolymerEntity
     "Given a group ID get a group object formed by aggregating polymer entities that share a degree of similarity"
@@ -7284,14 +6678,14 @@ type Query {
         "List of group IDs"
         group_ids: [String]!
     ): [GroupPolymerEntity]
-    "Get a PDB polymer entity instance (chain), given the PDB ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
+    "Get a polymer entity instance (chain), given the ENTRY ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
     polymer_entity_instance(
         "ENTITY INSTANCE ID, e.g. 'A', 'B'. Identifies structural element in the asymmetric unit (_struct_asym.id)"
         asym_id: String!,
-        "PDB ID"
+        "ID"
         entry_id: String!
     ): CorePolymerEntityInstance
-    "Get a list of PDB polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
+    "Get a list of polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc."
     polymer_entity_instances(
         "List of compound identifiers each includes entry_id and asym_id separated by '.', e.g. 1XXX.A"
         instance_ids: [String]!
@@ -7350,9 +6744,51 @@ type RcsbAccessionInfo {
     The release status for the entry.
 
     Allowable values:
-    AUCO, AUTH, HOLD, HPUB', POLC, PROC, REFI, REL, REPL, WAIT, WDRN
+    AUCO, AUTH, HOLD, HPUB, POLC, PROC, REFI, REL, REPL, WAIT, WDRN
     """
     status_code: String
+}
+
+type RcsbAssemblyAnnotation {
+    additional_properties: [RcsbAssemblyAnnotationAdditionalProperties]
+    "An identifier for the annotation."
+    annotation_id: String
+    "Identifies the version of the annotation assignment."
+    assignment_version: String
+    "A description for the annotation."
+    description: String
+    "A name for the annotation."
+    name: String
+    """
+
+    Code identifying the individual, organization or program that
+    assigned the annotation.
+
+    Examples:
+    MCSA
+    """
+    provenance_source: String
+    """
+
+    A type or category of the annotation.
+
+    Allowable values:
+    MCSA
+    """
+    type: String
+}
+
+type RcsbAssemblyAnnotationAdditionalProperties {
+    """
+
+    The additional property name.
+
+    Allowable values:
+    MCSA_MOTIF_COMPATIBILITY
+    """
+    name: String
+    "The value(s) of the additional property."
+    values: [ObjectScalar]
 }
 
 type RcsbAssemblyContainerIdentifiers {
@@ -7379,6 +6815,69 @@ type RcsbAssemblyContainerIdentifiers {
     rcsb_id: String
 }
 
+type RcsbAssemblyFeature {
+    additional_properties: [RcsbAssemblyFeatureAdditionalProperties]
+    "Identifies the version of the feature assignment."
+    assignment_version: String
+    "A description for the feature."
+    description: String
+    "An identifier for the feature."
+    feature_id: String
+    "This container groups together chain-level identifiers of the assigned features."
+    feature_positions: [RcsbAssemblyFeatureFeaturePositions]
+    "A name for the feature."
+    name: String
+    """
+
+    Code identifying the individual, organization or program that
+    assigned the feature.
+
+    Examples:
+    MCSA
+    """
+    provenance_source: String
+    """
+
+    A type or category of the feature.
+
+    Allowable values:
+    MCSA
+    """
+    type: String
+}
+
+type RcsbAssemblyFeatureAdditionalProperties {
+    """
+
+    The additional property name.
+
+    Allowable values:
+    MCSA_MOTIF_COMPATIBILITY
+    """
+    name: String
+    "The value(s) of the additional property."
+    values: [ObjectScalar]
+}
+
+type RcsbAssemblyFeatureFeaturePositions {
+    """
+
+    An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
+
+    Examples:
+    A, B
+    """
+    asym_id: String!
+    "An identifier for the monomer at which this segment of the feature begins."
+    beg_seq_id: Int!
+    "An identifier for the monomer at which this segment of the feature ends."
+    end_seq_id: Int
+    "Identifies the list of operations from the category pdbx_struct_oper_list. One item in array per operator applied. The order follows how operators are applied."
+    struct_oper_list: [String]!
+    "The value(s) of the feature over the monomer segment."
+    values: [Float]
+}
+
 type RcsbAssemblyInfo {
     "Entity identifier for the container."
     assembly_id: String
@@ -7394,6 +6893,8 @@ type RcsbAssemblyInfo {
     This is the total count of branched entity instances generated in the assembly coordinate data.
     """
     branched_entity_instance_count: Int
+    "The assembly deuterated water molecule count."
+    deuterated_water_count: Int
     """
 
     The PDB entry accession code.
@@ -8620,7 +8121,7 @@ type RcsbChemCompRelated {
     The resource name for the related chemical reference.
 
     Allowable values:
-    CAS, CCDC/CSD, ChEBI, ChEMBL, DrugBank, Pharos, PubChem, RESID
+    CAS, CCDC/CSD, COD, ChEBI, ChEMBL, DrugBank, Pharos, PubChem, RESID
     """
     resource_name: String
 }
@@ -8728,6 +8229,14 @@ type RcsbClusterMembership {
 type RcsbCompModelProvenance {
     """
 
+    Entry identifier corresponding to the computed structure model.
+
+    Examples:
+    AF-P60325-F1, ma-bak-cepc-0019
+    """
+    entry_id: String!
+    """
+
     Source database for the computed structure model.
 
     Allowable values:
@@ -8736,6 +8245,8 @@ type RcsbCompModelProvenance {
     source_db: String
     "Source filename for the computed structure model."
     source_filename: String
+    "Source URL for computed structure model predicted aligned error (PAE) json file."
+    source_pae_url: String
     "Source URL for computed structure model file."
     source_url: String
 }
@@ -8841,13 +8352,13 @@ type RcsbEntityHostOrganism {
     """
     ncbi_taxonomy_id: Int
     "An identifier for an entity segment."
-    pdbx_src_id: String!
+    pdbx_src_id: Int!
     """
 
     A code indicating the provenance of the host organism.
 
     Allowable values:
-    PDB Primary Data
+    PDB Primary Data, Primary Data
     """
     provenance_source: String
     "The scientific name of the host organism"
@@ -8982,13 +8493,15 @@ type RcsbEntitySourceOrganism {
     """
     ncbi_taxonomy_id: Int
     "An identifier for the entity segment."
-    pdbx_src_id: String!
+    pdbx_src_id: Int!
     """
 
-    A code indicating the provenance of the source organism details for the entity
+    Reference to the provenance of the source organism details for the entity.
+    Primary data indicates information obtained from the same source as the structural model.
+    UniProt and NCBI are provided as alternate sources of provenance for organism details.
 
     Allowable values:
-    PDB Primary Data, UniProt
+    NCBI, PDB Primary Data, Primary Data, UniProt
     """
     provenance_source: String
     rcsb_gene_name: [RcsbEntitySourceOrganismRcsbGeneName]
@@ -9011,7 +8524,7 @@ type RcsbEntitySourceOrganismRcsbGeneName {
     A code indicating the provenance of the source organism details for the entity
 
     Allowable values:
-    PDB Primary Data, UniProt
+    NCBI, PDB Primary Data, Primary Data, UniProt
     """
     provenance_source: String
     """
@@ -9063,7 +8576,7 @@ type RcsbEntryContainerIdentifiers {
     Entry identifier for the container.
 
     Examples:
-    1KIP, 4HHB
+    4HHB, AF_AFP60325F1, MA_MABAKCEPC0019
     """
     entry_id: String!
     "List of PDB model identifiers for the entry."
@@ -9136,6 +8649,8 @@ type RcsbEntryInfo {
     cis_peptide_count: Int
     "The number of heavy atom coordinates records per deposited structure model."
     deposited_atom_count: Int
+    "The number of deuterated water molecules per deposited structure model."
+    deposited_deuterated_water_count: Int
     "The number of hydrogen atom coordinates records per deposited structure model."
     deposited_hydrogen_atom_count: Int
     "The number of model structures deposited."
@@ -9216,6 +8731,15 @@ type RcsbEntryInfo {
     DNA (only), DNA/RNA (only), NA-hybrid (only), Other, RNA (only)
     """
     na_polymer_entity_types: String
+    """
+
+    This data item identifies secondary structure
+    features of nucleic acids in the entry.
+
+    Allowable values:
+    a-form double helix, b-form double helix, bulge loop, double helix, four-way junction, hairpin loop, internal loop, mismatched base pair, other right-handed double helix, parallel strands, quadruple helix, tetraloop, three-way junction, triple helix, two-way junction, z-form double helix
+    """
+    ndb_struct_conf_na_feature_combined: [String]
     "Bound nonpolymer components in this entry."
     nonpolymer_bound_components: [String]
     "The number of distinct non-polymer entities in the structure entry exclusive of solvent."
@@ -9278,7 +8802,19 @@ type RcsbEntryInfo {
     polymer_monomer_count_maximum: Int
     "The minimum monomer count of a polymer entity per deposited structure model."
     polymer_monomer_count_minimum: Int
-    "Combined estimates of experimental resolution contributing to the refined structural model."
+    """
+
+    Combined estimates of experimental resolution contributing to the refined structural model.
+    Resolution reported in "refine.ls_d_res_high" is used for X-RAY DIFFRACTION, FIBER DIFFRACTION,
+    POWDER DIFFRACTION, ELECTRON CRYSTALLOGRAPHY, and NEUTRON DIFFRACTION as identified in
+    "refine.pdbx_refine_id".
+    Resolution reported in "em_3d_reconstruction.resolution" is used for ELECTRON MICROSCOPY.
+    The best value corresponding to "em_3d_reconstruction.resolution_method" == "FSC 0.143 CUT-OFF"
+    is used, if available. If not, the best "em_3d_reconstruction.resolution" value is used.
+    For structures that are not obtained from diffraction-based methods, the resolution values in
+    "refine.ls_d_res_high" are ignored.
+    Multiple values are reported only if multiple methods are used in the structure determination.
+    """
     resolution_combined: [Float]
     """
 
@@ -9294,12 +8830,20 @@ type RcsbEntryInfo {
     solvent_entity_count: Int
     """
 
-    Indicates if the structure was determined using experimental, computational, or integrative methods.
+    Indicates if the structure was determined using experimental or computational methods.
 
     Allowable values:
-    computational, experimental, integrative
+    computational, experimental
     """
-    structure_determination_methodology: String
+    structure_determination_methodology: String!
+    """
+
+    Indicates the priority of the value in _rcsb_entry_info.structure_determination_methodology.
+    The lower the number the higher the priority.
+    Priority values for "experimental" structures is currently set to 10 and
+    the values for "computational" structures is set to 100.
+    """
+    structure_determination_methodology_priority: Int
 }
 
 type RcsbEntryInfoDiffrnResolutionHigh {
@@ -9325,7 +8869,7 @@ type RcsbExternalReferences {
     Internal identifier for external resource.
 
     Allowable values:
-    OLDERADO, BMRB, NDB, SB GRID, PROTEIN DIFFRACTION, EM DATA RESOURCE
+    OLDERADO, BMRB, NDB, NAKB, SB GRID, PROTEIN DIFFRACTION, EM DATA RESOURCE
     """
     type: String!
 }
@@ -9975,7 +9519,7 @@ type RcsbNonpolymerInstanceAnnotation {
     assignment_version: String
     """
 
-    Chemical component identifier.
+    Non-polymer (ligand) chemical component identifier.
 
     Examples:
     ATP
@@ -10001,7 +9545,7 @@ type RcsbNonpolymerInstanceAnnotation {
     A type or category of the annotation.
 
     Allowable values:
-    HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE
+    HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE, HAS_NO_COVALENT_LINKAGE
     """
     type: String
 }
@@ -10611,6 +10155,7 @@ type RcsbPolymerEntityAlignAlignedRegions {
 }
 
 type RcsbPolymerEntityAnnotation {
+    additional_properties: [RcsbPolymerEntityAnnotationAdditionalProperties]
     "An identifier for the annotation."
     annotation_id: String
     annotation_lineage: [RcsbPolymerEntityAnnotationAnnotationLineage]
@@ -10640,9 +10185,22 @@ type RcsbPolymerEntityAnnotation {
     A type or category of the annotation.
 
     Allowable values:
-    GO, GlyCosmos, GlyGen, InterPro, MemProtMD, OPM, PDBTM, Pfam, mpstruc
+    CARD, GO, GlyCosmos, GlyGen, InterPro, MemProtMD, OPM, PDBTM, Pfam, mpstruc
     """
     type: String
+}
+
+type RcsbPolymerEntityAnnotationAdditionalProperties {
+    """
+
+    The additional property name.
+
+    Allowable values:
+    CARD_ARO_CATEGORY, CARD_ARO_CVTERM_ID, CARD_ARO_DRUG_CLASS, CARD_ARO_RESISTANCE_MECHANISM
+    """
+    name: String
+    "The value(s) of the additional property."
+    values: [ObjectScalar]
 }
 
 type RcsbPolymerEntityAnnotationAnnotationLineage {
@@ -10735,12 +10293,28 @@ type RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers {
     database_name: String
     """
 
+    Indicates what fraction of this polymer entity sequence is covered by the reference sequence.
+
+    Examples:
+    null, null
+    """
+    entity_sequence_coverage: Float
+    """
+
     Source of the reference database assignment
 
     Allowable values:
     PDB, RCSB, SIFTS, UniProt
     """
     provenance_source: String
+    """
+
+    Indicates what fraction of the reference sequence is covered by this polymer entity sequence.
+
+    Examples:
+    null, null
+    """
+    reference_sequence_coverage: Float
 }
 
 type RcsbPolymerEntityFeature {
@@ -10897,6 +10471,7 @@ type RcsbPolymerEntityGroupMembership {
     sequence_identity, matching_uniprot_accession
     """
     aggregation_method: String!
+    aligned_regions: [RcsbPolymerEntityGroupMembershipAlignedRegions]
     """
 
     A unique identifier for a group of entities
@@ -10907,6 +10482,15 @@ type RcsbPolymerEntityGroupMembership {
     group_id: String!
     "Degree of similarity expressed as a floating-point number"
     similarity_cutoff: Float
+}
+
+type RcsbPolymerEntityGroupMembershipAlignedRegions {
+    "An identifier for the monomer in the entity sequence at which this segment of the alignment begins."
+    entity_beg_seq_id: Int
+    "An length of the this segment of the alignment."
+    length: Int
+    "An identifier for the monomer in the reference sequence at which this segment of the alignment begins."
+    ref_beg_seq_id: Int
 }
 
 type RcsbPolymerEntityGroupSequenceAlignment {
@@ -11090,7 +10674,7 @@ type RcsbPolymerInstanceAnnotation {
     A type or category of the annotation.
 
     Allowable values:
-    CATH, ECOD, SCOP, SCOP2
+    CATH, ECOD, GlyGen, SCOP, SCOP2
     """
     type: String
 }
@@ -11145,7 +10729,7 @@ type RcsbPolymerInstanceFeature {
     A type or category of the feature.
 
     Allowable values:
-    ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
+    ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, LIGAND_COVALENT_LINKAGE, LIGAND_INTERACTION, LIGAND_METAL_COORDINATION_LINKAGE, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
     """
     type: String
 }
@@ -11226,7 +10810,7 @@ type RcsbPolymerInstanceFeatureSummary {
     Type or category of the feature.
 
     Allowable values:
-    ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+    ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, LIGAND_COVALENT_LINKAGE, LIGAND_INTERACTION, LIGAND_METAL_COORDINATION_LINKAGE, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
     """
     type: String
 }
@@ -12027,6 +11611,7 @@ type RcsbUniprotAlignmentsCoreEntityAlignments {
 }
 
 type RcsbUniprotAnnotation {
+    additional_properties: [RcsbUniprotAnnotationAdditionalProperties]
     "An identifier for the annotation."
     annotation_id: String
     annotation_lineage: [RcsbUniprotAnnotationAnnotationLineage]
@@ -12047,9 +11632,22 @@ type RcsbUniprotAnnotation {
     A type or category of the annotation.
 
     Allowable values:
-    disease, phenotype
+    disease, phenotype, GO, InterPro
     """
     type: String
+}
+
+type RcsbUniprotAnnotationAdditionalProperties {
+    """
+
+    The additional property name
+
+    Allowable values:
+    INTERPRO_TYPE
+    """
+    name: String
+    "The value(s) of the additional property"
+    values: [ObjectScalar]
 }
 
 type RcsbUniprotAnnotationAnnotationLineage {
@@ -12122,6 +11720,8 @@ type RcsbUniprotFeatureFeaturePositions {
     end_seq_id: Int
     "The value for the feature over this monomer segment."
     value: Float
+    "The value(s) for the feature over this monomer segment."
+    values: [Float]
 }
 
 type RcsbUniprotKeyword {
@@ -14215,6 +13815,3 @@ scalar Date
 
 "Built-in scalar for dynamic values"
 scalar ObjectScalar
-
-"Use SPQR's SchemaPrinter to remove this from SDL"
-scalar UNREPRESENTABLE

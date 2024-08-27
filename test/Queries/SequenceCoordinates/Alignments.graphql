@@ -1,12 +1,12 @@
-query QueryAlignment($queryId: String!, $from: SequenceReference, $to:SequenceReference, $range:[Int]){
-    alignment(
+query QueryAlignment($queryId: String!, $from: SequenceReference!, $to:SequenceReference!, $range:[Int!]){
+    alignments(
         queryId:$queryId
         from:$from
         to:$to
         range:$range
     ){
         query_sequence
-        target_alignment {
+        target_alignments {
             target_id
             orientation
             target_sequence
