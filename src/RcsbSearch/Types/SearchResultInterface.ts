@@ -552,9 +552,10 @@ export interface GroupIdentifier {
    */
   score: number;
   /**
-   * The number of group members that match the search query
+   * The total number of search hits in a given group matching the search query
    */
-  count?: number;
+  count: number;
+  representative: ServiceIdentifier;
   /**
    * The group members that match the query
    */

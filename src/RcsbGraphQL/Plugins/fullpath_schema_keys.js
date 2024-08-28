@@ -55,7 +55,7 @@ module.exports = {
                             }
                         }
                     )});
-                return undefined;
+                return node;
         };
         visit(astNode, { enter:visitorEnter });
         const root = graphQLtypes.filter(t=>(t.name === 'Query'))[0];
