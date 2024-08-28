@@ -1,25 +1,26 @@
-import {
-    printSchema,
-    parse,
-    visit,
-    DocumentNode,
-    FieldDefinitionNode
-} from 'graphql';
+import {DocumentNode, Kind, parse, printSchema, visit} from 'graphql';
 import {CodegenPlugin} from '@graphql-codegen/plugin-helpers'
-
-const visited = new Set();
+import {ASTVisitFn} from "graphql/language/visitor";
+import {ASTNode} from "graphql/language/ast";
 
 export const plugin: CodegenPlugin = {
     plugin: (schema, documents, config, info) => {
         const printedSchema: string = printSchema(schema); // Returns a string representation of the schema
-        const astNode: DocumentNode = parse(printedSchema); // Transforms the string into ASTNode
-        const visitor: any  = {
-            FieldDefinition:(node: FieldDefinitionNode)=>{
-                return `${node.name.value.toUpperCase()} = "${node.name.value}"`;
-            }
+        const document: DocumentNode = parse(printedSchema); // Transforms the string into ASTNode
+        const nodeNames: string[] = [];
+        const visitor: ASTVisitFn<ASTNode>  = (node: ASTNode)=>{
+            if(node.kind === Kind.FIELD_DEFINITION)
+                nodeNames.push(`${node.name.value.toUpperCase()} = "${node.name.value}"`);
+            return node;
         };
-        const result: string[] = visit(astNode, { leave: visitor });
-        const str = result.join('\n');
-        return "export class CoreConstants{\n"+str.substring(0, str.length - 1)+"\n}\n";
+        visit(document, { leave: visitor });
+        const out = ["export class CoreConstants{"];
+        nodeNames.forEach((value)=>{
+            if(value.length > 1){
+                out.push(`\tpublic static readonly ${value.toUpperCase()} = "${value}";`);
+            }
+        });
+        out.push("}");
+        return out.join("\n");
     }
 };

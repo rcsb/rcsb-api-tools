@@ -5,6 +5,8 @@
   "required": [
     "identifier",
     "score",
+    "count",
+    "representative",
     "result_set"
   ],
   "properties": {
@@ -19,8 +21,12 @@
     },
     "count": {
       "type": "integer",
+      "minimum": 1,
       "excludedFromEqualsAndHashCode" : true,
-      "description": "The number of group members that match the search query"
+      "description": "The total number of search hits in a given group matching the search query"
+    },
+    "representative": {
+      "$ref": "json-schema-rcsb_search_results_identifier.json"
     },
     "result_set": {
       "type": "array",

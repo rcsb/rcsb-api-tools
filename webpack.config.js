@@ -28,9 +28,6 @@ const app = {
     },
     output: {
         filename: '[name].js',
-        /*library: 'RcsbChart',
-        libraryTarget: 'umd',
-        umdNamedDefine: true,*/
         path: path.resolve(__dirname, 'build')
     }
 }
