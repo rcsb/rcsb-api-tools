@@ -1,3 +1,5 @@
+import {TargetIdentifiers} from "../RcsbGraphQL/Types/Borrego/GqlTypes";
+
 export class TagDelimiter {
     public static readonly entity: string = "_";
     public static readonly instance: string = ".";
@@ -37,4 +39,9 @@ export class TagDelimiter {
     public static isModel(rcsb:string): boolean {
         return this.alphaFoldRegExp.test(rcsb) || this.modelArchiveRegExp.test(rcsb);
     }
+
+    public static getInterfaceId(targetIdentifiers: TargetIdentifiers): string {
+        return `${targetIdentifiers.entry_id}${this.operatorComposition}${targetIdentifiers.assembly_id}${this.instance}${targetIdentifiers.interface_id}`;
+    }
+
 }
