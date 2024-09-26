@@ -49,6 +49,7 @@ if(!options["schema-version"]){
 }
 
 async function getMavenPath(schemaVersion: string): Promise<{url:string;version:string;}> {
+    // TODO fix this to use a public snapshot repo. Right now we don't publish snapshots, so we can't do it yet - JD 2024-04-02
     const metadataPath: string = `https://nexus.rcsb.org/repository/maven-public/org/rcsb/rcsb-mojave-model/${schemaVersion}/maven-metadata.xml`;
     const response:Response = await fetch(metadataPath);
     const xml: string = await response.text();
