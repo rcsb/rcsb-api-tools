@@ -11335,7 +11335,7 @@ export interface RcsbRepositoryHoldingsCurrent {
    * The list of content types associated with this entry.
    *
    * Allowable values:
-   * 2fo-fc Map, Combined NMR data (NEF), Combined NMR data (NMR-STAR), FASTA sequence, Map Coefficients, NMR chemical shifts, NMR restraints V1, NMR restraints V2, assembly PDB, assembly mmCIF, entry PDB, entry PDB bundle, entry PDBML, entry mmCIF, fo-fc Map, structure factors, validation data mmCIF, validation report, validation slider image
+   * 2fo-fc Map, Combined NMR data (NEF), Combined NMR data (NMR-STAR), FASTA sequence, Map Coefficients, NMR chemical shifts, NMR restraints V1, NMR restraints V2, assembly PDB, assembly mmCIF, entry PDB, entry PDB bundle, entry PDBML, entry mmCIF, fo-fc Map, structure factors, validation 2fo-fc coefficients, validation data mmCIF, validation fo-fc coefficients, validation report, validation slider image
    *
    */
   repository_content_types?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
