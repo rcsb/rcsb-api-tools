@@ -1,0 +1,19 @@
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "title" : "sequence",
+  "description" : "JSON schema to store protein and nucleic acid sequences for the 1D coordinate service",
+  "properties" : {
+    "sequence_id" : {
+      "description" : "Sequence identifier",
+      "type" : "string",
+      "examples" : [ "P01116", "1ASH_1", "NP_190408" ]
+    },
+    "sequence" : {
+      "description" : "Full one-letter amino or nucleic acid sequence",
+      "type" : "string",
+      "examples" : [ "SQVLGLGINGKVLQIFNKRTQ" ]
+    }
+  },
+  "additionalProperties" : false
+}

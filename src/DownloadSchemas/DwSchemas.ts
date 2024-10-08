@@ -3,8 +3,6 @@ import extract from "extract-zip";
 import Downloader from "nodejs-file-downloader";
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
-import {Response} from "node-fetch";
-import fetch from "node-fetch";
 import { XMLParser, XMLBuilder, XMLValidator} from "fast-xml-parser";
 
 
@@ -61,14 +59,14 @@ async function getMavenPath(schemaVersion: string): Promise<{url:string;version:
         console.error(`Fatal error: Snapshot version ${schemaVersion} not found`);
         process.exit(-1);
     }
-    return {url: `https://nexus.rcsb.org/repository/maven-public/org/rcsb/rcsb-mojave-model/${schemaVersion}/rcsb-mojave-model-${version}.jar`, version: version};
+    return {url: `https://repo1.maven.org/maven2/org/rcsb/rcsb-mojave-model/${schemaVersion}/rcsb-mojave-model-${version}.jar`, version: version};
 }
 
 async function getJarPath(schemaVersion: string): Promise<{url:string;version:string;}>{
     if(schemaVersion.includes("SNAPSHOT")){
         return await getMavenPath(schemaVersion);
     }else{
-        return {url:`https://nexus.rcsb.org/repository/maven-releases/org/rcsb/rcsb-mojave-model/${schemaVersion}/rcsb-mojave-model-${schemaVersion}.jar`, version:schemaVersion};    }
+        return {url:`https://repo1.maven.org/maven2/org/rcsb/rcsb-mojave-model/${schemaVersion}/rcsb-mojave-model-${schemaVersion}.jar`, version:schemaVersion};    }
 }
 
 async function exec(schemaVersion: string): Promise<void>{

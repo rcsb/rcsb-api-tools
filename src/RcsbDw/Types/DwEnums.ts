@@ -66,6 +66,9 @@ export enum Type {
     HelxRh3TP = "HELX_RH_3T_P",
     HelxRhAlP = "HELX_RH_AL_P",
     HelxRhPiP = "HELX_RH_PI_P",
+    LigandCovalentLinkage = "LIGAND_COVALENT_LINKAGE",
+    LigandInteraction = "LIGAND_INTERACTION",
+    LigandMetalCoordinationLinkage = "LIGAND_METAL_COORDINATION_LINKAGE",
     MaQaMetricLocalTypeContactProbability = "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY",
     MaQaMetricLocalTypeDistance = "MA_QA_METRIC_LOCAL_TYPE_DISTANCE",
     MaQaMetricLocalTypeEnergy = "MA_QA_METRIC_LOCAL_TYPE_ENERGY",
@@ -88,6 +91,7 @@ export enum PropertyName {
     DiseaseType = "DISEASE_TYPE",
     StrainId = "STRAIN_ID",
     Subtype = "SUBTYPE",
+    TargetId = "TARGET_ID",
     CardModelDescription = "CARD_MODEL_DESCRIPTION",
     CardModelOrganism = "CARD_MODEL_ORGANISM",
     ParentCompId = "PARENT_COMP_ID",
@@ -402,6 +406,7 @@ export enum IlluminationMode {
 }
 
 export enum Mode {
+    _4DStem_ = "4D-STEM",
     Brightfield = "BRIGHTFIELD",
     Darkfield = "DARKFIELD",
     Diffraction = "DIFFRACTION",
@@ -617,11 +622,14 @@ export enum GroupType {
 export enum SourceName {
     AlphaFold = "AlphaFold",
     ITasser = "ITasser",
+    InsightIi = "InsightII",
     ModelArchive = "ModelArchive",
     Modeller = "Modeller",
     Other = "Other",
     Pdb = "PDB",
     PdbDev_ = "PDB-Dev",
+    Phyre = "PHYRE",
+    Robetta = "Robetta",
     RoseTtaFold = "RoseTTAFold",
     SwissModel = "SwissModel"
 }
@@ -888,6 +896,10 @@ export enum SimilarityFunction {
     Rmsd = "rmsd",
     SequenceIdentity = "sequence_identity"
 }
+
+
+
+
 
 
 

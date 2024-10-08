@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
 import * as serverSearch from "./ServerConfig/codegen.search.json";

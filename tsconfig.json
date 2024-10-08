@@ -14,7 +14,8 @@
     "allowJs": true,
     "strictFunctionTypes": true,
     "declarationDir": "./build",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": [ "src/*", "src/**/*", "src/**/**/*", "src/**/**/**/*" ],
   "exclude": [

@@ -86,9 +86,9 @@
         "pdbx_seq_one_letter_code" : {
           "type" : "string",
           "examples" : [ "HHHH(MSE)AKQRSG or AUCGGAAU", "(MSE)SHHWGYGKHNGPEHWHKDFPIAKGERQSPVDIDTHTAKYDPSLKPLSVSYDQATSLRILNNGAAFNVEFD" ],
-          "description" : "Sequence of protein or nucleic acid polymer in standard one-letter\n               codes of amino acids or nucleotides. Non-standard amino\n               acids/nucleotides are represented by their Chemical\n               Component Dictionary (CCD) codes in\n               parenthesis. Deoxynucleotides are represented by the\n               specially-assigned 2-letter CCD codes in parenthesis,\n               with 'D' prefix added to their ribonucleotide\n               counterparts. For hybrid polymer, each residue is\n               represented by the code of its individual type. A\n               cyclic polymer is represented in linear sequence from\n               the chosen start to end.\n\nA for Alanine or Adenosine-5'-monophosphate\nC for Cysteine or Cytidine-5'-monophosphate\nD for Aspartic acid\nE for Glutamic acid\nF for Phenylalanine\nG for Glycine or Guanosine-5'-monophosphate\nH for Histidine\nI for Isoleucine or Inosinic Acid\nL for Leucine\nK for Lysine\nM for Methionine\nN for Asparagine  or Unknown ribonucleotide\nO for Pyrrolysine\nP for Proline\nQ for Glutamine\nR for Arginine\nS for Serine\nT for Threonine\nU for Selenocysteine or Uridine-5'-monophosphate\nV for Valine\nW for Tryptophan\nY for Tyrosine\n(DA) for 2'-deoxyadenosine-5'-monophosphate\n(DC) for 2'-deoxycytidine-5'-monophosphate\n(DG) for 2'-deoxyguanosine-5'-monophosphate\n(DT) for Thymidine-5'-monophosphate\n(MSE) for Selenomethionine\n(SEP) for Phosphoserine\n(PTO) for Phosphothreonine\n(PTR) for Phosphotyrosine\n(PCA) for Pyroglutamic acid\n(UNK) for Unknown amino acid\n(ACE) for Acetylation cap\n(NH2) for Amidation cap",
+          "description" : "Sequence of protein or nucleic acid polymer in standard one-letter\n               codes of amino acids or nucleotides. Non-standard amino\n               acids/nucleotides are represented by their Chemical\n               Component Dictionary (CCD) codes in\n               parenthesis. Deoxynucleotides are represented by the\n               specially-assigned 2-letter CCD codes in parenthesis,\n               with 'D' prefix added to their ribonucleotide\n               counterparts. For hybrid polymer, each residue is\n               represented by the code of its individual type. A\n               cyclic polymer is represented in linear sequence from\n               the chosen start to end.\n\nA for Alanine or Adenosine-5'-monophosphate\nC for Cysteine or Cytidine-5'-monophosphate\nD for Aspartic acid\nE for Glutamic acid\nF for Phenylalanine\nG for Glycine or Guanosine-5'-monophosphate\nH for Histidine\nI for Isoleucine or Inosinic Acid\nL for Leucine\nK for Lysine\nM for Methionine\nN for Asparagine  or Unknown ribonucleotide\nO for Pyrrolysine\nP for Proline\nQ for Glutamine\nR for Arginine\nS for Serine\nT for Threonine\nU for Selenocysteine or Uridine-5'-monophosphate\nV for Valine\nW for Tryptophan\nY for Tyrosine\n(DA) for 2'-deoxyadenosine-5'-monophosphate\n(DC) for 2'-deoxycytidine-5'-monophosphate\n(DG) for 2'-deoxyguanosine-5'-monophosphate\n(DT) for Thymidine-5'-monophosphate\n(MSE) for Selenomethionine\n(SEP) for Phosphoserine\n(TPO) for Phosphothreonine\n(PTR) for Phosphotyrosine\n(PCA) for Pyroglutamic acid\n(UNK) for Unknown amino acid\n(ACE) for Acetylation cap\n(NH2) for Amidation cap",
           "rcsb_description" : [ {
-            "text" : "Sequence of protein or nucleic acid polymer in standard one-letter\n               codes of amino acids or nucleotides. Non-standard amino\n               acids/nucleotides are represented by their Chemical\n               Component Dictionary (CCD) codes in\n               parenthesis. Deoxynucleotides are represented by the\n               specially-assigned 2-letter CCD codes in parenthesis,\n               with 'D' prefix added to their ribonucleotide\n               counterparts. For hybrid polymer, each residue is\n               represented by the code of its individual type. A\n               cyclic polymer is represented in linear sequence from\n               the chosen start to end.\n\nA for Alanine or Adenosine-5'-monophosphate\nC for Cysteine or Cytidine-5'-monophosphate\nD for Aspartic acid\nE for Glutamic acid\nF for Phenylalanine\nG for Glycine or Guanosine-5'-monophosphate\nH for Histidine\nI for Isoleucine or Inosinic Acid\nL for Leucine\nK for Lysine\nM for Methionine\nN for Asparagine  or Unknown ribonucleotide\nO for Pyrrolysine\nP for Proline\nQ for Glutamine\nR for Arginine\nS for Serine\nT for Threonine\nU for Selenocysteine or Uridine-5'-monophosphate\nV for Valine\nW for Tryptophan\nY for Tyrosine\n(DA) for 2'-deoxyadenosine-5'-monophosphate\n(DC) for 2'-deoxycytidine-5'-monophosphate\n(DG) for 2'-deoxyguanosine-5'-monophosphate\n(DT) for Thymidine-5'-monophosphate\n(MSE) for Selenomethionine\n(SEP) for Phosphoserine\n(PTO) for Phosphothreonine\n(PTR) for Phosphotyrosine\n(PCA) for Pyroglutamic acid\n(UNK) for Unknown amino acid\n(ACE) for Acetylation cap\n(NH2) for Amidation cap",
+            "text" : "Sequence of protein or nucleic acid polymer in standard one-letter\n               codes of amino acids or nucleotides. Non-standard amino\n               acids/nucleotides are represented by their Chemical\n               Component Dictionary (CCD) codes in\n               parenthesis. Deoxynucleotides are represented by the\n               specially-assigned 2-letter CCD codes in parenthesis,\n               with 'D' prefix added to their ribonucleotide\n               counterparts. For hybrid polymer, each residue is\n               represented by the code of its individual type. A\n               cyclic polymer is represented in linear sequence from\n               the chosen start to end.\n\nA for Alanine or Adenosine-5'-monophosphate\nC for Cysteine or Cytidine-5'-monophosphate\nD for Aspartic acid\nE for Glutamic acid\nF for Phenylalanine\nG for Glycine or Guanosine-5'-monophosphate\nH for Histidine\nI for Isoleucine or Inosinic Acid\nL for Leucine\nK for Lysine\nM for Methionine\nN for Asparagine  or Unknown ribonucleotide\nO for Pyrrolysine\nP for Proline\nQ for Glutamine\nR for Arginine\nS for Serine\nT for Threonine\nU for Selenocysteine or Uridine-5'-monophosphate\nV for Valine\nW for Tryptophan\nY for Tyrosine\n(DA) for 2'-deoxyadenosine-5'-monophosphate\n(DC) for 2'-deoxycytidine-5'-monophosphate\n(DG) for 2'-deoxyguanosine-5'-monophosphate\n(DT) for Thymidine-5'-monophosphate\n(MSE) for Selenomethionine\n(SEP) for Phosphoserine\n(TPO) for Phosphothreonine\n(PTR) for Phosphotyrosine\n(PCA) for Pyroglutamic acid\n(UNK) for Unknown amino acid\n(ACE) for Acetylation cap\n(NH2) for Amidation cap",
             "context" : "dictionary"
           }, {
             "text" : "Chemical sequence expressed as string of one-letter amino acid codes. Modifications and non-standard amino acids should be input using the three letter code in parenthesis, e.g. (MSE)",
@@ -442,8 +442,8 @@
             "type" : "string",
             "examples" : [ "HELA CELLS" ],
             "description" : "The specific line of cells.",
-            "rcsb_search_context" : [ "full-text" ],
-            "rcsb_full_text_priority" : 1,
+            "rcsb_search_context" : [ "exact-match", "full-text" ],
+            "rcsb_full_text_priority" : 10,
             "rcsb_description" : [ {
               "text" : "The specific line of cells.",
               "context" : "dictionary"
@@ -1142,7 +1142,7 @@
             } ]
           },
           "pdbx_src_id" : {
-            "type" : "string",
+            "type" : "integer",
             "description" : "An identifier for an entity segment.",
             "rcsb_description" : [ {
               "text" : "An identifier for an entity segment.",
@@ -1323,7 +1323,7 @@
             } ]
           },
           "pdbx_src_id" : {
-            "type" : "string",
+            "type" : "integer",
             "description" : "An identifier for the entity segment.",
             "rcsb_description" : [ {
               "text" : "An identifier for the entity segment.",
@@ -3466,7 +3466,7 @@
   },
   "additionalProperties" : false,
   "description" : "JSON schema for polymer entity core.",
-  "$comment" : "schema_version: 10.0.3",
+  "$comment" : "schema_version: 10.0.5",
   "required" : [ "rcsb_id", "rcsb_polymer_entity_container_identifiers" ],
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "title" : "Core Polymer Entity"

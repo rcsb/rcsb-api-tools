@@ -72,7 +72,7 @@ export interface CorePolymerEntity {
      * (DT) for Thymidine-5'-monophosphate
      * (MSE) for Selenomethionine
      * (SEP) for Phosphoserine
-     * (PTO) for Phosphothreonine
+     * (TPO) for Phosphothreonine
      * (PTR) for Phosphotyrosine
      * (PCA) for Pyroglutamic acid
      * (UNK) for Unknown amino acid
@@ -1148,7 +1148,7 @@ export interface CorePolymerEntity {
       /**
        * An identifier for an entity segment.
        */
-      pdbx_src_id: string;
+      pdbx_src_id: number;
       /**
        * A code indicating the provenance of the host organism.
        */
@@ -1251,7 +1251,7 @@ export interface CorePolymerEntity {
       /**
        * An identifier for an entity segment.
        */
-      pdbx_src_id: string;
+      pdbx_src_id: number;
       /**
        * A code indicating the provenance of the host organism.
        */
@@ -1361,7 +1361,7 @@ export interface CorePolymerEntity {
       /**
        * An identifier for the entity segment.
        */
-      pdbx_src_id: string;
+      pdbx_src_id: number;
       /**
        * Reference to the provenance of the source organism details for the entity.
        *  Primary data indicates information obtained from the same source as the structural model.
@@ -1482,7 +1482,7 @@ export interface CorePolymerEntity {
       /**
        * An identifier for the entity segment.
        */
-      pdbx_src_id: string;
+      pdbx_src_id: number;
       /**
        * Reference to the provenance of the source organism details for the entity.
        *  Primary data indicates information obtained from the same source as the structural model.

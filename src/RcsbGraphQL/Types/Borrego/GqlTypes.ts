@@ -159,6 +159,7 @@ export enum PropertyName {
   SheetSense = 'SHEET_SENSE',
   StrainId = 'STRAIN_ID',
   Subtype = 'SUBTYPE',
+  TargetId = 'TARGET_ID',
   WildType = 'WILD_TYPE'
 }
 
@@ -351,6 +352,9 @@ export enum Type {
   InitiatorMethionine = 'INITIATOR_METHIONINE',
   IntramembraneRegion = 'INTRAMEMBRANE_REGION',
   IonicInteraction = 'IONIC_INTERACTION',
+  LigandCovalentLinkage = 'LIGAND_COVALENT_LINKAGE',
+  LigandInteraction = 'LIGAND_INTERACTION',
+  LigandMetalCoordinationLinkage = 'LIGAND_METAL_COORDINATION_LINKAGE',
   LipidMoietyBindingRegion = 'LIPID_MOIETY_BINDING_REGION',
   MaQaMetricLocalTypeContactProbability = 'MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY',
   MaQaMetricLocalTypeDistance = 'MA_QA_METRIC_LOCAL_TYPE_DISTANCE',

@@ -2141,7 +2141,7 @@ export interface EmImaging {
    * The mode of imaging.
    *
    * Allowable values:
-   * BRIGHT FIELD, DARK FIELD, DIFFRACTION, OTHER
+   * 4D-STEM, BRIGHT FIELD, DARK FIELD, DIFFRACTION, OTHER
    *
    */
   mode?: Maybe<Scalars['String']['output']>;
@@ -2509,7 +2509,7 @@ export interface EntityPoly {
    * (DT) for Thymidine-5'-monophosphate
    * (MSE) for Selenomethionine
    * (SEP) for Phosphoserine
-   * (PTO) for Phosphothreonine
+   * (TPO) for Phosphothreonine
    * (PTR) for Phosphotyrosine
    * (PCA) for Pyroglutamic acid
    * (UNK) for Unknown amino acid
@@ -3860,14 +3860,8 @@ export interface PdbxDatabaseRelated {
   /**
    * The name of the database containing the related entry.
    *
-   * Examples:
-   * PDB  - Protein Databank
-   * NDB  - Nucleic Acid Database
-   * BMRB - BioMagResBank
-   * EMDB - Electron Microscopy Database
-   * BMCD - Biological Macromolecule Crystallization Database
-   * TargetTrack - Target Registration and Protocol Database
-   * SASBDB - Small Angle Scattering Biological Data Bank
+   * Allowable values:
+   * BIOISIS, BMCD, BMRB, EMDB, NDB, PDB, PDB-Dev, SASBDB, TargetDB, TargetTrack
    *
    */
   db_name: Scalars['String']['output'];
@@ -4183,7 +4177,7 @@ export interface PdbxInitialRefinementModel {
    * This item identifies the resource of initial model used for refinement
    *
    * Allowable values:
-   * AlphaFold, ITasser, ModelArchive, Modeller, Other, PDB, PDB-Dev, RoseTTAFold, SwissModel
+   * AlphaFold, ITasser, InsightII, ModelArchive, Modeller, Other, PDB, PDB-Dev, PHYRE, Robetta, RoseTTAFold, SwissModel
    *
    */
   source_name?: Maybe<Scalars['String']['output']>;
@@ -6929,6 +6923,8 @@ export interface RcsbAssemblyInfo {
    *  This is the total count of branched entity instances generated in the assembly coordinate data.
    */
   branched_entity_instance_count?: Maybe<Scalars['Int']['output']>;
+  /** The assembly deuterated water molecule count. */
+  deuterated_water_count?: Maybe<Scalars['Int']['output']>;
   /**
    * The PDB entry accession code.
    *
@@ -8382,7 +8378,7 @@ export interface RcsbEntityHostOrganism {
    */
   ncbi_taxonomy_id?: Maybe<Scalars['Int']['output']>;
   /** An identifier for an entity segment. */
-  pdbx_src_id: Scalars['String']['output'];
+  pdbx_src_id: Scalars['Int']['output'];
   /**
    * A code indicating the provenance of the host organism.
    *
@@ -8520,7 +8516,7 @@ export interface RcsbEntitySourceOrganism {
    */
   ncbi_taxonomy_id?: Maybe<Scalars['Int']['output']>;
   /** An identifier for the entity segment. */
-  pdbx_src_id: Scalars['String']['output'];
+  pdbx_src_id: Scalars['Int']['output'];
   /**
    * Reference to the provenance of the source organism details for the entity.
    *  Primary data indicates information obtained from the same source as the structural model.
@@ -8679,6 +8675,8 @@ export interface RcsbEntryInfo {
   cis_peptide_count?: Maybe<Scalars['Int']['output']>;
   /** The number of heavy atom coordinates records per deposited structure model. */
   deposited_atom_count?: Maybe<Scalars['Int']['output']>;
+  /** The number of deuterated water molecules per deposited structure model. */
+  deposited_deuterated_water_count?: Maybe<Scalars['Int']['output']>;
   /** The number of hydrogen atom coordinates records per deposited structure model. */
   deposited_hydrogen_atom_count?: Maybe<Scalars['Int']['output']>;
   /** The number of model structures deposited. */
@@ -9572,7 +9570,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    */
   assignment_version?: Maybe<Scalars['String']['output']>;
   /**
-   * Chemical component identifier.
+   * Non-polymer (ligand) chemical component identifier.
    *
    * Examples:
    * ATP
@@ -9598,7 +9596,7 @@ export interface RcsbNonpolymerInstanceAnnotation {
    * A type or category of the annotation.
    *
    * Allowable values:
-   * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE
+   * HAS_COVALENT_LINKAGE, HAS_METAL_COORDINATION_LINKAGE, HAS_NO_COVALENT_LINKAGE
    *
    */
   type?: Maybe<Scalars['String']['output']>;
@@ -10746,7 +10744,7 @@ export interface RcsbPolymerInstanceAnnotation {
    * A type or category of the annotation.
    *
    * Allowable values:
-   * CATH, ECOD, SCOP, SCOP2
+   * CATH, ECOD, GlyGen, SCOP, SCOP2
    *
    */
   type?: Maybe<Scalars['String']['output']>;
@@ -10803,7 +10801,7 @@ export interface RcsbPolymerInstanceFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
+   * ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, LIGAND_COVALENT_LINKAGE, LIGAND_INTERACTION, LIGAND_METAL_COORDINATION_LINKAGE, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ, ASA
    *
    */
   type?: Maybe<Scalars['String']['output']>;
@@ -10887,7 +10885,7 @@ export interface RcsbPolymerInstanceFeatureSummary {
    * Type or category of the feature.
    *
    * Allowable values:
-   * ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
+   * ANGLE_OUTLIER, BEND, BINDING_SITE, BOND_OUTLIER, C-MANNOSYLATION_SITE, CATH, CIS-PEPTIDE, ECOD, HELIX_P, HELX_LH_PP_P, HELX_RH_3T_P, HELX_RH_AL_P, HELX_RH_PI_P, LIGAND_COVALENT_LINKAGE, LIGAND_INTERACTION, LIGAND_METAL_COORDINATION_LINKAGE, MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY, MA_QA_METRIC_LOCAL_TYPE_DISTANCE, MA_QA_METRIC_LOCAL_TYPE_ENERGY, MA_QA_METRIC_LOCAL_TYPE_IPTM, MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE, MA_QA_METRIC_LOCAL_TYPE_OTHER, MA_QA_METRIC_LOCAL_TYPE_PAE, MA_QA_METRIC_LOCAL_TYPE_PLDDT, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM, MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1], MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1], MA_QA_METRIC_LOCAL_TYPE_PTM, MA_QA_METRIC_LOCAL_TYPE_ZSCORE, MEMBRANE_SEGMENT, MOGUL_ANGLE_OUTLIER, MOGUL_BOND_OUTLIER, N-GLYCOSYLATION_SITE, O-GLYCOSYLATION_SITE, RAMACHANDRAN_OUTLIER, ROTAMER_OUTLIER, RSCC_OUTLIER, RSRZ_OUTLIER, S-GLYCOSYLATION_SITE, SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS, SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE, SCOP, SCOP2B_SUPERFAMILY, SCOP2_FAMILY, SCOP2_SUPERFAMILY, SHEET, STEREO_OUTLIER, STRN, TURN_TY1_P, UNASSIGNED_SEC_STRUCT, UNOBSERVED_ATOM_XYZ, UNOBSERVED_RESIDUE_XYZ, ZERO_OCCUPANCY_ATOM_XYZ, ZERO_OCCUPANCY_RESIDUE_XYZ
    *
    */
   type?: Maybe<Scalars['String']['output']>;

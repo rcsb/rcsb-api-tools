@@ -13,12 +13,11 @@ export const plugin: CodegenPlugin = {
     plugin: (schema, documents, config, info) => {
         const printedSchema: string = printSchema(schema); // Returns a string representation of the schema
         const astNode: DocumentNode = parse(printedSchema); // Transforms the string into ASTNode
-        const visitor: any  = {
-            FieldDefinition:(node: FieldDefinitionNode)=>{
+        const visitor: any  = (node: FieldDefinitionNode)=>{
+            if(node.kind === "FieldDefinition")
                 return `${node.name.value.toUpperCase()} = "${node.name.value}"`;
-            }
         };
-        const result: string[] = visit(astNode, { leave: visitor });
+        const result: string[] = visit(astNode, { leave: visitor }) as unknown as string[];
         const str = result.join('\n');
         return "export class CoreConstants{\n"+str.substring(0, str.length - 1)+"\n}\n";
     }

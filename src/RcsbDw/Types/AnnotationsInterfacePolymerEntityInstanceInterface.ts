@@ -56,7 +56,7 @@ export interface EntityAnnotations {
       /**
        * The connection type.
        */
-      type?:
+      type:
         | "ASA"
         | "ASA_UNBOUND"
         | "ASA_BOUND"
@@ -124,6 +124,9 @@ export interface EntityAnnotations {
         | "HELX_RH_3T_P"
         | "HELX_RH_AL_P"
         | "HELX_RH_PI_P"
+        | "LIGAND_COVALENT_LINKAGE"
+        | "LIGAND_INTERACTION"
+        | "LIGAND_METAL_COORDINATION_LINKAGE"
         | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
         | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
         | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
@@ -192,6 +195,7 @@ export interface EntityAnnotations {
           | "DISEASE_TYPE"
           | "STRAIN_ID"
           | "SUBTYPE"
+          | "TARGET_ID"
           | "CARD_MODEL_DESCRIPTION"
           | "CARD_MODEL_ORGANISM"
           | "PARENT_COMP_ID"
@@ -216,7 +220,7 @@ export interface EntityAnnotations {
         property_value?: (string | number | number)[];
         [k: string]: unknown;
       }[];
-      feature_positions?: {
+      feature_positions: {
         /**
          * An identifier for the monomer at which this segment of the feature begins.
          */
@@ -255,7 +259,7 @@ export interface EntityAnnotations {
       /**
        * The connection type.
        */
-      type?:
+      type:
         | "ASA"
         | "ASA_UNBOUND"
         | "ASA_BOUND"
@@ -323,6 +327,9 @@ export interface EntityAnnotations {
         | "HELX_RH_3T_P"
         | "HELX_RH_AL_P"
         | "HELX_RH_PI_P"
+        | "LIGAND_COVALENT_LINKAGE"
+        | "LIGAND_INTERACTION"
+        | "LIGAND_METAL_COORDINATION_LINKAGE"
         | "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY"
         | "MA_QA_METRIC_LOCAL_TYPE_DISTANCE"
         | "MA_QA_METRIC_LOCAL_TYPE_ENERGY"
@@ -391,6 +398,7 @@ export interface EntityAnnotations {
           | "DISEASE_TYPE"
           | "STRAIN_ID"
           | "SUBTYPE"
+          | "TARGET_ID"
           | "CARD_MODEL_DESCRIPTION"
           | "CARD_MODEL_ORGANISM"
           | "PARENT_COMP_ID"
@@ -415,7 +423,7 @@ export interface EntityAnnotations {
         property_value?: (string | number | number)[];
         [k: string]: unknown;
       }[];
-      feature_positions?: {
+      feature_positions: {
         /**
          * An identifier for the monomer at which this segment of the feature begins.
          */
