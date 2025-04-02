@@ -5,5 +5,5 @@
     "^.+\\.(js|jsx)$": "babel-jest"
   },
   "testEnvironment": "node",
-  "transformIgnorePatterns": ["node_modules/(?!graphql-request)/"]
+  "transformIgnorePatterns": ["node_modules/(?!)/"]
 }
