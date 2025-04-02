@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the bird_chem_comp_core content type schema. This schema supports collection bird_chem_comp_core version 7.1.3. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-bird_chem_comp_core.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the bird_chem_comp_core content type schema. This schema supports collection bird_chem_comp_core version 7.1.4. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-bird_chem_comp_core.json and follows JSON schema specification version 4
  */
-export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion713 {
+export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion714 {
   chem_comp?: {
     /**
      * The formula for the chemical component. Formulae are written
@@ -164,6 +164,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion713 {
       action_type?:
         | "Create component"
         | "Initial release"
+        | "Modify PCM"
         | "Modify aromatic_flag"
         | "Modify atom id"
         | "Modify backbone"
@@ -214,6 +215,7 @@ export interface SchemaBirdChemCompCoreCollectionBirdChemCompCoreVersion713 {
       action_type?:
         | "Create component"
         | "Initial release"
+        | "Modify PCM"
         | "Modify aromatic_flag"
         | "Modify atom id"
         | "Modify backbone"

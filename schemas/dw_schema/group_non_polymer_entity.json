@@ -1,5 +1,5 @@
 {
-  "title" : "Group Entry",
+  "title" : "Group Non-polymer Entity",
   "$schema" : "https://json-schema.org/draft-07/schema#",
   "type" : "object",
   "required" : [ "rcsb_id", "rcsb_group_container_identifiers", "rcsb_group_info" ],

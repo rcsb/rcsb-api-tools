@@ -21,7 +21,8 @@ export interface GroupPolymerEntity {
     group_provenance_id:
       | "provenance_sequence_identity"
       | "provenance_matching_uniprot_accession"
-      | "provenance_matching_deposit_group_id";
+      | "provenance_matching_deposit_group_id"
+      | "provenance_matching_chemical_component_id";
     /**
      * Member identifiers representing a higher level in the groping hierarchy that has parent-child relationship
      *
@@ -41,7 +42,12 @@ export interface GroupPolymerEntity {
     /**
      * Granularity of group members identifiers
      */
-    group_members_granularity: "assembly" | "entry" | "polymer_entity" | "polymer_entity_instance";
+    group_members_granularity:
+      | "assembly"
+      | "entry"
+      | "polymer_entity"
+      | "non_polymer_entity"
+      | "polymer_entity_instance";
     group_members_count: number;
     [k: string]: unknown;
   };

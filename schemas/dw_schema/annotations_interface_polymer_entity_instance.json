@@ -58,7 +58,7 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ASA", "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "hydropathy", "disorder", "disorder_binding", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "modified_monomer", "mutation", "ANGLE_OUTLIER", "BEND", "BOND_OUTLIER", "C-MANNOSYLATION_SITE", "CATH", "CIS-PEPTIDE", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_BOND_OUTLIER", "N-GLYCOSYLATION_SITE", "O-GLYCOSYLATION_SITE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC_OUTLIER", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs" ],
+            "enum" : [ "ASA", "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "hydropathy", "disorder", "disorder_binding", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "modified_monomer", "mutation", "ANGLE_OUTLIER", "ANGLE_OUTLIERS", "AVERAGE_OCCUPANCY", "BEND", "BOND_OUTLIER", "BOND_OUTLIERS", "C-MANNOSYLATION_SITE", "CATH", "CHIRAL_OUTLIERS", "CIS-PEPTIDE", "CLASHES", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_ANGLE_OUTLIERS", "MOGUL_BOND_OUTLIER", "MOGUL_BOND_OUTLIERS", "MOGUL_RING_OUTLIERS", "MOGUL_TORSION_OUTLIERS", "N-GLYCOSYLATION_SITE", "NATOMS_EDS", "O-GLYCOSYLATION_SITE", "OWAB", "PLANE_OUTLIERS", "Q_SCORE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC", "RSCC_OUTLIER", "RSR", "RSRZ", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "SYMM_CLASHES", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs" ],
             "examples" : [ "ASA_UNBOUND", "BINDING_SITE", "mutation", "artifact", "CATH", "SCOP" ],
             "description" : "The connection type.",
             "rcsb_enum_annotated" : [ {
@@ -262,6 +262,14 @@
               "detail" : "Molprobity bond angle outlier",
               "name" : "Molprobity bond angle outlier"
             }, {
+              "value" : "ANGLE_OUTLIERS",
+              "detail" : "Number of atoms with angle outliers",
+              "name" : "ANGLE_OUTLIERS"
+            }, {
+              "value" : "AVERAGE_OCCUPANCY",
+              "detail" : "The average heavy atom occupancy for coordinate records for the residue",
+              "name" : "AVERAGE_OCCUPANCY"
+            }, {
               "value" : "BEND",
               "detail" : "Bend - region with high backbone curvature without specific hydrogen bonding",
               "name" : "Bend - region with high backbone curvature without specific hydrogen bonding"
@@ -274,6 +282,10 @@
               "detail" : "Molprobity bond distance outlier",
               "name" : "Molprobity bond distance outlier"
             }, {
+              "value" : "BOND_OUTLIERS",
+              "detail" : "Number of atoms with bond outliers",
+              "name" : "BOND_OUTLIERS"
+            }, {
               "value" : "C-MANNOSYLATION_SITE",
               "detail" : "Mannose glycan binding to the first tryptophan (W) residue in the sequence motif WXXW  (where X is any amino acid).",
               "name" : "C-Mannosylation Site"
@@ -282,9 +294,17 @@
               "detail" : "CATH - Class, Architecture, Topology, and Homology Protein Structure Database",
               "name" : "CATH"
             }, {
+              "value" : "CHIRAL_OUTLIERS",
+              "detail" : "Number of chiral outliers",
+              "name" : "CHIRAL_OUTLIERS"
+            }, {
               "value" : "CIS-PEPTIDE",
               "detail" : "Peptide linkages with CIS configurations",
               "name" : "CIS Peptide linkages"
+            }, {
+              "value" : "CLASHES",
+              "detail" : "Number of atoms a with clashes",
+              "name" : "CLASHES"
             }, {
               "value" : "ECOD",
               "detail" : "ECOD - An Evolutionary Classification of Protein Domains",
@@ -382,17 +402,49 @@
               "detail" : "Mogul bond angle outlier",
               "name" : "Mogul bond angle outlier"
             }, {
+              "value" : "MOGUL_ANGLE_OUTLIERS",
+              "detail" : "Number of angle outliers as reported by MOGUL",
+              "name" : "MOGUL_ANGLE_OUTLIERS"
+            }, {
               "value" : "MOGUL_BOND_OUTLIER",
               "detail" : "Mogul bond distance outlier",
               "name" : "Mogul bond distance outlier"
+            }, {
+              "value" : "MOGUL_BOND_OUTLIERS",
+              "detail" : "Number of bond outliers as reported by MOGUL",
+              "name" : "MOGUL_BOND_OUTLIERS"
+            }, {
+              "value" : "MOGUL_RING_OUTLIERS",
+              "detail" : "Number of atoms with ring outliers as reported by MOGUL",
+              "name" : "MOGUL_RING_OUTLIERS"
+            }, {
+              "value" : "MOGUL_TORSION_OUTLIERS",
+              "detail" : "Number of torsion angle outliers as reported by MOGUL",
+              "name" : "MOGUL_TORSION_OUTLIERS"
             }, {
               "value" : "N-GLYCOSYLATION_SITE",
               "detail" : "Glycan binding to the amide nitrogen of an asparagine (Asn) residue",
               "name" : "N-Glycosylation Site"
             }, {
+              "value" : "NATOMS_EDS",
+              "detail" : "Number of atoms in the residue returned by the EDS software",
+              "name" : "NATOMS_EDS"
+            }, {
               "value" : "O-GLYCOSYLATION_SITE",
               "detail" : "Glycan binding to the oxygen atom of serine (Ser) or threonine (Thr) residues",
               "name" : "O-Glycosylation Site"
+            }, {
+              "value" : "OWAB",
+              "detail" : "Occupancy-weighted Average B value",
+              "name" : "OWAB"
+            }, {
+              "value" : "PLANE_OUTLIERS",
+              "detail" : "Number of planar outliers",
+              "name" : "PLANE_OUTLIERS"
+            }, {
+              "value" : "Q_SCORE",
+              "detail" : "Q_score",
+              "name" : "Q_SCORE"
             }, {
               "value" : "RAMACHANDRAN_OUTLIER",
               "detail" : "Molprobity Ramachandran outlier",
@@ -402,9 +454,21 @@
               "detail" : "Molprobity rotamer outlier",
               "name" : "Molprobity rotamer outlier"
             }, {
+              "value" : "RSCC",
+              "detail" : "Real space correlation coefficient",
+              "name" : "RSCC"
+            }, {
               "value" : "RSCC_OUTLIER",
               "detail" : "Real space density correlation value < 0.65",
               "name" : "Real space density correlation outlier"
+            }, {
+              "value" : "RSR",
+              "detail" : "Real Space R-value",
+              "name" : "RSR"
+            }, {
+              "value" : "RSRZ",
+              "detail" : "Real Space R-value z-score",
+              "name" : "RSRZ"
             }, {
               "value" : "RSRZ_OUTLIER",
               "detail" : "Real space R-value Z score > 2",
@@ -454,6 +518,10 @@
               "detail" : "Strand or beta-bridge (protein)",
               "name" : "Strand or beta-bridge (protein)"
             }, {
+              "value" : "SYMM_CLASHES",
+              "detail" : "Number of symmetry related clashes",
+              "name" : "SYMM_CLASHES"
+            }, {
               "value" : "TURN_TY1_P",
               "detail" : "Type I turn (protein)",
               "name" : "Type I turn (protein)"
@@ -502,7 +570,7 @@
               "properties" : {
                 "property_name" : {
                   "type" : "string",
-                  "enum" : [ "LINK", "WILD_TYPE", "MUTATED_TYPE", "CONSEQUENCE_TYPE", "PREDICTED_IMPACT", "CLINICAL_SIGNIFICANCE", "EVIDENCE", "DISEASE_TYPE", "STRAIN_ID", "SUBTYPE", "TARGET_ID", "CARD_MODEL_DESCRIPTION", "CARD_MODEL_ORGANISM", "PARENT_COMP_ID", "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "MODELCIF_MODEL_ID", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
+                  "enum" : [ "LINK", "WILD_TYPE", "MUTATED_TYPE", "CONSEQUENCE_TYPE", "PREDICTED_IMPACT", "CLINICAL_SIGNIFICANCE", "EVIDENCE", "DISEASE_TYPE", "STRAIN_ID", "SUBTYPE", "TARGET_ID", "CARD_MODEL_DESCRIPTION", "CARD_MODEL_ORGANISM", "PARENT_COMP_ID", "CATH_DOMAIN_ID", "CATH_NAME", "ECOD_DOMAIN_ID", "ECOD_FAMILY_NAME", "MODELCIF_MODEL_ID", "OMEGA_ANGLE", "PARTNER_ASYM_ID", "PARTNER_BOND_DISTANCE", "PARTNER_COMP_ID", "PDB_MODEL_NUM", "SCOP2_DOMAIN_ID", "SCOP2_FAMILY_ID", "SCOP2_FAMILY_NAME", "SCOP2_SUPERFAMILY_ID", "SCOP2_SUPERFAMILY_NAME", "SCOP_DOMAIN_ID", "SCOP_NAME", "SCOP_SUN_ID", "SHEET_SENSE" ],
                   "examples" : [ "PARENT_COMP_ID", "CATH_NAME", "PARTNER_BOND_DISTANCE" ],
                   "description" : "The additional property name.",
                   "rcsb_enum_annotated" : [ {
@@ -541,6 +609,9 @@
                   }, {
                     "value" : "PARTNER_COMP_ID",
                     "detail" : "Binding Partner Chemical Component Identifier"
+                  }, {
+                    "value" : "PDB_MODEL_NUM",
+                    "detail" : "PDB Model Number"
                   }, {
                     "value" : "SCOP2_DOMAIN_ID",
                     "detail" : "SCOP2 Domain Identifier"

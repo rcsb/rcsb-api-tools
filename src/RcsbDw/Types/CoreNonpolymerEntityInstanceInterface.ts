@@ -88,6 +88,108 @@ export interface CoreNonpolymerEntityInstance {
       label_comp_id?: string;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
+  pdbx_vrpt_summary_entity_fit_to_map?: [
+    {
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The calculated average Q-score.
+       */
+      Q_score?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+    },
+    ...{
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The calculated average Q-score.
+       */
+      Q_score?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  pdbx_vrpt_summary_entity_geometry?: [
+    {
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond angles in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      angles_RMSZ?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond lengths in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      bonds_RMSZ?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_bonds_RMSZ?: number;
+    },
+    ...{
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond angles in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      angles_RMSZ?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond lengths in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      bonds_RMSZ?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_bonds_RMSZ?: number;
+    }[]
+  ];
   rcsb_nonpolymer_entity_instance_container_identifiers?: {
     /**
      * Instance identifier for this container.
@@ -156,7 +258,12 @@ export interface CoreNonpolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "HAS_COVALENT_LINKAGE" | "HAS_METAL_COORDINATION_LINKAGE" | "HAS_NO_COVALENT_LINKAGE";
+      type?:
+        | "HAS_COVALENT_LINKAGE"
+        | "HAS_METAL_COORDINATION_LINKAGE"
+        | "HAS_NO_COVALENT_LINKAGE"
+        | "IS_RSCC_OUTLIER"
+        | "IS_RSRZ_OUTLIER";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -205,7 +312,12 @@ export interface CoreNonpolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "HAS_COVALENT_LINKAGE" | "HAS_METAL_COORDINATION_LINKAGE" | "HAS_NO_COVALENT_LINKAGE";
+      type?:
+        | "HAS_COVALENT_LINKAGE"
+        | "HAS_METAL_COORDINATION_LINKAGE"
+        | "HAS_NO_COVALENT_LINKAGE"
+        | "IS_RSCC_OUTLIER"
+        | "IS_RSRZ_OUTLIER";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -262,11 +374,17 @@ export interface CoreNonpolymerEntityInstance {
       type?:
         | "HAS_COVALENT_LINKAGE"
         | "HAS_METAL_COORDINATION_LINKAGE"
+        | "MODELED_ATOMS"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "RSCC_OUTLIER"
         | "RSRZ_OUTLIER"
-        | "STEREO_OUTLIER";
+        | "STEREO_OUTLIER"
+        | "STEREO_OUTLIERS";
       feature_value?: {
         /**
          * The chemical component identifier for the instance of the feature value.
@@ -337,11 +455,17 @@ export interface CoreNonpolymerEntityInstance {
       type?:
         | "HAS_COVALENT_LINKAGE"
         | "HAS_METAL_COORDINATION_LINKAGE"
+        | "MODELED_ATOMS"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "RSCC_OUTLIER"
         | "RSRZ_OUTLIER"
-        | "STEREO_OUTLIER";
+        | "STEREO_OUTLIER"
+        | "STEREO_OUTLIERS";
       feature_value?: {
         /**
          * The chemical component identifier for the instance of the feature value.
@@ -391,6 +515,10 @@ export interface CoreNonpolymerEntityInstance {
        */
       count?: number;
       /**
+       * The fractional feature coverage relative to the full entity sequence.
+       */
+      coverage?: number;
+      /**
        * The maximum feature length.
        */
       maximum_length?: number;
@@ -412,11 +540,17 @@ export interface CoreNonpolymerEntityInstance {
       type?:
         | "HAS_COVALENT_LINKAGE"
         | "HAS_METAL_COORDINATION_LINKAGE"
+        | "MODELED_ATOMS"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "RSCC_OUTLIER"
         | "RSRZ_OUTLIER"
-        | "STEREO_OUTLIER";
+        | "STEREO_OUTLIER"
+        | "STEREO_OUTLIERS";
     },
     ...{
       /**
@@ -428,6 +562,10 @@ export interface CoreNonpolymerEntityInstance {
        */
       count?: number;
       /**
+       * The fractional feature coverage relative to the full entity sequence.
+       */
+      coverage?: number;
+      /**
        * The maximum feature length.
        */
       maximum_length?: number;
@@ -449,11 +587,17 @@ export interface CoreNonpolymerEntityInstance {
       type?:
         | "HAS_COVALENT_LINKAGE"
         | "HAS_METAL_COORDINATION_LINKAGE"
+        | "MODELED_ATOMS"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "RSCC_OUTLIER"
         | "RSRZ_OUTLIER"
-        | "STEREO_OUTLIER";
+        | "STEREO_OUTLIER"
+        | "STEREO_OUTLIERS";
     }[]
   ];
   /**
@@ -504,7 +648,7 @@ export interface CoreNonpolymerEntityInstance {
        */
       mogul_angle_outliers?: number;
       /**
-       * The root-mean-square value of the Z-scores of bond angles for the residue in degrees
+       * The root-mean-square value of the Z-scores of bond angles for the non-polymer instance in degrees
        * obtained from a CCDC Mogul survey of bond angles in the CSD small molecule crystal structure database.
        */
       mogul_angles_RMSZ?: number;
@@ -515,10 +659,22 @@ export interface CoreNonpolymerEntityInstance {
        */
       mogul_bond_outliers?: number;
       /**
-       * The root-mean-square value of the Z-scores of bond lengths for the residue in Angstroms
+       * The root-mean-square value of the Z-scores of bond lengths for the nonpolymer instance in Angstroms
        * obtained from a CCDC Mogul survey of bond lengths in the CSD small molecule crystal structure database.
        */
       mogul_bonds_RMSZ?: number;
+      /**
+       * The number of atoms in the non-polymer instance returned by the EDS software.
+       */
+      natoms_eds?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the Mogul program.
+       */
+      num_mogul_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the Mogul program.
+       */
+      num_mogul_bonds_RMSZ?: number;
       /**
        * The ranking of the model fit score component.
        */
@@ -588,7 +744,7 @@ export interface CoreNonpolymerEntityInstance {
        */
       mogul_angle_outliers?: number;
       /**
-       * The root-mean-square value of the Z-scores of bond angles for the residue in degrees
+       * The root-mean-square value of the Z-scores of bond angles for the non-polymer instance in degrees
        * obtained from a CCDC Mogul survey of bond angles in the CSD small molecule crystal structure database.
        */
       mogul_angles_RMSZ?: number;
@@ -599,10 +755,22 @@ export interface CoreNonpolymerEntityInstance {
        */
       mogul_bond_outliers?: number;
       /**
-       * The root-mean-square value of the Z-scores of bond lengths for the residue in Angstroms
+       * The root-mean-square value of the Z-scores of bond lengths for the nonpolymer instance in Angstroms
        * obtained from a CCDC Mogul survey of bond lengths in the CSD small molecule crystal structure database.
        */
       mogul_bonds_RMSZ?: number;
+      /**
+       * The number of atoms in the non-polymer instance returned by the EDS software.
+       */
+      natoms_eds?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the Mogul program.
+       */
+      num_mogul_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the Mogul program.
+       */
+      num_mogul_bonds_RMSZ?: number;
       /**
        * The ranking of the model fit score component.
        */

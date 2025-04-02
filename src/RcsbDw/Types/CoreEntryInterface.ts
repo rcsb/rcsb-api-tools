@@ -385,6 +385,81 @@ export interface CoreEntry {
   /**
    * @minItems 1
    */
+  database_2?: [
+    {
+      /**
+       * The code assigned by the database identified in
+       *  _database_2.database_id.
+       */
+      database_code: string;
+      /**
+       * An abbreviation that identifies the database.
+       */
+      database_id:
+        | "AlphaFoldDB"
+        | "BMRB"
+        | "EBI"
+        | "EMDB"
+        | "MODBASE"
+        | "ModelArchive"
+        | "NDB"
+        | "PDB"
+        | "PDB-Dev"
+        | "PDBE"
+        | "PDB_ACC"
+        | "RCSB"
+        | "SWISS-MODEL_REPOSITORY"
+        | "WWPDB";
+      /**
+       * Document Object Identifier (DOI) for this entry registered
+       * with http://crossref.org.
+       */
+      pdbx_DOI?: string;
+      /**
+       * Extended accession code issued for for _database_2.database_code assigned by the database identified in
+       *  _database_2.database_id.
+       */
+      pdbx_database_accession?: string;
+    },
+    ...{
+      /**
+       * The code assigned by the database identified in
+       *  _database_2.database_id.
+       */
+      database_code: string;
+      /**
+       * An abbreviation that identifies the database.
+       */
+      database_id:
+        | "AlphaFoldDB"
+        | "BMRB"
+        | "EBI"
+        | "EMDB"
+        | "MODBASE"
+        | "ModelArchive"
+        | "NDB"
+        | "PDB"
+        | "PDB-Dev"
+        | "PDBE"
+        | "PDB_ACC"
+        | "RCSB"
+        | "SWISS-MODEL_REPOSITORY"
+        | "WWPDB";
+      /**
+       * Document Object Identifier (DOI) for this entry registered
+       * with http://crossref.org.
+       */
+      pdbx_DOI?: string;
+      /**
+       * Extended accession code issued for for _database_2.database_code assigned by the database identified in
+       *  _database_2.database_id.
+       */
+      pdbx_database_accession?: string;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
   diffrn?: [
     {
       /**
@@ -426,7 +501,7 @@ export interface CoreEntry {
       /**
        * Y/N if using serial crystallography experiment in which multiple crystals contribute to each diffraction frame in the experiment.
        */
-      pdbx_serial_crystal_experiment?: string;
+      pdbx_serial_crystal_experiment?: "N" | "Y";
     },
     ...{
       /**
@@ -468,7 +543,7 @@ export interface CoreEntry {
       /**
        * Y/N if using serial crystallography experiment in which multiple crystals contribute to each diffraction frame in the experiment.
        */
-      pdbx_serial_crystal_experiment?: string;
+      pdbx_serial_crystal_experiment?: "N" | "Y";
     }[]
   ];
   /**
@@ -1900,6 +1975,7 @@ export interface CoreEntry {
         | "TFS TALOS"
         | "TFS TALOS F200C"
         | "TFS TALOS L120C"
+        | "TFS TITAN THEMIS"
         | "TFS TUNDRA"
         | "ZEISS LEO912"
         | "ZEISS LIBRA120PLUS";
@@ -2139,6 +2215,7 @@ export interface CoreEntry {
         | "TFS TALOS"
         | "TFS TALOS F200C"
         | "TFS TALOS L120C"
+        | "TFS TITAN THEMIS"
         | "TFS TUNDRA"
         | "ZEISS LEO912"
         | "ZEISS LIBRA120PLUS";
@@ -2604,6 +2681,7 @@ export interface CoreEntry {
         | "LEICA PLUNGER"
         | "REICHERT-JUNG PLUNGER"
         | "SPOTITON"
+        | "SPT LABTECH CHAMELEON"
         | "ZEISS PLUNGE FREEZER CRYOBOX";
       /**
        * The procedure for vitrification.
@@ -2673,6 +2751,7 @@ export interface CoreEntry {
         | "LEICA PLUNGER"
         | "REICHERT-JUNG PLUNGER"
         | "SPOTITON"
+        | "SPT LABTECH CHAMELEON"
         | "ZEISS PLUNGE FREEZER CRYOBOX";
       /**
        * The procedure for vitrification.
@@ -3397,9 +3476,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3420,9 +3506,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3444,9 +3537,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3472,16 +3572,30 @@ export interface CoreEntry {
       /**
        * A type classification of the revision
        */
-      type?: "Coordinate replacement" | "Initial release" | "Obsolete" | "Remediation";
+      type?:
+        | "Coordinate replacement"
+        | "Data added"
+        | "Data removed"
+        | "Data updated"
+        | "Initial release"
+        | "Obsolete"
+        | "Remediation";
     },
     ...{
       /**
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3507,7 +3621,14 @@ export interface CoreEntry {
       /**
        * A type classification of the revision
        */
-      type?: "Coordinate replacement" | "Initial release" | "Obsolete" | "Remediation";
+      type?:
+        | "Coordinate replacement"
+        | "Data added"
+        | "Data removed"
+        | "Data updated"
+        | "Initial release"
+        | "Obsolete"
+        | "Remediation";
     }[]
   ];
   /**
@@ -3519,9 +3640,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3537,7 +3665,7 @@ export interface CoreEntry {
         | "Derived calculations"
         | "Experimental data"
         | "Experimental preparation"
-        | "Initial release"
+        | "Experimental summary"
         | "Non-polymer description"
         | "Other"
         | "Polymer sequence"
@@ -3559,9 +3687,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3577,7 +3712,7 @@ export interface CoreEntry {
         | "Derived calculations"
         | "Experimental data"
         | "Experimental preparation"
-        | "Initial release"
+        | "Experimental summary"
         | "Non-polymer description"
         | "Other"
         | "Polymer sequence"
@@ -3604,9 +3739,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3631,9 +3773,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3663,9 +3812,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -3686,9 +3842,16 @@ export interface CoreEntry {
        * The type of file that the pdbx_audit_revision_history record refers to.
        */
       data_content_type:
+        | "Additional map"
         | "Chemical component"
+        | "EM metadata"
+        | "FSC"
+        | "Half map"
+        | "Image"
+        | "Mask"
         | "NMR restraints"
         | "NMR shifts"
+        | "Primary map"
         | "Structure factors"
         | "Structure model";
       /**
@@ -6272,6 +6435,811 @@ export interface CoreEntry {
        * A list of the software used in the modeeling
        */
       software_list?: string;
+    }[]
+  ];
+  pdbx_vrpt_summary?: {
+    /**
+     * The MolProbity conformer-match quality parameter for RNA structures.
+     * Low values are worse. Specific to structures that contain RNA polymers.
+     */
+    RNA_suiteness?: number;
+    /**
+     * The steps that were attempted by the validation pipeline software.
+     * A step typically involves running a 3rd party validation tool, for instance "mogul"
+     * Each step will be enumerated in _pdbx_vrpt_software category.
+     */
+    attempted_validation_steps?: string;
+    /**
+     * A flag indicating if there are ligands in the model used for detailed Buster analysis.
+     */
+    ligands_for_buster_report?: "N" | "Y";
+    /**
+     * The date, time and time-zone that the validation report  was created.
+     * The string will be formatted like yyyy-mm-dd:hh:mm in GMT time.
+     */
+    report_creation_date?: string;
+    restypes_notchecked_for_bond_angle_geometry?: string[];
+  };
+  /**
+   * @minItems 1
+   */
+  pdbx_vrpt_summary_diffraction?: [
+    {
+      /**
+       * An indicator if isotropic B factors are partial or full values.
+       */
+      B_factor_type?: "FULL" | "PARTIAL";
+      /**
+       * REFMAC scaling parameter as reported in log output line starting 'bulk solvent: scale'.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      Babinet_b?: number;
+      /**
+       * REFMAC scaling parameter as reported in log output line starting 'bulk solvent: scale'.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      Babinet_k?: number;
+      /**
+       * The version of CCP4 suite used in the analysis.
+       */
+      CCP4_version?: string;
+      /**
+       * The overall R-factor from a DCC recalculation of an electron density map.
+       * Currently value is rounded to 2 decimal places.
+       * X-ray entry specific, obtained from the DCC program.
+       */
+      DCC_R?: number;
+      /**
+       * Rfree as calculated by DCC.
+       */
+      DCC_Rfree?: number;
+      /**
+       * The overall R factor from the EDS REFMAC calculation (no free set is used in this).
+       * Currently value is rounded to 2 decimal places.
+       * X-ray entry specific, obtained in the eds step from REFMAC calculation.
+       */
+      EDS_R?: number;
+      /**
+       * Warning message when EDS calculated R vs reported R is higher than a threshold
+       */
+      EDS_R_warning?: string;
+      /**
+       * The data high resolution diffraction limit, in Angstroms, found in the input structure factor file.
+       * X-ray entry specific, obtained in the EDS step.
+       */
+      EDS_res_high?: number;
+      /**
+       * The data low resolution diffraction limit, in Angstroms, found in the input structure factor file.
+       * X-ray entry specific, obtained in the EDS step.
+       */
+      EDS_res_low?: number;
+      /**
+       * Fo,Fc correlation: The difference between the observed structure factors (Fo) and the
+       * calculated structure factors (Fc) measures the correlation between the model and the
+       * experimental data.
+       * X-ray entry specific, obtained in the eds step from REFMAC calculation.
+       */
+      Fo_Fc_correlation?: number;
+      /**
+       * Each reflection has an intensity (I) and an uncertainty in measurement
+       * (sigma(I)), so I/sigma(I) is the signal-to-noise ratio. This
+       * ratio decreases at higher resolution. <I/sigma(I)> is the mean of individual I/sigma(I)
+       * values. Value for outer resolution shell is given in parentheses. In case
+       * structure factor amplitudes are deposited, Xtriage estimates the intensities
+       * first and then calculates this metric. When intensities are available in the
+       * deposited file, these are converted to amplitudes and then back to intensity
+       * estimate before calculating the metric.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      I_over_sigma?: string;
+      /**
+       * Padilla and Yeates twinning parameter <|L**2|>.
+       * Theoretical values is 0.333 in the untwinned case, and 0.2 in the perfectly twinned case.
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      Padilla_Yeates_L2_mean?: number;
+      /**
+       * Padilla and Yeates twinning parameter <|L|>.
+       * Theoretical values is 0.5 in the untwinned case, and 0.375 in the perfectly twinned case.
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      Padilla_Yeates_L_mean?: number;
+      /**
+       * The overall Q-score of the fit of coordinates to the electron map.
+       * The Q-score is defined in Pintilie, GH. et al., Nature Methods, 17, 328-334 (2020)
+       */
+      Q_score?: number;
+      /**
+       * Result of absolute likelihood based Wilson scaling,
+       * The anisotropic B value of the data is determined using a likelihood based approach.
+       * The resulting B tensor is reported, the 3 diagonal values are given first, followed
+       * by the 3 off diagonal values.
+       * A large spread in (especially the diagonal) values indicates anisotropy.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      Wilson_B_aniso?: string;
+      /**
+       * An estimate of the overall B-value of the structure, calculated from the diffraction data.
+       * Units Angstroms squared.
+       * It serves as an indicator of the degree of order in the crystal and the value is usually
+       * not hugely different from the average B-value calculated from the model.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      Wilson_B_estimate?: number;
+      /**
+       * The number of acentric reflections that Xtriage identifies as outliers on the basis
+       * of Wilson statistics. Note that if pseudo translational symmetry is present,
+       * a large number of 'outliers' will be present.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      acentric_outliers?: number;
+      /**
+       * REFMAC scaling parameter as reported in log output file.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      bulk_solvent_b?: number;
+      /**
+       * REFMAC reported scaling parameter.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      bulk_solvent_k?: number;
+      /**
+       * The number of centric reflections that Xtriage identifies as outliers.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      centric_outliers?: number;
+      /**
+       * The ratio (Bmax - Bmin) / Bmean where Bmax, Bmin and Bmean are computed from the B-values
+       * associated with the principal axes of the anisotropic thermal ellipsoid.
+       * This ratio is usually less than 0.5; for only 1% of PDB entries it is more than 1.0 (Read et al., 2011).
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      data_anisotropy?: number;
+      /**
+       * The percent completeness of diffraction data.
+       */
+      data_completeness?: number;
+      /**
+       * The version of density-fitness suite programs used in the analysis.
+       */
+      density_fitness_version?: string;
+      /**
+       * Experimental method for statistics
+       */
+      exp_method?: string;
+      /**
+       * The number of Miller Indices reported by the Xtriage program. This should be the same as the
+       * number of _refln in the input structure factor file.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      num_miller_indices?: number;
+      /**
+       * The number of reflections in the free set as defined in the input structure factor file supplied to the validation pipeline.
+       * X-ray entry specific, obtained from the DCC program.
+       */
+      number_reflns_R_free?: number;
+      /**
+       * The percent of RSRZ outliers.
+       */
+      percent_RSRZ_outliers?: number;
+      /**
+       * A percentage, Normally percent proportion of the total number. Between 0% and 100%.
+       */
+      percent_free_reflections?: number;
+      /**
+       * The version of Servalcat program used in the analysis.
+       */
+      servalcat_version?: string;
+      /**
+       * A sentence giving the result of Xtriage's analysis on translational NCS.
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      trans_NCS_details?: string;
+      /**
+       * Estimated twinning fraction for operators as identified by Xtriage. A semicolon separated
+       * list of operators with fractions is givens
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      twin_fraction?: string;
+    },
+    ...{
+      /**
+       * An indicator if isotropic B factors are partial or full values.
+       */
+      B_factor_type?: "FULL" | "PARTIAL";
+      /**
+       * REFMAC scaling parameter as reported in log output line starting 'bulk solvent: scale'.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      Babinet_b?: number;
+      /**
+       * REFMAC scaling parameter as reported in log output line starting 'bulk solvent: scale'.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      Babinet_k?: number;
+      /**
+       * The version of CCP4 suite used in the analysis.
+       */
+      CCP4_version?: string;
+      /**
+       * The overall R-factor from a DCC recalculation of an electron density map.
+       * Currently value is rounded to 2 decimal places.
+       * X-ray entry specific, obtained from the DCC program.
+       */
+      DCC_R?: number;
+      /**
+       * Rfree as calculated by DCC.
+       */
+      DCC_Rfree?: number;
+      /**
+       * The overall R factor from the EDS REFMAC calculation (no free set is used in this).
+       * Currently value is rounded to 2 decimal places.
+       * X-ray entry specific, obtained in the eds step from REFMAC calculation.
+       */
+      EDS_R?: number;
+      /**
+       * Warning message when EDS calculated R vs reported R is higher than a threshold
+       */
+      EDS_R_warning?: string;
+      /**
+       * The data high resolution diffraction limit, in Angstroms, found in the input structure factor file.
+       * X-ray entry specific, obtained in the EDS step.
+       */
+      EDS_res_high?: number;
+      /**
+       * The data low resolution diffraction limit, in Angstroms, found in the input structure factor file.
+       * X-ray entry specific, obtained in the EDS step.
+       */
+      EDS_res_low?: number;
+      /**
+       * Fo,Fc correlation: The difference between the observed structure factors (Fo) and the
+       * calculated structure factors (Fc) measures the correlation between the model and the
+       * experimental data.
+       * X-ray entry specific, obtained in the eds step from REFMAC calculation.
+       */
+      Fo_Fc_correlation?: number;
+      /**
+       * Each reflection has an intensity (I) and an uncertainty in measurement
+       * (sigma(I)), so I/sigma(I) is the signal-to-noise ratio. This
+       * ratio decreases at higher resolution. <I/sigma(I)> is the mean of individual I/sigma(I)
+       * values. Value for outer resolution shell is given in parentheses. In case
+       * structure factor amplitudes are deposited, Xtriage estimates the intensities
+       * first and then calculates this metric. When intensities are available in the
+       * deposited file, these are converted to amplitudes and then back to intensity
+       * estimate before calculating the metric.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      I_over_sigma?: string;
+      /**
+       * Padilla and Yeates twinning parameter <|L**2|>.
+       * Theoretical values is 0.333 in the untwinned case, and 0.2 in the perfectly twinned case.
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      Padilla_Yeates_L2_mean?: number;
+      /**
+       * Padilla and Yeates twinning parameter <|L|>.
+       * Theoretical values is 0.5 in the untwinned case, and 0.375 in the perfectly twinned case.
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      Padilla_Yeates_L_mean?: number;
+      /**
+       * The overall Q-score of the fit of coordinates to the electron map.
+       * The Q-score is defined in Pintilie, GH. et al., Nature Methods, 17, 328-334 (2020)
+       */
+      Q_score?: number;
+      /**
+       * Result of absolute likelihood based Wilson scaling,
+       * The anisotropic B value of the data is determined using a likelihood based approach.
+       * The resulting B tensor is reported, the 3 diagonal values are given first, followed
+       * by the 3 off diagonal values.
+       * A large spread in (especially the diagonal) values indicates anisotropy.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      Wilson_B_aniso?: string;
+      /**
+       * An estimate of the overall B-value of the structure, calculated from the diffraction data.
+       * Units Angstroms squared.
+       * It serves as an indicator of the degree of order in the crystal and the value is usually
+       * not hugely different from the average B-value calculated from the model.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      Wilson_B_estimate?: number;
+      /**
+       * The number of acentric reflections that Xtriage identifies as outliers on the basis
+       * of Wilson statistics. Note that if pseudo translational symmetry is present,
+       * a large number of 'outliers' will be present.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      acentric_outliers?: number;
+      /**
+       * REFMAC scaling parameter as reported in log output file.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      bulk_solvent_b?: number;
+      /**
+       * REFMAC reported scaling parameter.
+       * X-ray entry specific, obtained in the EDS step from REFMAC calculation.
+       */
+      bulk_solvent_k?: number;
+      /**
+       * The number of centric reflections that Xtriage identifies as outliers.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      centric_outliers?: number;
+      /**
+       * The ratio (Bmax - Bmin) / Bmean where Bmax, Bmin and Bmean are computed from the B-values
+       * associated with the principal axes of the anisotropic thermal ellipsoid.
+       * This ratio is usually less than 0.5; for only 1% of PDB entries it is more than 1.0 (Read et al., 2011).
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      data_anisotropy?: number;
+      /**
+       * The percent completeness of diffraction data.
+       */
+      data_completeness?: number;
+      /**
+       * The version of density-fitness suite programs used in the analysis.
+       */
+      density_fitness_version?: string;
+      /**
+       * Experimental method for statistics
+       */
+      exp_method?: string;
+      /**
+       * The number of Miller Indices reported by the Xtriage program. This should be the same as the
+       * number of _refln in the input structure factor file.
+       * X-ray entry specific, calculated by Phenix Xtriage program.
+       */
+      num_miller_indices?: number;
+      /**
+       * The number of reflections in the free set as defined in the input structure factor file supplied to the validation pipeline.
+       * X-ray entry specific, obtained from the DCC program.
+       */
+      number_reflns_R_free?: number;
+      /**
+       * The percent of RSRZ outliers.
+       */
+      percent_RSRZ_outliers?: number;
+      /**
+       * A percentage, Normally percent proportion of the total number. Between 0% and 100%.
+       */
+      percent_free_reflections?: number;
+      /**
+       * The version of Servalcat program used in the analysis.
+       */
+      servalcat_version?: string;
+      /**
+       * A sentence giving the result of Xtriage's analysis on translational NCS.
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      trans_NCS_details?: string;
+      /**
+       * Estimated twinning fraction for operators as identified by Xtriage. A semicolon separated
+       * list of operators with fractions is givens
+       * X-ray entry specific, obtained from the Xtriage program.
+       */
+      twin_fraction?: string;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  pdbx_vrpt_summary_em?: [
+    {
+      /**
+       * The overall Q-score of the fit of coordinates to the electron map.
+       * The Q-score is defined in Pintilie, GH. et al., Nature Methods, 17, 328-334 (2020)
+       */
+      Q_score?: number;
+      /**
+       * The proportion of all non hydrogen atoms within density.
+       */
+      atom_inclusion_all_atoms?: number;
+      /**
+       * The proportion of backbone atoms within density.
+       */
+      atom_inclusion_backbone?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve halfbit.
+       */
+      author_provided_fsc_resolution_by_cutoff_halfbit?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve onebit.
+       */
+      author_provided_fsc_resolution_by_cutoff_onebit?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve 0.143.
+       */
+      author_provided_fsc_resolution_by_cutoff_pt_143?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve 0.333.
+       */
+      author_provided_fsc_resolution_by_cutoff_pt_333?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve 0.5.
+       */
+      author_provided_fsc_resolution_by_cutoff_pt_5?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve threesigma.
+       */
+      author_provided_fsc_resolution_by_cutoff_threesigma?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve halfbit.
+       */
+      calculated_fsc_resolution_by_cutoff_halfbit?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve onebit.
+       */
+      calculated_fsc_resolution_by_cutoff_onebit?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.143.
+       */
+      calculated_fsc_resolution_by_cutoff_pt_143?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.333.
+       */
+      calculated_fsc_resolution_by_cutoff_pt_333?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.5.
+       */
+      calculated_fsc_resolution_by_cutoff_pt_5?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve threesigma.
+       */
+      calculated_fsc_resolution_by_cutoff_threesigma?: number;
+      /**
+       * The recommended contour level for the primary map of this deposition.
+       */
+      contour_level_primary_map?: number;
+      /**
+       * Experimental method for statistics
+       */
+      exp_method?: string;
+    },
+    ...{
+      /**
+       * The overall Q-score of the fit of coordinates to the electron map.
+       * The Q-score is defined in Pintilie, GH. et al., Nature Methods, 17, 328-334 (2020)
+       */
+      Q_score?: number;
+      /**
+       * The proportion of all non hydrogen atoms within density.
+       */
+      atom_inclusion_all_atoms?: number;
+      /**
+       * The proportion of backbone atoms within density.
+       */
+      atom_inclusion_backbone?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve halfbit.
+       */
+      author_provided_fsc_resolution_by_cutoff_halfbit?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve onebit.
+       */
+      author_provided_fsc_resolution_by_cutoff_onebit?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve 0.143.
+       */
+      author_provided_fsc_resolution_by_cutoff_pt_143?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve 0.333.
+       */
+      author_provided_fsc_resolution_by_cutoff_pt_333?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve 0.5.
+       */
+      author_provided_fsc_resolution_by_cutoff_pt_5?: number;
+      /**
+       * The resolution from the intersection of the author provided fsc and the indicator curve threesigma.
+       */
+      author_provided_fsc_resolution_by_cutoff_threesigma?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve halfbit.
+       */
+      calculated_fsc_resolution_by_cutoff_halfbit?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve onebit.
+       */
+      calculated_fsc_resolution_by_cutoff_onebit?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.143.
+       */
+      calculated_fsc_resolution_by_cutoff_pt_143?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.333.
+       */
+      calculated_fsc_resolution_by_cutoff_pt_333?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve 0.5.
+       */
+      calculated_fsc_resolution_by_cutoff_pt_5?: number;
+      /**
+       * The resolution from the intersection of the fsc curve generated by from the provided halfmaps and the indicator curve threesigma.
+       */
+      calculated_fsc_resolution_by_cutoff_threesigma?: number;
+      /**
+       * The recommended contour level for the primary map of this deposition.
+       */
+      contour_level_primary_map?: number;
+      /**
+       * Experimental method for statistics
+       */
+      exp_method?: string;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  pdbx_vrpt_summary_geometry?: [
+    {
+      /**
+       * The overall root mean square of the Z-score for deviations of bond angles in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      angles_RMSZ?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond lengths in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      bonds_RMSZ?: number;
+      /**
+       * This score is derived from the number of pairs of atoms in the PDB_model_num that are unusually close to each other.
+       * It is calculated by the MolProbity pdbx_vrpt_software and expressed as the number or such clashes per thousand atoms.
+       * For structures determined by NMR the clashscore value here will only consider label_atom_id pairs in the
+       * well-defined (core) residues from ensemble analysis.
+       */
+      clashscore?: number;
+      /**
+       * Only given for structures determined by NMR. The MolProbity pdbx_vrpt_instance_clashes score for all label_atom_id pairs.
+       */
+      clashscore_full_length?: number;
+      /**
+       * This is the number of hydrogen atoms added and optimized by the MolProbity reduce pdbx_vrpt_software as part of the
+       * all-atom clashscore.
+       */
+      num_H_reduce?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      num_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      num_bonds_RMSZ?: number;
+      /**
+       * The percentage of residues with Ramachandran outliers.
+       */
+      percent_ramachandran_outliers?: number;
+      /**
+       * Only given for structures determined by NMR. The MolProbity Ramachandran outlier score
+       * for all atoms in the structure rather than just the well-defined (core) residues.
+       */
+      percent_ramachandran_outliers_full_length?: number;
+      /**
+       * The MolProbity sidechain outlier score (a percentage).
+       * Protein sidechains mostly adopt certain (combinations of) preferred torsion angle values
+       * (called rotamers or rotameric conformers), much like their backbone torsion angles
+       * (as assessed in the Ramachandran analysis). MolProbity considers the sidechain conformation
+       * of a residue to be an outlier if its set of torsion angles is not similar to any preferred
+       * combination. The sidechain outlier score is calculated as the percentage of residues
+       * with an unusual sidechain conformation with respect to the total number of residues for
+       * which the assessment is available.
+       * Example: percent-rota-outliers="2.44".
+       * Specific to structure that contain protein chains and have sidechains modelled.
+       * For NMR structures only the  well-defined (core) residues from ensemble analysis will be considered.
+       * The percentage of residues with rotamer outliers.
+       */
+      percent_rotamer_outliers?: number;
+      /**
+       * Only given for structures determined by NMR. The MolProbity sidechain outlier score
+       * for all atoms in the structure rather than just the well-defined (core) residues.
+       */
+      percent_rotamer_outliers_full_length?: number;
+    },
+    ...{
+      /**
+       * The overall root mean square of the Z-score for deviations of bond angles in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      angles_RMSZ?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond lengths in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      bonds_RMSZ?: number;
+      /**
+       * This score is derived from the number of pairs of atoms in the PDB_model_num that are unusually close to each other.
+       * It is calculated by the MolProbity pdbx_vrpt_software and expressed as the number or such clashes per thousand atoms.
+       * For structures determined by NMR the clashscore value here will only consider label_atom_id pairs in the
+       * well-defined (core) residues from ensemble analysis.
+       */
+      clashscore?: number;
+      /**
+       * Only given for structures determined by NMR. The MolProbity pdbx_vrpt_instance_clashes score for all label_atom_id pairs.
+       */
+      clashscore_full_length?: number;
+      /**
+       * This is the number of hydrogen atoms added and optimized by the MolProbity reduce pdbx_vrpt_software as part of the
+       * all-atom clashscore.
+       */
+      num_H_reduce?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      num_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       * This value is for all chains in the structure.
+       */
+      num_bonds_RMSZ?: number;
+      /**
+       * The percentage of residues with Ramachandran outliers.
+       */
+      percent_ramachandran_outliers?: number;
+      /**
+       * Only given for structures determined by NMR. The MolProbity Ramachandran outlier score
+       * for all atoms in the structure rather than just the well-defined (core) residues.
+       */
+      percent_ramachandran_outliers_full_length?: number;
+      /**
+       * The MolProbity sidechain outlier score (a percentage).
+       * Protein sidechains mostly adopt certain (combinations of) preferred torsion angle values
+       * (called rotamers or rotameric conformers), much like their backbone torsion angles
+       * (as assessed in the Ramachandran analysis). MolProbity considers the sidechain conformation
+       * of a residue to be an outlier if its set of torsion angles is not similar to any preferred
+       * combination. The sidechain outlier score is calculated as the percentage of residues
+       * with an unusual sidechain conformation with respect to the total number of residues for
+       * which the assessment is available.
+       * Example: percent-rota-outliers="2.44".
+       * Specific to structure that contain protein chains and have sidechains modelled.
+       * For NMR structures only the  well-defined (core) residues from ensemble analysis will be considered.
+       * The percentage of residues with rotamer outliers.
+       */
+      percent_rotamer_outliers?: number;
+      /**
+       * Only given for structures determined by NMR. The MolProbity sidechain outlier score
+       * for all atoms in the structure rather than just the well-defined (core) residues.
+       */
+      percent_rotamer_outliers_full_length?: number;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  pdbx_vrpt_summary_nmr?: [
+    {
+      /**
+       * Overall completeness of the chemical shift assignments for the well-defined
+       * regions of the structure.
+       */
+      chemical_shift_completeness?: number;
+      /**
+       * Overall completeness of the chemical shift assignments for the full
+       * macromolecule or complex as suggested by the molecular description of an entry
+       * (whether some portion of it is modelled or not).
+       */
+      chemical_shift_completeness_full_length?: number;
+      /**
+       * Diagnostic message from the wrapper of Cyrange software which identifies the
+       * well-defined cores (domains) of NMR protein structures.
+       */
+      cyrange_error?: string;
+      /**
+       * Total number of well-defined cores (domains) identified by Cyrange
+       */
+      cyrange_number_of_domains?: number;
+      /**
+       * Experimental method for statistics
+       */
+      exp_method?: string;
+      /**
+       * For each Cyrange well-defined core ("cyrange_domain") the id of the PDB_model_num which is most
+       * similar to other models as measured by pairwise RMSDs over the domain.
+       * For the whole entry ("Entry"), the medoid PDB_model_num of the largest core is taken as an overall
+       * representative of the structure.
+       */
+      medoid_model?: number;
+      /**
+       * A flag indicating if all models in the NMR ensemble contain the exact
+       * same atoms ("True") or if the models differ in this respect ("False").
+       */
+      nmr_models_consistency_flag?: string;
+      /**
+       * Diagnostic message from the wrapper of NMRClust software which clusters NMR models.
+       */
+      nmrclust_error?: string;
+      /**
+       * Total number of clusters in the NMR ensemble identified by NMRClust.
+       */
+      nmrclust_number_of_clusters?: number;
+      /**
+       * Number of models analysed by NMRClust - should in almost all cases be the
+       * same as the number of models in the NMR ensemble.
+       */
+      nmrclust_number_of_models?: number;
+      /**
+       * Number of models that do not belong to any cluster as deemed by NMRClust.
+       */
+      nmrclust_number_of_outliers?: number;
+      /**
+       * Overall representative PDB_model_num of the NMR ensemble as identified by NMRClust.
+       */
+      nmrclust_representative_model?: number;
+    },
+    ...{
+      /**
+       * Overall completeness of the chemical shift assignments for the well-defined
+       * regions of the structure.
+       */
+      chemical_shift_completeness?: number;
+      /**
+       * Overall completeness of the chemical shift assignments for the full
+       * macromolecule or complex as suggested by the molecular description of an entry
+       * (whether some portion of it is modelled or not).
+       */
+      chemical_shift_completeness_full_length?: number;
+      /**
+       * Diagnostic message from the wrapper of Cyrange software which identifies the
+       * well-defined cores (domains) of NMR protein structures.
+       */
+      cyrange_error?: string;
+      /**
+       * Total number of well-defined cores (domains) identified by Cyrange
+       */
+      cyrange_number_of_domains?: number;
+      /**
+       * Experimental method for statistics
+       */
+      exp_method?: string;
+      /**
+       * For each Cyrange well-defined core ("cyrange_domain") the id of the PDB_model_num which is most
+       * similar to other models as measured by pairwise RMSDs over the domain.
+       * For the whole entry ("Entry"), the medoid PDB_model_num of the largest core is taken as an overall
+       * representative of the structure.
+       */
+      medoid_model?: number;
+      /**
+       * A flag indicating if all models in the NMR ensemble contain the exact
+       * same atoms ("True") or if the models differ in this respect ("False").
+       */
+      nmr_models_consistency_flag?: string;
+      /**
+       * Diagnostic message from the wrapper of NMRClust software which clusters NMR models.
+       */
+      nmrclust_error?: string;
+      /**
+       * Total number of clusters in the NMR ensemble identified by NMRClust.
+       */
+      nmrclust_number_of_clusters?: number;
+      /**
+       * Number of models analysed by NMRClust - should in almost all cases be the
+       * same as the number of models in the NMR ensemble.
+       */
+      nmrclust_number_of_models?: number;
+      /**
+       * Number of models that do not belong to any cluster as deemed by NMRClust.
+       */
+      nmrclust_number_of_outliers?: number;
+      /**
+       * Overall representative PDB_model_num of the NMR ensemble as identified by NMRClust.
+       */
+      nmrclust_representative_model?: number;
     }[]
   ];
   rcsb_accession_info?: {

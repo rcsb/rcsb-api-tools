@@ -20,7 +20,7 @@
         },
         "group_provenance_id" : {
           "type" : "string",
-          "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id" ],
+          "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id", "provenance_matching_chemical_component_id" ],
           "description" : "A unique group provenance identifier"
         },
         "parent_member_ids" : {
@@ -58,7 +58,7 @@
         },
         "group_members_granularity" : {
           "type" : "string",
-          "enum" : [ "assembly", "entry", "polymer_entity", "polymer_entity_instance" ],
+          "enum" : [ "assembly", "entry", "polymer_entity", "non_polymer_entity", "polymer_entity_instance" ],
           "description" : "Granularity of group members identifiers"
         },
         "group_members_count" : {

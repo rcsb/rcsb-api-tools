@@ -91,6 +91,108 @@ export interface CorePolymerEntityInstance {
   /**
    * @minItems 1
    */
+  pdbx_vrpt_summary_entity_fit_to_map?: [
+    {
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The calculated average Q-score.
+       */
+      Q_score?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+    },
+    ...{
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The calculated average Q-score.
+       */
+      Q_score?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  pdbx_vrpt_summary_entity_geometry?: [
+    {
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond angles in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      angles_RMSZ?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond lengths in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      bonds_RMSZ?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_bonds_RMSZ?: number;
+    },
+    ...{
+      /**
+       * The unique model number from _atom_site.pdbx_PDB_model_num.
+       */
+      PDB_model_num?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond angles in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      angles_RMSZ?: number;
+      /**
+       * The average of the residue inclusions for all residues in this instance
+       */
+      average_residue_inclusion?: number;
+      /**
+       * The overall root mean square of the Z-score for deviations of bond lengths in comparison to
+       * "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      bonds_RMSZ?: number;
+      /**
+       * The number of bond angles compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_angles_RMSZ?: number;
+      /**
+       * The number of bond lengths compared to "standard geometry" made using the MolProbity dangle program.
+       * Standard geometry parameters are taken from Engh and Huber (2001) and Parkinson et al. (1996).
+       */
+      num_bonds_RMSZ?: number;
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
   rcsb_ligand_neighbors?: [
     {
       /**
@@ -359,12 +461,17 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "ANGLE_OUTLIERS"
+        | "AVERAGE_OCCUPANCY"
         | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
+        | "BOND_OUTLIERS"
         | "C-MANNOSYLATION_SITE"
         | "CATH"
+        | "CHIRAL_OUTLIERS"
         | "CIS-PEPTIDE"
+        | "CLASHES"
         | "ECOD"
         | "HELIX_P"
         | "HELX_LH_PP_P"
@@ -389,12 +496,23 @@ export interface CorePolymerEntityInstance {
         | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "N-GLYCOSYLATION_SITE"
+        | "NATOMS_EDS"
         | "O-GLYCOSYLATION_SITE"
+        | "OWAB"
+        | "PLANE_OUTLIERS"
+        | "Q_SCORE"
         | "RAMACHANDRAN_OUTLIER"
         | "ROTAMER_OUTLIER"
+        | "RSCC"
         | "RSCC_OUTLIER"
+        | "RSR"
+        | "RSRZ"
         | "RSRZ_OUTLIER"
         | "S-GLYCOSYLATION_SITE"
         | "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS"
@@ -407,6 +525,7 @@ export interface CorePolymerEntityInstance {
         | "SHEET"
         | "STEREO_OUTLIER"
         | "STRN"
+        | "SYMM_CLASHES"
         | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"
@@ -447,6 +566,7 @@ export interface CorePolymerEntityInstance {
           | "PARTNER_ASYM_ID"
           | "PARTNER_BOND_DISTANCE"
           | "PARTNER_COMP_ID"
+          | "PDB_MODEL_NUM"
           | "SCOP2_DOMAIN_ID"
           | "SCOP2_FAMILY_ID"
           | "SCOP2_FAMILY_NAME"
@@ -494,12 +614,17 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "ANGLE_OUTLIERS"
+        | "AVERAGE_OCCUPANCY"
         | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
+        | "BOND_OUTLIERS"
         | "C-MANNOSYLATION_SITE"
         | "CATH"
+        | "CHIRAL_OUTLIERS"
         | "CIS-PEPTIDE"
+        | "CLASHES"
         | "ECOD"
         | "HELIX_P"
         | "HELX_LH_PP_P"
@@ -524,12 +649,23 @@ export interface CorePolymerEntityInstance {
         | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "N-GLYCOSYLATION_SITE"
+        | "NATOMS_EDS"
         | "O-GLYCOSYLATION_SITE"
+        | "OWAB"
+        | "PLANE_OUTLIERS"
+        | "Q_SCORE"
         | "RAMACHANDRAN_OUTLIER"
         | "ROTAMER_OUTLIER"
+        | "RSCC"
         | "RSCC_OUTLIER"
+        | "RSR"
+        | "RSRZ"
         | "RSRZ_OUTLIER"
         | "S-GLYCOSYLATION_SITE"
         | "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS"
@@ -542,6 +678,7 @@ export interface CorePolymerEntityInstance {
         | "SHEET"
         | "STEREO_OUTLIER"
         | "STRN"
+        | "SYMM_CLASHES"
         | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"
@@ -582,6 +719,7 @@ export interface CorePolymerEntityInstance {
           | "PARTNER_ASYM_ID"
           | "PARTNER_BOND_DISTANCE"
           | "PARTNER_COMP_ID"
+          | "PDB_MODEL_NUM"
           | "SCOP2_DOMAIN_ID"
           | "SCOP2_FAMILY_ID"
           | "SCOP2_FAMILY_NAME"
@@ -606,8 +744,6 @@ export interface CorePolymerEntityInstance {
       count?: number;
       /**
        * The fractional feature coverage relative to the full entity sequence.
-       *  For instance, the fraction of features such as CATH or SCOP domains, secondary structure elements,
-       *  unobserved residues, or geometrical outliers relative to the length of the entity sequence.
        */
       coverage?: number;
       /**
@@ -631,12 +767,17 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "ANGLE_OUTLIERS"
+        | "AVERAGE_OCCUPANCY"
         | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
+        | "BOND_OUTLIERS"
         | "C-MANNOSYLATION_SITE"
         | "CATH"
+        | "CHIRAL_OUTLIERS"
         | "CIS-PEPTIDE"
+        | "CLASHES"
         | "ECOD"
         | "HELIX_P"
         | "HELX_LH_PP_P"
@@ -661,12 +802,23 @@ export interface CorePolymerEntityInstance {
         | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "N-GLYCOSYLATION_SITE"
+        | "NATOMS_EDS"
         | "O-GLYCOSYLATION_SITE"
+        | "OWAB"
+        | "PLANE_OUTLIERS"
+        | "Q_SCORE"
         | "RAMACHANDRAN_OUTLIER"
         | "ROTAMER_OUTLIER"
+        | "RSCC"
         | "RSCC_OUTLIER"
+        | "RSR"
+        | "RSRZ"
         | "RSRZ_OUTLIER"
         | "S-GLYCOSYLATION_SITE"
         | "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS"
@@ -679,6 +831,7 @@ export interface CorePolymerEntityInstance {
         | "SHEET"
         | "STEREO_OUTLIER"
         | "STRN"
+        | "SYMM_CLASHES"
         | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"
@@ -693,8 +846,6 @@ export interface CorePolymerEntityInstance {
       count?: number;
       /**
        * The fractional feature coverage relative to the full entity sequence.
-       *  For instance, the fraction of features such as CATH or SCOP domains, secondary structure elements,
-       *  unobserved residues, or geometrical outliers relative to the length of the entity sequence.
        */
       coverage?: number;
       /**
@@ -718,12 +869,17 @@ export interface CorePolymerEntityInstance {
        */
       type?:
         | "ANGLE_OUTLIER"
+        | "ANGLE_OUTLIERS"
+        | "AVERAGE_OCCUPANCY"
         | "BEND"
         | "BINDING_SITE"
         | "BOND_OUTLIER"
+        | "BOND_OUTLIERS"
         | "C-MANNOSYLATION_SITE"
         | "CATH"
+        | "CHIRAL_OUTLIERS"
         | "CIS-PEPTIDE"
+        | "CLASHES"
         | "ECOD"
         | "HELIX_P"
         | "HELX_LH_PP_P"
@@ -748,12 +904,23 @@ export interface CorePolymerEntityInstance {
         | "MA_QA_METRIC_LOCAL_TYPE_ZSCORE"
         | "MEMBRANE_SEGMENT"
         | "MOGUL_ANGLE_OUTLIER"
+        | "MOGUL_ANGLE_OUTLIERS"
         | "MOGUL_BOND_OUTLIER"
+        | "MOGUL_BOND_OUTLIERS"
+        | "MOGUL_RING_OUTLIERS"
+        | "MOGUL_TORSION_OUTLIERS"
         | "N-GLYCOSYLATION_SITE"
+        | "NATOMS_EDS"
         | "O-GLYCOSYLATION_SITE"
+        | "OWAB"
+        | "PLANE_OUTLIERS"
+        | "Q_SCORE"
         | "RAMACHANDRAN_OUTLIER"
         | "ROTAMER_OUTLIER"
+        | "RSCC"
         | "RSCC_OUTLIER"
+        | "RSR"
+        | "RSRZ"
         | "RSRZ_OUTLIER"
         | "S-GLYCOSYLATION_SITE"
         | "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS"
@@ -766,6 +933,7 @@ export interface CorePolymerEntityInstance {
         | "SHEET"
         | "STEREO_OUTLIER"
         | "STRN"
+        | "SYMM_CLASHES"
         | "TURN_TY1_P"
         | "UNASSIGNED_SEC_STRUCT"
         | "UNOBSERVED_ATOM_XYZ"

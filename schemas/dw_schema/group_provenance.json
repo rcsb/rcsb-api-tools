@@ -13,7 +13,7 @@
       "properties" : {
         "group_provenance_id" : {
           "type" : "string",
-          "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id" ],
+          "enum" : [ "provenance_sequence_identity", "provenance_matching_uniprot_accession", "provenance_matching_deposit_group_id", "provenance_matching_chemical_component_id" ],
           "description" : "A unique group provenance identifier"
         }
       }
@@ -24,7 +24,7 @@
       "properties" : {
         "type" : {
           "type" : "string",
-          "enum" : [ "sequence_identity", "matching_uniprot_accession", "matching_deposit_group_id" ],
+          "enum" : [ "sequence_identity", "matching_uniprot_accession", "matching_deposit_group_id", "matching_chemical_component_id" ],
           "rcsb_search_context" : [ "exact-match" ],
           "description" : "Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy"
         },

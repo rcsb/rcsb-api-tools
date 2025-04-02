@@ -17,14 +17,19 @@ export interface GroupProvenance {
     group_provenance_id:
       | "provenance_sequence_identity"
       | "provenance_matching_uniprot_accession"
-      | "provenance_matching_deposit_group_id";
+      | "provenance_matching_deposit_group_id"
+      | "provenance_matching_chemical_component_id";
     [k: string]: unknown;
   };
   rcsb_group_aggregation_method?: {
     /**
      * Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy
      */
-    type: "sequence_identity" | "matching_uniprot_accession" | "matching_deposit_group_id";
+    type:
+      | "sequence_identity"
+      | "matching_uniprot_accession"
+      | "matching_deposit_group_id"
+      | "matching_chemical_component_id";
     /**
      * The details on a method used to calculate cluster solutions
      */

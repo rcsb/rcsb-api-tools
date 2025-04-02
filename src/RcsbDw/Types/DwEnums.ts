@@ -55,11 +55,16 @@ export enum Type {
     ModifiedMonomer = "modified_monomer",
     Mutation = "mutation",
     AngleOutlier = "ANGLE_OUTLIER",
+    AngleOutliers = "ANGLE_OUTLIERS",
+    AverageOccupancy = "AVERAGE_OCCUPANCY",
     Bend = "BEND",
     BondOutlier = "BOND_OUTLIER",
+    BondOutliers = "BOND_OUTLIERS",
     CMannosylationSite_ = "C-MANNOSYLATION_SITE",
     Cath = "CATH",
+    ChiralOutliers = "CHIRAL_OUTLIERS",
     CisPeptide_ = "CIS-PEPTIDE",
+    Clashes = "CLASHES",
     Ecod = "ECOD",
     HelixP = "HELIX_P",
     HelxLhPpP = "HELX_LH_PP_P",
@@ -104,6 +109,7 @@ export enum PropertyName {
     PartnerAsymId = "PARTNER_ASYM_ID",
     PartnerBondDistance = "PARTNER_BOND_DISTANCE",
     PartnerCompId = "PARTNER_COMP_ID",
+    PdbModelNum = "PDB_MODEL_NUM",
     Scop2DomainId = "SCOP2_DOMAIN_ID",
     Scop2FamilyId = "SCOP2_FAMILY_ID",
     Scop2FamilyName = "SCOP2_FAMILY_NAME",
@@ -326,6 +332,28 @@ export enum RcsbIsPrimary {
 }
 
 export enum UnpublishedFlag {
+    N = "N",
+    Y = "Y"
+}
+
+export enum DatabaseId {
+    AlphaFoldDb = "AlphaFoldDB",
+    Bmrb = "BMRB",
+    Ebi = "EBI",
+    Emdb = "EMDB",
+    Modbase = "MODBASE",
+    ModelArchive = "ModelArchive",
+    Ndb = "NDB",
+    Pdb = "PDB",
+    PdbDev_ = "PDB-Dev",
+    Pdbe = "PDBE",
+    PdbAcc = "PDB_ACC",
+    Rcsb = "RCSB",
+    SwissModelRepository_ = "SWISS-MODEL_REPOSITORY",
+    Wwpdb = "WWPDB"
+}
+
+export enum PdbxSerialCrystalExperiment {
     N = "N",
     Y = "Y"
 }
@@ -663,6 +691,16 @@ export enum Method {
     Injection = "injection"
 }
 
+export enum LigandsForBusterReport {
+    N = "N",
+    Y = "Y"
+}
+
+export enum BFactorType {
+    Full = "FULL",
+    Partial = "PARTIAL"
+}
+
 export enum HasReleasedExperimentalData {
     N = "N",
     Y = "Y"
@@ -878,15 +916,18 @@ export enum ReferenceName {
 export enum GroupProvenanceId {
     ProvenanceSequenceIdentity = "provenance_sequence_identity",
     ProvenanceMatchingUniprotAccession = "provenance_matching_uniprot_accession",
-    ProvenanceMatchingDepositGroupId = "provenance_matching_deposit_group_id"
+    ProvenanceMatchingDepositGroupId = "provenance_matching_deposit_group_id",
+    ProvenanceMatchingChemicalComponentId = "provenance_matching_chemical_component_id"
 }
 
 export enum GroupMembersGranularity {
     Assembly = "assembly",
     Entry = "entry",
     PolymerEntity = "polymer_entity",
+    NonPolymerEntity = "non_polymer_entity",
     PolymerEntityInstance = "polymer_entity_instance"
 }
+
 
 export enum RankingCriteriaType {
     Coverage = "coverage"

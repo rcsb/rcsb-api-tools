@@ -17,17 +17,17 @@
     },
     "total_count": {
       "type": "integer",
-      "minimum": 0,
+      "minimum": 1,
       "description": "The total number of hits returned by search"
     },
     "group_by_count": {
       "type": "integer",
-      "minimum": 0,
+      "minimum": 1,
       "description": "The number of hits returned by group_by operation"
     },
     "ungrouped_count": {
       "type": "integer",
-      "minimum": 0,
+      "minimum": 1,
       "description": "The number returned by group_by operation that counts hits that are not members of requested groups"
     },
     "explain_metadata": {

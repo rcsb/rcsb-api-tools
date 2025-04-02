@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_current_entry version 3.4.3. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_current_entry.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_current_entry version 3.5.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_current_entry.json and follows JSON schema specification version 4
  */
-export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsCurrentEntryVersion343 {
+export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsCurrentEntryVersion350 {
   rcsb_repository_holdings_current?: {
     repository_content_types?: (
       | "2fo-fc Map"
@@ -27,7 +27,9 @@ export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsCurrentEntr
       | "entry mmCIF"
       | "fo-fc Map"
       | "structure factors"
+      | "validation 2fo-fc coefficients"
       | "validation data mmCIF"
+      | "validation fo-fc coefficients"
       | "validation report"
       | "validation slider image"
     )[];
