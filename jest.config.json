@@ -1,5 +1,9 @@
 {
-  "transform": {"^.+\\.ts?$": "ts-jest"},
+  "preset": "ts-jest",
+  "transform": {
+    "^.+\\.(ts|tsx)?$": "ts-jest",
+    "^.+\\.(js|jsx)$": "babel-jest"
+  },
   "testEnvironment": "node",
-  "sourceMaps": "inline"
+  "transformIgnorePatterns": ["node_modules/(?!graphql-request)/"]
 }
