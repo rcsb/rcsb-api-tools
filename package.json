@@ -1,6 +1,6 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "5.0.0-dev-js-seqcoord.5",
+  "version": "5.0.0-dev-js-seqcoord.6",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
@@ -18,7 +18,8 @@
     "build": "webpack --config webpack.config.js",
     "build-tsc": "tsc",
     "build-commonjs": "tsc --build tsconfig.commonjs.json",
-    "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run build-tsc && npm run build-commonjs && npm run build",
+    "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run build-tsc && npm run build-commonjs && npm run build && npm run copyDef",
+    "copyDef": "ncp lib/app.d.ts build/app.d.ts",
     "publishApp": "npm publish --tag dev-js-seqcoord",
     "clean": "del-cli build/* lib/*",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -59,6 +60,7 @@
     "jest": "^29.7.0",
     "json-schema-to-typescript": "^15.0.4",
     "lodash": "^4.17.21",
+    "ncp": "^2.0.0",
     "nodejs-file-downloader": "^4.13.0",
     "react": "^19.1.0",
     "simple-git": "^3.27.0",
