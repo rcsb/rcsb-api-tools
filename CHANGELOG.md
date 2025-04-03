@@ -2,6 +2,23 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [5.0.0] - 2025-04-02
+### Breaking changes
+- Types are not anymore exposed from `build/`
+- All module classes and types are accessible from `lib/`
+  - Modules format is `ESNext`
+  - `lib/commonjs` exposes all modules in `CommonJS` format
+- Search schemas update
+- DW schemas update
+- GraphQL schemas update
+- New Sequence Coordinates end-point
+  - https://sequence-coordinates.rcsb.org/graphql
+  - Old end-point https://1d-coordinates.rcsb.org/graphql (deprecated on May, 31 2025)
+
+### Dependency update
+- audit fix 
+- Updated all dependencies
+
 ## [4.3.1] - 2024-09-13
 ### Dependency update
 - audit fix
