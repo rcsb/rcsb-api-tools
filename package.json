@@ -1,10 +1,11 @@
 {
   "name": "@rcsb/rcsb-api-tools",
-  "version": "5.0.0-dev-js-seqcoord.4",
+  "version": "5.0.0-dev-js-seqcoord.5",
   "description": "RCSB PDB API request library",
   "main": "build/app.js",
   "files": [
-    "build"
+    "build",
+    "lib"
   ],
   "scripts": {
     "downloadDwSchemas": "ts-node src/DownloadSchemas/DwSchemas.ts",
@@ -15,10 +16,11 @@
     "buildSources": "npm run buildSearchInterface && npm run buildGraphQLInterfaces && npm run buildDwInterface",
     "runTest": "jest",
     "build": "webpack --config webpack.config.js",
-    "tsc": "tsc",
-    "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run tsc && npm run build",
+    "build-tsc": "tsc",
+    "build-commonjs": "tsc --build tsconfig.commonjs.json",
+    "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run build-tsc && npm run build-commonjs && npm run build",
     "publishApp": "npm publish --tag dev-js-seqcoord",
-    "clean": "del-cli build/*",
+    "clean": "del-cli build/* lib/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
