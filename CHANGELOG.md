@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [5.0.1] - 2025-04-08
+### Bug Fix
+- Tag delimiter model-archive regexp 
+
 ## [5.0.0] - 2025-04-02
 ### Breaking changes
 - Types are not anymore exposed from `build/`

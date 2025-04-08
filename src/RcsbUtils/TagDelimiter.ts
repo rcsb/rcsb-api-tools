@@ -12,7 +12,7 @@ export class TagDelimiter {
     private static rcsbEntityRegExp = new RegExp('^(\\d)(\\w{3})(\_)(\\d+)$');
     private static rcsbInstanceRegExp = new RegExp('^(\\d)(\\w{3})(\.)(\\w+)$');
     private static alphaFoldRegExp = new RegExp('^(AF_AF)(\\w+)');
-    private static modelArchiveRegExp = new RegExp('^(MA_MABAKCEPC)(\\w+)');
+    private static modelArchiveRegExp = new RegExp('^(MA_MA)(\\w+)');
 
     public static parseEntity(rcsbId:string): {entryId: string;entityId:string;} {
         const ids: string[] = rcsbId.split(TagDelimiter.entity);
