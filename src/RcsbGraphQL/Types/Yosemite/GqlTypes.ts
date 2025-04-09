@@ -691,6 +691,8 @@ export interface CoreEntry {
   exptl?: Maybe<Array<Maybe<Exptl>>>;
   exptl_crystal?: Maybe<Array<Maybe<ExptlCrystal>>>;
   exptl_crystal_grow?: Maybe<Array<Maybe<ExptlCrystalGrow>>>;
+  ihm_entry_collection_mapping?: Maybe<Array<Maybe<IhmEntryCollectionMapping>>>;
+  ihm_external_reference_info?: Maybe<Array<Maybe<IhmExternalReferenceInfo>>>;
   ma_data?: Maybe<Array<Maybe<MaData>>>;
   /** Get all non-polymer (non-solvent) entities for this entry. */
   nonpolymer_entities?: Maybe<Array<Maybe<CoreNonpolymerEntity>>>;
@@ -751,6 +753,8 @@ export interface CoreEntry {
    *
    */
   rcsb_id: Scalars['String']['output'];
+  rcsb_ihm_dataset_list?: Maybe<Array<Maybe<RcsbIhmDatasetList>>>;
+  rcsb_ihm_dataset_source_db_reference?: Maybe<Array<Maybe<RcsbIhmDatasetSourceDbReference>>>;
   rcsb_ma_qa_metric_global?: Maybe<Array<Maybe<RcsbMaQaMetricGlobal>>>;
   rcsb_primary_citation?: Maybe<RcsbPrimaryCitation>;
   refine?: Maybe<Array<Maybe<Refine>>>;
@@ -3497,6 +3501,43 @@ export interface GroupProvenance {
   rcsb_group_provenance_container_identifiers?: Maybe<RcsbGroupProvenanceContainerIdentifiers>;
   /** A unique textual identifier for a group provenance */
   rcsb_id?: Maybe<Scalars['String']['output']>;
+}
+
+export interface IhmEntryCollectionMapping {
+  __typename?: 'IhmEntryCollectionMapping';
+  /**
+   * Identifier for the entry collection.
+   *  This data item is a pointer to _ihm_entry_collection.id in the
+   *  IHM_ENTRY_COLLECTION category.
+   */
+  collection_id: Scalars['String']['output'];
+}
+
+export interface IhmExternalReferenceInfo {
+  __typename?: 'IhmExternalReferenceInfo';
+  /**
+   * The Uniform Resource Locator (URL) corresponding to the external reference (DOI).
+   *  This URL should link to the corresponding downloadable file or archive and is provided
+   *  to enable automated software to download the referenced file or archive.
+   */
+  associated_url?: Maybe<Scalars['String']['output']>;
+  /**
+   * The external reference or the Digital Object Identifier (DOI).
+   *  This field is not relevant for local files.
+   *
+   * Examples:
+   * 10.5281/zenodo.46266
+   *
+   */
+  reference?: Maybe<Scalars['String']['output']>;
+  /**
+   * The name of the reference provider.
+   *
+   * Examples:
+   * Zenodo, Figshare, Crossref
+   *
+   */
+  reference_provider?: Maybe<Scalars['String']['output']>;
 }
 
 export interface InterfacePartnerFeatureAdditionalProperties {
@@ -9188,12 +9229,46 @@ export interface RcsbEntryInfo {
    * The category of experimental method(s) used to determine the structure entry.
    *
    * Allowable values:
-   * EM, Multiple methods, NMR, Neutron, Other, X-ray
+   * EM, Integrative, Multiple methods, NMR, Neutron, Other, X-ray
    *
    */
   experimental_method?: Maybe<Scalars['String']['output']>;
   /** The number of experimental methods contributing data to the structure determination. */
   experimental_method_count?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Ensemble flag for integrative structures.
+   *
+   * Allowable values:
+   * N, Y
+   *
+   */
+  ihm_ensemble_flag?: Maybe<Scalars['String']['output']>;
+  /**
+   * Multi-scale modeling flag for integrative structures.
+   *
+   * Allowable values:
+   * N, Y
+   *
+   */
+  ihm_multi_scale_flag?: Maybe<Scalars['String']['output']>;
+  /**
+   * Multi-state modeling flag for integrative structures.
+   *
+   * Allowable values:
+   * N, Y
+   *
+   */
+  ihm_multi_state_flag?: Maybe<Scalars['String']['output']>;
+  /**
+   * Ordered-state modeling flag for integrative structures.
+   *
+   * Allowable values:
+   * N, Y
+   *
+   */
+  ihm_ordered_state_flag?: Maybe<Scalars['String']['output']>;
+  /** Description of the integrative structure. */
+  ihm_structure_description?: Maybe<Scalars['String']['output']>;
   /** The number of intermolecular covalent bonds. */
   inter_mol_covalent_bond_count?: Maybe<Scalars['Int']['output']>;
   /** The number of intermolecular metalic bonds. */
@@ -9285,6 +9360,8 @@ export interface RcsbEntryInfo {
   polymer_monomer_count_maximum?: Maybe<Scalars['Int']['output']>;
   /** The minimum monomer count of a polymer entity per deposited structure model. */
   polymer_monomer_count_minimum?: Maybe<Scalars['Int']['output']>;
+  /** The chosen representative model. */
+  representative_model?: Maybe<Scalars['Int']['output']>;
   /**
    * Combined estimates of experimental resolution contributing to the refined structural model.
    *  Resolution reported in "refine.ls_d_res_high" is used for X-RAY DIFFRACTION, FIBER DIFFRACTION,
@@ -9314,7 +9391,7 @@ export interface RcsbEntryInfo {
    * Indicates if the structure was determined using experimental or computational methods.
    *
    * Allowable values:
-   * computational, experimental
+   * computational, experimental, integrative
    *
    */
   structure_determination_methodology: Scalars['String']['output'];
@@ -9507,6 +9584,48 @@ export interface RcsbGroupStatistics {
   similarity_score_max?: Maybe<Scalars['Float']['output']>;
   /** Similarity score between two least similar group members */
   similarity_score_min?: Maybe<Scalars['Float']['output']>;
+}
+
+export interface RcsbIhmDatasetList {
+  __typename?: 'RcsbIhmDatasetList';
+  /** Number of input datasets used in integrative modeling. */
+  count?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Name of input dataset used in integrative modeling.
+   *
+   * Allowable values:
+   * 2DEM class average, 3DEM volume, CX-MS data, Comparative model, Crosslinking-MS data, DNA footprinting data, De Novo model, EM raw micrographs, EPR data, Ensemble FRET data, Experimental model, H/D exchange data, Hydroxyl radical footprinting data, Integrative model, Mass Spectrometry data, Mutagenesis data, NMR data, Other, Predicted contacts, Quantitative measurements of genetic interactions, SAS data, Single molecule FRET data, X-ray diffraction data, Yeast two-hybrid screening data
+   *
+   */
+  name: Scalars['String']['output'];
+  /**
+   * Type of input dataset used in integrative modeling.
+   *
+   * Allowable values:
+   * Computed restraints, Experimental data, Other, Starting model
+   *
+   */
+  type?: Maybe<Scalars['String']['output']>;
+}
+
+export interface RcsbIhmDatasetSourceDbReference {
+  __typename?: 'RcsbIhmDatasetSourceDbReference';
+  /**
+   * Accession code for the input dataset.
+   *
+   * Examples:
+   * 5FM1, EMD-2799, SASDA82, PXD003381, MA-CO2KC
+   *
+   */
+  accession_code: Scalars['String']['output'];
+  /**
+   * Name of the source database for the input dataset.
+   *
+   * Allowable values:
+   * AlphaFoldDB, BMRB, BMRbig, BioGRID, EMDB, EMPIAR, MASSIVE, ModelArchive, Other, PDB, PDB-Dev, PRIDE, ProXL, ProteomeXchange, SASBDB, iProX, jPOSTrepo
+   *
+   */
+  db_name: Scalars['String']['output'];
 }
 
 export interface RcsbInterfaceContainerIdentifiers {

@@ -1576,6 +1576,14 @@ export declare class CoreEntry {
         Temp: "exptl_crystal_grow.temp";
         TempDetails: "exptl_crystal_grow.temp_details";
     };
+    static readonly IhmEntryCollectionMapping: {
+        CollectionId: "ihm_entry_collection_mapping.collection_id";
+    };
+    static readonly IhmExternalReferenceInfo: {
+        AssociatedUrl: "ihm_external_reference_info.associated_url";
+        Reference: "ihm_external_reference_info.reference";
+        ReferenceProvider: "ihm_external_reference_info.reference_provider";
+    };
     static readonly MaData: {
         ContentType: "ma_data.content_type";
         ContentTypeOtherDetails: "ma_data.content_type_other_details";
@@ -2030,6 +2038,11 @@ export declare class CoreEntry {
         EntityCount: "rcsb_entry_info.entity_count";
         ExperimentalMethod: "rcsb_entry_info.experimental_method";
         ExperimentalMethodCount: "rcsb_entry_info.experimental_method_count";
+        IhmEnsembleFlag: "rcsb_entry_info.ihm_ensemble_flag";
+        IhmMultiScaleFlag: "rcsb_entry_info.ihm_multi_scale_flag";
+        IhmMultiStateFlag: "rcsb_entry_info.ihm_multi_state_flag";
+        IhmOrderedStateFlag: "rcsb_entry_info.ihm_ordered_state_flag";
+        IhmStructureDescription: "rcsb_entry_info.ihm_structure_description";
         InterMolCovalentBondCount: "rcsb_entry_info.inter_mol_covalent_bond_count";
         InterMolMetalicBondCount: "rcsb_entry_info.inter_mol_metalic_bond_count";
         MolecularWeight: "rcsb_entry_info.molecular_weight";
@@ -2051,6 +2064,7 @@ export declare class CoreEntry {
         PolymerMolecularWeightMinimum: "rcsb_entry_info.polymer_molecular_weight_minimum";
         PolymerMonomerCountMaximum: "rcsb_entry_info.polymer_monomer_count_maximum";
         PolymerMonomerCountMinimum: "rcsb_entry_info.polymer_monomer_count_minimum";
+        RepresentativeModel: "rcsb_entry_info.representative_model";
         ResolutionCombined: "rcsb_entry_info.resolution_combined";
         SelectedPolymerEntityTypes: "rcsb_entry_info.selected_polymer_entity_types";
         SoftwareProgramsCombined: "rcsb_entry_info.software_programs_combined";
@@ -2064,6 +2078,15 @@ export declare class CoreEntry {
         Type: "rcsb_external_references.type";
     };
     static readonly RcsbId: "rcsb_id";
+    static readonly RcsbIhmDatasetList: {
+        Count: "rcsb_ihm_dataset_list.count";
+        Name: "rcsb_ihm_dataset_list.name";
+        Type: "rcsb_ihm_dataset_list.type";
+    };
+    static readonly RcsbIhmDatasetSourceDbReference: {
+        AccessionCode: "rcsb_ihm_dataset_source_db_reference.accession_code";
+        DbName: "rcsb_ihm_dataset_source_db_reference.db_name";
+    };
     static readonly RcsbMaQaMetricGlobal: {
         MaQaMetricGlobal: {
             Description: "rcsb_ma_qa_metric_global.ma_qa_metric_global.description";

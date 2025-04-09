@@ -172,6 +172,8 @@ export class CoreConstants{
 	public static readonly EXPTL = "exptl";
 	public static readonly EXPTL_CRYSTAL = "exptl_crystal";
 	public static readonly EXPTL_CRYSTAL_GROW = "exptl_crystal_grow";
+	public static readonly IHM_ENTRY_COLLECTION_MAPPING = "ihm_entry_collection_mapping";
+	public static readonly IHM_EXTERNAL_REFERENCE_INFO = "ihm_external_reference_info";
 	public static readonly MA_DATA = "ma_data";
 	public static readonly NONPOLYMER_ENTITIES = "nonpolymer_entities";
 	public static readonly PDBX_SG_PROJECT = "pdbx_SG_project";
@@ -220,6 +222,8 @@ export class CoreConstants{
 	public static readonly RCSB_ENTRY_GROUP_MEMBERSHIP = "rcsb_entry_group_membership";
 	public static readonly RCSB_ENTRY_INFO = "rcsb_entry_info";
 	public static readonly RCSB_EXTERNAL_REFERENCES = "rcsb_external_references";
+	public static readonly RCSB_IHM_DATASET_LIST = "rcsb_ihm_dataset_list";
+	public static readonly RCSB_IHM_DATASET_SOURCE_DB_REFERENCE = "rcsb_ihm_dataset_source_db_reference";
 	public static readonly RCSB_MA_QA_METRIC_GLOBAL = "rcsb_ma_qa_metric_global";
 	public static readonly RCSB_PRIMARY_CITATION = "rcsb_primary_citation";
 	public static readonly REFINE = "refine";
@@ -575,6 +579,10 @@ export class CoreConstants{
 	public static readonly RCSB_POLYMER_ENTITY_GROUP_SEQUENCE_ALIGNMENT = "rcsb_polymer_entity_group_sequence_alignment";
 	public static readonly RCSB_GROUP_AGGREGATION_METHOD = "rcsb_group_aggregation_method";
 	public static readonly RCSB_GROUP_PROVENANCE_CONTAINER_IDENTIFIERS = "rcsb_group_provenance_container_identifiers";
+	public static readonly COLLECTION_ID = "collection_id";
+	public static readonly ASSOCIATED_URL = "associated_url";
+	public static readonly REFERENCE = "reference";
+	public static readonly REFERENCE_PROVIDER = "reference_provider";
 	public static readonly VALUES = "values";
 	public static readonly BEG_SEQ_ID = "beg_seq_id";
 	public static readonly END_SEQ_ID = "end_seq_id";
@@ -957,7 +965,6 @@ export class CoreConstants{
 	public static readonly AUTH_ASYM_ID = "auth_asym_id";
 	public static readonly SYSTEM = "system";
 	public static readonly FEATURE_VALUE = "feature_value";
-	public static readonly REFERENCE = "reference";
 	public static readonly REPORTED = "reported";
 	public static readonly UNCERTAINTY_ESTIMATE = "uncertainty_estimate";
 	public static readonly UNCERTAINTY_ESTIMATE_TYPE = "uncertainty_estimate_type";
@@ -1030,6 +1037,11 @@ export class CoreConstants{
 	public static readonly ENTITY_COUNT = "entity_count";
 	public static readonly EXPERIMENTAL_METHOD = "experimental_method";
 	public static readonly EXPERIMENTAL_METHOD_COUNT = "experimental_method_count";
+	public static readonly IHM_ENSEMBLE_FLAG = "ihm_ensemble_flag";
+	public static readonly IHM_MULTI_SCALE_FLAG = "ihm_multi_scale_flag";
+	public static readonly IHM_MULTI_STATE_FLAG = "ihm_multi_state_flag";
+	public static readonly IHM_ORDERED_STATE_FLAG = "ihm_ordered_state_flag";
+	public static readonly IHM_STRUCTURE_DESCRIPTION = "ihm_structure_description";
 	public static readonly INTER_MOL_COVALENT_BOND_COUNT = "inter_mol_covalent_bond_count";
 	public static readonly INTER_MOL_METALIC_BOND_COUNT = "inter_mol_metalic_bond_count";
 	public static readonly MOLECULAR_WEIGHT = "molecular_weight";
@@ -1042,6 +1054,7 @@ export class CoreConstants{
 	public static readonly POLYMER_MOLECULAR_WEIGHT_MINIMUM = "polymer_molecular_weight_minimum";
 	public static readonly POLYMER_MONOMER_COUNT_MAXIMUM = "polymer_monomer_count_maximum";
 	public static readonly POLYMER_MONOMER_COUNT_MINIMUM = "polymer_monomer_count_minimum";
+	public static readonly REPRESENTATIVE_MODEL = "representative_model";
 	public static readonly RESOLUTION_COMBINED = "resolution_combined";
 	public static readonly SOFTWARE_PROGRAMS_COMBINED = "software_programs_combined";
 	public static readonly STRUCTURE_DETERMINATION_METHODOLOGY = "structure_determination_methodology";

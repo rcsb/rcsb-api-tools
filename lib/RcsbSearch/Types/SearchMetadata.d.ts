@@ -1960,7 +1960,7 @@ export declare const RcsbSearchMetadata: {
                 "text": "Collection Date (Diffrn Detector)";
                 "context": "brief";
             }];
-            "rcsb_current_maximum_value": 1740614400000;
+            "rcsb_current_maximum_value": 1741219200000;
             "rcsb_current_minimum_value": -29926281600000;
             "operator": {
                 "Equals": "equals";
@@ -6979,7 +6979,7 @@ export declare const RcsbSearchMetadata: {
                 "group_name": "Structure Details";
                 "priority_order": 20;
             }];
-            "rcsb_current_maximum_value": 1742947200000;
+            "rcsb_current_maximum_value": 1743379200000;
             "rcsb_current_minimum_value": 82339200000;
             "operator": {
                 "Equals": "equals";
@@ -7034,7 +7034,7 @@ export declare const RcsbSearchMetadata: {
                 "group_name": "Structure Details";
                 "priority_order": 25;
             }];
-            "rcsb_current_maximum_value": 1743552000000;
+            "rcsb_current_maximum_value": 1744156800000;
             "rcsb_current_minimum_value": 201312000000;
             "operator": {
                 "Equals": "equals";
@@ -7063,8 +7063,8 @@ export declare const RcsbSearchMetadata: {
                 "group_name": "Structure Details";
                 "priority_order": 30;
             }];
-            "rcsb_current_maximum_value": 1743552000000;
-            "rcsb_current_minimum_value": 1310515200000;
+            "rcsb_current_maximum_value": 1744156800000;
+            "rcsb_current_minimum_value": 1503446400000;
             "operator": {
                 "Equals": "equals";
                 "Greater": "greater";
@@ -8874,7 +8874,7 @@ export declare const RcsbSearchMetadata: {
                 "priority_order": 30;
             }];
             "rcsb_current_maximum_value": 0.5568;
-            "rcsb_current_minimum_value": 0.049;
+            "rcsb_current_minimum_value": 0.04439;
             "operator": {
                 "Equals": "equals";
                 "Greater": "greater";
@@ -8905,7 +8905,7 @@ export declare const RcsbSearchMetadata: {
                 "priority_order": 25;
             }];
             "rcsb_current_maximum_value": 0.615;
-            "rcsb_current_minimum_value": 0.042;
+            "rcsb_current_minimum_value": 0.03602;
             "operator": {
                 "Equals": "equals";
                 "Greater": "greater";
@@ -11297,7 +11297,7 @@ export declare const RcsbSearchMetadata: {
                 "group_name": "ID(s) and Keywords";
                 "priority_order": 18;
             }];
-            "rcsb_current_maximum_value": 40131955;
+            "rcsb_current_maximum_value": 40178595;
             "rcsb_current_minimum_value": 5;
             "operator": {
                 "Equals": "equals";
@@ -11402,7 +11402,7 @@ export declare const RcsbSearchMetadata: {
                 "text": "Cluster Identifier";
                 "context": "brief";
             }];
-            "rcsb_current_maximum_value": 1080341;
+            "rcsb_current_maximum_value": 1080497;
             "rcsb_current_minimum_value": 1;
             "operator": {
                 "Equals": "equals";
@@ -17081,7 +17081,7 @@ export declare const RcsbSearchMetadata: {
                 "group_name": "Chemical Components";
                 "priority_order": 20;
             }];
-            "rcsb_current_maximum_value": 1743552000000;
+            "rcsb_current_maximum_value": 1744156800000;
             "rcsb_current_minimum_value": 105235200000;
             "operator": {
                 "Equals": "equals";
