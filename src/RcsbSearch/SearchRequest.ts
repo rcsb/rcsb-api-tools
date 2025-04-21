@@ -1,6 +1,6 @@
 import {SearchQuery} from "./Types/SearchQueryInterface";
 import {QueryResult} from "./Types/SearchResultInterface";
-import * as serverSearch from "./ServerConfig/codegen.search.json";
+import serverSearch from "./ServerConfig/codegen.search.json";
 import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools";
 
 export class SearchRequest {

@@ -1,6 +1,6 @@
 import { GraphQLClient } from "graphql-request";
-import * as configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
-import * as configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
+import configBorregoGraphQL from "./ServerConfig/codegen.borrego.json";
+import configYosemiteGraphQL from "./ServerConfig/codegen.yosemite.json";
 import {LocalStorageTools as LST} from "../RcsbLocalStorage/LocalStorageTools"
 import {Variables} from "graphql-request";
 
