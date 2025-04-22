@@ -2298,7 +2298,7 @@
                 } ],
                 "rcsb_search_group" : [ {
                   "group_name" : "ID(s) and Keywords",
-                  "priority_order" : 40
+                  "priority_order" : 45
                 } ]
               },
               "database_isoform" : {

@@ -493,7 +493,19 @@ export declare enum DbName {
     PdbDev_ = "PDB-Dev",
     Sasbdb = "SASBDB",
     TargetDb = "TargetDB",
-    TargetTrack = "TargetTrack"
+    TargetTrack = "TargetTrack",
+    AlphaFoldDb = "AlphaFoldDB",
+    BmRbig = "BMRbig",
+    BioGrid = "BioGRID",
+    Empiar = "EMPIAR",
+    Massive = "MASSIVE",
+    ModelArchive = "ModelArchive",
+    Other = "Other",
+    Pride = "PRIDE",
+    ProXl = "ProXL",
+    ProteomeXchange = "ProteomeXchange",
+    IProX = "iProX",
+    JPosTrepo = "jPOSTrepo"
 }
 export declare enum SgEntry {
     N = "N",
@@ -631,15 +643,33 @@ export declare enum SourceDb {
 }
 export declare enum ExperimentalMethod {
     Em = "EM",
+    Integrative = "Integrative",
     Multiplemethods = "Multiplemethods",
     Nmr = "NMR",
     Neutron = "Neutron",
     Other = "Other",
     XRay_ = "X-ray"
 }
+export declare enum IhmEnsembleFlag {
+    N = "N",
+    Y = "Y"
+}
+export declare enum IhmMultiScaleFlag {
+    N = "N",
+    Y = "Y"
+}
+export declare enum IhmMultiStateFlag {
+    N = "N",
+    Y = "Y"
+}
+export declare enum IhmOrderedStateFlag {
+    N = "N",
+    Y = "Y"
+}
 export declare enum StructureDeterminationMethodology {
     Computational = "computational",
-    Experimental = "experimental"
+    Experimental = "experimental",
+    Integrative = "integrative"
 }
 export declare enum LsMatrixType {
     Atomblock = "atomblock",

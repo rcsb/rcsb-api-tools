@@ -555,7 +555,19 @@ export enum DbName {
     PdbDev_ = "PDB-Dev",
     Sasbdb = "SASBDB",
     TargetDb = "TargetDB",
-    TargetTrack = "TargetTrack"
+    TargetTrack = "TargetTrack",
+    AlphaFoldDb = "AlphaFoldDB",
+    BmRbig = "BMRbig",
+    BioGrid = "BioGRID",
+    Empiar = "EMPIAR",
+    Massive = "MASSIVE",
+    ModelArchive = "ModelArchive",
+    Other = "Other",
+    Pride = "PRIDE",
+    ProXl = "ProXL",
+    ProteomeXchange = "ProteomeXchange",
+    IProX = "iProX",
+    JPosTrepo = "jPOSTrepo"
 }
 
 export enum SgEntry {
@@ -713,6 +725,7 @@ export enum SourceDb {
 
 export enum ExperimentalMethod {
     Em = "EM",
+    Integrative = "Integrative",
     Multiplemethods = "Multiplemethods",
     Nmr = "NMR",
     Neutron = "Neutron",
@@ -720,9 +733,30 @@ export enum ExperimentalMethod {
     XRay_ = "X-ray"
 }
 
+export enum IhmEnsembleFlag {
+    N = "N",
+    Y = "Y"
+}
+
+export enum IhmMultiScaleFlag {
+    N = "N",
+    Y = "Y"
+}
+
+export enum IhmMultiStateFlag {
+    N = "N",
+    Y = "Y"
+}
+
+export enum IhmOrderedStateFlag {
+    N = "N",
+    Y = "Y"
+}
+
 export enum StructureDeterminationMethodology {
     Computational = "computational",
-    Experimental = "experimental"
+    Experimental = "experimental",
+    Integrative = "integrative"
 }
 
 export enum LsMatrixType {

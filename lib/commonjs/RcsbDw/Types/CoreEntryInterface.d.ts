@@ -2728,6 +2728,66 @@ export interface CoreEntry {
     /**
      * @minItems 1
      */
+    ihm_entry_collection_mapping?: [
+        {
+            /**
+             * Identifier for the entry collection.
+             *  This data item is a pointer to _ihm_entry_collection.id in the
+             *  IHM_ENTRY_COLLECTION category.
+             */
+            collection_id: string;
+        },
+        ...{
+            /**
+             * Identifier for the entry collection.
+             *  This data item is a pointer to _ihm_entry_collection.id in the
+             *  IHM_ENTRY_COLLECTION category.
+             */
+            collection_id: string;
+        }[]
+    ];
+    /**
+     * @minItems 1
+     */
+    ihm_external_reference_info?: [
+        {
+            /**
+             * The Uniform Resource Locator (URL) corresponding to the external reference (DOI).
+             *  This URL should link to the corresponding downloadable file or archive and is provided
+             *  to enable automated software to download the referenced file or archive.
+             */
+            associated_url?: string;
+            /**
+             * The external reference or the Digital Object Identifier (DOI).
+             *  This field is not relevant for local files.
+             */
+            reference?: string;
+            /**
+             * The name of the reference provider.
+             */
+            reference_provider?: string;
+        },
+        ...{
+            /**
+             * The Uniform Resource Locator (URL) corresponding to the external reference (DOI).
+             *  This URL should link to the corresponding downloadable file or archive and is provided
+             *  to enable automated software to download the referenced file or archive.
+             */
+            associated_url?: string;
+            /**
+             * The external reference or the Digital Object Identifier (DOI).
+             *  This field is not relevant for local files.
+             */
+            reference?: string;
+            /**
+             * The name of the reference provider.
+             */
+            reference_provider?: string;
+        }[]
+    ];
+    /**
+     * @minItems 1
+     */
     ma_data?: [
         {
             /**
@@ -6287,11 +6347,31 @@ export interface CoreEntry {
         /**
          * The category of experimental method(s) used to determine the structure entry.
          */
-        experimental_method?: "EM" | "Multiple methods" | "NMR" | "Neutron" | "Other" | "X-ray";
+        experimental_method?: "EM" | "Integrative" | "Multiple methods" | "NMR" | "Neutron" | "Other" | "X-ray";
         /**
          * The number of experimental methods contributing data to the structure determination.
          */
         experimental_method_count?: number;
+        /**
+         * Ensemble flag for integrative structures.
+         */
+        ihm_ensemble_flag?: "N" | "Y";
+        /**
+         * Multi-scale modeling flag for integrative structures.
+         */
+        ihm_multi_scale_flag?: "N" | "Y";
+        /**
+         * Multi-state modeling flag for integrative structures.
+         */
+        ihm_multi_state_flag?: "N" | "Y";
+        /**
+         * Ordered-state modeling flag for integrative structures.
+         */
+        ihm_ordered_state_flag?: "N" | "Y";
+        /**
+         * Description of the integrative structure.
+         */
+        ihm_structure_description?: string;
         /**
          * The number of intermolecular covalent bonds.
          */
@@ -6370,6 +6450,10 @@ export interface CoreEntry {
          * The minimum monomer count of a polymer entity per deposited structure model.
          */
         polymer_monomer_count_minimum?: number;
+        /**
+         * The chosen representative model.
+         */
+        representative_model?: number;
         resolution_combined?: number[];
         /**
          * Selected polymer entity type categories describing the entry.
@@ -6383,7 +6467,7 @@ export interface CoreEntry {
         /**
          * Indicates if the structure was determined using experimental or computational methods.
          */
-        structure_determination_methodology: "computational" | "experimental";
+        structure_determination_methodology: "computational" | "experimental" | "integrative";
         /**
          * Indicates the priority of the value in _rcsb_entry_info.structure_determination_methodology.
          *  The lower the number the higher the priority.
@@ -6402,6 +6486,64 @@ export interface CoreEntry {
             value?: number;
         };
     };
+    /**
+     * @minItems 1
+     */
+    rcsb_ihm_dataset_list?: [
+        {
+            /**
+             * Number of input datasets used in integrative modeling.
+             */
+            count?: number;
+            /**
+             * Name of input dataset used in integrative modeling.
+             */
+            name: "2DEM class average" | "3DEM volume" | "CX-MS data" | "Comparative model" | "Crosslinking-MS data" | "DNA footprinting data" | "De Novo model" | "EM raw micrographs" | "EPR data" | "Ensemble FRET data" | "Experimental model" | "H/D exchange data" | "Hydroxyl radical footprinting data" | "Integrative model" | "Mass Spectrometry data" | "Mutagenesis data" | "NMR data" | "Other" | "Predicted contacts" | "Quantitative measurements of genetic interactions" | "SAS data" | "Single molecule FRET data" | "X-ray diffraction data" | "Yeast two-hybrid screening data";
+            /**
+             * Type of input dataset used in integrative modeling.
+             */
+            type?: "Computed restraints" | "Experimental data" | "Other" | "Starting model";
+        },
+        ...{
+            /**
+             * Number of input datasets used in integrative modeling.
+             */
+            count?: number;
+            /**
+             * Name of input dataset used in integrative modeling.
+             */
+            name: "2DEM class average" | "3DEM volume" | "CX-MS data" | "Comparative model" | "Crosslinking-MS data" | "DNA footprinting data" | "De Novo model" | "EM raw micrographs" | "EPR data" | "Ensemble FRET data" | "Experimental model" | "H/D exchange data" | "Hydroxyl radical footprinting data" | "Integrative model" | "Mass Spectrometry data" | "Mutagenesis data" | "NMR data" | "Other" | "Predicted contacts" | "Quantitative measurements of genetic interactions" | "SAS data" | "Single molecule FRET data" | "X-ray diffraction data" | "Yeast two-hybrid screening data";
+            /**
+             * Type of input dataset used in integrative modeling.
+             */
+            type?: "Computed restraints" | "Experimental data" | "Other" | "Starting model";
+        }[]
+    ];
+    /**
+     * @minItems 1
+     */
+    rcsb_ihm_dataset_source_db_reference?: [
+        {
+            /**
+             * Accession code for the input dataset.
+             */
+            accession_code: string;
+            /**
+             * Name of the source database for the input dataset.
+             */
+            db_name: "AlphaFoldDB" | "BMRB" | "BMRbig" | "BioGRID" | "EMDB" | "EMPIAR" | "MASSIVE" | "ModelArchive" | "Other" | "PDB" | "PDB-Dev" | "PRIDE" | "ProXL" | "ProteomeXchange" | "SASBDB" | "iProX" | "jPOSTrepo";
+        },
+        ...{
+            /**
+             * Accession code for the input dataset.
+             */
+            accession_code: string;
+            /**
+             * Name of the source database for the input dataset.
+             */
+            db_name: "AlphaFoldDB" | "BMRB" | "BMRbig" | "BioGRID" | "EMDB" | "EMPIAR" | "MASSIVE" | "ModelArchive" | "Other" | "PDB" | "PDB-Dev" | "PRIDE" | "ProXL" | "ProteomeXchange" | "SASBDB" | "iProX" | "jPOSTrepo";
+        }[]
+    ];
     /**
      * @minItems 1
      */
