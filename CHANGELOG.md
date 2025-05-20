@@ -2,6 +2,12 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [5.1.0] - 2025-05-20
+### Schema update
+- Search schemas update
+- DW schemas update
+- GraphQL schemas update
+
 ## [5.0.1] - 2025-04-08
 ### Bug Fix
 - Tag delimiter model-archive regexp 
