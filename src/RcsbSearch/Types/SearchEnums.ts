@@ -95,7 +95,8 @@ export enum Operator {
 export enum AggregationMethod {
     MatchingDepositGroupId = "matching_deposit_group_id",
     SequenceIdentity = "sequence_identity",
-    MatchingUniprotAccession = "matching_uniprot_accession"
+    MatchingUniprotAccession = "matching_uniprot_accession",
+    MatchingChemicalComponentId = "matching_chemical_component_id"
 }
 
 export enum SortBy {

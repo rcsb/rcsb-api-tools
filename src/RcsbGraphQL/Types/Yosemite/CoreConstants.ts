@@ -883,6 +883,8 @@ export class CoreConstants{
 	public static readonly ENTRIES = "entries";
 	public static readonly ENTRY_GROUP = "entry_group";
 	public static readonly INTERFACE = "interface";
+	public static readonly NONPOLYMER_ENTITY_GROUP = "nonpolymer_entity_group";
+	public static readonly NONPOLYMER_ENTITY_GROUPS = "nonpolymer_entity_groups";
 	public static readonly NONPOLYMER_ENTITY_INSTANCE = "nonpolymer_entity_instance";
 	public static readonly POLYMER_ENTITY_GROUP = "polymer_entity_group";
 	public static readonly POLYMER_ENTITY_INSTANCE = "polymer_entity_instance";

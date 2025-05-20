@@ -22,6 +22,9 @@
         },
         {
           "$ref": "json-schema-rcsb_search_query_request_options_group_by_uniprot_accession.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_request_options_group_by_chem_comp_id.json"
         }
       ],
       "description": "Allows partitioning search results into groups"

@@ -3480,6 +3480,17 @@ export interface GroupMembersAlignmentScores {
   target_length: Scalars['Int']['output'];
 }
 
+export interface GroupNonPolymerEntity {
+  __typename?: 'GroupNonPolymerEntity';
+  rcsb_group_accession_info?: Maybe<RcsbGroupAccessionInfo>;
+  rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers;
+  rcsb_group_info: RcsbGroupInfo;
+  rcsb_group_related?: Maybe<Array<Maybe<RcsbGroupRelated>>>;
+  rcsb_group_statistics?: Maybe<RcsbGroupStatistics>;
+  /** A unique textual identifier for a group */
+  rcsb_id: Scalars['String']['output'];
+}
+
 export interface GroupPolymerEntity {
   __typename?: 'GroupPolymerEntity';
   /** Get provenance associated with this group. */
@@ -7035,6 +7046,10 @@ export interface Query {
   nonpolymer_entities?: Maybe<Array<Maybe<CoreNonpolymerEntity>>>;
   /** Get a non-polymer entity, given the ENTRY ID and ENTITY ID. Here ENTITY ID is a '1', '2', '3', etc. */
   nonpolymer_entity?: Maybe<CoreNonpolymerEntity>;
+  /** Given a group ID get a group object formed by aggregating non-polymer entities that share a degree of similarity */
+  nonpolymer_entity_group?: Maybe<GroupNonPolymerEntity>;
+  /** Given a list of group IDs get a list of group objects formed by aggregating non-polymer entities that share a degree of similarity */
+  nonpolymer_entity_groups?: Maybe<Array<Maybe<GroupNonPolymerEntity>>>;
   /** Get a non-polymer entity instance (chain), given the ENTRY ID and ENTITY INSTANCE ID. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
   nonpolymer_entity_instance?: Maybe<CoreNonpolymerEntityInstance>;
   /** Get a list of non-polymer entity instances (chains), given the list of ENTITY INSTANCE IDs. Here ENTITY INSTANCE ID identifies structural element in the asymmetric unit, e.g. 'A', 'B', etc. */
@@ -7163,6 +7178,18 @@ export interface QueryNonpolymer_EntitiesArgs {
 export interface QueryNonpolymer_EntityArgs {
   entity_id: Scalars['String']['input'];
   entry_id: Scalars['String']['input'];
+}
+
+
+/** Query root */
+export interface QueryNonpolymer_Entity_GroupArgs {
+  group_id: Scalars['String']['input'];
+}
+
+
+/** Query root */
+export interface QueryNonpolymer_Entity_GroupsArgs {
+  group_ids: Array<InputMaybe<Scalars['String']['input']>>;
 }
 
 

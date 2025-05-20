@@ -79,7 +79,7 @@ export interface RequestOptions {
   /**
    * Allows partitioning search results into groups
    */
-  group_by?: GroupByDepositID | GroupBySequenceIdentity | GroupByUniProtAccession;
+  group_by?: GroupByDepositID | GroupBySequenceIdentity | GroupByUniProtAccession | GroupByChemicalComponentID;
   /**
    * Determines the representation of grouped data: 'groups' - search results are divided into groups and each group is returned with all associated search hits; 'representatives' - only a single search hit is returned per group
    */
@@ -400,6 +400,13 @@ export interface GroupByUniProtAccession {
 }
 export interface UniprotAccessionGroupRankingOption {
   sort_by: "coverage";
+}
+export interface GroupByChemicalComponentID {
+  /**
+   * The method used to group non-polimer entity results based on the common chemical component ID
+   */
+  aggregation_method: "matching_chemical_component_id";
+  ranking_criteria_type?: SortOptionAttributes;
 }
 export interface SortOptionGroups {
   sort_by: RelevanceScoreRankingOption | SortOptionGroupsSortBy;

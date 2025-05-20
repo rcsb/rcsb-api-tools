@@ -3229,7 +3229,7 @@
             } ],
             "rcsb_search_group" : [ {
               "group_name" : "Methods",
-              "priority_order" : 5
+              "priority_order" : 10
             } ]
           },
           "method_details" : {
@@ -8418,7 +8418,7 @@
           } ],
           "rcsb_search_group" : [ {
             "group_name" : "Methods",
-            "priority_order" : 10
+            "priority_order" : 5
           } ]
         },
         "experimental_method_count" : {
@@ -8437,24 +8437,6 @@
             "priority_order" : 15
           } ]
         },
-        "ihm_ensemble_flag" : {
-          "type" : "string",
-          "enum" : [ "N", "Y" ],
-          "description" : "Ensemble flag for integrative structures.",
-          "rcsb_search_context" : [ "exact-match" ],
-          "rcsb_full_text_priority" : 10,
-          "rcsb_description" : [ {
-            "text" : "Ensemble flag for integrative structures.",
-            "context" : "dictionary"
-          }, {
-            "text" : "IHM Ensemble Flag",
-            "context" : "brief"
-          } ],
-          "rcsb_search_group" : [ {
-            "group_name" : "IHM Method Details",
-            "priority_order" : 20
-          } ]
-        },
         "ihm_multi_scale_flag" : {
           "type" : "string",
           "enum" : [ "N", "Y" ],
@@ -8469,7 +8451,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "IHM Method Details",
+            "group_name" : "Integrative/Hybrid Method Details",
             "priority_order" : 5
           } ]
         },
@@ -8487,7 +8469,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "IHM Method Details",
+            "group_name" : "Integrative/Hybrid Method Details",
             "priority_order" : 10
           } ]
         },
@@ -8505,7 +8487,7 @@
             "context" : "brief"
           } ],
           "rcsb_search_group" : [ {
-            "group_name" : "IHM Method Details",
+            "group_name" : "Integrative/Hybrid Method Details",
             "priority_order" : 15
           } ]
         },
@@ -9056,8 +9038,8 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "IHM Method Details",
-              "priority_order" : 25
+              "group_name" : "Integrative/Hybrid Method Details",
+              "priority_order" : 20
             } ]
           },
           "type" : {
@@ -9095,8 +9077,8 @@
               "context" : "brief"
             } ],
             "rcsb_search_group" : [ {
-              "group_name" : "IHM Method Details",
-              "priority_order" : 30
+              "group_name" : "Integrative/Hybrid Method Details",
+              "priority_order" : 25
             } ]
           },
           "db_name" : {
@@ -12018,17 +12000,17 @@
               "units" : "nanomole"
             }, {
               "value" : "&Delta;G",
-              "name" : "ΔG",
+              "name" : "dG",
               "detail" : "Gibbs free energy of binding (for association reaction)",
               "units" : "kilojoule_per_mole"
             }, {
               "value" : "&Delta;H",
-              "name" : "ΔH",
+              "name" : "dH",
               "detail" : "Change in enthalpy associated with a chemical reaction",
               "units" : "kilojoule_per_mole"
             }, {
               "value" : "-T&Delta;S",
-              "name" : "-TΔS",
+              "name" : "-TdS",
               "detail" : "Change in entropy associated with a chemical reaction",
               "units" : "kilojoule_per_mole"
             } ],

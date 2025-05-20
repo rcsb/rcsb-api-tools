@@ -733,11 +733,6 @@ export enum ExperimentalMethod {
     XRay_ = "X-ray"
 }
 
-export enum IhmEnsembleFlag {
-    N = "N",
-    Y = "Y"
-}
-
 export enum IhmMultiScaleFlag {
     N = "N",
     Y = "Y"

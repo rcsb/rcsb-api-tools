@@ -7473,10 +7473,6 @@ export interface CoreEntry {
      */
     experimental_method_count?: number;
     /**
-     * Ensemble flag for integrative structures.
-     */
-    ihm_ensemble_flag?: "N" | "Y";
-    /**
      * Multi-scale modeling flag for integrative structures.
      */
     ihm_multi_scale_flag?: "N" | "Y";
