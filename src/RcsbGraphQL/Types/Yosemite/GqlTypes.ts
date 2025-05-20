@@ -9236,14 +9236,6 @@ export interface RcsbEntryInfo {
   /** The number of experimental methods contributing data to the structure determination. */
   experimental_method_count?: Maybe<Scalars['Int']['output']>;
   /**
-   * Ensemble flag for integrative structures.
-   *
-   * Allowable values:
-   * N, Y
-   *
-   */
-  ihm_ensemble_flag?: Maybe<Scalars['String']['output']>;
-  /**
    * Multi-scale modeling flag for integrative structures.
    *
    * Allowable values:

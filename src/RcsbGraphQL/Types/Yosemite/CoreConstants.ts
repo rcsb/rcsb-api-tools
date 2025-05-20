@@ -1037,7 +1037,6 @@ export class CoreConstants{
 	public static readonly ENTITY_COUNT = "entity_count";
 	public static readonly EXPERIMENTAL_METHOD = "experimental_method";
 	public static readonly EXPERIMENTAL_METHOD_COUNT = "experimental_method_count";
-	public static readonly IHM_ENSEMBLE_FLAG = "ihm_ensemble_flag";
 	public static readonly IHM_MULTI_SCALE_FLAG = "ihm_multi_scale_flag";
 	public static readonly IHM_MULTI_STATE_FLAG = "ihm_multi_state_flag";
 	public static readonly IHM_ORDERED_STATE_FLAG = "ihm_ordered_state_flag";
