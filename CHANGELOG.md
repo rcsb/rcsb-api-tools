@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [5.1.1] - 2025-05-20
+### Bug Fix
+- GraphQL URL bug fix
+
 ## [5.1.0] - 2025-05-20
 ### Schema update
 - Search schemas update
