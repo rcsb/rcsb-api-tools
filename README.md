@@ -1,7 +1,6 @@
 # rcsb-api-tools
 
-RCSB Saguaro Web API is an open-source library that includes different tools to validate and request data from the [1D Coordinate Server](https://1d-coordinates.rcsb.org), 
-the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https://search.rcsb.org).
+RCSB Saguaro Web API is an open-source library that includes different tools to validate and request data from the [Sequence Coordinates Server](https://sequence-coordinates.rcsb.org/), the [RCSB Data API](https://data.rcsb.org) and the [RCSB Search Service](https://search.rcsb.org).
 
 ### Node Module Instalation
 `npm install @rcsb/rcsb-api-tools`
@@ -62,10 +61,10 @@ query QueryAlignment($queryId: String!, $from: String!, $to: String!, $range:[In
 #### data-api/yosemite server
 E.g. `import {CoreEntry, RcsbEntryContainerIdentifiers} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Types/Yosemite/GqlTypes";`
 
-#### 1d-coordinates/borrego server
-E.g. `import {AnnotationFeatures, Feature, AlignmentResponse} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Types/Borrego/GqlTypes";`
+#### sequence-coordinates/borrego server
+E.g. `import type {Query, SequenceAnnotations, SequenceAlignments} from '@rcsb/rcsb-api-tools/lib/RcsbGraphQL/Types/Borrego/GqlTypes.js';`
 
-### GRphQL query validation
+### GraphQL query validation
 ````javascript
 import {validateQueries} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Generator/GeneratorTools";
 validateQueries(graphql_schema_url, "path_to_queries/my_query.graphql");
