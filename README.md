@@ -8,7 +8,7 @@ RCSB Saguaro Web API is an open-source library that includes different tools to 
 ### Requesting RCSB GraphQL data
 `import {GraphQLRequest} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/GraphQLRequest"`
 
-`const client = new GraphQLRequest("data-api"|"1d-coordinates"|url);`
+`const client = new GraphQLRequest("data-api"|"sequence-coordinates"|url);`
 
 `client.request(query_params, query_string)`;
 
@@ -59,29 +59,29 @@ query QueryAlignment($queryId: String!, $from: String!, $to: String!, $range:[In
 ### Importing RCSB GraphQL interfaces
 
 #### data-api/yosemite server
-E.g. `import {CoreEntry, RcsbEntryContainerIdentifiers} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Types/Yosemite/GqlTypes";`
+E.g. `import type {CoreEntry, RcsbEntryContainerIdentifiers} from "@rcsb/rcsb-api-tools/lib/RcsbGraphQL/Types/Yosemite/GqlTypes";`
 
 #### sequence-coordinates/borrego server
 E.g. `import type {Query, SequenceAnnotations, SequenceAlignments} from '@rcsb/rcsb-api-tools/lib/RcsbGraphQL/Types/Borrego/GqlTypes.js';`
 
 ### GraphQL query validation
 ````javascript
-import {validateQueries} from "@rcsb/rcsb-api-tools/build/RcsbGraphQL/Generator/GeneratorTools";
+import {validateQueries} from "@rcsb/rcsb-api-tools/lib/RcsbGraphQL/Generator/GeneratorTools";
 validateQueries(graphql_schema_url, "path_to_queries/my_query.graphql");
 ````
 
 ### Requesting RCSB Search data
-`import {SearchRequest} from "@rcsb/rcsb-api-tools/build/RcsbSearch/SearchRequest";`
+`import {SearchRequest} from "@rcsb/rcsb-api-tools/lib/RcsbSearch/SearchRequest";`
 
 `const client = new SearchRequest();`
 
 `client.request(query_object);`
 
 #### Example
-```javascript
-import {SearchQuery} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchQueryInterface";
-import {LogicalOperator, ReturnType, Service, Type} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchEnums";
-import {RcsbSearchMetadata} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchMetadata";
+```typescript
+import type {SearchQuery} from "@rcsb/rcsb-api-tools/lib/RcsbSearch/Types/SearchQueryInterface";
+import {LogicalOperator, ReturnType, Service, Type} from "@rcsb/rcsb-api-tools/lib/RcsbSearch/Types/SearchEnums";
+import {RcsbSearchMetadata} from "@rcsb/rcsb-api-tools/lib/RcsbSearch/Types/SearchMetadata";
 
 const search_query = {
     query: {
@@ -116,7 +116,7 @@ search.request(search_query);
 #### Search metadata class
 Search metadata class provides the searchable paths and methods for the RCSB Search API 
 
-`import {RcsbSearchMetadata} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchMetadata";`
+`import {RcsbSearchMetadata} from "@rcsb/rcsb-api-tools/lib/RcsbSearch/Types/SearchMetadata";`
 
 ##### Utility examples
 E.g. `RcsbSearchMetadata.RcsbEntryInfo.DiffrnResolutionHigh.Value.path` attribute contains the string `"rcsb_entry_info.diffrn_resolution_high.value"`
@@ -126,7 +126,7 @@ E.g. `RcsbSearchMetadata.RcsbEntryInfo.DiffrnResolutionHigh.Value.operator` enum
 #### Search enums
 Search enums provide a collection of enums/classes that provide a controlled vocabulary to build the RCSB Search queries. 
 The name of each enum/class (camel cased) matches with the RCSB search schema field name in snake case format.
-E.g. `import {AggregationType, Operator, ReturnType, Service} from "@rcsb/rcsb-api-tools/build/RcsbSearch/Types/SearchEnums";`
+E.g. `import {AggregationType, Operator, ReturnType, Service} from "@rcsb/rcsb-api-tools/lib/RcsbSearch/Types/SearchEnums";`
 
 `AggregationType` encodes the possible values of the schema field `"aggregation_type"`, 
 i.e. `AggregationType.Terms = "terms"`, `AggregationType.Histogram = "histogram"`, ...
@@ -151,6 +151,6 @@ i.e. `AggregationType.Terms = "terms"`, `AggregationType.Histogram = "histogram"
   - E.g. `npm run downloadDwSchemas -- --schema-version 1.32.1-MODELS-SNAPSHOT`
   
 - Search schemas
-  -  `npm run downloadSearchSchemas --  --branch-name <GIT-REMOTE-BRANCH-NAME>`
-  -  E.g. `npm run downloadSearchSchemas --  --branch-name dev-computed-models`
+  - `npm run downloadSearchSchemas --  --branch-name <GIT-REMOTE-BRANCH-NAME>`
+  - E.g. `npm run downloadSearchSchemas --  --branch-name dev-computed-models`
 
