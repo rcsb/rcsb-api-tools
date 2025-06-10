@@ -26,14 +26,14 @@ const query_params = {
 ##### query_string
 ```graphql
 query QueryAlignment($queryId: String!, $from: String!, $to: String!, $range:[Int!]){
-     alignment(
+     alignments(
          queryId:$queryId
          from:$from
          to:$to
          range:$range
      ){
          query_sequence
-         target_alignment {
+         target_alignments {
              target_id
              orientation
              target_sequence
