@@ -62,7 +62,7 @@ query QueryAlignment($queryId: String!, $from: String!, $to: String!, $range:[In
 E.g. `import type {CoreEntry, RcsbEntryContainerIdentifiers} from "@rcsb/rcsb-api-tools/lib/RcsbGraphQL/Types/Yosemite/GqlTypes";`
 
 #### sequence-coordinates/borrego server
-E.g. `import type {Query, SequenceAnnotations, SequenceAlignments} from '@rcsb/rcsb-api-tools/lib/RcsbGraphQL/Types/Borrego/GqlTypes.js';`
+E.g. `import type {Query, SequenceAnnotations, SequenceAlignments} from '@rcsb/rcsb-api-tools/lib/RcsbGraphQL/Types/Borrego/GqlTypes';`
 
 ### GraphQL query validation
 ````javascript
