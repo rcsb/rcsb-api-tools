@@ -10,13 +10,12 @@ export class GraphQLRequest {
 
     private readonly client: GraphQLClient;
 
-    constructor(api: "data-api" | "1d-coordinates" | "sequence-coordinates" | string, config?: RequestConfig) {
+    constructor(api: "data-api" | "sequence-coordinates" | string, config?: RequestConfig) {
         switch (api){
             case "data-api":
                 this.client = new GraphQLClient(configYosemiteGraphQL.schema, config);
                 break;
             case "sequence-coordinates":
-            case "1d-coordinates":
                 this.client = new GraphQLClient(configBorregoGraphQL.schema, config);
                 break;
             default:
