@@ -2,8 +2,29 @@
   "name": "@rcsb/rcsb-api-tools",
   "version": "5.1.1",
   "description": "RCSB PDB API request library",
-  "main": "build/app.js",
+  "main": "./build/app.js",
+  "module": "./lib/app.js",
+  "types": "./build/app.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/app.js",
+      "require": "./build/app.js",
+      "types": "./build/app.d.ts"
+    },
+    "./lib/*": {
+      "import": "./lib/*.js",
+      "require": "./build/*.js",
+      "types": "./lib/*.d.ts"
+    },
+    "./build/*": {
+      "import": "./lib/*.js",
+      "require": "./build/*.js",
+      "types": "./build/*.d.ts"
+    }
+  },
   "files": [
+    "build/**/*",
+    "lib/**/*",
     "build",
     "lib"
   ],
@@ -17,9 +38,10 @@
     "runTest": "jest",
     "build": "webpack --config webpack.config.js",
     "build-tsc": "tsc",
-    "build-commonjs": "tsc --build tsconfig.commonjs.json",
-    "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run build-tsc && npm run build-commonjs && npm run build && npm run copyDef",
-    "copyDef": "ncp lib/app.d.ts build/app.d.ts",
+    "build-esm": "tsc",
+    "build-cjs": "tsc --build tsconfig.commonjs.json",
+    "copyDef": "ncp lib/ build/ --filter='\\.d\\.ts$'",
+    "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run build-esm && npm run build-cjs && npm run copyDef && npm run build",
     "publishApp": "npm publish",
     "clean": "del-cli build/* lib/*",
     "test": "echo \"Error: no test specified\" && exit 1"

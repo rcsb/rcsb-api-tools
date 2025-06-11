@@ -5,28 +5,18 @@
     }
   },
   "compilerOptions": {
-    "declaration": true,
-    "target": "es6",
-    "alwaysStrict": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "module": "esnext",
-    "esModuleInterop": true,
+    "target": "ES2020",
+    "module": "ESNext",
     "moduleResolution": "node",
-    "importHelpers": true,
-    "noEmitHelpers": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": [ "dom", "es2020" ],
-    "rootDir": "src",
     "outDir": "./lib",
+    "declaration": true,
+    "declarationDir": "./lib",
     "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
     "skipLibCheck": true
   },
-  "include": [ "src" ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build", "lib"]
 }
