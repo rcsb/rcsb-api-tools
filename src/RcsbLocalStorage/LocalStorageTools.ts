@@ -1,5 +1,5 @@
 import {sha1} from "object-hash";
-import {compress, decompress} from  "lzutf8";
+import * as LZUTF8 from "lzutf8";
 
 export class LocalStorageTools {
 
@@ -38,7 +38,7 @@ export class LocalStorageTools {
 
     private static store<Q,T>(objKey: Q, objValue: T): void{
         const key: string = LocalStorageTools.objToKey<Q>(objKey)
-        const obj = compress(JSON.stringify({
+        const obj = LZUTF8.compress(JSON.stringify({
             data: objValue,
             timestamp: Date.now()
         }),{
@@ -53,7 +53,7 @@ export class LocalStorageTools {
         const jsonString: string|null|undefined = LocalStorageTools.storage?.getItem(key);
         if(!jsonString)
             return null;
-        return JSON.parse( decompress(jsonString,{
+        return JSON.parse( LZUTF8.decompress(jsonString,{
             inputEncoding: "StorageBinaryString",
             outputEncoding: "String"
         }) );
