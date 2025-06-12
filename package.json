@@ -40,8 +40,8 @@
     "build-tsc": "tsc",
     "build-esm": "tsc",
     "build-cjs": "tsc --build tsconfig.commonjs.json",
-    "copyDef": "ncp lib/ build/ --filter='\\.d\\.ts$'",
     "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run build-esm && npm run build-cjs && npm run build && npm run copyDef",
+    "copyDef": "ncp lib/ build/ --filter='\\.d\\.ts$'",
     "publishApp": "npm publish",
     "clean": "del-cli build/* lib/*",
     "test": "echo \"Error: no test specified\" && exit 1"
