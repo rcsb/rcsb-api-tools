@@ -1,32 +1,9 @@
 {
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  },
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "declaration": true,
-    "target": "es6",
-    "alwaysStrict": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "sourceMap": false,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
     "module": "CommonJS",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "noEmitHelpers": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": [ "dom", "es2020" ],
-    "rootDir": "src",
-    "outDir": "./lib/commonjs",
+    "outDir": "./build",
     "resolveJsonModule": true,
-    "skipLibCheck": true
-  },
-  "include": [ "src" ],
-  "exclude": [
-    "node_modules"
-  ]
+    "declarationDir": "./build"
+  }
 }
