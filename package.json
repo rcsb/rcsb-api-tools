@@ -37,7 +37,6 @@
     "buildSources": "npm run buildSearchInterface && npm run buildGraphQLInterfaces && npm run buildDwInterface",
     "runTest": "jest",
     "build": "webpack --config webpack.config.js",
-    "build-tsc": "tsc",
     "build-esm": "tsc",
     "build-cjs": "tsc --build tsconfig.commonjs.json",
     "buildApp": "npm run clean && npm run buildSources && npm run runTest && npm run build-esm && npm run build-cjs && npm run build && npm run copyDef",
