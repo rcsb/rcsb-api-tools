@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "./build",
-    "declarationDir": "./build",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "declarationDir": "./build"
   }
 }
