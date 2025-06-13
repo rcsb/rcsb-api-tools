@@ -9,3 +9,5 @@ lib
 *.iml
 
 .tmp
+
+tsconfig.commonjs.tsbuildinfo
