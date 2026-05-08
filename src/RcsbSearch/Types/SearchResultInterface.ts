@@ -151,7 +151,7 @@ export interface ServiceIdentifier {
            */
           match_context?: (
             | SequenceServiceMatchContext
-            | ShapeServiceMatchContext
+            | StructureServiceMatchContext
             | SeqmotifServiceMatchContext
             | StrucmotifServiceMatchContext
           )[];
@@ -175,7 +175,7 @@ export interface ServiceIdentifier {
            */
           match_context?: (
             | SequenceServiceMatchContext
-            | ShapeServiceMatchContext
+            | StructureServiceMatchContext
             | SeqmotifServiceMatchContext
             | StrucmotifServiceMatchContext
           )[];
@@ -221,7 +221,7 @@ export interface ServiceIdentifier {
            */
           match_context?: (
             | SequenceServiceMatchContext
-            | ShapeServiceMatchContext
+            | StructureServiceMatchContext
             | SeqmotifServiceMatchContext
             | StrucmotifServiceMatchContext
           )[];
@@ -245,7 +245,7 @@ export interface ServiceIdentifier {
            */
           match_context?: (
             | SequenceServiceMatchContext
-            | ShapeServiceMatchContext
+            | StructureServiceMatchContext
             | SeqmotifServiceMatchContext
             | StrucmotifServiceMatchContext
           )[];
@@ -314,15 +314,21 @@ export interface SequenceServiceMatchContext {
    */
   subject_aligned_seq?: string;
 }
-export interface ShapeServiceMatchContext {
+export interface StructureServiceMatchContext {
   /**
-   * The BioZernike score, expressing the likelihood of the match being relevant. Range: 0-1.
+   * The approximated TM-score. Range: 0-1. Higher values imply higher similarity. Values above 0.5 are usually interpreted as matching fold.
    */
-  biozernike_score: number;
+  tmscore: number;
   /**
-   * The score calculated from the GEO descriptors. Range: 0-1.
+   * @deprecated
+   * The BioZernike score, expressing the likelihood of the match being relevant. Range: 0-1. Deprecation notice: Not used and scheduled for removal with the next major version.
    */
-  geo_score: number;
+  biozernike_score?: number;
+  /**
+   * @deprecated
+   * The score calculated from the GEO descriptors. Range: 0-1. Deprecation notice: Not used and scheduled for removal with the next major version.
+   */
+  geo_score?: number;
 }
 export interface SeqmotifServiceMatchContext {
   /**

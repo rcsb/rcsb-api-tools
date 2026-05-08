@@ -1,0 +1,88 @@
+{
+  "title" : "Structure Embedding",
+  "description": "JSON schema for storing embedding data.",
+  "type": "object",
+  "required": [
+    "rcsb_embedding_info",
+    "rcsb_id",
+    "embedding",
+    "rcsb_embedding_container_identifiers",
+    "n_residues"
+  ],
+  "properties": {
+    "rcsb_id": {
+      "type": "string",
+      "examples": [
+        "1KIP.A", "2UZI-1"
+      ],
+      "description": "A unique identifier for each object in this embedding container."
+    },
+    "rcsb_embedding_container_identifiers": {
+      "type": "object",
+      "properties": {
+        "entry_id": {
+          "type": "string",
+          "examples": [
+            "4HHB",
+            "AF_AFP60325F1",
+            "MA_MABAKCEPC0019"
+          ],
+          "description": "Entry identifier for this embedding."
+        },
+        "asym_id": {
+          "type": "string",
+          "description": "Instance identifier for this embedding."
+        },
+        "assembly_id": {
+          "type": "string",
+          "examples": [
+            "1",
+            "5"
+          ],
+          "description": "Assembly identifier for this embedding."
+        }
+      },
+      "required": [
+        "entry_id"
+      ],
+      "additionalProperties": false
+    },
+    "rcsb_embedding_info": {
+         "type": "object",
+         "properties": {
+           "major_revision": {
+               "type": "integer",
+               "description": "The latest entry major revision number."
+            },
+            "minor_revision": {
+               "type": "integer",
+               "description": "The latest entry minor revision number."
+            }
+         },
+         "required": [
+           "major_revision",
+           "minor_revision"
+         ],
+         "additionalProperties": false
+    },
+    "embedding": {
+      "type": "array",
+      "minItems": 1536,
+      "maxItems": 1536,
+      "items": {
+         "type": "number",
+         "examples": [
+           108.11,
+           3.14,
+           2.71
+         ],
+         "description": "Fixed length vector encoding a 3D macromolecular structure."
+      },
+      "uniqueItems": false
+    },
+    "n_residues": {
+      "type": "integer",
+      "description": "Number of encoded residues in the embedding"
+    }
+  }
+}

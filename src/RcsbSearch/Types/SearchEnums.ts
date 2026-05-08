@@ -13,6 +13,10 @@ export enum SortDirection {
     Desc = "desc"
 }
 
+export enum GroupCountRankingOption {
+    Count = "count"
+}
+
 export enum SortOptionGroupsSortBy {
     Size = "size",
     Count = "count"
@@ -129,6 +133,11 @@ export enum SequenceType {
 export enum TargetSearchSpace {
     Assembly = "assembly",
     PolymerEntityInstance = "polymer_entity_instance"
+}
+
+export enum SimilarityType {
+    Local = "local",
+    Global = "global"
 }
 
 export enum Format {

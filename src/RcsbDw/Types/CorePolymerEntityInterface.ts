@@ -6,19 +6,9 @@
  */
 
 /**
- * JSON schema for polymer entity core.
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_polymer_entity version 10.1.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_polymer_entity.json and follows JSON schema specification version 4
  */
-export interface CorePolymerEntity {
-  rcsb_cluster_membership?: {
-    /**
-     * Identifier for a cluster at the specified level of sequence identity within the cluster data set.
-     */
-    cluster_id?: number;
-    /**
-     * Sequence identity expressed as an integer percent value.
-     */
-    identity?: number;
-  }[];
+export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
   entity_poly?: {
     /**
      * A flag to indicate whether the polymer contains at least
@@ -1065,6 +1055,53 @@ export interface CorePolymerEntity {
       pdbx_src_id: number;
     }[]
   ];
+  rcsb_cluster_flexibility?: {
+    /**
+     * Average RMSD refer to average pairwise RMSD (Root Mean Square Deviation of C-alpha atoms) between structures in the cluster (95% sequence identity) where a given entity belongs.
+     */
+    avg_rmsd?: number;
+    /**
+     * Structural flexibility in the cluster (95% sequence identity) where a given entity belongs.
+     */
+    label?: string;
+    /**
+     * Link to the associated PDBFlex database entry.
+     */
+    link?: string;
+    /**
+     * Maximal RMSD refer to maximal pairwise RMSD (Root Mean Square Deviation of C-alpha atoms) between structures in the cluster (95% sequence identity) where a given entity belongs.
+     */
+    max_rmsd?: number;
+    /**
+     * Provenance code indicating the origin of the flexibility data.
+     */
+    provenance_code?: "PDBFlex";
+  };
+  /**
+   * @minItems 1
+   */
+  rcsb_cluster_membership?: [
+    {
+      /**
+       * Identifier for a cluster at the specified level of sequence identity within the cluster data set.
+       */
+      cluster_id: number;
+      /**
+       * Sequence identity expressed as an integer percent value.
+       */
+      identity: number;
+    },
+    ...{
+      /**
+       * Identifier for a cluster at the specified level of sequence identity within the cluster data set.
+       */
+      cluster_id: number;
+      /**
+       * Sequence identity expressed as an integer percent value.
+       */
+      identity: number;
+    }[]
+  ];
   /**
    * @minItems 1
    */
@@ -1523,6 +1560,86 @@ export interface CorePolymerEntity {
       }[];
     }[]
   ];
+  /**
+   * @minItems 1
+   */
+  rcsb_genomic_lineage?: [
+    {
+      /**
+       * Classification hierarchy depth.
+       */
+      depth?: number;
+      /**
+       * Automatically assigned ID that uniquely identifies taxonomy, chromosome or gene in the Genome Location Browser.
+       */
+      id?: string;
+      /**
+       * A human-readable term name.
+       */
+      name?: string;
+    },
+    ...{
+      /**
+       * Classification hierarchy depth.
+       */
+      depth?: number;
+      /**
+       * Automatically assigned ID that uniquely identifies taxonomy, chromosome or gene in the Genome Location Browser.
+       */
+      id?: string;
+      /**
+       * A human-readable term name.
+       */
+      name?: string;
+    }[]
+  ];
+  rcsb_latest_revision?: {
+    /**
+     * The major version number of the latest revision.
+     */
+    major_revision?: number;
+    /**
+     * The minor version number of the latest revision.
+     */
+    minor_revision?: number;
+    /**
+     * The release date of the latest revision item.
+     */
+    revision_date?: string;
+  };
+  /**
+   * @minItems 1
+   */
+  rcsb_membrane_lineage?: [
+    {
+      /**
+       * Hierarchy depth.
+       */
+      depth?: number;
+      /**
+       * Automatically assigned ID for membrane classification term in the Membrane Protein Browser.
+       */
+      id?: string;
+      /**
+       * Membrane protein classification term.
+       */
+      name?: string;
+    },
+    ...{
+      /**
+       * Hierarchy depth.
+       */
+      depth?: number;
+      /**
+       * Automatically assigned ID for membrane classification term in the Membrane Protein Browser.
+       */
+      id?: string;
+      /**
+       * Membrane protein classification term.
+       */
+      name?: string;
+    }[]
+  ];
   rcsb_polymer_entity?: {
     /**
      * A description of special aspects of the entity.
@@ -1623,8 +1740,10 @@ export interface CorePolymerEntity {
        * @minItems 1
        */
       names?: [string, ...string[]];
-      provenance_source?: "PDB Preferred Name" | "PDB Description" | "UniProt Name";
-      [k: string]: unknown;
+      /**
+       * Provenance source for the combined protein names.
+       */
+      provenance_source?: "PDB Description" | "PDB Preferred Name" | "UniProt Name";
     };
   };
   /**
@@ -1655,7 +1774,7 @@ export interface CorePolymerEntity {
          */
         entity_beg_seq_id?: number;
         /**
-         * An length of the this segment of the alignment.
+         * The length of this segment of the alignment.
          */
         length?: number;
         /**
@@ -1688,7 +1807,7 @@ export interface CorePolymerEntity {
          */
         entity_beg_seq_id?: number;
         /**
-         * An length of the this segment of the alignment.
+         * The length of this segment of the alignment.
          */
         length?: number;
         /**
@@ -1727,7 +1846,7 @@ export interface CorePolymerEntity {
       /**
        * A type or category of the annotation.
        */
-      type?: "CARD" | "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
+      type: "CARD" | "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -1775,7 +1894,7 @@ export interface CorePolymerEntity {
       /**
        * A type or category of the annotation.
        */
-      type?: "CARD" | "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
+      type: "CARD" | "GO" | "GlyCosmos" | "GlyGen" | "InterPro" | "MemProtMD" | "OPM" | "PDBTM" | "Pfam" | "mpstruc";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -1825,6 +1944,10 @@ export interface CorePolymerEntity {
      *  an underscore separated concatenation of entry and entity identifiers.
      */
     rcsb_id?: string;
+    /**
+     * @minItems 1
+     */
+    uniprot_ids?: [string, ...string[]];
     reference_sequence_identifiers?: {
       /**
        * Reference database accession code
@@ -1851,10 +1974,6 @@ export interface CorePolymerEntity {
        */
       reference_sequence_coverage?: number;
     }[];
-    /**
-     * @minItems 1
-     */
-    uniprot_ids?: [string, ...string[]];
   };
   /**
    * @minItems 1
@@ -1889,7 +2008,7 @@ export interface CorePolymerEntity {
       /**
        * A type or category of the feature.
        */
-      type?:
+      type:
         | "CARD_MODEL"
         | "IMGT_ANTIBODY_DESCRIPTION"
         | "IMGT_ANTIBODY_DOMAIN_NAME"
@@ -1903,11 +2022,11 @@ export interface CorePolymerEntity {
         | "SABDAB_ANTIBODY_NAME"
         | "SABDAB_ANTIBODY_TARGET"
         | "artifact"
-        | "modified_monomer"
-        | "mutation"
-        | "hydropathy"
         | "disorder"
-        | "disorder_binding";
+        | "disorder_binding"
+        | "hydropathy"
+        | "modified_monomer"
+        | "mutation";
       feature_positions?: {
         /**
          * An identifier for the leading monomer corresponding to the feature assignment.
@@ -1964,7 +2083,7 @@ export interface CorePolymerEntity {
       /**
        * A type or category of the feature.
        */
-      type?:
+      type:
         | "CARD_MODEL"
         | "IMGT_ANTIBODY_DESCRIPTION"
         | "IMGT_ANTIBODY_DOMAIN_NAME"
@@ -1978,11 +2097,11 @@ export interface CorePolymerEntity {
         | "SABDAB_ANTIBODY_NAME"
         | "SABDAB_ANTIBODY_TARGET"
         | "artifact"
-        | "modified_monomer"
-        | "mutation"
-        | "hydropathy"
         | "disorder"
-        | "disorder_binding";
+        | "disorder_binding"
+        | "hydropathy"
+        | "modified_monomer"
+        | "mutation";
       feature_positions?: {
         /**
          * An identifier for the leading monomer corresponding to the feature assignment.
@@ -2108,6 +2227,67 @@ export interface CorePolymerEntity {
         | "artifact"
         | "modified_monomer"
         | "mutation";
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  rcsb_polymer_entity_group_membership?: [
+    {
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "matching_uniprot_accession" | "sequence_identity";
+      /**
+       * A unique identifier for a group of entities
+       */
+      group_id: string;
+      /**
+       * Degree of similarity expressed as a floating-point number
+       */
+      similarity_cutoff?: number;
+      aligned_regions?: {
+        /**
+         * An identifier for the monomer in the entity sequence at which this segment of the alignment begins.
+         */
+        entity_beg_seq_id?: number;
+        /**
+         * The length of this segment of the alignment.
+         */
+        length?: number;
+        /**
+         * An identifier for the monomer in the reference sequence at which this segment of the alignment begins.
+         */
+        ref_beg_seq_id?: number;
+      }[];
+    },
+    ...{
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "matching_uniprot_accession" | "sequence_identity";
+      /**
+       * A unique identifier for a group of entities
+       */
+      group_id: string;
+      /**
+       * Degree of similarity expressed as a floating-point number
+       */
+      similarity_cutoff?: number;
+      aligned_regions?: {
+        /**
+         * An identifier for the monomer in the entity sequence at which this segment of the alignment begins.
+         */
+        entity_beg_seq_id?: number;
+        /**
+         * The length of this segment of the alignment.
+         */
+        length?: number;
+        /**
+         * An identifier for the monomer in the reference sequence at which this segment of the alignment begins.
+         */
+        ref_beg_seq_id?: number;
+      }[];
     }[]
   ];
   rcsb_polymer_entity_keywords?: {
@@ -2406,175 +2586,7 @@ export interface CorePolymerEntity {
    */
   rcsb_id: string;
   /**
-   * @minItems 1
-   */
-  rcsb_polymer_entity_group_membership?: [
-    {
-      /**
-       * A unique identifier for a group of entities
-       */
-      group_id: string;
-      /**
-       * Method used to establish group membership
-       */
-      aggregation_method: "sequence_identity" | "matching_uniprot_accession";
-      /**
-       * Degree of similarity expressed as a floating-point number
-       */
-      similarity_cutoff?: number;
-      aligned_regions?: {
-        /**
-         * An identifier for the monomer in the entity sequence at which this segment of the alignment begins.
-         */
-        entity_beg_seq_id?: number;
-        /**
-         * An length of the this segment of the alignment.
-         */
-        length?: number;
-        /**
-         * An identifier for the monomer in the reference sequence at which this segment of the alignment begins.
-         */
-        ref_beg_seq_id?: number;
-      }[];
-    },
-    ...{
-      /**
-       * A unique identifier for a group of entities
-       */
-      group_id: string;
-      /**
-       * Method used to establish group membership
-       */
-      aggregation_method: "sequence_identity" | "matching_uniprot_accession";
-      /**
-       * Degree of similarity expressed as a floating-point number
-       */
-      similarity_cutoff?: number;
-      aligned_regions?: {
-        /**
-         * An identifier for the monomer in the entity sequence at which this segment of the alignment begins.
-         */
-        entity_beg_seq_id?: number;
-        /**
-         * An length of the this segment of the alignment.
-         */
-        length?: number;
-        /**
-         * An identifier for the monomer in the reference sequence at which this segment of the alignment begins.
-         */
-        ref_beg_seq_id?: number;
-      }[];
-    }[]
-  ];
-  /**
-   * @minItems 1
-   */
-  rcsb_genomic_lineage?: [
-    {
-      /**
-       * Automatically assigned ID that uniquely identifies taxonomy, chromosome or gene in the Genome Location Browser.
-       */
-      id?: string;
-      /**
-       * A human-readable term name.
-       */
-      name?: string;
-      /**
-       * Classification hierarchy depth.
-       */
-      depth?: number;
-      [k: string]: unknown;
-    },
-    ...{
-      /**
-       * Automatically assigned ID that uniquely identifies taxonomy, chromosome or gene in the Genome Location Browser.
-       */
-      id?: string;
-      /**
-       * A human-readable term name.
-       */
-      name?: string;
-      /**
-       * Classification hierarchy depth.
-       */
-      depth?: number;
-      [k: string]: unknown;
-    }[]
-  ];
-  /**
-   * Information about integral membrane proteins whose crystallographic, or sometimes NMR or cryo-EM, structures have been determined to a resolution sufficient to identify TM helices of helix-bundle membrane proteins (typically 4 - 4.5 A). Mpstruc provides manually curated information about integral membrane proteins. These manual annotations are extended using sequence clusters and according to the following procedure:Single chain transmembrane proteins: Any PDB chain sharing 90% sequence identity to this transmembrane protein is assigned as a transmembrane protein as well, and shares the same transmembrane annotation.Multi-chain transmembrane proteins:If the reference mpstruc entry contains multiple protein entities, it is necessary to identify which of the entities are presumed to be transmembrane chains. This is done in conjunction with Uniprot annotations. Transmembrane protein entities are identified by checking if their corresponding Uniprot sequence has annotations labeled <i>transmembrane</i> or <i>intramembrane region</i>. For transmembrane entities, all members of the sequence cluster (90% sequence identity) are programmatically infered to be members of the same class of transmembrane proteins by applying the above procedure for single entity mpstruc entries. Annotations are denoned with 'Homology' provenance code.
-   *
-   * @minItems 1
-   */
-  rcsb_membrane_lineage?: [
-    {
-      /**
-       * Automatically assigned ID for membrane classification term in the Membrane Protein Browser.
-       */
-      id?: string;
-      /**
-       * Membrane protein classification term.
-       */
-      name?: string;
-      /**
-       * Hierarchy depth.
-       */
-      depth?: number;
-    },
-    ...{
-      /**
-       * Automatically assigned ID for membrane classification term in the Membrane Protein Browser.
-       */
-      id?: string;
-      /**
-       * Membrane protein classification term.
-       */
-      name?: string;
-      /**
-       * Hierarchy depth.
-       */
-      depth?: number;
-    }[]
-  ];
-  /**
    * Mpstruc keyword denotes original annotation, Homology keyword denotes annotation inferred by homology.
    */
-  rcsb_membrane_lineage_provenance_code?: "Mpstruc" | "Homology";
-  /**
-   * Indicates intrinsic flexibility of protein structures determined from structural variations between different depositions and chains in asymmetric units of the same protein in PDB (95% sequence identity).
-   */
-  rcsb_cluster_flexibility?: {
-    /**
-     * Link to the associated PDBFlex database entry.
-     */
-    link?: string;
-    /**
-     * Structural flexibility in the cluster (95% sequence identity) where a given entity belongs.
-     */
-    label?: string;
-    /**
-     * Average RMSD refer to average pairwise RMSD (Root Mean Square Deviation of C-alpha atoms) between structures in the cluster (95% sequence identity) where a given entity belongs.
-     */
-    avg_rmsd?: number;
-    /**
-     * Maximal RMSD refer to maximal pairwise RMSD (Root Mean Square Deviation of C-alpha atoms) between structures in the cluster (95% sequence identity) where a given entity belongs.
-     */
-    max_rmsd?: number;
-    provenance_code?: "PDBFlex";
-  };
-  rcsb_latest_revision?: {
-    /**
-     * The major version number of the latest revision.
-     */
-    major_revision?: number;
-    /**
-     * The minor version number of the latest revision.
-     */
-    minor_revision?: number;
-    /**
-     * The release date of the latest revision item.
-     */
-    revision_date?: string;
-    [k: string]: unknown;
-  };
+  rcsb_membrane_lineage_provenance_code?: "Homology" | "Mpstruc";
 }

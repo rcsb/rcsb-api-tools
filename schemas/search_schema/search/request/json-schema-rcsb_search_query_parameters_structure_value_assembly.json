@@ -1,5 +1,5 @@
 {
-  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_shape_value_assembly.json",
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_structure_value_assembly.json",
   "title": "Structure Query Assembly Parameters",
   "type": "object",
   "required": [

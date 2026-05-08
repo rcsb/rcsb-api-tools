@@ -30,5 +30,6 @@
     }
   },
   "additionalProperties": false,
-  "description": "Upload Base64-encoded file in one of the following formats: cif, bcif."
+  "deprecated": true,
+  "description": "Upload Base64-encoded file in one of the following formats: cif, bcif. Deprecation notice: Not used and scheduled for removal with the next major version. Use `url` instead to provide custom data to the API."
 }

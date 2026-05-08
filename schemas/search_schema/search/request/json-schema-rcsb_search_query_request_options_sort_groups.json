@@ -11,6 +11,9 @@
           "$ref": "json-schema-rcsb_search_query_request_options_sort_relevance_score.json"
         },
         {
+          "$ref": "json-schema-rcsb_search_query_request_options_sort_group_count.json"
+        },
+        {
           "$ref": "json-schema-rcsb_search_query_request_options_sort_groups_options.json"
         }
       ]

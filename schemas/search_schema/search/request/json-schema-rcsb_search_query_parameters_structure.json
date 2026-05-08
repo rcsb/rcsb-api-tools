@@ -1,0 +1,66 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_structure.json",
+  "title": "Structure Query Parameters",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "oneOf": [
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_structure_value_chain.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_structure_value_assembly.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_structure_value_url.json"
+        },
+        {
+          "$ref": "json-schema-rcsb_search_query_parameters_shape_value_file.json"
+        }
+      ]
+    },
+    "number_of_candidates": {
+      "type": "integer",
+      "default": 10000,
+      "maximum": 15000,
+      "description": "Controls the number of the most similar matches to return. The first item is the closest match, with subsequent items decreasing in similarity. Lower values make searches faster but may exclude relevant results, while higher values provide a more exhaustive search at the cost of increased computation time."
+    },
+    "target_search_space": {
+      "type": "string",
+      "enum": [
+        "assembly",
+        "polymer_entity_instance"
+      ],
+      "description": "Controls what are the target objects (assemblies or polymer instances) against which the query will be compared for embedding similarity. If not provided, queries based on assembly identifiers are matched to assemblies, queries based on chain identifiers are match to chains (polymer entity instances), and queries based on URLs are matched to chains. Note that this parameter is independent of whether the input is a chain or an assembly. For instance a chain can be compared to all assemblies."
+    },
+    "ptmscore_cutoff": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.8,
+      "description": "Minimum predicted TM-score threshold above which hits will be returned."
+    },
+    "similarity_type": {
+      "type": "string",
+      "enum": [
+        "local",
+        "global"
+      ],
+      "default": "local",
+      "description": "Structural matching mode: LOCAL favors local matches; GLOBAL applies length normalization to favor global similarity."
+    },
+    "operator": {
+      "type": "string",
+      "enum": [
+        "strict_shape_match",
+        "relaxed_shape_match"
+      ],
+      "deprecated": true,
+      "description": "The operator allows specifying the evaluation expression. Deprecation notice: Not used and scheduled for removal with the next major version. `number_of_candidates` and `ptmscore_cutoff` provide similar functionality."
+    }
+  },
+  "additionalProperties": false
+}

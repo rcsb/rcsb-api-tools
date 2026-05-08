@@ -33,7 +33,11 @@ export type RelevanceScoreRankingOption = "score";
  */
 export type SortDirection = "asc" | "desc";
 /**
- * Sort options supported for results returned as groups
+ * This sort option allows ordering results based on the number of search hits contained within each group. Groups with more hits will be ranked higher or lower in the result set depending on the selected sort order (asc or desc).
+ */
+export type GroupCountRankingOption = "count";
+/**
+ * Sort options supported for results returned as groups. NOTE: Sort by total group size is not supported
  */
 export type SortOptionGroupsSortBy = "size" | "count";
 /**
@@ -409,7 +413,7 @@ export interface GroupByChemicalComponentID {
   ranking_criteria_type?: SortOptionAttributes;
 }
 export interface SortOptionGroups {
-  sort_by: RelevanceScoreRankingOption | SortOptionGroupsSortBy;
+  sort_by: RelevanceScoreRankingOption | GroupCountRankingOption | SortOptionGroupsSortBy;
   direction?: SortDirection;
 }
 /**
@@ -542,16 +546,29 @@ export interface StructureQueryParameters {
   value:
     | StructureQueryChainParameters
     | StructureQueryAssemblyParameters
-    | StructureQueryFileParameters
-    | StructureQueryURLParameters;
+    | StructureQueryURLParameters
+    | StructureQueryFileParameters;
   /**
-   * The operator allows specifying the evaluation expression.
+   * Controls the number of the most similar matches to return. The first item is the closest match, with subsequent items decreasing in similarity. Lower values make searches faster but may exclude relevant results, while higher values provide a more exhaustive search at the cost of increased computation time.
    */
-  operator?: "strict_shape_match" | "relaxed_shape_match";
+  number_of_candidates?: number;
   /**
-   * Controls what are the target objects (assemblies or polymer instances) against which the query will be compared for shape similarity. If not provided, queries based on assembly identifiers are matched to assemblies, queries based on chain identifiers are match to chains (polymer entity instances), and queries based on URLs or files are matched to chains. Note that this parameter is independent of whether the input is a chain or an assembly. For instance a chain can be compared to all assemblies.
+   * Controls what are the target objects (assemblies or polymer instances) against which the query will be compared for embedding similarity. If not provided, queries based on assembly identifiers are matched to assemblies, queries based on chain identifiers are match to chains (polymer entity instances), and queries based on URLs are matched to chains. Note that this parameter is independent of whether the input is a chain or an assembly. For instance a chain can be compared to all assemblies.
    */
   target_search_space?: "assembly" | "polymer_entity_instance";
+  /**
+   * Minimum predicted TM-score threshold above which hits will be returned.
+   */
+  ptmscore_cutoff?: number;
+  /**
+   * Structural matching mode: LOCAL favors local matches; GLOBAL applies length normalization to favor global similarity.
+   */
+  similarity_type?: "local" | "global";
+  /**
+   * @deprecated
+   * The operator allows specifying the evaluation expression. Deprecation notice: Not used and scheduled for removal with the next major version. `number_of_candidates` and `ptmscore_cutoff` provide similar functionality.
+   */
+  operator?: "strict_shape_match" | "relaxed_shape_match";
 }
 /**
  * Compound structure identifier that includes PDB code and chain identifier.
@@ -580,16 +597,6 @@ export interface StructureQueryAssemblyParameters {
   assembly_id: string;
 }
 /**
- * Upload Base64-encoded file in one of the following formats: cif, bcif, pdb.
- */
-export interface StructureQueryFileParameters {
-  /**
-   * File content converted to a Base64 string.
-   */
-  data: string;
-  format: "cif" | "bcif" | "pdb";
-}
-/**
  * Fetch structure file from a URL in one of the following formats: cif, bcif, pdb. Content can be gzipped.
  */
 export interface StructureQueryURLParameters {
@@ -597,6 +604,25 @@ export interface StructureQueryURLParameters {
    * URL to a publicly available file with structure data.
    */
   url: string;
+  /**
+   * Chain to base this search on - mutually-exclusive with 'assembly_id'.
+   */
+  asym_id?: string;
+  /**
+   * Assembly to base this search on - mutually-exclusive with 'asym_id'.
+   */
+  assembly_id?: string;
+  format: "cif" | "bcif" | "pdb";
+}
+/**
+ * @deprecated
+ * Upload Base64-encoded file in one of the following formats: cif, bcif, pdb. Deprecation notice: Deprecation notice: Not used and scheduled for removal with the next major version. Use `url` instead to provide custom data to the API.
+ */
+export interface StructureQueryFileParameters {
+  /**
+   * File content converted to a Base64 string.
+   */
+  data: string;
   format: "cif" | "bcif" | "pdb";
 }
 export interface ChemicalQueryFormulaParameters {
@@ -1555,7 +1581,8 @@ export interface ResidueIdentifier {
   label_seq_id: number;
 }
 /**
- * Upload Base64-encoded file in one of the following formats: cif, bcif.
+ * @deprecated
+ * Upload Base64-encoded file in one of the following formats: cif, bcif. Deprecation notice: Not used and scheduled for removal with the next major version. Use `url` instead to provide custom data to the API.
  */
 export interface StrucmotifQueryFileParameters {
   /**

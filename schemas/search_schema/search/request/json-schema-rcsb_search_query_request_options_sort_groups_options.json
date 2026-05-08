@@ -6,5 +6,6 @@
     "size",
     "count"
   ],
-  "description": "Sort options supported for results returned as groups"
+  "deprecated" : true,
+  "description": "Sort options supported for results returned as groups. NOTE: Sort by total group size is not supported"
 }

@@ -6,9 +6,9 @@
  */
 
 /**
- * JSON schema for nonpolymer entity core.
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_nonpolymer_entity version 10.1.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_nonpolymer_entity.json and follows JSON schema specification version 4
  */
-export interface CoreNonpolymerEntity {
+export interface SchemaPdbxCoreCollectionPdbxCoreNonpolymerEntityVersion1010 {
   pdbx_entity_nonpoly?: {
     /**
      * This data item is a pointer to _chem_comp.id in the CHEM_COMP category.
@@ -26,6 +26,20 @@ export interface CoreNonpolymerEntity {
      * For non-polymer BIRD molecules the BIRD identifier for the entity.
      */
     rcsb_prd_id?: string;
+  };
+  rcsb_latest_revision?: {
+    /**
+     * The major version number of the latest revision.
+     */
+    major_revision?: number;
+    /**
+     * The minor version number of the latest revision.
+     */
+    minor_revision?: number;
+    /**
+     * The release date of the latest revision item.
+     */
+    revision_date?: string;
   };
   rcsb_nonpolymer_entity?: {
     /**
@@ -78,7 +92,7 @@ export interface CoreNonpolymerEntity {
       /**
        * A type or category of the annotation.
        */
-      type?: "SUBJECT_OF_INVESTIGATION";
+      type: "SUBJECT_OF_INVESTIGATION";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -123,7 +137,7 @@ export interface CoreNonpolymerEntity {
       /**
        * A type or category of the annotation.
        */
-      type?: "SUBJECT_OF_INVESTIGATION";
+      type: "SUBJECT_OF_INVESTIGATION";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -140,7 +154,7 @@ export interface CoreNonpolymerEntity {
       }[];
     }[]
   ];
-  rcsb_nonpolymer_entity_container_identifiers?: {
+  rcsb_nonpolymer_entity_container_identifiers: {
     asym_ids?: string[];
     auth_asym_ids?: string[];
     /**
@@ -205,7 +219,7 @@ export interface CoreNonpolymerEntity {
       /**
        * A type or category of the feature.
        */
-      type?: "SUBJECT_OF_INVESTIGATION";
+      type: "SUBJECT_OF_INVESTIGATION";
       /**
        * The feature value.
        */
@@ -247,7 +261,7 @@ export interface CoreNonpolymerEntity {
       /**
        * A type or category of the feature.
        */
-      type?: "SUBJECT_OF_INVESTIGATION";
+      type: "SUBJECT_OF_INVESTIGATION";
       /**
        * The feature value.
        */
@@ -354,19 +368,4 @@ export interface CoreNonpolymerEntity {
    *  an underscore separated concatenation of entry and entity identifiers.
    */
   rcsb_id: string;
-  rcsb_latest_revision?: {
-    /**
-     * The major version number of the latest revision.
-     */
-    major_revision?: number;
-    /**
-     * The minor version number of the latest revision.
-     */
-    minor_revision?: number;
-    /**
-     * The release date of the latest revision item.
-     */
-    revision_date?: string;
-    [k: string]: unknown;
-  };
 }

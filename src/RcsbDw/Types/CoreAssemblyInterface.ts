@@ -6,9 +6,9 @@
  */
 
 /**
- * JSON schema for assembly level core data. Combines RCSB Exchange Database schema: json-schema-min-pdbx_core_assembly.json and RCSB Data Warehouse schema: json-schema-core_assembly.json
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_assembly version 9.1.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_assembly.json and follows JSON schema specification version 4
  */
-export interface CoreAssembly {
+export interface SchemaPdbxCoreCollectionPdbxCoreAssemblyVersion910 {
   pdbx_struct_assembly?: {
     /**
      * A description of special aspects of the macromolecular assembly.
@@ -427,6 +427,77 @@ export interface CoreAssembly {
       vector_3?: number;
     }[]
   ];
+  /**
+   * @minItems 1
+   */
+  rcsb_assembly_annotation?: [
+    {
+      /**
+       * An identifier for the annotation.
+       */
+      annotation_id?: string;
+      /**
+       * Identifies the version of the annotation assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the annotation.
+       */
+      description?: string;
+      /**
+       * A name for the annotation.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that assigned the annotation.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the annotation.
+       */
+      type?: "MCSA";
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
+    },
+    ...{
+      /**
+       * An identifier for the annotation.
+       */
+      annotation_id?: string;
+      /**
+       * Identifies the version of the annotation assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the annotation.
+       */
+      description?: string;
+      /**
+       * A name for the annotation.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that assigned the annotation.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the annotation.
+       */
+      type?: "MCSA";
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
+    }[]
+  ];
   rcsb_assembly_container_identifiers: {
     /**
      * Assembly identifier for the container.
@@ -437,15 +508,118 @@ export interface CoreAssembly {
      */
     entry_id: string;
     /**
+     * @minItems 1
+     */
+    interface_ids?: [string, ...string[]];
+    /**
      * A unique identifier for each object in this assembly container formed by
      *  a dash separated concatenation of entry and assembly identifiers.
      */
     rcsb_id?: string;
-    /**
-     * List of binary interface Ids within the assembly (it points to interface id collection).
-     */
-    interface_ids?: string[];
   };
+  /**
+   * @minItems 1
+   */
+  rcsb_assembly_feature?: [
+    {
+      /**
+       * Identifies the version of the feature assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the feature.
+       */
+      description?: string;
+      /**
+       * An identifier for the feature.
+       */
+      feature_id?: string;
+      /**
+       * A name for the feature.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that assigned the feature.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the feature.
+       */
+      type?: "MCSA";
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
+      feature_positions?: {
+        /**
+         * An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
+         */
+        asym_id: string;
+        /**
+         * An identifier for the monomer at which this segment of the feature begins.
+         */
+        beg_seq_id: number;
+        /**
+         * An identifier for the monomer at which this segment of the feature ends.
+         */
+        end_seq_id?: number;
+        struct_oper_list: string[];
+        values?: number[];
+      }[];
+    },
+    ...{
+      /**
+       * Identifies the version of the feature assignment.
+       */
+      assignment_version?: string;
+      /**
+       * A description for the feature.
+       */
+      description?: string;
+      /**
+       * An identifier for the feature.
+       */
+      feature_id?: string;
+      /**
+       * A name for the feature.
+       */
+      name?: string;
+      /**
+       * Code identifying the individual, organization or program that assigned the feature.
+       */
+      provenance_source?: string;
+      /**
+       * A type or category of the feature.
+       */
+      type?: "MCSA";
+      additional_properties?: {
+        /**
+         * The additional property name.
+         */
+        name?: "MCSA_MOTIF_COMPATIBILITY";
+        values?: (string | number | number)[];
+      }[];
+      feature_positions?: {
+        /**
+         * An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
+         */
+        asym_id: string;
+        /**
+         * An identifier for the monomer at which this segment of the feature begins.
+         */
+        beg_seq_id: number;
+        /**
+         * An identifier for the monomer at which this segment of the feature ends.
+         */
+        end_seq_id?: number;
+        struct_oper_list: string[];
+        values?: number[];
+      }[];
+    }[]
+  ];
   rcsb_assembly_info?: {
     /**
      * Entity identifier for the container.
@@ -477,6 +651,10 @@ export interface CoreAssembly {
      */
     entry_id: string;
     /**
+     * Formula mass (KDa) of the assembly.
+     */
+    formula_weight?: number;
+    /**
      * The assembly hydrogen atomic coordinate count.
      */
     hydrogen_atom_count?: number;
@@ -503,6 +681,42 @@ export interface CoreAssembly {
      *  This is the total count of non-polymer entity instances generated in the assembly coordinate data.
      */
     nonpolymer_entity_instance_count?: number;
+    /**
+     * Number of heterologous (both binding sites are different) interface entities
+     */
+    num_heterologous_interface_entities?: number;
+    /**
+     * Number of heteromeric (both partners are different polymeric entities) interface entities
+     */
+    num_heteromeric_interface_entities?: number;
+    /**
+     * Number of homomeric (both partners are the same polymeric entity) interface entities
+     */
+    num_homomeric_interface_entities?: number;
+    /**
+     * Number of polymer-polymer interface entities, grouping equivalent interfaces at the entity level (i.e. same entity_ids on either side, with similar but not identical binding sites)
+     */
+    num_interface_entities?: number;
+    /**
+     * Number of geometrically equivalent (i.e. same asym_ids on either side) polymer-polymer interfaces in the assembly
+     */
+    num_interfaces?: number;
+    /**
+     * Number of isologous (both binding sites are same, i.e. interface is symmetric) interface entities
+     */
+    num_isologous_interface_entities?: number;
+    /**
+     * Number of nucleic acid-nucleic acid interface entities
+     */
+    num_na_interface_entities?: number;
+    /**
+     * Number of protein-nucleic acid interface entities
+     */
+    num_prot_na_interface_entities?: number;
+    /**
+     * Number of protein-protein interface entities
+     */
+    num_protein_interface_entities?: number;
     /**
      * The assembly non-hydrogen polymer entity atomic coordinate count.
      */
@@ -603,48 +817,6 @@ export interface CoreAssembly {
      */
     solvent_entity_instance_count?: number;
     /**
-     * The number of unmodeled polymer monomers in the assembly coordinate data. This is
-     *  the total count of monomers with unreported coordinate data for all polymer
-     *  entity instances in the generated assembly coordinate data.
-     */
-    unmodeled_polymer_monomer_count?: number;
-    /**
-     * Number of geometrically equivalent (i.e. same asym_ids on either side) polymer-polymer interfaces in the assembly
-     */
-    num_interfaces?: number;
-    /**
-     * Number of polymer-polymer interface entities, grouping equivalent interfaces at the entity level (i.e. same entity_ids on either side, with similar but not identical binding sites)
-     */
-    num_interface_entities?: number;
-    /**
-     * Number of homomeric (both partners are the same polymeric entity) interface entities
-     */
-    num_homomeric_interface_entities?: number;
-    /**
-     * Number of heteromeric (both partners are different polymeric entities) interface entities
-     */
-    num_heteromeric_interface_entities?: number;
-    /**
-     * Number of isologous (both binding sites are same, i.e. interface is symmetric) interface entities
-     */
-    num_isologous_interface_entities?: number;
-    /**
-     * Number of heterologous (both binding sites are different) interface entities
-     */
-    num_heterologous_interface_entities?: number;
-    /**
-     * Number of protein-protein interface entities
-     */
-    num_protein_interface_entities?: number;
-    /**
-     * Number of nucleic acid-nucleic acid interface entities
-     */
-    num_na_interface_entities?: number;
-    /**
-     * Number of protein-nucleic acid interface entities
-     */
-    "num_prot-na_interface_entities"?: number;
-    /**
      * Total buried surface area calculated as the sum of buried surface areas over all interfaces
      */
     total_assembly_buried_surface_area?: number;
@@ -652,540 +824,13 @@ export interface CoreAssembly {
      * Total number of interfacing residues in the assembly, calculated as the sum of interfacing residues over all interfaces
      */
     total_number_interface_residues?: number;
+    /**
+     * The number of unmodeled polymer monomers in the assembly coordinate data. This is
+     *  the total count of monomers with unreported coordinate data for all polymer
+     *  entity instances in the generated assembly coordinate data.
+     */
+    unmodeled_polymer_monomer_count?: number;
   };
-  /**
-   * A unique identifier for each object in this assembly container formed by
-   *  a dash separated concatenation of entry and assembly identifiers.
-   */
-  rcsb_id: string;
-  /**
-   * @minItems 1
-   */
-  rcsb_struct_symmetry?: [
-    {
-      /**
-       * Symmetry symbol refers to point group or helical symmetry of identical polymeric subunits in Schönflies notation. Contains point group symbol (e.g., C2, C5, D2, T, O, I) or H for helical symmetry.
-       */
-      symbol: string;
-      /**
-       * Symmetry type refers to point group or helical symmetry of identical polymeric subunits. Contains point group types (e.g. Cyclic, Dihedral) or Helical for helical symmetry.
-       */
-      type: "Asymmetric" | "Cyclic" | "Dihedral" | "Tetrahedral" | "Octahedral" | "Icosahedral" | "Helical";
-      /**
-       * Stoichiometry of a complex represents the quantitative description and composition of its subunits.
-       *
-       * @minItems 1
-       */
-      stoichiometry: [string, ...string[]];
-      /**
-       * Oligomeric state refers to a composition of polymeric subunits in quaternary structure. Quaternary structure may be composed either exclusively of several copies of identical subunits, in which case they are termed homo-oligomers, or alternatively by at least one copy of different subunits (hetero-oligomers). Quaternary structure composed of a single subunit is denoted as 'Monomer'.
-       */
-      oligomeric_state: string;
-      /**
-       * Clusters describe grouping of 'identical' subunits.
-       *
-       * @minItems 1
-       */
-      clusters: [
-        {
-          /**
-           * @minItems 1
-           */
-          members: [
-            {
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            },
-            ...{
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            }[]
-          ];
-          /**
-           * Average RMSD between members of a given cluster.
-           */
-          avg_rmsd?: number;
-        },
-        ...{
-          /**
-           * @minItems 1
-           */
-          members: [
-            {
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            },
-            ...{
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            }[]
-          ];
-          /**
-           * Average RMSD between members of a given cluster.
-           */
-          avg_rmsd?: number;
-        }[]
-      ];
-      /**
-       * Specifies a single or multiple rotation axes through the same point.
-       *
-       * @minItems 1
-       */
-      rotation_axes?: [
-        {
-          /**
-           * Describes x,y,z coordinate of the start point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          start: [number, number, number];
-          /**
-           * Describes x,y,z coordinates of the end point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          end: [number, number, number];
-          /**
-           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation, being transformed into a new state indistinguishable from its starting state.
-           */
-          order?: number;
-        },
-        ...{
-          /**
-           * Describes x,y,z coordinate of the start point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          start: [number, number, number];
-          /**
-           * Describes x,y,z coordinates of the end point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          end: [number, number, number];
-          /**
-           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation, being transformed into a new state indistinguishable from its starting state.
-           */
-          order?: number;
-        }[]
-      ];
-      /**
-       * The granularity at which the symmetry calculation is performed. In 'Global Symmetry' all polymeric subunits in assembly are used. In 'Local Symmetry' only a subset of polymeric subunits is considered. In 'Pseudo Symmetry' the threshold for subunits similarity is relaxed.
-       */
-      kind: "Global Symmetry" | "Pseudo Symmetry" | "Local Symmetry";
-    },
-    ...{
-      /**
-       * Symmetry symbol refers to point group or helical symmetry of identical polymeric subunits in Schönflies notation. Contains point group symbol (e.g., C2, C5, D2, T, O, I) or H for helical symmetry.
-       */
-      symbol: string;
-      /**
-       * Symmetry type refers to point group or helical symmetry of identical polymeric subunits. Contains point group types (e.g. Cyclic, Dihedral) or Helical for helical symmetry.
-       */
-      type: "Asymmetric" | "Cyclic" | "Dihedral" | "Tetrahedral" | "Octahedral" | "Icosahedral" | "Helical";
-      /**
-       * Stoichiometry of a complex represents the quantitative description and composition of its subunits.
-       *
-       * @minItems 1
-       */
-      stoichiometry: [string, ...string[]];
-      /**
-       * Oligomeric state refers to a composition of polymeric subunits in quaternary structure. Quaternary structure may be composed either exclusively of several copies of identical subunits, in which case they are termed homo-oligomers, or alternatively by at least one copy of different subunits (hetero-oligomers). Quaternary structure composed of a single subunit is denoted as 'Monomer'.
-       */
-      oligomeric_state: string;
-      /**
-       * Clusters describe grouping of 'identical' subunits.
-       *
-       * @minItems 1
-       */
-      clusters: [
-        {
-          /**
-           * @minItems 1
-           */
-          members: [
-            {
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            },
-            ...{
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            }[]
-          ];
-          /**
-           * Average RMSD between members of a given cluster.
-           */
-          avg_rmsd?: number;
-        },
-        ...{
-          /**
-           * @minItems 1
-           */
-          members: [
-            {
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            },
-            ...{
-              /**
-               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
-               */
-              asym_id: string;
-              /**
-               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression. One operator id per operand in the expression (most cases have only 1 operator). If it's not given then identity operator is assumed.
-               *
-               * @minItems 1
-               */
-              pdbx_struct_oper_list_ids?: [string, ...string[]];
-            }[]
-          ];
-          /**
-           * Average RMSD between members of a given cluster.
-           */
-          avg_rmsd?: number;
-        }[]
-      ];
-      /**
-       * Specifies a single or multiple rotation axes through the same point.
-       *
-       * @minItems 1
-       */
-      rotation_axes?: [
-        {
-          /**
-           * Describes x,y,z coordinate of the start point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          start: [number, number, number];
-          /**
-           * Describes x,y,z coordinates of the end point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          end: [number, number, number];
-          /**
-           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation, being transformed into a new state indistinguishable from its starting state.
-           */
-          order?: number;
-        },
-        ...{
-          /**
-           * Describes x,y,z coordinate of the start point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          start: [number, number, number];
-          /**
-           * Describes x,y,z coordinates of the end point of the symmetry axis.
-           *
-           * @minItems 3
-           * @maxItems 3
-           */
-          end: [number, number, number];
-          /**
-           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation, being transformed into a new state indistinguishable from its starting state.
-           */
-          order?: number;
-        }[]
-      ];
-      /**
-       * The granularity at which the symmetry calculation is performed. In 'Global Symmetry' all polymeric subunits in assembly are used. In 'Local Symmetry' only a subset of polymeric subunits is considered. In 'Pseudo Symmetry' the threshold for subunits similarity is relaxed.
-       */
-      kind: "Global Symmetry" | "Pseudo Symmetry" | "Local Symmetry";
-    }[]
-  ];
-  /**
-   * The title and version of software package used for symmetry calculations.
-   */
-  rcsb_struct_symmetry_provenance_code?: string;
-  /**
-   * @minItems 1
-   */
-  rcsb_struct_symmetry_lineage?: [
-    {
-      /**
-       * Automatically assigned ID to uniquely identify the symmetry term in the Protein Symmetry Browser.
-       */
-      id?: string;
-      /**
-       * A human-readable term describing protein symmetry.
-       */
-      name?: string;
-      /**
-       * Hierarchy depth.
-       */
-      depth?: number;
-    },
-    ...{
-      /**
-       * Automatically assigned ID to uniquely identify the symmetry term in the Protein Symmetry Browser.
-       */
-      id?: string;
-      /**
-       * A human-readable term describing protein symmetry.
-       */
-      name?: string;
-      /**
-       * Hierarchy depth.
-       */
-      depth?: number;
-    }[]
-  ];
-  /**
-   * @minItems 1
-   */
-  rcsb_assembly_feature?: [
-    {
-      /**
-       * Identifies the version of the feature assignment.
-       */
-      assignment_version?: string;
-      /**
-       * A description for the feature.
-       */
-      description?: string;
-      /**
-       * An identifier for the feature.
-       */
-      feature_id?: string;
-      /**
-       * A name for the feature.
-       */
-      name?: string;
-      /**
-       * Code identifying the individual, organization or program that
-       *  assigned the feature.
-       */
-      provenance_source?: string;
-      /**
-       * A type or category of the feature.
-       */
-      type?: "MCSA";
-      /**
-       * This container groups together chain-level identifiers of the assigned features.
-       */
-      feature_positions?: {
-        /**
-         * An identifier for the monomer at which this segment of the feature begins.
-         */
-        beg_seq_id: number;
-        /**
-         * An identifier for the monomer at which this segment of the feature ends.
-         */
-        end_seq_id?: number;
-        values?: number[];
-        /**
-         * An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
-         */
-        asym_id: string;
-        /**
-         * pdbx_struct_oper_list_ids of the chain instance.
-         */
-        struct_oper_list: string[];
-      }[];
-      additional_properties?: {
-        /**
-         * The additional property name.
-         */
-        name?: "MCSA_MOTIF_COMPATIBILITY";
-        values?: (string | number | number)[];
-      }[];
-    },
-    ...{
-      /**
-       * Identifies the version of the feature assignment.
-       */
-      assignment_version?: string;
-      /**
-       * A description for the feature.
-       */
-      description?: string;
-      /**
-       * An identifier for the feature.
-       */
-      feature_id?: string;
-      /**
-       * A name for the feature.
-       */
-      name?: string;
-      /**
-       * Code identifying the individual, organization or program that
-       *  assigned the feature.
-       */
-      provenance_source?: string;
-      /**
-       * A type or category of the feature.
-       */
-      type?: "MCSA";
-      /**
-       * This container groups together chain-level identifiers of the assigned features.
-       */
-      feature_positions?: {
-        /**
-         * An identifier for the monomer at which this segment of the feature begins.
-         */
-        beg_seq_id: number;
-        /**
-         * An identifier for the monomer at which this segment of the feature ends.
-         */
-        end_seq_id?: number;
-        values?: number[];
-        /**
-         * An identifier of polymer chain (label_asym_id) corresponding to the feature assignment.
-         */
-        asym_id: string;
-        /**
-         * pdbx_struct_oper_list_ids of the chain instance.
-         */
-        struct_oper_list: string[];
-      }[];
-      additional_properties?: {
-        /**
-         * The additional property name.
-         */
-        name?: "MCSA_MOTIF_COMPATIBILITY";
-        values?: (string | number | number)[];
-      }[];
-    }[]
-  ];
-  /**
-   * @minItems 1
-   */
-  rcsb_assembly_annotation?: [
-    {
-      /**
-       * An identifier for the annotation.
-       */
-      annotation_id?: string;
-      /**
-       * Identifies the version of the annotation assignment.
-       */
-      assignment_version?: string;
-      /**
-       * A description for the annotation.
-       */
-      description?: string;
-      /**
-       * A name for the annotation.
-       */
-      name?: string;
-      /**
-       * Code identifying the individual, organization or program that
-       *  assigned the annotation.
-       */
-      provenance_source?: string;
-      /**
-       * A type or category of the annotation.
-       */
-      type?: "MCSA";
-      additional_properties?: {
-        /**
-         * The additional property name.
-         */
-        name?: "MCSA_MOTIF_COMPATIBILITY";
-        values?: (string | number | number)[];
-      }[];
-    },
-    ...{
-      /**
-       * An identifier for the annotation.
-       */
-      annotation_id?: string;
-      /**
-       * Identifies the version of the annotation assignment.
-       */
-      assignment_version?: string;
-      /**
-       * A description for the annotation.
-       */
-      description?: string;
-      /**
-       * A name for the annotation.
-       */
-      name?: string;
-      /**
-       * Code identifying the individual, organization or program that
-       *  assigned the annotation.
-       */
-      provenance_source?: string;
-      /**
-       * A type or category of the annotation.
-       */
-      type?: "MCSA";
-      additional_properties?: {
-        /**
-         * The additional property name.
-         */
-        name?: "MCSA_MOTIF_COMPATIBILITY";
-        values?: (string | number | number)[];
-      }[];
-    }[]
-  ];
   rcsb_latest_revision?: {
     /**
      * The major version number of the latest revision.
@@ -1199,6 +844,362 @@ export interface CoreAssembly {
      * The release date of the latest revision item.
      */
     revision_date?: string;
-    [k: string]: unknown;
   };
+  /**
+   * @minItems 1
+   */
+  rcsb_struct_symmetry?: [
+    {
+      /**
+       * The granularity at which the symmetry calculation is performed. In 'Global Symmetry' all polymeric
+       *  subunits in assembly are used. In 'Local Symmetry' only a subset of polymeric subunits is considered.
+       *  In 'Pseudo Symmetry' the threshold for subunits similarity is relaxed.
+       */
+      kind: "Global Symmetry" | "Local Symmetry" | "Pseudo Symmetry";
+      /**
+       * Oligomeric state refers to a composition of polymeric subunits in quaternary structure.
+       *  Quaternary structure may be composed either exclusively of several copies of identical subunits,
+       *  in which case they are termed homo-oligomers, or alternatively by at least one copy of different
+       *  subunits (hetero-oligomers). Quaternary structure composed of a single subunit is denoted as 'Monomer'.
+       */
+      oligomeric_state: string;
+      /**
+       * @minItems 1
+       */
+      stoichiometry: [string, ...string[]];
+      /**
+       * Symmetry symbol refers to point group or helical symmetry of identical polymeric subunits in Schoenflies notation.
+       *  Contains point group symbol (e.g., C2, C5, D2, T, O, I) or H for helical symmetry.
+       */
+      symbol: string;
+      /**
+       * Symmetry type refers to point group or helical symmetry of identical polymeric subunits.
+       *  Contains point group types (e.g. Cyclic, Dihedral) or Helical for helical symmetry.
+       */
+      type: "Asymmetric" | "Cyclic" | "Dihedral" | "Helical" | "Icosahedral" | "Octahedral" | "Tetrahedral";
+      /**
+       * Specifies a single or multiple rotation axes through the same point.
+       *
+       * @minItems 1
+       */
+      rotation_axes?: [
+        {
+          /**
+           * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          end: [number, number, number];
+          /**
+           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation,
+           *  being transformed into a new state indistinguishable from its starting state.
+           */
+          order?: number;
+          /**
+           * Describes x,y,z coordinates of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          start: [number, number, number];
+        },
+        ...{
+          /**
+           * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          end: [number, number, number];
+          /**
+           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation,
+           *  being transformed into a new state indistinguishable from its starting state.
+           */
+          order?: number;
+          /**
+           * Describes x,y,z coordinates of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          start: [number, number, number];
+        }[]
+      ];
+      /**
+       * Clusters describe grouping of identical subunits.
+       *
+       * @minItems 1
+       */
+      clusters: [
+        {
+          /**
+           * @minItems 1
+           */
+          members: [
+            {
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            },
+            ...{
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            }[]
+          ];
+          /**
+           * Average RMSD between members of a given cluster.
+           */
+          avg_rmsd?: number;
+        },
+        ...{
+          /**
+           * @minItems 1
+           */
+          members: [
+            {
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            },
+            ...{
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            }[]
+          ];
+          /**
+           * Average RMSD between members of a given cluster.
+           */
+          avg_rmsd?: number;
+        }[]
+      ];
+    },
+    ...{
+      /**
+       * The granularity at which the symmetry calculation is performed. In 'Global Symmetry' all polymeric
+       *  subunits in assembly are used. In 'Local Symmetry' only a subset of polymeric subunits is considered.
+       *  In 'Pseudo Symmetry' the threshold for subunits similarity is relaxed.
+       */
+      kind: "Global Symmetry" | "Local Symmetry" | "Pseudo Symmetry";
+      /**
+       * Oligomeric state refers to a composition of polymeric subunits in quaternary structure.
+       *  Quaternary structure may be composed either exclusively of several copies of identical subunits,
+       *  in which case they are termed homo-oligomers, or alternatively by at least one copy of different
+       *  subunits (hetero-oligomers). Quaternary structure composed of a single subunit is denoted as 'Monomer'.
+       */
+      oligomeric_state: string;
+      /**
+       * @minItems 1
+       */
+      stoichiometry: [string, ...string[]];
+      /**
+       * Symmetry symbol refers to point group or helical symmetry of identical polymeric subunits in Schoenflies notation.
+       *  Contains point group symbol (e.g., C2, C5, D2, T, O, I) or H for helical symmetry.
+       */
+      symbol: string;
+      /**
+       * Symmetry type refers to point group or helical symmetry of identical polymeric subunits.
+       *  Contains point group types (e.g. Cyclic, Dihedral) or Helical for helical symmetry.
+       */
+      type: "Asymmetric" | "Cyclic" | "Dihedral" | "Helical" | "Icosahedral" | "Octahedral" | "Tetrahedral";
+      /**
+       * Specifies a single or multiple rotation axes through the same point.
+       *
+       * @minItems 1
+       */
+      rotation_axes?: [
+        {
+          /**
+           * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          end: [number, number, number];
+          /**
+           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation,
+           *  being transformed into a new state indistinguishable from its starting state.
+           */
+          order?: number;
+          /**
+           * Describes x,y,z coordinates of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          start: [number, number, number];
+        },
+        ...{
+          /**
+           * Describes x,y,z coordinates of the end point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          end: [number, number, number];
+          /**
+           * The number of times (order of rotation) that a subunit can be repeated by a rotation operation,
+           *  being transformed into a new state indistinguishable from its starting state.
+           */
+          order?: number;
+          /**
+           * Describes x,y,z coordinates of the start point of the symmetry axis.
+           *
+           * @minItems 3
+           * @maxItems 3
+           */
+          start: [number, number, number];
+        }[]
+      ];
+      /**
+       * Clusters describe grouping of identical subunits.
+       *
+       * @minItems 1
+       */
+      clusters: [
+        {
+          /**
+           * @minItems 1
+           */
+          members: [
+            {
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            },
+            ...{
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            }[]
+          ];
+          /**
+           * Average RMSD between members of a given cluster.
+           */
+          avg_rmsd?: number;
+        },
+        ...{
+          /**
+           * @minItems 1
+           */
+          members: [
+            {
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            },
+            ...{
+              /**
+               * Internal chain ID used in mmCIF files to uniquely identify structural elements in the asymmetric unit.
+               */
+              asym_id: string;
+              /**
+               * Optional list of operator ids (pdbx_struct_oper_list.id) as appears in pdbx_struct_assembly_gen.oper_expression.
+               *
+               * @minItems 1
+               */
+              pdbx_struct_oper_list_ids?: [string, ...string[]];
+            }[]
+          ];
+          /**
+           * Average RMSD between members of a given cluster.
+           */
+          avg_rmsd?: number;
+        }[]
+      ];
+    }[]
+  ];
+  /**
+   * @minItems 1
+   */
+  rcsb_struct_symmetry_lineage?: [
+    {
+      /**
+       * Hierarchy depth.
+       */
+      depth?: number;
+      /**
+       * Automatically assigned ID to uniquely identify the symmetry term in the Protein Symmetry Browser.
+       */
+      id?: string;
+      /**
+       * A human-readable term describing protein symmetry.
+       */
+      name?: string;
+    },
+    ...{
+      /**
+       * Hierarchy depth.
+       */
+      depth?: number;
+      /**
+       * Automatically assigned ID to uniquely identify the symmetry term in the Protein Symmetry Browser.
+       */
+      id?: string;
+      /**
+       * A human-readable term describing protein symmetry.
+       */
+      name?: string;
+    }[]
+  ];
+  /**
+   * A unique identifier for each object in this assembly container formed by
+   *  a dash separated concatenation of entry and assembly identifiers.
+   */
+  rcsb_id: string;
+  /**
+   * The title and version of software package used for symmetry calculations.
+   */
+  rcsb_struct_symmetry_provenance_code?: string;
 }

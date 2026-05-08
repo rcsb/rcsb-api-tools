@@ -6,9 +6,9 @@
  */
 
 /**
- * JSON schema for branched entity instance core data.
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_branched_entity_instance version 9.1.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_branched_entity_instance.json and follows JSON schema specification version 4
  */
-export interface CoreBranchedEntityInstance {
+export interface SchemaPdbxCoreCollectionPdbxCoreBranchedEntityInstanceVersion910 {
   /**
    * @minItems 1
    */
@@ -251,7 +251,7 @@ export interface CoreBranchedEntityInstance {
       /**
        * A type or category of the feature.
        */
-      type?:
+      type:
         | "BINDING_SITE"
         | "CATH"
         | "ECOD"
@@ -351,7 +351,7 @@ export interface CoreBranchedEntityInstance {
       /**
        * A type or category of the feature.
        */
-      type?:
+      type:
         | "BINDING_SITE"
         | "CATH"
         | "ECOD"
@@ -811,6 +811,20 @@ export interface CoreBranchedEntityInstance {
       };
     }[]
   ];
+  rcsb_latest_revision?: {
+    /**
+     * The major version number of the latest revision.
+     */
+    major_revision?: number;
+    /**
+     * The minor version number of the latest revision.
+     */
+    minor_revision?: number;
+    /**
+     * The release date of the latest revision item.
+     */
+    revision_date?: string;
+  };
   /**
    * @minItems 1
    */
@@ -951,19 +965,4 @@ export interface CoreBranchedEntityInstance {
    *  an 'dot' (.) separated concatenation of entry and entity instance identifiers.
    */
   rcsb_id: string;
-  rcsb_latest_revision?: {
-    /**
-     * The major version number of the latest revision.
-     */
-    major_revision?: number;
-    /**
-     * The minor version number of the latest revision.
-     */
-    minor_revision?: number;
-    /**
-     * The release date of the latest revision item.
-     */
-    revision_date?: string;
-    [k: string]: unknown;
-  };
 }

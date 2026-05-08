@@ -1,0 +1,31 @@
+{
+  "$id": "/schema/search/response/json-schema-rcsb_search_results_identifier_match_context_structure.json",
+  "title": "Structure Service match context",
+  "type": "object",
+  "required": [
+    "tmscore"
+  ],
+  "properties": {
+    "tmscore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "The approximated TM-score. Range: 0-1. Higher values imply higher similarity. Values above 0.5 are usually interpreted as matching fold."
+    },
+    "biozernike_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "The BioZernike score, expressing the likelihood of the match being relevant. Range: 0-1. Deprecation notice: Not used and scheduled for removal with the next major version.",
+      "deprecated": true
+    },
+    "geo_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "The score calculated from the GEO descriptors. Range: 0-1. Deprecation notice: Not used and scheduled for removal with the next major version.",
+      "deprecated": true
+    }
+  },
+  "additionalProperties": false
+}

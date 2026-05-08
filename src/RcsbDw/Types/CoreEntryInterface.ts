@@ -6,9 +6,9 @@
  */
 
 /**
- * JSON schema for entry level core data. Combines Exchange DB schema: json-schema-min-pdbx_core_entry.json and RCSB Data Warehouse schema: json-schema-core_entry.json
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_entry version 9.1.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_entry.json and follows JSON schema specification version 4
  */
-export interface CoreEntry {
+export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
   /**
    * @minItems 1
    */
@@ -1849,12 +1849,12 @@ export interface CoreEntry {
        */
       c2_aperture_diameter?: number;
       /**
-       * The maximum calibrated defocus value of the objective lens (in nanometers) used
+       * The maximum calibrated defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_max?: number;
       /**
-       * The minimum calibrated defocus value of the objective lens (in nanometers) used
+       * The minimum calibrated defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_min?: number;
@@ -1969,6 +1969,9 @@ export interface CoreEntry {
         | "JEOL CRYO ARM 200"
         | "JEOL CRYO ARM 300"
         | "JEOL KYOTO-3000SFF"
+        | "SHUIMU TOTEM 120S"
+        | "SHUIMU TOTEM 200S"
+        | "SHUIMU TOTEM 300S"
         | "SIEMENS SULEIKA"
         | "TFS GLACIOS"
         | "TFS KRIOS"
@@ -1989,12 +1992,12 @@ export interface CoreEntry {
        */
       nominal_cs?: number;
       /**
-       * The maximum defocus value of the objective lens (in nanometers) used
+       * The maximum defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_max?: number;
       /**
-       * The minimum defocus value of the objective lens (in nanometers) used
+       * The minimum defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_min?: number;
@@ -2089,12 +2092,12 @@ export interface CoreEntry {
        */
       c2_aperture_diameter?: number;
       /**
-       * The maximum calibrated defocus value of the objective lens (in nanometers) used
+       * The maximum calibrated defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_max?: number;
       /**
-       * The minimum calibrated defocus value of the objective lens (in nanometers) used
+       * The minimum calibrated defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       calibrated_defocus_min?: number;
@@ -2209,6 +2212,9 @@ export interface CoreEntry {
         | "JEOL CRYO ARM 200"
         | "JEOL CRYO ARM 300"
         | "JEOL KYOTO-3000SFF"
+        | "SHUIMU TOTEM 120S"
+        | "SHUIMU TOTEM 200S"
+        | "SHUIMU TOTEM 300S"
         | "SIEMENS SULEIKA"
         | "TFS GLACIOS"
         | "TFS KRIOS"
@@ -2229,12 +2235,12 @@ export interface CoreEntry {
        */
       nominal_cs?: number;
       /**
-       * The maximum defocus value of the objective lens (in nanometers) used
+       * The maximum defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_max?: number;
       /**
-       * The minimum defocus value of the objective lens (in nanometers) used
+       * The minimum defocus value of the objective lens (in nanometres) used
        *  to obtain the recorded images. Negative values refer to overfocus.
        */
       nominal_defocus_min?: number;
@@ -5207,6 +5213,31 @@ export interface CoreEntry {
        */
       data_set_type?: string;
       /**
+       * For external sources, the name of the resource.
+       */
+      db_source?:
+        | "Apollo - University of Cambridge Repository"
+        | "CXIDB"
+        | "DRYAD Database"
+        | "EMPIAR"
+        | "ESRF Data Portal"
+        | "ETH Zurich Research Collection"
+        | "Etsin"
+        | "Integrated Resource for Reproducibility in Macromolecular Crystallography"
+        | "International Union of Crystallography"
+        | "KAUST Repository"
+        | "Keele Data Repository"
+        | "MAXIV Public Data Repository"
+        | "MX-RDR (Macromolecular Xtallography Raw Data Repository)"
+        | "Manchester eScholar Services"
+        | "Mendeley Data"
+        | "PSI Public Data Repository"
+        | "ProteinDiffraction"
+        | "RMIT University Figshare"
+        | "SBGrid Data Bank"
+        | "Xtal Raw Data Archive"
+        | "Zenodo";
+      /**
        * Additional details describing the content of the related data set and its application to
        *  the current investigation.
        */
@@ -5225,6 +5256,31 @@ export interface CoreEntry {
        * The type of the experimenatal data set.
        */
       data_set_type?: string;
+      /**
+       * For external sources, the name of the resource.
+       */
+      db_source?:
+        | "Apollo - University of Cambridge Repository"
+        | "CXIDB"
+        | "DRYAD Database"
+        | "EMPIAR"
+        | "ESRF Data Portal"
+        | "ETH Zurich Research Collection"
+        | "Etsin"
+        | "Integrated Resource for Reproducibility in Macromolecular Crystallography"
+        | "International Union of Crystallography"
+        | "KAUST Repository"
+        | "Keele Data Repository"
+        | "MAXIV Public Data Repository"
+        | "MX-RDR (Macromolecular Xtallography Raw Data Repository)"
+        | "Manchester eScholar Services"
+        | "Mendeley Data"
+        | "PSI Public Data Repository"
+        | "ProteinDiffraction"
+        | "RMIT University Figshare"
+        | "SBGrid Data Bank"
+        | "Xtal Raw Data Archive"
+        | "Zenodo";
       /**
        * Additional details describing the content of the related data set and its application to
        *  the current investigation.
@@ -7332,6 +7388,79 @@ export interface CoreEntry {
      */
     status_code?: "AUCO" | "AUTH" | "HOLD" | "HPUB" | "POLC" | "PROC" | "REFI" | "REL" | "REPL" | "WAIT" | "WDRN";
   };
+  /**
+   * @minItems 1
+   */
+  rcsb_binding_affinity?: [
+    {
+      /**
+       * Ligand identifier.
+       */
+      comp_id: string;
+      /**
+       * Link to external resource referencing the data.
+       */
+      link: string;
+      /**
+       * The resource name for the related binding affinity reference.
+       */
+      provenance_code: "Binding MOAD" | "BindingDB" | "PDBBind";
+      /**
+       * Data point provided by BindingDB. Percent identity between PDB sequence and reference sequence.
+       */
+      reference_sequence_identity?: number;
+      /**
+       * Binding affinity symbol indicating approximate or precise strength of the binding.
+       */
+      symbol?: string;
+      /**
+       * Binding affinity measurement given in one of the following types:  The concentration constants: IC50: the concentration of ligand that reduces enzyme activity by 50%;  EC50: the concentration of compound that generates a half-maximal response;  The binding constant:  Kd: dissociation constant;  Ka: association constant;  Ki: enzyme inhibition constant;  The thermodynamic parameters:  delta G: Gibbs free energy of binding (for association reaction);  delta H: change in enthalpy associated with a chemical reaction;  delta S: change in entropy associated with a chemical reaction.
+       */
+      type: "&Delta;G" | "&Delta;H" | "-T&Delta;S" | "EC50" | "IC50" | "Ka" | "Kd" | "Ki";
+      /**
+       * Binding affinity unit.  Dissociation constant Kd is normally in molar units (or millimolar , micromolar, nanomolar, etc).  Association constant Ka is normally expressed in inverse molar units (e.g. M-1).
+       */
+      unit: string;
+      /**
+       * Binding affinity value between a ligand and its target molecule.
+       */
+      value: number;
+    },
+    ...{
+      /**
+       * Ligand identifier.
+       */
+      comp_id: string;
+      /**
+       * Link to external resource referencing the data.
+       */
+      link: string;
+      /**
+       * The resource name for the related binding affinity reference.
+       */
+      provenance_code: "Binding MOAD" | "BindingDB" | "PDBBind";
+      /**
+       * Data point provided by BindingDB. Percent identity between PDB sequence and reference sequence.
+       */
+      reference_sequence_identity?: number;
+      /**
+       * Binding affinity symbol indicating approximate or precise strength of the binding.
+       */
+      symbol?: string;
+      /**
+       * Binding affinity measurement given in one of the following types:  The concentration constants: IC50: the concentration of ligand that reduces enzyme activity by 50%;  EC50: the concentration of compound that generates a half-maximal response;  The binding constant:  Kd: dissociation constant;  Ka: association constant;  Ki: enzyme inhibition constant;  The thermodynamic parameters:  delta G: Gibbs free energy of binding (for association reaction);  delta H: change in enthalpy associated with a chemical reaction;  delta S: change in entropy associated with a chemical reaction.
+       */
+      type: "&Delta;G" | "&Delta;H" | "-T&Delta;S" | "EC50" | "IC50" | "Ka" | "Kd" | "Ki";
+      /**
+       * Binding affinity unit.  Dissociation constant Kd is normally in molar units (or millimolar , micromolar, nanomolar, etc).  Association constant Ka is normally expressed in inverse molar units (e.g. M-1).
+       */
+      unit: string;
+      /**
+       * Binding affinity value between a ligand and its target molecule.
+       */
+      value: number;
+    }[]
+  ];
   rcsb_comp_model_provenance?: {
     /**
      * Entry identifier corresponding to the computed structure model.
@@ -7367,16 +7496,41 @@ export interface CoreEntry {
     non_polymer_entity_ids?: string[];
     polymer_entity_ids?: string[];
     /**
+     * Unique integer value assigned to each PubMed record.
+     */
+    pubmed_id?: number;
+    /**
      * A unique identifier for each object in this entry container.
      */
     rcsb_id?: string;
     related_emdb_ids?: string[];
     water_entity_ids?: string[];
-    /**
-     * Unique integer value assigned to each PubMed record.
-     */
-    pubmed_id?: number;
   };
+  /**
+   * @minItems 1
+   */
+  rcsb_entry_group_membership?: [
+    {
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "matching_deposit_group_id";
+      /**
+       * A unique identifier for a group of entries
+       */
+      group_id: string;
+    },
+    ...{
+      /**
+       * Method used to establish group membership
+       */
+      aggregation_method: "matching_deposit_group_id";
+      /**
+       * A unique identifier for a group of entries
+       */
+      group_id: string;
+    }[]
+  ];
   rcsb_entry_info: {
     /**
      * The number of assemblies defined for this entry including the deposited assembly.
@@ -7639,6 +7793,39 @@ export interface CoreEntry {
       value?: number;
     };
   };
+  /**
+   * @minItems 1
+   */
+  rcsb_external_references?: [
+    {
+      /**
+       * ID (accession) from external resource linked to this entry.
+       */
+      id: string;
+      /**
+       * Link to this entry in external resource
+       */
+      link?: string;
+      /**
+       * Internal identifier for external resources
+       */
+      type: "BMRB" | "EM DATA RESOURCE" | "NAKB" | "NDB" | "OLDERADO" | "PROTEIN DIFFRACTION" | "SB GRID";
+    },
+    ...{
+      /**
+       * ID (accession) from external resource linked to this entry.
+       */
+      id: string;
+      /**
+       * Link to this entry in external resource
+       */
+      link?: string;
+      /**
+       * Internal identifier for external resources
+       */
+      type: "BMRB" | "EM DATA RESOURCE" | "NAKB" | "NDB" | "OLDERADO" | "PROTEIN DIFFRACTION" | "SB GRID";
+    }[]
+  ];
   /**
    * @minItems 1
    */
@@ -11424,116 +11611,4 @@ export interface CoreEntry {
    * A unique identifier for each object in this entry container.
    */
   rcsb_id: string;
-  /**
-   * @minItems 1
-   */
-  rcsb_entry_group_membership?: [
-    {
-      /**
-       * A unique identifier for a group of entries
-       */
-      group_id: string;
-      /**
-       * Method used to establish group membership
-       */
-      aggregation_method: "matching_deposit_group_id";
-    },
-    ...{
-      /**
-       * A unique identifier for a group of entries
-       */
-      group_id: string;
-      /**
-       * Method used to establish group membership
-       */
-      aggregation_method: "matching_deposit_group_id";
-    }[]
-  ];
-  rcsb_external_references?: {
-    /**
-     * ID (accession) from external resource linked to this entry.
-     */
-    id: string;
-    /**
-     * Internal identifier for external resource.
-     */
-    type: "OLDERADO" | "BMRB" | "NDB" | "NAKB" | "SB GRID" | "PROTEIN DIFFRACTION" | "EM DATA RESOURCE";
-    /**
-     * Link to this entry in external resource.
-     */
-    link: string;
-  }[];
-  /**
-   * @minItems 1
-   */
-  rcsb_binding_affinity?: [
-    {
-      /**
-       * Ligand identifier.
-       */
-      comp_id: string;
-      /**
-       * Binding affinity measurement given in one of the following types:  The concentration constants: IC50: the concentration of ligand that reduces enzyme activity by 50%;  EC50: the concentration of compound that generates a half-maximal response;  The binding constant:  Kd: dissociation constant;  Ka: association constant;  Ki: enzyme inhibition constant;  The thermodynamic parameters:  delta G: Gibbs free energy of binding (for association reaction);  delta H: change in enthalpy associated with a chemical reaction;  delta S: change in entropy associated with a chemical reaction.
-       */
-      type: "IC50" | "EC50" | "Kd" | "Ka" | "Ki" | "&Delta;G" | "&Delta;H" | "-T&Delta;S";
-      /**
-       * Binding affinity value between a ligand and its target molecule.
-       */
-      value: number;
-      /**
-       * Binding affinity unit.  Dissociation constant Kd is normally in molar units (or millimolar , micromolar, nanomolar, etc).  Association constant Ka is normally expressed in inverse molar units (e.g. M-1).
-       */
-      unit: string;
-      /**
-       * Binding affinity symbol indicating approximate or precise strength of the binding.
-       */
-      symbol?: string;
-      /**
-       * Data point provided by BindingDB. Percent identity between PDB sequence and reference sequence.
-       */
-      reference_sequence_identity?: number;
-      /**
-       * The resource name for the related binding affinity reference.
-       */
-      provenance_code: "PDBBind" | "Binding MOAD" | "BindingDB";
-      /**
-       * Link to external resource referencing the data.
-       */
-      link: string;
-    },
-    ...{
-      /**
-       * Ligand identifier.
-       */
-      comp_id: string;
-      /**
-       * Binding affinity measurement given in one of the following types:  The concentration constants: IC50: the concentration of ligand that reduces enzyme activity by 50%;  EC50: the concentration of compound that generates a half-maximal response;  The binding constant:  Kd: dissociation constant;  Ka: association constant;  Ki: enzyme inhibition constant;  The thermodynamic parameters:  delta G: Gibbs free energy of binding (for association reaction);  delta H: change in enthalpy associated with a chemical reaction;  delta S: change in entropy associated with a chemical reaction.
-       */
-      type: "IC50" | "EC50" | "Kd" | "Ka" | "Ki" | "&Delta;G" | "&Delta;H" | "-T&Delta;S";
-      /**
-       * Binding affinity value between a ligand and its target molecule.
-       */
-      value: number;
-      /**
-       * Binding affinity unit.  Dissociation constant Kd is normally in molar units (or millimolar , micromolar, nanomolar, etc).  Association constant Ka is normally expressed in inverse molar units (e.g. M-1).
-       */
-      unit: string;
-      /**
-       * Binding affinity symbol indicating approximate or precise strength of the binding.
-       */
-      symbol?: string;
-      /**
-       * Data point provided by BindingDB. Percent identity between PDB sequence and reference sequence.
-       */
-      reference_sequence_identity?: number;
-      /**
-       * The resource name for the related binding affinity reference.
-       */
-      provenance_code: "PDBBind" | "Binding MOAD" | "BindingDB";
-      /**
-       * Link to external resource referencing the data.
-       */
-      link: string;
-    }[]
-  ];
 }

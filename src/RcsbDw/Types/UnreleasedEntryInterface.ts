@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_unreleased_entry version 3.5.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_unreleased_entry.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_unreleased_entry version 3.7.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-repository_holdings_unreleased_entry.json and follows JSON schema specification version 4
  */
-export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsUnreleasedEntryVersion350 {
+export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsUnreleasedEntryVersion370 {
   /**
    * @minItems 1
    */

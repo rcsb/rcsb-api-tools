@@ -6,9 +6,9 @@
  */
 
 /**
- * JSON schema for nonpolymer entity instance core.
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_nonpolymer_entity_instance version 10.1.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_nonpolymer_entity_instance.json and follows JSON schema specification version 4
  */
-export interface CoreNonpolymerEntityInstance {
+export interface SchemaPdbxCoreCollectionPdbxCoreNonpolymerEntityInstanceVersion1012 {
   /**
    * @minItems 1
    */
@@ -190,6 +190,20 @@ export interface CoreNonpolymerEntityInstance {
       num_bonds_RMSZ?: number;
     }[]
   ];
+  rcsb_latest_revision?: {
+    /**
+     * The major version number of the latest revision.
+     */
+    major_revision?: number;
+    /**
+     * The minor version number of the latest revision.
+     */
+    minor_revision?: number;
+    /**
+     * The release date of the latest revision item.
+     */
+    revision_date?: string;
+  };
   rcsb_nonpolymer_entity_instance_container_identifiers?: {
     /**
      * Instance identifier for this container.
@@ -258,7 +272,7 @@ export interface CoreNonpolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?:
+      type:
         | "HAS_COVALENT_LINKAGE"
         | "HAS_METAL_COORDINATION_LINKAGE"
         | "HAS_NO_COVALENT_LINKAGE"
@@ -312,7 +326,7 @@ export interface CoreNonpolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?:
+      type:
         | "HAS_COVALENT_LINKAGE"
         | "HAS_METAL_COORDINATION_LINKAGE"
         | "HAS_NO_COVALENT_LINKAGE"
@@ -606,6 +620,10 @@ export interface CoreNonpolymerEntityInstance {
   rcsb_nonpolymer_instance_validation_score?: [
     {
       /**
+       * The Q-score for the non-polymer instance.
+       */
+      Q_score?: number;
+      /**
        * The real space correlation coefficient (RSCC) for the non-polymer entity instance.
        */
       RSCC?: number;
@@ -701,6 +719,10 @@ export interface CoreNonpolymerEntityInstance {
       type?: "RCSB_LIGAND_QUALITY_SCORE_2021";
     },
     ...{
+      /**
+       * The Q-score for the non-polymer instance.
+       */
+      Q_score?: number;
       /**
        * The real space correlation coefficient (RSCC) for the non-polymer entity instance.
        */
@@ -1240,19 +1262,4 @@ export interface CoreNonpolymerEntityInstance {
    *  an 'dot' (.) separated concatenation of entry and entity instance identifiers.
    */
   rcsb_id: string;
-  rcsb_latest_revision?: {
-    /**
-     * The major version number of the latest revision.
-     */
-    major_revision?: number;
-    /**
-     * The minor version number of the latest revision.
-     */
-    minor_revision?: number;
-    /**
-     * The release date of the latest revision item.
-     */
-    revision_date?: string;
-    [k: string]: unknown;
-  };
 }

@@ -1,5 +1,4 @@
 export enum Type {
-    Asa = "ASA",
     AsaUnbound = "ASA_UNBOUND",
     AsaBound = "ASA_BOUND",
     ActiveSite = "ACTIVE_SITE",
@@ -36,9 +35,6 @@ export enum Type {
     UnsureResidue = "UNSURE_RESIDUE",
     ZincFingerRegion = "ZINC_FINGER_REGION",
     IntramembraneRegion = "INTRAMEMBRANE_REGION",
-    Hydropathy = "hydropathy",
-    Disorder = "disorder",
-    DisorderBinding = "disorder_binding",
     CardModel = "CARD_MODEL",
     ImgtAntibodyDescription = "IMGT_ANTIBODY_DESCRIPTION",
     ImgtAntibodyDomainName = "IMGT_ANTIBODY_DOMAIN_NAME",
@@ -52,10 +48,14 @@ export enum Type {
     SabdabAntibodyName = "SABDAB_ANTIBODY_NAME",
     SabdabAntibodyTarget = "SABDAB_ANTIBODY_TARGET",
     Artifact = "artifact",
+    Disorder = "disorder",
+    DisorderBinding = "disorder_binding",
+    Hydropathy = "hydropathy",
     ModifiedMonomer = "modified_monomer",
     Mutation = "mutation",
     AngleOutlier = "ANGLE_OUTLIER",
     AngleOutliers = "ANGLE_OUTLIERS",
+    Asa = "ASA",
     AverageOccupancy = "AVERAGE_OCCUPANCY",
     Bend = "BEND",
     BondOutlier = "BOND_OUTLIER",
@@ -158,6 +158,10 @@ export enum RcsbDetails {
     SoftwareDefinedAssembly = "software_defined_assembly"
 }
 
+export enum Name {
+    McsaMotifCompatibility = "MCSA_MOTIF_COMPATIBILITY"
+}
+
 export enum NaPolymerEntityTypes {
     DnAonly = "DNAonly",
     DnaRnAonly_ = "DNA/RNAonly",
@@ -179,12 +183,8 @@ export enum SelectedPolymerEntityTypes {
 
 export enum Kind {
     GlobalSymmetry = "GlobalSymmetry",
-    PseudoSymmetry = "PseudoSymmetry",
-    LocalSymmetry = "LocalSymmetry"
-}
-
-export enum Name {
-    McsaMotifCompatibility = "MCSA_MOTIF_COMPATIBILITY"
+    LocalSymmetry = "LocalSymmetry",
+    PseudoSymmetry = "PseudoSymmetry"
 }
 
 export enum ProvenanceSource {
@@ -718,9 +718,19 @@ export enum HasReleasedExperimentalData {
     Y = "Y"
 }
 
+export enum ProvenanceCode {
+    BindingMoad = "BindingMOAD",
+    BindingDb = "BindingDB",
+    PdbBind = "PDBBind"
+}
+
 export enum SourceDb {
     AlphaFoldDb = "AlphaFoldDB",
     ModelArchive = "ModelArchive"
+}
+
+export enum AggregationMethod {
+    MatchingDepositGroupId = "matching_deposit_group_id"
 }
 
 export enum ExperimentalMethod {
@@ -789,16 +799,6 @@ export enum CellSetting {
     Tetragonal = "tetragonal",
     Triclinic = "triclinic",
     Trigonal = "trigonal"
-}
-
-export enum AggregationMethod {
-    MatchingDepositGroupId = "matching_deposit_group_id"
-}
-
-export enum ProvenanceCode {
-    PdbBind = "PDBBind",
-    BindingMoad = "BindingMOAD",
-    BindingDb = "BindingDB"
 }
 
 export enum InterfaceCharacter {
@@ -929,8 +929,8 @@ export enum NeighborFlag {
 }
 
 export enum RcsbMembraneLineageProvenanceCode {
-    Mpstruc = "Mpstruc",
-    Homology = "Homology"
+    Homology = "Homology",
+    Mpstruc = "Mpstruc"
 }
 
 
@@ -978,6 +978,7 @@ export enum ShapeEntityType {
     Chain = "chain",
     Domain = "domain"
 }
+
 
 export enum PrereleaseSequenceAvailableFlag {
     N = "N",

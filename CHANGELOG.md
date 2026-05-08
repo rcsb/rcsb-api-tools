@@ -2,6 +2,16 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [5.2.0] - 2026-05-08
+### Dependency update
+- audit fix
+- Updated all dependencies
+
+### Schema update
+- Search schemas update
+- DW schemas update
+- GraphQL schemas update
+
 ## [5.1.1] - 2025-05-20
 ### Bug Fix
 - GraphQL URL bug fix

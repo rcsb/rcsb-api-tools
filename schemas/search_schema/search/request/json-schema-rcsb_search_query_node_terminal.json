@@ -45,7 +45,7 @@
           "$ref": "json-schema-rcsb_search_query_parameters_sequence.json"
         },
         {
-          "$ref": "json-schema-rcsb_search_query_parameters_shape.json"
+          "$ref": "json-schema-rcsb_search_query_parameters_structure.json"
         },
         {
           "$ref": "json-schema-rcsb_search_query_parameters_chemical_formula.json"

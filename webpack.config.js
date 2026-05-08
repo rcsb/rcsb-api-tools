@@ -16,7 +16,10 @@ const commonConfig = {
       ]
     },
     resolve: {
-      extensions: [ '.tsx', '.ts', '.js', 'jsx' ]
+      extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
+      fallback: {
+        "buffer": require.resolve("buffer/")
+      }
     },
     devtool: 'source-map'
 };

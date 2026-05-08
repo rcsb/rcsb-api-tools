@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface GroupProvenance {
+export interface SchemasInternalGroupsJsonSchemaGroupProvenanceJson {
   /**
    * A unique textual identifier for a group provenance
    */

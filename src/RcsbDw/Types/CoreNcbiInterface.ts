@@ -234,7 +234,6 @@ export interface CoreNCBI {
          * The release date of the latest revision item.
          */
         revision_date?: string;
-        [k: string]: unknown;
       };
       [k: string]: unknown;
     }[];

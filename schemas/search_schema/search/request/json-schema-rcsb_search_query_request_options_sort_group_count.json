@@ -1,0 +1,7 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_request_options_sort_group_count.json",
+  "title": "Group Count Ranking Option",
+  "type": "string",
+  "enum": ["count"],
+  "description": "This sort option allows ordering results based on the number of search hits contained within each group. Groups with more hits will be ranked higher or lower in the result set depending on the selected sort order (asc or desc)."
+}

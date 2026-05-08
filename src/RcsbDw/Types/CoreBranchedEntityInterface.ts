@@ -6,9 +6,9 @@
  */
 
 /**
- * JSON schema for branched entity core.
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_branched_entity version 10.1.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_branched_entity.json and follows JSON schema specification version 4
  */
-export interface CoreBranchedEntity {
+export interface SchemaPdbxCoreCollectionPdbxCoreBranchedEntityVersion1010 {
   pdbx_entity_branch?: {
     /**
      * Number of constituent chemical components in the branched entity.
@@ -171,7 +171,7 @@ export interface CoreBranchedEntity {
       }[];
     }[]
   ];
-  rcsb_branched_entity_container_identifiers?: {
+  rcsb_branched_entity_container_identifiers: {
     asym_ids?: string[];
     auth_asym_ids?: string[];
     chem_comp_monomers?: string[];
@@ -430,11 +430,6 @@ export interface CoreBranchedEntity {
       system?: string;
     }[]
   ];
-  /**
-   * A unique identifier for each object in this entity container formed by
-   *  an underscore separated concatenation of entry and entity identifiers.
-   */
-  rcsb_id: string;
   rcsb_latest_revision?: {
     /**
      * The major version number of the latest revision.
@@ -448,6 +443,10 @@ export interface CoreBranchedEntity {
      * The release date of the latest revision item.
      */
     revision_date?: string;
-    [k: string]: unknown;
   };
+  /**
+   * A unique identifier for each object in this entity container formed by
+   *  an underscore separated concatenation of entry and entity identifiers.
+   */
+  rcsb_id: string;
 }

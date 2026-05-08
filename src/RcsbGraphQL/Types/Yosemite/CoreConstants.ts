@@ -299,6 +299,7 @@ export class CoreConstants{
 	public static readonly RCSB_POLYMER_INSTANCE_ANNOTATION = "rcsb_polymer_instance_annotation";
 	public static readonly RCSB_POLYMER_INSTANCE_FEATURE = "rcsb_polymer_instance_feature";
 	public static readonly RCSB_POLYMER_INSTANCE_FEATURE_SUMMARY = "rcsb_polymer_instance_feature_summary";
+	public static readonly RCSB_POLYMER_INSTANCE_INFO = "rcsb_polymer_instance_info";
 	public static readonly RCSB_POLYMER_STRUCT_CONN = "rcsb_polymer_struct_conn";
 	public static readonly RCSB_PUBMED_ABSTRACT_TEXT = "rcsb_pubmed_abstract_text";
 	public static readonly RCSB_PUBMED_AFFILIATION_INFO = "rcsb_pubmed_affiliation_info";
@@ -710,6 +711,7 @@ export class CoreConstants{
 	public static readonly OPERATOR = "operator";
 	public static readonly DATA_REFERENCE = "data_reference";
 	public static readonly DATA_SET_TYPE = "data_set_type";
+	public static readonly DB_SOURCE = "db_source";
 	public static readonly METADATA_REFERENCE = "metadata_reference";
 	public static readonly FULL_NAME_OF_CENTER = "full_name_of_center";
 	public static readonly INITIAL_OF_CENTER = "initial_of_center";
@@ -1153,6 +1155,7 @@ export class CoreConstants{
 	public static readonly AUTH_TO_ENTITY_POLY_SEQ_MAPPING = "auth_to_entity_poly_seq_mapping";
 	public static readonly EC = "ec";
 	public static readonly NAMES = "names";
+	public static readonly MODELED_RESIDUE_COUNT = "modeled_residue_count";
 	public static readonly RCSB_ORCID_IDENTIFIERS = "rcsb_ORCID_identifiers";
 	public static readonly ALIGNED_TARGET = "aligned_target";
 	public static readonly RELATED_RESOURCE_NAME = "related_resource_name";

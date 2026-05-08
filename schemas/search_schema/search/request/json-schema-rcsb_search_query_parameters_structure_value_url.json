@@ -1,5 +1,5 @@
 {
-  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_shape_value_url.json",
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_structure_value_url.json",
   "title": "Structure Query URL Parameters",
   "type": "object",
   "required": [
@@ -11,6 +11,14 @@
       "type": "string",
       "description": "URL to a publicly available file with structure data.",
       "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "asym_id": {
+      "type": "string",
+      "description": "Chain to base this search on - mutually-exclusive with 'assembly_id'."
+    },
+    "assembly_id": {
+      "type": "string",
+      "description": "Assembly to base this search on - mutually-exclusive with 'asym_id'."
     },
     "format": {
       "type": "string",

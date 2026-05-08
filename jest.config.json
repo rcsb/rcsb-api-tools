@@ -1,7 +1,12 @@
 {
   "preset": "ts-jest",
   "transform": {
-    "^.+\\.(ts|tsx)?$": "ts-jest",
+    "^.+\\.(ts|tsx)?$": ["ts-jest", {
+      "tsconfig": {
+        "rootDir": ".",
+        "types": ["jest", "node"]
+      }
+    }],
     "^.+\\.(js|jsx)$": "babel-jest"
   },
   "testEnvironment": "node",

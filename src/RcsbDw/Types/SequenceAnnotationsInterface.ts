@@ -72,7 +72,6 @@ export interface Feature {
    * The connection type.
    */
   type?:
-    | "ASA"
     | "ASA_UNBOUND"
     | "ASA_BOUND"
     | "ACTIVE_SITE"
@@ -109,9 +108,6 @@ export interface Feature {
     | "UNSURE_RESIDUE"
     | "ZINC_FINGER_REGION"
     | "INTRAMEMBRANE_REGION"
-    | "hydropathy"
-    | "disorder"
-    | "disorder_binding"
     | "CARD_MODEL"
     | "IMGT_ANTIBODY_DESCRIPTION"
     | "IMGT_ANTIBODY_DOMAIN_NAME"
@@ -125,10 +121,14 @@ export interface Feature {
     | "SABDAB_ANTIBODY_NAME"
     | "SABDAB_ANTIBODY_TARGET"
     | "artifact"
+    | "disorder"
+    | "disorder_binding"
+    | "hydropathy"
     | "modified_monomer"
     | "mutation"
     | "ANGLE_OUTLIER"
     | "ANGLE_OUTLIERS"
+    | "ASA"
     | "AVERAGE_OCCUPANCY"
     | "BEND"
     | "BOND_OUTLIER"

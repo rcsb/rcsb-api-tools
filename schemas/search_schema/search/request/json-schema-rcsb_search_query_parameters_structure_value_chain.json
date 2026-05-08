@@ -1,5 +1,5 @@
 {
-  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_shape_value_chain.json",
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_parameters_structure_value_chain.json",
   "title": "Structure Query Chain Parameters",
   "type": "object",
   "required": [

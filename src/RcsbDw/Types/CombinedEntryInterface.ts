@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_combined_entry version 1.0.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb.db/tree/master/rcsb.db/data/json-schema/json-schema-min-repository_holdings_combined_entry.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the repository_holdings content type schema. This schema supports collection repository_holdings_combined_entry version 1.1.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-repository_holdings_combined_entry.json and follows JSON schema specification version 4
  */
-export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsCombinedEntryVersion100 {
+export interface SchemaRepositoryHoldingsCollectionRepositoryHoldingsCombinedEntryVersion110 {
   rcsb_repository_holdings_combined?: {
     /**
      * The latest superseding PDB accession code for the removed entry.

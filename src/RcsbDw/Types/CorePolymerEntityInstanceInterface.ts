@@ -6,9 +6,9 @@
  */
 
 /**
- * JSON schema for entity instance core data.
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_polymer_entity_instance version 10.1.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_polymer_entity_instance.json and follows JSON schema specification version 4
  */
-export interface CorePolymerEntityInstance {
+export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityInstanceVersion1012 {
   /**
    * @minItems 1
    */
@@ -190,6 +190,20 @@ export interface CorePolymerEntityInstance {
       num_bonds_RMSZ?: number;
     }[]
   ];
+  rcsb_latest_revision?: {
+    /**
+     * The major version number of the latest revision.
+     */
+    major_revision?: number;
+    /**
+     * The minor version number of the latest revision.
+     */
+    minor_revision?: number;
+    /**
+     * The release date of the latest revision item.
+     */
+    revision_date?: string;
+  };
   /**
    * @minItems 1
    */
@@ -360,7 +374,7 @@ export interface CorePolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "CATH" | "ECOD" | "GlyGen" | "SCOP" | "SCOP2";
+      type: "CATH" | "ECOD" | "GlyGen" | "SCOP" | "SCOP2";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -405,7 +419,7 @@ export interface CorePolymerEntityInstance {
       /**
        * A type or category of the annotation.
        */
-      type?: "CATH" | "ECOD" | "GlyGen" | "SCOP" | "SCOP2";
+      type: "CATH" | "ECOD" | "GlyGen" | "SCOP" | "SCOP2";
       annotation_lineage?: {
         /**
          * Members of the annotation lineage as parent lineage depth (1-N)
@@ -459,9 +473,10 @@ export interface CorePolymerEntityInstance {
       /**
        * A type or category of the feature.
        */
-      type?:
+      type:
         | "ANGLE_OUTLIER"
         | "ANGLE_OUTLIERS"
+        | "ASA"
         | "AVERAGE_OCCUPANCY"
         | "BEND"
         | "BINDING_SITE"
@@ -531,8 +546,7 @@ export interface CorePolymerEntityInstance {
         | "UNOBSERVED_ATOM_XYZ"
         | "UNOBSERVED_RESIDUE_XYZ"
         | "ZERO_OCCUPANCY_ATOM_XYZ"
-        | "ZERO_OCCUPANCY_RESIDUE_XYZ"
-        | "ASA";
+        | "ZERO_OCCUPANCY_RESIDUE_XYZ";
       feature_positions?: {
         /**
          * An identifier for the monomer(s) corresponding to the feature assignment.
@@ -612,9 +626,10 @@ export interface CorePolymerEntityInstance {
       /**
        * A type or category of the feature.
        */
-      type?:
+      type:
         | "ANGLE_OUTLIER"
         | "ANGLE_OUTLIERS"
+        | "ASA"
         | "AVERAGE_OCCUPANCY"
         | "BEND"
         | "BINDING_SITE"
@@ -684,8 +699,7 @@ export interface CorePolymerEntityInstance {
         | "UNOBSERVED_ATOM_XYZ"
         | "UNOBSERVED_RESIDUE_XYZ"
         | "ZERO_OCCUPANCY_ATOM_XYZ"
-        | "ZERO_OCCUPANCY_RESIDUE_XYZ"
-        | "ASA";
+        | "ZERO_OCCUPANCY_RESIDUE_XYZ";
       feature_positions?: {
         /**
          * An identifier for the monomer(s) corresponding to the feature assignment.
@@ -942,6 +956,12 @@ export interface CorePolymerEntityInstance {
         | "ZERO_OCCUPANCY_RESIDUE_XYZ";
     }[]
   ];
+  rcsb_polymer_instance_info?: {
+    /**
+     * The number of modeled residues in the polymer instance.
+     */
+    modeled_residue_count?: number;
+  };
   /**
    * @minItems 1
    */
@@ -1288,19 +1308,4 @@ export interface CorePolymerEntityInstance {
    *  an 'dot' (.) separated concatenation of entry and entity instance identifiers.
    */
   rcsb_id: string;
-  rcsb_latest_revision?: {
-    /**
-     * The major version number of the latest revision.
-     */
-    major_revision?: number;
-    /**
-     * The minor version number of the latest revision.
-     */
-    minor_revision?: number;
-    /**
-     * The release date of the latest revision item.
-     */
-    revision_date?: string;
-    [k: string]: unknown;
-  };
 }

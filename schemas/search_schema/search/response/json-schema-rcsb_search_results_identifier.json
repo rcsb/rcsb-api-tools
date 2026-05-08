@@ -60,7 +60,7 @@
                         "$ref": "json-schema-rcsb_search_results_identifier_match_context_sequence.json"
                       },
                       {
-                        "$ref": "json-schema-rcsb_search_results_identifier_match_context_shape.json"
+                        "$ref": "json-schema-rcsb_search_results_identifier_match_context_structure.json"
                       },
                       {
                         "$ref": "json-schema-rcsb_search_results_identifier_match_context_seqmotif.json"
