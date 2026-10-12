@@ -23,6 +23,10 @@ export interface StructureEmbedding {
      */
     asym_id?: string;
     /**
+     * Entity identifier for this embedding.
+     */
+    entity_id?: string;
+    /**
      * Assembly identifier for this embedding.
      */
     assembly_id?: string;

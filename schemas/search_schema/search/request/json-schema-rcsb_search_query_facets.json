@@ -23,6 +23,12 @@
         "$ref": "json-schema-rcsb_search_query_facets_cardinality.json"
       },
       {
+        "$ref": "json-schema-rcsb_search_query_facets_sum.json"
+      },
+      {
+        "$ref": "json-schema-rcsb_search_query_facets_avg.json"
+      },
+      {
         "$ref": "json-schema-rcsb_search_query_facets_filter.json"
       }
     ]

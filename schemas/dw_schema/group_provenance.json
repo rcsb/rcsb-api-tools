@@ -5,9 +5,6 @@
   "properties": {
     "rcsb_id": {
       "type": "string",
-      "rcsb_search_context": [
-        "exact-match"
-      ],
       "description": "A unique textual identifier for a group provenance"
     },
     "rcsb_group_provenance_container_identifiers": {
@@ -43,10 +40,7 @@
             "matching_deposit_group_id",
             "matching_chemical_component_id"
           ],
-          "rcsb_search_context": [
-            "exact-match"
-          ],
-          "description": "Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy"
+          "description": "Method used to establish group membership"
         },
         "method": {
           "type": "object",

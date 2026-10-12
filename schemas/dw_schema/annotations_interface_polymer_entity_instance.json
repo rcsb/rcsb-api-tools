@@ -58,9 +58,9 @@
           },
           "type" : {
             "type" : "string",
-            "enum" : [ "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "disorder", "disorder_binding", "hydropathy", "modified_monomer", "mutation", "ANGLE_OUTLIER", "ANGLE_OUTLIERS", "ASA", "AVERAGE_OCCUPANCY", "BEND", "BOND_OUTLIER", "BOND_OUTLIERS", "C-MANNOSYLATION_SITE", "CATH", "CHIRAL_OUTLIERS", "CIS-PEPTIDE", "CLASHES", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_ANGLE_OUTLIERS", "MOGUL_BOND_OUTLIER", "MOGUL_BOND_OUTLIERS", "MOGUL_RING_OUTLIERS", "MOGUL_TORSION_OUTLIERS", "N-GLYCOSYLATION_SITE", "NATOMS_EDS", "O-GLYCOSYLATION_SITE", "OWAB", "PLANE_OUTLIERS", "Q_SCORE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC", "RSCC_OUTLIER", "RSR", "RSRZ", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "SYMM_CLASHES", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs" ],
-            "examples" : [ "ASA_UNBOUND", "BINDING_SITE", "mutation", "artifact", "CATH", "SCOP" ],
-            "description" : "The connection type.",
+            "enum" : [ "ASA_UNBOUND", "ASA_BOUND", "ACTIVE_SITE", "BINDING_SITE", "CALCIUM_BINDING_REGION", "CHAIN", "COMPOSITIONALLY_BIASED_REGION", "CROSS_LINK", "DNA_BINDING_REGION", "DOMAIN", "GLYCOSYLATION_SITE", "INITIATOR_METHIONINE", "LIPID_MOIETY_BINDING_REGION", "METAL_ION_BINDING_SITE", "MODIFIED_RESIDUE", "MUTAGENESIS_SITE", "NON_CONSECUTIVE_RESIDUES", "NON_TERMINAL_RESIDUE", "NUCLEOTIDE_PHOSPHATE_BINDING_REGION", "PEPTIDE", "PROPEPTIDE", "REGION_OF_INTEREST", "REPEAT", "NON_STANDARD_AMINO_ACID", "SEQUENCE_CONFLICT", "SEQUENCE_VARIANT", "SHORT_SEQUENCE_MOTIF", "SIGNAL_PEPTIDE", "SITE", "SPLICE_VARIANT", "TOPOLOGICAL_DOMAIN", "TRANSIT_PEPTIDE", "TRANSMEMBRANE_REGION", "UNSURE_RESIDUE", "ZINC_FINGER_REGION", "INTRAMEMBRANE_REGION", "CARD_MODEL", "IMGT_ANTIBODY_DESCRIPTION", "IMGT_ANTIBODY_DOMAIN_NAME", "IMGT_ANTIBODY_GENE_ALLELE_NAME", "IMGT_ANTIBODY_ORGANISM_NAME", "IMGT_ANTIBODY_PROTEIN_NAME", "IMGT_ANTIBODY_RECEPTOR_DESCRIPTION", "IMGT_ANTIBODY_RECEPTOR_TYPE", "Pfam", "SABDAB_ANTIBODY_ANTIGEN_NAME", "SABDAB_ANTIBODY_NAME", "SABDAB_ANTIBODY_TARGET", "artifact", "disorder", "disorder_binding", "hydropathy", "modified_monomer", "mutation", "non_standard_monomer", "ANGLE_OUTLIER", "ANGLE_OUTLIERS", "ASA", "AVERAGE_OCCUPANCY", "BEND", "BOND_OUTLIER", "BOND_OUTLIERS", "C-MANNOSYLATION_SITE", "CATH", "CHIRAL_OUTLIERS", "CIS-PEPTIDE", "CLASHES", "ECOD", "HELIX_P", "HELX_LH_PP_P", "HELX_RH_3T_P", "HELX_RH_AL_P", "HELX_RH_PI_P", "LIGAND_COVALENT_LINKAGE", "LIGAND_INTERACTION", "LIGAND_METAL_COORDINATION_LINKAGE", "MA_QA_METRIC_LOCAL_TYPE_CONTACT_PROBABILITY", "MA_QA_METRIC_LOCAL_TYPE_DISTANCE", "MA_QA_METRIC_LOCAL_TYPE_ENERGY", "MA_QA_METRIC_LOCAL_TYPE_IPTM", "MA_QA_METRIC_LOCAL_TYPE_NORMALIZED_SCORE", "MA_QA_METRIC_LOCAL_TYPE_OTHER", "MA_QA_METRIC_LOCAL_TYPE_PAE", "MA_QA_METRIC_LOCAL_TYPE_PLDDT", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_ALL-ATOM_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PLDDT_[0,1]", "MA_QA_METRIC_LOCAL_TYPE_PTM", "MA_QA_METRIC_LOCAL_TYPE_ZSCORE", "MEMBRANE_SEGMENT", "MOGUL_ANGLE_OUTLIER", "MOGUL_ANGLE_OUTLIERS", "MOGUL_BOND_OUTLIER", "MOGUL_BOND_OUTLIERS", "MOGUL_RING_OUTLIERS", "MOGUL_TORSION_OUTLIERS", "N-GLYCOSYLATION_SITE", "NATOMS_EDS", "O-GLYCOSYLATION_SITE", "OWAB", "PLANE_OUTLIERS", "Q_SCORE", "RAMACHANDRAN_OUTLIER", "ROTAMER_OUTLIER", "RSCC", "RSCC_OUTLIER", "RSR", "RSRZ", "RSRZ_OUTLIER", "S-GLYCOSYLATION_SITE", "SABDAB_ANTIBODY_HEAVY_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_SUBCLASS", "SABDAB_ANTIBODY_LIGHT_CHAIN_TYPE", "SCOP", "SCOP2B_SUPERFAMILY", "SCOP2_FAMILY", "SCOP2_SUPERFAMILY", "SHEET", "STEREO_OUTLIER", "STRN", "SYMM_CLASHES", "TURN_TY1_P", "UNASSIGNED_SEC_STRUCT", "UNOBSERVED_ATOM_XYZ", "UNOBSERVED_RESIDUE_XYZ", "ZERO_OCCUPANCY_ATOM_XYZ", "ZERO_OCCUPANCY_RESIDUE_XYZ", "covalent bond", "covalent modification of a nucleotide base", "covalent modification of a nucleotide phosphate", "covalent modification of a nucleotide sugar", "covalent residue modification", "disulfide bridge", "hydrogen bond", "ionic interaction", "metal coordination", "mismatched base pairs", "ADP-ribose", "Amino acid", "Biotin", "Carbohydrate", "Chromophore/chromophore-like", "Covalent chemical modification", "Crosslinker", "Disulfide bridge", "Flavin", "Heme/heme-like", "Isopeptide bond", "Lipid/lipid-like", "Metal coordination", "Named protein modification", "Non-standard linkage", "Non-standard residue", "Nucleotide monophosphate", "Terminal acetylation", "Terminal amidation", "(3-Aminopropyl)(5'-adenosyl)phosphono amidation", "(3R)-3-Hydroxybutyrylation", "12-Hydroxyfarnesylation", "12-Oxomyristoylation", "12R-Hydroxymyristoylation", "14-Hydroxy-10,13-dioxo-7-heptadecenoic acid", "2,3-Dicarboxypropylation", "2-Aminoadipylation", "2-Aminoethylphosphorylation", "2-Cholinephosphorylation", "2-Hydroxyisobutyrylation", "2-Oxo-5,5-dimethylhexanoylation", "2-Oxobutanoic acid", "3-Oxoalanine", "3-Phenyllactic acid", "4-Phosphopantetheine", "ADP-ribosylation", "ADP-riboxanation", "AMPylation", "Acetamidation", "Acetamidomethylation", "Acetylation", "Alanylation", "Allysine", "Amination", "Arachidoylation", "Archaeol", "Arginylation", "Arsenylation", "Asparaginylation", "Aspartylation", "Bacillithiolation", "Benzoylation", "Benzylation", "Beta-amino acid", "Beta-hydroxybutyrylation", "Beta-lysylation", "Beta-mercaptoethanol", "Biotinylation", "Bromination", "Butyrylation", "C-Mannosylation", "CMPylation", "Carbamoylation", "Carboxyethylation", "Carboxylation", "Carboxymethylation", "Chlorination", "Cholesterylation", "Citrullination", "Crotonylation", "Cyanation", "Cysteinylation", "D-alanylation", "D-arginylation", "D-asparaginylation", "D-aspartylation", "D-cysteinylation", "D-glutaminylation", "D-glutamylation", "D-histidinylation", "D-isoleucylation", "D-lactate", "D-leucylation", "D-lysylation", "D-methionylation", "D-phenylalanylation", "D-prolylation", "D-serylation", "D-threoninylation", "D-tryptophanylation", "D-tyrosination", "D-valylation", "Deamidation", "Decanoylation", "Decarboxylation", "Dehydroamino acid", "Dehydrocoelenterazination", "Dehydrogenation", "Dehydroxylation", "Deoxidation", "Deoxyhypusine", "Diacylglycerol", "Dihydroxyacetonation", "Dimethylamination", "Diphosphorylation", "Diphthamide", "Dipyrromethane methylation", "Dopaminylation", "Ethylation", "Ethylsulfanylation", "Farnesylation", "Fluorination", "Formylation", "GMPylation", "Geranylgeranylation", "Glutaminylation", "Glutamylation", "Glutarylation", "Glutathionylation", "Glycerophosphorylation", "Glycerylphosphorylethanolamination", "Glycylation", "Heptanoylation", "Hexanoylation", "Histaminylation", "Histidinylation", "Hydrogenation", "Hydroperoxylation", "Hydroxyamination", "Hydroxyethylation", "Hydroxylation", "Hydroxymethylation", "Hydroxysulfanylation", "Hypusine", "Iodination", "Isobutyrylation", "Isoleucylation", "L-lactate", "Lactoylation", "Laurylation", "Leucylation", "Lipoylation", "Lysylation", "Malonylation", "Methacrylation", "Methionylation", "Methoxylation", "Methylamination", "Methylation", "Methylsulfanylation", "Methylsulfation", "Myristoylation", "N-Glycosylation", "N-methylcarbamoylation", "N-pyruvic acid 2-iminylation", "N6-benzoyllysine", "N6-isonicotinyllysine", "N6-methacryllysine", "Nitration", "Nitrosylation", "None", "Noradrenylation", "Norleucine", "Norvaline", "O-Glycosylation", "Octanoylation", "Oleoylation", "Ornithine", "Oxidation", "Palmitoleoylation", "Palmitoylation", "Pentadecanoylation", "Pentanoylation", "Phenylalanylation", "Phosphatidylethanolamine amidation", "Phosphoenolpyruvate", "Phosphorylation", "Prolylation", "Propionylation", "Pyridoxal phosphate", "Pyrrolidone carboxylic acid", "Pyruvic acid", "Retinoylation", "S-Glycosylation", "Selanylation", "Selenomethionine", "Serotonylation", "Serylation", "Stearoylation", "Stereoisomerisation", "Succinamide ring", "Succination", "Succinylation", "Sulfanylmethylation", "Sulfation", "Sulfhydration", "Tert-butylation", "Tert-butyloxycarbonylation", "Threoninylation", "Thyroxine", "Triiodothyronine", "Triphosphorylation", "Tryptophanylation", "Tyrosination", "UMPylation", "Valylation", "cGMPylation" ],
+            "examples" : [ "ASA_UNBOUND", "BINDING_SITE", "mutation", "artifact", "CATH", "SCOP", "Named protein modification", "Phosphorylation" ],
+            "description" : "The type of protein modification.",
             "rcsb_enum_annotated" : [ {
               "value" : "ACTIVE_SITE",
               "name" : "Active site",
@@ -269,6 +269,10 @@
               "value" : "mutation",
               "detail" : "Engineered mutations and chemical modifications",
               "name" : "Engineered mutations and chemical modifications"
+            }, {
+              "value" : "non_standard_monomer",
+              "detail" : "Non-standard chemical component",
+              "name" : "Non-standard chemical component"
             }, {
               "value" : "ANGLE_OUTLIER",
               "detail" : "Molprobity bond angle outlier",
@@ -561,6 +565,63 @@
               "value" : "ZERO_OCCUPANCY_RESIDUE_XYZ",
               "detail" : "Residue coordinates with zero occupancy",
               "name" : "Zero Occupancy Residues"
+            }, {
+              "value" : "ADP-ribose",
+              "detail" : "ADP-ribose protein modifications"
+            }, {
+              "value" : "Amino acid",
+              "detail" : "Canonical amino acid linked to a peptide residue"
+            }, {
+              "value" : "Biotin",
+              "detail" : "Biotin protein modifications"
+            }, {
+              "value" : "Carbohydrate",
+              "detail" : "Carbohydrate protein modifications"
+            }, {
+              "value" : "Chromophore/chromophore-like",
+              "detail" : "Chromophore or chromophore-like protein modifications"
+            }, {
+              "value" : "Covalent chemical modification",
+              "detail" : "A diverse range of chemical compounds that form covalent bonds with amino acids. Not covered by any of the other modification categories"
+            }, {
+              "value" : "Crosslinker",
+              "detail" : "Chemical modifications which covalently link two amino-acid residues. Excludes reaction intermediates and modifications covered by other modification categories"
+            }, {
+              "value" : "Disulfide bridge",
+              "detail" : "Disulfide bridge protein modifications"
+            }, {
+              "value" : "Flavin",
+              "detail" : "Flavin protein modifications"
+            }, {
+              "value" : "Heme/heme-like",
+              "detail" : "Heme or heme-like protein modifications"
+            }, {
+              "value" : "Isopeptide bond",
+              "detail" : "Isopeptide bond protein modifications"
+            }, {
+              "value" : "Lipid/lipid-like",
+              "detail" : "Lipid or lipid-like protein modifications"
+            }, {
+              "value" : "Metal coordination",
+              "detail" : "Metal coordination"
+            }, {
+              "value" : "Named protein modification",
+              "detail" : "All protein modifications that are well defined into known types, have limited diversity, and are not explicitly covered by any other category. It includes PTMs, PCMs, rare amino acids and unnatural amino acids"
+            }, {
+              "value" : "Non-standard linkage",
+              "detail" : "Non-standard covalent chemical linkages directly between two polypeptide residues"
+            }, {
+              "value" : "Non-standard residue",
+              "detail" : "A diverse range of non-standard polypeptide residues that are not considered to be 'Named protein modifications'. These cannot be practically split into two CCDs, which describe the standard polypeptide residue and the modification group, and are not covered by any of the other modification categories"
+            }, {
+              "value" : "Nucleotide monophosphate",
+              "detail" : "Nucleotide monophosphate protein modifications"
+            }, {
+              "value" : "Terminal acetylation",
+              "detail" : "Terminal acetylation protein modification"
+            }, {
+              "value" : "Terminal amidation",
+              "detail" : "Terminal amidation protein modification"
             } ],
             "rcsb_description" : [ {
               "text" : "A type or category of the feature.",
@@ -571,9 +632,28 @@
             }, {
               "text" : "The connection type.",
               "context" : "dictionary"
+            }, {
+              "text" : "The category of protein modification.",
+              "context" : "dictionary"
+            }, {
+              "text" : "Protein Modification Category",
+              "context" : "brief"
+            }, {
+              "text" : "The type of protein modification.",
+              "context" : "dictionary"
+            }, {
+              "text" : "Protein Modification Type",
+              "context" : "brief"
             } ],
             "rcsb_search_context" : [ "exact-match" ],
-            "rcsb_full_text_priority" : 10
+            "rcsb_full_text_priority" : 10,
+            "rcsb_search_group" : [ {
+              "group_name" : "Protein Modifications",
+              "priority_order" : 10
+            }, {
+              "group_name" : "Protein Modifications",
+              "priority_order" : 5
+            } ]
           },
           "value" : {
             "type" : "number",

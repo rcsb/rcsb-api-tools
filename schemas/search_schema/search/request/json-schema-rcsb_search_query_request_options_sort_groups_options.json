@@ -7,5 +7,9 @@
     "count"
   ],
   "deprecated" : true,
+  "deprecatedMessage" :{
+    "deprecatedOn" : "2025-06-05",
+    "description" : "Sort by total group size is no longer supported"
+  },
   "description": "Sort options supported for results returned as groups. NOTE: Sort by total group size is not supported"
 }

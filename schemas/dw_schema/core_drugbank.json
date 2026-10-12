@@ -94,7 +94,7 @@
                   "rcsb_search_group": [
                      {
                         "group_name": "Chemical Components",
-                        "priority_order": 35
+                        "priority_order": 40
                      }
                   ]
                },
@@ -224,7 +224,7 @@
                   "rcsb_search_group": [
                      {
                         "group_name": "Chemical Components",
-                        "priority_order": 40
+                        "priority_order": 45
                      }
                   ]
                },
@@ -356,7 +356,7 @@
                         "rcsb_search_group": [
                            {
                               "group_name": "Chemical Components",
-                              "priority_order": 45
+                              "priority_order": 50
                            }
                         ]
                      },
@@ -388,7 +388,7 @@
                         "rcsb_search_group": [
                            {
                               "group_name": "Chemical Components",
-                              "priority_order": 60
+                              "priority_order": 65
                            }
                         ]
                      },
@@ -415,7 +415,7 @@
                         "rcsb_search_group": [
                            {
                               "group_name": "Chemical Components",
-                              "priority_order": 55
+                              "priority_order": 60
                            }
                         ]
                      },
@@ -487,7 +487,7 @@
                         "rcsb_search_group": [
                            {
                               "group_name": "Chemical Components",
-                              "priority_order": 50
+                              "priority_order": 55
                            }
                         ]
                      }
@@ -634,7 +634,7 @@
    "additionalProperties": false,
    "$id": "https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-core_drugbank.json",
    "$schema": "http://json-schema.org/draft-04/schema#",
-   "title": "schema: core_drugbank collection: core_drugbank version: 1.4.0",
-   "description": "RCSB Exchange Database JSON schema derived from the core_drugbank content type schema. This schema supports collection core_drugbank version 1.4.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-core_drugbank.json and follows JSON schema specification version 4",
-   "$comment": "schema_version: 1.4.0"
+   "title": "schema: core_drugbank collection: core_drugbank version: 1.4.1",
+   "description": "RCSB Exchange Database JSON schema derived from the core_drugbank content type schema. This schema supports collection core_drugbank version 1.4.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-core_drugbank.json and follows JSON schema specification version 4",
+   "$comment": "schema_version: 1.4.1"
 }

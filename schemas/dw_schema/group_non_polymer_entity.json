@@ -6,7 +6,6 @@
   "properties" : {
     "rcsb_id" : {
       "type" : "string",
-      "rcsb_search_context" : [ "exact-match" ],
       "description" : "A unique textual identifier for a group"
     },
     "rcsb_group_container_identifiers" : {
@@ -15,8 +14,7 @@
       "properties" : {
         "group_id" : {
           "type" : "string",
-          "description" : "A unique textual identifier for a group",
-          "rcsb_search_context" : [ "exact-match" ]
+          "description" : "A unique textual identifier for a group"
         },
         "group_provenance_id" : {
           "type" : "string",
@@ -35,8 +33,7 @@
         "group_member_ids" : {
           "type" : "array",
           "items" : {
-            "type" : "string",
-            "rcsb_search_context" : [ "exact-match" ]
+            "type" : "string"
           },
           "minItems" : 1,
           "uniqueItems" : true,
@@ -50,8 +47,7 @@
       "required" : [ "group_members_granularity", "group_members_count" ],
       "properties" : {
         "group_name" : {
-          "type" : "string",
-          "rcsb_search_context" : [ "exact-match" ]
+          "type" : "string"
         },
         "group_description" : {
           "type" : "string"
@@ -62,8 +58,7 @@
           "description" : "Granularity of group members identifiers"
         },
         "group_members_count" : {
-          "type" : "integer",
-          "rcsb_search_context" : [ "default-match" ]
+          "type" : "integer"
         }
       }
     },
@@ -72,8 +67,11 @@
       "properties" : {
         "similarity_cutoff" : {
           "type" : "number",
-          "rcsb_search_context" : [ "default-match" ],
-          "description" : "The desired lower limit for the similarity between two members that belong to the same group"
+          "description" : "Degree of similarity expressed as a floating-point number",
+          "rcsb_description" : [ {
+            "text" : "Degree of similarity expressed as a floating-point number",
+            "context" : "dictionary"
+          } ]
         },
         "similarity_score_min" : {
           "type" : "number",

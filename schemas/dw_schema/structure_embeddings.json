@@ -33,6 +33,10 @@
           "type": "string",
           "description": "Instance identifier for this embedding."
         },
+        "entity_id": {
+          "type": "string",
+          "description": "Entity identifier for this embedding."
+        },
         "assembly_id": {
           "type": "string",
           "examples": [

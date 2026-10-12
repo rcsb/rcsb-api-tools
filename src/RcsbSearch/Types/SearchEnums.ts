@@ -61,7 +61,9 @@ export enum AggregationType {
     DateHistogram = "date_histogram",
     Range = "range",
     DateRange = "date_range",
-    Cardinality = "cardinality"
+    Cardinality = "cardinality",
+    Sum = "sum",
+    Avg = "avg"
 }
 
 export enum Interval {

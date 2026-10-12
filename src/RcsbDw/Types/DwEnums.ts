@@ -53,6 +53,7 @@ export enum Type {
     Hydropathy = "hydropathy",
     ModifiedMonomer = "modified_monomer",
     Mutation = "mutation",
+    NonStandardMonomer = "non_standard_monomer",
     AngleOutlier = "ANGLE_OUTLIER",
     AngleOutliers = "ANGLE_OUTLIERS",
     Asa = "ASA",
@@ -236,6 +237,11 @@ export enum PdbxType {
     Hetic = "HETIC"
 }
 
+export enum PdbxPcm {
+    N = "N",
+    Y = "Y"
+}
+
 export enum PdbxProcessingSite {
     Ebi = "EBI",
     Pdbc = "PDBC",
@@ -251,6 +257,22 @@ export enum PdbxReleaseStatus {
     Obs = "OBS",
     RefOnly = "REF_ONLY",
     Rel = "REL"
+}
+
+export enum Category {
+    AdpRibose_ = "ADP-ribose"
+}
+
+export enum PolypeptidePosition {
+    Anyposition = "Anyposition",
+    CTerminal_ = "C-terminal",
+    NTerminal_ = "N-terminal"
+}
+
+export enum Position {
+    AminoAcidbackbone_ = "Amino-acidbackbone",
+    AminoAcidsidechain_ = "Amino-acidsidechain",
+    AminoAcidsidechainandbackbone_ = "Amino-acidsidechainandbackbone"
 }
 
 export enum ProcessingSite {
@@ -441,10 +463,6 @@ export enum Mode {
     Other = "OTHER"
 }
 
-export enum Category {
-    Classification = "CLASSIFICATION"
-}
-
 export enum EmbeddingApplied {
     No = "NO",
     Yes = "YES"
@@ -468,6 +486,11 @@ export enum VitrificationApplied {
 export enum CryogenName {
     Ethane = "ETHANE",
     EthanePropane_ = "ETHANE-PROPANE"
+}
+
+export enum Instrument {
+    Chameleon = "CHAMELEON",
+    Cryogenium = "CRYOGENIUM"
 }
 
 export enum InitialOfCenter {
@@ -663,6 +686,7 @@ export enum SourceName {
     AlphaFold = "AlphaFold",
     ITasser = "ITasser",
     InsightIi = "InsightII",
+    ModelAngelo = "ModelAngelo",
     ModelArchive = "ModelArchive",
     Modeller = "Modeller",
     Other = "Other",
@@ -700,7 +724,8 @@ export enum TemperatureUnits {
 
 export enum Method {
     Fixedtarget = "fixedtarget",
-    Injection = "injection"
+    Injection = "injection",
+    Other = "other"
 }
 
 export enum LigandsForBusterReport {
@@ -942,6 +967,8 @@ export enum ReferenceName {
 }
 
 
+
+
 export enum GroupProvenanceId {
     ProvenanceSequenceIdentity = "provenance_sequence_identity",
     ProvenanceMatchingUniprotAccession = "provenance_matching_uniprot_accession",
@@ -955,6 +982,11 @@ export enum GroupMembersGranularity {
     PolymerEntity = "polymer_entity",
     NonPolymerEntity = "non_polymer_entity",
     PolymerEntityInstance = "polymer_entity_instance"
+}
+
+export enum MemberType {
+    Pdb = "PDB",
+    Csm = "CSM"
 }
 
 

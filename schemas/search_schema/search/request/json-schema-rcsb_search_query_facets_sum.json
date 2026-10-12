@@ -1,0 +1,29 @@
+{
+  "$id": "/schema/search/request/json-schema-rcsb_search_query_facets_sum.json",
+  "title": "Sum Facet",
+  "type": "object",
+  "required": [
+    "name",
+    "aggregation_type",
+    "attribute"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Specifies the name of the aggregation"
+    },
+    "aggregation_type": {
+      "type": "string",
+      "enum": [
+        "sum"
+      ],
+      "description": "Specifies the type of the aggregation"
+    },
+    "attribute": {
+      "type": "string",
+      "description": "Specifies the full attribute name to aggregate on"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A single-value metrics aggregation that sums up numeric values for a given field."
+}

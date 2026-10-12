@@ -208,6 +208,9 @@ export interface SchemaPdbxCoreCollectionPdbxCoreAssemblyVersion910 {
       biol_id: string;
       /**
        * The property type for the assembly.
+       *  ABSA (A^2) is the "Total buried surface area (A^2)"
+       *  SSA (A^2) is "Surface area for the complex (A^2)"
+       *  MORE is "Internal energy (kcal/mol)"
        */
       type: "ABSA (A^2)" | "MORE" | "SSA (A^2)";
       /**
@@ -226,6 +229,9 @@ export interface SchemaPdbxCoreCollectionPdbxCoreAssemblyVersion910 {
       biol_id: string;
       /**
        * The property type for the assembly.
+       *  ABSA (A^2) is the "Total buried surface area (A^2)"
+       *  SSA (A^2) is "Surface area for the complex (A^2)"
+       *  MORE is "Internal energy (kcal/mol)"
        */
       type: "ABSA (A^2)" | "MORE" | "SSA (A^2)";
       /**

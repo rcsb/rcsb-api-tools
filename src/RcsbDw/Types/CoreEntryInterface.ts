@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_entry version 9.1.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_entry.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_entry version 9.1.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_entry.json and follows JSON schema specification version 4
  */
-export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
+export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion912 {
   /**
    * @minItems 1
    */
@@ -1968,6 +1968,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
         | "JEOL 4000EX"
         | "JEOL CRYO ARM 200"
         | "JEOL CRYO ARM 300"
+        | "JEOL JEM-F200"
         | "JEOL KYOTO-3000SFF"
         | "SHUIMU TOTEM 120S"
         | "SHUIMU TOTEM 200S"
@@ -2211,6 +2212,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
         | "JEOL 4000EX"
         | "JEOL CRYO ARM 200"
         | "JEOL CRYO ARM 300"
+        | "JEOL JEM-F200"
         | "JEOL KYOTO-3000SFF"
         | "SHUIMU TOTEM 120S"
         | "SHUIMU TOTEM 200S"
@@ -2673,7 +2675,10 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
        * The type of instrument used in the vitrification process.
        */
       instrument?:
+        | "CHAMELEON"
+        | "CRYOGENIUM"
         | "CRYOSOL VITROJET"
+        | "CRYOWRITER"
         | "EMS-002 RAPID IMMERSION FREEZER"
         | "FEI VITROBOT MARK I"
         | "FEI VITROBOT MARK II"
@@ -2683,6 +2688,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
         | "HOMEMADE PLUNGER"
         | "LEICA EM CPC"
         | "LEICA EM GP"
+        | "LEICA EM GP2"
         | "LEICA KF80"
         | "LEICA PLUNGER"
         | "REICHERT-JUNG PLUNGER"
@@ -2743,7 +2749,10 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
        * The type of instrument used in the vitrification process.
        */
       instrument?:
+        | "CHAMELEON"
+        | "CRYOGENIUM"
         | "CRYOSOL VITROJET"
+        | "CRYOWRITER"
         | "EMS-002 RAPID IMMERSION FREEZER"
         | "FEI VITROBOT MARK I"
         | "FEI VITROBOT MARK II"
@@ -2753,6 +2762,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
         | "HOMEMADE PLUNGER"
         | "LEICA EM CPC"
         | "LEICA EM GP"
+        | "LEICA EM GP2"
         | "LEICA KF80"
         | "LEICA PLUNGER"
         | "REICHERT-JUNG PLUNGER"
@@ -4264,6 +4274,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
         | "AlphaFold"
         | "ITasser"
         | "InsightII"
+        | "ModelAngelo"
         | "ModelArchive"
         | "Modeller"
         | "Other"
@@ -4300,6 +4311,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
         | "AlphaFold"
         | "ITasser"
         | "InsightII"
+        | "ModelAngelo"
         | "ModelArchive"
         | "Modeller"
         | "Other"
@@ -5551,7 +5563,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
        * The description of the mechanism by which the specimen in placed in the path
        *  of the source.
        */
-      method?: "fixed target" | "injection";
+      method?: "fixed target" | "injection" | "other";
     },
     ...{
       /**
@@ -5568,7 +5580,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
        * The description of the mechanism by which the specimen in placed in the path
        *  of the source.
        */
-      method?: "fixed target" | "injection";
+      method?: "fixed target" | "injection" | "other";
     }[]
   ];
   /**
@@ -7553,9 +7565,16 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
      */
     cis_peptide_count?: number;
     /**
-     * The number of heavy atom coordinates records per deposited structure model.
+     * The number of heavy atom coordinates records (including alternate conformations)
+     *  for the representative structure model deposited.
      */
     deposited_atom_count?: number;
+    /**
+     * The number of branched instances in the deposited data set.
+     *  This is the total count of branched entity instances reported
+     *  per deposited structure model.
+     */
+    deposited_branched_entity_instance_count?: number;
     /**
      * The number of deuterated water molecules per deposited structure model.
      */
@@ -7581,7 +7600,7 @@ export interface SchemaPdbxCoreCollectionPdbxCoreEntryVersion911 {
      */
     deposited_nonpolymer_entity_instance_count?: number;
     /**
-     * The number of polymer instances in the deposited data set.
+     * The number of protein/nucleic acid polymer instances in the deposited data set.
      *  This is the total count of polymer entity instances reported
      *  per deposited structure model.
      */

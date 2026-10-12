@@ -6,9 +6,606 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_polymer_entity_instance version 10.1.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_polymer_entity_instance.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_polymer_entity_instance version 10.1.3. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_polymer_entity_instance.json and follows JSON schema specification version 4
  */
-export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityInstanceVersion1012 {
+export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityInstanceVersion1013 {
+  /**
+   * @minItems 1
+   */
+  pdbx_modification_feature?: [
+    {
+      /**
+       * The category of protein modification.
+       */
+      category?:
+        | "ADP-ribose"
+        | "Amino acid"
+        | "Biotin"
+        | "Carbohydrate"
+        | "Chromophore/chromophore-like"
+        | "Covalent chemical modification"
+        | "Crosslinker"
+        | "Disulfide bridge"
+        | "Flavin"
+        | "Heme/heme-like"
+        | "Isopeptide bond"
+        | "Lipid/lipid-like"
+        | "Metal coordination"
+        | "Named protein modification"
+        | "Non-standard linkage"
+        | "Non-standard residue"
+        | "Nucleotide monophosphate"
+        | "Terminal acetylation"
+        | "Terminal amidation";
+      /**
+       * The atom on the modification group that covalently links the
+       *  modification to the residue that is being modified. This is
+       *  only added when the protein modification is linked and so the
+       *  amino acid group and the modification group are described by
+       *  separate CCDs.
+       */
+      comp_id_linking_atom?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  describes the protein modification.
+       *
+       *  This data item is a pointer to _atom_site.label_asym_id in the
+       *  ATOM_SITE category.
+       */
+      label_asym_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  describes the protein modification.
+       *
+       *  This data item is a pointer to _atom_site.label_comp_id in the
+       *  ATOM_SITE category.
+       */
+      label_comp_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  describes the protein modification.
+       *
+       *  This data item is a pointer to _atom_site.label_seq_id in the
+       *  ATOM_SITE category.
+       */
+      label_seq_id?: number;
+      /**
+       * Chemical component identifier for the amino acid residue that is being modified.
+       */
+      modified_residue_id?: string;
+      /**
+       * The atom on the polypeptide residue group that covalently links
+       *  the modification to the residue that is being modified. This is
+       *  only added when the protein modification is linked and so the
+       *  amino acid group and the modification group are described by
+       *  separate CCDs.
+       */
+      modified_residue_id_linking_atom?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  is being modified.
+       *
+       *  This data item is a pointer to _atom_site.label_asym_id in the
+       *  ATOM_SITE category.
+       */
+      modified_residue_label_asym_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  is being modified.
+       *
+       *  This data item is a pointer to _atom_site.label_comp_id in the
+       *  ATOM_SITE category.
+       */
+      modified_residue_label_comp_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  is being modified.
+       *
+       *  This data item is a pointer to _atom_site.label_seq_id in the
+       *  ATOM_SITE category.
+       */
+      modified_residue_label_seq_id?: number;
+      /**
+       * Describes the symmetry operation that should be applied to the
+       *  chemical component that is being modified.
+       */
+      modified_residue_symmetry?: string;
+      rcsb_modified_residue_id?: string[];
+      /**
+       * Describes the symmetry operation that should be applied to the
+       *  protein modification group.
+       */
+      symmetry?: string;
+      /**
+       * The type of protein modification.
+       */
+      type?:
+        | "(3-Aminopropyl)(5'-adenosyl)phosphono amidation"
+        | "(3R)-3-Hydroxybutyrylation"
+        | "12-Hydroxyfarnesylation"
+        | "12-Oxomyristoylation"
+        | "12R-Hydroxymyristoylation"
+        | "14-Hydroxy-10,13-dioxo-7-heptadecenoic acid"
+        | "2,3-Dicarboxypropylation"
+        | "2-Aminoadipylation"
+        | "2-Aminoethylphosphorylation"
+        | "2-Cholinephosphorylation"
+        | "2-Hydroxyisobutyrylation"
+        | "2-Oxo-5,5-dimethylhexanoylation"
+        | "2-Oxobutanoic acid"
+        | "3-Oxoalanine"
+        | "3-Phenyllactic acid"
+        | "4-Phosphopantetheine"
+        | "ADP-ribosylation"
+        | "ADP-riboxanation"
+        | "AMPylation"
+        | "Acetamidation"
+        | "Acetamidomethylation"
+        | "Acetylation"
+        | "Alanylation"
+        | "Allysine"
+        | "Amination"
+        | "Arachidoylation"
+        | "Archaeol"
+        | "Arginylation"
+        | "Arsenylation"
+        | "Asparaginylation"
+        | "Aspartylation"
+        | "Bacillithiolation"
+        | "Benzoylation"
+        | "Benzylation"
+        | "Beta-amino acid"
+        | "Beta-hydroxybutyrylation"
+        | "Beta-lysylation"
+        | "Beta-mercaptoethanol"
+        | "Biotinylation"
+        | "Bromination"
+        | "Butyrylation"
+        | "C-Mannosylation"
+        | "CMPylation"
+        | "Carbamoylation"
+        | "Carboxyethylation"
+        | "Carboxylation"
+        | "Carboxymethylation"
+        | "Chlorination"
+        | "Cholesterylation"
+        | "Citrullination"
+        | "Crotonylation"
+        | "Cyanation"
+        | "Cysteinylation"
+        | "D-alanylation"
+        | "D-arginylation"
+        | "D-asparaginylation"
+        | "D-aspartylation"
+        | "D-cysteinylation"
+        | "D-glutaminylation"
+        | "D-glutamylation"
+        | "D-histidinylation"
+        | "D-isoleucylation"
+        | "D-lactate"
+        | "D-leucylation"
+        | "D-lysylation"
+        | "D-methionylation"
+        | "D-phenylalanylation"
+        | "D-prolylation"
+        | "D-serylation"
+        | "D-threoninylation"
+        | "D-tryptophanylation"
+        | "D-tyrosination"
+        | "D-valylation"
+        | "Deamidation"
+        | "Decanoylation"
+        | "Decarboxylation"
+        | "Dehydroamino acid"
+        | "Dehydrocoelenterazination"
+        | "Dehydrogenation"
+        | "Dehydroxylation"
+        | "Deoxidation"
+        | "Deoxyhypusine"
+        | "Diacylglycerol"
+        | "Dihydroxyacetonation"
+        | "Dimethylamination"
+        | "Diphosphorylation"
+        | "Diphthamide"
+        | "Dipyrromethane methylation"
+        | "Dopaminylation"
+        | "Ethylation"
+        | "Ethylsulfanylation"
+        | "Farnesylation"
+        | "Fluorination"
+        | "Formylation"
+        | "GMPylation"
+        | "Geranylgeranylation"
+        | "Glutaminylation"
+        | "Glutamylation"
+        | "Glutarylation"
+        | "Glutathionylation"
+        | "Glycerophosphorylation"
+        | "Glycerylphosphorylethanolamination"
+        | "Glycylation"
+        | "Heptanoylation"
+        | "Hexanoylation"
+        | "Histaminylation"
+        | "Histidinylation"
+        | "Hydrogenation"
+        | "Hydroperoxylation"
+        | "Hydroxyamination"
+        | "Hydroxyethylation"
+        | "Hydroxylation"
+        | "Hydroxymethylation"
+        | "Hydroxysulfanylation"
+        | "Hypusine"
+        | "Iodination"
+        | "Isobutyrylation"
+        | "Isoleucylation"
+        | "L-lactate"
+        | "Lactoylation"
+        | "Laurylation"
+        | "Leucylation"
+        | "Lipoylation"
+        | "Lysylation"
+        | "Malonylation"
+        | "Methacrylation"
+        | "Methionylation"
+        | "Methoxylation"
+        | "Methylamination"
+        | "Methylation"
+        | "Methylsulfanylation"
+        | "Methylsulfation"
+        | "Myristoylation"
+        | "N-Glycosylation"
+        | "N-methylcarbamoylation"
+        | "N-pyruvic acid 2-iminylation"
+        | "N6-benzoyllysine"
+        | "N6-isonicotinyllysine"
+        | "N6-methacryllysine"
+        | "Nitration"
+        | "Nitrosylation"
+        | "None"
+        | "Noradrenylation"
+        | "Norleucine"
+        | "Norvaline"
+        | "O-Glycosylation"
+        | "Octanoylation"
+        | "Oleoylation"
+        | "Ornithine"
+        | "Oxidation"
+        | "Palmitoleoylation"
+        | "Palmitoylation"
+        | "Pentadecanoylation"
+        | "Pentanoylation"
+        | "Phenylalanylation"
+        | "Phosphatidylethanolamine amidation"
+        | "Phosphoenolpyruvate"
+        | "Phosphorylation"
+        | "Prolylation"
+        | "Propionylation"
+        | "Pyridoxal phosphate"
+        | "Pyrrolidone carboxylic acid"
+        | "Pyruvic acid"
+        | "Retinoylation"
+        | "S-Glycosylation"
+        | "Selanylation"
+        | "Selenomethionine"
+        | "Serotonylation"
+        | "Serylation"
+        | "Stearoylation"
+        | "Stereoisomerisation"
+        | "Succinamide ring"
+        | "Succination"
+        | "Succinylation"
+        | "Sulfanylmethylation"
+        | "Sulfation"
+        | "Sulfhydration"
+        | "Tert-butylation"
+        | "Tert-butyloxycarbonylation"
+        | "Threoninylation"
+        | "Thyroxine"
+        | "Triiodothyronine"
+        | "Triphosphorylation"
+        | "Tryptophanylation"
+        | "Tyrosination"
+        | "UMPylation"
+        | "Valylation"
+        | "cGMPylation";
+    },
+    ...{
+      /**
+       * The category of protein modification.
+       */
+      category?:
+        | "ADP-ribose"
+        | "Amino acid"
+        | "Biotin"
+        | "Carbohydrate"
+        | "Chromophore/chromophore-like"
+        | "Covalent chemical modification"
+        | "Crosslinker"
+        | "Disulfide bridge"
+        | "Flavin"
+        | "Heme/heme-like"
+        | "Isopeptide bond"
+        | "Lipid/lipid-like"
+        | "Metal coordination"
+        | "Named protein modification"
+        | "Non-standard linkage"
+        | "Non-standard residue"
+        | "Nucleotide monophosphate"
+        | "Terminal acetylation"
+        | "Terminal amidation";
+      /**
+       * The atom on the modification group that covalently links the
+       *  modification to the residue that is being modified. This is
+       *  only added when the protein modification is linked and so the
+       *  amino acid group and the modification group are described by
+       *  separate CCDs.
+       */
+      comp_id_linking_atom?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  describes the protein modification.
+       *
+       *  This data item is a pointer to _atom_site.label_asym_id in the
+       *  ATOM_SITE category.
+       */
+      label_asym_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  describes the protein modification.
+       *
+       *  This data item is a pointer to _atom_site.label_comp_id in the
+       *  ATOM_SITE category.
+       */
+      label_comp_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  describes the protein modification.
+       *
+       *  This data item is a pointer to _atom_site.label_seq_id in the
+       *  ATOM_SITE category.
+       */
+      label_seq_id?: number;
+      /**
+       * Chemical component identifier for the amino acid residue that is being modified.
+       */
+      modified_residue_id?: string;
+      /**
+       * The atom on the polypeptide residue group that covalently links
+       *  the modification to the residue that is being modified. This is
+       *  only added when the protein modification is linked and so the
+       *  amino acid group and the modification group are described by
+       *  separate CCDs.
+       */
+      modified_residue_id_linking_atom?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  is being modified.
+       *
+       *  This data item is a pointer to _atom_site.label_asym_id in the
+       *  ATOM_SITE category.
+       */
+      modified_residue_label_asym_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  is being modified.
+       *
+       *  This data item is a pointer to _atom_site.label_comp_id in the
+       *  ATOM_SITE category.
+       */
+      modified_residue_label_comp_id?: string;
+      /**
+       * A component of the identifier for the chemical component that
+       *  is being modified.
+       *
+       *  This data item is a pointer to _atom_site.label_seq_id in the
+       *  ATOM_SITE category.
+       */
+      modified_residue_label_seq_id?: number;
+      /**
+       * Describes the symmetry operation that should be applied to the
+       *  chemical component that is being modified.
+       */
+      modified_residue_symmetry?: string;
+      rcsb_modified_residue_id?: string[];
+      /**
+       * Describes the symmetry operation that should be applied to the
+       *  protein modification group.
+       */
+      symmetry?: string;
+      /**
+       * The type of protein modification.
+       */
+      type?:
+        | "(3-Aminopropyl)(5'-adenosyl)phosphono amidation"
+        | "(3R)-3-Hydroxybutyrylation"
+        | "12-Hydroxyfarnesylation"
+        | "12-Oxomyristoylation"
+        | "12R-Hydroxymyristoylation"
+        | "14-Hydroxy-10,13-dioxo-7-heptadecenoic acid"
+        | "2,3-Dicarboxypropylation"
+        | "2-Aminoadipylation"
+        | "2-Aminoethylphosphorylation"
+        | "2-Cholinephosphorylation"
+        | "2-Hydroxyisobutyrylation"
+        | "2-Oxo-5,5-dimethylhexanoylation"
+        | "2-Oxobutanoic acid"
+        | "3-Oxoalanine"
+        | "3-Phenyllactic acid"
+        | "4-Phosphopantetheine"
+        | "ADP-ribosylation"
+        | "ADP-riboxanation"
+        | "AMPylation"
+        | "Acetamidation"
+        | "Acetamidomethylation"
+        | "Acetylation"
+        | "Alanylation"
+        | "Allysine"
+        | "Amination"
+        | "Arachidoylation"
+        | "Archaeol"
+        | "Arginylation"
+        | "Arsenylation"
+        | "Asparaginylation"
+        | "Aspartylation"
+        | "Bacillithiolation"
+        | "Benzoylation"
+        | "Benzylation"
+        | "Beta-amino acid"
+        | "Beta-hydroxybutyrylation"
+        | "Beta-lysylation"
+        | "Beta-mercaptoethanol"
+        | "Biotinylation"
+        | "Bromination"
+        | "Butyrylation"
+        | "C-Mannosylation"
+        | "CMPylation"
+        | "Carbamoylation"
+        | "Carboxyethylation"
+        | "Carboxylation"
+        | "Carboxymethylation"
+        | "Chlorination"
+        | "Cholesterylation"
+        | "Citrullination"
+        | "Crotonylation"
+        | "Cyanation"
+        | "Cysteinylation"
+        | "D-alanylation"
+        | "D-arginylation"
+        | "D-asparaginylation"
+        | "D-aspartylation"
+        | "D-cysteinylation"
+        | "D-glutaminylation"
+        | "D-glutamylation"
+        | "D-histidinylation"
+        | "D-isoleucylation"
+        | "D-lactate"
+        | "D-leucylation"
+        | "D-lysylation"
+        | "D-methionylation"
+        | "D-phenylalanylation"
+        | "D-prolylation"
+        | "D-serylation"
+        | "D-threoninylation"
+        | "D-tryptophanylation"
+        | "D-tyrosination"
+        | "D-valylation"
+        | "Deamidation"
+        | "Decanoylation"
+        | "Decarboxylation"
+        | "Dehydroamino acid"
+        | "Dehydrocoelenterazination"
+        | "Dehydrogenation"
+        | "Dehydroxylation"
+        | "Deoxidation"
+        | "Deoxyhypusine"
+        | "Diacylglycerol"
+        | "Dihydroxyacetonation"
+        | "Dimethylamination"
+        | "Diphosphorylation"
+        | "Diphthamide"
+        | "Dipyrromethane methylation"
+        | "Dopaminylation"
+        | "Ethylation"
+        | "Ethylsulfanylation"
+        | "Farnesylation"
+        | "Fluorination"
+        | "Formylation"
+        | "GMPylation"
+        | "Geranylgeranylation"
+        | "Glutaminylation"
+        | "Glutamylation"
+        | "Glutarylation"
+        | "Glutathionylation"
+        | "Glycerophosphorylation"
+        | "Glycerylphosphorylethanolamination"
+        | "Glycylation"
+        | "Heptanoylation"
+        | "Hexanoylation"
+        | "Histaminylation"
+        | "Histidinylation"
+        | "Hydrogenation"
+        | "Hydroperoxylation"
+        | "Hydroxyamination"
+        | "Hydroxyethylation"
+        | "Hydroxylation"
+        | "Hydroxymethylation"
+        | "Hydroxysulfanylation"
+        | "Hypusine"
+        | "Iodination"
+        | "Isobutyrylation"
+        | "Isoleucylation"
+        | "L-lactate"
+        | "Lactoylation"
+        | "Laurylation"
+        | "Leucylation"
+        | "Lipoylation"
+        | "Lysylation"
+        | "Malonylation"
+        | "Methacrylation"
+        | "Methionylation"
+        | "Methoxylation"
+        | "Methylamination"
+        | "Methylation"
+        | "Methylsulfanylation"
+        | "Methylsulfation"
+        | "Myristoylation"
+        | "N-Glycosylation"
+        | "N-methylcarbamoylation"
+        | "N-pyruvic acid 2-iminylation"
+        | "N6-benzoyllysine"
+        | "N6-isonicotinyllysine"
+        | "N6-methacryllysine"
+        | "Nitration"
+        | "Nitrosylation"
+        | "None"
+        | "Noradrenylation"
+        | "Norleucine"
+        | "Norvaline"
+        | "O-Glycosylation"
+        | "Octanoylation"
+        | "Oleoylation"
+        | "Ornithine"
+        | "Oxidation"
+        | "Palmitoleoylation"
+        | "Palmitoylation"
+        | "Pentadecanoylation"
+        | "Pentanoylation"
+        | "Phenylalanylation"
+        | "Phosphatidylethanolamine amidation"
+        | "Phosphoenolpyruvate"
+        | "Phosphorylation"
+        | "Prolylation"
+        | "Propionylation"
+        | "Pyridoxal phosphate"
+        | "Pyrrolidone carboxylic acid"
+        | "Pyruvic acid"
+        | "Retinoylation"
+        | "S-Glycosylation"
+        | "Selanylation"
+        | "Selenomethionine"
+        | "Serotonylation"
+        | "Serylation"
+        | "Stearoylation"
+        | "Stereoisomerisation"
+        | "Succinamide ring"
+        | "Succination"
+        | "Succinylation"
+        | "Sulfanylmethylation"
+        | "Sulfation"
+        | "Sulfhydration"
+        | "Tert-butylation"
+        | "Tert-butyloxycarbonylation"
+        | "Threoninylation"
+        | "Thyroxine"
+        | "Triiodothyronine"
+        | "Triphosphorylation"
+        | "Tryptophanylation"
+        | "Tyrosination"
+        | "UMPylation"
+        | "Valylation"
+        | "cGMPylation";
+    }[]
+  ];
   /**
    * @minItems 1
    */

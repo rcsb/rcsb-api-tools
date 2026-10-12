@@ -23,7 +23,7 @@ export interface SchemasInternalGroupsJsonSchemaGroupProvenanceJson {
   };
   rcsb_group_aggregation_method?: {
     /**
-     * Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy
+     * Method used to establish group membership
      */
     type:
       | "sequence_identity"

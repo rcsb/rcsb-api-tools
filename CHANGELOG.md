@@ -2,6 +2,15 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [5.2.1] - 2026-10-12
+### Schema update
+- Search schemas update
+- DW schemas update
+- GraphQL schemas update
+
+### Known Bug
+- `src/RcsbGraphQL/Types/Borrego/GqlTypes.ts` duplicated type error. Fixed manually in this version.  
+
 ## [5.2.0] - 2026-05-08
 ### Dependency update
 - audit fix

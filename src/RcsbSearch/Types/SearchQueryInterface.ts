@@ -19,8 +19,28 @@ export type RequestOptionsResultsVerbosity = "compact" | "minimal" | "verbose";
  * @minItems 1
  */
 export type RequestOptionsFacets = [
-  TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet,
-  ...(TermsFacet | HistogramFacet | DateHistogramFacet | RangeFacet | DateRangeFacet | CardinalityFacet | FilterFacet)[]
+  (
+    | TermsFacet
+    | HistogramFacet
+    | DateHistogramFacet
+    | RangeFacet
+    | DateRangeFacet
+    | CardinalityFacet
+    | SumFacet
+    | AvgFacet
+    | FilterFacet
+  ),
+  ...(
+    | TermsFacet
+    | HistogramFacet
+    | DateHistogramFacet
+    | RangeFacet
+    | DateRangeFacet
+    | CardinalityFacet
+    | SumFacet
+    | AvgFacet
+    | FilterFacet
+  )[]
 ];
 export type NumericValue = number;
 export type DateValue = string;
@@ -285,6 +305,40 @@ export interface CardinalityFacet {
    * Allows to trade memory for accuracy, and defines a unique count below which counts are expected to be close to accurate
    */
   precision_threshold?: number;
+}
+/**
+ * A single-value metrics aggregation that sums up numeric values for a given field.
+ */
+export interface SumFacet {
+  /**
+   * Specifies the name of the aggregation
+   */
+  name: string;
+  /**
+   * Specifies the type of the aggregation
+   */
+  aggregation_type: "sum";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
+  attribute: string;
+}
+/**
+ * A single-value metrics aggregation that computes the average of numeric values for a field.
+ */
+export interface AvgFacet {
+  /**
+   * Specifies the name of the aggregation
+   */
+  name: string;
+  /**
+   * Specifies the type of the aggregation
+   */
+  aggregation_type: "avg";
+  /**
+   * Specifies the full attribute name to aggregate on
+   */
+  attribute: string;
 }
 /**
  * A single bucket aggregation that narrows the set of documents to those that match a filter query

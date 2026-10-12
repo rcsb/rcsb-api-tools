@@ -1,0 +1,27 @@
+{
+  "title" : "Embedding Entity to Sequence",
+  "description": "JSON schema for mapping PDB entity to sequence identifiers.",
+  "type": "object",
+  "required": [
+    "seq_id",
+    "entity_id"
+  ],
+  "properties": {
+    "seq_id": {
+      "type": "string",
+      "examples": [
+        "21da122930be996ccc3e92bc520b4091e071d109049af387bb5cbfe168c81c14",
+        "ec9d70396cd69aea1f011484f448e5fdeade7fde39d12d3bb950ca3c9bc69a48"
+      ],
+      "description": "An identifier calculated as an SHA-256 hash on the embedded sequence."
+    },
+    "entity_id": {
+      "type": "string",
+      "examples": [
+        "1ACB_1",
+        "2UZI_3"
+      ],
+      "description": "An identifier for a PDB entity."
+    }
+  }
+}

@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_polymer_entity version 10.1.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_polymer_entity.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_polymer_entity version 10.1.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_polymer_entity.json and follows JSON schema specification version 4
  */
-export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
+export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1012 {
   entity_poly?: {
     /**
      * A flag to indicate whether the polymer contains at least
@@ -2026,7 +2026,8 @@ export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
         | "disorder_binding"
         | "hydropathy"
         | "modified_monomer"
-        | "mutation";
+        | "mutation"
+        | "non_standard_monomer";
       feature_positions?: {
         /**
          * An identifier for the leading monomer corresponding to the feature assignment.
@@ -2101,7 +2102,8 @@ export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
         | "disorder_binding"
         | "hydropathy"
         | "modified_monomer"
-        | "mutation";
+        | "mutation"
+        | "non_standard_monomer";
       feature_positions?: {
         /**
          * An identifier for the leading monomer corresponding to the feature assignment.
@@ -2141,7 +2143,7 @@ export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
       count?: number;
       /**
        * The fractional feature coverage relative to the full entity sequence.
-       *  For instance, the fraction of features such as mutations, artifacts or modified monomers
+       *  For instance, the fraction of features such as mutations, artifacts or non-standard monomers
        *  relative to the length of the entity sequence.
        */
       coverage?: number;
@@ -2179,7 +2181,8 @@ export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
         | "SABDAB_ANTIBODY_TARGET"
         | "artifact"
         | "modified_monomer"
-        | "mutation";
+        | "mutation"
+        | "non_standard_monomer";
     },
     ...{
       /**
@@ -2188,7 +2191,7 @@ export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
       count?: number;
       /**
        * The fractional feature coverage relative to the full entity sequence.
-       *  For instance, the fraction of features such as mutations, artifacts or modified monomers
+       *  For instance, the fraction of features such as mutations, artifacts or non-standard monomers
        *  relative to the length of the entity sequence.
        */
       coverage?: number;
@@ -2226,7 +2229,8 @@ export interface SchemaPdbxCoreCollectionPdbxCorePolymerEntityVersion1011 {
         | "SABDAB_ANTIBODY_TARGET"
         | "artifact"
         | "modified_monomer"
-        | "mutation";
+        | "mutation"
+        | "non_standard_monomer";
     }[]
   ];
   /**

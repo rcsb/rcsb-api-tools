@@ -1,0 +1,57 @@
+{
+  "title" : "Group membership",
+  "$schema" : "https://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "required" : [ "group_id", "member_id", "member_type" ],
+  "properties" : {
+    "group_id" : {
+      "type" : "string",
+      "description" : "A unique identifier for a group"
+    },
+    "member_id" : {
+      "type" : "string",
+      "description" : "A unique identifier for a group member"
+    },
+    "aligned_regions" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "javaType" : "org.rcsb.mojave.auto.GroupMembershipAlignedRegions",
+        "properties" : {
+          "entity_beg_seq_id" : {
+            "type" : "integer",
+            "description" : "An identifier for the monomer in the entity sequence at which this segment of the alignment begins.",
+            "rcsb_description" : [ {
+              "text" : "An identifier for the monomer in the entity sequence at which this segment of the alignment begins.",
+              "context" : "dictionary"
+            } ]
+          },
+          "length" : {
+            "type" : "integer",
+            "description" : "The length of this segment of the alignment.",
+            "rcsb_description" : [ {
+              "text" : "The length of this segment of the alignment.",
+              "context" : "dictionary"
+            } ]
+          },
+          "ref_beg_seq_id" : {
+            "type" : "integer",
+            "description" : "An identifier for the monomer in the reference sequence at which this segment of the alignment begins.",
+            "rcsb_description" : [ {
+              "text" : "An identifier for the monomer in the reference sequence at which this segment of the alignment begins.",
+              "context" : "dictionary"
+            } ]
+          }
+        },
+        "additionalProperties" : false
+      },
+      "uniqueItems" : false
+    },
+    "member_type" : {
+      "type" : "string",
+      "description" : "Whether the group member id corresponds to a PDB or a CSM entry.",
+      "enum" : [ "PDB", "CSM" ]
+    }
+  },
+  "additionalProperties" : false
+}

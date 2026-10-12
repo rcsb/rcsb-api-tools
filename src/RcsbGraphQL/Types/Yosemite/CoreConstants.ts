@@ -21,6 +21,7 @@ export class CoreConstants{
 	public static readonly PDBX_FORMAL_CHARGE = "pdbx_formal_charge";
 	public static readonly PDBX_INITIAL_DATE = "pdbx_initial_date";
 	public static readonly PDBX_MODIFIED_DATE = "pdbx_modified_date";
+	public static readonly PDBX_PCM = "pdbx_pcm";
 	public static readonly PDBX_PROCESSING_SITE = "pdbx_processing_site";
 	public static readonly PDBX_RELEASE_STATUS = "pdbx_release_status";
 	public static readonly PDBX_REPLACED_BY = "pdbx_replaced_by";
@@ -100,6 +101,7 @@ export class CoreConstants{
 	public static readonly PDBX_CHEM_COMP_DESCRIPTOR = "pdbx_chem_comp_descriptor";
 	public static readonly PDBX_CHEM_COMP_FEATURE = "pdbx_chem_comp_feature";
 	public static readonly PDBX_CHEM_COMP_IDENTIFIER = "pdbx_chem_comp_identifier";
+	public static readonly PDBX_CHEM_COMP_PCM = "pdbx_chem_comp_pcm";
 	public static readonly PDBX_FAMILY_PRD_AUDIT = "pdbx_family_prd_audit";
 	public static readonly PDBX_PRD_AUDIT = "pdbx_prd_audit";
 	public static readonly PDBX_REFERENCE_ENTITY_LIST = "pdbx_reference_entity_list";
@@ -250,7 +252,6 @@ export class CoreConstants{
 	public static readonly RCSB_NONPOLYMER_ENTITY_KEYWORDS = "rcsb_nonpolymer_entity_keywords";
 	public static readonly RCSB_NONPOLYMER_ENTITY_NAME_COM = "rcsb_nonpolymer_entity_name_com";
 	public static readonly NONPOLYMER_ENTITY = "nonpolymer_entity";
-	public static readonly PDBX_VRPT_SUMMARY_ENTITY_FIT_TO_MAP = "pdbx_vrpt_summary_entity_fit_to_map";
 	public static readonly PDBX_VRPT_SUMMARY_ENTITY_GEOMETRY = "pdbx_vrpt_summary_entity_geometry";
 	public static readonly RCSB_NONPOLYMER_ENTITY_INSTANCE_CONTAINER_IDENTIFIERS = "rcsb_nonpolymer_entity_instance_container_identifiers";
 	public static readonly RCSB_NONPOLYMER_INSTANCE_ANNOTATION = "rcsb_nonpolymer_instance_annotation";
@@ -294,6 +295,8 @@ export class CoreConstants{
 	public static readonly RCSB_RELATED_TARGET_REFERENCES = "rcsb_related_target_references";
 	public static readonly RCSB_TARGET_COFACTORS = "rcsb_target_cofactors";
 	public static readonly UNIPROTS = "uniprots";
+	public static readonly PDBX_MODIFICATION_FEATURE = "pdbx_modification_feature";
+	public static readonly PDBX_VRPT_SUMMARY_ENTITY_FIT_TO_MAP = "pdbx_vrpt_summary_entity_fit_to_map";
 	public static readonly POLYMER_ENTITY = "polymer_entity";
 	public static readonly RCSB_POLYMER_ENTITY_INSTANCE_CONTAINER_IDENTIFIERS = "rcsb_polymer_entity_instance_container_identifiers";
 	public static readonly RCSB_POLYMER_INSTANCE_ANNOTATION = "rcsb_polymer_instance_annotation";
@@ -605,6 +608,14 @@ export class CoreConstants{
 	public static readonly PROGRAM = "program";
 	public static readonly PROGRAM_VERSION = "program_version";
 	public static readonly IDENTIFIER = "identifier";
+	public static readonly COMP_ID_LINKING_ATOM = "comp_id_linking_atom";
+	public static readonly MODIFIED_RESIDUE_ID = "modified_residue_id";
+	public static readonly MODIFIED_RESIDUE_ID_LINKING_ATOM = "modified_residue_id_linking_atom";
+	public static readonly POLYPEPTIDE_POSITION = "polypeptide_position";
+	public static readonly POSITION = "position";
+	public static readonly RCSB_MODIFIED_RESIDUE_ID = "rcsb_modified_residue_id";
+	public static readonly UNIPROT_GENERIC_PTM_ACCESSION = "uniprot_generic_ptm_accession";
+	public static readonly UNIPROT_SPECIFIC_PTM_ACCESSION = "uniprot_specific_ptm_accession";
 	public static readonly PDB_ID = "pdb_id";
 	public static readonly REPLACE_PDB_ID = "replace_pdb_id";
 	public static readonly DB_ID = "db_id";
@@ -631,6 +642,13 @@ export class CoreConstants{
 	public static readonly PROCESSING_SITE = "processing_site";
 	public static readonly ACCESSION_CODE = "accession_code";
 	public static readonly SOURCE_NAME = "source_name";
+	public static readonly LABEL_ASYM_ID = "label_asym_id";
+	public static readonly LABEL_COMP_ID = "label_comp_id";
+	public static readonly LABEL_SEQ_ID = "label_seq_id";
+	public static readonly MODIFIED_RESIDUE_LABEL_ASYM_ID = "modified_residue_label_asym_id";
+	public static readonly MODIFIED_RESIDUE_LABEL_COMP_ID = "modified_residue_label_comp_id";
+	public static readonly MODIFIED_RESIDUE_LABEL_SEQ_ID = "modified_residue_label_seq_id";
+	public static readonly MODIFIED_RESIDUE_SYMMETRY = "modified_residue_symmetry";
 	public static readonly CLASS = "class";
 	public static readonly PRD_ID = "prd_id";
 	public static readonly TEXT = "text";
@@ -802,8 +820,6 @@ export class CoreConstants{
 	public static readonly VECTOR_3 = "vector_3";
 	public static readonly PDB_MODEL_NUM = "PDB_model_num";
 	public static readonly AUTH_SEQ_ID = "auth_seq_id";
-	public static readonly LABEL_ASYM_ID = "label_asym_id";
-	public static readonly LABEL_COMP_ID = "label_comp_id";
 	public static readonly RNA_SUITENESS = "RNA_suiteness";
 	public static readonly ATTEMPTED_VALIDATION_STEPS = "attempted_validation_steps";
 	public static readonly LIGANDS_FOR_BUSTER_REPORT = "ligands_for_buster_report";
@@ -980,7 +996,6 @@ export class CoreConstants{
 	public static readonly ROLE = "role";
 	public static readonly LABEL_ALT_ID = "label_alt_id";
 	public static readonly LABEL_ATOM_ID = "label_atom_id";
-	public static readonly LABEL_SEQ_ID = "label_seq_id";
 	public static readonly SUBCOMPONENT_IDS = "subcomponent_ids";
 	public static readonly INCHI = "InChI";
 	public static readonly INCHIKEY = "InChIKey";
@@ -1025,6 +1040,7 @@ export class CoreConstants{
 	public static readonly BRANCHED_MOLECULAR_WEIGHT_MINIMUM = "branched_molecular_weight_minimum";
 	public static readonly CIS_PEPTIDE_COUNT = "cis_peptide_count";
 	public static readonly DEPOSITED_ATOM_COUNT = "deposited_atom_count";
+	public static readonly DEPOSITED_BRANCHED_ENTITY_INSTANCE_COUNT = "deposited_branched_entity_instance_count";
 	public static readonly DEPOSITED_DEUTERATED_WATER_COUNT = "deposited_deuterated_water_count";
 	public static readonly DEPOSITED_HYDROGEN_ATOM_COUNT = "deposited_hydrogen_atom_count";
 	public static readonly DEPOSITED_MODEL_COUNT = "deposited_model_count";

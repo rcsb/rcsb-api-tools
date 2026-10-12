@@ -45,7 +45,7 @@
                "rcsb_search_group": [
                   {
                      "group_name": "Chemical Components",
-                     "priority_order": 70
+                     "priority_order": 75
                   }
                ]
             },
@@ -187,6 +187,47 @@
                   {
                      "text": "Date component was last modified.",
                      "context": "dictionary"
+                  }
+               ]
+            },
+            "pdbx_pcm": {
+               "type": "string",
+               "enum": [
+                  "N",
+                  "Y"
+               ],
+               "examples": [
+                  "Y"
+               ],
+               "description": "A flag to indicate if the CCD can be used to represent a protein modification.",
+               "rcsb_search_context": [
+                  "exact-match"
+               ],
+               "rcsb_full_text_priority": 10,
+               "rcsb_enum_annotated": [
+                  {
+                     "value": "N",
+                     "detail": "No - Should never be used to represent a protein modification"
+                  },
+                  {
+                     "value": "Y",
+                     "detail": "Yes - Can be used to represent a protein modification"
+                  }
+               ],
+               "rcsb_description": [
+                  {
+                     "text": "A flag to indicate if the CCD can be used to represent a protein modification.",
+                     "context": "dictionary"
+                  },
+                  {
+                     "text": "Protein Modification Component",
+                     "context": "brief"
+                  }
+               ],
+               "rcsb_search_group": [
+                  {
+                     "group_name": "Chemical Components",
+                     "priority_order": 30
                   }
                ]
             },
@@ -955,6 +996,505 @@
                "program_version",
                "type"
             ]
+         },
+         "minItems": 1,
+         "uniqueItems": true
+      },
+      "pdbx_chem_comp_pcm": {
+         "type": "array",
+         "items": {
+            "type": "object",
+            "properties": {
+               "category": {
+                  "type": "string",
+                  "enum": [
+                     "ADP-ribose",
+                     "Amino acid",
+                     "Biotin",
+                     "Carbohydrate",
+                     "Chromophore/chromophore-like",
+                     "Covalent chemical modification",
+                     "Crosslinker",
+                     "Flavin",
+                     "Heme/heme-like",
+                     "Lipid/lipid-like",
+                     "Metal coordination",
+                     "Named protein modification",
+                     "Non-standard residue",
+                     "Nucleotide monophosphate",
+                     "Terminal acetylation",
+                     "Terminal amidation"
+                  ],
+                  "examples": [
+                     "Named protein modification"
+                  ],
+                  "description": "The category of protein modification.",
+                  "rcsb_search_context": [
+                     "exact-match"
+                  ],
+                  "rcsb_full_text_priority": 10,
+                  "rcsb_enum_annotated": [
+                     {
+                        "value": "ADP-ribose",
+                        "detail": "ADP-ribose protein modifications"
+                     },
+                     {
+                        "value": "Amino acid",
+                        "detail": "Canonical amino acid linked to a peptide residue"
+                     },
+                     {
+                        "value": "Biotin",
+                        "detail": "Biotin protein modifications"
+                     },
+                     {
+                        "value": "Carbohydrate",
+                        "detail": "Carbohydrate protein modifications"
+                     },
+                     {
+                        "value": "Chromophore/chromophore-like",
+                        "detail": "Chromophore or chromophore-like protein modifications"
+                     },
+                     {
+                        "value": "Covalent chemical modification",
+                        "detail": "A diverse range of chemical compounds that form covalent bonds with amino acids. Not covered by any of the other modification categories"
+                     },
+                     {
+                        "value": "Crosslinker",
+                        "detail": "Chemical modifications which covalently link two amino-acid residues. Excludes reaction intermediates and modifications covered by other modification categories"
+                     },
+                     {
+                        "value": "Flavin",
+                        "detail": "Flavin protein modifications"
+                     },
+                     {
+                        "value": "Heme/heme-like",
+                        "detail": "Heme or heme-like protein modifications"
+                     },
+                     {
+                        "value": "Lipid/lipid-like",
+                        "detail": "Lipid or lipid-like protein modifications"
+                     },
+                     {
+                        "value": "Metal coordination",
+                        "detail": "Metal coordination"
+                     },
+                     {
+                        "value": "Named protein modification",
+                        "detail": "All protein modifications that are well defined into known types, have limited diversity, and are not explicitly covered by any other category. It includes PTMs, PCMs, rare amino acids and unnatural amino acids"
+                     },
+                     {
+                        "value": "Non-standard residue",
+                        "detail": "A diverse range of non-standard polypeptide residues that are not considered to be 'Named protein modifications'. These cannot be practically split into two CCDs, which describe the standard polypeptide residue and the modification group, and are not covered by any of the other modification categories"
+                     },
+                     {
+                        "value": "Nucleotide monophosphate",
+                        "detail": "Nucleotide monophosphate protein modifications"
+                     },
+                     {
+                        "value": "Terminal acetylation",
+                        "detail": "Terminal acetylation protein modification"
+                     },
+                     {
+                        "value": "Terminal amidation",
+                        "detail": "Terminal amidation protein modification"
+                     }
+                  ],
+                  "rcsb_description": [
+                     {
+                        "text": "The category of protein modification.",
+                        "context": "dictionary"
+                     },
+                     {
+                        "text": "Modification Category",
+                        "context": "brief"
+                     }
+                  ],
+                  "rcsb_search_group": [
+                     {
+                        "group_name": "Protein Modification Components",
+                        "priority_order": 10
+                     }
+                  ]
+               },
+               "comp_id_linking_atom": {
+                  "type": "string",
+                  "examples": [
+                     "C1"
+                  ],
+                  "description": "The atom on the modification group that covalently links the \n modification to the residue that is being modified. This is \n only added when the protein modification is linked and so the \n amino acid group and the modification group are described by \n separate CCDs.",
+                  "rcsb_description": [
+                     {
+                        "text": "The atom on the modification group that covalently links the \n modification to the residue that is being modified. This is \n only added when the protein modification is linked and so the \n amino acid group and the modification group are described by \n separate CCDs.",
+                        "context": "dictionary"
+                     }
+                  ]
+               },
+               "modified_residue_id": {
+                  "type": "string",
+                  "examples": [
+                     "SER"
+                  ],
+                  "description": "Chemical component identifier for the amino acid residue that is being modified.",
+                  "rcsb_description": [
+                     {
+                        "text": "Chemical component identifier for the amino acid residue that is being modified.",
+                        "context": "dictionary"
+                     }
+                  ]
+               },
+               "modified_residue_id_linking_atom": {
+                  "type": "string",
+                  "examples": [
+                     "OG"
+                  ],
+                  "description": "The atom on the polypeptide residue group that covalently links \n the modification to the residue that is being modified. This is \n only added when the protein modification is linked and so the \n amino acid group and the modification group are described by \n separate CCDs.",
+                  "rcsb_description": [
+                     {
+                        "text": "The atom on the polypeptide residue group that covalently links \n the modification to the residue that is being modified. This is \n only added when the protein modification is linked and so the \n amino acid group and the modification group are described by \n separate CCDs.",
+                        "context": "dictionary"
+                     }
+                  ]
+               },
+               "polypeptide_position": {
+                  "type": "string",
+                  "enum": [
+                     "Any position",
+                     "C-terminal",
+                     "N-terminal"
+                  ],
+                  "examples": [
+                     "Any position"
+                  ],
+                  "description": "The position of the modification on the polypeptide.",
+                  "rcsb_enum_annotated": [
+                     {
+                        "value": "Any position",
+                        "detail": "Protein modification can occur in any position of the polypeptide sequence"
+                     },
+                     {
+                        "value": "C-terminal",
+                        "detail": "Protein modification can only occur on C-terminus"
+                     },
+                     {
+                        "value": "N-terminal",
+                        "detail": "Protein modification can only occur on N-terminus"
+                     }
+                  ],
+                  "rcsb_description": [
+                     {
+                        "text": "The position of the modification on the polypeptide.",
+                        "context": "dictionary"
+                     }
+                  ]
+               },
+               "position": {
+                  "type": "string",
+                  "enum": [
+                     "Amino-acid backbone",
+                     "Amino-acid side chain",
+                     "Amino-acid side chain and backbone"
+                  ],
+                  "examples": [
+                     "Amino acid side chain"
+                  ],
+                  "description": "The position of the modification on the amino acid.",
+                  "rcsb_enum_annotated": [
+                     {
+                        "value": "Amino-acid backbone",
+                        "detail": "Protein modification occurs on the amino acid backbone"
+                     },
+                     {
+                        "value": "Amino-acid side chain",
+                        "detail": "Protein modification occurs on the amino acid side chain"
+                     },
+                     {
+                        "value": "Amino-acid side chain and backbone",
+                        "detail": "Protein modification occurs on both the amino acid side chain and backbone"
+                     }
+                  ],
+                  "rcsb_description": [
+                     {
+                        "text": "The position of the modification on the amino acid.",
+                        "context": "dictionary"
+                     }
+                  ]
+               },
+               "rcsb_modified_residue_id": {
+                  "type": "array",
+                  "items": {
+                     "type": "string",
+                     "examples": [
+                        "SER"
+                     ],
+                     "description": "Chemical component identifier for the amino acid residue that is being modified.",
+                     "rcsb_search_context": [
+                        "exact-match"
+                     ],
+                     "rcsb_full_text_priority": 10,
+                     "rcsb_description": [
+                        {
+                           "text": "Chemical component identifier for the amino acid residue that is being modified.",
+                           "context": "dictionary"
+                        },
+                        {
+                           "text": "Modified Residue",
+                           "context": "brief"
+                        }
+                     ],
+                     "rcsb_search_group": [
+                        {
+                           "group_name": "Protein Modification Components",
+                           "priority_order": 15
+                        }
+                     ]
+                  },
+                  "uniqueItems": false
+               },
+               "type": {
+                  "type": "string",
+                  "enum": [
+                     "(3-Aminopropyl)(5'-adenosyl)phosphono amidation",
+                     "(3R)-3-Hydroxybutyrylation",
+                     "12-Hydroxyfarnesylation",
+                     "12-Oxomyristoylation",
+                     "12R-Hydroxymyristoylation",
+                     "14-Hydroxy-10,13-dioxo-7-heptadecenoic acid",
+                     "2,3-Dicarboxypropylation",
+                     "2-Aminoadipylation",
+                     "2-Aminoethylphosphorylation",
+                     "2-Cholinephosphorylation",
+                     "2-Hydroxyisobutyrylation",
+                     "2-Oxo-5,5-dimethylhexanoylation",
+                     "2-Oxobutanoic acid",
+                     "3-Oxoalanine",
+                     "3-Phenyllactic acid",
+                     "4-Phosphopantetheine",
+                     "ADP-ribosylation",
+                     "ADP-riboxanation",
+                     "AMPylation",
+                     "Acetamidation",
+                     "Acetamidomethylation",
+                     "Acetylation",
+                     "Alanylation",
+                     "Allysine",
+                     "Amination",
+                     "Arachidoylation",
+                     "Archaeol",
+                     "Arginylation",
+                     "Arsenylation",
+                     "Asparaginylation",
+                     "Aspartylation",
+                     "Bacillithiolation",
+                     "Benzoylation",
+                     "Benzylation",
+                     "Beta-amino acid",
+                     "Beta-hydroxybutyrylation",
+                     "Beta-lysylation",
+                     "Beta-mercaptoethanol",
+                     "Biotinylation",
+                     "Bromination",
+                     "Butyrylation",
+                     "C-Mannosylation",
+                     "CMPylation",
+                     "Carbamoylation",
+                     "Carboxyethylation",
+                     "Carboxylation",
+                     "Carboxymethylation",
+                     "Chlorination",
+                     "Cholesterylation",
+                     "Citrullination",
+                     "Crotonylation",
+                     "Cyanation",
+                     "Cysteinylation",
+                     "D-alanylation",
+                     "D-arginylation",
+                     "D-asparaginylation",
+                     "D-aspartylation",
+                     "D-cysteinylation",
+                     "D-glutaminylation",
+                     "D-glutamylation",
+                     "D-histidinylation",
+                     "D-isoleucylation",
+                     "D-lactate",
+                     "D-leucylation",
+                     "D-lysylation",
+                     "D-methionylation",
+                     "D-phenylalanylation",
+                     "D-prolylation",
+                     "D-serylation",
+                     "D-threoninylation",
+                     "D-tryptophanylation",
+                     "D-tyrosination",
+                     "D-valylation",
+                     "Deamidation",
+                     "Decanoylation",
+                     "Decarboxylation",
+                     "Dehydroamino acid",
+                     "Dehydrocoelenterazination",
+                     "Dehydrogenation",
+                     "Dehydroxylation",
+                     "Deoxidation",
+                     "Deoxyhypusine",
+                     "Diacylglycerol",
+                     "Dihydroxyacetonation",
+                     "Dimethylamination",
+                     "Diphosphorylation",
+                     "Diphthamide",
+                     "Dipyrromethane methylation",
+                     "Dopaminylation",
+                     "Ethylation",
+                     "Ethylsulfanylation",
+                     "Farnesylation",
+                     "Fluorination",
+                     "Formylation",
+                     "GMPylation",
+                     "Geranylgeranylation",
+                     "Glutaminylation",
+                     "Glutamylation",
+                     "Glutarylation",
+                     "Glutathionylation",
+                     "Glycerophosphorylation",
+                     "Glycerylphosphorylethanolamination",
+                     "Glycylation",
+                     "Heptanoylation",
+                     "Hexanoylation",
+                     "Histaminylation",
+                     "Histidinylation",
+                     "Hydrogenation",
+                     "Hydroperoxylation",
+                     "Hydroxyamination",
+                     "Hydroxyethylation",
+                     "Hydroxylation",
+                     "Hydroxymethylation",
+                     "Hydroxysulfanylation",
+                     "Hypusine",
+                     "Iodination",
+                     "Isobutyrylation",
+                     "Isoleucylation",
+                     "L-lactate",
+                     "Lactoylation",
+                     "Laurylation",
+                     "Leucylation",
+                     "Lipoylation",
+                     "Lysylation",
+                     "Malonylation",
+                     "Methacrylation",
+                     "Methionylation",
+                     "Methoxylation",
+                     "Methylamination",
+                     "Methylation",
+                     "Methylsulfanylation",
+                     "Methylsulfation",
+                     "Myristoylation",
+                     "N-Glycosylation",
+                     "N-methylcarbamoylation",
+                     "N-pyruvic acid 2-iminylation",
+                     "N6-benzoyllysine",
+                     "N6-isonicotinyllysine",
+                     "N6-methacryllysine",
+                     "Nitration",
+                     "Nitrosylation",
+                     "None",
+                     "Noradrenylation",
+                     "Norleucine",
+                     "Norvaline",
+                     "O-Glycosylation",
+                     "Octanoylation",
+                     "Oleoylation",
+                     "Ornithine",
+                     "Oxidation",
+                     "Palmitoleoylation",
+                     "Palmitoylation",
+                     "Pentadecanoylation",
+                     "Pentanoylation",
+                     "Phenylalanylation",
+                     "Phosphatidylethanolamine amidation",
+                     "Phosphoenolpyruvate",
+                     "Phosphorylation",
+                     "Prolylation",
+                     "Propionylation",
+                     "Pyridoxal phosphate",
+                     "Pyrrolidone carboxylic acid",
+                     "Pyruvic acid",
+                     "Retinoylation",
+                     "S-Glycosylation",
+                     "Selanylation",
+                     "Selenomethionine",
+                     "Serotonylation",
+                     "Serylation",
+                     "Stearoylation",
+                     "Stereoisomerisation",
+                     "Succinamide ring",
+                     "Succination",
+                     "Succinylation",
+                     "Sulfanylmethylation",
+                     "Sulfation",
+                     "Sulfhydration",
+                     "Tert-butylation",
+                     "Tert-butyloxycarbonylation",
+                     "Threoninylation",
+                     "Thyroxine",
+                     "Triiodothyronine",
+                     "Triphosphorylation",
+                     "Tryptophanylation",
+                     "Tyrosination",
+                     "UMPylation",
+                     "Valylation",
+                     "cGMPylation"
+                  ],
+                  "examples": [
+                     "Phosphorylation"
+                  ],
+                  "description": "The type of protein modification.",
+                  "rcsb_search_context": [
+                     "exact-match"
+                  ],
+                  "rcsb_full_text_priority": 10,
+                  "rcsb_description": [
+                     {
+                        "text": "The type of protein modification.",
+                        "context": "dictionary"
+                     },
+                     {
+                        "text": "Modification Type",
+                        "context": "brief"
+                     }
+                  ],
+                  "rcsb_search_group": [
+                     {
+                        "group_name": "Protein Modification Components",
+                        "priority_order": 5
+                     }
+                  ]
+               },
+               "uniprot_generic_ptm_accession": {
+                  "type": "string",
+                  "examples": [
+                     "PTM-0252"
+                  ],
+                  "description": "The UniProt PTM accession code that describes the group of PTMs of which this protein modification is a member.",
+                  "rcsb_description": [
+                     {
+                        "text": "The UniProt PTM accession code that describes the group of PTMs of which this protein modification is a member.",
+                        "context": "dictionary"
+                     }
+                  ]
+               },
+               "uniprot_specific_ptm_accession": {
+                  "type": "string",
+                  "examples": [
+                     "PTM-0253"
+                  ],
+                  "description": "The UniProt PTM accession code that is an exact match for the protein modification.",
+                  "rcsb_description": [
+                     {
+                        "text": "The UniProt PTM accession code that is an exact match for the protein modification.",
+                        "context": "dictionary"
+                     }
+                  ]
+               }
+            },
+            "additionalProperties": false
          },
          "minItems": 1,
          "uniqueItems": true
@@ -3001,7 +3541,7 @@
                   "rcsb_search_group": [
                      {
                         "group_name": "Chemical Components",
-                        "priority_order": 100
+                        "priority_order": 105
                      }
                   ]
                },
@@ -3139,7 +3679,7 @@
                            "rcsb_search_group": [
                               {
                                  "group_name": "Chemical Components",
-                                 "priority_order": 110
+                                 "priority_order": 115
                               }
                            ]
                         },
@@ -3164,7 +3704,7 @@
                            "rcsb_search_group": [
                               {
                                  "group_name": "Chemical Components",
-                                 "priority_order": 105
+                                 "priority_order": 110
                               }
                            ]
                         }
@@ -3472,7 +4012,7 @@
                "rcsb_search_group": [
                   {
                      "group_name": "Chemical Components",
-                     "priority_order": 65
+                     "priority_order": 70
                   }
                ]
             },
@@ -3550,7 +4090,7 @@
                "rcsb_search_group": [
                   {
                      "group_name": "Chemical Components",
-                     "priority_order": 80
+                     "priority_order": 85
                   }
                ]
             },
@@ -3573,7 +4113,7 @@
                "rcsb_search_group": [
                   {
                      "group_name": "Chemical Components",
-                     "priority_order": 75
+                     "priority_order": 80
                   }
                ]
             },
@@ -3596,7 +4136,7 @@
                "rcsb_search_group": [
                   {
                      "group_name": "Chemical Components",
-                     "priority_order": 85
+                     "priority_order": 90
                   }
                ]
             },
@@ -3619,7 +4159,7 @@
                "rcsb_search_group": [
                   {
                      "group_name": "Chemical Components",
-                     "priority_order": 90
+                     "priority_order": 95
                   }
                ]
             },
@@ -3853,7 +4393,7 @@
                   "rcsb_search_group": [
                      {
                         "group_name": "Chemical Components",
-                        "priority_order": 95
+                        "priority_order": 100
                      }
                   ]
                },
@@ -4279,7 +4819,7 @@
                   "rcsb_search_group": [
                      {
                         "group_name": "Chemical Components",
-                        "priority_order": 30
+                        "priority_order": 35
                      }
                   ]
                },
@@ -4430,7 +4970,7 @@
    ],
    "$id": "https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-core_chem_comp.json",
    "$schema": "http://json-schema.org/draft-04/schema#",
-   "title": "schema: core_chem_comp collection: core_chem_comp version: 7.2.0",
-   "description": "RCSB Exchange Database JSON schema derived from the core_chem_comp content type schema. This schema supports collection core_chem_comp version 7.2.0. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-core_chem_comp.json and follows JSON schema specification version 4",
-   "$comment": "schema_version: 7.2.0"
+   "title": "schema: core_chem_comp collection: core_chem_comp version: 7.2.1",
+   "description": "RCSB Exchange Database JSON schema derived from the core_chem_comp content type schema. This schema supports collection core_chem_comp version 7.2.1. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-dw-col-core_chem_comp.json and follows JSON schema specification version 4",
+   "$comment": "schema_version: 7.2.1"
 }

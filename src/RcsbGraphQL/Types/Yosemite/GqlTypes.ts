@@ -197,6 +197,14 @@ export interface ChemComp {
   /** Date component was last modified. */
   pdbx_modified_date?: Maybe<Scalars['Date']['output']>;
   /**
+   * A flag to indicate if the CCD can be used to represent a protein modification.
+   *
+   * Allowable values:
+   * N, Y
+   *
+   */
+  pdbx_pcm?: Maybe<Scalars['String']['output']>;
+  /**
    * This data item identifies the deposition site that processed
    *  this chemical component defintion.
    *
@@ -579,6 +587,7 @@ export interface CoreChemComp {
   pdbx_chem_comp_descriptor?: Maybe<Array<Maybe<PdbxChemCompDescriptor>>>;
   pdbx_chem_comp_feature?: Maybe<Array<Maybe<PdbxChemCompFeature>>>;
   pdbx_chem_comp_identifier?: Maybe<Array<Maybe<PdbxChemCompIdentifier>>>;
+  pdbx_chem_comp_pcm?: Maybe<Array<Maybe<PdbxChemCompPcm>>>;
   pdbx_family_prd_audit?: Maybe<Array<Maybe<PdbxFamilyPrdAudit>>>;
   pdbx_prd_audit?: Maybe<Array<Maybe<PdbxPrdAudit>>>;
   pdbx_reference_entity_list?: Maybe<Array<Maybe<PdbxReferenceEntityList>>>;
@@ -810,7 +819,6 @@ export interface CoreNonpolymerEntityInstance {
   /** Get non-polymer entity for this non-polymer entity instance. */
   nonpolymer_entity?: Maybe<CoreNonpolymerEntity>;
   pdbx_struct_special_symmetry?: Maybe<Array<Maybe<PdbxStructSpecialSymmetry>>>;
-  pdbx_vrpt_summary_entity_fit_to_map?: Maybe<Array<Maybe<PdbxVrptSummaryEntityFitToMap>>>;
   pdbx_vrpt_summary_entity_geometry?: Maybe<Array<Maybe<PdbxVrptSummaryEntityGeometry>>>;
   /**
    * A unique identifier for each object in this entity instance container formed by
@@ -945,6 +953,7 @@ export interface CorePolymerEntity {
 
 export interface CorePolymerEntityInstance {
   __typename?: 'CorePolymerEntityInstance';
+  pdbx_modification_feature?: Maybe<Array<Maybe<PdbxModificationFeature>>>;
   pdbx_struct_special_symmetry?: Maybe<Array<Maybe<PdbxStructSpecialSymmetry>>>;
   pdbx_vrpt_summary_entity_fit_to_map?: Maybe<Array<Maybe<PdbxVrptSummaryEntityFitToMap>>>;
   pdbx_vrpt_summary_entity_geometry?: Maybe<Array<Maybe<PdbxVrptSummaryEntityGeometry>>>;
@@ -2180,7 +2189,7 @@ export interface EmImaging {
    * The name of the model of microscope.
    *
    * Allowable values:
-   * FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 1400/HR + YPS FEG, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL KYOTO-3000SFF, SHUIMU TOTEM 120S, SHUIMU TOTEM 200S, SHUIMU TOTEM 300S, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TITAN THEMIS, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
+   * FEI MORGAGNI, FEI POLARA 300, FEI TALOS ARCTICA, FEI TECNAI 10, FEI TECNAI 12, FEI TECNAI 20, FEI TECNAI ARCTICA, FEI TECNAI F20, FEI TECNAI F30, FEI TECNAI SPHERA, FEI TECNAI SPIRIT, FEI TITAN, FEI TITAN KRIOS, FEI/PHILIPS CM10, FEI/PHILIPS CM12, FEI/PHILIPS CM120T, FEI/PHILIPS CM200FEG, FEI/PHILIPS CM200FEG/SOPHIE, FEI/PHILIPS CM200FEG/ST, FEI/PHILIPS CM200FEG/UT, FEI/PHILIPS CM200T, FEI/PHILIPS CM300FEG/HE, FEI/PHILIPS CM300FEG/ST, FEI/PHILIPS CM300FEG/T, FEI/PHILIPS EM400, FEI/PHILIPS EM420, HITACHI EF2000, HITACHI EF3000, HITACHI H-9500SD, HITACHI H3000 UHVEM, HITACHI H7600, HITACHI HF2000, HITACHI HF3000, JEOL 1000EES, JEOL 100B, JEOL 100CX, JEOL 1010, JEOL 1200, JEOL 1200EX, JEOL 1200EXII, JEOL 1230, JEOL 1400, JEOL 1400/HR + YPS FEG, JEOL 2000EX, JEOL 2000EXII, JEOL 2010, JEOL 2010F, JEOL 2010HC, JEOL 2010HT, JEOL 2010UHR, JEOL 2011, JEOL 2100, JEOL 2100F, JEOL 2200FS, JEOL 2200FSC, JEOL 3000SFF, JEOL 3100FEF, JEOL 3100FFC, JEOL 3200FS, JEOL 3200FSC, JEOL 4000, JEOL 4000EX, JEOL CRYO ARM 200, JEOL CRYO ARM 300, JEOL JEM-F200, JEOL KYOTO-3000SFF, SHUIMU TOTEM 120S, SHUIMU TOTEM 200S, SHUIMU TOTEM 300S, SIEMENS SULEIKA, TFS GLACIOS, TFS KRIOS, TFS TALOS, TFS TALOS F200C, TFS TALOS L120C, TFS TITAN THEMIS, TFS TUNDRA, ZEISS LEO912, ZEISS LIBRA120PLUS
    *
    */
   microscope_model?: Maybe<Scalars['String']['output']>;
@@ -2464,7 +2473,7 @@ export interface EmVitrification {
    * The type of instrument used in the vitrification process.
    *
    * Allowable values:
-   * CRYOSOL VITROJET, EMS-002 RAPID IMMERSION FREEZER, FEI VITROBOT MARK I, FEI VITROBOT MARK II, FEI VITROBOT MARK III, FEI VITROBOT MARK IV, GATAN CRYOPLUNGE 3, HOMEMADE PLUNGER, LEICA EM CPC, LEICA EM GP, LEICA KF80, LEICA PLUNGER, REICHERT-JUNG PLUNGER, SPOTITON, SPT LABTECH CHAMELEON, ZEISS PLUNGE FREEZER CRYOBOX
+   * CHAMELEON, CRYOGENIUM, CRYOSOL VITROJET, CRYOWRITER, EMS-002 RAPID IMMERSION FREEZER, FEI VITROBOT MARK I, FEI VITROBOT MARK II, FEI VITROBOT MARK III, FEI VITROBOT MARK IV, GATAN CRYOPLUNGE 3, HOMEMADE PLUNGER, LEICA EM CPC, LEICA EM GP, LEICA EM GP2, LEICA KF80, LEICA PLUNGER, REICHERT-JUNG PLUNGER, SPOTITON, SPT LABTECH CHAMELEON, ZEISS PLUNGE FREEZER CRYOBOX
    *
    */
   instrument?: Maybe<Scalars['String']['output']>;
@@ -3896,6 +3905,92 @@ export interface PdbxChemCompIdentifier {
   type: Scalars['String']['output'];
 }
 
+export interface PdbxChemCompPcm {
+  __typename?: 'PdbxChemCompPcm';
+  /**
+   * The category of protein modification.
+   *
+   * Allowable values:
+   * ADP-ribose, Amino acid, Biotin, Carbohydrate, Chromophore/chromophore-like, Covalent chemical modification, Crosslinker, Flavin, Heme/heme-like, Lipid/lipid-like, Metal coordination, Named protein modification, Non-standard residue, Nucleotide monophosphate, Terminal acetylation, Terminal amidation
+   *
+   */
+  category?: Maybe<Scalars['String']['output']>;
+  /**
+   * The atom on the modification group that covalently links the
+   *  modification to the residue that is being modified. This is
+   *  only added when the protein modification is linked and so the
+   *  amino acid group and the modification group are described by
+   *  separate CCDs.
+   *
+   * Examples:
+   * C1
+   *
+   */
+  comp_id_linking_atom?: Maybe<Scalars['String']['output']>;
+  /**
+   * Chemical component identifier for the amino acid residue that is being modified.
+   *
+   * Examples:
+   * SER
+   *
+   */
+  modified_residue_id?: Maybe<Scalars['String']['output']>;
+  /**
+   * The atom on the polypeptide residue group that covalently links
+   *  the modification to the residue that is being modified. This is
+   *  only added when the protein modification is linked and so the
+   *  amino acid group and the modification group are described by
+   *  separate CCDs.
+   *
+   * Examples:
+   * OG
+   *
+   */
+  modified_residue_id_linking_atom?: Maybe<Scalars['String']['output']>;
+  /**
+   * The position of the modification on the polypeptide.
+   *
+   * Allowable values:
+   * Any position, C-terminal, N-terminal
+   *
+   */
+  polypeptide_position?: Maybe<Scalars['String']['output']>;
+  /**
+   * The position of the modification on the amino acid.
+   *
+   * Allowable values:
+   * Amino-acid backbone, Amino-acid side chain, Amino-acid side chain and backbone
+   *
+   */
+  position?: Maybe<Scalars['String']['output']>;
+  /** Chemical component identifier for the amino acid residue that is being modified. */
+  rcsb_modified_residue_id?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /**
+   * The type of protein modification.
+   *
+   * Allowable values:
+   * (3-Aminopropyl)(5'-adenosyl)phosphono amidation, (3R)-3-Hydroxybutyrylation, 12-Hydroxyfarnesylation, 12-Oxomyristoylation, 12R-Hydroxymyristoylation, 14-Hydroxy-10,13-dioxo-7-heptadecenoic acid, 2,3-Dicarboxypropylation, 2-Aminoadipylation, 2-Aminoethylphosphorylation, 2-Cholinephosphorylation, 2-Hydroxyisobutyrylation, 2-Oxo-5,5-dimethylhexanoylation, 2-Oxobutanoic acid, 3-Oxoalanine, 3-Phenyllactic acid, 4-Phosphopantetheine, ADP-ribosylation, ADP-riboxanation, AMPylation, Acetamidation, Acetamidomethylation, Acetylation, Alanylation, Allysine, Amination, Arachidoylation, Archaeol, Arginylation, Arsenylation, Asparaginylation, Aspartylation, Bacillithiolation, Benzoylation, Benzylation, Beta-amino acid, Beta-hydroxybutyrylation, Beta-lysylation, Beta-mercaptoethanol, Biotinylation, Bromination, Butyrylation, C-Mannosylation, CMPylation, Carbamoylation, Carboxyethylation, Carboxylation, Carboxymethylation, Chlorination, Cholesterylation, Citrullination, Crotonylation, Cyanation, Cysteinylation, D-alanylation, D-arginylation, D-asparaginylation, D-aspartylation, D-cysteinylation, D-glutaminylation, D-glutamylation, D-histidinylation, D-isoleucylation, D-lactate, D-leucylation, D-lysylation, D-methionylation, D-phenylalanylation, D-prolylation, D-serylation, D-threoninylation, D-tryptophanylation, D-tyrosination, D-valylation, Deamidation, Decanoylation, Decarboxylation, Dehydroamino acid, Dehydrocoelenterazination, Dehydrogenation, Dehydroxylation, Deoxidation, Deoxyhypusine, Diacylglycerol, Dihydroxyacetonation, Dimethylamination, Diphosphorylation, Diphthamide, Dipyrromethane methylation, Dopaminylation, Ethylation, Ethylsulfanylation, Farnesylation, Fluorination, Formylation, GMPylation, Geranylgeranylation, Glutaminylation, Glutamylation, Glutarylation, Glutathionylation, Glycerophosphorylation, Glycerylphosphorylethanolamination, Glycylation, Heptanoylation, Hexanoylation, Histaminylation, Histidinylation, Hydrogenation, Hydroperoxylation, Hydroxyamination, Hydroxyethylation, Hydroxylation, Hydroxymethylation, Hydroxysulfanylation, Hypusine, Iodination, Isobutyrylation, Isoleucylation, L-lactate, Lactoylation, Laurylation, Leucylation, Lipoylation, Lysylation, Malonylation, Methacrylation, Methionylation, Methoxylation, Methylamination, Methylation, Methylsulfanylation, Methylsulfation, Myristoylation, N-Glycosylation, N-methylcarbamoylation, N-pyruvic acid 2-iminylation, N6-benzoyllysine, N6-isonicotinyllysine, N6-methacryllysine, Nitration, Nitrosylation, None, Noradrenylation, Norleucine, Norvaline, O-Glycosylation, Octanoylation, Oleoylation, Ornithine, Oxidation, Palmitoleoylation, Palmitoylation, Pentadecanoylation, Pentanoylation, Phenylalanylation, Phosphatidylethanolamine amidation, Phosphoenolpyruvate, Phosphorylation, Prolylation, Propionylation, Pyridoxal phosphate, Pyrrolidone carboxylic acid, Pyruvic acid, Retinoylation, S-Glycosylation, Selanylation, Selenomethionine, Serotonylation, Serylation, Stearoylation, Stereoisomerisation, Succinamide ring, Succination, Succinylation, Sulfanylmethylation, Sulfation, Sulfhydration, Tert-butylation, Tert-butyloxycarbonylation, Threoninylation, Thyroxine, Triiodothyronine, Triphosphorylation, Tryptophanylation, Tyrosination, UMPylation, Valylation, cGMPylation
+   *
+   */
+  type?: Maybe<Scalars['String']['output']>;
+  /**
+   * The UniProt PTM accession code that describes the group of PTMs of which this protein modification is a member.
+   *
+   * Examples:
+   * PTM-0252
+   *
+   */
+  uniprot_generic_ptm_accession?: Maybe<Scalars['String']['output']>;
+  /**
+   * The UniProt PTM accession code that is an exact match for the protein modification.
+   *
+   * Examples:
+   * PTM-0253
+   *
+   */
+  uniprot_specific_ptm_accession?: Maybe<Scalars['String']['output']>;
+}
+
 export interface PdbxDatabasePdbObsSpr {
   __typename?: 'PdbxDatabasePDBObsSpr';
   /**
@@ -4272,7 +4367,7 @@ export interface PdbxInitialRefinementModel {
    * This item identifies the resource of initial model used for refinement
    *
    * Allowable values:
-   * AlphaFold, ITasser, InsightII, ModelArchive, Modeller, Other, PDB, PDB-Dev, PHYRE, Robetta, RoseTTAFold, SwissModel
+   * AlphaFold, ITasser, InsightII, ModelAngelo, ModelArchive, Modeller, Other, PDB, PDB-Dev, PHYRE, Robetta, RoseTTAFold, SwissModel
    *
    */
   source_name?: Maybe<Scalars['String']['output']>;
@@ -4281,6 +4376,142 @@ export interface PdbxInitialRefinementModel {
    *
    * Allowable values:
    * experimental model, in silico model, integrative model, other
+   *
+   */
+  type?: Maybe<Scalars['String']['output']>;
+}
+
+export interface PdbxModificationFeature {
+  __typename?: 'PdbxModificationFeature';
+  /**
+   * The category of protein modification.
+   *
+   * Allowable values:
+   * ADP-ribose, Amino acid, Biotin, Carbohydrate, Chromophore/chromophore-like, Covalent chemical modification, Crosslinker, Disulfide bridge, Flavin, Heme/heme-like, Isopeptide bond, Lipid/lipid-like, Metal coordination, Named protein modification, Non-standard linkage, Non-standard residue, Nucleotide monophosphate, Terminal acetylation, Terminal amidation
+   *
+   */
+  category?: Maybe<Scalars['String']['output']>;
+  /**
+   * The atom on the modification group that covalently links the
+   *  modification to the residue that is being modified. This is
+   *  only added when the protein modification is linked and so the
+   *  amino acid group and the modification group are described by
+   *  separate CCDs.
+   *
+   * Examples:
+   * C1
+   *
+   */
+  comp_id_linking_atom?: Maybe<Scalars['String']['output']>;
+  /**
+   * A component of the identifier for the chemical component that
+   *  describes the protein modification.
+   *
+   *  This data item is a pointer to _atom_site.label_asym_id in the
+   *  ATOM_SITE category.
+   *
+   * Examples:
+   * E
+   *
+   */
+  label_asym_id?: Maybe<Scalars['String']['output']>;
+  /**
+   * A component of the identifier for the chemical component that
+   *  describes the protein modification.
+   *
+   *  This data item is a pointer to _atom_site.label_comp_id in the
+   *  ATOM_SITE category.
+   *
+   * Examples:
+   * SEP, PLM
+   *
+   */
+  label_comp_id?: Maybe<Scalars['String']['output']>;
+  /**
+   * A component of the identifier for the chemical component that
+   *  describes the protein modification.
+   *
+   *  This data item is a pointer to _atom_site.label_seq_id in the
+   *  ATOM_SITE category.
+   */
+  label_seq_id?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Chemical component identifier for the amino acid residue that is being modified.
+   *
+   * Examples:
+   * CYS
+   *
+   */
+  modified_residue_id?: Maybe<Scalars['String']['output']>;
+  /**
+   * The atom on the polypeptide residue group that covalently links
+   *  the modification to the residue that is being modified. This is
+   *  only added when the protein modification is linked and so the
+   *  amino acid group and the modification group are described by
+   *  separate CCDs.
+   *
+   * Examples:
+   * SG
+   *
+   */
+  modified_residue_id_linking_atom?: Maybe<Scalars['String']['output']>;
+  /**
+   * A component of the identifier for the chemical component that
+   *  is being modified.
+   *
+   *  This data item is a pointer to _atom_site.label_asym_id in the
+   *  ATOM_SITE category.
+   *
+   * Examples:
+   * A
+   *
+   */
+  modified_residue_label_asym_id?: Maybe<Scalars['String']['output']>;
+  /**
+   * A component of the identifier for the chemical component that
+   *  is being modified.
+   *
+   *  This data item is a pointer to _atom_site.label_comp_id in the
+   *  ATOM_SITE category.
+   *
+   * Examples:
+   * CYS
+   *
+   */
+  modified_residue_label_comp_id?: Maybe<Scalars['String']['output']>;
+  /**
+   * A component of the identifier for the chemical component that
+   *  is being modified.
+   *
+   *  This data item is a pointer to _atom_site.label_seq_id in the
+   *  ATOM_SITE category.
+   */
+  modified_residue_label_seq_id?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Describes the symmetry operation that should be applied to the
+   *  chemical component that is being modified.
+   *
+   * Examples:
+   * 1_555
+   *
+   */
+  modified_residue_symmetry?: Maybe<Scalars['String']['output']>;
+  /** Chemical component identifier for the amino acid residue that is being modified. */
+  rcsb_modified_residue_id?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /**
+   * Describes the symmetry operation that should be applied to the
+   *  protein modification group.
+   *
+   * Examples:
+   * 1_555
+   *
+   */
+  symmetry?: Maybe<Scalars['String']['output']>;
+  /**
+   * The type of protein modification.
+   *
+   * Allowable values:
+   * (3-Aminopropyl)(5'-adenosyl)phosphono amidation, (3R)-3-Hydroxybutyrylation, 12-Hydroxyfarnesylation, 12-Oxomyristoylation, 12R-Hydroxymyristoylation, 14-Hydroxy-10,13-dioxo-7-heptadecenoic acid, 2,3-Dicarboxypropylation, 2-Aminoadipylation, 2-Aminoethylphosphorylation, 2-Cholinephosphorylation, 2-Hydroxyisobutyrylation, 2-Oxo-5,5-dimethylhexanoylation, 2-Oxobutanoic acid, 3-Oxoalanine, 3-Phenyllactic acid, 4-Phosphopantetheine, ADP-ribosylation, ADP-riboxanation, AMPylation, Acetamidation, Acetamidomethylation, Acetylation, Alanylation, Allysine, Amination, Arachidoylation, Archaeol, Arginylation, Arsenylation, Asparaginylation, Aspartylation, Bacillithiolation, Benzoylation, Benzylation, Beta-amino acid, Beta-hydroxybutyrylation, Beta-lysylation, Beta-mercaptoethanol, Biotinylation, Bromination, Butyrylation, C-Mannosylation, CMPylation, Carbamoylation, Carboxyethylation, Carboxylation, Carboxymethylation, Chlorination, Cholesterylation, Citrullination, Crotonylation, Cyanation, Cysteinylation, D-alanylation, D-arginylation, D-asparaginylation, D-aspartylation, D-cysteinylation, D-glutaminylation, D-glutamylation, D-histidinylation, D-isoleucylation, D-lactate, D-leucylation, D-lysylation, D-methionylation, D-phenylalanylation, D-prolylation, D-serylation, D-threoninylation, D-tryptophanylation, D-tyrosination, D-valylation, Deamidation, Decanoylation, Decarboxylation, Dehydroamino acid, Dehydrocoelenterazination, Dehydrogenation, Dehydroxylation, Deoxidation, Deoxyhypusine, Diacylglycerol, Dihydroxyacetonation, Dimethylamination, Diphosphorylation, Diphthamide, Dipyrromethane methylation, Dopaminylation, Ethylation, Ethylsulfanylation, Farnesylation, Fluorination, Formylation, GMPylation, Geranylgeranylation, Glutaminylation, Glutamylation, Glutarylation, Glutathionylation, Glycerophosphorylation, Glycerylphosphorylethanolamination, Glycylation, Heptanoylation, Hexanoylation, Histaminylation, Histidinylation, Hydrogenation, Hydroperoxylation, Hydroxyamination, Hydroxyethylation, Hydroxylation, Hydroxymethylation, Hydroxysulfanylation, Hypusine, Iodination, Isobutyrylation, Isoleucylation, L-lactate, Lactoylation, Laurylation, Leucylation, Lipoylation, Lysylation, Malonylation, Methacrylation, Methionylation, Methoxylation, Methylamination, Methylation, Methylsulfanylation, Methylsulfation, Myristoylation, N-Glycosylation, N-methylcarbamoylation, N-pyruvic acid 2-iminylation, N6-benzoyllysine, N6-isonicotinyllysine, N6-methacryllysine, Nitration, Nitrosylation, None, Noradrenylation, Norleucine, Norvaline, O-Glycosylation, Octanoylation, Oleoylation, Ornithine, Oxidation, Palmitoleoylation, Palmitoylation, Pentadecanoylation, Pentanoylation, Phenylalanylation, Phosphatidylethanolamine amidation, Phosphoenolpyruvate, Phosphorylation, Prolylation, Propionylation, Pyridoxal phosphate, Pyrrolidone carboxylic acid, Pyruvic acid, Retinoylation, S-Glycosylation, Selanylation, Selenomethionine, Serotonylation, Serylation, Stearoylation, Stereoisomerisation, Succinamide ring, Succination, Succinylation, Sulfanylmethylation, Sulfation, Sulfhydration, Tert-butylation, Tert-butyloxycarbonylation, Threoninylation, Thyroxine, Triiodothyronine, Triphosphorylation, Tryptophanylation, Tyrosination, UMPylation, Valylation, cGMPylation
    *
    */
   type?: Maybe<Scalars['String']['output']>;
@@ -5752,7 +5983,7 @@ export interface PdbxSerialCrystallographySampleDelivery {
    *  of the source.
    *
    * Allowable values:
-   * fixed target, injection
+   * fixed target, injection, other
    *
    */
   method?: Maybe<Scalars['String']['output']>;
@@ -6456,6 +6687,9 @@ export interface PdbxStructAssemblyProp {
   biol_id: Scalars['String']['output'];
   /**
    * The property type for the assembly.
+   *  ABSA (A^2) is the "Total buried surface area (A^2)"
+   *  SSA (A^2) is "Surface area for the complex (A^2)"
+   *  MORE is "Internal energy (kcal/mol)"
    *
    * Allowable values:
    * ABSA (A^2), MORE, SSA (A^2)
@@ -9210,8 +9444,17 @@ export interface RcsbEntryInfo {
   branched_molecular_weight_minimum?: Maybe<Scalars['Float']['output']>;
   /** The number of cis-peptide linkages per deposited structure model. */
   cis_peptide_count?: Maybe<Scalars['Int']['output']>;
-  /** The number of heavy atom coordinates records per deposited structure model. */
+  /**
+   * The number of heavy atom coordinates records (including alternate conformations)
+   *  for the representative structure model deposited.
+   */
   deposited_atom_count?: Maybe<Scalars['Int']['output']>;
+  /**
+   * The number of branched instances in the deposited data set.
+   *  This is the total count of branched entity instances reported
+   *  per deposited structure model.
+   */
+  deposited_branched_entity_instance_count?: Maybe<Scalars['Int']['output']>;
   /** The number of deuterated water molecules per deposited structure model. */
   deposited_deuterated_water_count?: Maybe<Scalars['Int']['output']>;
   /** The number of hydrogen atom coordinates records per deposited structure model. */
@@ -9231,7 +9474,7 @@ export interface RcsbEntryInfo {
    */
   deposited_nonpolymer_entity_instance_count?: Maybe<Scalars['Int']['output']>;
   /**
-   * The number of polymer instances in the deposited data set.
+   * The number of protein/nucleic acid polymer instances in the deposited data set.
    *  This is the total count of polymer entity instances reported
    *  per deposited structure model.
    */
@@ -9500,7 +9743,7 @@ export interface RcsbGroupAggregationMethod {
   method: RcsbGroupAggregationMethodMethod;
   similarity_criteria?: Maybe<RcsbGroupAggregationMethodSimilarityCriteria>;
   /**
-   * Specifies the type of similarity criteria used to aggregate members into higher levels in the hierarchy
+   * Method used to establish group membership
    *
    * Allowable values:
    * sequence_identity, matching_uniprot_accession, matching_deposit_group_id, matching_chemical_component_id
@@ -9610,7 +9853,7 @@ export interface RcsbGroupRelated {
 
 export interface RcsbGroupStatistics {
   __typename?: 'RcsbGroupStatistics';
-  /** The desired lower limit for the similarity between two members that belong to the same group */
+  /** Degree of similarity expressed as a floating-point number */
   similarity_cutoff?: Maybe<Scalars['Float']['output']>;
   /** Similarity score between two most similar group members */
   similarity_score_max?: Maybe<Scalars['Float']['output']>;
@@ -11051,7 +11294,7 @@ export interface RcsbPolymerEntityFeature {
    * A type or category of the feature.
    *
    * Allowable values:
-   * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, disorder, disorder_binding, hydropathy, modified_monomer, mutation
+   * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, disorder, disorder_binding, hydropathy, modified_monomer, mutation, non_standard_monomer
    *
    */
   type: Scalars['String']['output'];
@@ -11103,7 +11346,7 @@ export interface RcsbPolymerEntityFeatureSummary {
   count?: Maybe<Scalars['Int']['output']>;
   /**
    * The fractional feature coverage relative to the full entity sequence.
-   *  For instance, the fraction of features such as mutations, artifacts or modified monomers
+   *  For instance, the fraction of features such as mutations, artifacts or non-standard monomers
    *  relative to the length of the entity sequence.
    *
    * Examples:
@@ -11135,7 +11378,7 @@ export interface RcsbPolymerEntityFeatureSummary {
    * Type or category of the feature.
    *
    * Allowable values:
-   * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, modified_monomer, mutation
+   * CARD_MODEL, IMGT_ANTIBODY_DESCRIPTION, IMGT_ANTIBODY_DOMAIN_NAME, IMGT_ANTIBODY_GENE_ALLELE_NAME, IMGT_ANTIBODY_ORGANISM_NAME, IMGT_ANTIBODY_PROTEIN_NAME, IMGT_ANTIBODY_RECEPTOR_DESCRIPTION, IMGT_ANTIBODY_RECEPTOR_TYPE, Pfam, SABDAB_ANTIBODY_ANTIGEN_NAME, SABDAB_ANTIBODY_NAME, SABDAB_ANTIBODY_TARGET, artifact, modified_monomer, mutation, non_standard_monomer
    *
    */
   type?: Maybe<Scalars['String']['output']>;

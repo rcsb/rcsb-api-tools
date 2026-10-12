@@ -6,9 +6,9 @@
  */
 
 /**
- * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_nonpolymer_entity_instance version 10.1.2. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_nonpolymer_entity_instance.json and follows JSON schema specification version 4
+ * RCSB Exchange Database JSON schema derived from the pdbx_core content type schema. This schema supports collection pdbx_core_nonpolymer_entity_instance version 10.1.3. This schema is hosted in repository https://github.com/rcsb/py-rcsb_exdb_assets/tree/master/json_schema_definitions/json-min-db-pdbx_core-col-pdbx_core_nonpolymer_entity_instance.json and follows JSON schema specification version 4
  */
-export interface SchemaPdbxCoreCollectionPdbxCoreNonpolymerEntityInstanceVersion1012 {
+export interface SchemaPdbxCoreCollectionPdbxCoreNonpolymerEntityInstanceVersion1013 {
   /**
    * @minItems 1
    */
@@ -86,39 +86,6 @@ export interface SchemaPdbxCoreCollectionPdbxCoreNonpolymerEntityInstanceVersion
        *  ATOM_SITE category.
        */
       label_comp_id?: string;
-    }[]
-  ];
-  /**
-   * @minItems 1
-   */
-  pdbx_vrpt_summary_entity_fit_to_map?: [
-    {
-      /**
-       * The unique model number from _atom_site.pdbx_PDB_model_num.
-       */
-      PDB_model_num?: number;
-      /**
-       * The calculated average Q-score.
-       */
-      Q_score?: number;
-      /**
-       * The average of the residue inclusions for all residues in this instance
-       */
-      average_residue_inclusion?: number;
-    },
-    ...{
-      /**
-       * The unique model number from _atom_site.pdbx_PDB_model_num.
-       */
-      PDB_model_num?: number;
-      /**
-       * The calculated average Q-score.
-       */
-      Q_score?: number;
-      /**
-       * The average of the residue inclusions for all residues in this instance
-       */
-      average_residue_inclusion?: number;
     }[]
   ];
   /**

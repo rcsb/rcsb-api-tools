@@ -328,10 +328,10 @@
                      "MORE",
                      "SSA (A^2)"
                   ],
-                  "description": "The property type for the assembly.",
+                  "description": "The property type for the assembly.\n ABSA (A^2) is the \"Total buried surface area (A^2)\"\n SSA (A^2) is \"Surface area for the complex (A^2)\"\n MORE is \"Internal energy (kcal/mol)\"",
                   "rcsb_description": [
                      {
-                        "text": "The property type for the assembly.",
+                        "text": "The property type for the assembly.\n ABSA (A^2) is the \"Total buried surface area (A^2)\"\n SSA (A^2) is \"Surface area for the complex (A^2)\"\n MORE is \"Internal energy (kcal/mol)\"",
                         "context": "dictionary"
                      }
                   ]

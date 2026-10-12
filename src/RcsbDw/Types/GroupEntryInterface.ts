@@ -53,7 +53,7 @@ export interface GroupEntry {
   };
   rcsb_group_statistics?: {
     /**
-     * The desired lower limit for the similarity between two members that belong to the same group
+     * Degree of similarity expressed as a floating-point number
      */
     similarity_cutoff?: number;
     /**
